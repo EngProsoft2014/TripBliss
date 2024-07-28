@@ -57,9 +57,34 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Fonts\Font Awesome 6 Brands-Regular-400.otf" />
+	  <None Remove="Resources\Fonts\Font Awesome 6 Free-Regular-400.otf" />
+	  <None Remove="Resources\Fonts\Font Awesome 6 Free-Solid-900.otf" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="akavache" Version="10.0.1" />
+		<PackageReference Include="Camera.MAUI" Version="1.5.1" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="Controls.UserDialogs.Maui" Version="1.5.4" />
+		<PackageReference Include="Microsoft.AspNet.SignalR.Client" Version="2.4.3" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="Mopups" Version="1.3.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Polly" Version="8.4.1" />
+		<PackageReference Include="Syncfusion.Maui.TabView" Version="24.2.9" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Controls\" />
+	  <Folder Include="Models\" />
+	  <Folder Include="Pages\DistributorsPages\PopupPages\" />
+	  <Folder Include="Pages\TravelAgenciesPages\PopupPages\" />
+	  <Folder Include="ViewModels\DistributorsViewModel\" />
+	  <Folder Include="ViewModels\TravelAgenciesVieModels\" />
 	</ItemGroup>
 
 </Project>
