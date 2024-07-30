@@ -5,7 +5,7 @@
              x:Class="TripBliss.Pages.QrCodePage"
              Title="QrCodePage"
              BackgroundColor="White"
-             Shell.NavBarIsVisible="False">
+             NavigationPage.HasNavigationBar="False">
     <VerticalStackLayout Margin="30" Spacing="25">
         <Image Source="https://iconape.com/wp-content/png_logo_vector/bntu.png" WidthRequest="140" ></Image>
         <Label Text="QR Code : " FontSize="14" TextColor="Gray"></Label>

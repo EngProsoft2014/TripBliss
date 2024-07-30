@@ -5,7 +5,7 @@
              x:Class="TripBliss.Pages.SignUpPage"
              Title="SignUpPage"
              IsBusy="{Binding IsBusy}"
-             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False" 
              BackgroundColor="White">
     <ContentPage.BindingContext>
         <vm:SignUpViewModdel></vm:SignUpViewModdel>

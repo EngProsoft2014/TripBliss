@@ -16,16 +16,17 @@ namespace TripBliss.ViewModels
         [ObservableProperty]
         string email;
         [ObservableProperty]
-        string password; 
+        string password;
         #endregion
 
 
-        #region Methodes
+        #region RelayCommand
         [RelayCommand]
-        void OnLogIn()
+        async void OnLogIn()
         {
             IsBusy = true;
-            Shell.Current.DisplayAlert("click", Email, "cancle");
+            await Shell.Current.DisplayAlert("click", Email, "cancle");
+            //await App.Current.MainPage.Navigation.PushAsync(new HomePage());
             IsBusy = false;
 
         }

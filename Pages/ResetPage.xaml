@@ -6,7 +6,7 @@
              Title="ResetPage"
              IsBusy="{Binding IsBusy}"
              BackgroundColor="White"
-             Shell.NavBarIsVisible="False">
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.BindingContext>
         <vm:ResetViewModdel></vm:ResetViewModdel>
     </ContentPage.BindingContext>
