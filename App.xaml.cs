@@ -1,4 +1,5 @@
-﻿namespace TripBliss
+﻿using TripBliss.Pages;
+namespace TripBliss
 {
     public partial class App : Application
     {

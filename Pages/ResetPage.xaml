@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels"
+             x:Class="TripBliss.Pages.ResetPage"
+             Title="ResetPage"
+             IsBusy="{Binding IsBusy}"
+             BackgroundColor="White"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.BindingContext>
+        <vm:ResetViewModdel></vm:ResetViewModdel>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout Margin="30">
+        <Image Source="https://iconape.com/wp-content/png_logo_vector/bntu.png" WidthRequest="140" ></Image>
+        <Border StrokeShape="RoundRectangle 20" StrokeThickness="1" Stroke="Gray" VerticalOptions="Center" Margin="0,40,0,0">
+            <VerticalStackLayout Margin="20" Spacing="20">
+                <Image>
+                    <Image.Source>
+                        <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
+                    </Image.Source>
+                </Image>
+                <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
+                    <Entry Keyboard="Email" TextColor="Black" FontSize="16" FontAttributes="Bold" Placeholder="Email" HorizontalTextAlignment="Center"
+                   Margin="10,2" FontFamily="OpenSansRegular" Text="{Binding Email}"></Entry>
+                </Border>
+                <Button Text="Apply" BackgroundColor="#2FA562" TextColor="White" WidthRequest="140" CornerRadius="20" Margin="0,30,0,0"
+                        Command="{Binding ApplyCommand}"></Button>
+            </VerticalStackLayout>
+        </Border>
+    </VerticalStackLayout>
+</ContentPage>
