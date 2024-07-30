@@ -11,4 +11,9 @@ public partial class SignUpPage : ContentPage
     {
 		await Navigation.PopAsync();
     }
+
+    private async void QrCodeClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new QrCodePage());
+    }
 }

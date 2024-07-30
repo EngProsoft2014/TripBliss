@@ -6,4 +6,9 @@ public partial class QrCodePage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void cameraBarcodeReaderView_BarcodesDetected(object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
+    {
+
+    }
 }
