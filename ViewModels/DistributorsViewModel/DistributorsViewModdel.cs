@@ -95,5 +95,11 @@ namespace TripBliss.ViewModels.DistributorsViewModel
         {
             App.Current.MainPage.Navigation.PushAsync(new AddRequestPage());
         }
+
+        [RelayCommand]
+        void OnBackPressed()
+        {
+            App.Current.MainPage.Navigation.PopAsync();
+        }
     }
 }

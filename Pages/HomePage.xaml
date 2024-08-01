@@ -93,12 +93,12 @@
                                         <tabView:SfTabItem Header='My Distributors' TextColor="Black" FontSize="14">
                                             <tabView:SfTabItem.Content>
                                                 <ContentView>
-                                                    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+                                                    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20">
                                                         <ListView ItemsSource="{Binding distributors}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
                                                             <ListView.ItemTemplate>
                                                                 <DataTemplate>
                                                                     <ViewCell>
-                                                                        <Border StrokeShape="RoundRectangle 20" Margin="20">
+                                                                        <Border StrokeShape="RoundRectangle 20" Margin="0,20">
                                                                             <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
                                                                                 <VerticalStackLayout Padding="10" Spacing="5">
                                                                                     <Label Text="{Binding Name}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
@@ -139,12 +139,12 @@
                                         <tabView:SfTabItem Header='All Distributors' TextColor="Black" FontSize="14">
                                             <tabView:SfTabItem.Content>
                                                 <ContentView>
-                                                    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+                                                    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20">
                                                         <ListView ItemsSource="{Binding distributors}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
                                                             <ListView.ItemTemplate>
                                                                 <DataTemplate>
                                                                     <ViewCell>
-                                                                        <Border StrokeShape="RoundRectangle 20" Margin="20">
+                                                                        <Border StrokeShape="RoundRectangle 20" Margin="0,20">
                                                                             <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
                                                                                 <VerticalStackLayout Padding="10" Spacing="5">
                                                                                     <Label Text="{Binding Name}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
@@ -185,12 +185,12 @@
                                         <tabView:SfTabItem Header='Favourites' TextColor="Black" FontSize="14">
                                             <tabView:SfTabItem.Content>
                                                 <ContentView>
-                                                    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+                                                    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20">
                                                         <ListView ItemsSource="{Binding distributors}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
                                                             <ListView.ItemTemplate>
                                                                 <DataTemplate>
                                                                     <ViewCell>
-                                                                        <Border StrokeShape="RoundRectangle 20" Margin="20">
+                                                                        <Border StrokeShape="RoundRectangle 20" Margin="0,20">
                                                                             <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
                                                                                 <VerticalStackLayout Padding="10" Spacing="5">
                                                                                     <Label Text="{Binding Name}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>

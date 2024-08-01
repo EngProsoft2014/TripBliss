@@ -1,20 +1,81 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModel"
              x:Class="TripBliss.Pages.DistributorsPages.AddRequestPage"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="Add Request">
-    <VerticalStackLayout Margin="20">
+    <ContentPage.BindingContext>
+        <vm:DistributorsViewModdel></vm:DistributorsViewModdel>
+    </ContentPage.BindingContext>
+    <StackLayout Orientation="Vertical" Margin="20">
         <StackLayout Orientation="Horizontal">
-            <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand">
+            <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackPressedCommand}">
                 <ImageButton.Source>
                     <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                 </ImageButton.Source>
             </ImageButton>
-            <Label Text="Distributors" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
-                   TextColor="Black" VerticalOptions="StartAndExpand"></Label>
+            <Label Text="Add Request" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                   TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
-    </VerticalStackLayout>
+         <Border StrokeShape="RoundRectangle 25" Margin="0,40,0,0">
+            <Grid>
+                <SearchBar BackgroundColor="White" Placeholder="Search" FontSize="15" TextColor="Black"></SearchBar>
+                <Border StrokeShape="RoundRectangle 3,25,25,25" BackgroundColor="#76d973" WidthRequest="40" HorizontalOptions="EndAndExpand">
+                    <Image WidthRequest="20" HeightRequest="20">
+                        <Image.Source>
+                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="White"></FontImageSource>
+                        </Image.Source>
+                    </Image>
+                </Border>
+            </Grid>
+            <Border.Shadow>
+                <Shadow  Brush="Black" Offset="0,10" Opacity="1"></Shadow>
+            </Border.Shadow>
+        </Border>
+        <ListView ItemsSource="{Binding distributors}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Border StrokeShape="RoundRectangle 20" Margin="0,20">
+                            <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                                <VerticalStackLayout Padding="10" Spacing="5">
+                                    <Label Text="{Binding Name}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+                                    <Label Text="{Binding Phone}" FontSize="12" TextColor="Gray"></Label>
+                                    <Label Text="{Binding Services}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                    <Label Margin="0,3,0,0">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Address : " FontSize="12" TextColor="DeepSkyBlue" ></Span>
+                                                <Span Text="{Binding Address}" FontSize="12" TextColor="DeepSkyBlue" ></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </VerticalStackLayout>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand">
+                                <StackLayout Orientation="Horizontal" Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="5"
+                                             VerticalOptions="StartAndExpand"> 
+                                    <Label Text="{Binding Rate}" FontSize="16" TextColor="Black" FontAttributes="Bold"
+                                           VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand"></Label>
+                                    <Image WidthRequest="25" HeightRequest="25" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand">
+                                        <Image.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid"
+                                                             Color="Gold"></FontImageSource>
+                                        </Image.Source>
+                                    </Image>
+                                    
+                                </StackLayout>
+                                    <Border HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" StrokeShape="RoundRectangle 8,0,0,0" 
+                                            BackgroundColor="#5ac488" Padding="25,2">
+                                        <Label Text="Select" FontSize="14" FontAttributes="Bold"></Label>
+                                    </Border>
+                                </StackLayout>
+                            </StackLayout>
+                        </Border>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>
-<EntryCell Label="" Placeholder="" />
