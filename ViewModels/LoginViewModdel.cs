@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using TripBliss.Pages;
 
 namespace TripBliss.ViewModels
 {
@@ -25,8 +25,8 @@ namespace TripBliss.ViewModels
         async void OnLogIn()
         {
             IsBusy = true;
-            await Shell.Current.DisplayAlert("click", Email, "cancle");
-            //await App.Current.MainPage.Navigation.PushAsync(new HomePage());
+            
+            await App.Current.MainPage.Navigation.PushAsync(new HomePage());
             IsBusy = false;
 
         }

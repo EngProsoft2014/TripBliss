@@ -8,11 +8,11 @@
              NavigationPage.HasNavigationBar="False">
     <VerticalStackLayout Margin="30" Spacing="25">
         <Image Source="https://iconape.com/wp-content/png_logo_vector/bntu.png" WidthRequest="140" ></Image>
-        <Label Text="QR Code : " FontSize="14" TextColor="Gray"></Label>
+        <Label Text="QR Code : " FontSize="14" TextColor="Gray" HorizontalTextAlignment="Center" Margin="0,0,0,10"></Label>
         <zxing:CameraBarcodeReaderView
                x:Name="cameraBarcodeReaderView"
                BarcodesDetected="cameraBarcodeReaderView_BarcodesDetected" />
         <Button Text="Apply" BackgroundColor="#2FA562" TextColor="White" WidthRequest="140" CornerRadius="20" Margin="0,30,0,0"
-        ></Button>
+                FontSize="14"></Button>
     </VerticalStackLayout>
 </ContentPage>

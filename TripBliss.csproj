@@ -80,14 +80,18 @@
 
 	<ItemGroup>
 	  <Folder Include="Controls\" />
-	  <Folder Include="Models\" />
 	  <Folder Include="Pages\DistributorsPages\PopupPages\" />
 	  <Folder Include="Pages\TravelAgenciesPages\PopupPages\" />
-	  <Folder Include="ViewModels\DistributorsViewModel\" />
 	  <Folder Include="ViewModels\TravelAgenciesVieModels\" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\DistributorsPages\AddRequestPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
