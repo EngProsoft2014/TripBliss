@@ -6,4 +6,10 @@ public partial class AddRequestPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+
+    private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+		Navigation.PushAsync(new NewRequestPage());
+    }
 }

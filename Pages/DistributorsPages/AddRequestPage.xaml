@@ -6,6 +6,7 @@
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="Add Request">
+    
     <ContentPage.BindingContext>
         <vm:DistributorsViewModdel></vm:DistributorsViewModdel>
     </ContentPage.BindingContext>
@@ -34,7 +35,7 @@
                 <Shadow  Brush="Black" Offset="0,10" Opacity="1"></Shadow>
             </Border.Shadow>
         </Border>
-        <ListView ItemsSource="{Binding distributors}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
+        <ListView ItemsSource="{Binding distributors}" HasUnevenRows="True" VerticalOptions="FillAndExpand" ItemSelected="ListView_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -72,6 +73,7 @@
                                     </Border>
                                 </StackLayout>
                             </StackLayout>
+                            
                         </Border>
                     </ViewCell>
                 </DataTemplate>
