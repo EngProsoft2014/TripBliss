@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Models;
 
-namespace TripBliss.ViewModels.DistributorsViewModel
+namespace TripBliss.ViewModels.DistributorsViewModel.CreateRequest
 {
     partial class AirFlightServicesViewModdel : BaseViewModel
     {

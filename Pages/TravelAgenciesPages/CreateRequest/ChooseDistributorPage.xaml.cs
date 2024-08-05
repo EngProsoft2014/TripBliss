@@ -1,15 +1,13 @@
+using TripBliss.ViewModels.DistributorsViewModel.CreateRequest;
+
 namespace TripBliss.Pages.TravelAgenciesPages.CreateRequest;
 
 public partial class ChooseDistributorPage : ContentPage
 {
+	DistributorsViewModdel moddel = new DistributorsViewModdel();
 	public ChooseDistributorPage()
 	{
 		InitializeComponent();
 	}
 
-
-    private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-    {
-		Navigation.PushAsync(new NewRequestPage());
-    }
 }

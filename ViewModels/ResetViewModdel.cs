@@ -17,7 +17,7 @@ namespace TripBliss.ViewModels
         [RelayCommand]
         void OnApply()
         {
-
+            App.Current.MainPage.Navigation.PopAsync();
         }
     }
 }

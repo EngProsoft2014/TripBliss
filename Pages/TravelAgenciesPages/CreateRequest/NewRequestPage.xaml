@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TripBliss.Pages.TravelAgenciesPages.CreateRequest.NewRequestPage"
-             xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModel"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModel.CreateRequest"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="NewRequestPage">
@@ -22,9 +22,9 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal" Margin="15,15,15,0">
                 <Label Text="Hotel Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-                <Border StrokeShape="RoundRectangle 10" WidthRequest="35" HeightRequest="35" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                    StrokeThickness="1.5">
-                    <ImageButton WidthRequest="25" VerticalOptions="StartAndExpand" Command="{Binding AddHotelCommand}">
+                <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
+                    StrokeThickness="1.5" Padding="2">
+                    <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddHotelCommand}">
                         <ImageButton.Source>
                             <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
                         </ImageButton.Source>
@@ -36,7 +36,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3">
+                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
                                     <Label>
                                         <Label.FormattedText>
                                             <FormattedString>
@@ -68,9 +68,9 @@
             </Border>
             <StackLayout Orientation="Horizontal" Margin="15,0">
                 <Label Text="Transportaion Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-                <Border StrokeShape="RoundRectangle 10" WidthRequest="35" HeightRequest="35" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                    StrokeThickness="1.5">
-                    <ImageButton WidthRequest="25" VerticalOptions="StartAndExpand" Command="{Binding AddTransportaionCommand}">
+                <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
+                    StrokeThickness="1.5" Padding="2">
+                    <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddTransportaionCommand}">
                         <ImageButton.Source>
                             <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
                         </ImageButton.Source>
@@ -82,7 +82,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3">
+                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
                                     <Label>
                                         <Label.FormattedText>
                                             <FormattedString>
@@ -115,9 +115,9 @@
             </Border>
             <StackLayout Orientation="Horizontal" Margin="15,0">
                 <Label Text="Air Flight Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-                <Border StrokeShape="RoundRectangle 10" WidthRequest="35" HeightRequest="35" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                    StrokeThickness="1.5">
-                    <ImageButton WidthRequest="25" VerticalOptions="StartAndExpand" Command="{Binding AddAirFlightCommand}">
+                <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
+                    StrokeThickness="1.5" Padding="2">
+                    <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddAirFlightCommand}">
                         <ImageButton.Source>
                             <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
                         </ImageButton.Source>
@@ -129,7 +129,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3">
+                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
                                     <Label>
                                         <Label.FormattedText>
                                             <FormattedString>
@@ -169,9 +169,9 @@
             </Border>
             <StackLayout Orientation="Horizontal" Margin="15,0">
                 <Label Text="Visa Service" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-                <Border StrokeShape="RoundRectangle 10" WidthRequest="35" HeightRequest="35" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                    StrokeThickness="1.5">
-                    <ImageButton WidthRequest="25" VerticalOptions="StartAndExpand" Command="{Binding AddVisaCommand}">
+                <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
+                    StrokeThickness="1.5" Padding="2">
+                    <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddVisaCommand}">
                         <ImageButton.Source>
                             <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
                         </ImageButton.Source>
@@ -183,7 +183,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3">
+                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
                                     <Label>
                                         <Label.FormattedText>
                                             <FormattedString>

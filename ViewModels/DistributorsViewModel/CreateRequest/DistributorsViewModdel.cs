@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,11 +11,12 @@ using TripBliss.Pages;
 using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
 
 
-namespace TripBliss.ViewModels.DistributorsViewModel
+namespace TripBliss.ViewModels.DistributorsViewModel.CreateRequest
 {
     partial class DistributorsViewModdel : BaseViewModel
     {
         public ObservableCollection<DistributorsModdel>? distributors { get; set; }
+
 
         public DistributorsViewModdel()
         {
@@ -102,5 +104,11 @@ namespace TripBliss.ViewModels.DistributorsViewModel
         {
             App.Current.MainPage.Navigation.PopAsync();
         }
+        [RelayCommand]
+        void OnSelection()
+        {
+            App.Current.MainPage.Navigation.PushAsync(new NewRequestPage());
+        }
+
     }
 }

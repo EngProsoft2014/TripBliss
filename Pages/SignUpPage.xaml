@@ -21,38 +21,26 @@
                     </Image.Source>
                 </Image>
                 <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                    <Entry Keyboard="Text" TextColor="Black" FontSize="16" FontAttributes="Bold" Placeholder="Company Name" HorizontalTextAlignment="Center"
+                    <Entry Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="Company Name" HorizontalTextAlignment="Center"
                            Margin="10,2" FontFamily="OpenSansRegular" Text="{Binding Companyname}"></Entry>
                 </Border>
                 <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                    <Entry Keyboard="Numeric" TextColor="Black" FontSize="16" FontAttributes="Bold" Placeholder="Company Phone"
+                    <Entry Keyboard="Numeric" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="Company Phone"
                            HorizontalTextAlignment="Center" Margin="10,2" FontFamily="OpenSansRegular" Text="{Binding Companyphone}"></Entry>
                 </Border>
                 <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                    <Entry Keyboard="Email" TextColor="Black" FontSize="16" FontAttributes="Bold" Placeholder="Email" HorizontalTextAlignment="Center"
+                    <Entry Keyboard="Email" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="Email" HorizontalTextAlignment="Center"
                            Margin="10,2" FontFamily="OpenSansRegular" Text="{Binding Email}"></Entry>
                 </Border>
                 <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                    <Entry Keyboard="Text" TextColor="Black" FontSize="16" FontAttributes="Bold" Placeholder="Password" HorizontalTextAlignment="Center"
+                    <Entry Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="Password" HorizontalTextAlignment="Center"
                            Margin="10,2" FontFamily="OpenSansRegular" IsPassword="True" Text="{Binding Password}"></Entry>
                 </Border>
-                <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                    <Entry Keyboard="Text" TextColor="Black" FontSize="16" FontAttributes="Bold" Placeholder="Confirme Password"
+                    <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
+                        <Entry Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="Confirme Password"
                            HorizontalTextAlignment="Center" Margin="10,2" FontFamily="OpenSansRegular" Text="{Binding Confirmpassword}"></Entry>
-                </Border>
-                <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                    <StackLayout Orientation="Horizontal">
-                        <Entry Keyboard="Text" TextColor="Black" FontSize="16" FontAttributes="Bold" Placeholder="QR Code (Optional)"
-                               HorizontalTextAlignment="Center" Margin="10,2" FontFamily="OpenSansRegular" HorizontalOptions="FillAndExpand"
-                               Text="{Binding Qrcode}"></Entry>
-                        <ImageButton WidthRequest="30" HeightRequest="30" Margin="0,0,10,0" Clicked="QrCodeClicked">
-                            <ImageButton.Source>
-                                <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                            </ImageButton.Source>
-                        </ImageButton>
-                    </StackLayout>
-                </Border>
-                <Button Text="SIGN UP" BackgroundColor="#2FA562" TextColor="White" WidthRequest="140" CornerRadius="20" Margin="0,30,0,0"
+                    </Border>
+                    <Button Text="SIGN UP" BackgroundColor="#2FA562" TextColor="White" WidthRequest="140" CornerRadius="20" Margin="0,30,0,0"
                         ></Button>
             </VerticalStackLayout>
         </Border>

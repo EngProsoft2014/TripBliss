@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
 
 
-namespace TripBliss.ViewModels.DistributorsViewModel
+namespace TripBliss.ViewModels.DistributorsViewModel.CreateRequest
 {
     partial class HotelServiceViewModdel : BaseViewModel
     {
@@ -39,6 +39,11 @@ namespace TripBliss.ViewModels.DistributorsViewModel
         void DeletRoom()
         {
             Num -= 1;
+        }
+        [RelayCommand]
+        void BackClicked()
+        {
+            App.Current.MainPage.Navigation.PopAsync();
         }
 
         [RelayCommand]

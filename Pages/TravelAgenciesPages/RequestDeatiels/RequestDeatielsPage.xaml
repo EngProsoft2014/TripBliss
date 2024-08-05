@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TripBliss.Pages.TravelAgenciesPages.RequestDeatiels.RequestDeatielsPage"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False"
+             Title="RequestDeatielsPage">
+    <StackLayout Orientation="Vertical" Margin="20">
+        <StackLayout Orientation="Horizontal">
+            <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand">
+                <ImageButton.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                </ImageButton.Source>
+            </ImageButton>
+            <Label Text="Request Name" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                   TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Margin="0,10">
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Adult :" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                        <Span Text="4" TextColor="Black" FontAttributes="Bold" FontSize="14"></Span>
+                        <Span Text=" - " TextColor="Black" FontAttributes="Bold" FontSize="14"></Span>
+                        <Span Text="Child :" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                        <Span Text="2" TextColor="Black" FontAttributes="Bold" FontSize="14"></Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label HorizontalOptions="EndAndExpand">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Date : " TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                        <Span Text="4-12-2024" TextColor="Black" FontAttributes="Bold" FontSize="14"></Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+        <Label Text="Hotel Service" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16" FontFamily="OpenSansSemibold"></Label>
+        <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Margin="0,5">
+            <StackLayout Orientation="Vertical" >
+                <StackLayout Orientation="Horizontal">
+                    <Label VerticalTextAlignment="Center" Padding="5">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Madinah" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                <Span Text=" - " TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                <Span Text="Anwaer Madinha" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Line StrokeThickness="2" Y1="0" Y2="40" Stroke="Gray" HorizontalOptions="EndAndExpand"></Line>
+                    <VerticalStackLayout Margin="10,0" >
+                        <Label Text="03" FontSize="14" TextColor="#387955" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+                        <Label Text="Naights" FontSize="14" TextColor="#387955" FontAttributes="Bold"></Label>
+                    </VerticalStackLayout>
+                </StackLayout>
+                <BoxView HorizontalOptions="FillAndExpand" Color="Gray" HeightRequest="1.5"></BoxView>
+                <VerticalStackLayout>
+                    <StackLayout Orientation="Horizontal" Padding="5">
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Check-in: " TextColor="Black" FontSize="14"></Span>
+                                    <Span Text="27-5-2023" TextColor="Black" FontSize="14"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label HorizontalOptions="EndAndExpand">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Check-Out: " TextColor="Black" FontSize="14"></Span>
+                                    <Span Text="30-5-2023" TextColor="Black" FontSize="14"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                    <Label Text="Room Details:" TextColor="#387955" FontSize="14" FontAttributes="Bold" Margin="0,5" FontFamily="OpenSansSemibold"
+                           Padding="5"></Label>
+                    <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="7" Margin="5,0">
+                        <VerticalStackLayout Spacing="3">
+                            <StackLayout Orientation="Horizontal">
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Type: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
+                                            <Span Text="QUD" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label HorizontalOptions="EndAndExpand">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="View: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
+                                            <Span Text="KV" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="No. Of Rooms: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
+                                            <Span Text="02" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label HorizontalOptions="EndAndExpand">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Males: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
+                                            <Span Text="B/B" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Rate Per Room: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
+                                            <Span Text="$70" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label HorizontalOptions="EndAndExpand">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Rate Basis: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
+                                            <Span Text="2B/S" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Meal Rate Per Day: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
+                                        <Span Text="$30" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </VerticalStackLayout>
+                    </Border>
+                    <BoxView HorizontalOptions="FillAndExpand" Color="Gray" HeightRequest="1.5"></BoxView>
+                </VerticalStackLayout>
+            </StackLayout>
+        </Border>
+    </StackLayout>
+</ContentPage>
