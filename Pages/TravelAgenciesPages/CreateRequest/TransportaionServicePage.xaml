@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModel"
-             x:Class="TripBliss.Pages.DistributorsPages.TransportaionServicePage"
+             x:Class="TripBliss.Pages.TravelAgenciesPages.CreateRequest.TransportaionServicePage"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="TransportaionServicePage">

@@ -1,4 +1,4 @@
-namespace TripBliss.Pages.DistributorsPages;
+namespace TripBliss.Pages.TravelAgenciesPages.CreateRequest;
 
 public partial class HotelServicesPage : ContentPage
 {

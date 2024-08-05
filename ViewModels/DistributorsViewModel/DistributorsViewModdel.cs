@@ -7,7 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Models;
 using TripBliss.Pages;
-using TripBliss.Pages.DistributorsPages;
+using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
+
 
 namespace TripBliss.ViewModels.DistributorsViewModel
 {
@@ -93,7 +94,7 @@ namespace TripBliss.ViewModels.DistributorsViewModel
         [RelayCommand]
         void OnAddRequest()
         {
-            App.Current.MainPage.Navigation.PushAsync(new AddRequestPage());
+            App.Current.MainPage.Navigation.PushAsync(new ChooseDistributorPage());
         }
 
         [RelayCommand]

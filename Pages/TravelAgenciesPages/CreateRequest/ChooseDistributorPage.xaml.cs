@@ -1,8 +1,8 @@
-namespace TripBliss.Pages.DistributorsPages;
+namespace TripBliss.Pages.TravelAgenciesPages.CreateRequest;
 
-public partial class AddRequestPage : ContentPage
+public partial class ChooseDistributorPage : ContentPage
 {
-	public AddRequestPage()
+	public ChooseDistributorPage()
 	{
 		InitializeComponent();
 	}
