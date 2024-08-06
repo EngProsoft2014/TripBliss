@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TripBliss.Pages.TravelAgenciesPages.CreateRequest.NewRequestPage"
+             x:Class="TripBliss.Pages.TravelAgenciesPages.RequestDeatiels.NewRequestPage"
              xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
@@ -22,14 +22,7 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal" Margin="15,15,15,0">
                 <Label Text="Hotel Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-                <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                    StrokeThickness="1.5" Padding="2">
-                    <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddHotelCommand}">
-                        <ImageButton.Source>
-                            <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                        </ImageButton.Source>
-                    </ImageButton>
-                </Border>
+                
             </StackLayout>
             <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
                 <ListView ItemsSource="{Binding Hotels}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
@@ -55,11 +48,7 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
-                                        <ImageButton.Source>
-                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                        </ImageButton.Source>
-                                    </ImageButton>
+                                    <CheckBox Color="Gray" WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="5,0"></CheckBox>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
@@ -68,14 +57,7 @@
             </Border>
             <StackLayout Orientation="Horizontal" Margin="15,0">
                 <Label Text="Transportaion Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-                <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                    StrokeThickness="1.5" Padding="2">
-                    <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddTransportaionCommand}">
-                        <ImageButton.Source>
-                            <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                        </ImageButton.Source>
-                    </ImageButton>
-                </Border>
+                
             </StackLayout>
             <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
                 <ListView ItemsSource="{Binding transportaionServices}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
@@ -102,11 +84,7 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
-                                        <ImageButton.Source>
-                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                        </ImageButton.Source>
-                                    </ImageButton>
+                                    <CheckBox Color="Gray" WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="5,0"></CheckBox>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
@@ -115,14 +93,7 @@
             </Border>
             <StackLayout Orientation="Horizontal" Margin="15,0">
                 <Label Text="Air Flight Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-                <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                    StrokeThickness="1.5" Padding="2">
-                    <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddAirFlightCommand}">
-                        <ImageButton.Source>
-                            <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                        </ImageButton.Source>
-                    </ImageButton>
-                </Border>
+                
             </StackLayout>
             <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
                 <ListView ItemsSource="{Binding airFlights}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
@@ -156,11 +127,7 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
-                                        <ImageButton.Source>
-                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                        </ImageButton.Source>
-                                    </ImageButton>
+                                    <CheckBox Color="Gray" WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="5,0"></CheckBox>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
@@ -169,14 +136,7 @@
             </Border>
             <StackLayout Orientation="Horizontal" Margin="15,0">
                 <Label Text="Visa Service" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-                <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                    StrokeThickness="1.5" Padding="2">
-                    <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddVisaCommand}">
-                        <ImageButton.Source>
-                            <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                        </ImageButton.Source>
-                    </ImageButton>
-                </Border>
+                
             </StackLayout>
             <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
                 <ListView ItemsSource="{Binding visaServices}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
@@ -206,11 +166,7 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
-                                        <ImageButton.Source>
-                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                        </ImageButton.Source>
-                                    </ImageButton>
+                                    <CheckBox Color="Gray" WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="5,0"></CheckBox>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>

@@ -9,7 +9,7 @@ namespace TripBliss.Constants
     {
         public static string BaseApiUrl; 
 
-        public const string syncFusionLicence = "Ngo9BigBOggjHTQxAR8/V1NAaF5cWWJCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWXxed3RSRmldWUN2W0c="; //Version= 24.x.x
+        public const string syncFusionLicence = "Ngo9BigBOggjHTQxAR8/V1NCaF1cWWhAYVZpR2Nbe055flRGal9VVAciSV9jS3pTfkVlWXZfcHdQRGZbVQ=="; //Version= 24.x.x
 
         // Path Images And Files
         public static string ImagesStudentPath = "Uploads/StudentImgs/";

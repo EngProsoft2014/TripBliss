@@ -1,14 +1,16 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.Input;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Models;
+using TripBliss.Pages.TravelAgenciesPages.RequestDeatiels;
 
 namespace TripBliss.ViewModels
 {
-    public class HomeViewModdel : BaseViewModel
+    partial class HomeViewModdel : BaseViewModel
     {
         public ObservableCollection<RequestClass> requests{ get; set; }
         public HomeViewModdel()
@@ -93,6 +95,11 @@ namespace TripBliss.ViewModels
 
             });
 
+        }
+        [RelayCommand]
+        void Selection()
+        {
+            App.Current.MainPage.Navigation.PushAsync(new RequestDeatielsPage());
         }
     }
 }

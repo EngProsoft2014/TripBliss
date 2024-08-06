@@ -3,10 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
              xmlns:vm="clr-namespace:TripBliss.ViewModels"
-             xmlns:dvm="clr-namespace:TripBliss.ViewModels.DistributorsViewModel.CreateRequest"
+             xmlns:dvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest"
              x:Class="TripBliss.Pages.HomePage"
              Title="HomePage"
-             
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="White">
     <ContentPage.BindingContext>
@@ -25,54 +24,74 @@
                     </tabView:SfTabItem.ImageSource>
                     <tabView:SfTabItem.Content>
                         <ContentView>
+                            <ContentView.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="VisualStateManager.VisualStateGroups">
+                                        <VisualStateGroupList>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal" >
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Border.Stroke" Value="Gray" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Border.Stroke" Value="Green" />
+                                                        <Setter Property="Border.StrokeThickness" Value="3" />
+                                                        <Setter Property="Border.BackgroundColor" Value="Transparent" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateGroupList>
+                                    </Setter>
+                                </Style>
+                            </ContentView.Resources>
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="10">
                                 <Label Text="My Reaquestes" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
                                        TextColor="Black" Margin="20"></Label>
-                                <ListView ItemsSource="{Binding requests}" HasUnevenRows="True" VerticalScrollBarVisibility="Default"
-                                          ItemSelected="RquestSelected">
-                                    <ListView.ItemTemplate>
+                                <CollectionView ItemsSource="{Binding requests}" SelectionChangedCommand="{Binding SelectionCommand}"
+                                                VerticalOptions="FillAndExpand" SelectionMode="Single">
+                                    <CollectionView.ItemTemplate>
                                         <DataTemplate>
-                                            <ViewCell>
-                                                <Border StrokeShape="RoundRectangle 20" Margin="20">
-                                                    <StackLayout Orientation="Horizontal">
-                                                        <VerticalStackLayout Padding="10" Spacing="5">
-                                                            <Label Text="{Binding RugestName}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
-                                                            <Label Text="{Binding DistName}" FontSize="12" TextColor="Gray"></Label>
-                                                            <Label Text="{Binding Services}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
-                                                            <Label Margin="0,3,0,0">
-                                                                <Label.FormattedText>
-                                                                    <FormattedString>
-                                                                        <Span Text="Date : " FontSize="12" TextColor="Blue" ></Span>
-                                                                        <Span Text="{Binding Date}" FontSize="12" TextColor="Blue" ></Span>
-                                                                    </FormattedString>
-                                                                </Label.FormattedText>
-                                                            </Label>
-                                                        </VerticalStackLayout>
-                                                        <VerticalStackLayout VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand"
+                                            <Border StrokeShape="RoundRectangle 20" Margin="20">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <VerticalStackLayout Padding="10" Spacing="5">
+                                                        <Label Text="{Binding RugestName}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+                                                        <Label Text="{Binding DistName}" FontSize="12" TextColor="Gray"></Label>
+                                                        <Label Text="{Binding Services}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                                        <Label Margin="0,3,0,0">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="Date : " FontSize="12" TextColor="Blue" ></Span>
+                                                                    <Span Text="{Binding Date}" FontSize="12" TextColor="Blue" ></Span>
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                    </VerticalStackLayout>
+                                                    <VerticalStackLayout VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand"
                                                                              Margin="0,0,10,20" Spacing="1">
-                                                            <Label>
-                                                                <Label.FormattedText>
-                                                                    <FormattedString>
-                                                                        <Span Text="All Distributors :" FontSize="10" TextColor="Gray"></Span>
-                                                                        <Span Text="5" FontSize="10" TextColor="Gray"></Span>
-                                                                    </FormattedString>
-                                                                </Label.FormattedText>
-                                                            </Label>
-                                                            <Label>
-                                                                <Label.FormattedText>
-                                                                    <FormattedString>
-                                                                        <Span Text="Active Distributors :" FontSize="10" TextColor="Gray"></Span>
-                                                                        <Span Text="2" FontSize="10" TextColor="Gray"></Span>
-                                                                    </FormattedString>
-                                                                </Label.FormattedText>
-                                                            </Label>
-                                                        </VerticalStackLayout>
-                                                    </StackLayout>
-                                                </Border>
-                                            </ViewCell>
+                                                        <Label>
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="All Distributors :" FontSize="10" TextColor="Gray"></Span>
+                                                                    <Span Text="5" FontSize="10" TextColor="Gray"></Span>
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                        <Label>
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="Active Distributors :" FontSize="10" TextColor="Gray"></Span>
+                                                                    <Span Text="2" FontSize="10" TextColor="Gray"></Span>
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                    </VerticalStackLayout>
+                                                </StackLayout>
+                                            </Border>
                                         </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
                             </StackLayout>
                             <ContentView.BindingContext>
                                 <vm:HomeViewModdel></vm:HomeViewModdel>

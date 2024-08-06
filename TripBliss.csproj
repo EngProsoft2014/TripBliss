@@ -74,20 +74,23 @@
 		<PackageReference Include="Mopups" Version="1.3.1" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Polly" Version="8.4.1" />
+		<PackageReference Include="Syncfusion.Maui.DataGrid" Version="26.2.8" />
 		<PackageReference Include="Syncfusion.Maui.TabView" Version="24.2.9" />
-		<PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Folder Include="Controls\" />
 	  <Folder Include="Pages\DistributorsPages\PopupPages\" />
 	  <Folder Include="Pages\TravelAgenciesPages\PopupPages\" />
-	  <Folder Include="ViewModels\TravelAgenciesVieModels\" />
+	  <Folder Include="ViewModels\DistributorsViewModel\" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Compile Update="Pages\TravelAgenciesPages\CreateRequest\ChooseDistributorPage.xaml.cs">
 	    <DependentUpon>ChooseDistributorPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\TravelAgenciesPages\RequestDeatiels\NewRequestPage.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -116,13 +119,13 @@
 	  <MauiXaml Update="Pages\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\QrCodePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Pages\ResetPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\SignUpPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDeatiels\NewRequestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDeatiels\RequestDeatielsPage.xaml">

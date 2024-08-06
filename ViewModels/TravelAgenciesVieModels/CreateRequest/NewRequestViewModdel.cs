@@ -11,7 +11,7 @@ using System.ComponentModel;
 using Microsoft.VisualBasic;
 using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
 
-namespace TripBliss.ViewModels.DistributorsViewModel.CreateRequest
+namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
 {
     partial class NewRequestViewModdel : BaseViewModel
     {

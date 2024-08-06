@@ -5,7 +5,6 @@ using Mopups.Hosting;
 using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Core.Hosting;
 using TripBliss.Helpers;
-using ZXing.Net.Maui.Controls;
 
 namespace TripBliss
 {
@@ -16,7 +15,6 @@ namespace TripBliss
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                .UseBarcodeReader()
                 .UseMauiCommunityToolkit()
                 .UseMauiCameraView()
                 .UseUserDialogs()

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModel.CreateRequest"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest"
              x:Class="TripBliss.Pages.TravelAgenciesPages.CreateRequest.ChooseDistributorPage"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
@@ -41,7 +41,7 @@
             <Label Text="Add Request" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
-         <Border StrokeShape="RoundRectangle 25" Margin="0,20,0,0">
+        <Border StrokeShape="RoundRectangle 25" Margin="0,20,0,0">
             <Grid>
                 <SearchBar BackgroundColor="White" Placeholder="Search" FontSize="15" TextColor="Black"></SearchBar>
                 <Border StrokeShape="RoundRectangle 3,25,25,25" BackgroundColor="#76d973" WidthRequest="40" HorizontalOptions="EndAndExpand">
