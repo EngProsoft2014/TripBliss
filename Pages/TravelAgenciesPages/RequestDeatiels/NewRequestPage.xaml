@@ -25,7 +25,7 @@
                 
             </StackLayout>
             <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                <ListView ItemsSource="{Binding Hotels}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
+                <ListView ItemsSource="{Binding Hotels}" HasUnevenRows="True" VerticalOptions="FillAndExpand" ItemTapped="Hotel_ItemTapped">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -60,7 +60,8 @@
                 
             </StackLayout>
             <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                <ListView ItemsSource="{Binding transportaionServices}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
+                <ListView ItemsSource="{Binding transportaionServices}" HasUnevenRows="True" VerticalOptions="FillAndExpand"
+                          ItemTapped="Transportation_ItemTapped">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -96,7 +97,7 @@
                 
             </StackLayout>
             <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                <ListView ItemsSource="{Binding airFlights}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
+                <ListView ItemsSource="{Binding airFlights}" HasUnevenRows="True" VerticalOptions="FillAndExpand" ItemTapped="AirFlight_ItemTapped">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -139,7 +140,7 @@
                 
             </StackLayout>
             <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                <ListView ItemsSource="{Binding visaServices}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
+                <ListView ItemsSource="{Binding visaServices}" HasUnevenRows="True" VerticalOptions="FillAndExpand" ItemTapped="Visa_ItemTapped">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

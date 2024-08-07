@@ -287,5 +287,10 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
         {
             App.Current.MainPage.Navigation.PushAsync(new NewRequestPage());
         }
+        [RelayCommand]
+        void BackButton()
+        {
+            App.Current.MainPage.Navigation.PopAsync();
+        }
     }
 }

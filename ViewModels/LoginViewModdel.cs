@@ -6,7 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TripBliss.Pages;
+using TripBliss.Pages.TravelAgenciesPages;
+
 
 namespace TripBliss.ViewModels
 {
@@ -26,7 +27,7 @@ namespace TripBliss.ViewModels
         {
             IsBusy = true;
             
-            await App.Current.MainPage.Navigation.PushAsync(new HomePage());
+            await App.Current.MainPage.Navigation.PushAsync(new HomeAgencyPage());
             IsBusy = false;
 
         }

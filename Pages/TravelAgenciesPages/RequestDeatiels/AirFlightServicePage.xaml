@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TripBliss.Pages.TravelAgenciesPages.CreateRequest.AirFlightServicePage"
+             x:Class="TripBliss.Pages.TravelAgenciesPages.RequestDeatiels.AirFlightServicePage"
              xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
@@ -24,7 +24,7 @@
                 <StackLayout Orientation="Vertical" Padding="15">
                     <Label Text="Carrier" TextColor="#2fa562" FontSize="14" Margin="0,15,0,0"></Label>
                     <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,0">
-                        <Entry Keyboard="Text" TextColor="Black" FontSize="14" FontFamily="OpenSansRegular"
+                        <Entry Keyboard="Text" TextColor="Black" FontSize="14" FontFamily="OpenSansRegular" IsReadOnly="True"
                                Text="{Binding Moddel.Carrier}"></Entry>
                     </Border>
                     <StackLayout Orientation="Horizontal" Spacing="35">
@@ -37,7 +37,7 @@
                         <VerticalStackLayout HorizontalOptions="FillAndExpand">
                             <Label Text="Class" TextColor="#2fa562" FontSize="14"></Label>
                             <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10">
-                                <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular"
+                                <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
                                    Text="{Binding Moddel.Class}"></Entry>
                             </Border>
                         </VerticalStackLayout>
@@ -46,14 +46,14 @@
                         <VerticalStackLayout HorizontalOptions="FillAndExpand">
                             <Label Text="From" TextColor="#2fa562" FontSize="14" Margin="0,15,0,0"></Label>
                             <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10">
-                                <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular"
+                                <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
                                        Text="{Binding Moddel.From}"></Entry>
                             </Border>
                         </VerticalStackLayout>
                         <VerticalStackLayout HorizontalOptions="FillAndExpand">
                             <Label Text="To" TextColor="#2fa562" FontSize="14" Margin="0,15,0,0"></Label>
                             <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10">
-                                <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular"
+                                <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
                                        Text="{Binding Moddel.To}"></Entry>
                             </Border>
                         </VerticalStackLayout>
@@ -62,14 +62,14 @@
                         <VerticalStackLayout HorizontalOptions="FillAndExpand">
                             <Label Text="ETD" TextColor="#2fa562" FontSize="14" Margin="0,15,0,0"></Label>
                             <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10">
-                                <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular"
+                                <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
                                        Text="{Binding Moddel.ETD}"></Entry>
                             </Border>
                         </VerticalStackLayout>
                         <VerticalStackLayout HorizontalOptions="FillAndExpand">
                             <Label Text="ETA" TextColor="#2fa562" FontSize="14" Margin="0,15,0,0"></Label>
                             <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10">
-                                <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular"
+                                <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
                                        Text="{Binding Moddel.ETA}"></Entry>
                             </Border>
                         </VerticalStackLayout>
@@ -79,14 +79,14 @@
                         <VerticalStackLayout>
                             <Label Text="Adult" TextColor="#2fa562" FontSize="14" HorizontalTextAlignment="Center"></Label>
                             <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="10" >
-                                <ImageButton WidthRequest="20" Command="{Binding AddAdultCommand}">
+                                <ImageButton WidthRequest="20">
                                     <ImageButton.Source>
                                         <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
                                     </ImageButton.Source>
                                 </ImageButton>
                                 <Label Text="{Binding Adult}" TextColor="#2fa562" FontSize="20" VerticalTextAlignment="Center" 
                                        FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
-                                <ImageButton WidthRequest="20" Command="{Binding DeletAdultCommand}">
+                                <ImageButton WidthRequest="20">
                                     <ImageButton.Source>
                                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
                                     </ImageButton.Source>
@@ -96,14 +96,14 @@
                         <VerticalStackLayout HorizontalOptions="CenterAndExpand">
                             <Label Text="Child" TextColor="#2fa562" FontSize="14" HorizontalTextAlignment="Center"></Label>
                             <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="10">
-                                <ImageButton WidthRequest="20" Command="{Binding AddChildCommand}">
+                                <ImageButton WidthRequest="20">
                                     <ImageButton.Source>
                                         <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
                                     </ImageButton.Source>
                                 </ImageButton>
                                 <Label Text="{Binding Chiled}" TextColor="#2fa562" FontSize="20" VerticalTextAlignment="Center" 
                                        FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
-                                <ImageButton WidthRequest="20" Command="{Binding DeletChildCommand}">
+                                <ImageButton WidthRequest="20">
                                     <ImageButton.Source>
                                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
                                     </ImageButton.Source>
@@ -113,14 +113,14 @@
                         <VerticalStackLayout>
                             <Label Text="Infant" TextColor="#2fa562" FontSize="14" HorizontalTextAlignment="Center"></Label>
                             <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="10">
-                                <ImageButton WidthRequest="20" Command="{Binding AddInfantCommand}">
+                                <ImageButton WidthRequest="20">
                                     <ImageButton.Source>
                                         <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
                                     </ImageButton.Source>
                                 </ImageButton>
                                 <Label Text="{Binding Infant}" TextColor="#2fa562" FontSize="20" VerticalTextAlignment="Center" 
                                        FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
-                                <ImageButton WidthRequest="20" Command="{Binding DeletInfantCommand}">
+                                <ImageButton WidthRequest="20">
                                     <ImageButton.Source>
                                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
                                     </ImageButton.Source>
@@ -130,7 +130,7 @@
                     </StackLayout>
                     <Label Text="Notes" TextColor="#2fa562" FontSize="14" Margin="0,15,0,0"></Label>
                     <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10" HeightRequest="100">
-                        <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" 
+                        <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
                                Text="{Binding Moddel.Notes}"></Entry>
                     </Border>
                 </StackLayout>
@@ -138,8 +138,7 @@
                     <Shadow Brush="Black" Offset="8,8" Opacity="0.8"></Shadow>
                 </Border.Shadow>
             </Border>
-            <Button VerticalOptions="EndAndExpand" Text="Apply" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="20,0"
-                    Command="{Binding AplyClickedCommand}"></Button>
+            
         </StackLayout>
     </ScrollView>
 </ContentPage>
