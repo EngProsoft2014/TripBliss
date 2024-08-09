@@ -9,214 +9,218 @@
     <ContentPage.BindingContext>
         <vm:NewRequestViewModdel></vm:NewRequestViewModdel>
     </ContentPage.BindingContext>
-    <ScrollView>
-        <StackLayout Orientation="Vertical" Margin="20" Spacing="10">
-            <StackLayout Orientation="Horizontal">
-                <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackButtonClickedCommand}">
-                    <ImageButton.Source>
-                        <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                    </ImageButton.Source>
-                </ImageButton>
-                <Label Text="New Request" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
-           TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal" Margin="15,15,15,0">
-                <Label Text="Hotel Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-                <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                    StrokeThickness="1.5" Padding="2">
-                    <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddHotelCommand}">
-                        <ImageButton.Source>
-                            <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                        </ImageButton.Source>
-                    </ImageButton>
-                </Border>
-            </StackLayout>
-            <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                <ListView ItemsSource="{Binding Hotels}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
-                                    <Label>
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding HotelName}" TextColor="Gray" FontSize="12"></Span>
-                                                <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                <Span Text="{Binding RoomView}" TextColor="Gray" FontSize="12"></Span>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label>
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding Checkin}" TextColor="Gray" FontSize="12"></Span>
-                                                <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                <Span Text="{Binding Checkout}" TextColor="Gray" FontSize="12"></Span>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
-                                        <ImageButton.Source>
-                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                        </ImageButton.Source>
-                                    </ImageButton>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Border>
-            <StackLayout Orientation="Horizontal" Margin="15,0">
-                <Label Text="Transportaion Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-                <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                    StrokeThickness="1.5" Padding="2">
-                    <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddTransportaionCommand}">
-                        <ImageButton.Source>
-                            <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                        </ImageButton.Source>
-                    </ImageButton>
-                </Border>
-            </StackLayout>
-            <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                <ListView ItemsSource="{Binding transportaionServices}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
-                                    <Label>
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="M.Sprinter " TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
-                                                <Span Text="{Binding From}" TextColor="Gray" FontSize="12"></Span>
-                                                <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                <Span Text="{Binding To}" TextColor="Gray" FontSize="12"></Span>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label>
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding Nos}" TextColor="Gray" FontSize="12"></Span>
-                                                <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                <Span Text="{Binding Date}" TextColor="Gray" FontSize="12"></Span>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
-                                        <ImageButton.Source>
-                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                        </ImageButton.Source>
-                                    </ImageButton>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Border>
-            <StackLayout Orientation="Horizontal" Margin="15,0">
-                <Label Text="Air Flight Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-                <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                    StrokeThickness="1.5" Padding="2">
-                    <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddAirFlightCommand}">
-                        <ImageButton.Source>
-                            <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                        </ImageButton.Source>
-                    </ImageButton>
-                </Border>
-            </StackLayout>
-            <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                <ListView ItemsSource="{Binding airFlights}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
-                                    <Label>
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="QR " TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
-                                                <Span Text="1178" TextColor="#2fa562" FontSize="12"></Span>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label>
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding From}" TextColor="Gray" FontSize="12"></Span>
-                                                <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                <Span Text="{Binding To}" TextColor="Gray" FontSize="12"></Span>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label>
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding Child}" TextColor="Gray" FontSize="12"></Span>
-                                                <Span Text="  " TextColor="Gray" FontSize="14"></Span>
-                                                <Span Text="{Binding Date}" TextColor="Gray" FontSize="12"></Span>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
-                                        <ImageButton.Source>
-                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                        </ImageButton.Source>
-                                    </ImageButton>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Border>
-            <StackLayout Orientation="Horizontal" Margin="15,0">
-                <Label Text="Visa Service" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-                <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                    StrokeThickness="1.5" Padding="2">
-                    <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddVisaCommand}">
-                        <ImageButton.Source>
-                            <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                        </ImageButton.Source>
-                    </ImageButton>
-                </Border>
-            </StackLayout>
-            <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                <ListView ItemsSource="{Binding visaServices}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
-                                    <Label>
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="#" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
-                                                <Span Text="{Binding VisaNo}" TextColor="#2fa562" FontSize="12"></Span>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label>
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding VisaType}" TextColor="Gray" FontSize="12"></Span>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label>
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding VisaNo}" TextColor="Gray" FontSize="12"></Span>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
-                                        <ImageButton.Source>
-                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                        </ImageButton.Source>
-                                    </ImageButton>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Border>
+    <StackLayout Orientation="Vertical" Margin="20" Spacing="10">
+        <StackLayout Orientation="Horizontal">
+            <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackButtonClickedCommand}">
+                <ImageButton.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                </ImageButton.Source>
+            </ImageButton>
+            <Label Text="New Request" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
-    </ScrollView>
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout Spacing="10">
+
+                <StackLayout Orientation="Horizontal" Margin="0,15,15,0">
+                    <Label Text="Hotel Services" FontSize="16" TextColor="DarkOrange" VerticalTextAlignment="Center"></Label>
+                    <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
+                    StrokeThickness="1.5" Padding="2">
+                        <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddHotelCommand}">
+                            <ImageButton.Source>
+                                <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
+                            </ImageButton.Source>
+                        </ImageButton>
+                    </Border>
+                </StackLayout>
+                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
+                    <ListView ItemsSource="{Binding Hotels}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding HotelName}" TextColor="Gray" FontSize="12"></Span>
+                                                    <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
+                                                    <Span Text="{Binding RoomView}" TextColor="Gray" FontSize="12"></Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Checkin}" TextColor="Gray" FontSize="12"></Span>
+                                                    <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
+                                                    <Span Text="{Binding Checkout}" TextColor="Gray" FontSize="12"></Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
+                                            <ImageButton.Source>
+                                                <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                            </ImageButton.Source>
+                                        </ImageButton>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Border>
+                <StackLayout Orientation="Horizontal" Margin="0,0">
+                    <Label Text="Transportaion Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
+                    StrokeThickness="1.5" Padding="2">
+                        <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddTransportaionCommand}">
+                            <ImageButton.Source>
+                                <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
+                            </ImageButton.Source>
+                        </ImageButton>
+                    </Border>
+                </StackLayout>
+                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
+                    <ListView ItemsSource="{Binding transportaionServices}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="M.Sprinter " TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
+                                                    <Span Text="{Binding From}" TextColor="Gray" FontSize="12"></Span>
+                                                    <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
+                                                    <Span Text="{Binding To}" TextColor="Gray" FontSize="12"></Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Nos}" TextColor="Gray" FontSize="12"></Span>
+                                                    <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
+                                                    <Span Text="{Binding Date}" TextColor="Gray" FontSize="12"></Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
+                                            <ImageButton.Source>
+                                                <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                            </ImageButton.Source>
+                                        </ImageButton>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Border>
+                <StackLayout Orientation="Horizontal" Margin="0,0">
+                    <Label Text="Air Flight Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
+                    StrokeThickness="1.5" Padding="2">
+                        <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddAirFlightCommand}">
+                            <ImageButton.Source>
+                                <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
+                            </ImageButton.Source>
+                        </ImageButton>
+                    </Border>
+                </StackLayout>
+                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
+                    <ListView ItemsSource="{Binding airFlights}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="QR " TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
+                                                    <Span Text="1178" TextColor="#2fa562" FontSize="12"></Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding From}" TextColor="Gray" FontSize="12"></Span>
+                                                    <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
+                                                    <Span Text="{Binding To}" TextColor="Gray" FontSize="12"></Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Child}" TextColor="Gray" FontSize="12"></Span>
+                                                    <Span Text="  " TextColor="Gray" FontSize="14"></Span>
+                                                    <Span Text="{Binding Date}" TextColor="Gray" FontSize="12"></Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
+                                            <ImageButton.Source>
+                                                <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                            </ImageButton.Source>
+                                        </ImageButton>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Border>
+                <StackLayout Orientation="Horizontal" Margin="0,0">
+                    <Label Text="Visa Service" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
+                    StrokeThickness="1.5" Padding="2">
+                        <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddVisaCommand}">
+                            <ImageButton.Source>
+                                <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
+                            </ImageButton.Source>
+                        </ImageButton>
+                    </Border>
+                </StackLayout>
+                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
+                    <ListView ItemsSource="{Binding visaServices}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="#" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
+                                                    <Span Text="{Binding VisaNo}" TextColor="#2fa562" FontSize="12"></Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding VisaType}" TextColor="Gray" FontSize="12"></Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding VisaNo}" TextColor="Gray" FontSize="12"></Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
+                                            <ImageButton.Source>
+                                                <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                            </ImageButton.Source>
+                                        </ImageButton>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Border>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+    
 </ContentPage>

@@ -4,7 +4,7 @@
              xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
              xmlns:vm="clr-namespace:TripBliss.ViewModels"
              xmlns:dvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest"
-             xmlns:Tvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesVieModels"
+             xmlns:Tvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesVieModels.Offer"
              x:Class="TripBliss.Pages.TravelAgenciesPages.HomeAgencyPage"
              Title="HomeAgencyPage"
              NavigationPage.HasNavigationBar="False"
@@ -119,46 +119,44 @@
                                 </StackLayout>
                                 <tabView:SfTabView IndicatorBackground="#1c874b" VerticalOptions="FillAndExpand">
                                     <tabView:SfTabView.Items>
+                                        <!--Distributors-->
                                         <tabView:SfTabItem Header='Distributors' TextColor="Black" FontSize="14">
                                             <tabView:SfTabItem.Content>
                                                 <ContentView>
                                                     <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20">
-                                                        <ListView ItemsSource="{Binding distributors}" HasUnevenRows="True" VerticalOptions="FillAndExpand"
-                                                              SelectionMode="None">
-                                                            <ListView.ItemTemplate>
+                                                        <CollectionView ItemsSource="{Binding distributors}" VerticalOptions="FillAndExpand" SelectionMode="None">
+                                                            <CollectionView.ItemTemplate>
                                                                 <DataTemplate>
-                                                                    <ViewCell>
-                                                                        <Border StrokeShape="RoundRectangle 20" Margin="0,20">
-                                                                            <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
-                                                                                <VerticalStackLayout Padding="10" Spacing="5">
-                                                                                    <Label Text="{Binding Name}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
-                                                                                    <Label Text="{Binding Phone}" FontSize="12" TextColor="Gray"></Label>
-                                                                                    <Label Text="{Binding Services}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
-                                                                                    <Label Margin="0,3,0,0">
-                                                                                        <Label.FormattedText>
-                                                                                            <FormattedString>
-                                                                                                <Span Text="Address : " FontSize="12" TextColor="DeepSkyBlue" ></Span>
-                                                                                                <Span Text="{Binding Address}" FontSize="12" TextColor="DeepSkyBlue" ></Span>
-                                                                                            </FormattedString>
-                                                                                        </Label.FormattedText>
-                                                                                    </Label>
-                                                                                </VerticalStackLayout>
-                                                                                <HorizontalStackLayout Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="5">
-                                                                                    <Label Text="{Binding Rate}" FontSize="16" TextColor="Black" FontAttributes="Bold"
+                                                                    <Border StrokeShape="RoundRectangle 20" Margin="0,10">
+                                                                        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                                                                            <VerticalStackLayout Padding="10" Spacing="5">
+                                                                                <Label Text="{Binding Name}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding Phone}" FontSize="12" TextColor="Gray"></Label>
+                                                                                <Label Text="{Binding Services}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                                                                <Label Margin="0,3,0,0">
+                                                                                    <Label.FormattedText>
+                                                                                        <FormattedString>
+                                                                                            <Span Text="Address : " FontSize="12" TextColor="DeepSkyBlue" ></Span>
+                                                                                            <Span Text="{Binding Address}" FontSize="12" TextColor="DeepSkyBlue" ></Span>
+                                                                                        </FormattedString>
+                                                                                    </Label.FormattedText>
+                                                                                </Label>
+                                                                            </VerticalStackLayout>
+                                                                            <HorizontalStackLayout Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="5">
+                                                                                <Label Text="{Binding Rate}" FontSize="14" TextColor="Black" FontAttributes="Bold"
                                                                                              VerticalOptions="StartAndExpand"></Label>
-                                                                                    <Image WidthRequest="25" HeightRequest="25" VerticalOptions="StartAndExpand">
-                                                                                        <Image.Source>
-                                                                                            <FontImageSource Glyph="" FontFamily="FontIconSolid"
+                                                                                <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
+                                                                                    <Image.Source>
+                                                                                        <FontImageSource Glyph="" FontFamily="FontIconSolid"
                                                                                                          Color="Gold"></FontImageSource>
-                                                                                        </Image.Source>
-                                                                                    </Image>
-                                                                                </HorizontalStackLayout>
-                                                                            </StackLayout>
-                                                                        </Border>
-                                                                    </ViewCell>
+                                                                                    </Image.Source>
+                                                                                </Image>
+                                                                            </HorizontalStackLayout>
+                                                                        </StackLayout>
+                                                                    </Border>
                                                                 </DataTemplate>
-                                                            </ListView.ItemTemplate>
-                                                        </ListView>
+                                                            </CollectionView.ItemTemplate>
+                                                        </CollectionView>
                                                     </StackLayout>
                                                     <ContentView.BindingContext>
                                                         <dvm:DistributorsViewModdel></dvm:DistributorsViewModdel>
@@ -166,46 +164,44 @@
                                                 </ContentView>
                                             </tabView:SfTabItem.Content>
                                         </tabView:SfTabItem>
+                                        <!--Favourites-->
                                         <tabView:SfTabItem Header='Favourites' TextColor="Black" FontSize="14">
                                             <tabView:SfTabItem.Content>
                                                 <ContentView>
                                                     <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20">
-                                                        <ListView ItemsSource="{Binding distributors}" HasUnevenRows="True" VerticalOptions="FillAndExpand"
-                                                              SelectionMode="None">
-                                                            <ListView.ItemTemplate>
+                                                        <CollectionView ItemsSource="{Binding distributors}" VerticalOptions="FillAndExpand" SelectionMode="None">
+                                                            <CollectionView.ItemTemplate>
                                                                 <DataTemplate>
-                                                                    <ViewCell>
-                                                                        <Border StrokeShape="RoundRectangle 20" Margin="0,20">
-                                                                            <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
-                                                                                <VerticalStackLayout Padding="10" Spacing="5">
-                                                                                    <Label Text="{Binding Name}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
-                                                                                    <Label Text="{Binding Phone}" FontSize="12" TextColor="Gray"></Label>
-                                                                                    <Label Text="{Binding Services}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
-                                                                                    <Label Margin="0,3,0,0">
-                                                                                        <Label.FormattedText>
-                                                                                            <FormattedString>
-                                                                                                <Span Text="Address : " FontSize="12" TextColor="DeepSkyBlue" ></Span>
-                                                                                                <Span Text="{Binding Address}" FontSize="12" TextColor="DeepSkyBlue" ></Span>
-                                                                                            </FormattedString>
-                                                                                        </Label.FormattedText>
-                                                                                    </Label>
-                                                                                </VerticalStackLayout>
-                                                                                <HorizontalStackLayout Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="5">
-                                                                                    <Label Text="{Binding Rate}" FontSize="16" TextColor="Black" FontAttributes="Bold"
-                                           VerticalOptions="StartAndExpand"></Label>
-                                                                                    <Image WidthRequest="25" HeightRequest="25" VerticalOptions="StartAndExpand">
-                                                                                        <Image.Source>
-                                                                                            <FontImageSource Glyph="" FontFamily="FontIconSolid"
-             Color="Gold"></FontImageSource>
-                                                                                        </Image.Source>
-                                                                                    </Image>
-                                                                                </HorizontalStackLayout>
-                                                                            </StackLayout>
-                                                                        </Border>
-                                                                    </ViewCell>
+                                                                    <Border StrokeShape="RoundRectangle 20" Margin="0,10">
+                                                                        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                                                                            <VerticalStackLayout Padding="10" Spacing="5">
+                                                                                <Label Text="{Binding Name}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding Phone}" FontSize="12" TextColor="Gray"></Label>
+                                                                                <Label Text="{Binding Services}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                                                                <Label Margin="0,3,0,0">
+                                                                                    <Label.FormattedText>
+                                                                                        <FormattedString>
+                                                                                            <Span Text="Address : " FontSize="12" TextColor="DeepSkyBlue" ></Span>
+                                                                                            <Span Text="{Binding Address}" FontSize="12" TextColor="DeepSkyBlue" ></Span>
+                                                                                        </FormattedString>
+                                                                                    </Label.FormattedText>
+                                                                                </Label>
+                                                                            </VerticalStackLayout>
+                                                                            <HorizontalStackLayout Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="5">
+                                                                                <Label Text="{Binding Rate}" FontSize="14" TextColor="Black" FontAttributes="Bold"
+                                                                                       VerticalOptions="StartAndExpand"></Label>
+                                                                                <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
+                                                                                    <Image.Source>
+                                                                                        <FontImageSource Glyph="" FontFamily="FontIconSolid"
+                                                                                                         Color="Gold"></FontImageSource>
+                                                                                    </Image.Source>
+                                                                                </Image>
+                                                                            </HorizontalStackLayout>
+                                                                        </StackLayout>
+                                                                    </Border>
                                                                 </DataTemplate>
-                                                            </ListView.ItemTemplate>
-                                                        </ListView>
+                                                            </CollectionView.ItemTemplate>
+                                                        </CollectionView>
                                                     </StackLayout>
                                                     <ContentView.BindingContext>
                                                         <dvm:DistributorsViewModdel></dvm:DistributorsViewModdel>
@@ -275,7 +271,8 @@
                                     </Border.Shadow>
                                 </Border>
                                 <CollectionView ItemsSource="{Binding offers}" SelectionChangedCommand="{Binding SelectionOfferCommand}" 
-                                                VerticalOptions="FillAndExpand" SelectionMode="Single" Margin="0,10,0,0">
+                                                VerticalOptions="FillAndExpand" SelectionMode="Single" Margin="0,10,0,0"
+                                                SelectedItem="{Binding SelectedItem}">
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
                                             <Border StrokeShape="RoundRectangle 10" Stroke="Gray" StrokeThickness="1" Margin="0,10"

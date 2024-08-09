@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,11 +9,13 @@ using System.Threading.Tasks;
 using TripBliss.Models;
 using TripBliss.Pages.TravelAgenciesPages.Offers;
 
-namespace TripBliss.ViewModels.TravelAgenciesVieModels
+namespace TripBliss.ViewModels.TravelAgenciesVieModels.Offer
 {
     partial class ChooseOfferViewModdel : BaseViewModel
     {
         public ObservableCollection<OfferModdel> offers { get; set; }
+        [ObservableProperty]
+        OfferModdel selectedItem;
 
         public ChooseOfferViewModdel()
         {
@@ -74,7 +77,7 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels
         [RelayCommand]
         void SelectionOffer()
         {
-            App.Current.MainPage.Navigation.PushAsync(new OfferDeteliesPage());
+            App.Current.MainPage.Navigation.PushAsync(new OfferDeteliesPage(SelectedItem));
         }
 
     }
