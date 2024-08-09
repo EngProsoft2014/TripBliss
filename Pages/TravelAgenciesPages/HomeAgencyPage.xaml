@@ -18,7 +18,9 @@
         <tabView:SfTabView TabBarHeight="60" TabBarPlacement="Bottom" IndicatorPlacement="Top" IndicatorBackground="Black"
                        VerticalOptions="EndAndExpand">
 
+            
             <tabView:SfTabView.Items>
+                <!--Home-->
                 <tabView:SfTabItem Header="Home" TextColor="Black" FontSize="14" ImagePosition="Top" >
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
@@ -49,12 +51,12 @@
                             </ContentView.Resources>
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="10">
                                 <Label Text="My Reaquestes" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
-                                   TextColor="Black" Margin="20"></Label>
+                                   TextColor="Black" Margin="20,20,20,10"></Label>
                                 <CollectionView ItemsSource="{Binding requests}" SelectionChangedCommand="{Binding SelectionCommand}"
                                             VerticalOptions="FillAndExpand" SelectionMode="Single">
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
-                                            <Border StrokeShape="RoundRectangle 20" Margin="20">
+                                            <Border StrokeShape="RoundRectangle 20" Margin="20,10">
                                                 <StackLayout Orientation="Horizontal">
                                                     <VerticalStackLayout Padding="10" Spacing="5">
                                                         <Label Text="{Binding RugestName}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
@@ -100,6 +102,7 @@
                         </ContentView>
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
+                <!--Distributors-->
                 <tabView:SfTabItem Header="Distributors" TextColor="Black" FontSize="14" ImagePosition="Top">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
@@ -110,9 +113,9 @@
                                 <StackLayout Orientation="Horizontal" Spacing="10">
                                     <Label Text="Distributors" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
                                    TextColor="Black" Margin="20" HorizontalOptions="EndAndExpand"></Label>
-                                    <Button Text="Add Request" WidthRequest="110" HeightRequest="40" FontSize="12" Command="{Binding AddRequestCommand}"
-                                        BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" Margin="0,0,15,0" FontAttributes="Bold"
-                                        ></Button>
+                                    <Button Text="Add Request" WidthRequest="95" Padding="0,10,0,10" HeightRequest="40" FontSize="12" Command="{Binding AddRequestCommand}"
+                                        BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" Margin="0,0,15,0" FontAttributes="Bold">
+                                    </Button>
                                 </StackLayout>
                                 <tabView:SfTabView IndicatorBackground="#1c874b" VerticalOptions="FillAndExpand">
                                     <tabView:SfTabView.Items>
@@ -142,11 +145,11 @@
                                                                                 </VerticalStackLayout>
                                                                                 <HorizontalStackLayout Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="5">
                                                                                     <Label Text="{Binding Rate}" FontSize="16" TextColor="Black" FontAttributes="Bold"
-                                           VerticalOptions="StartAndExpand"></Label>
+                                                                                             VerticalOptions="StartAndExpand"></Label>
                                                                                     <Image WidthRequest="25" HeightRequest="25" VerticalOptions="StartAndExpand">
                                                                                         <Image.Source>
                                                                                             <FontImageSource Glyph="" FontFamily="FontIconSolid"
-             Color="Gold"></FontImageSource>
+                                                                                                         Color="Gold"></FontImageSource>
                                                                                         </Image.Source>
                                                                                     </Image>
                                                                                 </HorizontalStackLayout>
@@ -219,6 +222,7 @@
                         </ContentView>
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
+                <!--Offers-->
                 <tabView:SfTabItem Header="Offers" TextColor="Black" FontSize="14" ImagePosition="Top">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
@@ -255,10 +259,10 @@
                                     <Label Text="Offers" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                 </StackLayout>
-                                <Border StrokeShape="RoundRectangle 25" Margin="0,20,0,0">
+                                <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="0,20,0,0" BackgroundColor="White">
                                     <Grid>
-                                        <SearchBar BackgroundColor="White" Placeholder="Search" FontSize="15" TextColor="Black"></SearchBar>
-                                        <Border StrokeShape="RoundRectangle 3,25,25,25" BackgroundColor="#76d973" WidthRequest="40" HorizontalOptions="EndAndExpand">
+                                        <SearchBar BackgroundColor="White" Placeholder="Search" HeightRequest="40" FontSize="15" TextColor="Black"></SearchBar>
+                                        <Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
                                             <Image WidthRequest="20" HeightRequest="20">
                                                 <Image.Source>
                                                     <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="White"></FontImageSource>
@@ -267,14 +271,14 @@
                                         </Border>
                                     </Grid>
                                     <Border.Shadow>
-                                        <Shadow  Brush="DarkGray" Offset="0,10" Opacity="1"></Shadow>
+                                        <Shadow  Brush="DarkGray" Opacity="1"></Shadow>
                                     </Border.Shadow>
                                 </Border>
-                                <CollectionView ItemsSource="{Binding offers}" SelectionChangedCommand="{Binding SelectionOfferCommand}"
-                                                VerticalOptions="FillAndExpand" SelectionMode="Single">
+                                <CollectionView ItemsSource="{Binding offers}" SelectionChangedCommand="{Binding SelectionOfferCommand}" 
+                                                VerticalOptions="FillAndExpand" SelectionMode="Single" Margin="0,10,0,0">
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
-                                            <Border StrokeShape="RoundRectangle 10" Stroke="Gray" StrokeThickness="1" Margin="0,20"
+                                            <Border StrokeShape="RoundRectangle 10" Stroke="Gray" StrokeThickness="1" Margin="0,10"
                                                     Padding="15">
                                                 <StackLayout Orientation="Vertical">
                                                     <StackLayout Orientation="Horizontal">
@@ -282,19 +286,25 @@
                                                             <Label Text="{Binding OfferTitel}" FontSize="16" TextColor="Black"></Label>
                                                             <Label Text="02 DAY LEFT" FontSize="10" TextColor="Gray"></Label>
                                                         </VerticalStackLayout>
-                                                        <Border StrokeShape="RoundRectangle 7" BackgroundColor="#fd9702" Padding="5"
+                                                        <Border StrokeShape="RoundRectangle 7" BackgroundColor="#fd9702" Padding="5" WidthRequest="45"
                                                                 VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
                                                             <StackLayout Orientation="Vertical">
-                                                                <Label Text="{Binding PriceBeforeOffer}" FontSize="10" TextDecorations="Strikethrough"></Label>
-                                                                <Label Text="SAL" FontSize="8" HorizontalOptions="EndAndExpand"></Label>
+                                                                <Label Text="{Binding PriceBeforeOffer}" FontSize="10" TextDecorations="Strikethrough" TextColor="White"></Label>
+                                                                <Label Text="SAR" FontSize="8" HorizontalOptions="EndAndExpand" TranslationX="-5" TextColor="White"></Label>
                                                             </StackLayout>
+                                                            <Border.Shadow>
+                                                                <Shadow Brush="#333" Opacity="1"></Shadow>
+                                                            </Border.Shadow>
                                                         </Border>
-                                                        <Border StrokeShape="RoundRectangle 7" BackgroundColor="#2aa55e" Padding="5"
+                                                        <Border StrokeShape="RoundRectangle 7" BackgroundColor="#2aa55e" Padding="5" TranslationX="-10" WidthRequest="55" HeightRequest="45"
                                                                 VerticalOptions="CenterAndExpand">
                                                             <StackLayout Orientation="Vertical">
-                                                                <Label Text="{Binding PriceAfterOffer}" FontSize="14"></Label>
-                                                                <Label Text="SAL" FontSize="8" HorizontalOptions="EndAndExpand"></Label>
+                                                                <Label Text="{Binding PriceAfterOffer}" FontSize="14" TextColor="White" FontAttributes="Bold"></Label>
+                                                                <Label Text="SAR" FontSize="8" HorizontalOptions="EndAndExpand" TextColor="White"></Label>
                                                             </StackLayout>
+                                                            <Border.Shadow>
+                                                                <Shadow Brush="#333" Opacity="1"></Shadow>
+                                                            </Border.Shadow>
                                                         </Border>
                                                     </StackLayout>
                                                     <Label Text="{Binding Description}" FontSize="12" TextColor="Gray" LineBreakMode="WordWrap" Margin="0,4"></Label>

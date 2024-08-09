@@ -5,7 +5,7 @@
              x:Class="TripBliss.Pages.TravelAgenciesPages.CreateRequest.ChooseDistributorPage"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
-             Title="Add Request">
+             Title="Choose Distributor">
     <ContentPage.Resources>
         <Style TargetType="Border">
             <Setter Property="VisualStateManager.VisualStateGroups">
@@ -38,7 +38,7 @@
                     <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                 </ImageButton.Source>
             </ImageButton>
-            <Label Text="Add Request" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="Choose Distributor" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
         <Border StrokeShape="RoundRectangle 25" Margin="0,20,0,0">
