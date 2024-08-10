@@ -31,8 +31,14 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
             AirFlights = new ObservableCollection<AirFlightModdel>();
             Moddel = new AirFlightModdel();
         }
+        public AirFlightServicesViewModdel(AirFlightModdel model)
+        {
+            AirFlights = new ObservableCollection<AirFlightModdel>();
+            Moddel = new AirFlightModdel();
+            Moddel = model;
+        }
 
-        #region Methodes
+        #region RelayCommand
         [RelayCommand]
         void OnBackPressed()
         {

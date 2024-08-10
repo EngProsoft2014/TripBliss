@@ -11,7 +11,7 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
         public DateOnly Date { get; set; }
         public string? From { get; set; }
         public string? To { get; set; }
-        public string? Vechil { get; set; }
+        public string? Vehicle { get; set; }
         public int? No { get; set; }
     }
 }

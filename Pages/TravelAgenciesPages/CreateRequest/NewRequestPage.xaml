@@ -9,6 +9,25 @@
     <ContentPage.BindingContext>
         <vm:NewRequestViewModdel></vm:NewRequestViewModdel>
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <Style TargetType="StackLayout">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup Name="CommonStates">
+                        <VisualState Name="Normal"></VisualState>
+                        <VisualState Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+                            </VisualState.Setters>
+                        </VisualState>
+
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+            
+
+        </Style>
+    </ContentPage.Resources>
     <StackLayout Orientation="Vertical" Margin="20" Spacing="10">
         <StackLayout Orientation="Horizontal">
             <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackButtonClickedCommand}">
@@ -34,39 +53,38 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                     </Border>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <ListView ItemsSource="{Binding Hotels}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
-                        <ListView.ItemTemplate>
+                    <CollectionView ItemsSource="{Binding Hotels}" VerticalOptions="FillAndExpand" SelectedItem="{Binding SelectedHotel}"
+                                    SelectionChangedCommand="{Binding  SelectHotelCommand}" SelectionMode="Single">
+                        <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
-                                        <Label>
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{Binding HotelName}" TextColor="Gray" FontSize="12"></Span>
-                                                    <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                    <Span Text="{Binding RoomView}" TextColor="Gray" FontSize="12"></Span>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Label>
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{Binding Checkin}" TextColor="Gray" FontSize="12"></Span>
-                                                    <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                    <Span Text="{Binding Checkout}" TextColor="Gray" FontSize="12"></Span>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
-                                            <ImageButton.Source>
-                                                <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                            </ImageButton.Source>
-                                        </ImageButton>
-                                    </StackLayout>
-                                </ViewCell>
+                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding HotelName}" TextColor="Gray" FontSize="12"></Span>
+                                                <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
+                                                <Span Text="{Binding RoomView}" TextColor="Gray" FontSize="12"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Checkin}" TextColor="Gray" FontSize="12"></Span>
+                                                <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
+                                                <Span Text="{Binding Checkout}" TextColor="Gray" FontSize="12"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
+                                        <ImageButton.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                        </ImageButton.Source>
+                                    </ImageButton>
+                                </StackLayout>
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </Border>
                 <StackLayout Orientation="Horizontal" Margin="0,0">
                     <Label Text="Transportaion Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
@@ -80,11 +98,11 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                     </Border>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <ListView ItemsSource="{Binding transportaionServices}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
-                        <ListView.ItemTemplate>
+                    <CollectionView ItemsSource="{Binding transportaionServices}" VerticalOptions="FillAndExpand" SelectionMode="Single"
+                                    SelectedItem="{Binding SelectedTransportaition}" SelectionChangedCommand="{Binding  SelectTransportaionCommand}">
+                        <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
+                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
                                         <Label>
                                             <Label.FormattedText>
                                                 <FormattedString>
@@ -110,10 +128,9 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                             </ImageButton.Source>
                                         </ImageButton>
                                     </StackLayout>
-                                </ViewCell>
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </Border>
                 <StackLayout Orientation="Horizontal" Margin="0,0">
                     <Label Text="Air Flight Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
@@ -127,10 +144,10 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                     </Border>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <ListView ItemsSource="{Binding airFlights}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
-                        <ListView.ItemTemplate>
+                    <CollectionView ItemsSource="{Binding airFlights}" VerticalOptions="FillAndExpand" SelectedItem="{Binding SelectedAirFlight}"
+                                    SelectionChangedCommand="{Binding  SelectAirFlightCommand}" SelectionMode="Single">
+                        <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
                                     <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
                                         <Label>
                                             <Label.FormattedText>
@@ -164,10 +181,9 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                             </ImageButton.Source>
                                         </ImageButton>
                                     </StackLayout>
-                                </ViewCell>
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </Border>
                 <StackLayout Orientation="Horizontal" Margin="0,0">
                     <Label Text="Visa Service" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
@@ -181,11 +197,11 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                     </Border>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <ListView ItemsSource="{Binding visaServices}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
-                        <ListView.ItemTemplate>
+                    <CollectionView ItemsSource="{Binding visaServices}" VerticalOptions="FillAndExpand" SelectedItem="{Binding SelectedVisa}"
+                                    SelectionChangedCommand="{Binding  SelectVisaCommand}" SelectionMode="Single">
+                        <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
+                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
                                         <Label>
                                             <Label.FormattedText>
                                                 <FormattedString>
@@ -214,10 +230,9 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                             </ImageButton.Source>
                                         </ImageButton>
                                     </StackLayout>
-                                </ViewCell>
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </Border>
             </StackLayout>
         </ScrollView>

@@ -8,7 +8,11 @@
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="RequestDeatielsPage">
-
+    <ContentPage.Resources>
+        <Style TargetType="syncfusion:DataGridCell">
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </ContentPage.Resources>
     <StackLayout Orientation="Vertical" Margin="20">
         <tabView:SfTabView TabBarPlacement="Bottom" VerticalOptions="EndAndExpand" IndicatorBackground="Black"
                                IndicatorPlacement="Bottom">
@@ -20,177 +24,427 @@
                             <ContentView.BindingContext>
                                 <vm:RequestDeatielsViewModdel></vm:RequestDeatielsViewModdel>
                             </ContentView.BindingContext>
-                            <ScrollView>
-                                <StackLayout Orientation="Vertical" Spacing="15">
-                                    <StackLayout Orientation="Horizontal">
-                                        <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand">
-                                            <ImageButton.Source>
-                                                <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                            </ImageButton.Source>
-                                        </ImageButton>
-                                        <Label Text="Request Name" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
-                                               TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
-                                    </StackLayout>
-                                    <StackLayout Orientation="Horizontal" Margin="0,10">
-                                        <Label>
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="Adult :" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
-                                                    <Span Text="4" TextColor="Black" FontAttributes="Bold" FontSize="14"></Span>
-                                                    <Span Text=" - " TextColor="Black" FontAttributes="Bold" FontSize="14"></Span>
-                                                    <Span Text="Child :" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
-                                                    <Span Text="2" TextColor="Black" FontAttributes="Bold" FontSize="14"></Span>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Label HorizontalOptions="EndAndExpand">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="Date : " TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
-                                                    <Span Text="4-12-2024" TextColor="Black" FontAttributes="Bold" FontSize="14"></Span>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                    </StackLayout>
-                                    <Label Text="Hotel Service" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
+                            <StackLayout Orientation="Vertical" Spacing="10">
+                                <StackLayout Orientation="Horizontal">
+                                    <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand">
+                                        <ImageButton.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                        </ImageButton.Source>
+                                    </ImageButton>
+                                    <Label Text="Request Name" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                                           TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+                                </StackLayout>
+                                <ScrollView VerticalOptions="FillAndExpand">
+                                    <StackLayout Spacing="20">
+                                        <StackLayout Orientation="Horizontal" Margin="0,10">
+                                            <Label>
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Adult :" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                                        <Span Text="4" TextColor="Black" FontAttributes="Bold" FontSize="14"></Span>
+                                                        <Span Text=" - " TextColor="Black" FontAttributes="Bold" FontSize="14"></Span>
+                                                        <Span Text="Child :" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                                        <Span Text="2" TextColor="Black" FontAttributes="Bold" FontSize="14"></Span>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label HorizontalOptions="EndAndExpand">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Date : " TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                                        <Span Text="4-12-2024" TextColor="Black" FontAttributes="Bold" FontSize="14"></Span>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                        <StackLayout Spacing="10">
+                                            <Label Text="Hotel Service" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
                                            FontFamily="OpenSansSemibold"></Label>
-                                    <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Margin="0,5">
-                                        <StackLayout Orientation="Vertical" >
-                                            <StackLayout Orientation="Horizontal">
-                                                <Label VerticalTextAlignment="Center" Padding="5">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="Madinah" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
-                                                            <Span Text=" - " TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
-                                                            <Span Text="Anwaer Madinha" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-                                                <Line StrokeThickness="2" Y1="0" Y2="40" Stroke="Gray" HorizontalOptions="EndAndExpand"></Line>
-                                                <VerticalStackLayout Margin="10,0" >
-                                                    <Label Text="03" FontSize="14" TextColor="#387955" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
-                                                    <Label Text="Naights" FontSize="14" TextColor="#387955" FontAttributes="Bold"></Label>
-                                                </VerticalStackLayout>
-                                            </StackLayout>
-                                            <BoxView HorizontalOptions="FillAndExpand" Color="Gray" HeightRequest="1.5"></BoxView>
-                                            <VerticalStackLayout>
-                                                <StackLayout Orientation="Horizontal" Padding="5">
-                                                    <Label>
-                                                        <Label.FormattedText>
-                                                            <FormattedString>
-                                                                <Span Text="Check-in: " TextColor="Black" FontSize="14"></Span>
-                                                                <Span Text="27-5-2023" TextColor="Black" FontSize="14"></Span>
-                                                            </FormattedString>
-                                                        </Label.FormattedText>
-                                                    </Label>
-                                                    <Label HorizontalOptions="EndAndExpand">
-                                                        <Label.FormattedText>
-                                                            <FormattedString>
-                                                                <Span Text="Check-Out: " TextColor="Black" FontSize="14"></Span>
-                                                                <Span Text="30-5-2023" TextColor="Black" FontSize="14"></Span>
-                                                            </FormattedString>
-                                                        </Label.FormattedText>
-                                                    </Label>
-                                                </StackLayout>
-                                                <Label Text="Room Details:" TextColor="#387955" FontSize="14" FontAttributes="Bold" Margin="0,5" FontFamily="OpenSansSemibold"
-                       Padding="5"></Label>
-                                                <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="7" Margin="5,0">
-                                                    <VerticalStackLayout Spacing="3">
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <Label>
-                                                                <Label.FormattedText>
-                                                                    <FormattedString>
-                                                                        <Span Text="Type: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
-                                                                        <Span Text="QUD" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
-                                                                    </FormattedString>
-                                                                </Label.FormattedText>
-                                                            </Label>
-                                                            <Label HorizontalOptions="EndAndExpand">
-                                                                <Label.FormattedText>
-                                                                    <FormattedString>
-                                                                        <Span Text="View: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
-                                                                        <Span Text="KV" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
-                                                                    </FormattedString>
-                                                                </Label.FormattedText>
-                                                            </Label>
-                                                        </StackLayout>
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <Label>
-                                                                <Label.FormattedText>
-                                                                    <FormattedString>
-                                                                        <Span Text="No. Of Rooms: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
-                                                                        <Span Text="02" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
-                                                                    </FormattedString>
-                                                                </Label.FormattedText>
-                                                            </Label>
-                                                            <Label HorizontalOptions="EndAndExpand">
-                                                                <Label.FormattedText>
-                                                                    <FormattedString>
-                                                                        <Span Text="Males: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
-                                                                        <Span Text="B/B" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
-                                                                    </FormattedString>
-                                                                </Label.FormattedText>
-                                                            </Label>
-                                                        </StackLayout>
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <Label>
-                                                                <Label.FormattedText>
-                                                                    <FormattedString>
-                                                                        <Span Text="Rate Per Room: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
-                                                                        <Span Text="$70" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
-                                                                    </FormattedString>
-                                                                </Label.FormattedText>
-                                                            </Label>
-                                                            <Label HorizontalOptions="EndAndExpand">
-                                                                <Label.FormattedText>
-                                                                    <FormattedString>
-                                                                        <Span Text="Rate Basis: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
-                                                                        <Span Text="2B/S" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
-                                                                    </FormattedString>
-                                                                </Label.FormattedText>
-                                                            </Label>
-                                                        </StackLayout>
-                                                        <Label>
+                                            <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Margin="0,5" Padding="0,0,0,10">
+                                                <StackLayout Orientation="Vertical" >
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label VerticalTextAlignment="Center" Padding="5">
                                                             <Label.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span Text="Meal Rate Per Day: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
-                                                                    <Span Text="$30" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
+                                                                    <Span Text="Madinah" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                                                    <Span Text=" - " TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                                                    <Span Text="Anwaer Madinha" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
                                                                 </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>
+                                                        <Line StrokeThickness="2" Y1="0" Y2="40" Stroke="Gray" HorizontalOptions="EndAndExpand"></Line>
+                                                        <VerticalStackLayout Margin="10,0" >
+                                                            <Label Text="03" FontSize="12" TextColor="#387955" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+                                                            <Label Text="Naights" FontSize="12" TextColor="#387955" FontAttributes="Bold"></Label>
+                                                        </VerticalStackLayout>
+                                                    </StackLayout>
+                                                    <BoxView HorizontalOptions="FillAndExpand" Color="Gray" HeightRequest="1.5"></BoxView>
+                                                    <VerticalStackLayout>
+                                                        <StackLayout Orientation="Horizontal" Padding="5">
+                                                            <Label>
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="Check-in: " TextColor="Black" FontSize="14"></Span>
+                                                                        <Span Text="27-5-2023" TextColor="Black" FontSize="14"></Span>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <Label HorizontalOptions="EndAndExpand">
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="Check-Out: " TextColor="Black" FontSize="14"></Span>
+                                                                        <Span Text="30-5-2023" TextColor="Black" FontSize="14"></Span>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                        </StackLayout>
+                                                        <Label Text="Room Details:" TextColor="#387955" FontSize="14" FontAttributes="Bold" Margin="0,5" FontFamily="OpenSansSemibold"
+                       Padding="5"></Label>
+                                                        <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="7" Margin="5,0">
+                                                            <VerticalStackLayout Spacing="3">
+                                                                <StackLayout Orientation="Horizontal">
+                                                                    <Label>
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="Type: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
+                                                                                <Span Text="QUD" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </Label>
+                                                                    <Label HorizontalOptions="EndAndExpand">
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="View: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
+                                                                                <Span Text="KV" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </Label>
+                                                                </StackLayout>
+                                                                <StackLayout Orientation="Horizontal">
+                                                                    <Label>
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="No. Of Rooms: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
+                                                                                <Span Text="02" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </Label>
+                                                                    <Label HorizontalOptions="EndAndExpand">
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="Males: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
+                                                                                <Span Text="B/B" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </Label>
+                                                                </StackLayout>
+                                                                <StackLayout Orientation="Horizontal">
+                                                                    <Label>
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="Rate Per Room: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
+                                                                                <Span Text="$70" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </Label>
+                                                                    <Label HorizontalOptions="EndAndExpand">
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="Rate Basis: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
+                                                                                <Span Text="2B/S" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </Label>
+                                                                </StackLayout>
+                                                                <Label>
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="Meal Rate Per Day: " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Span>
+                                                                            <Span Text="$30" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Span>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </Label>
+                                                            </VerticalStackLayout>
+                                                        </Border>
                                                     </VerticalStackLayout>
-                                                </Border>
-                                            </VerticalStackLayout>
+                                                </StackLayout>
+                                            </Border>
                                         </StackLayout>
-                                    </Border>
-                                    <Label Text="Transportaaion Service" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
+                                        <StackLayout Spacing="10">
+                                            <Label Text="Transportaaion Service" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
                                            FontFamily="OpenSansSemibold"></Label>
-                                    <syncfusion:SfDataGrid ItemsSource="{Binding transportaionServices}" ColumnWidthMode="FitByHeader"
+                                            <syncfusion:SfDataGrid ItemsSource="{Binding transportaionServices}" ColumnWidthMode="FitByCell"
+                                                                   GridLinesVisibility="Both" HeaderGridLinesVisibility="Both" 
+                                                                   VerticalOptions="FillAndExpand">
+                                                <syncfusion:SfDataGrid.Columns>
+                                                    <syncfusion:DataGridTextColumn MappingName="Date" HeaderTextAlignment="Center">
+                                                        <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                            <DataTemplate>
+                                                                <Label FontSize="14" Text="Date" TextColor="Black" 
+                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                       HorizontalOptions="CenterAndExpand"></Label>
+                                                            </DataTemplate>
+                                                        </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                    </syncfusion:DataGridTextColumn>
+                                                    <syncfusion:DataGridTextColumn MappingName="From" HeaderTextAlignment="Center">
+                                                        <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                            <DataTemplate>
+                                                                <Label FontSize="14" Text="From" TextColor="Black" 
+                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                       HorizontalOptions="CenterAndExpand"></Label>
+                                                            </DataTemplate>
+                                                        </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                    </syncfusion:DataGridTextColumn>
+                                                    <syncfusion:DataGridTextColumn MappingName="To" HeaderTextAlignment="Center">
+                                                        <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                            <DataTemplate>
+                                                                <Label FontSize="14" Text="To" TextColor="Black" 
+                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                       HorizontalOptions="CenterAndExpand"></Label>
+                                                            </DataTemplate>
+                                                        </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                    </syncfusion:DataGridTextColumn>
+                                                    <syncfusion:DataGridTextColumn MappingName="Vehicle" HeaderTextAlignment="Center">
+                                                        <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                            <DataTemplate>
+                                                                <Label FontSize="14" Text="Vehicle" TextColor="Black" 
+                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                       HorizontalOptions="CenterAndExpand"></Label>
+                                                            </DataTemplate>
+                                                        </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                    </syncfusion:DataGridTextColumn>
+                                                    <syncfusion:DataGridTextColumn MappingName="No" HeaderTextAlignment="Center">
+                                                        <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                            <DataTemplate>
+                                                                <Label FontSize="14" Text="No" TextColor="Black" 
+                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                       HorizontalOptions="CenterAndExpand"></Label>
+                                                            </DataTemplate>
+                                                        </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                    </syncfusion:DataGridTextColumn>
+                                                </syncfusion:SfDataGrid.Columns>
+                                            </syncfusion:SfDataGrid>
+                                            <StackLayout.Triggers>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding transportaionServices.Count}" Value="0">
+                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                    <Setter Property="HeightRequest" Value="0"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding transportaionServices.Count}" Value="1">
+                                                    <Setter Property="HeightRequest" Value="150"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding transportaionServices.Count}" Value="2">
+                                                    <Setter Property="HeightRequest" Value="190"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding transportaionServices.Count}" Value="3">
+                                                    <Setter Property="HeightRequest" Value="240"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding transportaionServices.Count}" Value="4">
+                                                    <Setter Property="HeightRequest" Value="290"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding transportaionServices.Count}" Value="5">
+                                                    <Setter Property="HeightRequest" Value="340"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding transportaionServices.Count}" Value="6">
+                                                    <Setter Property="HeightRequest" Value="390"></Setter>
+                                                </DataTrigger>
+                                            </StackLayout.Triggers>
+                                        </StackLayout>
+                                        <StackLayout Spacing="10" HeightRequest="250">
+                                            <Label Text="Air Flight Service" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
+                                                   FontFamily="OpenSansSemibold"></Label>
+                                            <syncfusion:SfDataGrid ItemsSource="{Binding airFlights}" ColumnWidthMode="FitByCell"
+                                                                   GridLinesVisibility="Both" HeaderGridLinesVisibility="Both" 
+                                                                   VerticalOptions="FillAndExpand">
+                                                <syncfusion:SfDataGrid.Columns>
+                                                    <syncfusion:DataGridTextColumn MappingName="Carrier" HeaderTextAlignment="Center">
+                                                        <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                            <DataTemplate>
+                                                                <Label FontSize="14" Text="Carrier" TextColor="Black" 
+                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                       HorizontalOptions="CenterAndExpand"></Label>
+                                                            </DataTemplate>
+                                                        </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                    </syncfusion:DataGridTextColumn>
+                                                    <syncfusion:DataGridTextColumn MappingName="Date" HeaderTextAlignment="Center">
+                                                        <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                            <DataTemplate>
+                                                                <Label FontSize="14" Text="Date" TextColor="Black" 
+                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                       HorizontalOptions="CenterAndExpand"></Label>
+                                                            </DataTemplate>
+                                                        </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                    </syncfusion:DataGridTextColumn>
+                                                    <syncfusion:DataGridTextColumn MappingName="Class" HeaderTextAlignment="Center">
+                                                        <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                            <DataTemplate>
+                                                                <Label FontSize="14" Text="Class" TextColor="Black" 
+                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                       HorizontalOptions="CenterAndExpand"></Label>
+                                                            </DataTemplate>
+                                                        </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                    </syncfusion:DataGridTextColumn>
+                                                    <syncfusion:DataGridTextColumn MappingName="From" HeaderTextAlignment="Center">
+                                                        <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                            <DataTemplate>
+                                                                <Label FontSize="14" Text="From" TextColor="Black" 
+                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                       HorizontalOptions="CenterAndExpand"></Label>
+                                                            </DataTemplate>
+                                                        </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                    </syncfusion:DataGridTextColumn>
+                                                    <syncfusion:DataGridTextColumn MappingName="To" HeaderTextAlignment="Center">
+                                                        <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                            <DataTemplate>
+                                                                <Label FontSize="14" Text="To" TextColor="Black" 
+                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                       HorizontalOptions="CenterAndExpand"></Label>
+                                                            </DataTemplate>
+                                                        </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                    </syncfusion:DataGridTextColumn>
+                                                    <syncfusion:DataGridTextColumn MappingName="ETD" HeaderTextAlignment="Center">
+                                                        <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                            <DataTemplate>
+                                                                <Label FontSize="14" Text="ETD" TextColor="Black" 
+                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                       HorizontalOptions="CenterAndExpand"></Label>
+                                                            </DataTemplate>
+                                                        </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                    </syncfusion:DataGridTextColumn>
+                                                    <syncfusion:DataGridTextColumn MappingName="ETA" HeaderTextAlignment="Center">
+                                                        <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                            <DataTemplate>
+                                                                <Label FontSize="14" Text="ETA" TextColor="Black" 
+                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                       HorizontalOptions="CenterAndExpand"></Label>
+                                                            </DataTemplate>
+                                                        </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                    </syncfusion:DataGridTextColumn>
+                                                    <syncfusion:DataGridTextColumn MappingName="Adult" HeaderTextAlignment="Center">
+                                                        <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                            <DataTemplate>
+                                                                <Label FontSize="14" Text="Adult" TextColor="Black" 
+                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                       HorizontalOptions="CenterAndExpand"></Label>
+                                                            </DataTemplate>
+                                                        </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                    </syncfusion:DataGridTextColumn>
+                                                    <syncfusion:DataGridTextColumn MappingName="Child" HeaderTextAlignment="Center">
+                                                        <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                            <DataTemplate>
+                                                                <Label FontSize="14" Text="Child" TextColor="Black" 
+                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                       HorizontalOptions="CenterAndExpand"></Label>
+                                                            </DataTemplate>
+                                                        </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                    </syncfusion:DataGridTextColumn>
+                                                    <syncfusion:DataGridTextColumn MappingName="Infant" HeaderTextAlignment="Center">
+                                                        <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                            <DataTemplate>
+                                                                <Label FontSize="14" Text="Infant" TextColor="Black" 
+                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                       HorizontalOptions="CenterAndExpand"></Label>
+                                                            </DataTemplate>
+                                                        </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                    </syncfusion:DataGridTextColumn>
+                                                    <syncfusion:DataGridTextColumn MappingName="Notes" HeaderTextAlignment="Center">
+                                                        <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                            <DataTemplate>
+                                                                <Label FontSize="14" Text="Notes" TextColor="Black" 
+                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                       HorizontalOptions="CenterAndExpand"></Label>
+                                                            </DataTemplate>
+                                                        </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                    </syncfusion:DataGridTextColumn>
+                                                </syncfusion:SfDataGrid.Columns>
+                                            </syncfusion:SfDataGrid>
+                                            <StackLayout.Triggers>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding airFlights.Count}" Value="0">
+                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                    <Setter Property="HeightRequest" Value="0"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding airFlights.Count}" Value="1">
+                                                    <Setter Property="HeightRequest" Value="150"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding airFlights.Count}" Value="2">
+                                                    <Setter Property="HeightRequest" Value="190"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding airFlights.Count}" Value="3">
+                                                    <Setter Property="HeightRequest" Value="240"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding airFlights.Count}" Value="4">
+                                                    <Setter Property="HeightRequest" Value="290"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding airFlights.Count}" Value="5">
+                                                    <Setter Property="HeightRequest" Value="250"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding airFlights.Count}" Value="6">
+                                                    <Setter Property="HeightRequest" Value="390"></Setter>
+                                                </DataTrigger>
+                                            </StackLayout.Triggers>
+                                        </StackLayout>
+                                        <StackLayout Spacing="10">
+                                            <Label Text="Visa Service" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
+                                                   FontFamily="OpenSansSemibold"></Label>
+                                            <syncfusion:SfDataGrid ItemsSource="{Binding visaServices}" ColumnWidthMode="FitByCell"
                                                            GridLinesVisibility="Both" HeaderGridLinesVisibility="Both">
-                                        <syncfusion:SfDataGrid.Columns>
-                                            <syncfusion:DataGridTextColumn HeaderText="Date" MappingName="Date"></syncfusion:DataGridTextColumn>
-                                            <syncfusion:DataGridTextColumn HeaderText="From" MappingName="From"></syncfusion:DataGridTextColumn>
-                                            <syncfusion:DataGridTextColumn HeaderText="To" MappingName="To"></syncfusion:DataGridTextColumn>
-                                        </syncfusion:SfDataGrid.Columns>
-                                    </syncfusion:SfDataGrid>
-                                    <Label Text="Air Flight Service" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
-                                           FontFamily="OpenSansSemibold" Margin="0,-30,0,0"></Label>
-                                    <syncfusion:SfDataGrid ItemsSource="{Binding airFlights}" ColumnWidthMode="FitByHeader"
-                                                           GridLinesVisibility="Both" HeaderGridLinesVisibility="Both">
-                                        <syncfusion:SfDataGrid.Columns>
-                                        </syncfusion:SfDataGrid.Columns>
-                                    </syncfusion:SfDataGrid>
-                                    <Label Text="Visa Service" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
-                                           FontFamily="OpenSansSemibold" Margin="0,20,0,0"></Label>
-                                    <syncfusion:SfDataGrid ItemsSource="{Binding visaServices}" ColumnWidthMode="FitByHeader"
-                                                           GridLinesVisibility="Both" HeaderGridLinesVisibility="Both">
-                                        <syncfusion:SfDataGrid.Columns>
-
-                                        </syncfusion:SfDataGrid.Columns>
-                                    </syncfusion:SfDataGrid>
-                                </StackLayout>
-                            </ScrollView>
-                            
+                                                <syncfusion:SfDataGrid.Columns>
+                                                    <syncfusion:DataGridTextColumn MappingName="VisaType" HeaderTextAlignment="Center">
+                                                        <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                            <DataTemplate>
+                                                                <Label FontSize="14" Text="Visa Type" TextColor="Black" 
+                                                                 FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                       HorizontalOptions="CenterAndExpand"></Label>
+                                                            </DataTemplate>
+                                                        </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                    </syncfusion:DataGridTextColumn>
+                                                    <syncfusion:DataGridTextColumn MappingName="VisaNo" HeaderTextAlignment="Center">
+                                                        <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                            <DataTemplate>
+                                                                <Label FontSize="14" Text="Visa No" TextColor="Black" 
+                                                                        FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                        HorizontalOptions="CenterAndExpand"></Label>
+                                                            </DataTemplate>
+                                                        </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                    </syncfusion:DataGridTextColumn>
+                                                    <syncfusion:DataGridTextColumn MappingName="Notes" HeaderTextAlignment="Center">
+                                                        <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                            <DataTemplate>
+                                                                <Label FontSize="14" Text="Notes" TextColor="Black" 
+                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                       HorizontalOptions="CenterAndExpand"></Label>
+                                                            </DataTemplate>
+                                                        </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                    </syncfusion:DataGridTextColumn>
+                                                </syncfusion:SfDataGrid.Columns>
+                                            </syncfusion:SfDataGrid>
+                                            <StackLayout.Triggers>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding visaServices.Count}" Value="0">
+                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                    <Setter Property="HeightRequest" Value="0"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding visaServices.Count}" Value="1">
+                                                    <Setter Property="HeightRequest" Value="150"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding visaServices.Count}" Value="2">
+                                                    <Setter Property="HeightRequest" Value="190"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding visaServices.Count}" Value="3">
+                                                    <Setter Property="HeightRequest" Value="240"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding visaServices.Count}" Value="4">
+                                                    <Setter Property="HeightRequest" Value="290"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding visaServices.Count}" Value="5">
+                                                    <Setter Property="HeightRequest" Value="340"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding visaServices.Count}" Value="6">
+                                                    <Setter Property="HeightRequest" Value="390"></Setter>
+                                                </DataTrigger>
+                                            </StackLayout.Triggers>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ScrollView>
+                            </StackLayout>
                         </ContentView>
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
@@ -284,10 +538,6 @@
                                                             </Image>
 
                                                         </StackLayout>
-                                                        <Border HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" StrokeShape="RoundRectangle 8,0,0,0" 
-                                                                BackgroundColor="#5ac488" Padding="25,2">
-                                                            <Label Text="Select" FontSize="14" FontAttributes="Bold"></Label>
-                                                        </Border>
                                                     </StackLayout>
                                                 </StackLayout>
                                             </Border>

@@ -38,7 +38,7 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
 
             transportaionServices.Add(new TransportaitionRequestDetailesModdel()
             {
-                Vechil = "Suv",
+                Vehicle = "Suv",
                 Date = todayDate,
                 From = "Cairo",
                 No = 4,
@@ -47,7 +47,7 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
 
             transportaionServices.Add(new TransportaitionRequestDetailesModdel()
             {
-                Vechil = "Sedan",
+                Vehicle = "Sedan",
                 Date = todayDate.AddDays(1),
                 From = "Alexandria",
                 No = 3,
@@ -56,23 +56,13 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
 
             transportaionServices.Add(new TransportaitionRequestDetailesModdel()
             {
-                Vechil = "Coupe",
-                Date = todayDate.AddDays(2),
-                From = "Giza",
-                No = 2,
-                To = "Luxor",
+                Vehicle = "Sedan",
+                Date = todayDate.AddDays(1),
+                From = "Alexandria",
+                No = 3,
+                To = "Cairo",
             });
 
-            transportaionServices.Add(new TransportaitionRequestDetailesModdel()
-            {
-                Vechil = "Electric",
-                Date = todayDate.AddDays(3),
-                From = "Hurghada",
-                No = 4,
-                To = "Sharm El-Sheikh",
-            });
-
-      
         }
         void LoadAirFlightData()
         {

@@ -24,7 +24,14 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
             Moddel = new VisaServiceModdel();
             VisaServices = new ObservableCollection<VisaServiceModdel>();
         }
+        public VisaServiceViewModdel(VisaServiceModdel model)
+        {
+            Moddel = new VisaServiceModdel();
+            VisaServices = new ObservableCollection<VisaServiceModdel>();
+            Moddel = model;
+        }
 
+        #region RelayCommand
         [RelayCommand]
         void Apply()
         {
@@ -35,6 +42,7 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
         void BackCLicked()
         {
             App.Current.MainPage.Navigation.PopAsync();
-        }
+        } 
+        #endregion
     }
 }

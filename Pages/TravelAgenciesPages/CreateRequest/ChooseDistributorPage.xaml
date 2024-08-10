@@ -60,8 +60,7 @@
             <CheckBox Color="#76d973" VerticalOptions="CenterAndExpand"></CheckBox>
             <Label Text="Select All" FontSize="14" TextColor="Black" VerticalTextAlignment="Center"></Label>
         </HorizontalStackLayout>
-        <CollectionView ItemsSource="{Binding distributors}" VerticalOptions="FillAndExpand" SelectionMode="Multiple"
-                        SelectionChangedCommand="{Binding SelectionCommand}">
+        <CollectionView ItemsSource="{Binding distributors}" VerticalOptions="FillAndExpand" SelectionMode="Multiple">
             <CollectionView.ItemTemplate>
                 <DataTemplate  x:Name="Data">
                     <Border x:Name="BorderOfItem" StrokeShape="RoundRectangle 20" Margin="0,10">
@@ -92,15 +91,13 @@
                                     </Image>
 
                                 </StackLayout>
-                                <Border HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" StrokeShape="RoundRectangle 8,0,0,0" 
-                                            BackgroundColor="#5ac488" Padding="25,2">
-                                    <Label Text="Select" FontSize="14" FontAttributes="Bold"></Label>
-                                </Border>
                             </StackLayout>
                         </StackLayout>
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        <Button  Text="Apply" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="0,0"
+                Command="{Binding SelectionCommand}"></Button>
     </StackLayout>
 </ContentPage>

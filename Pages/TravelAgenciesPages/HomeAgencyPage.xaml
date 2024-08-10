@@ -50,7 +50,7 @@
                                 </Style>
                             </ContentView.Resources>
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="10">
-                                <Label Text="My Reaquestes" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                                <Label Text="My Requests" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
                                    TextColor="Black" Margin="20,20,20,10"></Label>
                                 <CollectionView ItemsSource="{Binding requests}" SelectionChangedCommand="{Binding SelectionCommand}"
                                             VerticalOptions="FillAndExpand" SelectionMode="Single">

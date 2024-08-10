@@ -9,6 +9,25 @@
     <ContentPage.BindingContext>
         <vm:NewRequestViewModdel></vm:NewRequestViewModdel>
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <Style TargetType="StackLayout">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup Name="CommonStates">
+                        <VisualState Name="Normal"></VisualState>
+                        <VisualState Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+                            </VisualState.Setters>
+                        </VisualState>
+
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+
+
+        </Style>
+    </ContentPage.Resources>
     <StackLayout Orientation="Vertical" Margin="20" Spacing="10">
         <StackLayout Orientation="Horizontal">
             <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackButtonClickedCommand}">
@@ -25,11 +44,11 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                     <Label Text="Hotel Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <ListView ItemsSource="{Binding Hotels}" HasUnevenRows="True" VerticalOptions="FillAndExpand" ItemTapped="Hotel_ItemTapped">
-                        <ListView.ItemTemplate>
+                    <CollectionView ItemsSource="{Binding Hotels}" VerticalOptions="FillAndExpand" SelectionMode="Single"
+                                    SelectionChangedCommand="{Binding SelectHotelCommand}" SelectedItem="{Binding SelectedHotel}">
+                        <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
+                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
                                         <Label>
                                             <Label.FormattedText>
                                                 <FormattedString>
@@ -50,22 +69,20 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                         </Label>
                                         <CheckBox Color="Gray" WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="5,0"></CheckBox>
                                     </StackLayout>
-                                </ViewCell>
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </Border>
                 <StackLayout Orientation="Horizontal" Margin="0,0">
                     <Label Text="Transportaion Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
 
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <ListView ItemsSource="{Binding transportaionServices}" HasUnevenRows="True" VerticalOptions="FillAndExpand"
-                          ItemTapped="Transportation_ItemTapped">
-                        <ListView.ItemTemplate>
+                    <CollectionView ItemsSource="{Binding transportaionServices}" VerticalOptions="FillAndExpand" SelectionMode="Single"
+                          SelectionChangedCommand="{Binding SelectTransportaionCommand}" SelectedItem="{Binding SelectedTransportaition}">
+                        <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
+                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
                                         <Label>
                                             <Label.FormattedText>
                                                 <FormattedString>
@@ -87,21 +104,20 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                         </Label>
                                         <CheckBox Color="Gray" WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="5,0"></CheckBox>
                                     </StackLayout>
-                                </ViewCell>
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </Border>
                 <StackLayout Orientation="Horizontal" Margin="0,0">
                     <Label Text="Air Flight Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
 
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <ListView ItemsSource="{Binding airFlights}" HasUnevenRows="True" VerticalOptions="FillAndExpand" ItemTapped="AirFlight_ItemTapped">
-                        <ListView.ItemTemplate>
+                    <CollectionView ItemsSource="{Binding airFlights}" VerticalOptions="FillAndExpand" SelectionMode="Single"
+                                    SelectionChangedCommand="{Binding SelectAirFlightCommand}" SelectedItem="{Binding SelectedAirFlight}">
+                        <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
+                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
                                         <Label>
                                             <Label.FormattedText>
                                                 <FormattedString>
@@ -130,49 +146,47 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                         </Label>
                                         <CheckBox Color="Gray" WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="5,0"></CheckBox>
                                     </StackLayout>
-                                </ViewCell>
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </Border>
                 <StackLayout Orientation="Horizontal" Margin="0,0">
                     <Label Text="Visa Service" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
 
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <ListView ItemsSource="{Binding visaServices}" HasUnevenRows="True" VerticalOptions="FillAndExpand" ItemTapped="Visa_ItemTapped">
-                        <ListView.ItemTemplate>
+                    <CollectionView ItemsSource="{Binding visaServices}" VerticalOptions="FillAndExpand" SelectionMode="Single"
+                                    SelectionChangedCommand="{Binding SelectVisaCommand}" SelectedItem="{Binding SelectedVisa}">
+                        <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
-                                        <Label>
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="#" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
-                                                    <Span Text="{Binding VisaNo}" TextColor="#2fa562" FontSize="12"></Span>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Label>
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{Binding VisaType}" TextColor="Gray" FontSize="12"></Span>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Label>
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{Binding VisaNo}" TextColor="Gray" FontSize="12"></Span>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <CheckBox Color="Gray" WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="5,0"></CheckBox>
-                                    </StackLayout>
-                                </ViewCell>
+                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="#" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
+                                                <Span Text="{Binding VisaNo}" TextColor="#2fa562" FontSize="12"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding VisaType}" TextColor="Gray" FontSize="12"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding VisaNo}" TextColor="Gray" FontSize="12"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <CheckBox Color="Gray" WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="5,0"></CheckBox>
+                                </StackLayout>
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </Border>
             </StackLayout>
         </ScrollView>

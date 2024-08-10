@@ -21,8 +21,19 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
         public ObservableCollection<HotelService> Hotels { get; set; }
         public ObservableCollection<TransportaionServiceModdel> transportaionServices { get; set; }
         public ObservableCollection<AirFlightModdel> airFlights { get; set; }
-        public ObservableCollection<VisaServiceModdel> visaServices { get; set; } 
+        public ObservableCollection<VisaServiceModdel> visaServices { get; set; }
+
+        [ObservableProperty]
+        HotelService selectedHotel;
+        [ObservableProperty]
+        TransportaionServiceModdel selectedTransportaition;
+        [ObservableProperty]
+        AirFlightModdel selectedAirFlight;
+        [ObservableProperty]
+        VisaServiceModdel selectedVisa;
+
         #endregion
+
         public NewRequestViewModdel()
         {
             Hotels = new ObservableCollection<HotelService>();
@@ -35,35 +46,79 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
             LoadVisaData();
         }
 
-        #region Methodes
+        #region Generl RelayCommand
         [RelayCommand]
         void BackButtonClicked()
         {
             App.Current.MainPage.Navigation.PopAsync();
         }
+        #endregion
 
+        #region Hotel RelayCommand
         [RelayCommand]
         void AddHotel()
         {
             App.Current.MainPage.Navigation.PushAsync(new HotelServicesPage());
         }
+        [RelayCommand]
+        void SelectHotel()
+        {
+            var vm = new HotelServiceViewModdel(SelectedHotel);
+            var page = new HotelServicesPage();
+            page.BindingContext = vm;
+            App.Current.MainPage.Navigation.PushAsync(page);
+        } 
+        #endregion
 
+        #region Transportaiton RelayCommand
         [RelayCommand]
         void AddTransportaion()
         {
             App.Current.MainPage.Navigation.PushAsync(new TransportaionServicePage());
         }
         [RelayCommand]
+        void SelectTransportaion()
+        {
+            var vm = new TransportaionServiceViewModdel(SelectedTransportaition);
+            var page = new TransportaionServicePage();
+            page.BindingContext = vm;
+            App.Current.MainPage.Navigation.PushAsync(page);
+        } 
+        #endregion
+
+        #region Air Flight RelayCommand
+        [RelayCommand]
         void AddAirFlight()
         {
             App.Current.MainPage.Navigation.PushAsync(new AirFlightServicePage());
         }
         [RelayCommand]
+        void SelectAirFlight()
+        {
+            var vm = new AirFlightServicesViewModdel(SelectedAirFlight);
+            var page = new AirFlightServicePage();
+            page.BindingContext = vm;
+            App.Current.MainPage.Navigation.PushAsync(page);
+        } 
+        #endregion
+
+        #region Visa RelayCommand
+        [RelayCommand]
         void AddVisa()
         {
             App.Current.MainPage.Navigation.PushAsync(new VisaServicePage());
         }
+        [RelayCommand]
+        void SelectVisa()
+        {
+            var vm = new VisaServiceViewModdel(SelectedVisa);
+            var page = new VisaServicePage();
+            page.BindingContext = vm;
+            App.Current.MainPage.Navigation.PushAsync(page);
+        }
+        #endregion
 
+        #region Methodes
         void LoadData()
         {
             var checkinDate = DateOnly.FromDateTime(DateTime.Now.Date);
@@ -391,8 +446,9 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
                 Notes = "Government Official"
             });
 
-        }
+        } 
         #endregion
+
 
     }
 }

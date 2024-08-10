@@ -20,6 +20,7 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
         ObservableCollection<HotelService> hoteles;
         [ObservableProperty]
         int num;
+        
         #endregion
 
         public HotelServiceViewModdel()
@@ -27,8 +28,14 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
             Hoteles = new ObservableCollection<HotelService>();
             HotelService = new HotelService();
         }
+        public HotelServiceViewModdel(HotelService model)
+        {
+            Hoteles = new ObservableCollection<HotelService>();
+            HotelService = new HotelService();
+            HotelService = model;
+        }
 
-        #region Methodes
+        #region RelayCommand
         [RelayCommand]
         void AddRoom()
         {

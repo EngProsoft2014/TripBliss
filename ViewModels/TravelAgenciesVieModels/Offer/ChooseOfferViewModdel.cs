@@ -75,9 +75,12 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.Offer
 
         }
         [RelayCommand]
-        void SelectionOffer()
+        async void SelectionOffer(OfferModdel model)
         {
-            App.Current.MainPage.Navigation.PushAsync(new OfferDeteliesPage(SelectedItem));
+            var Vm = new OfferDetielesViewModdel(model);
+            var page = new OfferDeteliesPage();
+            page.BindingContext = Vm;   
+            await App.Current.MainPage.Navigation.PushAsync(page);
         }
 
     }

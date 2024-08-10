@@ -4,10 +4,9 @@ namespace TripBliss.Pages.TravelAgenciesPages.Offers;
 
 public partial class OfferDeteliesPage : ContentPage
 {
-	public OfferDeteliesPage(OfferModdel moddel)
+	public OfferDeteliesPage()
 	{
 		InitializeComponent();
-		Discraption.Text = moddel.Description;
-		OfferTitel.Text = moddel.OfferTitel;
+		
 	}
 }

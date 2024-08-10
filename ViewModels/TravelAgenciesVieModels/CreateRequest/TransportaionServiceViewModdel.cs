@@ -17,15 +17,24 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
         [ObservableProperty]
         TransportaionServiceModdel serviceModdel;
         [ObservableProperty]
-        ObservableCollection<TransportaionServiceModdel> transportation; 
+        ObservableCollection<TransportaionServiceModdel> transportation;
         #endregion
 
+        #region Const
         public TransportaionServiceViewModdel()
         {
             ServiceModdel = new TransportaionServiceModdel();
             Transportation = new ObservableCollection<TransportaionServiceModdel>();
         }
+        public TransportaionServiceViewModdel(TransportaionServiceModdel model)
+        {
+            ServiceModdel = new TransportaionServiceModdel();
+            Transportation = new ObservableCollection<TransportaionServiceModdel>();
+            ServiceModdel = model;
+        } 
+        #endregion
 
+        #region RelayCommand
         [RelayCommand]
         void OnApply()
         {
@@ -40,6 +49,7 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
         void OnBackButtonClicked()
         {
             App.Current.MainPage.Navigation.PopAsync();
-        }
+        } 
+        #endregion
     }
 }
