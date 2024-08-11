@@ -13,51 +13,56 @@
     </ContentPage.BindingContext>
     <StackLayout Orientation="Vertical" Margin="30">
         <Image Source="https://iconape.com/wp-content/png_logo_vector/bntu.png" WidthRequest="140" ></Image>
-        <Border StrokeShape="RoundRectangle 20" StrokeThickness="1" Stroke="Gray" VerticalOptions="Center" Margin="0,40,0,0">
-            <VerticalStackLayout Margin="20" Spacing="20">
-                <Image>
-                    <Image.Source>
-                        <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
-                    </Image.Source>
-                </Image>
-                <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                    <Entry Keyboard="Email" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="Email" HorizontalTextAlignment="Center"
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout >
+                <Border StrokeShape="RoundRectangle 20" StrokeThickness="1" Stroke="Gray" VerticalOptions="Center" Margin="0,40,0,0">
+                    <VerticalStackLayout Margin="20" Spacing="20">
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
+                            </Image.Source>
+                        </Image>
+                        <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
+                            <Entry Keyboard="Email" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="Email" HorizontalTextAlignment="Center"
                            Margin="10,2" FontFamily="OpenSansRegular" Text="{Binding Email}"></Entry>
-                </Border>
-                <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                    <Entry Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="Password" HorizontalTextAlignment="Center"
+                        </Border>
+                        <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
+                            <Entry Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="Password" HorizontalTextAlignment="Center"
                            Margin="10,2" FontFamily="OpenSansRegular" Text="{Binding Password}" IsPassword="True"></Entry>
-                </Border>
-                <Button Text="LOG IN" FontAttributes="Bold" TextColor="White" WidthRequest="140" FontSize="14" CornerRadius="25" Margin="0,30,0,0"
+                        </Border>
+                        <Button Text="LOG IN" FontAttributes="Bold" TextColor="White" WidthRequest="140" FontSize="14" CornerRadius="25" Margin="0,30,0,0"
                         Command="{Binding LogInCommand}">
-                    <Button.Background>
-                        <LinearGradientBrush EndPoint="1,0">
-                            <GradientStop Color="#66e89e" Offset="0.1" />
-                            <GradientStop Color="#1c874b" Offset="1.1" />
-                        </LinearGradientBrush>
-                    </Button.Background>
-                </Button>
-            </VerticalStackLayout>
-        </Border>
-        <Label Text="Forgot Password ?" TextColor="#0471DF" FontSize="13" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" Margin="0,20,0,0"
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="1,0">
+                                    <GradientStop Color="#66e89e" Offset="0.1" />
+                                    <GradientStop Color="#1c874b" Offset="1.1" />
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                    </VerticalStackLayout>
+                </Border>
+                <Label Text="Forgot Password ?" TextColor="#0471DF" FontSize="13" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" Margin="0,20,0,0"
                 FontAttributes="Bold" FontFamily="OpenSansSemibold">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OnForgot"></TapGestureRecognizer>
-            </Label.GestureRecognizers>
-        </Label>
-        <Label Margin="0,15,0,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span Text="Don't Have an Account? " FontSize="13" TextColor="Gray" FontFamily="OpenSansRegular"></Span>
-                    <Span Text="Sign Up" TextColor="Orange" FontSize="13" FontFamily="OpenSansRegular" FontAttributes="Bold">
-                        <Span.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnSignUp"></TapGestureRecognizer>
-                        </Span.GestureRecognizers>
-                    </Span>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnForgot"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Margin="0,15,0,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Don't Have an Account? " FontSize="13" TextColor="Gray" FontFamily="OpenSansRegular"></Span>
+                            <Span Text="Sign Up" TextColor="Orange" FontSize="13" FontFamily="OpenSansRegular" FontAttributes="Bold">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnSignUp"></TapGestureRecognizer>
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+        </ScrollView>
     </StackLayout>
-    
-    
+
+
+
 </ContentPage>

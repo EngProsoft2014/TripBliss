@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Models;
-using TripBliss.Pages.TravelAgenciesPages.RequestDeatiels;
+using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 
 namespace TripBliss.ViewModels.TravelAgenciesVieModels
 {
@@ -106,7 +106,7 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels
         [RelayCommand]
         void Selection()
         {
-            App.Current.MainPage.Navigation.PushAsync(new RequestDeatielsPage());
+            App.Current.MainPage.Navigation.PushAsync(new RequestDetailsPage());
         } 
         #endregion
     }

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Models;
 
-namespace TripBliss.ViewModels.DistributorsViewModel.ResponseDeatiels
+namespace TripBliss.ViewModels.DistributorsViewModel.ResponseDetails
 {
     partial class TransportaionServiceViewModdel : BaseViewModel
     {

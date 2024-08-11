@@ -92,37 +92,40 @@
 	  <Compile Update="Pages\DistributorsPages\Offer\OfferDeteliesPage.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\DistributorsPages\ResponseDetailes\AirFlightServicePage.xaml.cs">
+	  <Compile Update="Pages\DistributorsPages\ResponseDetails\AirFlightServicePage.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\DistributorsPages\ResponseDetailes\HotelServicesPage.xaml.cs">
+	  <Compile Update="Pages\DistributorsPages\ResponseDetails\HotelServicesPage.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\DistributorsPages\ResponseDetailes\RequestDeatielsPage.xaml.cs">
+	  <Compile Update="Pages\DistributorsPages\ResponseDetails\RequestDetailsPage.xaml.cs">
+	    <DependentUpon>RequestDetailsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\DistributorsPages\ResponseDetails\TransportaionServicePage.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\DistributorsPages\ResponseDetailes\TransportaionServicePage.xaml.cs">
-	    <DependentUpon>%(Filename)</DependentUpon>
-	  </Compile>
-	  <Compile Update="Pages\DistributorsPages\ResponseDetailes\VisaServicePage.xaml.cs">
+	  <Compile Update="Pages\DistributorsPages\ResponseDetails\VisaServicePage.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\TravelAgenciesPages\CreateRequest\ChooseDistributorPage.xaml.cs">
 	    <DependentUpon>ChooseDistributorPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\TravelAgenciesPages\RequestDeatiels\AirFlightServicePage.xaml.cs">
+	  <Compile Update="Pages\TravelAgenciesPages\RequestDetails\AirFlightServicePage.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\TravelAgenciesPages\RequestDeatiels\HotelServicesPage.xaml.cs">
+	  <Compile Update="Pages\TravelAgenciesPages\RequestDetails\HotelServicesPage.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\TravelAgenciesPages\RequestDeatiels\NewRequestPage.xaml.cs">
+	  <Compile Update="Pages\TravelAgenciesPages\RequestDetails\NewRequestPage.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\TravelAgenciesPages\RequestDeatiels\TransportaionServicePage.xaml.cs">
+	  <Compile Update="Pages\TravelAgenciesPages\RequestDetails\RequestDetailsPage.xaml.cs">
+	    <DependentUpon>RequestDetailsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\TravelAgenciesPages\RequestDetails\TransportaionServicePage.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\TravelAgenciesPages\RequestDeatiels\VisaServicePage.xaml.cs">
+	  <Compile Update="Pages\TravelAgenciesPages\RequestDetails\VisaServicePage.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
 	</ItemGroup>
@@ -140,19 +143,19 @@
 	  <MauiXaml Update="Pages\DistributorsPages\Offer\OfferViewersPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\DistributorsPages\ResponseDetailes\AirFlightServicePage.xaml">
+	  <MauiXaml Update="Pages\DistributorsPages\ResponseDetails\AirFlightServicePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\DistributorsPages\ResponseDetailes\HotelServicesPage.xaml">
+	  <MauiXaml Update="Pages\DistributorsPages\ResponseDetails\HotelServicesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\DistributorsPages\ResponseDetailes\RequestDeatielsPage.xaml">
+	  <MauiXaml Update="Pages\DistributorsPages\ResponseDetails\RequestDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\DistributorsPages\ResponseDetailes\TransportaionServicePage.xaml">
+	  <MauiXaml Update="Pages\DistributorsPages\ResponseDetails\TransportaionServicePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\DistributorsPages\ResponseDetailes\VisaServicePage.xaml">
+	  <MauiXaml Update="Pages\DistributorsPages\ResponseDetails\VisaServicePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\TravelAgenciesPages\CreateRequest\ChooseDistributorPage.xaml">
@@ -188,22 +191,22 @@
 	  <MauiXaml Update="Pages\TravelAgenciesPages\Offers\OfferDeteliesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDeatiels\AirFlightServicePage.xaml">
+	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\AirFlightServicePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDeatiels\HotelServicesPage.xaml">
+	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\HotelServicesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDeatiels\NewRequestPage.xaml">
+	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\NewRequestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDeatiels\RequestDeatielsPage.xaml">
+	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\RequestDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDeatiels\TransportaionServicePage.xaml">
+	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\TransportaionServicePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDeatiels\VisaServicePage.xaml">
+	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\VisaServicePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

@@ -17,5 +17,6 @@ namespace TripBliss.Models
         public string? From { get; set; }
         public string? To { get; set; }
         public string? Notes { get; set; }
+        public string? price { get; set; }
     }
 }

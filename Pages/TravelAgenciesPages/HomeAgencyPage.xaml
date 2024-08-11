@@ -19,7 +19,7 @@
                            VerticalOptions="EndAndExpand">
             <tabView:SfTabView.Items>
                 <!--Home-->
-                <tabView:SfTabItem Header="Home" TextColor="Black" FontSize="14" ImagePosition="Top" >
+                <tabView:SfTabItem Header="Home" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
@@ -101,7 +101,7 @@
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
                 <!--Distributors-->
-                <tabView:SfTabItem Header="Distributors" TextColor="Black" FontSize="14" ImagePosition="Top">
+                <tabView:SfTabItem Header="Distributors" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
@@ -110,7 +110,7 @@
                             <StackLayout Orientation="Vertical">
                                 <StackLayout Orientation="Horizontal" Spacing="10">
                                     <Label Text="Distributors" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
-                                   TextColor="Black" Margin="20" HorizontalOptions="EndAndExpand"></Label>
+                                           TextColor="Black" Margin="20" HorizontalOptions="EndAndExpand"></Label>
                                     <Button Text="Add Request" WidthRequest="95" Padding="0,10,0,10" HeightRequest="40" FontSize="12" Command="{Binding AddRequestCommand}"
                                         BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" Margin="0,0,15,0" FontAttributes="Bold">
                                     </Button>
@@ -118,7 +118,7 @@
                                 <tabView:SfTabView IndicatorBackground="#1c874b" VerticalOptions="FillAndExpand">
                                     <tabView:SfTabView.Items>
                                         <!--Distributors-->
-                                        <tabView:SfTabItem Header='Distributors' TextColor="Black" FontSize="14">
+                                        <tabView:SfTabItem Header='Distributors' TextColor="Black" FontSize="14" BackgroundColor="#f6fcf2">
                                             <tabView:SfTabItem.Content>
                                                 <ContentView>
                                                     <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20">
@@ -163,7 +163,7 @@
                                             </tabView:SfTabItem.Content>
                                         </tabView:SfTabItem>
                                         <!--Favourites-->
-                                        <tabView:SfTabItem Header='Favourites' TextColor="Black" FontSize="14">
+                                        <tabView:SfTabItem Header='Favourites' TextColor="Black" FontSize="14" BackgroundColor="#f6fcf2">
                                             <tabView:SfTabItem.Content>
                                                 <ContentView>
                                                     <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20">
@@ -217,7 +217,7 @@
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
                 <!--Offers-->
-                <tabView:SfTabItem Header="Offers" TextColor="Black" FontSize="14" ImagePosition="Top">
+                <tabView:SfTabItem Header="Offers" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
@@ -312,12 +312,12 @@
                         </ContentView>
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
-                <tabView:SfTabItem Header="History" TextColor="Black" FontSize="14" ImagePosition="Top">
+                <tabView:SfTabItem Header="History" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
                 </tabView:SfTabItem>
-                <tabView:SfTabItem Header="More" TextColor="Black" FontSize="14" ImagePosition="Top">
+                <tabView:SfTabItem Header="More" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>

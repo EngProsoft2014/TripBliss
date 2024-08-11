@@ -11,5 +11,6 @@ namespace TripBliss.Models
         public string? VisaType { get; set; }
         public string? VisaNo { get; set; }
         public string? Notes { get; set; }
+        public string? Price { get; set; }
     }
 }

@@ -103,7 +103,7 @@ namespace TripBliss.ViewModels.DistributorsViewModel
         [RelayCommand]
         void Selection()
         {
-            App.Current.MainPage.Navigation.PushAsync(new RequestDeatielsPage());
+            App.Current.MainPage.Navigation.PushAsync(new RequestDetailsPage());
         }
         #endregion
     }

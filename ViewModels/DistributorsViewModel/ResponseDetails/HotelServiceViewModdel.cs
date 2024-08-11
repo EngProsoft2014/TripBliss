@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
 
 
-namespace TripBliss.ViewModels.DistributorsViewModel.ResponseDeatiels
+namespace TripBliss.ViewModels.DistributorsViewModel.ResponseDetails
 {
     partial class HotelServiceViewModdel : BaseViewModel
     {

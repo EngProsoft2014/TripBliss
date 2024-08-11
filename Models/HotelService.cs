@@ -16,5 +16,6 @@ namespace TripBliss.Models
         public string? Meals { get; set; }
         public int RoomNo { get; set; }
         public string? Notes { get; set; }
+        public string? price { get; set; }
     }
 }

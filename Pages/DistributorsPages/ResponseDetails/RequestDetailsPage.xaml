@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TripBliss.Pages.TravelAgenciesPages.RequestDeatiels.RequestDeatielsPage"
+             x:Class="TripBliss.Pages.DistributorsPages.ResponseDetailes.RequestDetailsPage"
              xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
              xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
-             xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModel.ResponseDetails"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
-             Title="RequestDeatielsPage">
+             Title="RequestDetailsPage">
     <ContentPage.Resources>
         <Style TargetType="syncfusion:DataGridCell">
             <Setter Property="FontSize" Value="14"/>
         </Style>
     </ContentPage.Resources>
-    <StackLayout Orientation="Vertical" Margin="20">
+    <StackLayout Orientation="Vertical">
         <tabView:SfTabView TabBarPlacement="Bottom" VerticalOptions="EndAndExpand" IndicatorBackground="#1c874b"
                                IndicatorPlacement="Bottom">
             <tabView:SfTabView.Items>
                 <!--Request Details-->
-                <tabView:SfTabItem Header="Request Details" FontSize="14">
+                <tabView:SfTabItem Header="Request Details" FontSize="14" BackgroundColor="#f6fcf2">
                     <tabView:SfTabItem.Content>
                         <ContentView>
                             <ContentView.BindingContext>
-                                <vm:RequestDeatielsViewModdel></vm:RequestDeatielsViewModdel>
+                                <vm:RequestDetailsViewModdel></vm:RequestDetailsViewModdel>
                             </ContentView.BindingContext>
-                            <StackLayout Orientation="Vertical" Spacing="10">
+                            <StackLayout Orientation="Vertical" Spacing="10" Margin="20">
                                 <StackLayout Orientation="Horizontal">
-                                    <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand">
+                                    <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackButtonClickedCommand}">
                                         <ImageButton.Source>
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                         </ImageButton.Source>
@@ -74,8 +74,8 @@
                                                         </Label>
                                                         <Line StrokeThickness="2" Y1="0" Y2="40" Stroke="Gray" HorizontalOptions="EndAndExpand"></Line>
                                                         <VerticalStackLayout Margin="10,0" >
-                                                            <Label Text="03" FontSize="12" TextColor="#387955" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
-                                                            <Label Text="Naights" FontSize="12" TextColor="#387955" FontAttributes="Bold"></Label>
+                                                            <Label Text="03" FontSize="10" TextColor="#387955" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+                                                            <Label Text="Naights" FontSize="10" TextColor="#387955" FontAttributes="Bold"></Label>
                                                         </VerticalStackLayout>
                                                     </StackLayout>
                                                     <BoxView HorizontalOptions="FillAndExpand" Color="Gray" HeightRequest="1.5"></BoxView>
@@ -448,102 +448,271 @@
                         </ContentView>
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
-                <!--Active Distributors-->
-                <tabView:SfTabItem Header="Active Distributors" FontSize="14">
+                <!--Response-->
+                <tabView:SfTabItem Header="Response" FontSize="14" BackgroundColor="#f6fcf2">
                     <tabView:SfTabItem.Content>
                         <ContentView>
+                            <ContentView.BindingContext>
+                                <vm:RequestDetailsViewModdel></vm:RequestDetailsViewModdel>
+                            </ContentView.BindingContext>
                             <ContentView.Resources>
-                                <Style TargetType="Border">
+                                <Style TargetType="StackLayout">
                                     <Setter Property="VisualStateManager.VisualStateGroups">
                                         <VisualStateGroupList>
-                                            <VisualStateGroup x:Name="CommonStates">
-                                                <VisualState x:Name="Normal" >
+                                            <VisualStateGroup Name="CommonStates">
+                                                <VisualState Name="Normal"></VisualState>
+                                                <VisualState Name="Selected">
                                                     <VisualState.Setters>
-                                                        <Setter Property="Border.Stroke" Value="Gray" />
+                                                        <Setter Property="BackgroundColor" Value="Transparent"></Setter>
                                                     </VisualState.Setters>
                                                 </VisualState>
-                                                <VisualState x:Name="Selected">
-                                                    <VisualState.Setters>
-                                                        <Setter Property="Border.Stroke" Value="Green" />
-                                                        <Setter Property="Border.StrokeThickness" Value="3" />
-                                                        <Setter Property="Border.BackgroundColor" Value="Transparent" />
-                                                    </VisualState.Setters>
-                                                </VisualState>
+
                                             </VisualStateGroup>
                                         </VisualStateGroupList>
                                     </Setter>
+
+
                                 </Style>
                             </ContentView.Resources>
-                            <ContentView.BindingContext>
-                                <vm:RequestDeatielsViewModdel></vm:RequestDeatielsViewModdel>
-                            </ContentView.BindingContext>
-                            <StackLayout Orientation="Vertical">
+                            <StackLayout Orientation="Vertical" Margin="20" Spacing="10">
                                 <StackLayout Orientation="Horizontal">
-                                    <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackButtonCommand}">
+                                    <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackButtonClickedCommand}">
                                         <ImageButton.Source>
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                         </ImageButton.Source>
                                     </ImageButton>
-                                    <Label Text="Distributors" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
-                                               TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+                                    <Label Text="Request Name" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                                           TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                 </StackLayout>
-                                <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="0,20,0,0" BackgroundColor="White">
-                                    <Grid>
-                                        <SearchBar BackgroundColor="White" Placeholder="Search" HeightRequest="40" FontSize="15" TextColor="Black"></SearchBar>
-                                        <Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
-                                            <Image WidthRequest="20" HeightRequest="20">
-                                                <Image.Source>
-                                                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="White"></FontImageSource>
-                                                </Image.Source>
-                                            </Image>
-                                        </Border>
-                                    </Grid>
-                                    <Border.Shadow>
-                                        <Shadow  Brush="DarkGray" Opacity="1"></Shadow>
-                                    </Border.Shadow>
-                                </Border>
-                                <HorizontalStackLayout>
-                                    <CheckBox Color="#76d973" VerticalOptions="CenterAndExpand"></CheckBox>
-                                    <Label Text="Select All" FontSize="14" TextColor="Black" VerticalTextAlignment="Center"></Label>
-                                </HorizontalStackLayout>
-                                <CollectionView ItemsSource="{Binding distributors}" VerticalOptions="FillAndExpand" SelectionMode="Single"
-                                                 SelectionChangedCommand="{Binding SelectionCommand}">
-                                    <CollectionView.ItemTemplate>
-                                        <DataTemplate  x:Name="Data">
-                                            <Border x:Name="BorderOfItem" StrokeShape="RoundRectangle 20" Margin="0,10">
-                                                <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
-                                                    <VerticalStackLayout Padding="10" Spacing="5">
-                                                        <Label Text="{Binding Name}" FontSize="14" TextColor="Black" FontAttributes="Bold"></Label>
-                                                        <Label Text="{Binding Phone}" FontSize="12" TextColor="Gray"></Label>
-                                                        <Label Text="{Binding Services}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
-                                                        <Label Margin="0,3,0,0">
-                                                            <Label.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Text="Address : " FontSize="12" TextColor="DeepSkyBlue" ></Span>
-                                                                    <Span Text="{Binding Address}" FontSize="12" TextColor="DeepSkyBlue" ></Span>
-                                                                </FormattedString>
-                                                            </Label.FormattedText>
-                                                        </Label>
-                                                    </VerticalStackLayout>
-                                                    <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand">
-                                                        <StackLayout Orientation="Horizontal" Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="5"
-                                                                     VerticalOptions="StartAndExpand">
-                                                            <Label Text="{Binding Rate}" FontSize="14" TextColor="Black" FontAttributes="Bold"
-                                                                    VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand"></Label>
-                                                            <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand">
-                                                                <Image.Source>
-                                                                    <FontImageSource Glyph="" FontFamily="FontIconSolid"
-                                                                                     Color="Gold"></FontImageSource>
-                                                                </Image.Source>
-                                                            </Image>
-
-                                                        </StackLayout>
-                                                    </StackLayout>
-                                                </StackLayout>
+                                <ScrollView VerticalOptions="FillAndExpand">
+                                    <StackLayout Spacing="20">
+                                        <StackLayout Orientation="Horizontal" Margin="0,15,0,0">
+                                            <Label Text="Hotel Services" FontSize="16" TextColor="DarkOrange" VerticalTextAlignment="Center"></Label>
+                                            <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
+                                                    StrokeThickness="1.5" Padding="2">
+                                                <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddHotelCommand}">
+                                                    <ImageButton.Source>
+                                                        <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
+                                                    </ImageButton.Source>
+                                                </ImageButton>
                                             </Border>
-                                        </DataTemplate>
-                                    </CollectionView.ItemTemplate>
-                                </CollectionView>
+                                        </StackLayout>
+                                        <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
+                                            <CollectionView ItemsSource="{Binding Hotels}" VerticalOptions="FillAndExpand" SelectedItem="{Binding SelectedHotel}"
+                                                            SelectionChangedCommand="{Binding  SelectHotelCommand}" SelectionMode="Single">
+                                                <CollectionView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackLayout Orientation="Horizontal" Spacing="10" Padding="3" Margin="0,5">
+                                                            <Label>
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding HotelName}" TextColor="Gray" FontSize="10"></Span>
+                                                                        <Span Text=" - " TextColor="Gray" FontSize="10"></Span>
+                                                                        <Span Text="{Binding RoomView}" TextColor="Gray" FontSize="10"></Span>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <Label>
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding Checkin}" TextColor="Gray" FontSize="10"></Span>
+                                                                        <Span Text=" - " TextColor="Gray" FontSize="10"></Span>
+                                                                        <Span Text="{Binding Checkout}" TextColor="Gray" FontSize="10"></Span>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <Label HorizontalOptions="EndAndExpand">
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="SAR " TextColor="LightSkyBlue" FontSize="10"></Span>
+                                                                        <Span Text="{Binding price}" TextColor="LightSkyBlue" FontSize="10"></Span>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <ImageButton WidthRequest="20" HeightRequest="20" >
+                                                                <ImageButton.Source>
+                                                                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                                                </ImageButton.Source>
+                                                            </ImageButton>
+                                                        </StackLayout>
+                                                    </DataTemplate>
+                                                </CollectionView.ItemTemplate>
+                                            </CollectionView>
+                                        </Border>
+                                        <StackLayout Orientation="Horizontal" Margin="0,0">
+                                            <Label Text="Transportaion Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                                            <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
+                    StrokeThickness="1.5" Padding="2">
+                                                <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddTransportaionCommand}">
+                                                    <ImageButton.Source>
+                                                        <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
+                                                    </ImageButton.Source>
+                                                </ImageButton>
+                                            </Border>
+                                        </StackLayout>
+                                        <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
+                                            <CollectionView ItemsSource="{Binding transportaionServices}" VerticalOptions="FillAndExpand" SelectionMode="Single"
+                                                            SelectedItem="{Binding SelectedTransportaition}" SelectionChangedCommand="{Binding  SelectTransportaionCommand}">
+                                                <CollectionView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackLayout Orientation="Horizontal" Spacing="10" Padding="3" Margin="0,5">
+                                                            <Label>
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="M.Sprinter " TextColor="#2fa562" FontSize="10" FontAttributes="Bold"></Span>
+                                                                        <Span Text="{Binding From}" TextColor="Gray" FontSize="10"></Span>
+                                                                        <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
+                                                                        <Span Text="{Binding To}" TextColor="Gray" FontSize="10"></Span>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <Label>
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding Nos}" TextColor="Gray" FontSize="10"></Span>
+                                                                        <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
+                                                                        <Span Text="{Binding Date}" TextColor="Gray" FontSize="10"></Span>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <Label HorizontalOptions="EndAndExpand">
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="SAR " TextColor="LightSkyBlue" FontSize="10"></Span>
+                                                                        <Span Text="{Binding price}" TextColor="LightSkyBlue" FontSize="10"></Span>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <ImageButton WidthRequest="20" HeightRequest="20">
+                                                                <ImageButton.Source>
+                                                                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                                                </ImageButton.Source>
+                                                            </ImageButton>
+                                                        </StackLayout>
+                                                    </DataTemplate>
+                                                </CollectionView.ItemTemplate>
+                                            </CollectionView>
+                                        </Border>
+                                        <StackLayout Orientation="Horizontal" Margin="0,0">
+                                            <Label Text="Air Flight Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                                            <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
+                    StrokeThickness="1.5" Padding="2">
+                                                <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddAirFlightCommand}">
+                                                    <ImageButton.Source>
+                                                        <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
+                                                    </ImageButton.Source>
+                                                </ImageButton>
+                                            </Border>
+                                        </StackLayout>
+                                        <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
+                                            <CollectionView ItemsSource="{Binding airFlights}" VerticalOptions="FillAndExpand" SelectedItem="{Binding SelectedAirFlight}"
+                                                            SelectionChangedCommand="{Binding  SelectAirFlightCommand}" SelectionMode="Single">
+                                                <CollectionView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackLayout Orientation="Horizontal" Spacing="10" Padding="3" Margin="0,5">
+                                                            <Label VerticalOptions="EndAndExpand">
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="QR " TextColor="#2fa562" FontSize="10" FontAttributes="Bold"></Span>
+                                                                        <Span Text="1178" TextColor="#2fa562" FontSize="10"></Span>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <Label >
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding From}" TextColor="Gray" FontSize="10"></Span>
+                                                                        <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
+                                                                        <Span Text="{Binding To}" TextColor="Gray" FontSize="10"></Span>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <Label>
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding Child}" TextColor="Gray" FontSize="10"></Span>
+                                                                        <Span Text="  " TextColor="Gray" FontSize="14"></Span>
+                                                                        <Span Text="{Binding Date}" TextColor="Gray" FontSize="10"></Span>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <Label HorizontalOptions="EndAndExpand">
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="SAR " TextColor="LightSkyBlue" FontSize="10"></Span>
+                                                                        <Span Text="{Binding price}" TextColor="LightSkyBlue" FontSize="10"></Span>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <ImageButton WidthRequest="20" HeightRequest="20">
+                                                                <ImageButton.Source>
+                                                                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                                                </ImageButton.Source>
+                                                            </ImageButton>
+                                                        </StackLayout>
+                                                    </DataTemplate>
+                                                </CollectionView.ItemTemplate>
+                                            </CollectionView>
+                                        </Border>
+                                        <StackLayout Orientation="Horizontal" Margin="0,0">
+                                            <Label Text="Visa Service" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                                            <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
+                    StrokeThickness="1.5" Padding="2">
+                                                <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddVisaCommand}">
+                                                    <ImageButton.Source>
+                                                        <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
+                                                    </ImageButton.Source>
+                                                </ImageButton>
+                                            </Border>
+                                        </StackLayout>
+                                        <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
+                                            <CollectionView ItemsSource="{Binding visaServices}" VerticalOptions="FillAndExpand" SelectedItem="{Binding SelectedVisa}"
+                                                            SelectionChangedCommand="{Binding  SelectVisaCommand}" SelectionMode="Single">
+                                                <CollectionView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
+                                                            <Label>
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="#" TextColor="#2fa562" FontSize="10" FontAttributes="Bold"></Span>
+                                                                        <Span Text="{Binding VisaNo}" TextColor="#2fa562" FontSize="10"></Span>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <Label>
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding VisaType}" TextColor="Gray" FontSize="10"></Span>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <Label>
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding VisaNo}" TextColor="Gray" FontSize="10"></Span>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <Label HorizontalOptions="EndAndExpand">
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="SAR " TextColor="LightSkyBlue" FontSize="10"></Span>
+                                                                        <Span Text="{Binding price}" TextColor="LightSkyBlue" FontSize="10"></Span>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <ImageButton WidthRequest="20" HeightRequest="20">
+                                                                <ImageButton.Source>
+                                                                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                                                </ImageButton.Source>
+                                                            </ImageButton>
+                                                        </StackLayout>
+                                                    </DataTemplate>
+                                                </CollectionView.ItemTemplate>
+                                            </CollectionView>
+                                        </Border>
+                                    </StackLayout>
+                                </ScrollView>
                             </StackLayout>
                         </ContentView>
                     </tabView:SfTabItem.Content>

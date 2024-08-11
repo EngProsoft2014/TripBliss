@@ -19,7 +19,7 @@
             <Label Text="Air Flight Service" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
-        <ScrollView>
+        <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout >
 
                 <Border StrokeShape="RoundRectangle 15" Margin="0,40" BackgroundColor="White">

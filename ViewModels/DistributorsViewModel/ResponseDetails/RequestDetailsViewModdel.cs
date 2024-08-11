@@ -1,22 +1,19 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Models;
-using System.Collections.ObjectModel;
-using CommunityToolkit.Mvvm.ComponentModel;
-using System.ComponentModel;
-using Microsoft.VisualBasic;
-using TripBliss.Pages.TravelAgenciesPages.RequestDeatiels;
-using TripBliss.ViewModels.DistributorsViewModel.CreateResponse;
+using TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest;
+using TripBliss.Pages.DistributorsPages.ResponseDetailes;
 
-namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
+namespace TripBliss.ViewModels.DistributorsViewModel.ResponseDetails
 {
-    partial class NewRequestViewModdel : BaseViewModel
+    partial class RequestDetailsViewModdel : BaseViewModel
     {
-
 
         #region prop
         public ObservableCollection<HotelService> Hotels { get; set; }
@@ -35,7 +32,7 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
 
         #endregion
 
-        public NewRequestViewModdel()
+        public RequestDetailsViewModdel()
         {
             Hotels = new ObservableCollection<HotelService>();
             transportaionServices = new ObservableCollection<TransportaionServiceModdel>();
@@ -57,16 +54,26 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
 
         #region Hotel RelayCommand
         [RelayCommand]
+        void AddHotel()
+        {
+            App.Current.MainPage.Navigation.PushAsync(new HotelServicesPage());
+        }
+        [RelayCommand]
         void SelectHotel()
         {
             var vm = new HotelServiceViewModdel(SelectedHotel);
             var page = new HotelServicesPage();
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
-        } 
+        }
         #endregion
 
         #region Transportaiton RelayCommand
+        [RelayCommand]
+        void AddTransportaion()
+        {
+            App.Current.MainPage.Navigation.PushAsync(new TransportaionServicePage());
+        }
         [RelayCommand]
         void SelectTransportaion()
         {
@@ -74,10 +81,15 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
             var page = new TransportaionServicePage();
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
-        } 
+        }
         #endregion
 
         #region Air Flight RelayCommand
+        [RelayCommand]
+        void AddAirFlight()
+        {
+            App.Current.MainPage.Navigation.PushAsync(new AirFlightServicePage());
+        }
         [RelayCommand]
         void SelectAirFlight()
         {
@@ -85,10 +97,15 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
             var page = new AirFlightServicePage();
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
-        } 
+        }
         #endregion
 
         #region Visa RelayCommand
+        [RelayCommand]
+        void AddVisa()
+        {
+            App.Current.MainPage.Navigation.PushAsync(new VisaServicePage());
+        }
         [RelayCommand]
         void SelectVisa()
         {
@@ -114,7 +131,8 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
                 Notes = "Good Clean",
                 RoomNo = 5,
                 RoomType = "Vip",
-                RoomView = "Nile"
+                RoomView = "Nile",
+                price = "750"
             });
 
             Hotels.Add(new HotelService()
@@ -126,7 +144,8 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
                 Notes = "Excellent Service",
                 RoomNo = 10,
                 RoomType = "Suite",
-                RoomView = "City"
+                RoomView = "City",
+                price = "650"
             });
 
             Hotels.Add(new HotelService()
@@ -138,7 +157,8 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
                 Notes = "Great Location",
                 RoomNo = 15,
                 RoomType = "Deluxe",
-                RoomView = "Sea"
+                RoomView = "Sea",
+                price = "550"
             });
 
             Hotels.Add(new HotelService()
@@ -150,7 +170,8 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
                 Notes = "Cozy Atmosphere",
                 RoomNo = 20,
                 RoomType = "Standard",
-                RoomView = "Mountain"
+                RoomView = "Mountain",
+                price = "450"
             });
 
             Hotels.Add(new HotelService()
@@ -162,7 +183,8 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
                 Notes = "Convenient Location",
                 RoomNo = 25,
                 RoomType = "Standard",
-                RoomView = "City"
+                RoomView = "City",
+                price = "650"
             });
 
             Hotels.Add(new HotelService()
@@ -174,7 +196,8 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
                 Notes = "Peaceful Surroundings",
                 RoomNo = 30,
                 RoomType = "Deluxe",
-                RoomView = "Forest"
+                RoomView = "Forest",
+                price = "750"
             });
 
             Hotels.Add(new HotelService()
@@ -186,7 +209,8 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
                 Notes = "Unique Experience",
                 RoomNo = 35,
                 RoomType = "Vip",
-                RoomView = "Desert"
+                RoomView = "Desert",
+                price = "950"
             });
 
         }
@@ -205,7 +229,8 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
                 Nos = 4,
                 time = currentTime,
                 To = "Asuut",
-                Notes = "Black Color"
+                Notes = "Black Color",
+                price = "650"
             });
 
             transportaionServices.Add(new TransportaionServiceModdel()
@@ -218,7 +243,8 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
                 Nos = 3,
                 time = currentTime.AddHours(1),
                 To = "Cairo",
-                Notes = "White Color"
+                Notes = "White Color",
+                price = "670"
             });
 
             transportaionServices.Add(new TransportaionServiceModdel()
@@ -231,7 +257,8 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
                 Nos = 2,
                 time = currentTime.AddHours(2),
                 To = "Luxor",
-                Notes = "Red Color"
+                Notes = "Red Color",
+                price = "690"
             });
 
             transportaionServices.Add(new TransportaionServiceModdel()
@@ -244,7 +271,8 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
                 Nos = 4,
                 time = currentTime.AddHours(3),
                 To = "Sharm El-Sheikh",
-                Notes = "Blue Color"
+                Notes = "Blue Color",
+                price = "250"
             });
 
             transportaionServices.Add(new TransportaionServiceModdel()
@@ -257,7 +285,8 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
                 Nos = 8,
                 time = currentTime.AddHours(4),
                 To = "Cairo",
-                Notes = "Green Color"
+                Notes = "Green Color",
+                price = "680"
             });
 
             transportaionServices.Add(new TransportaionServiceModdel()
@@ -270,7 +299,8 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
                 Nos = 4,
                 time = currentTime.AddHours(5),
                 To = "Port Said",
-                Notes = "Yellow Color"
+                Notes = "Yellow Color",
+                price = "650"
             });
 
             transportaionServices.Add(new TransportaionServiceModdel()
@@ -283,7 +313,8 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
                 Nos = 6,
                 time = currentTime.AddHours(6),
                 To = "Cairo",
-                Notes = "Silver Color"
+                Notes = "Silver Color",
+                price = "670"
             });
 
         }
@@ -303,7 +334,8 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
                 ETD = "03:00 PM",
                 From = "Canada",
                 To = "Egypt",
-                Notes = "Comfortable Seats"
+                Notes = "Comfortable Seats",
+                price = "670"
             });
 
             airFlights.Add(new AirFlightModdel()
@@ -318,7 +350,8 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
                 ETD = "01:00 PM",
                 From = "UK",
                 To = "Egypt",
-                Notes = "Excellent In-Flight Entertainment"
+                Notes = "Excellent In-Flight Entertainment",
+                price = "650"
             });
 
             airFlights.Add(new AirFlightModdel()
@@ -333,7 +366,8 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
                 ETD = "11:00 AM",
                 From = "Australia",
                 To = "Egypt",
-                Notes = "Friendly Staff"
+                Notes = "Friendly Staff",
+                price = "350"
             });
 
             airFlights.Add(new AirFlightModdel()
@@ -348,7 +382,8 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
                 ETD = "12:00 PM",
                 From = "Germany",
                 To = "Egypt",
-                Notes = "Spacious Legroom"
+                Notes = "Spacious Legroom",
+                price = "950"
             });
 
             airFlights.Add(new AirFlightModdel()
@@ -363,7 +398,8 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
                 ETD = "02:00 PM",
                 From = "France",
                 To = "Egypt",
-                Notes = "Great Food"
+                Notes = "Great Food",
+                price = "610"
             });
 
             airFlights.Add(new AirFlightModdel()
@@ -378,7 +414,8 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
                 ETD = "10:00 AM",
                 From = "Italy",
                 To = "Egypt",
-                Notes = "Smooth Flight"
+                Notes = "Smooth Flight",
+                price = "690"
             });
 
         }
@@ -389,47 +426,51 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
             {
                 VisaType = "Tourist",
                 VisaNo = "048",
-                Notes = "Single Entry"
+                Notes = "Single Entry",
+                Price = "250"
             });
 
             visaServices.Add(new VisaServiceModdel()
             {
                 VisaType = "Student",
                 VisaNo = "052",
-                Notes = "University Enrollment"
+                Notes = "University Enrollment",
+                Price = "290"
             });
 
             visaServices.Add(new VisaServiceModdel()
             {
                 VisaType = "Business",
                 VisaNo = "061",
-                Notes = "Multiple Entry"
+                Notes = "Multiple Entry",
+                Price = "150"
             });
 
             visaServices.Add(new VisaServiceModdel()
             {
                 VisaType = "Transit",
                 VisaNo = "072",
-                Notes = "24-hour Validity"
+                Notes = "24-hour Validity",
+                Price = "250"
             });
 
             visaServices.Add(new VisaServiceModdel()
             {
                 VisaType = "Medical",
                 VisaNo = "083",
-                Notes = "Hospital Treatment"
+                Notes = "Hospital Treatment",
+                Price = "250"
             });
 
             visaServices.Add(new VisaServiceModdel()
             {
                 VisaType = "Diplomatic",
                 VisaNo = "091",
-                Notes = "Government Official"
+                Notes = "Government Official",
+                Price = "350"
             });
 
-        } 
+        }
         #endregion
-
-
     }
 }

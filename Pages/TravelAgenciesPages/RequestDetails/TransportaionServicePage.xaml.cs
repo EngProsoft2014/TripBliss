@@ -1,4 +1,4 @@
-namespace TripBliss.Pages.TravelAgenciesPages.RequestDeatiels;
+namespace TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 
 public partial class TransportaionServicePage : ContentPage
 {

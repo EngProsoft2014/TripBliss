@@ -8,18 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Models;
 using TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest;
-using TripBliss.Pages.TravelAgenciesPages.RequestDeatiels;
+using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 
-namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
+namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDetails
 {
-    partial class RequestDeatielsViewModdel : BaseViewModel
+    partial class RequestDetailsViewModdel : BaseViewModel
     {
         public ObservableCollection<TransportaitionRequestDetailesModdel> transportaionServices { get; set; }
         public ObservableCollection<AirFlightModdel> airFlights { get; set; }
         public ObservableCollection<VisaServiceModdel> visaServices { get; set; }
         public ObservableCollection<DistributorsModdel>? distributors { get; set; }
 
-        public RequestDeatielsViewModdel()
+        public RequestDetailsViewModdel()
         {
             transportaionServices = new ObservableCollection<TransportaitionRequestDetailesModdel>();
             airFlights = new ObservableCollection<AirFlightModdel>();
