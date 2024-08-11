@@ -11,7 +11,7 @@ using System.ComponentModel;
 using Microsoft.VisualBasic;
 using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
 
-namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
+namespace TripBliss.ViewModels.DistributorsViewModel.CreateResponse
 {
     partial class NewRequestViewModdel : BaseViewModel
     {
@@ -67,7 +67,7 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
             var page = new HotelServicesPage();
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
-        }
+        } 
         #endregion
 
         #region Transportaiton RelayCommand
@@ -83,7 +83,7 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
             var page = new TransportaionServicePage();
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
-        }
+        } 
         #endregion
 
         #region Air Flight RelayCommand
@@ -99,7 +99,7 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
             var page = new AirFlightServicePage();
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
-        }
+        } 
         #endregion
 
         #region Visa RelayCommand

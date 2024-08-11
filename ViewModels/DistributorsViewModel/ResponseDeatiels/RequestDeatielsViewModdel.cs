@@ -1,21 +1,19 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Models;
-using System.Collections.ObjectModel;
-using CommunityToolkit.Mvvm.ComponentModel;
-using System.ComponentModel;
-using Microsoft.VisualBasic;
-using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
+using TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest;
+using TripBliss.Pages.DistributorsPages.ResponseDetailes;
 
-namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
+namespace TripBliss.ViewModels.DistributorsViewModel.ResponseDeatiels
 {
-    partial class NewRequestViewModdel : BaseViewModel
+    partial class RequestDeatielsViewModdel : BaseViewModel
     {
-
 
         #region prop
         public ObservableCollection<HotelService> Hotels { get; set; }
@@ -34,7 +32,7 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
 
         #endregion
 
-        public NewRequestViewModdel()
+        public RequestDeatielsViewModdel()
         {
             Hotels = new ObservableCollection<HotelService>();
             transportaionServices = new ObservableCollection<TransportaionServiceModdel>();
@@ -446,9 +444,7 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
                 Notes = "Government Official"
             });
 
-        } 
+        }
         #endregion
-
-
     }
 }

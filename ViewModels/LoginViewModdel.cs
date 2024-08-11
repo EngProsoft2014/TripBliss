@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Pages.TravelAgenciesPages;
+using TripBliss.Pages.DistributorsPages;
 
 
 namespace TripBliss.ViewModels
@@ -26,8 +27,15 @@ namespace TripBliss.ViewModels
         async void OnLogIn()
         {
             IsBusy = true;
+            if (Email == "d")
+            {
+                await App.Current.MainPage.Navigation.PushAsync(new HomeDistributorsPage());
+            }
+            else
+            {
+                await App.Current.MainPage.Navigation.PushAsync(new HomeAgencyPage());
+            }
             
-            await App.Current.MainPage.Navigation.PushAsync(new HomeAgencyPage());
             IsBusy = false;
 
         }

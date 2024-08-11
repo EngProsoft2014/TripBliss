@@ -1,8 +1,8 @@
 namespace TripBliss.Pages.DistributorsPages.ResponseDetailes;
 
-public partial class RequestDeatielsPage : ContentPage
+public partial class AirFlightServicePage : ContentPage
 {
-	public RequestDeatielsPage()
+	public AirFlightServicePage()
 	{
 		InitializeComponent();
 	}

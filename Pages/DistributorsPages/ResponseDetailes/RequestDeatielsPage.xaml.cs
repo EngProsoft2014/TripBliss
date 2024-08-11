@@ -1,4 +1,4 @@
-namespace TripBliss.Pages.DistributorsPages.ResponseDetailes;
+namespace TripBliss.Pages.TravelAgenciesPages.RequestDeatiels;
 
 public partial class RequestDeatielsPage : ContentPage
 {

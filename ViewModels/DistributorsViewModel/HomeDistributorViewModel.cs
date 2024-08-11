@@ -3,23 +3,24 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TripBliss.Models;
-using TripBliss.Pages.TravelAgenciesPages.RequestDeatiels;
+using TripBliss.Pages.DistributorsPages.ResponseDetailes;
 
-namespace TripBliss.ViewModels
+namespace TripBliss.ViewModels.DistributorsViewModel
 {
-    partial class HomeViewModdel : BaseViewModel
+    partial class HomeDistributorViewModel : BaseViewModel
     {
-        public ObservableCollection<RequestClass> requests{ get; set; }
-        public HomeViewModdel()
+        #region Prop
+        public ObservableCollection<RequestClass> requests { get; set; }
+        #endregion
+
+        public HomeDistributorViewModel()
         {
             requests = new ObservableCollection<RequestClass>();
             LoadData();
         }
 
-
+        #region Methods
         void LoadData()
         {
             requests.Add(new RequestClass()
@@ -27,7 +28,7 @@ namespace TripBliss.ViewModels
                 Date = DateOnly.FromDateTime(DateTime.Now),
                 RugestName = "Group 1",
                 DistName = "Tark",
-                Statues = "Complated",
+                Statues = "Active",
                 Services = "Hotel - Tickting - Transportion"
 
             });
@@ -36,7 +37,7 @@ namespace TripBliss.ViewModels
                 Date = DateOnly.FromDateTime(DateTime.Now),
                 RugestName = "Group 2",
                 DistName = "Ali",
-                Statues = "Pinding",
+                Statues = "Not Active",
                 Services = "Hotel - Tickting - Transportion"
 
             });
@@ -45,7 +46,7 @@ namespace TripBliss.ViewModels
                 Date = DateOnly.FromDateTime(DateTime.Now),
                 RugestName = "Group 3",
                 DistName = "Mohammed",
-                Statues = "Accepted",
+                Statues = "Not Active",
                 Services = "Hotel - Tickting - Transportion"
 
             });
@@ -54,7 +55,7 @@ namespace TripBliss.ViewModels
                 Date = DateOnly.FromDateTime(DateTime.Now),
                 RugestName = "Group 4",
                 DistName = "Abdullah",
-                Statues = "Complated",
+                Statues = "Active",
                 Services = "Hotel - Tickting - Transportion"
 
             });
@@ -63,7 +64,7 @@ namespace TripBliss.ViewModels
                 Date = DateOnly.FromDateTime(DateTime.Now),
                 RugestName = "Group 5",
                 DistName = "Hassn",
-                Statues = "Accepted",
+                Statues = "Active",
                 Services = "Hotel - Tickting - Transportion"
 
             });
@@ -72,7 +73,7 @@ namespace TripBliss.ViewModels
                 Date = DateOnly.FromDateTime(DateTime.Now),
                 RugestName = "Group 6",
                 DistName = "Omar",
-                Statues = "Complated",
+                Statues = "Not Active",
                 Services = "Hotel - Tickting - Transportion"
 
             });
@@ -81,7 +82,7 @@ namespace TripBliss.ViewModels
                 Date = DateOnly.FromDateTime(DateTime.Now),
                 RugestName = "Group 7",
                 DistName = "Tark",
-                Statues = "Complated",
+                Statues = "Active",
                 Services = "Hotel - Tickting - Transportion"
 
             });
@@ -90,16 +91,20 @@ namespace TripBliss.ViewModels
                 Date = DateOnly.FromDateTime(DateTime.Now),
                 RugestName = "Group 1",
                 DistName = "Tark",
-                Statues = "Complated",
+                Statues = "Not Active",
                 Services = "Hotel - Tickting - Transportion"
 
             });
 
         }
+        #endregion
+
+        #region RelayCommand
         [RelayCommand]
         void Selection()
         {
             App.Current.MainPage.Navigation.PushAsync(new RequestDeatielsPage());
         }
+        #endregion
     }
 }

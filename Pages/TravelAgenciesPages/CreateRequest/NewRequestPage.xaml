@@ -40,11 +40,10 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout Spacing="10">
-
-                <StackLayout Orientation="Horizontal" Margin="0,15,15,0">
+                <StackLayout Orientation="Horizontal" Margin="0,15,0,0">
                     <Label Text="Hotel Services" FontSize="16" TextColor="DarkOrange" VerticalTextAlignment="Center"></Label>
                     <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                    StrokeThickness="1.5" Padding="2">
+                            StrokeThickness="1.5" Padding="2">
                         <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddHotelCommand}">
                             <ImageButton.Source>
                                 <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>

@@ -9,9 +9,10 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.ComponentModel;
 using Microsoft.VisualBasic;
-using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
+using TripBliss.Pages.TravelAgenciesPages.RequestDeatiels;
+using TripBliss.ViewModels.DistributorsViewModel.CreateResponse;
 
-namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
+namespace TripBliss.ViewModels.TravelAgenciesVieModels.RequestDeatiels
 {
     partial class NewRequestViewModdel : BaseViewModel
     {
@@ -56,26 +57,16 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
 
         #region Hotel RelayCommand
         [RelayCommand]
-        void AddHotel()
-        {
-            App.Current.MainPage.Navigation.PushAsync(new HotelServicesPage());
-        }
-        [RelayCommand]
         void SelectHotel()
         {
             var vm = new HotelServiceViewModdel(SelectedHotel);
             var page = new HotelServicesPage();
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
-        }
+        } 
         #endregion
 
         #region Transportaiton RelayCommand
-        [RelayCommand]
-        void AddTransportaion()
-        {
-            App.Current.MainPage.Navigation.PushAsync(new TransportaionServicePage());
-        }
         [RelayCommand]
         void SelectTransportaion()
         {
@@ -83,15 +74,10 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
             var page = new TransportaionServicePage();
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
-        }
+        } 
         #endregion
 
         #region Air Flight RelayCommand
-        [RelayCommand]
-        void AddAirFlight()
-        {
-            App.Current.MainPage.Navigation.PushAsync(new AirFlightServicePage());
-        }
         [RelayCommand]
         void SelectAirFlight()
         {
@@ -99,15 +85,10 @@ namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
             var page = new AirFlightServicePage();
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
-        }
+        } 
         #endregion
 
         #region Visa RelayCommand
-        [RelayCommand]
-        void AddVisa()
-        {
-            App.Current.MainPage.Navigation.PushAsync(new VisaServicePage());
-        }
         [RelayCommand]
         void SelectVisa()
         {

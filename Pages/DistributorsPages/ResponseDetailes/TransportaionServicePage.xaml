@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest"
-             x:Class="TripBliss.Pages.TravelAgenciesPages.CreateRequest.TransportaionServicePage"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModel.ResponseDeatiels"
+             x:Class="TripBliss.Pages.DistributorsPages.ResponseDetailes.TransportaionServicePage"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="TransportaionServicePage">

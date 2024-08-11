@@ -2,21 +2,23 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
-             xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesVieModels"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModel"
              xmlns:dvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest"
-             xmlns:Tvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesVieModels.Offer"
-             x:Class="TripBliss.Pages.TravelAgenciesPages.HomeAgencyPage"
+             xmlns:Tvm="clr-namespace:TripBliss.ViewModels.DistributorsViewModel.Offer"
+             x:Class="TripBliss.Pages.DistributorsPages.HomeDistributorsPage"
              Title="HomeAgencyPage"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="White">
     <ContentPage.BindingContext>
-        <vm:HomeViewModdel></vm:HomeViewModdel>
+        <vm:HomeDistributorViewModel></vm:HomeDistributorViewModel>
     </ContentPage.BindingContext>
 
     <StackLayout Orientation="Vertical">
 
-        <tabView:SfTabView TabBarHeight="60" TabBarPlacement="Bottom" IndicatorPlacement="Top" IndicatorBackground="#1c874b" 
-                           VerticalOptions="EndAndExpand">
+        <tabView:SfTabView TabBarHeight="60" TabBarPlacement="Bottom" IndicatorPlacement="Top" IndicatorBackground="#1c874b"
+                       VerticalOptions="EndAndExpand">
+
+            
             <tabView:SfTabView.Items>
                 <!--Home-->
                 <tabView:SfTabItem Header="Home" TextColor="Black" FontSize="14" ImagePosition="Top" >
@@ -50,6 +52,15 @@
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="10">
                                 <Label Text="My Requests" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
                                    TextColor="Black" Margin="20,20,20,10"></Label>
+                                <StackLayout Orientation="Horizontal" Margin="20,0">
+                                    <RadioButton Content="Active" TextColor="#1e9e44" FontSize="14"
+                                                 HorizontalOptions="StartAndExpand" FontAttributes="Bold"></RadioButton>
+                                    <RadioButton Content="Not Active" TextColor="#1e9e44" FontSize="14"
+                                                 FontAttributes="Bold"></RadioButton>
+                                    <RadioButton Content="All" TextColor="#1e9e44" FontSize="14" HorizontalOptions="EndAndExpand" 
+                                                 FontAttributes="Bold">
+                                    </RadioButton>
+                                </StackLayout>
                                 <CollectionView ItemsSource="{Binding requests}" SelectionChangedCommand="{Binding SelectionCommand}"
                                             VerticalOptions="FillAndExpand" SelectionMode="Single">
                                     <CollectionView.ItemTemplate>
@@ -69,25 +80,41 @@
                                                             </Label.FormattedText>
                                                         </Label>
                                                     </VerticalStackLayout>
-                                                    <VerticalStackLayout VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand"
-                                                                         Margin="0,0,10,20" Spacing="1">
-                                                        <Label>
-                                                            <Label.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Text="All Distributors :" FontSize="10" TextColor="Gray"></Span>
-                                                                    <Span Text="5" FontSize="10" TextColor="Gray"></Span>
-                                                                </FormattedString>
-                                                            </Label.FormattedText>
-                                                        </Label>
-                                                        <Label>
+                                                    <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand" Spacing="1">
+                                                        <Border StrokeShape="RoundRectangle 0,20,10,0" HorizontalOptions="EndAndExpand"
+                                                                VerticalOptions="StartAndExpand" Padding="0,3" WidthRequest="80">
+                                                            <Label Text="{Binding Statues}" TextColor="Gray" FontSize="10" HorizontalTextAlignment="Center">
+                                                                <Label.Triggers>
+                                                                    <DataTrigger TargetType="Label" Binding="{Binding Statues}" Value="Active">
+                                                                        <Setter Property="TextColor" Value="Green"></Setter>
+                                                                    </DataTrigger>
+                                                                    <DataTrigger TargetType="Label" Binding="{Binding Statues}" Value="Not Active">
+                                                                        <Setter Property="TextColor" Value="Gray"></Setter>
+                                                                    </DataTrigger>
+                                                                </Label.Triggers>
+                                                            </Label>
+                                                        </Border>
+                                                        <VerticalStackLayout VerticalOptions="EndAndExpand" Margin="0,0,10,20"
+                                                                             HorizontalOptions="EndAndExpand">
+                                                            <Label>
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="All Distributors :" FontSize="10" TextColor="Gray"></Span>
+                                                                        <Span Text="5" FontSize="10" TextColor="Gray"></Span>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <Label>
                                                             <Label.FormattedText>
                                                                 <FormattedString>
                                                                     <Span Text="Active Distributors :" FontSize="10" TextColor="Gray"></Span>
                                                                     <Span Text="2" FontSize="10" TextColor="Gray"></Span>
                                                                 </FormattedString>
                                                             </Label.FormattedText>
-                                                        </Label>
-                                                    </VerticalStackLayout>
+                                                        </Label> 
+                                                        </VerticalStackLayout>
+                                                        
+                                                    </StackLayout>
                                                 </StackLayout>
                                             </Border>
                                         </DataTemplate>
@@ -95,120 +122,68 @@
                                 </CollectionView>
                             </StackLayout>
                             <ContentView.BindingContext>
-                                <vm:HomeViewModdel></vm:HomeViewModdel>
+                                <vm:HomeDistributorViewModel></vm:HomeDistributorViewModel>
                             </ContentView.BindingContext>
                         </ContentView>
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
-                <!--Distributors-->
-                <tabView:SfTabItem Header="Distributors" TextColor="Black" FontSize="14" ImagePosition="Top">
+                <!--Agency-->
+                <tabView:SfTabItem Header="Agency" TextColor="Black" FontSize="14" ImagePosition="Top">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
                     <tabView:SfTabItem.Content>
                         <ContentView>
-                            <StackLayout Orientation="Vertical">
-                                <StackLayout Orientation="Horizontal" Spacing="10">
-                                    <Label Text="Distributors" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
-                                   TextColor="Black" Margin="20" HorizontalOptions="EndAndExpand"></Label>
-                                    <Button Text="Add Request" WidthRequest="95" Padding="0,10,0,10" HeightRequest="40" FontSize="12" Command="{Binding AddRequestCommand}"
-                                        BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" Margin="0,0,15,0" FontAttributes="Bold">
-                                    </Button>
-                                </StackLayout>
-                                <tabView:SfTabView IndicatorBackground="#1c874b" VerticalOptions="FillAndExpand">
-                                    <tabView:SfTabView.Items>
-                                        <!--Distributors-->
-                                        <tabView:SfTabItem Header='Distributors' TextColor="Black" FontSize="14">
-                                            <tabView:SfTabItem.Content>
-                                                <ContentView>
-                                                    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20">
-                                                        <CollectionView ItemsSource="{Binding distributors}" VerticalOptions="FillAndExpand" SelectionMode="None">
-                                                            <CollectionView.ItemTemplate>
-                                                                <DataTemplate>
-                                                                    <Border StrokeShape="RoundRectangle 20" Margin="0,10">
-                                                                        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
-                                                                            <VerticalStackLayout Padding="10" Spacing="5">
-                                                                                <Label Text="{Binding Name}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding Phone}" FontSize="12" TextColor="Gray"></Label>
-                                                                                <Label Text="{Binding Services}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
-                                                                                <Label Margin="0,3,0,0">
-                                                                                    <Label.FormattedText>
-                                                                                        <FormattedString>
-                                                                                            <Span Text="Address : " FontSize="12" TextColor="DeepSkyBlue" ></Span>
-                                                                                            <Span Text="{Binding Address}" FontSize="12" TextColor="DeepSkyBlue" ></Span>
-                                                                                        </FormattedString>
-                                                                                    </Label.FormattedText>
-                                                                                </Label>
-                                                                            </VerticalStackLayout>
-                                                                            <HorizontalStackLayout Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="5">
-                                                                                <Label Text="{Binding Rate}" FontSize="14" TextColor="Black" FontAttributes="Bold"
-                                                                                             VerticalOptions="StartAndExpand"></Label>
-                                                                                <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
-                                                                                    <Image.Source>
-                                                                                        <FontImageSource Glyph="" FontFamily="FontIconSolid"
-                                                                                                         Color="Gold"></FontImageSource>
-                                                                                    </Image.Source>
-                                                                                </Image>
-                                                                            </HorizontalStackLayout>
-                                                                        </StackLayout>
-                                                                    </Border>
-                                                                </DataTemplate>
-                                                            </CollectionView.ItemTemplate>
-                                                        </CollectionView>
-                                                    </StackLayout>
-                                                    <ContentView.BindingContext>
-                                                        <dvm:DistributorsViewModdel></dvm:DistributorsViewModdel>
-                                                    </ContentView.BindingContext>
-                                                </ContentView>
-                                            </tabView:SfTabItem.Content>
-                                        </tabView:SfTabItem>
-                                        <!--Favourites-->
-                                        <tabView:SfTabItem Header='Favourites' TextColor="Black" FontSize="14">
-                                            <tabView:SfTabItem.Content>
-                                                <ContentView>
-                                                    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20">
-                                                        <CollectionView ItemsSource="{Binding distributors}" VerticalOptions="FillAndExpand" SelectionMode="None">
-                                                            <CollectionView.ItemTemplate>
-                                                                <DataTemplate>
-                                                                    <Border StrokeShape="RoundRectangle 20" Margin="0,10">
-                                                                        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
-                                                                            <VerticalStackLayout Padding="10" Spacing="5">
-                                                                                <Label Text="{Binding Name}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding Phone}" FontSize="12" TextColor="Gray"></Label>
-                                                                                <Label Text="{Binding Services}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
-                                                                                <Label Margin="0,3,0,0">
-                                                                                    <Label.FormattedText>
-                                                                                        <FormattedString>
-                                                                                            <Span Text="Address : " FontSize="12" TextColor="DeepSkyBlue" ></Span>
-                                                                                            <Span Text="{Binding Address}" FontSize="12" TextColor="DeepSkyBlue" ></Span>
-                                                                                        </FormattedString>
-                                                                                    </Label.FormattedText>
-                                                                                </Label>
-                                                                            </VerticalStackLayout>
-                                                                            <HorizontalStackLayout Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="5">
-                                                                                <Label Text="{Binding Rate}" FontSize="14" TextColor="Black" FontAttributes="Bold"
-                                                                                       VerticalOptions="StartAndExpand"></Label>
-                                                                                <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
-                                                                                    <Image.Source>
-                                                                                        <FontImageSource Glyph="" FontFamily="FontIconSolid"
-                                                                                                         Color="Gold"></FontImageSource>
-                                                                                    </Image.Source>
-                                                                                </Image>
-                                                                            </HorizontalStackLayout>
-                                                                        </StackLayout>
-                                                                    </Border>
-                                                                </DataTemplate>
-                                                            </CollectionView.ItemTemplate>
-                                                        </CollectionView>
-                                                    </StackLayout>
-                                                    <ContentView.BindingContext>
-                                                        <dvm:DistributorsViewModdel></dvm:DistributorsViewModdel>
-                                                    </ContentView.BindingContext>
-                                                </ContentView>
-                                            </tabView:SfTabItem.Content>
-                                        </tabView:SfTabItem>
-                                    </tabView:SfTabView.Items>
-                                </tabView:SfTabView>
+                            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20" Spacing="10">
+                                <Label Text="Agency" FontSize="18" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
+                                 <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="0,20,0,10" BackgroundColor="White">
+                                    <Grid>
+                                        <SearchBar BackgroundColor="White" Placeholder="Search" HeightRequest="40" FontSize="15" TextColor="Black"></SearchBar>
+                                        <Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
+                                            <Image WidthRequest="20" HeightRequest="20">
+                                                <Image.Source>
+                                                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="White"></FontImageSource>
+                                                </Image.Source>
+                                            </Image>
+                                        </Border>
+                                    </Grid>
+                                    <Border.Shadow>
+                                        <Shadow  Brush="DarkGray" Opacity="1"></Shadow>
+                                    </Border.Shadow>
+                                </Border>
+                                <CollectionView ItemsSource="{Binding distributors}" VerticalOptions="FillAndExpand" SelectionMode="None">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border StrokeShape="RoundRectangle 20" Margin="0,10">
+                                                <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                                                    <VerticalStackLayout Padding="10" Spacing="5">
+                                                        <Label Text="{Binding Name}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+                                                        <Label Text="{Binding Phone}" FontSize="12" TextColor="Gray"></Label>
+                                                        <Label Text="{Binding Services}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                                        <Label Margin="0,3,0,0">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="Address : " FontSize="12" TextColor="DeepSkyBlue" ></Span>
+                                                                    <Span Text="{Binding Address}" FontSize="12" TextColor="DeepSkyBlue" ></Span>
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                    </VerticalStackLayout>
+                                                    <HorizontalStackLayout Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="5">
+                                                        <Label Text="{Binding Rate}" FontSize="14" TextColor="Black" FontAttributes="Bold"
+                                                               VerticalOptions="StartAndExpand"></Label>
+                                                        <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
+                                                            <Image.Source>
+                                                                <FontImageSource Glyph="" FontFamily="FontIconSolid"
+                                                                                 Color="Gold"></FontImageSource>
+                                                            </Image.Source>
+                                                        </Image>
+                                                    </HorizontalStackLayout>
+                                                </StackLayout>
+                                            </Border>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
                             </StackLayout>
                             <ContentView.BindingContext>
                                 <dvm:DistributorsViewModdel></dvm:DistributorsViewModdel>
@@ -252,6 +227,13 @@
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="Offers" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+                                    <Border StrokeShape="RoundRectangle 10" Padding="5" WidthRequest="30" HeightRequest="30" Stroke="#2fa562">
+                                        <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddHotelCommand}">
+                                            <ImageButton.Source>
+                                                <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
+                                            </ImageButton.Source>
+                                        </ImageButton>
+                                    </Border>
                                 </StackLayout>
                                 <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="0,20,0,0" BackgroundColor="White">
                                     <Grid>

@@ -9,17 +9,18 @@
     <ContentPage.BindingContext>
         <vm:AirFlightServicesViewModdel></vm:AirFlightServicesViewModdel>
     </ContentPage.BindingContext>
-    <ScrollView>
-        <StackLayout Orientation="Vertical" Margin="20">
-            <StackLayout Orientation="Horizontal">
+    <StackLayout Orientation="Vertical" Margin="20">
+        <StackLayout Orientation="Horizontal">
                 <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackPressedCommand}">
                     <ImageButton.Source>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </ImageButton.Source>
                 </ImageButton>
                 <Label Text="Air Flight Service" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
-           TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+                       TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
             </StackLayout>
+        <ScrollView VerticalOptions="FillAndExpand">
+        <StackLayout >
             <Border StrokeShape="RoundRectangle 15" Margin="0,40" BackgroundColor="White">
                 <StackLayout Orientation="Vertical" Padding="15">
                     <Label Text="Carrier" TextColor="#2fa562" FontSize="14" Margin="0,15,0,0"></Label>
@@ -114,4 +115,6 @@
             
         </StackLayout>
     </ScrollView>
+    </StackLayout>
+    
 </ContentPage>

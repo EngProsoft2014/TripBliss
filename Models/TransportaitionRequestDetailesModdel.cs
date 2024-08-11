@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest
+namespace TripBliss.Models
 {
     public class TransportaitionRequestDetailesModdel
     {
