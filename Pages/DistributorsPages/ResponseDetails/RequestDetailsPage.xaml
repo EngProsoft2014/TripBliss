@@ -4,7 +4,7 @@
              x:Class="TripBliss.Pages.DistributorsPages.ResponseDetailes.RequestDetailsPage"
              xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
              xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
-             xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModel.ResponseDetails"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModels.ResponseDetails"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="RequestDetailsPage">
@@ -15,14 +15,14 @@
     </ContentPage.Resources>
     <StackLayout Orientation="Vertical">
         <tabView:SfTabView TabBarPlacement="Bottom" VerticalOptions="EndAndExpand" IndicatorBackground="#1c874b"
-                               IndicatorPlacement="Bottom">
+                               IndicatorPlacement="Top" TabBarHeight="55">
             <tabView:SfTabView.Items>
                 <!--Request Details-->
                 <tabView:SfTabItem Header="Request Details" FontSize="14" BackgroundColor="#f6fcf2">
                     <tabView:SfTabItem.Content>
                         <ContentView>
                             <ContentView.BindingContext>
-                                <vm:RequestDetailsViewModdel></vm:RequestDetailsViewModdel>
+                                <vm:RequestDetailsViewModel></vm:RequestDetailsViewModel>
                             </ContentView.BindingContext>
                             <StackLayout Orientation="Vertical" Spacing="10" Margin="20">
                                 <StackLayout Orientation="Horizontal">
@@ -34,17 +34,17 @@
                                     <Label Text="Request Name" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                 </StackLayout>
-                                <ScrollView VerticalOptions="FillAndExpand">
+                                <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
                                     <StackLayout Spacing="20">
                                         <StackLayout Orientation="Horizontal" Margin="0,10">
                                             <Label>
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="Adult :" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
-                                                        <Span Text="4" TextColor="Black" FontAttributes="Bold" FontSize="14"></Span>
+                                                        <Span Text="4" TextColor="Gray" FontAttributes="Bold" FontSize="14"></Span>
                                                         <Span Text=" - " TextColor="Black" FontAttributes="Bold" FontSize="14"></Span>
                                                         <Span Text="Child :" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
-                                                        <Span Text="2" TextColor="Black" FontAttributes="Bold" FontSize="14"></Span>
+                                                        <Span Text="2" TextColor="Gray" FontAttributes="Bold" FontSize="14"></Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -52,7 +52,7 @@
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="Date : " TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
-                                                        <Span Text="4-12-2024" TextColor="Black" FontAttributes="Bold" FontSize="14"></Span>
+                                                        <Span Text="4-12-2024" TextColor="Gray" FontAttributes="Bold" FontSize="14"></Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -73,9 +73,9 @@
                                                             </Label.FormattedText>
                                                         </Label>
                                                         <Line StrokeThickness="2" Y1="0" Y2="40" Stroke="Gray" HorizontalOptions="EndAndExpand"></Line>
-                                                        <VerticalStackLayout Margin="10,0" >
-                                                            <Label Text="03" FontSize="10" TextColor="#387955" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
-                                                            <Label Text="Naights" FontSize="10" TextColor="#387955" FontAttributes="Bold"></Label>
+                                                        <VerticalStackLayout Margin="10,0" VerticalOptions="CenterAndExpand">
+                                                            <Label Text="03" FontSize="11" TextColor="#387955" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+                                                            <Label Text="Naights" FontSize="11" TextColor="#387955" FontAttributes="Bold"></Label>
                                                         </VerticalStackLayout>
                                                     </StackLayout>
                                                     <BoxView HorizontalOptions="FillAndExpand" Color="Gray" HeightRequest="1.5"></BoxView>
@@ -84,23 +84,23 @@
                                                             <Label>
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Text="Check-in: " TextColor="Black" FontSize="14"></Span>
-                                                                        <Span Text="27-5-2023" TextColor="Black" FontSize="14"></Span>
+                                                                        <Span Text="Check-in: " TextColor="Black" FontSize="13"></Span>
+                                                                        <Span Text="27-5-2023" TextColor="Gray" FontSize="12"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>
                                                             <Label HorizontalOptions="EndAndExpand">
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Text="Check-Out: " TextColor="Black" FontSize="14"></Span>
-                                                                        <Span Text="30-5-2023" TextColor="Black" FontSize="14"></Span>
+                                                                        <Span Text="Check-Out: " TextColor="Black" FontSize="13"></Span>
+                                                                        <Span Text="30-5-2023" TextColor="Gray" FontSize="12"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>
                                                         </StackLayout>
                                                         <Label Text="Room Details:" TextColor="#387955" FontSize="14" FontAttributes="Bold" Margin="0,5" FontFamily="OpenSansSemibold"
                        Padding="5"></Label>
-                                                        <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="7" Margin="5,0">
+                                                        <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="7" Margin="10,0">
                                                             <VerticalStackLayout Spacing="3">
                                                                 <StackLayout Orientation="Horizontal">
                                                                     <Label>
@@ -453,7 +453,7 @@
                     <tabView:SfTabItem.Content>
                         <ContentView>
                             <ContentView.BindingContext>
-                                <vm:RequestDetailsViewModdel></vm:RequestDetailsViewModdel>
+                                <vm:RequestDetailsViewModel></vm:RequestDetailsViewModel>
                             </ContentView.BindingContext>
                             <ContentView.Resources>
                                 <Style TargetType="StackLayout">
@@ -484,7 +484,7 @@
                                     <Label Text="Request Name" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                 </StackLayout>
-                                <ScrollView VerticalOptions="FillAndExpand">
+                                <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
                                     <StackLayout Spacing="20">
                                         <StackLayout Orientation="Horizontal" Margin="0,15,0,0">
                                             <Label Text="Hotel Services" FontSize="16" TextColor="DarkOrange" VerticalTextAlignment="Center"></Label>
@@ -515,17 +515,17 @@
                                                             <Label>
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Text="{Binding Checkin}" TextColor="Gray" FontSize="10"></Span>
-                                                                        <Span Text=" - " TextColor="Gray" FontSize="10"></Span>
-                                                                        <Span Text="{Binding Checkout}" TextColor="Gray" FontSize="10"></Span>
+                                                                        <Span Text="{Binding Checkin}" TextColor="Gray" FontSize="11"></Span>
+                                                                        <Span Text=" - " TextColor="Gray" FontSize="11"></Span>
+                                                                        <Span Text="{Binding Checkout}" TextColor="Gray" FontSize="11"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>
                                                             <Label HorizontalOptions="EndAndExpand">
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Text="SAR " TextColor="LightSkyBlue" FontSize="10"></Span>
-                                                                        <Span Text="{Binding price}" TextColor="LightSkyBlue" FontSize="10"></Span>
+                                                                        <Span Text="SAR " TextColor="DeepSkyBlue" FontSize="11"></Span>
+                                                                        <Span Text="{Binding price}" TextColor="DeepSkyBlue" FontSize="11"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>
@@ -559,27 +559,27 @@
                                                             <Label>
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Text="M.Sprinter " TextColor="#2fa562" FontSize="10" FontAttributes="Bold"></Span>
-                                                                        <Span Text="{Binding From}" TextColor="Gray" FontSize="10"></Span>
+                                                                        <Span Text="M.Sprinter " TextColor="#2fa562" FontSize="11" FontAttributes="Bold"></Span>
+                                                                        <Span Text="{Binding From}" TextColor="Gray" FontSize="11"></Span>
                                                                         <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                                        <Span Text="{Binding To}" TextColor="Gray" FontSize="10"></Span>
+                                                                        <Span Text="{Binding To}" TextColor="Gray" FontSize="11"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>
                                                             <Label>
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Text="{Binding Nos}" TextColor="Gray" FontSize="10"></Span>
+                                                                        <Span Text="{Binding Nos}" TextColor="Gray" FontSize="11"></Span>
                                                                         <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                                        <Span Text="{Binding Date}" TextColor="Gray" FontSize="10"></Span>
+                                                                        <Span Text="{Binding Date}" TextColor="Gray" FontSize="11"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>
                                                             <Label HorizontalOptions="EndAndExpand">
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Text="SAR " TextColor="LightSkyBlue" FontSize="10"></Span>
-                                                                        <Span Text="{Binding price}" TextColor="LightSkyBlue" FontSize="10"></Span>
+                                                                        <Span Text="SAR " TextColor="DeepSkyBlue" FontSize="11"></Span>
+                                                                        <Span Text="{Binding price}" TextColor="DeepSkyBlue" FontSize="11"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>
@@ -613,34 +613,34 @@
                                                             <Label VerticalOptions="EndAndExpand">
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Text="QR " TextColor="#2fa562" FontSize="10" FontAttributes="Bold"></Span>
-                                                                        <Span Text="1178" TextColor="#2fa562" FontSize="10"></Span>
+                                                                        <Span Text="QR " TextColor="#2fa562" FontSize="11" FontAttributes="Bold"></Span>
+                                                                        <Span Text="1178" TextColor="#2fa562" FontSize="11"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>
                                                             <Label >
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Text="{Binding From}" TextColor="Gray" FontSize="10"></Span>
+                                                                        <Span Text="{Binding From}" TextColor="Gray" FontSize="11"></Span>
                                                                         <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                                        <Span Text="{Binding To}" TextColor="Gray" FontSize="10"></Span>
+                                                                        <Span Text="{Binding To}" TextColor="Gray" FontSize="11"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>
                                                             <Label>
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Text="{Binding Child}" TextColor="Gray" FontSize="10"></Span>
+                                                                        <Span Text="{Binding Child}" TextColor="Gray" FontSize="11"></Span>
                                                                         <Span Text="  " TextColor="Gray" FontSize="14"></Span>
-                                                                        <Span Text="{Binding Date}" TextColor="Gray" FontSize="10"></Span>
+                                                                        <Span Text="{Binding Date}" TextColor="Gray" FontSize="11"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>
                                                             <Label HorizontalOptions="EndAndExpand">
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Text="SAR " TextColor="LightSkyBlue" FontSize="10"></Span>
-                                                                        <Span Text="{Binding price}" TextColor="LightSkyBlue" FontSize="10"></Span>
+                                                                        <Span Text="SAR " TextColor="DeepSkyBlue" FontSize="11"></Span>
+                                                                        <Span Text="{Binding price}" TextColor="DeepSkyBlue" FontSize="11"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>
@@ -674,30 +674,30 @@
                                                             <Label>
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Text="#" TextColor="#2fa562" FontSize="10" FontAttributes="Bold"></Span>
-                                                                        <Span Text="{Binding VisaNo}" TextColor="#2fa562" FontSize="10"></Span>
+                                                                        <Span Text="#" TextColor="#2fa562" FontSize="11" FontAttributes="Bold"></Span>
+                                                                        <Span Text="{Binding VisaNo}" TextColor="#2fa562" FontSize="11"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>
                                                             <Label>
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Text="{Binding VisaType}" TextColor="Gray" FontSize="10"></Span>
+                                                                        <Span Text="{Binding VisaType}" TextColor="Gray" FontSize="11"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>
                                                             <Label>
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Text="{Binding VisaNo}" TextColor="Gray" FontSize="10"></Span>
+                                                                        <Span Text="{Binding VisaNo}" TextColor="Gray" FontSize="11"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>
                                                             <Label HorizontalOptions="EndAndExpand">
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Text="SAR " TextColor="LightSkyBlue" FontSize="10"></Span>
-                                                                        <Span Text="{Binding price}" TextColor="LightSkyBlue" FontSize="10"></Span>
+                                                                        <Span Text="SAR " TextColor="DeepSkyBlue" FontSize="11"></Span>
+                                                                        <Span Text="{Binding price}" TextColor="DeepSkyBlue" FontSize="10"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>

@@ -2,12 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TripBliss.Pages.TravelAgenciesPages.CreateRequest.NewRequestPage"
-             xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="NewRequestPage">
     <ContentPage.BindingContext>
-        <vm:NewRequestViewModdel></vm:NewRequestViewModdel>
+        <vm:NewRequestViewModel></vm:NewRequestViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Resources>
         <Style TargetType="StackLayout">
@@ -38,7 +38,7 @@
             <Label Text="New Request" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
 TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
-        <ScrollView VerticalOptions="FillAndExpand">
+        <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
             <StackLayout Spacing="10">
                 <StackLayout Orientation="Horizontal" Margin="0,15,0,0">
                     <Label Text="Hotel Services" FontSize="16" TextColor="DarkOrange" VerticalTextAlignment="Center"></Label>

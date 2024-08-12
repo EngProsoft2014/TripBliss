@@ -8,7 +8,7 @@
              NavigationPage.HasNavigationBar="False" 
              BackgroundColor="White">
     <ContentPage.BindingContext>
-        <vm:SignUpViewModdel></vm:SignUpViewModdel>
+        <vm:SignUpViewModel></vm:SignUpViewModel>
     </ContentPage.BindingContext>
     <ScrollView VerticalOptions="FillAndExpand">
         <VerticalStackLayout Margin="30">

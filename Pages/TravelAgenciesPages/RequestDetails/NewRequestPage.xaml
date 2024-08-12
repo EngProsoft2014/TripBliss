@@ -2,12 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TripBliss.Pages.TravelAgenciesPages.RequestDetails.NewRequestPage"
-             xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesVieModels.RequestDetails"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="NewRequestPage">
     <ContentPage.BindingContext>
-        <vm:NewRequestViewModdel></vm:NewRequestViewModdel>
+        <vm:NewRequestViewModel></vm:NewRequestViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Resources>
         <Style TargetType="StackLayout">

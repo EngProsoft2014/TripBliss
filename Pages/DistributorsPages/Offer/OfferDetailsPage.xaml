@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TripBliss.Pages.DistributorsPages.Offer.OfferDetailsPage"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModels.Offer"
+             Title="OfferDetailsPage"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.BindingContext>
+        <vm:OfferDetailsViewModel></vm:OfferDetailsViewModel>
+    </ContentPage.BindingContext>
+    <StackLayout Orientation="Vertical"  Margin="20" Spacing="15">
+        <StackLayout Orientation="Horizontal" >
+            <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackClickedCommand}">
+                <ImageButton.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                </ImageButton.Source>
+            </ImageButton>
+            <Label Text="{Binding SelectedItem.OfferTitel}" FontSize="16" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" TextColor="Black"
+                   Margin="0,0,0,0"></Label>
+            <ImageButton WidthRequest="25" HeightRequest="25" VerticalOptions="CenterAndExpand" Command="{Binding GoToViewersCommand}">
+                <ImageButton.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="DarkOrange"></FontImageSource>
+                </ImageButton.Source>
+            </ImageButton>
+            <Label Text="22" TextColor="Black" FontSize="12" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="5,0"
+                   FontAttributes="Bold"></Label>
+        </StackLayout>
+        <Label Text="02 DAY LEFT" TextColor="Gray" FontSize="12" HorizontalTextAlignment="Center" Margin="0,0,0,10"></Label>
+        <ScrollView>
+            <VerticalStackLayout Spacing="20">
+                <Image Source="offer.jpg"></Image>
+                <Label Text="Discription" FontSize="14" TextColor="Black"></Label>
+                <Label Text="{Binding SelectedItem.Description}" FontSize="12" TextColor="Gray" ></Label>
+            </VerticalStackLayout>
+        </ScrollView>
+        
+    </StackLayout>
+</ContentPage>

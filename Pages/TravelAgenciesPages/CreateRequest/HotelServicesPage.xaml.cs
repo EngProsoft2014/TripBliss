@@ -1,8 +1,8 @@
 namespace TripBliss.Pages.TravelAgenciesPages.CreateRequest;
 
-public partial class HotelServicesPage : ContentPage
+public partial class HotelServicePage : ContentPage
 {
-	public HotelServicesPage()
+	public HotelServicePage()
 	{
 		InitializeComponent();
 	}

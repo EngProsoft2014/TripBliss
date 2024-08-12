@@ -9,7 +9,7 @@ public partial class NewRequestPage : ContentPage
 
     private void Hotel_ItemTapped(object sender, ItemTappedEventArgs e)
     {
-		Navigation.PushAsync(new HotelServicesPage());
+		Navigation.PushAsync(new HotelServicePage());
     }
 
     private void Transportation_ItemTapped(object sender, ItemTappedEventArgs e)

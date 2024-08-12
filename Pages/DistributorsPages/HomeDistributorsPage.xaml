@@ -2,9 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
-             xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModel"
-             xmlns:dvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest"
-             xmlns:Tvm="clr-namespace:TripBliss.ViewModels.DistributorsViewModel.Offer"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModels"
+             xmlns:dvm="clr-namespace:TripBliss.ViewModels.DistributorsViewModels.CreateResponse"
+             xmlns:Tvm="clr-namespace:TripBliss.ViewModels.DistributorsViewModels.Offer"
              x:Class="TripBliss.Pages.DistributorsPages.HomeDistributorsPage"
              Title="HomeAgencyPage"
              NavigationPage.HasNavigationBar="False"
@@ -61,7 +61,7 @@
                                                  FontAttributes="Bold">
                                     </RadioButton>
                                 </StackLayout>
-                                <CollectionView ItemsSource="{Binding requests}" SelectionChangedCommand="{Binding SelectionCommand}"
+                                <CollectionView ItemsSource="{Binding Requests}" SelectionChangedCommand="{Binding SelectionCommand}"
                                             VerticalOptions="FillAndExpand" SelectionMode="Single">
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
@@ -151,7 +151,7 @@
                                         <Shadow  Brush="DarkGray" Opacity="1"></Shadow>
                                     </Border.Shadow>
                                 </Border>
-                                <CollectionView ItemsSource="{Binding distributors}" VerticalOptions="FillAndExpand" SelectionMode="None">
+                                <CollectionView ItemsSource="{Binding TravelAgencies}" VerticalOptions="FillAndExpand" SelectionMode="None">
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
                                             <Border StrokeShape="RoundRectangle 20" Margin="0,10">
@@ -186,7 +186,7 @@
                                 </CollectionView>
                             </StackLayout>
                             <ContentView.BindingContext>
-                                <dvm:DistributorsViewModdel></dvm:DistributorsViewModdel>
+                                <dvm:DistributorsViewModel></dvm:DistributorsViewModel>
                             </ContentView.BindingContext>
                         </ContentView>
                     </tabView:SfTabItem.Content>
@@ -221,7 +221,7 @@
                                 </Style>
                             </ContentView.Resources>
                             <ContentView.BindingContext>
-                                <Tvm:ChooseOfferViewModdel></Tvm:ChooseOfferViewModdel>
+                                <Tvm:ChooseOfferViewModel></Tvm:ChooseOfferViewModel>
                             </ContentView.BindingContext>
                             <StackLayout Orientation="Vertical" Margin="20">
                                 <StackLayout Orientation="Horizontal">
@@ -250,7 +250,7 @@
                                         <Shadow  Brush="DarkGray" Opacity="1"></Shadow>
                                     </Border.Shadow>
                                 </Border>
-                                <CollectionView ItemsSource="{Binding offers}" SelectionChangedCommand="{Binding SelectionOfferCommand}" 
+                                <CollectionView ItemsSource="{Binding Offers}" SelectionChangedCommand="{Binding SelectionOfferCommand}" 
                                                 VerticalOptions="FillAndExpand" SelectionMode="Single" Margin="0,10,0,0"
                                                 SelectedItem="{Binding SelectedItem}">
                                     <CollectionView.ItemTemplate>

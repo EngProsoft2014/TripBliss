@@ -9,7 +9,7 @@
              IsBusy="{Binding IsBusy}"
              >
     <ContentPage.BindingContext>
-        <vm:LoginViewModdel></vm:LoginViewModdel>
+        <vm:LoginViewModel></vm:LoginViewModel>
     </ContentPage.BindingContext>
     <StackLayout Orientation="Vertical" Margin="30">
         <Image Source="https://iconape.com/wp-content/png_logo_vector/bntu.png" WidthRequest="140" ></Image>

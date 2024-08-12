@@ -2,12 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TripBliss.Pages.DistributorsPages.ResponseDetailes.AirFlightServicePage"
-             xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModel.ResponseDetails"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModels.ResponseDetails"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="AirFlightServicePage">
     <ContentPage.BindingContext>
-        <vm:AirFlightServicesViewModdel></vm:AirFlightServicesViewModdel>
+        <vm:AirFlightServicesViewModel></vm:AirFlightServicesViewModel>
     </ContentPage.BindingContext>
     <StackLayout Orientation="Vertical" Margin="20">
         <StackLayout Orientation="Horizontal">

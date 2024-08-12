@@ -8,7 +8,7 @@
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.BindingContext>
-        <vm:ResetViewModdel></vm:ResetViewModdel>
+        <vm:ResetViewModel></vm:ResetViewModel>
     </ContentPage.BindingContext>
     <VerticalStackLayout Margin="30">
         <Image Source="https://iconape.com/wp-content/png_logo_vector/bntu.png" WidthRequest="140" ></Image>

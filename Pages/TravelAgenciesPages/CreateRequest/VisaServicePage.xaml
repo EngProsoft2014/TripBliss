@@ -2,12 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TripBliss.Pages.TravelAgenciesPages.CreateRequest.VisaServicePage"
-             xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="VisaServicePage">
     <ContentPage.BindingContext>
-        <vm:VisaServiceViewModdel></vm:VisaServiceViewModdel>
+        <vm:VisaServiceViewModel></vm:VisaServiceViewModel>
     </ContentPage.BindingContext>
     <StackLayout Orientation="Vertical" Margin="20">
         <StackLayout Orientation="Horizontal">
@@ -19,7 +19,7 @@
             <Label Text="Visa Service" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
-        <ScrollView VerticalOptions="FillAndExpand">
+        <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
             <StackLayout >
         
         <Border StrokeShape="RoundRectangle 15" Margin="0,40" BackgroundColor="White">

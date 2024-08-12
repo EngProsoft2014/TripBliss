@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesVieModels.CreateRequest"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest"
              x:Class="TripBliss.Pages.TravelAgenciesPages.RequestDetails.TransportaionServicePage"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="TransportaionServicePage">
     <ContentPage.BindingContext>
-        <vm:TransportaionServiceViewModdel></vm:TransportaionServiceViewModdel>
+        <vm:TransportaionServiceViewModel></vm:TransportaionServiceViewModel>
     </ContentPage.BindingContext>
     <StackLayout Orientation="Vertical" Margin="20">
         <ScrollView VerticalOptions="FillAndExpand">
