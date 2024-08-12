@@ -103,9 +103,9 @@ namespace TripBliss.ViewModels.DistributorsViewModels
 
         #region RelayCommand
         [RelayCommand]
-        void Selection()
+        async Task Selection()
         {
-            App.Current.MainPage.Navigation.PushAsync(new RequestDetailsPage());
+            await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage());
         }
         #endregion
     }

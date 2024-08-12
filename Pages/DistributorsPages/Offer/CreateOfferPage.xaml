@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TripBliss.Pages.DistributorsPages.Offer.CreateOfferPage"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModels.Offer"
+             Title="CreateOfferPage"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False">
+
+
+    <ContentPage.BindingContext>
+        <vm:CreateOfferViewModel></vm:CreateOfferViewModel>
+    </ContentPage.BindingContext>
+    <StackLayout Orientation="Vertical" Margin="20">
+        <StackLayout Orientation="Horizontal">
+            <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackPressedCommand}">
+                <ImageButton.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                </ImageButton.Source>
+            </ImageButton>
+            <Label Text="Create New Offer" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                   TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+        </StackLayout>
+        <ScrollView VerticalOptions="FillAndExpand" Padding="0,0,0,20" VerticalScrollBarVisibility="Never">
+            <StackLayout >
+
+                <Border StrokeShape="RoundRectangle 15" Margin="0,25,0,40" BackgroundColor="White">
+                    <StackLayout Orientation="Vertical" Padding="15">
+                        <Label Text="Title" TextColor="#2fa562" FontSize="14" Margin="0,5,0,0"></Label>
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10" HeightRequest="40">
+                            <Entry Keyboard="Text" TextColor="Black" FontSize="14" FontFamily="OpenSansRegular"
+                               Text="{Binding Offer.OfferTitel}"></Entry>
+                        </Border>
+                        <StackLayout Orientation="Horizontal" Spacing="35">
+                            <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                                <Label Text="Offer Plan" TextColor="#2fa562" FontSize="14" Margin="0,5,0,0"></Label>
+                                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10" HeightRequest="40">
+                                    <Picker FontSize="13" TextColor="Black" ItemsSource="{Binding Offer.OfferTitel}"></Picker>
+                                </Border>
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Margin="0,0,0,10" Spacing="15">
+                                <ImageButton>
+                                    <ImageButton.Source>
+                                        <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="#2fa562" Size="40"></FontImageSource>
+                                    </ImageButton.Source>
+                                </ImageButton>
+                                <CheckBox Color="DeepSkyBlue" IsChecked="True"></CheckBox>
+                            </HorizontalStackLayout>
+                        </StackLayout>
+
+                        <StackLayout HorizontalOptions="FillAndExpand">
+                            <Label Text="Offer URL" TextColor="#2fa562" FontSize="14" Margin="0,5,0,0"></Label>
+                            <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10" HeightRequest="40">
+                                <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular"
+                                       Text="{Binding Offer.From}"></Entry>
+                            </Border>
+                        </StackLayout>
+
+                        <StackLayout HorizontalOptions="FillAndExpand">
+                            <Label Text="Video URL" TextColor="#2fa562" FontSize="14" Margin="0,5,0,0"></Label>
+                            <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10" HeightRequest="40">
+                                <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular"
+                                       Text="{Binding Offer.From}"></Entry>
+                            </Border>
+                        </StackLayout>
+
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                            <Label Text="Image" TextColor="#2fa562" FontSize="14" Margin="0,5,0,0"></Label>
+                            <StackLayout Orientation="Horizontal">
+                                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10">
+                                    <Image WidthRequest="170" HeightRequest="120"></Image>
+                                </Border>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Spacing="20" HeightRequest="30">
+                                    <ImageButton>
+                                        <ImageButton.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="20"></FontImageSource>
+                                        </ImageButton.Source>
+                                    </ImageButton>
+
+                                    <ImageButton>
+                                        <ImageButton.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="20"></FontImageSource>
+                                        </ImageButton.Source>
+                                    </ImageButton>
+                                </StackLayout>
+                            </StackLayout>
+
+                        </StackLayout>
+
+                        <Label Text="Description" TextColor="#2fa562" FontSize="14" Margin="0,5,0,0"></Label>
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10" HeightRequest="120">
+                            <Editor Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" 
+                               Text="{Binding Offer.Description}"></Editor>
+                        </Border>
+                    </StackLayout>
+                    <Border.Shadow>
+                        <Shadow Brush="LightGray" Offset="8,8" Opacity="0.8"></Shadow>
+                    </Border.Shadow>
+                </Border>
+                <Button VerticalOptions="EndAndExpand" Text="Apply" FontSize="15" FontAttributes="Bold" BackgroundColor="#2fa562" TextColor="White" Margin="20,0"
+                    Command="{Binding AplyClickedCommand}"></Button>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

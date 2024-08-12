@@ -1,8 +1,8 @@
 namespace TripBliss.Pages.DistributorsPages.Offer;
 
-public partial class AddOfferPage : ContentPage
+public partial class CreateOfferPage : ContentPage
 {
-	public AddOfferPage()
+	public CreateOfferPage()
 	{
 		InitializeComponent();
 	}

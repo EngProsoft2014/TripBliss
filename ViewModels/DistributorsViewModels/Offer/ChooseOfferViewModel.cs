@@ -22,6 +22,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.Offer
 
         public ChooseOfferViewModel()
         {
+            //SelectedItem = new OfferModel();
             Offers = new ObservableCollection<OfferModel>();
             LoadData();
         }
@@ -78,12 +79,18 @@ namespace TripBliss.ViewModels.DistributorsViewModels.Offer
 
         }
         [RelayCommand]
-        async void SelectionOffer(OfferModel model)
+        async Task SelectionOffer(OfferModel model)
         {
             var Vm = new OfferDetailsViewModel(SelectedItem);
             var page = new OfferDetailsPage();
             page.BindingContext = Vm;   
-            await App.Current.MainPage.Navigation.PushAsync(page);
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
+        }
+
+        [RelayCommand]
+        async Task CreateOffer()
+        {
+            await App.Current!.MainPage!.Navigation.PushAsync(new CreateOfferPage());
         }
 
     }

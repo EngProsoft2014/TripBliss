@@ -228,7 +228,7 @@
                                     <Label Text="Offers" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                     <Border StrokeShape="RoundRectangle 10" Padding="5" WidthRequest="30" HeightRequest="30" Stroke="#2fa562">
-                                        <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddHotelCommand}">
+                                        <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding CreateOfferCommand}">
                                             <ImageButton.Source>
                                                 <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
                                             </ImageButton.Source>

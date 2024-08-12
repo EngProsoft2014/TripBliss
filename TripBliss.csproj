@@ -89,6 +89,9 @@
 	  <Compile Update="Pages\DistributorsPages\HomeDistributorsPage.xaml.cs">
 	    <DependentUpon>HomeDistributorsPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\DistributorsPages\Offer\CreateOfferPage.xaml.cs">
+	    <DependentUpon>CreateOfferPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\DistributorsPages\Offer\OfferDetailsPage.xaml.cs">
 	    <DependentUpon>OfferDetailsPage.xaml</DependentUpon>
 	  </Compile>
@@ -143,7 +146,7 @@
 	  <MauiXaml Update="Pages\DistributorsPages\HomeDistributorsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\DistributorsPages\Offer\AddOfferPage.xaml">
+	  <MauiXaml Update="Pages\DistributorsPages\Offer\CreateOfferPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\DistributorsPages\Offer\OfferDetailsPage.xaml">
