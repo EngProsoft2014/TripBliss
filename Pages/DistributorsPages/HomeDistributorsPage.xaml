@@ -18,7 +18,7 @@
         <tabView:SfTabView TabBarHeight="60" TabBarPlacement="Bottom" IndicatorPlacement="Top" IndicatorBackground="#1c874b"
                        VerticalOptions="EndAndExpand">
 
-            
+
             <tabView:SfTabView.Items>
                 <!--Home-->
                 <tabView:SfTabItem Header="Home" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2">
@@ -105,15 +105,15 @@
                                                                 </Label.FormattedText>
                                                             </Label>
                                                             <Label>
-                                                            <Label.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Text="Active Distributors :" FontSize="10" TextColor="Gray"></Span>
-                                                                    <Span Text="2" FontSize="10" TextColor="Gray"></Span>
-                                                                </FormattedString>
-                                                            </Label.FormattedText>
-                                                        </Label> 
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="Active Distributors :" FontSize="10" TextColor="Gray"></Span>
+                                                                        <Span Text="2" FontSize="10" TextColor="Gray"></Span>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
                                                         </VerticalStackLayout>
-                                                        
+
                                                     </StackLayout>
                                                 </StackLayout>
                                             </Border>
@@ -136,7 +136,7 @@
                         <ContentView>
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20" Spacing="10">
                                 <Label Text="Agency" FontSize="18" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
-                                 <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="0,20,0,10" BackgroundColor="White">
+                                <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="0,20,0,10" BackgroundColor="White">
                                     <Grid>
                                         <SearchBar BackgroundColor="White" Placeholder="Search" HeightRequest="40" FontSize="15" TextColor="Black"></SearchBar>
                                         <Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
@@ -294,15 +294,198 @@
                         </ContentView>
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
+                <!--History-->
                 <tabView:SfTabItem Header="History" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
+                    <tabView:SfTabItem.Content>
+                        <ContentView>
+                            <ContentView.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="VisualStateManager.VisualStateGroups">
+                                        <VisualStateGroupList>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal" >
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Border.Stroke" Value="Gray" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Border.Stroke" Value="Green" />
+                                                        <Setter Property="Border.StrokeThickness" Value="3" />
+                                                        <Setter Property="Border.BackgroundColor" Value="Transparent" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateGroupList>
+                                    </Setter>
+                                </Style>
+                            </ContentView.Resources>
+                            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="10">
+                                <Label Text="History" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                                       TextColor="Black" Margin="0,20,0,10"></Label>
+                                <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="20,0" BackgroundColor="White">
+                                    <Grid>
+                                        <SearchBar BackgroundColor="White" Placeholder="Search" HeightRequest="40" FontSize="15" TextColor="Black"></SearchBar>
+                                        <Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
+                                            <Image WidthRequest="20" HeightRequest="20">
+                                                <Image.Source>
+                                                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="White"></FontImageSource>
+                                                </Image.Source>
+                                            </Image>
+                                        </Border>
+                                    </Grid>
+                                    <Border.Shadow>
+                                        <Shadow  Brush="DarkGray" Opacity="1"></Shadow>
+                                    </Border.Shadow>
+                                </Border>
+                                <CollectionView ItemsSource="{Binding Requests}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border StrokeShape="RoundRectangle 20" Margin="20,10">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <VerticalStackLayout Padding="10" Spacing="5">
+                                                        <Label Text="{Binding RugestName}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+                                                        <Label Text="{Binding DistName}" FontSize="12" TextColor="Gray"></Label>
+                                                        <Label Text="{Binding Services}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                                        <Label Margin="0,3,0,0">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="Date : " FontSize="12" TextColor="Blue" ></Span>
+                                                                    <Span Text="{Binding Date}" FontSize="12" TextColor="Blue" ></Span>
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                    </VerticalStackLayout>
+                                                    <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand" Spacing="1">
+                                                        <Border StrokeShape="RoundRectangle 0,20,10,0" HorizontalOptions="EndAndExpand"
+                                                                VerticalOptions="StartAndExpand" Padding="0,3" WidthRequest="80">
+                                                            <Label Text="{Binding Statues}" TextColor="Gray" FontSize="10" HorizontalTextAlignment="Center">
+                                                                <Label.Triggers>
+                                                                    <DataTrigger TargetType="Label" Binding="{Binding Statues}" Value="Active">
+                                                                        <Setter Property="TextColor" Value="Green"></Setter>
+                                                                    </DataTrigger>
+                                                                    <DataTrigger TargetType="Label" Binding="{Binding Statues}" Value="Not Active">
+                                                                        <Setter Property="TextColor" Value="Gray"></Setter>
+                                                                    </DataTrigger>
+                                                                </Label.Triggers>
+                                                            </Label>
+                                                        </Border>
+                                                        <VerticalStackLayout VerticalOptions="EndAndExpand" Margin="0,0,10,20"
+                                                         HorizontalOptions="EndAndExpand">
+                                                            <Label>
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="All Distributors :" FontSize="10" TextColor="Gray"></Span>
+                                                                        <Span Text="5" FontSize="10" TextColor="Gray"></Span>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <Label>
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="Active Distributors :" FontSize="10" TextColor="Gray"></Span>
+                                                                        <Span Text="2" FontSize="10" TextColor="Gray"></Span>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                        </VerticalStackLayout>
+
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </Border>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </StackLayout>
+                            <ContentView.BindingContext>
+                                <vm:HistoryViewModel></vm:HistoryViewModel>
+                            </ContentView.BindingContext>
+                        </ContentView>
+                    </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
+                <!--More-->
                 <tabView:SfTabItem Header="More" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
+                    <ContentView>
+                        <StackLayout Orientation="Vertical" Spacing="50">
+                            <Label Text="More" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                                   TextColor="Black" Margin="0,20,0,10"></Label>
+                            <!--User-->
+                            <VerticalStackLayout Margin="20,0" Spacing="20">
+                                <HorizontalStackLayout Spacing="8">
+                                    <Image WidthRequest="20" HeightRequest="20">
+                                        <Image.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                        </Image.Source>
+                                    </Image>
+                                    <Label Text="Account" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="8">
+                                    <Image WidthRequest="20" HeightRequest="20">
+                                        <Image.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                        </Image.Source>
+                                    </Image>
+                                    <Label Text="Users" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="8">
+                                    <Image WidthRequest="20" HeightRequest="20">
+                                        <Image.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
+                                        </Image.Source>
+                                    </Image>
+                                    <Label Text="Favorites" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Margin="20,0" Spacing="20">
+                                <HorizontalStackLayout Spacing="8">
+                                    <Image WidthRequest="20" HeightRequest="20">
+                                        <Image.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                        </Image.Source>
+                                    </Image>
+                                    <Label Text="Privacy policy" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="8">
+                                    <Image WidthRequest="20" HeightRequest="20">
+                                        <Image.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                        </Image.Source>
+                                    </Image>
+                                    <Label Text="Termes &amp; conditions" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="8">
+                                    <Image WidthRequest="20" HeightRequest="20">
+                                        <Image.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                        </Image.Source>
+                                    </Image>
+                                    <Label Text="Support" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="8">
+                                    <Image WidthRequest="20" HeightRequest="20">
+                                        <Image.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                        </Image.Source>
+                                    </Image>
+                                    <Label Text="Support" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout Spacing="8" Margin="20,0">
+                                <Image WidthRequest="20" HeightRequest="20">
+                                    <Image.Source>
+                                        <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                    </Image.Source>
+                                </Image>
+                                <Label Text="Exit" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                            </HorizontalStackLayout>
+                        </StackLayout>
+                    </ContentView>
                 </tabView:SfTabItem>
             </tabView:SfTabView.Items>
         </tabView:SfTabView>
