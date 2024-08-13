@@ -11,8 +11,8 @@ namespace TripBliss
 
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(ApiConstants.syncFusionLicence);
             //MainPage = new AppShell();
-            MainPage = new NavigationPage(new HomeDistributorsPage());
-            //MainPage = new NavigationPage(new LoginPage());
+            //MainPage = new NavigationPage(new HomeDistributorsPage());
+            MainPage = new NavigationPage(new LoginPage());
            
         }
     }

@@ -111,7 +111,7 @@
                                 <StackLayout Orientation="Horizontal" Spacing="10">
                                     <Label Text="Distributors" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
                                            TextColor="Black" Margin="20" HorizontalOptions="EndAndExpand"></Label>
-                                    <Button Text="Add Request" WidthRequest="95" Padding="0,10,0,10" HeightRequest="40" FontSize="12" Command="{Binding AddRequestCommand}"
+                                    <Button Text="Add Request" WidthRequest="95" Padding="0,5,0,5" HeightRequest="35" FontSize="12" Command="{Binding AddRequestCommand}"
                                         BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" Margin="0,0,15,0" FontAttributes="Bold">
                                     </Button>
                                 </StackLayout>

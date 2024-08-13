@@ -22,22 +22,22 @@
         <ScrollView VerticalOptions="FillAndExpand" Padding="0,0,0,20">
         <StackLayout >
             <Border StrokeShape="RoundRectangle 15" Margin="0,40" BackgroundColor="White">
-                <StackLayout Orientation="Vertical" Padding="15">
-                    <Label Text="Carrier" TextColor="#2fa562" FontSize="14" Margin="0,15,0,0"></Label>
-                    <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,0">
+                <StackLayout Orientation="Vertical" Padding="15,15,15,25">
+                    <Label Text="Carrier" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                    <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                         <Entry Keyboard="Text" TextColor="Black" FontSize="14" FontFamily="OpenSansRegular" IsReadOnly="True"
                                Text="{Binding Moddel.Carrier}"></Entry>
                     </Border>
                     <StackLayout Orientation="Horizontal" Spacing="35">
                         <VerticalStackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="Date" TextColor="#2fa562" FontSize="14" Margin="0,15,0,0"></Label>
-                            <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10">
+                            <Label Text="Date" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                 <DatePicker FontSize="13" TextColor="Black" Date="{Binding Moddel.Date}"></DatePicker>
                             </Border>
                         </VerticalStackLayout>
                         <VerticalStackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="Class" TextColor="#2fa562" FontSize="14" Margin="0,15,0,0"></Label>
-                            <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10">
+                            <Label Text="Class" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                 <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
                                    Text="{Binding Moddel.Class}"></Entry>
                             </Border>
@@ -45,15 +45,15 @@
                     </StackLayout>
                     <StackLayout Orientation="Horizontal" Spacing="35">
                         <VerticalStackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="From" TextColor="#2fa562" FontSize="14" Margin="0,15,0,0"></Label>
-                            <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10">
+                            <Label Text="From" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                 <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
                                        Text="{Binding Moddel.From}"></Entry>
                             </Border>
                         </VerticalStackLayout>
                         <VerticalStackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="To" TextColor="#2fa562" FontSize="14" Margin="0,15,0,0"></Label>
-                            <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10">
+                            <Label Text="To" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                 <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
                                        Text="{Binding Moddel.To}"></Entry>
                             </Border>
@@ -61,22 +61,22 @@
                     </StackLayout>
                     <StackLayout Orientation="Horizontal" Spacing="35">
                         <VerticalStackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="ETD" TextColor="#2fa562" FontSize="14" Margin="0,15,0,0"></Label>
-                            <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10">
+                            <Label Text="ETD" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                 <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
                                        Text="{Binding Moddel.ETD}"></Entry>
                             </Border>
                         </VerticalStackLayout>
                         <VerticalStackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="ETA" TextColor="#2fa562" FontSize="14" Margin="0,15,0,0"></Label>
-                            <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10">
+                            <Label Text="ETA" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                 <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
                                        Text="{Binding Moddel.ETA}"></Entry>
                             </Border>
                         </VerticalStackLayout>
 
                     </StackLayout>
-                    <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
                         <VerticalStackLayout>
                             <Label Text="Adult" TextColor="#2fa562" FontSize="14" HorizontalTextAlignment="Center"></Label>
                             <Border StrokeShape="RoundRectangle 5" HorizontalOptions="CenterAndExpand" Padding="10,5" Stroke="Gray"
@@ -102,14 +102,14 @@
                             </Border>
                         </VerticalStackLayout>
                     </StackLayout>
-                    <Label Text="Notes" TextColor="#2fa562" FontSize="14" Margin="0,15,0,0"></Label>
-                    <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10" HeightRequest="100">
+                    <Label Text="Notes" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                    <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="100">
                         <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
                                Text="{Binding Moddel.Notes}"></Entry>
                     </Border>
                 </StackLayout>
                 <Border.Shadow>
-                    <Shadow Brush="Black" Offset="8,8" Opacity="0.8"></Shadow>
+                    <Shadow Brush="LightGray" Offset="8,8" Opacity="0.8"></Shadow>
                 </Border.Shadow>
             </Border>
             
