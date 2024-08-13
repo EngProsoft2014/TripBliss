@@ -23,10 +23,11 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
     {
         CultureInfo.CurrentCulture = new CultureInfo("ar");
         CultureInfo.CurrentUICulture = new CultureInfo("ar");
+        Preferences.Set("Lan","ar");
         //AppResources.Culture = cal;
 
         await MopupService.Instance.PopAsync();
 
-        await App.Current!.MainPage!.Navigation.PushAsync(new HomeDistributorsPage());
+        App.Current!.MainPage = new HomeDistributorsPage();
     }
 }

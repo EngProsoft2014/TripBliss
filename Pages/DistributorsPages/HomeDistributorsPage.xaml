@@ -6,6 +6,7 @@
              xmlns:dvm="clr-namespace:TripBliss.ViewModels.DistributorsViewModels.CreateResponse"
              xmlns:Tvm="clr-namespace:TripBliss.ViewModels.DistributorsViewModels.Offer"
              xmlns:Helpers="clr-namespace:TripBliss.Helpers"
+             xmlns:lan="clr-namespace:TripBliss.Resources.Language"
              x:Class="TripBliss.Pages.DistributorsPages.HomeDistributorsPage"
              Title="HomeAgencyPage"
              NavigationPage.HasNavigationBar="False"
@@ -415,7 +416,7 @@
                             <vm:MoreViewModel></vm:MoreViewModel>
                         </ContentView.BindingContext>
                         <StackLayout Orientation="Vertical" Spacing="50">
-                            <Label Text="More" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                            <Label Text="{x:Static lan:AppResources.hdrMore}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                    TextColor="Black" Margin="0,20,0,10"></Label>
                             <!--User-->
                             <VerticalStackLayout Margin="20,0" Spacing="20">
