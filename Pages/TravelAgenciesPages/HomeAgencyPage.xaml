@@ -5,6 +5,7 @@
              xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels"
              xmlns:dvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest"
              xmlns:Tvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.Offer"
+             xmlns:lan="clr-namespace:TripBliss.Resources.Language"
              x:Class="TripBliss.Pages.TravelAgenciesPages.HomeAgencyPage"
              Title="HomeAgencyPage"
              NavigationPage.HasNavigationBar="False"
@@ -432,7 +433,7 @@
                     <tabView:SfTabItem.Content>
                         <ContentView>
                             <StackLayout Orientation="Vertical" Spacing="50">
-                                <Label Text="More" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                                <Label Text="{x:Static lan:AppResources.hdrMore}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                        TextColor="Black" Margin="0,20,0,10"></Label>
                                 <!--User-->
                                 <VerticalStackLayout Margin="20,0" Spacing="20">
