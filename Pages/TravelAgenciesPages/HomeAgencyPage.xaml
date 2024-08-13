@@ -492,7 +492,7 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="Support" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                        <Label Text="Language" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                     </HorizontalStackLayout>
                                 </VerticalStackLayout>
                                 <HorizontalStackLayout Spacing="8" Margin="20,0">

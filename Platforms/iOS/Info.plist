@@ -31,4 +31,9 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>This app uses barcode scanning to...</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>ar</string>
+	</array>
 </plist>

@@ -5,13 +5,12 @@
              xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModels"
              xmlns:dvm="clr-namespace:TripBliss.ViewModels.DistributorsViewModels.CreateResponse"
              xmlns:Tvm="clr-namespace:TripBliss.ViewModels.DistributorsViewModels.Offer"
+             xmlns:Helpers="clr-namespace:TripBliss.Helpers"
              x:Class="TripBliss.Pages.DistributorsPages.HomeDistributorsPage"
              Title="HomeAgencyPage"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="White">
-    <ContentPage.BindingContext>
-        <vm:HomeDistributorViewModel></vm:HomeDistributorViewModel>
-    </ContentPage.BindingContext>
+
 
     <StackLayout Orientation="Vertical">
 
@@ -53,7 +52,7 @@
                                 <Label Text="My Requests" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
                                    TextColor="Black" Margin="20,20,20,10"></Label>
                                 <StackLayout Orientation="Horizontal" Margin="20,0">
-                                    <RadioButton Content="Active" TextColor="#1e9e44" FontSize="14"
+                                    <RadioButton Content="Active" TextColor="#1e9e44" FontSize="14" BorderColor="Green" 
                                                  HorizontalOptions="StartAndExpand" FontAttributes="Bold"></RadioButton>
                                     <RadioButton Content="Not Active" TextColor="#1e9e44" FontSize="14"
                                                  FontAttributes="Bold"></RadioButton>
@@ -412,6 +411,9 @@
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
                     <ContentView>
+                        <ContentView.BindingContext>
+                            <vm:MoreViewModel></vm:MoreViewModel>
+                        </ContentView.BindingContext>
                         <StackLayout Orientation="Vertical" Spacing="50">
                             <Label Text="More" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                    TextColor="Black" Margin="0,20,0,10"></Label>
@@ -473,7 +475,10 @@
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                         </Image.Source>
                                     </Image>
-                                    <Label Text="Support" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                    <Label Text="Language" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                    <HorizontalStackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectLanguageCommand}"></TapGestureRecognizer>
+                                    </HorizontalStackLayout.GestureRecognizers>
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
                             <HorizontalStackLayout Spacing="8" Margin="20,0">
