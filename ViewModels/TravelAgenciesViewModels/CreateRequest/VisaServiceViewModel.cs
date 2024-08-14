@@ -29,6 +29,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             Moddel = new VisaServiceModel();
             VisaServices = new ObservableCollection<VisaServiceModel>();
             Moddel = model;
+            Lang = Preferences.Default.Get("Lan", "en");
         }
 
         #region RelayCommand

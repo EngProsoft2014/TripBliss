@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TripBliss.Pages.DistributorsPages.ResponseDetailes.RequestDetailsPage"
              xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
              xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
              xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModels.ResponseDetails"
+             xmlns:Controls="clr-namespace:TripBliss.Controls"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="RequestDetailsPage">
-    <ContentPage.Resources>
+    <Controls:CustomControl.Resources>
         <Style TargetType="syncfusion:DataGridCell">
             <Setter Property="FontSize" Value="14"/>
         </Style>
-    </ContentPage.Resources>
+    </Controls:CustomControl.Resources>
     <StackLayout Orientation="Vertical">
         <tabView:SfTabView TabBarPlacement="Bottom" VerticalOptions="EndAndExpand" IndicatorBackground="#1c874b"
                                IndicatorPlacement="Top" TabBarHeight="55">
@@ -30,6 +31,11 @@
                                         <ImageButton.Source>
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                         </ImageButton.Source>
+                                        <ImageButton.Triggers>
+                                            <DataTrigger TargetType="ImageButton" Binding="{Binding Lang}" Value="ar">
+                                                <Setter Property="Rotation" Value="180"></Setter>
+                                            </DataTrigger>
+                                        </ImageButton.Triggers>
                                     </ImageButton>
                                     <Label Text="Request Name" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
@@ -480,6 +486,11 @@
                                         <ImageButton.Source>
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                         </ImageButton.Source>
+                                        <ImageButton.Triggers>
+                                            <DataTrigger TargetType="ImageButton" Binding="{Binding Lang}" Value="ar">
+                                                <Setter Property="Rotation" Value="180"></Setter>
+                                            </DataTrigger>
+                                        </ImageButton.Triggers>
                                     </ImageButton>
                                     <Label Text="Request Name" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
@@ -721,4 +732,4 @@
 
         </tabView:SfTabView>
     </StackLayout>
-</ContentPage>
+</Controls:CustomControl>

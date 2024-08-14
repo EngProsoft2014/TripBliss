@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest"
              x:Class="TripBliss.Pages.TravelAgenciesPages.CreateRequest.ChooseDistributorPage"
+             xmlns:Controls="clr-namespace:TripBliss.Controls"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="Choose Distributor">
-    <ContentPage.BindingContext>
+    <Controls:CustomControl.BindingContext>
         <vm:TravelAgencyViewModel></vm:TravelAgencyViewModel>
-    </ContentPage.BindingContext>
+    </Controls:CustomControl.BindingContext>
     <ContentPage.Resources>
         <Style TargetType="Border">
             <Setter Property="VisualStateManager.VisualStateGroups">
@@ -38,6 +39,11 @@
                 <ImageButton.Source>
                     <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                 </ImageButton.Source>
+                <ImageButton.Triggers>
+                    <DataTrigger TargetType="ImageButton" Binding="{Binding Lang}" Value="ar">
+                        <Setter Property="Rotation" Value="180"></Setter>
+                    </DataTrigger>
+                </ImageButton.Triggers>
             </ImageButton>
             <Label Text="Choose Distributor" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
@@ -101,4 +107,4 @@
         <Button  Text="Apply" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="0,5,0,0"
                 Command="{Binding SelectionCommand}"></Button>
     </StackLayout>
-</ContentPage>
+</Controls:CustomControl>

@@ -33,6 +33,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             Hoteles = new ObservableCollection<HotelServiceModel>();
             HotelService = new HotelServiceModel();
             HotelService = model;
+            Lang = Preferences.Default.Get("Lan", "en");
         }
 
         #region RelayCommand

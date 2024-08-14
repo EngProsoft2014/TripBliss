@@ -1,6 +1,6 @@
 namespace TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 
-public partial class RequestDetailsPage : ContentPage
+public partial class RequestDetailsPage : Controls.CustomControl
 {
 	public RequestDetailsPage()
 	{

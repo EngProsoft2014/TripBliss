@@ -1,6 +1,6 @@
 namespace TripBliss.Pages.TravelAgenciesPages.CreateRequest;
 
-public partial class NewRequestPage : ContentPage
+public partial class NewRequestPage : Controls.CustomControl
 {
 	public NewRequestPage()
 	{

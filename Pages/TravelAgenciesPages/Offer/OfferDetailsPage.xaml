@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TripBliss.Pages.TravelAgenciesPages.Offer.OfferDetailsPage"
              xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.Offer"
+             xmlns:Controls="clr-namespace:TripBliss.Controls"
+             xmlns:ex="clr-namespace:TripBliss.Extensions"
              Title="OfferDeteliesPage"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False">
-    <ContentPage.BindingContext>
+    <Controls:CustomControl.BindingContext>
         <vm:OfferDetailsViewModel></vm:OfferDetailsViewModel>
-    </ContentPage.BindingContext>
+    </Controls:CustomControl.BindingContext>
     <StackLayout Orientation="Vertical"  Margin="20" Spacing="15">
         <StackLayout Orientation="Horizontal" >
             <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackClickedCommand}">
                 <ImageButton.Source>
                     <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                 </ImageButton.Source>
+                <ImageButton.Triggers>
+                    <DataTrigger TargetType="ImageButton" Binding="{Binding Lang}" Value="ar">
+                        <Setter Property="Rotation" Value="180"></Setter>
+                    </DataTrigger>
+                </ImageButton.Triggers>
             </ImageButton>
             <StackLayout HorizontalOptions="CenterAndExpand" Spacing="5">
                 <Label Text="{Binding SelectedItem.OfferTitel}" FontSize="16" FontAttributes="Bold" TextColor="Black"
@@ -30,7 +37,7 @@
         <ScrollView>
             <VerticalStackLayout Spacing="20">
                 <Image Source="offer.jpg"></Image>
-                <Label Text="Discription" FontSize="14" TextColor="Black"></Label>
+                <Label Text="{ex:Translate Name=lblDiscription-OfferDetails}" FontSize="14" TextColor="Black"></Label>
                 <Label Text="{Binding SelectedItem.Description}" FontSize="12" TextColor="Gray"></Label>
             </VerticalStackLayout>
         </ScrollView>
@@ -47,4 +54,4 @@
                     Padding="6,0"></Button>
 
     </StackLayout>
-</ContentPage>
+</Controls:CustomControl>

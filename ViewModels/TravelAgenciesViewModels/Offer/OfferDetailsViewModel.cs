@@ -21,6 +21,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.Offer
 
         public OfferDetailsViewModel(OfferModel model)
         {
+            Lang = Preferences.Default.Get("Lan", "en");
             SelectedItem = model;
         }
 

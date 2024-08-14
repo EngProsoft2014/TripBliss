@@ -1,6 +1,6 @@
 namespace TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 
-public partial class VisaServicePage : ContentPage
+public partial class VisaServicePage : Controls.CustomControl
 {
 	public VisaServicePage()
 	{

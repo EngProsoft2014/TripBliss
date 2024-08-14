@@ -21,6 +21,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.Offer
         public ChooseOfferViewModel()
         {
             Offers = new ObservableCollection<OfferModel>();
+            Lang = Preferences.Default.Get("Lan", "en");
             LoadData();
         }
 
@@ -78,7 +79,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.Offer
         [RelayCommand]
         async void SelectionOffer(OfferModel model)
         {
-            var Vm = new OfferDetailsViewModel(SelectedItem);
+            var Vm = new OfferDetailsViewModel(model);
             var page = new OfferDetailsPage();
             page.BindingContext = Vm;   
             await App.Current.MainPage.Navigation.PushAsync(page);

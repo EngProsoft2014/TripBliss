@@ -30,6 +30,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         }
         public HotelServiceViewModel(HotelServiceModel model)
         {
+            Lang = Preferences.Default.Get("Lan", "en");
             Hoteles = new ObservableCollection<HotelServiceModel>();
             HotelService = new HotelServiceModel();
             HotelService = model;

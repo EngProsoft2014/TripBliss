@@ -16,5 +16,10 @@ namespace TripBliss.ViewModels
 
         [ObservableProperty]
         public string lang;
+
+        public BaseViewModel()
+        {
+            Lang = Preferences.Default.Get("Lan", "en");
+        }
     }
 }

@@ -1,6 +1,6 @@
 namespace TripBliss.Pages;
 
-public partial class ResetPage : ContentPage
+public partial class ResetPage : Controls.CustomControl
 {
 	public ResetPage()
 	{

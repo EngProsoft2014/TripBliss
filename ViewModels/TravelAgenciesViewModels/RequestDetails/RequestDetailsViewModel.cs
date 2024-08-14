@@ -25,6 +25,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             airFlights = new ObservableCollection<AirFlightModel>();
             visaServices = new ObservableCollection<VisaServiceModel>();
             distributors = new ObservableCollection<DistributorsModel>();
+            Lang = Preferences.Default.Get("Lan","en");
             LoadTransportaionData();
             LoadAirFlightData();
             LoadVisaData();

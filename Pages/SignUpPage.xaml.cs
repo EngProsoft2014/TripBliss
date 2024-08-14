@@ -1,6 +1,6 @@
 namespace TripBliss.Pages;
 
-public partial class SignUpPage : ContentPage
+public partial class SignUpPage : Controls.CustomControl
 {
 	public SignUpPage()
 	{

@@ -19,6 +19,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.Offer
         public CreateOfferViewModel()
         {
             Offer = new OfferModel();
+            Lang = Preferences.Default.Get("Lan", "en");
         }
 
         [RelayCommand]

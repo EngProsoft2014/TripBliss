@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:TripBliss.ViewModels"
+             xmlns:Controls="clr-namespace:TripBliss.Controls"
              x:Class="TripBliss.Pages.LoginPage"
              Title="LoginPage"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="White"
              IsBusy="{Binding IsBusy}"
              >
-    <ContentPage.BindingContext>
+    <Controls:CustomControl.BindingContext>
         <vm:LoginViewModel></vm:LoginViewModel>
-    </ContentPage.BindingContext>
+    </Controls:CustomControl.BindingContext>
     <StackLayout Orientation="Vertical" Margin="30">
         <Image Source="https://iconape.com/wp-content/png_logo_vector/bntu.png" WidthRequest="140" ></Image>
         <ScrollView VerticalOptions="FillAndExpand">
@@ -65,4 +66,4 @@
 
 
 
-</ContentPage>
+</Controls:CustomControl>

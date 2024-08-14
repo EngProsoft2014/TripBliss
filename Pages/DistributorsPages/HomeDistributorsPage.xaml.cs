@@ -1,6 +1,6 @@
 namespace TripBliss.Pages.DistributorsPages;
 
-public partial class HomeDistributorsPage : ContentPage
+public partial class HomeDistributorsPage : Controls.CustomControl
 {
 	public HomeDistributorsPage()
 	{

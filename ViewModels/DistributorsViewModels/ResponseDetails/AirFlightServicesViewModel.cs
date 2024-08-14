@@ -34,6 +34,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         public AirFlightServicesViewModel(AirFlightModel model)
         {
             AirFlights = new ObservableCollection<AirFlightModel>();
+            Lang = Preferences.Default.Get("Lan", "en");
             Moddel = new AirFlightModel();
             Moddel = model;
         }

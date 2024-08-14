@@ -31,6 +31,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             ServiceModdel = new TransportaionServiceModel();
             Transportation = new ObservableCollection<TransportaionServiceModel>();
             ServiceModdel = model;
+            Lang = Preferences.Default.Get("Lan", "en");
         } 
         #endregion
 

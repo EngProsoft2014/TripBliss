@@ -1,6 +1,6 @@
 namespace TripBliss.Pages.DistributorsPages.ResponseDetailes;
 
-public partial class VisaServicePage : ContentPage
+public partial class VisaServicePage : Controls.CustomControl
 {
 	public VisaServicePage()
 	{

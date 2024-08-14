@@ -22,6 +22,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         public TravelAgencyViewModel()
         {
             Distributors = new ObservableCollection<DistributorsModel>();
+            Lang = Preferences.Default.Get("Lan", "en");
             LoadData();
         }
 

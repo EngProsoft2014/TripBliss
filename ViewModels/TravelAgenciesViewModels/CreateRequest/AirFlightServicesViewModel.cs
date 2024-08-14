@@ -28,6 +28,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         public AirFlightServicesViewModel()
         {
+
             AirFlights = new ObservableCollection<AirFlightModel>();
             Moddel = new AirFlightModel();
         }

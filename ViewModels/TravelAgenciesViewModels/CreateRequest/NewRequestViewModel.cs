@@ -40,6 +40,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             transportaionServices = new ObservableCollection<TransportaionServiceModel>();
             airFlights = new ObservableCollection<AirFlightModel>();
             visaServices = new ObservableCollection<VisaServiceModel>();
+            Lang = Preferences.Default.Get("Lan", "en");
             LoadData();
             LoadTransportaionData();
             LoadAirFlightData();
