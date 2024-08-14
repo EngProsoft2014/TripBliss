@@ -117,7 +117,61 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnAddRequest" xml:space="preserve">
+    <value>Add Request</value>
+  </data>
+  <data name="btnDistributors" xml:space="preserve">
+    <value>Distributors</value>
+  </data>
+  <data name="btnFavourites" xml:space="preserve">
+    <value>Favourites</value>
+  </data>
+  <data name="btnHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="hdrAgency" xml:space="preserve">
+    <value>Agency</value>
+  </data>
+  <data name="hdrDistributors" xml:space="preserve">
+    <value>Distributors</value>
+  </data>
+  <data name="hdrHistory" xml:space="preserve">
+    <value>History</value>
+  </data>
   <data name="hdrMore" xml:space="preserve">
     <value>More</value>
+  </data>
+  <data name="hdrMyRequests" xml:space="preserve">
+    <value>My Requests</value>
+  </data>
+  <data name="hdrOffers" xml:space="preserve">
+    <value>Offers</value>
+  </data>
+  <data name="lblAccount-More" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="lblExit-More" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="lblFavorites-More" xml:space="preserve">
+    <value>Favorites</value>
+  </data>
+  <data name="lblLanguage-More" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="lblPrivacyPolicy-More" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="lblSupport-More" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="lblTermesConditions-More" xml:space="preserve">
+    <value>Terms&amp;Conditions</value>
+  </data>
+  <data name="lblUsers-More" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="plcSearch" xml:space="preserve">
+    <value>Search</value>
   </data>
 </root>

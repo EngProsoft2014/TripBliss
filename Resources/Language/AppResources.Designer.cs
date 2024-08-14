@@ -61,11 +61,173 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Request.
+        /// </summary>
+        internal static string btnAddRequest {
+            get {
+                return ResourceManager.GetString("btnAddRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Distributors.
+        /// </summary>
+        internal static string btnDistributors {
+            get {
+                return ResourceManager.GetString("btnDistributors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Favourites.
+        /// </summary>
+        internal static string btnFavourites {
+            get {
+                return ResourceManager.GetString("btnFavourites", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        internal static string btnHome {
+            get {
+                return ResourceManager.GetString("btnHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Agency.
+        /// </summary>
+        internal static string hdrAgency {
+            get {
+                return ResourceManager.GetString("hdrAgency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Distributors.
+        /// </summary>
+        internal static string hdrDistributors {
+            get {
+                return ResourceManager.GetString("hdrDistributors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to History.
+        /// </summary>
+        internal static string hdrHistory {
+            get {
+                return ResourceManager.GetString("hdrHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to More.
         /// </summary>
         internal static string hdrMore {
             get {
                 return ResourceManager.GetString("hdrMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Requests.
+        /// </summary>
+        internal static string hdrMyRequests {
+            get {
+                return ResourceManager.GetString("hdrMyRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offers.
+        /// </summary>
+        internal static string hdrOffers {
+            get {
+                return ResourceManager.GetString("hdrOffers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account.
+        /// </summary>
+        internal static string lblAccount_More {
+            get {
+                return ResourceManager.GetString("lblAccount-More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        internal static string lblExit_More {
+            get {
+                return ResourceManager.GetString("lblExit-More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Favorites.
+        /// </summary>
+        internal static string lblFavorites_More {
+            get {
+                return ResourceManager.GetString("lblFavorites-More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        internal static string lblLanguage_More {
+            get {
+                return ResourceManager.GetString("lblLanguage-More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy Policy.
+        /// </summary>
+        internal static string lblPrivacyPolicy_More {
+            get {
+                return ResourceManager.GetString("lblPrivacyPolicy-More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Support.
+        /// </summary>
+        internal static string lblSupport_More {
+            get {
+                return ResourceManager.GetString("lblSupport-More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Terms&amp;Conditions.
+        /// </summary>
+        internal static string lblTermesConditions_More {
+            get {
+                return ResourceManager.GetString("lblTermesConditions-More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Users.
+        /// </summary>
+        internal static string lblUsers_More {
+            get {
+                return ResourceManager.GetString("lblUsers-More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        internal static string plcSearch {
+            get {
+                return ResourceManager.GetString("plcSearch", resourceCulture);
             }
         }
     }

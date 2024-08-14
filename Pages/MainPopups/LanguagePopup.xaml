@@ -39,8 +39,9 @@
                         <Line X1="150"  HorizontalOptions="FillAndExpand" BackgroundColor="#212121"></Line>
 
                         <StackLayout Orientation="Horizontal" Spacing="0" Padding="20,0,20,0">
-                            <Label Text="English"
-                                   TextColor="Green"
+                            <Label x:Name="lblEnglish"
+                                   Text="English"
+                                   TextColor="Gray"
                                    FontSize="16"
                                    FontFamily="AlmaraiBold"
                                    HorizontalTextAlignment="Center"
@@ -50,17 +51,17 @@
 
                             </Label>
 
-                            <CheckBox IsChecked="True" Color="Green"></CheckBox>
-                            <!--<StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding SelecteCamSchedulePhotoCommand}"></TapGestureRecognizer>
-                            </StackLayout.GestureRecognizers>-->
+                            <CheckBox x:Name="cheEnglish" Color="Green"></CheckBox>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="EnglishTap"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
                         </StackLayout>
 
 
                         <Line X1="150"  HorizontalOptions="FillAndExpand" BackgroundColor="#212121"></Line>
 
                         <StackLayout Orientation="Horizontal" Spacing="0" Padding="20,0,20,0">
-                            <Label 
+                            <Label x:Name="lblArabic"
                                    Text="Arabic"
                                    TextColor="#333"
                                    FontSize="16"
@@ -72,9 +73,9 @@
 
                             </Label>
 
-                            <CheckBox Color="Green"></CheckBox>
+                            <CheckBox x:Name="cheArabic" Color="Green"></CheckBox>
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"></TapGestureRecognizer>
+                                <TapGestureRecognizer Tapped="ArabicTap"></TapGestureRecognizer>
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
 

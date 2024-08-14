@@ -117,7 +117,61 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnAddRequest" xml:space="preserve">
+    <value>طلب إضافة</value>
+  </data>
+  <data name="btnDistributors" xml:space="preserve">
+    <value>الموزعين</value>
+  </data>
+  <data name="btnFavourites" xml:space="preserve">
+    <value>المفضلة</value>
+  </data>
+  <data name="btnHome" xml:space="preserve">
+    <value>الرئيسية</value>
+  </data>
+  <data name="hdrAgency" xml:space="preserve">
+    <value>وكالة</value>
+  </data>
+  <data name="hdrDistributors" xml:space="preserve">
+    <value>الموزعين</value>
+  </data>
+  <data name="hdrHistory" xml:space="preserve">
+    <value>السجل</value>
+  </data>
   <data name="hdrMore" xml:space="preserve">
     <value>المزيد</value>
+  </data>
+  <data name="hdrMyRequests" xml:space="preserve">
+    <value>طلباتي</value>
+  </data>
+  <data name="hdrOffers" xml:space="preserve">
+    <value>العروض</value>
+  </data>
+  <data name="lblAccount-More" xml:space="preserve">
+    <value>الحساب الشخصي</value>
+  </data>
+  <data name="lblExit-More" xml:space="preserve">
+    <value>الخروج</value>
+  </data>
+  <data name="lblFavorites-More" xml:space="preserve">
+    <value>المفضلة</value>
+  </data>
+  <data name="lblLanguage-More" xml:space="preserve">
+    <value>اللغة</value>
+  </data>
+  <data name="lblPrivacyPolicy-More" xml:space="preserve">
+    <value>سياسة الخصوصية</value>
+  </data>
+  <data name="lblSupport-More" xml:space="preserve">
+    <value>الدعم</value>
+  </data>
+  <data name="lblTermesConditions-More" xml:space="preserve">
+    <value>الشروط والأحكام</value>
+  </data>
+  <data name="lblUsers-More" xml:space="preserve">
+    <value>المستخدمين</value>
+  </data>
+  <data name="plcSearch" xml:space="preserve">
+    <value>بحث</value>
   </data>
 </root>

@@ -9,18 +9,26 @@ namespace TripBliss
         
         public App()
         {
-            string Lan = Preferences.Get("Lan","en");
+            LoadSetting();
             InitializeComponent();
-
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(ApiConstants.syncFusionLicence);
             //MainPage = new AppShell();
-            MainPage = new NavigationPage(new HomeDistributorsPage());
-            //MainPage = new NavigationPage(new LoginPage());
+            //MainPage = new NavigationPage(new HomeDistributorsPage());
+            MainPage = new NavigationPage(new LoginPage());
+        }
+
+
+        void LoadSetting()
+        {
+            string Lan = Preferences.Default.Get("Lan", "en");
             if (Lan == "ar")
             {
                 CultureInfo.CurrentCulture = new CultureInfo("ar");
             }
-           
+            else
+            {
+                CultureInfo.CurrentCulture = new CultureInfo("en");
+            }
         }
     }
 }

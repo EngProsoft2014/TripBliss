@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels"
              xmlns:dvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest"
              xmlns:Tvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.Offer"
-             xmlns:lan="clr-namespace:TripBliss.Resources.Language"
+             xmlns:ex="clr-namespace:TripBliss.Exitoistions"
              x:Class="TripBliss.Pages.TravelAgenciesPages.HomeAgencyPage"
              Title="HomeAgencyPage"
              NavigationPage.HasNavigationBar="False"
@@ -20,7 +20,7 @@
                            VerticalOptions="EndAndExpand">
             <tabView:SfTabView.Items>
                 <!--Home-->
-                <tabView:SfTabItem Header="Home" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2">
+                <tabView:SfTabItem Header="{ex:Translate Name=btnHome}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
@@ -49,7 +49,7 @@
                                 </Style>
                             </ContentView.Resources>
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="10">
-                                <Label Text="My Requests" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                                <Label Text="{ex:Translate Name=hdrMyRequests}" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
                                    TextColor="Black" Margin="20,20,20,10"></Label>
                                 <CollectionView ItemsSource="{Binding Requests}" SelectionChangedCommand="{Binding SelectionCommand}"
                                             VerticalOptions="FillAndExpand" SelectionMode="Single">
@@ -102,7 +102,7 @@
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
                 <!--Distributors-->
-                <tabView:SfTabItem Header="Distributors" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2">
+                <tabView:SfTabItem Header="{ex:Translate Name=hdrDistributors}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
@@ -110,16 +110,17 @@
                         <ContentView>
                             <StackLayout Orientation="Vertical">
                                 <StackLayout Orientation="Horizontal" Spacing="10">
-                                    <Label Text="Distributors" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                                    <Label Text="{ex:Translate Name=hdrDistributors}" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
                                            TextColor="Black" Margin="20" HorizontalOptions="EndAndExpand"></Label>
-                                    <Button Text="Add Request" WidthRequest="95" Padding="0,5,0,5" HeightRequest="35" FontSize="12" Command="{Binding AddRequestCommand}"
+                                    <Button Text="{ex:Translate Name=btnAddRequest}" WidthRequest="95" Padding="0,5,0,5" HeightRequest="35" FontSize="12"
+                                            Command="{Binding AddRequestCommand}"
                                         BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" Margin="0,0,15,0" FontAttributes="Bold">
                                     </Button>
                                 </StackLayout>
                                 <tabView:SfTabView IndicatorBackground="#1c874b" VerticalOptions="FillAndExpand">
                                     <tabView:SfTabView.Items>
                                         <!--Distributors-->
-                                        <tabView:SfTabItem Header='Distributors' TextColor="Black" FontSize="14" BackgroundColor="#f6fcf2">
+                                        <tabView:SfTabItem Header='{ex:Translate Name=btnDistributors}' TextColor="Black" FontSize="14" BackgroundColor="#f6fcf2">
                                             <tabView:SfTabItem.Content>
                                                 <ContentView>
                                                     <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20">
@@ -164,7 +165,7 @@
                                             </tabView:SfTabItem.Content>
                                         </tabView:SfTabItem>
                                         <!--Favourites-->
-                                        <tabView:SfTabItem Header='Favourites' TextColor="Black" FontSize="14" BackgroundColor="#f6fcf2">
+                                        <tabView:SfTabItem Header='{ex:Translate Name=btnFavourites}' TextColor="Black" FontSize="14" BackgroundColor="#f6fcf2">
                                             <tabView:SfTabItem.Content>
                                                 <ContentView>
                                                     <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20">
@@ -218,7 +219,7 @@
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
                 <!--Offers-->
-                <tabView:SfTabItem Header="Offers" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2">
+                <tabView:SfTabItem Header="{ex:Translate Name=hdrOffers}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
@@ -251,12 +252,12 @@
                             </ContentView.BindingContext>
                             <StackLayout Orientation="Vertical" Margin="20">
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="Offers" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                                    <Label Text="{ex:Translate Name=hdrOffers}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                 </StackLayout>
                                 <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="0,20,0,0" BackgroundColor="White">
                                     <Grid>
-                                        <SearchBar BackgroundColor="White" Placeholder="Search" HeightRequest="40" FontSize="15" TextColor="Black"></SearchBar>
+                                        <SearchBar BackgroundColor="White" Placeholder="{ex:Translate Name=plcSearch}" HeightRequest="40" FontSize="15" TextColor="Black"></SearchBar>
                                         <Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
                                             <Image WidthRequest="20" HeightRequest="20">
                                                 <Image.Source>
@@ -314,7 +315,7 @@
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
                 <!--History-->
-                <tabView:SfTabItem Header="History" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2">
+                <tabView:SfTabItem Header="{ex:Translate Name=hdrHistory}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
@@ -343,11 +344,11 @@
                                 </Style>
                             </ContentView.Resources>
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="10">
-                                <Label Text="History" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
-                   TextColor="Black" Margin="0,20,0,10"></Label>
+                                <Label Text="{ex:Translate Name=hdrHistory}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                                       TextColor="Black" Margin="0,20,0,10"></Label>
                                 <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="20,0" BackgroundColor="White">
                                     <Grid>
-                                        <SearchBar BackgroundColor="White" Placeholder="Search" HeightRequest="40" FontSize="15" TextColor="Black"></SearchBar>
+                                        <SearchBar BackgroundColor="White" Placeholder="{ex:Translate Name=plcSearch}" HeightRequest="40" FontSize="15" TextColor="Black"></SearchBar>
                                         <Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
                                             <Image WidthRequest="20" HeightRequest="20">
                                                 <Image.Source>
@@ -426,14 +427,17 @@
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
                 <!--More-->
-                <tabView:SfTabItem Header="More" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2">
+                <tabView:SfTabItem Header="{ex:Translate Name=hdrMore}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
                     <tabView:SfTabItem.Content>
                         <ContentView>
+                            <ContentView.BindingContext>
+                                <vm:MoreViewModel></vm:MoreViewModel>
+                            </ContentView.BindingContext>
                             <StackLayout Orientation="Vertical" Spacing="50">
-                                <Label Text="{x:Static lan:AppResources.hdrMore}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                                <Label Text="{ex:Translate Name=hdrMore}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                        TextColor="Black" Margin="0,20,0,10"></Label>
                                 <!--User-->
                                 <VerticalStackLayout Margin="20,0" Spacing="20">
@@ -443,7 +447,7 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="Account" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                        <Label Text="{ex:Translate Name=lblAccount-More}" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="8">
                                         <Image WidthRequest="20" HeightRequest="20">
@@ -451,7 +455,7 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="Users" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                        <Label Text="{ex:Translate Name=lblUsers-More}" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="8">
                                         <Image WidthRequest="20" HeightRequest="20">
@@ -459,9 +463,10 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="Favorites" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                        <Label Text="{ex:Translate Name=lblFavorites-More}" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                     </HorizontalStackLayout>
                                 </VerticalStackLayout>
+                                <!--Settings-->
                                 <VerticalStackLayout Margin="20,0" Spacing="20">
                                     <HorizontalStackLayout Spacing="8">
                                         <Image WidthRequest="20" HeightRequest="20">
@@ -469,7 +474,7 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="Privacy policy" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                        <Label Text="{ex:Translate Name=lblPrivacyPolicy-More}" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="8">
                                         <Image WidthRequest="20" HeightRequest="20">
@@ -477,7 +482,8 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="Termes &amp; conditions" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                        <Label Text="{ex:Translate Name=lblTermesConditions-More}" TextColor="Gray" FontSize="14" 
+                                               VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="8">
                                         <Image WidthRequest="20" HeightRequest="20">
@@ -485,7 +491,8 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="Support" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                        <Label Text="{ex:Translate Name=lblSupport-More}" TextColor="Gray" FontSize="14"
+                                               VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="8">
                                         <Image WidthRequest="20" HeightRequest="20">
@@ -493,7 +500,11 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="Language" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                        <Label Text="{ex:Translate Name=lblLanguage-More}" TextColor="Gray" FontSize="14"
+                                               VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                        <HorizontalStackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding SelectLanguageCommand}"></TapGestureRecognizer>
+                                        </HorizontalStackLayout.GestureRecognizers>
                                     </HorizontalStackLayout>
                                 </VerticalStackLayout>
                                 <HorizontalStackLayout Spacing="8" Margin="20,0">
@@ -502,7 +513,7 @@
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                         </Image.Source>
                                     </Image>
-                                    <Label Text="Exit" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                    <Label Text="{ex:Translate Name=lblExit-More}" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                 </HorizontalStackLayout>
                             </StackLayout>
                         </ContentView>
