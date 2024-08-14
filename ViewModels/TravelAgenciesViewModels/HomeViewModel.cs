@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Controls.UserDialogs.Maui;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,8 +21,16 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
 
         public HomeViewModel()
         {
+
             Requests = new ObservableCollection<RequestClassModel>();
-            LoadData();
+
+            if(Controls.StaticMember.WayOfTab == 0)
+            {
+                UserDialogs.Instance.ShowLoading();
+                LoadData();
+                UserDialogs.Instance.HideHud();
+            }  
+            
         }
 
 

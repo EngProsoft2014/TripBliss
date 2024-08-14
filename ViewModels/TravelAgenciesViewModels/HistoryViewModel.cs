@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Controls.UserDialogs.Maui;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,7 +10,7 @@ using TripBliss.Models;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels
 {
-    partial class HistoryViewModel : ObservableObject
+    partial class HistoryViewModel : BaseViewModel
     {
         #region Prop
         [ObservableProperty]
@@ -20,7 +21,13 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         public HistoryViewModel()
         {
             Requests = new ObservableCollection<RequestClassModel>();
-            LoadData();
+            if (Controls.StaticMember.WayOfTab == 3)
+            {
+                UserDialogs.Instance.ShowLoading();
+                LoadData();
+                UserDialogs.Instance.HideHud();
+            }
+
         }
 
 
@@ -28,6 +35,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         #region Methods
         void LoadData()
         {
+            
             Requests.Add(new RequestClassModel()
             {
                 Date = DateOnly.FromDateTime(DateTime.Now),
@@ -100,7 +108,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                 Services = "Hotel - Tickting - Transportion"
 
             });
-
+            
         }
         #endregion
     }

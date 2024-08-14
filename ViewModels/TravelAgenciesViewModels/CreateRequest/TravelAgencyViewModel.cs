@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Controls.UserDialogs.Maui;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,7 +24,13 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             Distributors = new ObservableCollection<DistributorsModel>();
             Lang = Preferences.Default.Get("Lan", "en");
-            LoadData();
+            if (Controls.StaticMember.WayOfTab == 1)
+            {
+                UserDialogs.Instance.ShowLoading();
+                LoadData();
+                UserDialogs.Instance.HideHud();
+            }
+                
         }
 
 
