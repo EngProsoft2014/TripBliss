@@ -14,6 +14,7 @@ namespace TripBliss.ViewModels
         [ObservableProperty]
         public bool isBusy;
 
-
+        [ObservableProperty]
+        public string lang;
     }
 }

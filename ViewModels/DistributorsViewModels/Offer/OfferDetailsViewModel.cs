@@ -20,12 +20,13 @@ namespace TripBliss.ViewModels.DistributorsViewModels.Offer
         #region Cons
         public OfferDetailsViewModel()
         {
-
+           
         }
 
         public OfferDetailsViewModel(OfferModel model)
         {
             SelectedItem = model;
+            Lang = Preferences.Default.Get("Lan", "en");
         } 
         #endregion
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TripBliss.Exitoistions
+namespace TripBliss.Extensions
 {
     [ContentProperty(nameof(Name))]
     public class TranslateExtension : IMarkupExtension<BindingBase>

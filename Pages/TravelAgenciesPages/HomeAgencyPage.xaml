@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels"
              xmlns:dvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest"
              xmlns:Tvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.Offer"
-             xmlns:ex="clr-namespace:TripBliss.Exitoistions"
+             xmlns:ex="clr-namespace:TripBliss.Extensions"
              x:Class="TripBliss.Pages.TravelAgenciesPages.HomeAgencyPage"
              Title="HomeAgencyPage"
              NavigationPage.HasNavigationBar="False"

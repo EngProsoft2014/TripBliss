@@ -150,6 +150,9 @@
   <data name="lblAccount-More" xml:space="preserve">
     <value>Account</value>
   </data>
+  <data name="lblDiscription-OfferDetails" xml:space="preserve">
+    <value>Discription</value>
+  </data>
   <data name="lblExit-More" xml:space="preserve">
     <value>Exit</value>
   </data>

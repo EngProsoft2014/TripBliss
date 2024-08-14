@@ -160,6 +160,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Discription.
+        /// </summary>
+        internal static string lblDiscription_OfferDetails {
+            get {
+                return ResourceManager.GetString("lblDiscription-OfferDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exit.
         /// </summary>
         internal static string lblExit_More {

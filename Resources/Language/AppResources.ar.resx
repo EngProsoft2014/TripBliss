@@ -150,6 +150,9 @@
   <data name="lblAccount-More" xml:space="preserve">
     <value>الحساب الشخصي</value>
   </data>
+  <data name="lblDiscription-OfferDetails" xml:space="preserve">
+    <value>الوصف</value>
+  </data>
   <data name="lblExit-More" xml:space="preserve">
     <value>الخروج</value>
   </data>

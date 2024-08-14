@@ -1,7 +1,7 @@
 
 using Mopups.Services;
 using System.Globalization;
-using TripBliss.Exitoistions;
+using TripBliss.Extensions;
 using TripBliss.Pages.DistributorsPages;
 using TripBliss.Resources.Language;
 
@@ -27,6 +27,7 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
         LocalizationResourceManager.Instance.SetCulture(cal);
         Preferences.Default.Set("Lan","ar");
 
+        LoadSetting();
         await MopupService.Instance.PopAsync();
 
     }
@@ -37,6 +38,7 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
         LocalizationResourceManager.Instance.SetCulture(cal);
         Preferences.Default.Set("Lan", "en");
 
+        LoadSetting();
         await MopupService.Instance.PopAsync();
     }
 

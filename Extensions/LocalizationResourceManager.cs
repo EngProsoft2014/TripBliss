@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Resources.Language;
 
-namespace TripBliss.Exitoistions
+namespace TripBliss.Extensions
 {
     public class LocalizationResourceManager : INotifyPropertyChanged
     {

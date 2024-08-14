@@ -81,12 +81,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Controls\" />
 	  <Folder Include="Pages\DistributorsPages\PopupPages\" />
 	  <Folder Include="Pages\TravelAgenciesPages\PopupPages\" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Controls\CustomControl.xaml.cs">
+	    <DependentUpon>CustomControl.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\DistributorsPages\HomeDistributorsPage.xaml.cs">
 	    <DependentUpon>HomeDistributorsPage.xaml</DependentUpon>
 	  </Compile>
@@ -156,6 +158,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Controls\CustomControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\DistributorsPages\HomeDistributorsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -81,7 +81,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.Offer
         [RelayCommand]
         async Task SelectionOffer(OfferModel model)
         {
-            var Vm = new OfferDetailsViewModel(SelectedItem);
+            var Vm = new OfferDetailsViewModel(model);
             var page = new OfferDetailsPage();
             page.BindingContext = Vm;   
             await App.Current!.MainPage!.Navigation.PushAsync(page);
