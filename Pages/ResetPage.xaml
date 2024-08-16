@@ -23,7 +23,7 @@
                 </Image>
                 <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                     <Entry Keyboard="Email" TextColor="Black" FontSize="16" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcEmail-Login}" HorizontalTextAlignment="Center"
-                   Margin="10,2" FontFamily="OpenSansRegular" Text="{Binding Email}"></Entry>
+                   Margin="10,2"   Text="{Binding Email}"></Entry>
                 </Border>
                 <Button Text="{ex:Translate Name=btnApply-Forgot}" BackgroundColor="#2FA562" TextColor="White" WidthRequest="140" CornerRadius="20" Margin="0,30,0,0"
                         Command="{Binding ApplyCommand}"></Button>

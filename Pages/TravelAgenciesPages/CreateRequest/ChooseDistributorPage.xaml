@@ -4,6 +4,7 @@
              xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest"
              x:Class="TripBliss.Pages.TravelAgenciesPages.CreateRequest.ChooseDistributorPage"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
+             xmlns:ex="clr-namespace:TripBliss.Extensions"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="Choose Distributor">
@@ -44,12 +45,12 @@
                     </DataTrigger>
                 </ImageButton.Triggers>
             </ImageButton>
-            <Label Text="Choose Distributor" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="{ex:Translate Name=hdrChooseDistributor}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
         <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="0,20,0,0" BackgroundColor="White">
             <Grid>
-                <SearchBar BackgroundColor="White" Placeholder="Search" HeightRequest="40" FontSize="15" TextColor="Black"></SearchBar>
+                <SearchBar BackgroundColor="White" Placeholder="{ex:Translate Name=plcSearch}" HeightRequest="40" FontSize="15" TextColor="Black"></SearchBar>
                 <!--<Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
                     <Image WidthRequest="20" HeightRequest="20">
                         <Image.Source>
@@ -64,7 +65,7 @@
         </Border>
         <HorizontalStackLayout>
             <CheckBox Color="#76d973" VerticalOptions="CenterAndExpand"></CheckBox>
-            <Label Text="Select All" FontSize="14" TextColor="Black" VerticalTextAlignment="Center"></Label>
+            <Label Text="{ex:Translate Name=lblSelectAll-ActiveDistributors}" FontSize="14" TextColor="Black" VerticalTextAlignment="Center"></Label>
         </HorizontalStackLayout>
         <CollectionView ItemsSource="{Binding Distributors}" VerticalOptions="FillAndExpand" SelectionMode="Multiple">
             <CollectionView.ItemTemplate>
@@ -103,7 +104,7 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button  Text="Apply" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="0,5,0,0"
+        <Button  Text="{ex:Translate Name=btnApply-Forgot}" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="0,5,0,0"
                 Command="{Binding SelectionCommand}"></Button>
     </StackLayout>
 </Controls:CustomControl>

@@ -124,6 +124,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose Distributor.
+        /// </summary>
+        internal static string hdrChooseDistributor {
+            get {
+                return ResourceManager.GetString("hdrChooseDistributor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Distributors.
         /// </summary>
         internal static string hdrDistributors {
@@ -160,6 +169,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Request.
+        /// </summary>
+        internal static string hdrNewRequest {
+            get {
+                return ResourceManager.GetString("hdrNewRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offers.
         /// </summary>
         internal static string hdrOffers {
@@ -178,6 +196,96 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adult.
+        /// </summary>
+        internal static string lblAdult_AirService {
+            get {
+                return ResourceManager.GetString("lblAdult-AirService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Air Flight Services.
+        /// </summary>
+        internal static string lblAirFlightServices {
+            get {
+                return ResourceManager.GetString("lblAirFlightServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Brand.
+        /// </summary>
+        internal static string lblBrand_TranServices {
+            get {
+                return ResourceManager.GetString("lblBrand-TranServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Carrier.
+        /// </summary>
+        internal static string lblCarrier_AirService {
+            get {
+                return ResourceManager.GetString("lblCarrier-AirService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Car Type.
+        /// </summary>
+        internal static string lblCarType_TranService {
+            get {
+                return ResourceManager.GetString("lblCarType-TranService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check In.
+        /// </summary>
+        internal static string lblCheckIn_HotelService {
+            get {
+                return ResourceManager.GetString("lblCheckIn-HotelService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check Out.
+        /// </summary>
+        internal static string lblCheckOut_HotelService {
+            get {
+                return ResourceManager.GetString("lblCheckOut-HotelService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Child.
+        /// </summary>
+        internal static string lblChild_AirService {
+            get {
+                return ResourceManager.GetString("lblChild-AirService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Class.
+        /// </summary>
+        internal static string lblClass_AirService {
+            get {
+                return ResourceManager.GetString("lblClass-AirService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        internal static string lblDate_TranService {
+            get {
+                return ResourceManager.GetString("lblDate-TranService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Don&apos;t have an Account? .
         /// </summary>
         internal static string lblDHAccount_Login {
@@ -192,6 +300,24 @@ namespace TripBliss.Resources.Language {
         internal static string lblDiscription_OfferDetails {
             get {
                 return ResourceManager.GetString("lblDiscription-OfferDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ETA.
+        /// </summary>
+        internal static string lblETA_AirService {
+            get {
+                return ResourceManager.GetString("lblETA-AirService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ETD.
+        /// </summary>
+        internal static string lblETD_AirService {
+            get {
+                return ResourceManager.GetString("lblETD-AirService", resourceCulture);
             }
         }
         
@@ -223,11 +349,47 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to From.
+        /// </summary>
+        internal static string lblFrom_TranService {
+            get {
+                return ResourceManager.GetString("lblFrom-TranService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I&apos;ve got an account already?.
         /// </summary>
         internal static string lblHaveAccount_SignUp {
             get {
                 return ResourceManager.GetString("lblHaveAccount-SignUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hotel Name.
+        /// </summary>
+        internal static string lblHotelName_HotelService {
+            get {
+                return ResourceManager.GetString("lblHotelName-HotelService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hotel Services.
+        /// </summary>
+        internal static string lblHotelServices {
+            get {
+                return ResourceManager.GetString("lblHotelServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Infant.
+        /// </summary>
+        internal static string lblInfant_AirService {
+            get {
+                return ResourceManager.GetString("lblInfant-AirService", resourceCulture);
             }
         }
         
@@ -241,11 +403,92 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Meals.
+        /// </summary>
+        internal static string lblMeals_HotelService {
+            get {
+                return ResourceManager.GetString("lblMeals-HotelService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Model.
+        /// </summary>
+        internal static string lblModel_TranService {
+            get {
+                return ResourceManager.GetString("lblModel-TranService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No. Of Room.
+        /// </summary>
+        internal static string lblNoOfRoom_HotelService {
+            get {
+                return ResourceManager.GetString("lblNoOfRoom-HotelService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No .s.
+        /// </summary>
+        internal static string lblNos_TranService {
+            get {
+                return ResourceManager.GetString("lblNos-TranService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notes.
+        /// </summary>
+        internal static string lblNotes_HotelService {
+            get {
+                return ResourceManager.GetString("lblNotes-HotelService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pass No..
+        /// </summary>
+        internal static string lblPassNo_VisaService {
+            get {
+                return ResourceManager.GetString("lblPassNo-VisaService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Privacy Policy.
         /// </summary>
         internal static string lblPrivacyPolicy_More {
             get {
                 return ResourceManager.GetString("lblPrivacyPolicy-More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Room Type.
+        /// </summary>
+        internal static string lblRoomType_HotelService {
+            get {
+                return ResourceManager.GetString("lblRoomType-HotelService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Room View.
+        /// </summary>
+        internal static string lblRoomView_HotelService {
+            get {
+                return ResourceManager.GetString("lblRoomView-HotelService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select all.
+        /// </summary>
+        internal static string lblSelectAll_ActiveDistributors {
+            get {
+                return ResourceManager.GetString("lblSelectAll-ActiveDistributors", resourceCulture);
             }
         }
         
@@ -286,11 +529,56 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Time.
+        /// </summary>
+        internal static string lblTime_TranService {
+            get {
+                return ResourceManager.GetString("lblTime-TranService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To.
+        /// </summary>
+        internal static string lblTo_TranService {
+            get {
+                return ResourceManager.GetString("lblTo-TranService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transportation Services.
+        /// </summary>
+        internal static string lblTransportationServices {
+            get {
+                return ResourceManager.GetString("lblTransportationServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Users.
         /// </summary>
         internal static string lblUsers_More {
             get {
                 return ResourceManager.GetString("lblUsers-More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visa Services.
+        /// </summary>
+        internal static string lblVisaServices {
+            get {
+                return ResourceManager.GetString("lblVisaServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visa Type.
+        /// </summary>
+        internal static string lblVisaType_VisaService {
+            get {
+                return ResourceManager.GetString("lblVisaType-VisaService", resourceCulture);
             }
         }
         

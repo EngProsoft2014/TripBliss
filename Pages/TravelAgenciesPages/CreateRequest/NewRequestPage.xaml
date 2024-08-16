@@ -4,6 +4,7 @@
              x:Class="TripBliss.Pages.TravelAgenciesPages.CreateRequest.NewRequestPage"
              xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
+             xmlns:ex="clr-namespace:TripBliss.Extensions"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="NewRequestPage">
@@ -41,13 +42,13 @@
                     </DataTrigger>
                 </ImageButton.Triggers>
             </ImageButton>
-            <Label Text="New Request" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
-TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+            <Label Text="{ex:Translate Name=hdrNewRequest}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                   TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
             <StackLayout Spacing="10">
                 <StackLayout Orientation="Horizontal" Margin="0,15,0,0">
-                    <Label Text="Hotel Services" FontSize="16" TextColor="DarkOrange" VerticalTextAlignment="Center"></Label>
+                    <Label Text="{ex:Translate Name=lblHotelServices}" FontSize="16" TextColor="DarkOrange" VerticalTextAlignment="Center"></Label>
                     <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
                             StrokeThickness="1.5" Padding="2">
                         <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddHotelCommand}">
@@ -94,7 +95,7 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                     </CollectionView>
                 </Border>
                 <StackLayout Orientation="Horizontal" Margin="0,0">
-                    <Label Text="Transportaion Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Label Text="{ex:Translate Name=lblTransportationServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
                     <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
                     StrokeThickness="1.5" Padding="2">
                         <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddTransportaionCommand}">
@@ -142,7 +143,7 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                     </CollectionView>
                 </Border>
                 <StackLayout Orientation="Horizontal" Margin="0,0">
-                    <Label Text="Air Flight Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Label Text="{ex:Translate Name=lblAirFlightServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
                     <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
                     StrokeThickness="1.5" Padding="2">
                         <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddAirFlightCommand}">
@@ -197,7 +198,7 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                     </CollectionView>
                 </Border>
                 <StackLayout Orientation="Horizontal" Margin="0,0">
-                    <Label Text="Visa Service" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Label Text="{ex:Translate Name=lblVisaServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
                     <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
                     StrokeThickness="1.5" Padding="2">
                         <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddVisaCommand}">

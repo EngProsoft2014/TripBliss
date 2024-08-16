@@ -56,9 +56,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Fonts\Almarai-Light.ttf" />
 	  <None Remove="Resources\Fonts\Font Awesome 6 Brands-Regular-400.otf" />
 	  <None Remove="Resources\Fonts\Font Awesome 6 Free-Regular-400.otf" />
 	  <None Remove="Resources\Fonts\Font Awesome 6 Free-Solid-900.otf" />
+	  <None Remove="Resources\Fonts\Inter-Medium.ttf" />
 	  <None Remove="Resources\Images\bntu.svg" />
 	  <None Remove="Resources\Images\offer.jpg" />
 	</ItemGroup>

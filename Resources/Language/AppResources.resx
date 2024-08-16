@@ -138,6 +138,9 @@
   <data name="hdrAgency" xml:space="preserve">
     <value>Agency</value>
   </data>
+  <data name="hdrChooseDistributor" xml:space="preserve">
+    <value>Choose Distributor</value>
+  </data>
   <data name="hdrDistributors" xml:space="preserve">
     <value>Distributors</value>
   </data>
@@ -150,17 +153,56 @@
   <data name="hdrMyRequests" xml:space="preserve">
     <value>My Requests</value>
   </data>
+  <data name="hdrNewRequest" xml:space="preserve">
+    <value>New Request</value>
+  </data>
   <data name="hdrOffers" xml:space="preserve">
     <value>Offers</value>
   </data>
   <data name="lblAccount-More" xml:space="preserve">
     <value>Account</value>
   </data>
+  <data name="lblAdult-AirService" xml:space="preserve">
+    <value>Adult</value>
+  </data>
+  <data name="lblAirFlightServices" xml:space="preserve">
+    <value>Air Flight Services</value>
+  </data>
+  <data name="lblBrand-TranServices" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="lblCarrier-AirService" xml:space="preserve">
+    <value>Carrier</value>
+  </data>
+  <data name="lblCarType-TranService" xml:space="preserve">
+    <value>Car Type</value>
+  </data>
+  <data name="lblCheckIn-HotelService" xml:space="preserve">
+    <value>Check In</value>
+  </data>
+  <data name="lblCheckOut-HotelService" xml:space="preserve">
+    <value>Check Out</value>
+  </data>
+  <data name="lblChild-AirService" xml:space="preserve">
+    <value>Child</value>
+  </data>
+  <data name="lblClass-AirService" xml:space="preserve">
+    <value>Class</value>
+  </data>
+  <data name="lblDate-TranService" xml:space="preserve">
+    <value>Date</value>
+  </data>
   <data name="lblDHAccount-Login" xml:space="preserve">
     <value>Don't have an Account? </value>
   </data>
   <data name="lblDiscription-OfferDetails" xml:space="preserve">
     <value>Discription</value>
+  </data>
+  <data name="lblETA-AirService" xml:space="preserve">
+    <value>ETA</value>
+  </data>
+  <data name="lblETD-AirService" xml:space="preserve">
+    <value>ETD</value>
   </data>
   <data name="lblExit-More" xml:space="preserve">
     <value>Exit</value>
@@ -171,14 +213,53 @@
   <data name="lblForgotPassword-Login" xml:space="preserve">
     <value>Forgot Password?</value>
   </data>
+  <data name="lblFrom-TranService" xml:space="preserve">
+    <value>From</value>
+  </data>
   <data name="lblHaveAccount-SignUp" xml:space="preserve">
     <value>I've got an account already?</value>
+  </data>
+  <data name="lblHotelName-HotelService" xml:space="preserve">
+    <value>Hotel Name</value>
+  </data>
+  <data name="lblHotelServices" xml:space="preserve">
+    <value>Hotel Services</value>
+  </data>
+  <data name="lblInfant-AirService" xml:space="preserve">
+    <value>Infant</value>
   </data>
   <data name="lblLanguage-More" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="lblMeals-HotelService" xml:space="preserve">
+    <value>Meals</value>
+  </data>
+  <data name="lblModel-TranService" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="lblNoOfRoom-HotelService" xml:space="preserve">
+    <value>No. Of Room</value>
+  </data>
+  <data name="lblNos-TranService" xml:space="preserve">
+    <value>No .s</value>
+  </data>
+  <data name="lblNotes-HotelService" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="lblPassNo-VisaService" xml:space="preserve">
+    <value>Pass No.</value>
+  </data>
   <data name="lblPrivacyPolicy-More" xml:space="preserve">
     <value>Privacy Policy</value>
+  </data>
+  <data name="lblRoomType-HotelService" xml:space="preserve">
+    <value>Room Type</value>
+  </data>
+  <data name="lblRoomView-HotelService" xml:space="preserve">
+    <value>Room View</value>
+  </data>
+  <data name="lblSelectAll-ActiveDistributors" xml:space="preserve">
+    <value>Select all</value>
   </data>
   <data name="lblSignIn-SignUp" xml:space="preserve">
     <value>Sign In</value>
@@ -192,8 +273,23 @@
   <data name="lblTermesConditions-More" xml:space="preserve">
     <value>Terms&amp;Conditions</value>
   </data>
+  <data name="lblTime-TranService" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="lblTo-TranService" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="lblTransportationServices" xml:space="preserve">
+    <value>Transportation Services</value>
+  </data>
   <data name="lblUsers-More" xml:space="preserve">
     <value>Users</value>
+  </data>
+  <data name="lblVisaServices" xml:space="preserve">
+    <value>Visa Services</value>
+  </data>
+  <data name="lblVisaType-VisaService" xml:space="preserve">
+    <value>Visa Type</value>
   </data>
   <data name="plcCompanyName-SignUp" xml:space="preserve">
     <value>Company Name</value>

@@ -26,11 +26,11 @@
                         </Image>
                         <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                             <Entry Keyboard="Email" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcEmail-Login}"
-                                   HorizontalTextAlignment="Center" Margin="10,2" FontFamily="OpenSansRegular" Text="{Binding Email}"></Entry>
+                                   HorizontalTextAlignment="Center" Margin="10,2"   Text="{Binding Email}"></Entry>
                         </Border>
                         <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                             <Entry Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcPassword-Lohin}"
-                                   HorizontalTextAlignment="Center" Margin="10,2" FontFamily="OpenSansRegular" Text="{Binding Password}" IsPassword="True"></Entry>
+                                   HorizontalTextAlignment="Center" Margin="10,2"   Text="{Binding Password}" IsPassword="True"></Entry>
                         </Border>
                         <Button Text="{ex:Translate Name=btnLogIn-Login}" FontAttributes="Bold" TextColor="White" WidthRequest="140" FontSize="14" CornerRadius="25" Margin="0,30,0,0"
                         Command="{Binding LogInCommand}">
@@ -44,7 +44,7 @@
                     </VerticalStackLayout>
                 </Border>
                 <Label Text="{ex:Translate Name=lblForgotPassword-Login}" TextColor="#0471DF" FontSize="13" BackgroundColor="Transparent"
-                       HorizontalOptions="StartAndExpand" Margin="0,20,0,0" FontAttributes="Bold" FontFamily="OpenSansSemibold">
+                       HorizontalOptions="StartAndExpand" Margin="0,20,0,0" FontAttributes="Bold">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnForgot"></TapGestureRecognizer>
                     </Label.GestureRecognizers>
@@ -52,8 +52,9 @@
                 <Label Margin="0,15,0,0">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="{ex:Translate Name=lblDHAccount-Login}" FontSize="13" TextColor="Gray" FontFamily="OpenSansRegular"></Span>
-                            <Span Text="{ex:Translate Name=lblSignUp-Login}" TextColor="Orange" FontSize="13" FontFamily="OpenSansRegular" FontAttributes="Bold">
+                            <Span Text="{ex:Translate Name=lblDHAccount-Login}" FontSize="13" TextColor="Gray" FontFamily="Almarai-Light"></Span>
+                            <Span Text="{ex:Translate Name=lblSignUp-Login}" TextColor="Orange" FontSize="13" FontFamily="Almarai-Light"
+                                  FontAttributes="Bold">
                                 <Span.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnSignUp"></TapGestureRecognizer>
                                 </Span.GestureRecognizers>

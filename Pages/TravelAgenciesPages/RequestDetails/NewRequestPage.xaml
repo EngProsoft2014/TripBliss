@@ -4,6 +4,7 @@
              x:Class="TripBliss.Pages.TravelAgenciesPages.RequestDetails.NewRequestPage"
              xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
+             xmlns:ex="clr-namespace:TripBliss.Extensions"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="NewRequestPage">
@@ -41,13 +42,14 @@
                     </DataTrigger>
                 </ImageButton.Triggers>
             </ImageButton>
-            <Label Text="New Request" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
-TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+            <Label Text="{ex:Translate Name=hdrNewRequest}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                   TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout Spacing="10">
                 <StackLayout Orientation="Horizontal" Margin="0,15,15,0">
-                    <Label Text="Hotel Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Label Text="{ex:Translate Name=lblHotelServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" 
+                           VerticalTextAlignment="Center"></Label>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
                     <CollectionView ItemsSource="{Binding Hotels}" VerticalOptions="FillAndExpand">
@@ -82,8 +84,8 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                     </CollectionView>
                 </Border>
                 <StackLayout Orientation="Horizontal" Margin="0,0">
-                    <Label Text="Transportaion Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-
+                    <Label Text="{ex:Translate Name=lblTransportationServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" 
+                           VerticalTextAlignment="Center"></Label>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
                     <CollectionView ItemsSource="{Binding transportaionServices}" VerticalOptions="FillAndExpand">
@@ -119,8 +121,8 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                     </CollectionView>
                 </Border>
                 <StackLayout Orientation="Horizontal" Margin="0,0">
-                    <Label Text="Air Flight Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-
+                    <Label Text="{ex:Translate Name=lblAirFlightServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None"
+                           VerticalTextAlignment="Center"></Label>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
                     <CollectionView ItemsSource="{Binding airFlights}" VerticalOptions="FillAndExpand">
@@ -163,8 +165,8 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                     </CollectionView>
                 </Border>
                 <StackLayout Orientation="Horizontal" Margin="0,0">
-                    <Label Text="Visa Service" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-
+                    <Label Text="{ex:Translate Name=lblVisaServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None"
+                           VerticalTextAlignment="Center"></Label>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
                     <CollectionView ItemsSource="{Binding visaServices}" VerticalOptions="FillAndExpand">

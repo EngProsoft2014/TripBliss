@@ -138,6 +138,9 @@
   <data name="hdrAgency" xml:space="preserve">
     <value>وكالة</value>
   </data>
+  <data name="hdrChooseDistributor" xml:space="preserve">
+    <value>اختر الموزع</value>
+  </data>
   <data name="hdrDistributors" xml:space="preserve">
     <value>الموزعين</value>
   </data>
@@ -150,17 +153,56 @@
   <data name="hdrMyRequests" xml:space="preserve">
     <value>طلباتي</value>
   </data>
+  <data name="hdrNewRequest" xml:space="preserve">
+    <value>طلب جديد</value>
+  </data>
   <data name="hdrOffers" xml:space="preserve">
     <value>العروض</value>
   </data>
   <data name="lblAccount-More" xml:space="preserve">
     <value>الحساب الشخصي</value>
   </data>
+  <data name="lblAdult-AirService" xml:space="preserve">
+    <value>الكبار</value>
+  </data>
+  <data name="lblAirFlightServices" xml:space="preserve">
+    <value>خدمات الطيران الجوي</value>
+  </data>
+  <data name="lblBrand-TranServices" xml:space="preserve">
+    <value>ماركة</value>
+  </data>
+  <data name="lblCarrier-AirService" xml:space="preserve">
+    <value>الناقل</value>
+  </data>
+  <data name="lblCarType-TranService" xml:space="preserve">
+    <value>نوع السيارة</value>
+  </data>
+  <data name="lblCheckIn-HotelService" xml:space="preserve">
+    <value>الوصول</value>
+  </data>
+  <data name="lblCheckOut-HotelService" xml:space="preserve">
+    <value>المغادرة</value>
+  </data>
+  <data name="lblChild-AirService" xml:space="preserve">
+    <value>الطفل</value>
+  </data>
+  <data name="lblClass-AirService" xml:space="preserve">
+    <value>الدرجه</value>
+  </data>
+  <data name="lblDate-TranService" xml:space="preserve">
+    <value>تاريخ</value>
+  </data>
   <data name="lblDHAccount-Login" xml:space="preserve">
     <value>ليس لديك حساب؟</value>
   </data>
   <data name="lblDiscription-OfferDetails" xml:space="preserve">
     <value>الوصف</value>
+  </data>
+  <data name="lblETA-AirService" xml:space="preserve">
+    <value>الوقت المتوقع للوصول</value>
+  </data>
+  <data name="lblETD-AirService" xml:space="preserve">
+    <value>بتوقيت شرق الولايات المتحدة</value>
   </data>
   <data name="lblExit-More" xml:space="preserve">
     <value>الخروج</value>
@@ -171,14 +213,53 @@
   <data name="lblForgotPassword-Login" xml:space="preserve">
     <value>هل نسيت كلمة السر؟</value>
   </data>
+  <data name="lblFrom-TranService" xml:space="preserve">
+    <value>من</value>
+  </data>
   <data name="lblHaveAccount-SignUp" xml:space="preserve">
     <value> لدي حساب بالفعل؟</value>
+  </data>
+  <data name="lblHotelName-HotelService" xml:space="preserve">
+    <value>اسم الفندق</value>
+  </data>
+  <data name="lblHotelServices" xml:space="preserve">
+    <value>خدمات الفنادق</value>
+  </data>
+  <data name="lblInfant-AirService" xml:space="preserve">
+    <value>الرضع</value>
   </data>
   <data name="lblLanguage-More" xml:space="preserve">
     <value>اللغة</value>
   </data>
+  <data name="lblMeals-HotelService" xml:space="preserve">
+    <value>وجبات</value>
+  </data>
+  <data name="lblModel-TranService" xml:space="preserve">
+    <value>نموذج</value>
+  </data>
+  <data name="lblNoOfRoom-HotelService" xml:space="preserve">
+    <value>عدد الغرف</value>
+  </data>
+  <data name="lblNos-TranService" xml:space="preserve">
+    <value>رقم السيارة</value>
+  </data>
+  <data name="lblNotes-HotelService" xml:space="preserve">
+    <value>ملحوظات</value>
+  </data>
+  <data name="lblPassNo-VisaService" xml:space="preserve">
+    <value>رقم المرور</value>
+  </data>
   <data name="lblPrivacyPolicy-More" xml:space="preserve">
     <value>سياسة الخصوصية</value>
+  </data>
+  <data name="lblRoomType-HotelService" xml:space="preserve">
+    <value>نوع الغرفة</value>
+  </data>
+  <data name="lblRoomView-HotelService" xml:space="preserve">
+    <value>إطلالة الغرفة</value>
+  </data>
+  <data name="lblSelectAll-ActiveDistributors" xml:space="preserve">
+    <value>حدد الكل</value>
   </data>
   <data name="lblSignIn-SignUp" xml:space="preserve">
     <value>تسجيل الدخول</value>
@@ -192,8 +273,23 @@
   <data name="lblTermesConditions-More" xml:space="preserve">
     <value>الشروط والأحكام</value>
   </data>
+  <data name="lblTime-TranService" xml:space="preserve">
+    <value>وقت</value>
+  </data>
+  <data name="lblTo-TranService" xml:space="preserve">
+    <value>الي</value>
+  </data>
+  <data name="lblTransportationServices" xml:space="preserve">
+    <value>خدمات النقل</value>
+  </data>
   <data name="lblUsers-More" xml:space="preserve">
     <value>المستخدمين</value>
+  </data>
+  <data name="lblVisaServices" xml:space="preserve">
+    <value>خدمات التأشيرات</value>
+  </data>
+  <data name="lblVisaType-VisaService" xml:space="preserve">
+    <value>نوع التأشيرة</value>
   </data>
   <data name="plcCompanyName-SignUp" xml:space="preserve">
     <value>اسم الشركة</value>

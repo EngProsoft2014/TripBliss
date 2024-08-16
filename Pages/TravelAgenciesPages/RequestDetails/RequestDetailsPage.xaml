@@ -6,6 +6,7 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails"
+             xmlns:ex="clr-namespace:TripBliss.Extensions"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="RequestDeatielsPage">
@@ -64,8 +65,8 @@
                                         </Label>
                                     </StackLayout>
                                     <StackLayout Spacing="10">
-                                        <Label Text="Hotel Service" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
-                                           FontFamily="OpenSansSemibold"></Label>
+                                        <Label Text="{ex:Translate Name=lblHotelServices}" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
+                                            ></Label>
                                         <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Margin="0,5" Padding="0,0,0,10">
                                             <StackLayout Orientation="Vertical" >
                                                 <StackLayout Orientation="Horizontal">
@@ -104,7 +105,7 @@
                                                             </Label.FormattedText>
                                                         </Label>
                                                     </StackLayout>
-                                                    <Label Text="Room Details:" TextColor="#387955" FontSize="14" FontAttributes="Bold" Margin="0,5" FontFamily="OpenSansSemibold"
+                                                    <Label Text="Room Details:" TextColor="#387955" FontSize="14" FontAttributes="Bold" Margin="0,5"  
                        Padding="5"></Label>
                                                     <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="7" Margin="10,0">
                                                         <VerticalStackLayout Spacing="3">
@@ -177,8 +178,8 @@
                                         </Border>
                                     </StackLayout>
                                     <StackLayout Spacing="10">
-                                        <Label Text="Transportaaion Service" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
-                                           FontFamily="OpenSansSemibold"></Label>
+                                        <Label Text="{ex:Translate Name=lblTransportationServices}" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
+                                            ></Label>
                                         <syncfusion:SfDataGrid ItemsSource="{Binding transportaionServices}" ColumnWidthMode="FitByCell"
                                                                    GridLinesVisibility="Both" HeaderGridLinesVisibility="Both" FlowDirection="LeftToRight"
                                                                    VerticalOptions="FillAndExpand">
@@ -256,8 +257,8 @@
                                         </StackLayout.Triggers>
                                     </StackLayout>
                                     <StackLayout Spacing="10" HeightRequest="250">
-                                        <Label Text="Air Flight Service" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
-                                                   FontFamily="OpenSansSemibold"></Label>
+                                        <Label Text="{ex:Translate Name=lblAirFlightServices}" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
+                                                   ></Label>
                                         <syncfusion:SfDataGrid ItemsSource="{Binding airFlights}" ColumnWidthMode="FitByCell" FlowDirection="LeftToRight"
                                                                    GridLinesVisibility="Both" HeaderGridLinesVisibility="Both" 
                                                                    VerticalOptions="FillAndExpand">
@@ -389,8 +390,8 @@
                                         </StackLayout.Triggers>
                                     </StackLayout>
                                     <StackLayout Spacing="10">
-                                        <Label Text="Visa Service" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
-                                                   FontFamily="OpenSansSemibold"></Label>
+                                        <Label Text="{ex:Translate Name=lblVisaServices}" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
+                                                    ></Label>
                                         <syncfusion:SfDataGrid ItemsSource="{Binding visaServices}" ColumnWidthMode="FitByCell" FlowDirection="LeftToRight"
                                                            GridLinesVisibility="Both" HeaderGridLinesVisibility="Both">
                                             <syncfusion:SfDataGrid.Columns>
@@ -500,7 +501,7 @@
                                         </DataTrigger>
                                     </ImageButton.Triggers>
                                 </ImageButton>
-                                <Label Text="Distributors" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                                <Label Text="{ex:Translate Name=btnDistributors}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                                TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                             </StackLayout>
                             <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="0,20,0,0" BackgroundColor="White">
@@ -520,7 +521,7 @@
                             </Border>
                             <HorizontalStackLayout>
                                 <CheckBox Color="#76d973" VerticalOptions="CenterAndExpand"></CheckBox>
-                                <Label Text="Select All" FontSize="14" TextColor="Black" VerticalTextAlignment="Center"></Label>
+                                <Label Text="{ex:Translate Name=lblSelectAll-ActiveDistributors}" FontSize="14" TextColor="Black" VerticalTextAlignment="Center"></Label>
                             </HorizontalStackLayout>
                             <CollectionView ItemsSource="{Binding distributors}" VerticalOptions="FillAndExpand">
                                 <CollectionView.ItemTemplate>
