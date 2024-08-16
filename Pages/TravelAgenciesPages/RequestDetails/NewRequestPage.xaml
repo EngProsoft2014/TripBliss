@@ -50,8 +50,7 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                     <Label Text="Hotel Services" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <CollectionView ItemsSource="{Binding Hotels}" VerticalOptions="FillAndExpand" SelectionMode="Single"
-                                    SelectionChangedCommand="{Binding SelectHotelCommand}" SelectedItem="{Binding SelectedHotel}">
+                    <CollectionView ItemsSource="{Binding Hotels}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
@@ -74,7 +73,10 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                             </Label.FormattedText>
                                         </Label>
                                         <CheckBox Color="Gray" WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="5,0"></CheckBox>
-                                    </StackLayout>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:NewRequestViewModel}}, Path=SelectHotelCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
@@ -84,8 +86,7 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
 
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <CollectionView ItemsSource="{Binding transportaionServices}" VerticalOptions="FillAndExpand" SelectionMode="Single"
-                          SelectionChangedCommand="{Binding SelectTransportaionCommand}" SelectedItem="{Binding SelectedTransportaition}">
+                    <CollectionView ItemsSource="{Binding transportaionServices}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
@@ -109,7 +110,10 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                             </Label.FormattedText>
                                         </Label>
                                         <CheckBox Color="Gray" WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="5,0"></CheckBox>
-                                    </StackLayout>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:NewRequestViewModel}}, Path=SelectTransportaionCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
@@ -119,8 +123,7 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
 
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <CollectionView ItemsSource="{Binding airFlights}" VerticalOptions="FillAndExpand" SelectionMode="Single"
-                                    SelectionChangedCommand="{Binding SelectAirFlightCommand}" SelectedItem="{Binding SelectedAirFlight}">
+                    <CollectionView ItemsSource="{Binding airFlights}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
@@ -151,7 +154,10 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                             </Label.FormattedText>
                                         </Label>
                                         <CheckBox Color="Gray" WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="5,0"></CheckBox>
-                                    </StackLayout>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:NewRequestViewModel}}, Path=SelectAirFlightCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
@@ -161,8 +167,7 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
 
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <CollectionView ItemsSource="{Binding visaServices}" VerticalOptions="FillAndExpand" SelectionMode="Single"
-                                    SelectionChangedCommand="{Binding SelectVisaCommand}" SelectedItem="{Binding SelectedVisa}">
+                    <CollectionView ItemsSource="{Binding visaServices}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
@@ -189,6 +194,9 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                         </Label.FormattedText>
                                     </Label>
                                     <CheckBox Color="Gray" WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="5,0"></CheckBox>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:NewRequestViewModel}}, Path=SelectVisaCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>

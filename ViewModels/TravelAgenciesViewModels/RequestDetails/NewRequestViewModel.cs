@@ -58,9 +58,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
         #region Hotel RelayCommand
         [RelayCommand]
-        void SelectHotel()
+        void SelectHotel(HotelServiceModel model)
         {
-            var vm = new HotelServiceViewModel(SelectedHotel);
+            var vm = new HotelServiceViewModel(model);
             var page = new HotelServicePage();
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
@@ -69,9 +69,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
         #region Transportaiton RelayCommand
         [RelayCommand]
-        void SelectTransportaion()
+        void SelectTransportaion(TransportaionServiceModel model)
         {
-            var vm = new TransportaionServiceViewModel(SelectedTransportaition);
+            var vm = new TransportaionServiceViewModel(model);
             var page = new TransportaionServicePage();
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
@@ -80,9 +80,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
         #region Air Flight RelayCommand
         [RelayCommand]
-        void SelectAirFlight()
+        void SelectAirFlight(AirFlightModel model)
         {
-            var vm = new AirFlightServicesViewModel(SelectedAirFlight);
+            var vm = new AirFlightServicesViewModel(model);
             var page = new AirFlightServicePage();
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
@@ -91,9 +91,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
         #region Visa RelayCommand
         [RelayCommand]
-        void SelectVisa()
+        void SelectVisa(VisaServiceModel model)
         {
-            var vm = new VisaServiceViewModel(SelectedVisa);
+            var vm = new VisaServiceViewModel(model);
             var page = new VisaServicePage();
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);

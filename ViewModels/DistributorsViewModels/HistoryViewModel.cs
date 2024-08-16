@@ -9,7 +9,7 @@ using TripBliss.Models;
 
 namespace TripBliss.ViewModels.DistributorsViewModels
 {
-    partial class HistoryViewModel : ObservableObject
+    partial class HistoryViewModel : BaseViewModel
     {
         #region Prop
         [ObservableProperty]

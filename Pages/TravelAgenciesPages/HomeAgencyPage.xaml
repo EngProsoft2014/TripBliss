@@ -164,6 +164,7 @@
                                                                                 </Image>
                                                                             </HorizontalStackLayout>
                                                                         </StackLayout>
+                                                                        
                                                                     </Border>
                                                                 </DataTemplate>
                                                             </CollectionView.ItemTemplate>

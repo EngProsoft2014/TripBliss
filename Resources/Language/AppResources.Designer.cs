@@ -70,6 +70,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Apply.
+        /// </summary>
+        internal static string btnApply_Forgot {
+            get {
+                return ResourceManager.GetString("btnApply-Forgot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Distributors.
         /// </summary>
         internal static string btnDistributors {
@@ -93,6 +102,15 @@ namespace TripBliss.Resources.Language {
         internal static string btnHome {
             get {
                 return ResourceManager.GetString("btnHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LOG IN.
+        /// </summary>
+        internal static string btnLogIn_Login {
+            get {
+                return ResourceManager.GetString("btnLogIn-Login", resourceCulture);
             }
         }
         
@@ -160,6 +178,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t have an Account? .
+        /// </summary>
+        internal static string lblDHAccount_Login {
+            get {
+                return ResourceManager.GetString("lblDHAccount-Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Discription.
         /// </summary>
         internal static string lblDiscription_OfferDetails {
@@ -187,6 +214,24 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Forgot Password?.
+        /// </summary>
+        internal static string lblForgotPassword_Login {
+            get {
+                return ResourceManager.GetString("lblForgotPassword-Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I&apos;ve got an account already?.
+        /// </summary>
+        internal static string lblHaveAccount_SignUp {
+            get {
+                return ResourceManager.GetString("lblHaveAccount-SignUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         internal static string lblLanguage_More {
@@ -201,6 +246,24 @@ namespace TripBliss.Resources.Language {
         internal static string lblPrivacyPolicy_More {
             get {
                 return ResourceManager.GetString("lblPrivacyPolicy-More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign In.
+        /// </summary>
+        internal static string lblSignIn_SignUp {
+            get {
+                return ResourceManager.GetString("lblSignIn-SignUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign Up.
+        /// </summary>
+        internal static string lblSignUp_Login {
+            get {
+                return ResourceManager.GetString("lblSignUp-Login", resourceCulture);
             }
         }
         
@@ -228,6 +291,51 @@ namespace TripBliss.Resources.Language {
         internal static string lblUsers_More {
             get {
                 return ResourceManager.GetString("lblUsers-More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Name.
+        /// </summary>
+        internal static string plcCompanyName_SignUp {
+            get {
+                return ResourceManager.GetString("plcCompanyName-SignUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Phone.
+        /// </summary>
+        internal static string plcCompanyPhone_SignUp {
+            get {
+                return ResourceManager.GetString("plcCompanyPhone-SignUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Password.
+        /// </summary>
+        internal static string plcConfirmPassword_SignUp {
+            get {
+                return ResourceManager.GetString("plcConfirmPassword-SignUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        internal static string plcEmail_Login {
+            get {
+                return ResourceManager.GetString("plcEmail-Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        internal static string plcPassword_Lohin {
+            get {
+                return ResourceManager.GetString("plcPassword-Lohin", resourceCulture);
             }
         }
         

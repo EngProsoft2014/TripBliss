@@ -120,6 +120,9 @@
   <data name="btnAddRequest" xml:space="preserve">
     <value>Add Request</value>
   </data>
+  <data name="btnApply-Forgot" xml:space="preserve">
+    <value>Apply</value>
+  </data>
   <data name="btnDistributors" xml:space="preserve">
     <value>Distributors</value>
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="btnHome" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="btnLogIn-Login" xml:space="preserve">
+    <value>LOG IN</value>
   </data>
   <data name="hdrAgency" xml:space="preserve">
     <value>Agency</value>
@@ -150,6 +156,9 @@
   <data name="lblAccount-More" xml:space="preserve">
     <value>Account</value>
   </data>
+  <data name="lblDHAccount-Login" xml:space="preserve">
+    <value>Don't have an Account? </value>
+  </data>
   <data name="lblDiscription-OfferDetails" xml:space="preserve">
     <value>Discription</value>
   </data>
@@ -159,11 +168,23 @@
   <data name="lblFavorites-More" xml:space="preserve">
     <value>Favorites</value>
   </data>
+  <data name="lblForgotPassword-Login" xml:space="preserve">
+    <value>Forgot Password?</value>
+  </data>
+  <data name="lblHaveAccount-SignUp" xml:space="preserve">
+    <value>I've got an account already?</value>
+  </data>
   <data name="lblLanguage-More" xml:space="preserve">
     <value>Language</value>
   </data>
   <data name="lblPrivacyPolicy-More" xml:space="preserve">
     <value>Privacy Policy</value>
+  </data>
+  <data name="lblSignIn-SignUp" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="lblSignUp-Login" xml:space="preserve">
+    <value>Sign Up</value>
   </data>
   <data name="lblSupport-More" xml:space="preserve">
     <value>Support</value>
@@ -173,6 +194,21 @@
   </data>
   <data name="lblUsers-More" xml:space="preserve">
     <value>Users</value>
+  </data>
+  <data name="plcCompanyName-SignUp" xml:space="preserve">
+    <value>Company Name</value>
+  </data>
+  <data name="plcCompanyPhone-SignUp" xml:space="preserve">
+    <value>Company Phone</value>
+  </data>
+  <data name="plcConfirmPassword-SignUp" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="plcEmail-Login" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="plcPassword-Lohin" xml:space="preserve">
+    <value>Password</value>
   </data>
   <data name="plcSearch" xml:space="preserve">
     <value>Search</value>

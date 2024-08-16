@@ -58,8 +58,7 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                     </Border>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <CollectionView ItemsSource="{Binding Hotels}" VerticalOptions="FillAndExpand" SelectedItem="{Binding SelectedHotel}"
-                                    SelectionChangedCommand="{Binding  SelectHotelCommand}" SelectionMode="Single">
+                    <CollectionView ItemsSource="{Binding Hotels}" VerticalOptions="FillAndExpand" SelectionMode="Single">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
@@ -86,6 +85,9 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                         </ImageButton.Source>
                                     </ImageButton>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:NewRequestViewModel}}, Path=SelectHotelCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
@@ -103,8 +105,7 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                     </Border>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <CollectionView ItemsSource="{Binding transportaionServices}" VerticalOptions="FillAndExpand" SelectionMode="Single"
-                                    SelectedItem="{Binding SelectedTransportaition}" SelectionChangedCommand="{Binding  SelectTransportaionCommand}">
+                    <CollectionView ItemsSource="{Binding transportaionServices}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
@@ -132,7 +133,10 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </ImageButton.Source>
                                         </ImageButton>
-                                    </StackLayout>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:NewRequestViewModel}}, Path=SelectTransportaionCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
@@ -149,8 +153,7 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                     </Border>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <CollectionView ItemsSource="{Binding airFlights}" VerticalOptions="FillAndExpand" SelectedItem="{Binding SelectedAirFlight}"
-                                    SelectionChangedCommand="{Binding  SelectAirFlightCommand}" SelectionMode="Single">
+                    <CollectionView ItemsSource="{Binding airFlights}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                     <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
@@ -185,7 +188,10 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </ImageButton.Source>
                                         </ImageButton>
-                                    </StackLayout>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:NewRequestViewModel}}, Path=SelectAirFlightCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
@@ -202,8 +208,7 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                     </Border>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <CollectionView ItemsSource="{Binding visaServices}" VerticalOptions="FillAndExpand" SelectedItem="{Binding SelectedVisa}"
-                                    SelectionChangedCommand="{Binding  SelectVisaCommand}" SelectionMode="Single">
+                    <CollectionView ItemsSource="{Binding visaServices}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
@@ -234,7 +239,10 @@ TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </ImageButton.Source>
                                         </ImageButton>
-                                    </StackLayout>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:NewRequestViewModel}}, Path=SelectVisaCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>

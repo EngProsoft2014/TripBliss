@@ -32,6 +32,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             LoadData();
         }
 
+        #region Methodes
         void LoadTransportaionData()
         {
             var todayDate = DateOnly.FromDateTime(DateTime.Now.Date);
@@ -271,10 +272,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 Services = "Hotel - Ticketing - Transportation"
             });
 
-        }
+        } 
+        #endregion
 
+        #region RelayCommand
         [RelayCommand]
-        void Selection()
+        void Selection(DistributorsModel model)
         {
             App.Current.MainPage.Navigation.PushAsync(new NewRequestPage());
         }
@@ -282,6 +285,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         void BackButton()
         {
             App.Current.MainPage.Navigation.PopAsync();
-        }
+        } 
+        #endregion
     }
 }

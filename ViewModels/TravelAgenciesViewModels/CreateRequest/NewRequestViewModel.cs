@@ -62,9 +62,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             App.Current.MainPage.Navigation.PushAsync(new HotelServicePage());
         }
         [RelayCommand]
-        void SelectHotel()
+        void SelectHotel(HotelServiceModel model)
         {
-            var vm = new HotelServiceViewModel(SelectedHotel);
+            var vm = new HotelServiceViewModel(model);
             var page = new HotelServicePage();
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
@@ -78,9 +78,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             App.Current.MainPage.Navigation.PushAsync(new TransportaionServicePage());
         }
         [RelayCommand]
-        void SelectTransportaion()
+        void SelectTransportaion(TransportaionServiceModel model)
         {
-            var vm = new TransportaionServiceViewModel(SelectedTransportaition);
+            var vm = new TransportaionServiceViewModel(model);
             var page = new TransportaionServicePage();
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
@@ -94,9 +94,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             App.Current.MainPage.Navigation.PushAsync(new AirFlightServicePage());
         }
         [RelayCommand]
-        void SelectAirFlight()
+        void SelectAirFlight(AirFlightModel model)
         {
-            var vm = new AirFlightServicesViewModel(SelectedAirFlight);
+            var vm = new AirFlightServicesViewModel(model);
             var page = new AirFlightServicePage();
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
@@ -110,9 +110,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             App.Current.MainPage.Navigation.PushAsync(new VisaServicePage());
         }
         [RelayCommand]
-        void SelectVisa()
+        void SelectVisa(VisaServiceModel model)
         {
-            var vm = new VisaServiceViewModel(SelectedVisa);
+            var vm = new VisaServiceViewModel(model);
             var page = new VisaServicePage();
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);

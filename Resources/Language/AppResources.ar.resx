@@ -120,6 +120,9 @@
   <data name="btnAddRequest" xml:space="preserve">
     <value>طلب إضافة</value>
   </data>
+  <data name="btnApply-Forgot" xml:space="preserve">
+    <value>تطبيق</value>
+  </data>
   <data name="btnDistributors" xml:space="preserve">
     <value>الموزعين</value>
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="btnHome" xml:space="preserve">
     <value>الرئيسية</value>
+  </data>
+  <data name="btnLogIn-Login" xml:space="preserve">
+    <value>تسجيل الدخول</value>
   </data>
   <data name="hdrAgency" xml:space="preserve">
     <value>وكالة</value>
@@ -150,6 +156,9 @@
   <data name="lblAccount-More" xml:space="preserve">
     <value>الحساب الشخصي</value>
   </data>
+  <data name="lblDHAccount-Login" xml:space="preserve">
+    <value>ليس لديك حساب؟</value>
+  </data>
   <data name="lblDiscription-OfferDetails" xml:space="preserve">
     <value>الوصف</value>
   </data>
@@ -159,11 +168,23 @@
   <data name="lblFavorites-More" xml:space="preserve">
     <value>المفضلة</value>
   </data>
+  <data name="lblForgotPassword-Login" xml:space="preserve">
+    <value>هل نسيت كلمة السر؟</value>
+  </data>
+  <data name="lblHaveAccount-SignUp" xml:space="preserve">
+    <value> لدي حساب بالفعل؟</value>
+  </data>
   <data name="lblLanguage-More" xml:space="preserve">
     <value>اللغة</value>
   </data>
   <data name="lblPrivacyPolicy-More" xml:space="preserve">
     <value>سياسة الخصوصية</value>
+  </data>
+  <data name="lblSignIn-SignUp" xml:space="preserve">
+    <value>تسجيل الدخول</value>
+  </data>
+  <data name="lblSignUp-Login" xml:space="preserve">
+    <value>تسجيل</value>
   </data>
   <data name="lblSupport-More" xml:space="preserve">
     <value>الدعم</value>
@@ -173,6 +194,21 @@
   </data>
   <data name="lblUsers-More" xml:space="preserve">
     <value>المستخدمين</value>
+  </data>
+  <data name="plcCompanyName-SignUp" xml:space="preserve">
+    <value>اسم الشركة</value>
+  </data>
+  <data name="plcCompanyPhone-SignUp" xml:space="preserve">
+    <value>هاتف الشركة</value>
+  </data>
+  <data name="plcConfirmPassword-SignUp" xml:space="preserve">
+    <value>تأكيد كلمة المرور</value>
+  </data>
+  <data name="plcEmail-Login" xml:space="preserve">
+    <value>البريد إلكتروني</value>
+  </data>
+  <data name="plcPassword-Lohin" xml:space="preserve">
+    <value>كلمة المرور</value>
   </data>
   <data name="plcSearch" xml:space="preserve">
     <value>بحث</value>
