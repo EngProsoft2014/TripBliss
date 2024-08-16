@@ -22,14 +22,17 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.Offer
         public ChooseOfferViewModel()
         {
             Offers = new ObservableCollection<OfferModel>();
+
+            Offers = Controls.StaticMember.LstOffers;
+
             Lang = Preferences.Default.Get("Lan", "en");
 
-            if (Controls.StaticMember.WayOfTab == 2)
-            {
-                UserDialogs.Instance.ShowLoading();
-                LoadData();
-                UserDialogs.Instance.HideHud();
-            }
+            //if (Controls.StaticMember.WayOfTab == 2)
+            //{
+            //    UserDialogs.Instance.ShowLoading();
+            //    LoadData();
+            //    UserDialogs.Instance.HideHud();
+            //}
 
         }
 
@@ -84,6 +87,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.Offer
             });
 
         }
+
         [RelayCommand]
         async void SelectionOffer(OfferModel model)
         {

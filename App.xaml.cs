@@ -30,5 +30,12 @@ namespace TripBliss
                 CultureInfo.CurrentCulture = new CultureInfo("en");
             }
         }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+
+            Controls.StaticMember.LoadStartData();
+        }
     }
 }

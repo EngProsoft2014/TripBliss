@@ -23,13 +23,16 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         public TravelAgencyViewModel()
         {
             Distributors = new ObservableCollection<DistributorsModel>();
+
+            Distributors = Controls.StaticMember.LstDistributors;
+
             Lang = Preferences.Default.Get("Lan", "en");
-            if (Controls.StaticMember.WayOfTab == 1)
-            {
-                UserDialogs.Instance.ShowLoading();
-                LoadData();
-                UserDialogs.Instance.HideHud();
-            }
+            //if (Controls.StaticMember.WayOfTab == 1)
+            //{
+            //    UserDialogs.Instance.ShowLoading();
+            //    LoadData();
+            //    UserDialogs.Instance.HideHud();
+            //}
                 
         }
 

@@ -17,6 +17,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         #region Prop
         [ObservableProperty]
         public ObservableCollection<RequestClassModel> requests;
+
         #endregion
 
         public HomeViewModel()
@@ -24,13 +25,15 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
 
             Requests = new ObservableCollection<RequestClassModel>();
 
-            if(Controls.StaticMember.WayOfTab == 0)
-            {
-                UserDialogs.Instance.ShowLoading();
-                LoadData();
-                UserDialogs.Instance.HideHud();
-            }  
-            
+            Requests = Controls.StaticMember.LstRequestClass;
+            //if(Controls.StaticMember.WayOfTab == 0)
+            //{
+            //    UserDialogs.Instance.ShowLoading();
+            //    LoadData();
+            //    LoadData2();
+            //    UserDialogs.Instance.HideHud();
+            //}  
+
         }
 
 
@@ -110,7 +113,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
 
             });
 
-        } 
+        }
+
+
         #endregion
 
         #region RelayCommand
