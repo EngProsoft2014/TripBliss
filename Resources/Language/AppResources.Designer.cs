@@ -61,6 +61,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Active Distributors.
+        /// </summary>
+        internal static string btnActiveDistributors_RequestDetails {
+            get {
+                return ResourceManager.GetString("btnActiveDistributors-RequestDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Request.
         /// </summary>
         internal static string btnAddRequest {
@@ -111,6 +120,15 @@ namespace TripBliss.Resources.Language {
         internal static string btnLogIn_Login {
             get {
                 return ResourceManager.GetString("btnLogIn-Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request Details.
+        /// </summary>
+        internal static string btnRequestDetails_RequestDetails {
+            get {
+                return ResourceManager.GetString("btnRequestDetails-RequestDetails", resourceCulture);
             }
         }
         
@@ -183,6 +201,15 @@ namespace TripBliss.Resources.Language {
         internal static string hdrOffers {
             get {
                 return ResourceManager.GetString("hdrOffers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vehicle.
+        /// </summary>
+        internal static string hdrvehicle_RequestDetails {
+            get {
+                return ResourceManager.GetString("hdrvehicle-RequestDetails", resourceCulture);
             }
         }
         
@@ -421,6 +448,33 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Meal Rate per Day.
+        /// </summary>
+        internal static string lblMRPD_RequestDetails {
+            get {
+                return ResourceManager.GetString("lblMRPD-RequestDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nights.
+        /// </summary>
+        internal static string lblNights_RequestDetails {
+            get {
+                return ResourceManager.GetString("lblNights-RequestDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No..
+        /// </summary>
+        internal static string lblNo_RequestDetails {
+            get {
+                return ResourceManager.GetString("lblNo-RequestDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No. Of Room.
         /// </summary>
         internal static string lblNoOfRoom_HotelService {
@@ -462,6 +516,33 @@ namespace TripBliss.Resources.Language {
         internal static string lblPrivacyPolicy_More {
             get {
                 return ResourceManager.GetString("lblPrivacyPolicy-More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rate Basis.
+        /// </summary>
+        internal static string lblRateBasis_RequestDetails {
+            get {
+                return ResourceManager.GetString("lblRateBasis-RequestDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rate Per Room.
+        /// </summary>
+        internal static string lblRatePR_RequestDetails_RequestDetails {
+            get {
+                return ResourceManager.GetString("lblRatePR-RequestDetails-RequestDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Room Details.
+        /// </summary>
+        internal static string lblRoomDetails_RequestDetails {
+            get {
+                return ResourceManager.GetString("lblRoomDetails-RequestDetails", resourceCulture);
             }
         }
         
@@ -561,6 +642,15 @@ namespace TripBliss.Resources.Language {
         internal static string lblUsers_More {
             get {
                 return ResourceManager.GetString("lblUsers-More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View.
+        /// </summary>
+        internal static string lblView_RequestDetails {
+            get {
+                return ResourceManager.GetString("lblView-RequestDetails", resourceCulture);
             }
         }
         

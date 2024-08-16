@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnActiveDistributors-RequestDetails" xml:space="preserve">
+    <value>Active Distributors</value>
+  </data>
   <data name="btnAddRequest" xml:space="preserve">
     <value>Add Request</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="btnLogIn-Login" xml:space="preserve">
     <value>LOG IN</value>
+  </data>
+  <data name="btnRequestDetails-RequestDetails" xml:space="preserve">
+    <value>Request Details</value>
   </data>
   <data name="hdrAgency" xml:space="preserve">
     <value>Agency</value>
@@ -158,6 +164,9 @@
   </data>
   <data name="hdrOffers" xml:space="preserve">
     <value>Offers</value>
+  </data>
+  <data name="hdrvehicle-RequestDetails" xml:space="preserve">
+    <value>Vehicle</value>
   </data>
   <data name="lblAccount-More" xml:space="preserve">
     <value>Account</value>
@@ -237,6 +246,15 @@
   <data name="lblModel-TranService" xml:space="preserve">
     <value>Model</value>
   </data>
+  <data name="lblMRPD-RequestDetails" xml:space="preserve">
+    <value>Meal Rate per Day</value>
+  </data>
+  <data name="lblNights-RequestDetails" xml:space="preserve">
+    <value>Nights</value>
+  </data>
+  <data name="lblNo-RequestDetails" xml:space="preserve">
+    <value>No.</value>
+  </data>
   <data name="lblNoOfRoom-HotelService" xml:space="preserve">
     <value>No. Of Room</value>
   </data>
@@ -251,6 +269,15 @@
   </data>
   <data name="lblPrivacyPolicy-More" xml:space="preserve">
     <value>Privacy Policy</value>
+  </data>
+  <data name="lblRateBasis-RequestDetails" xml:space="preserve">
+    <value>Rate Basis</value>
+  </data>
+  <data name="lblRatePR-RequestDetails-RequestDetails" xml:space="preserve">
+    <value>Rate Per Room</value>
+  </data>
+  <data name="lblRoomDetails-RequestDetails" xml:space="preserve">
+    <value>Room Details</value>
   </data>
   <data name="lblRoomType-HotelService" xml:space="preserve">
     <value>Room Type</value>
@@ -284,6 +311,9 @@
   </data>
   <data name="lblUsers-More" xml:space="preserve">
     <value>Users</value>
+  </data>
+  <data name="lblView-RequestDetails" xml:space="preserve">
+    <value>View</value>
   </data>
   <data name="lblVisaServices" xml:space="preserve">
     <value>Visa Services</value>

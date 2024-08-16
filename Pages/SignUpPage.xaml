@@ -49,8 +49,8 @@
             <Label Margin="0,15,0,0">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="{ex:Translate Name=lblHaveAccount-SignUp}" TextColor="Gray" FontSize="14" FontFamily="Almarai-Light"></Span>
-                        <Span Text="{ex:Translate Name=lblSignIn-SignUp}" TextColor="Orange" FontSize="14" FontFamily="Almarai-Light"
+                        <Span Text="{ex:Translate Name=lblHaveAccount-SignUp}" TextColor="Gray" FontSize="14" FontFamily="Almarai-Regular"></Span>
+                        <Span Text="{ex:Translate Name=lblSignIn-SignUp}" TextColor="Orange" FontSize="14" FontFamily="Almarai-Regular"
                               FontAttributes="Bold">
                             <Span.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnSignIn"></TapGestureRecognizer>

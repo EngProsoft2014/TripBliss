@@ -20,7 +20,7 @@
             <tabView:SfTabView.Items>
                 <!--Home-->
                 <tabView:SfTabItem Header="{ex:Translate btnHome}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2" 
-                                   FontFamily="Almarai-Light">
+                                   FontFamily="Almarai-Regular">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
@@ -112,7 +112,7 @@
                 </tabView:SfTabItem>
                 <!--Distributors-->
                 <tabView:SfTabItem Header="{ex:Translate Name=hdrDistributors}" TextColor="Black" FontSize="14" ImagePosition="Top" 
-                                   BackgroundColor="#f6fcf2" FontFamily="Almarai-Light">
+                                   BackgroundColor="#f6fcf2" FontFamily="Almarai-Regular">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
@@ -134,7 +134,7 @@
                                     <tabView:SfTabView.Items>
                                         <!--Distributors-->
                                         <tabView:SfTabItem Header='{ex:Translate Name=btnDistributors}' TextColor="Black" FontSize="14" 
-                                                           FontFamily="Almarai-Light" BackgroundColor="#f6fcf2">
+                                                           FontFamily="Almarai-Regular" BackgroundColor="#f6fcf2">
                                             <tabView:SfTabItem.Content>
                                                 <ContentView x:Name="conviewDist">
                                                     <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20">
@@ -184,7 +184,7 @@
                                         </tabView:SfTabItem>
                                         <!--Favourites-->
                                         <tabView:SfTabItem Header='{ex:Translate Name=btnFavourites}' TextColor="Black" FontSize="14" 
-                                                           FontFamily="Almarai-Light" BackgroundColor="#f6fcf2">
+                                                           FontFamily="Almarai-Regular" BackgroundColor="#f6fcf2">
                                             <tabView:SfTabItem.Content>
                                                 <ContentView x:Name="conviewFevourites">
                                                     <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20">
@@ -246,7 +246,7 @@
                 </tabView:SfTabItem>
                 <!--Offers-->
                 <tabView:SfTabItem Header="{ex:Translate Name=hdrOffers}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2"
-                                   FontFamily="Almarai-Light">
+                                   FontFamily="Almarai-Regular">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
@@ -363,7 +363,7 @@
                 </tabView:SfTabItem>
                 <!--History-->
                 <tabView:SfTabItem Header="{ex:Translate Name=hdrHistory}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2"
-                                   FontFamily="Almarai-Light">
+                                   FontFamily="Almarai-Regular">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
@@ -499,7 +499,7 @@
                 </tabView:SfTabItem>
                 <!--More-->
                 <tabView:SfTabItem Header="{ex:Translate Name=hdrMore}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2"
-                                   FontFamily="Almarai-Light">
+                                   FontFamily="Almarai-Regular">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>

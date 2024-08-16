@@ -27,7 +27,8 @@ namespace TripBliss
                     fonts.AddFont("Font Awesome 6 Brands-Regular-400.otf", "FontIconBrand");
                     fonts.AddFont("Font Awesome 6 Free-Regular-400.otf", "FontIcon");
                     fonts.AddFont("Font Awesome 6 Free-Solid-900.otf", "FontIconSolid");
-                    fonts.AddFont("Almarai-Light.ttf", "Almarai-Light");
+                    fonts.AddFont("ElMessiri-Regular.ttf", "Almarai-Regular");
+                    fonts.AddFont("ElMessiri-Bold.ttf", "Almarai-Bold");
                 });
 
 #if DEBUG

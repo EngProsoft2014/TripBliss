@@ -50,7 +50,8 @@
         </StackLayout>
         <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="0,20,0,0" BackgroundColor="White">
             <Grid>
-                <SearchBar BackgroundColor="White" Placeholder="{ex:Translate Name=plcSearch}" HeightRequest="40" FontSize="15" TextColor="Black"></SearchBar>
+                <SearchBar BackgroundColor="White" Placeholder="{ex:Translate Name=plcSearch}" HeightRequest="40" FontSize="15"
+                           TextColor="Black"></SearchBar>
                 <!--<Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
                     <Image WidthRequest="20" HeightRequest="20">
                         <Image.Source>

@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnActiveDistributors-RequestDetails" xml:space="preserve">
+    <value>الموزعون النشطون</value>
+  </data>
   <data name="btnAddRequest" xml:space="preserve">
     <value>طلب إضافة</value>
   </data>
   <data name="btnApply-Forgot" xml:space="preserve">
-    <value>تطبيق</value>
+    <value>موافق</value>
   </data>
   <data name="btnDistributors" xml:space="preserve">
     <value>الموزعين</value>
@@ -134,6 +137,9 @@
   </data>
   <data name="btnLogIn-Login" xml:space="preserve">
     <value>تسجيل الدخول</value>
+  </data>
+  <data name="btnRequestDetails-RequestDetails" xml:space="preserve">
+    <value>تفاصيل الطلب</value>
   </data>
   <data name="hdrAgency" xml:space="preserve">
     <value>وكالة</value>
@@ -158,6 +164,9 @@
   </data>
   <data name="hdrOffers" xml:space="preserve">
     <value>العروض</value>
+  </data>
+  <data name="hdrvehicle-RequestDetails" xml:space="preserve">
+    <value>عربة</value>
   </data>
   <data name="lblAccount-More" xml:space="preserve">
     <value>الحساب الشخصي</value>
@@ -202,7 +211,7 @@
     <value>الوقت المتوقع للوصول</value>
   </data>
   <data name="lblETD-AirService" xml:space="preserve">
-    <value>بتوقيت شرق الولايات المتحدة</value>
+    <value>الوقت المتوقع للاقلاع</value>
   </data>
   <data name="lblExit-More" xml:space="preserve">
     <value>الخروج</value>
@@ -237,6 +246,15 @@
   <data name="lblModel-TranService" xml:space="preserve">
     <value>نموذج</value>
   </data>
+  <data name="lblMRPD-RequestDetails" xml:space="preserve">
+    <value>سعر الوجبة في اليوم الواحد</value>
+  </data>
+  <data name="lblNights-RequestDetails" xml:space="preserve">
+    <value>ليالي</value>
+  </data>
+  <data name="lblNo-RequestDetails" xml:space="preserve">
+    <value>رقم</value>
+  </data>
   <data name="lblNoOfRoom-HotelService" xml:space="preserve">
     <value>عدد الغرف</value>
   </data>
@@ -251,6 +269,15 @@
   </data>
   <data name="lblPrivacyPolicy-More" xml:space="preserve">
     <value>سياسة الخصوصية</value>
+  </data>
+  <data name="lblRateBasis-RequestDetails" xml:space="preserve">
+    <value>أساس المعدل</value>
+  </data>
+  <data name="lblRatePR-RequestDetails-RequestDetails" xml:space="preserve">
+    <value>السعر لكل غرفة</value>
+  </data>
+  <data name="lblRoomDetails-RequestDetails" xml:space="preserve">
+    <value>تفاصيل الغرفة</value>
   </data>
   <data name="lblRoomType-HotelService" xml:space="preserve">
     <value>نوع الغرفة</value>
@@ -284,6 +311,9 @@
   </data>
   <data name="lblUsers-More" xml:space="preserve">
     <value>المستخدمين</value>
+  </data>
+  <data name="lblView-RequestDetails" xml:space="preserve">
+    <value>المنظر</value>
   </data>
   <data name="lblVisaServices" xml:space="preserve">
     <value>خدمات التأشيرات</value>
