@@ -2,19 +2,24 @@
 using TripBliss.Constants;
 using TripBliss.Pages.DistributorsPages;
 using System.Globalization;
+using Mopups.PreBaked.PopupPages.Login;
+using TripBliss.Helpers;
+using TripBliss.Pages.TravelAgenciesPages;
 namespace TripBliss
 {
     public partial class App : Application
     {
         
-        public App()
+        public App(IGenericRepository Rep)
         {
             LoadSetting();
             InitializeComponent();
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(ApiConstants.syncFusionLicence);
             //MainPage = new AppShell();
             //MainPage = new NavigationPage(new HomeDistributorsPage());
-            MainPage = new NavigationPage(new LoginPage());
+            MainPage = new NavigationPage(new HomeAgencyPage());
+
+            //MainPage = new NavigationPage(new LoginPage(new ViewModels.LoginViewModel(Rep)));
         }
 
 

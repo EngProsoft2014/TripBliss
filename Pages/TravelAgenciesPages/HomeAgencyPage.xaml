@@ -100,7 +100,23 @@
                                             </Border>
                                         </DataTemplate>
                                     </CollectionView.ItemTemplate>
+
+                                    <CollectionView.Triggers>
+                                        <DataTrigger TargetType="CollectionView" Binding="{Binding Requests.Count}" Value="0">
+                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                        </DataTrigger>
+                                    </CollectionView.Triggers>
                                 </CollectionView>
+
+                                <!--No Data-->
+                                <StackLayout x:Name="stkNoData" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <Image Source="noresult.png"></Image>
+                                    <StackLayout.Triggers>
+                                        <DataTrigger TargetType="StackLayout" Binding="{Binding Requests.Count}" Value="0">
+                                            <Setter Property="IsVisible" Value="True"></Setter>
+                                        </DataTrigger>
+                                    </StackLayout.Triggers>
+                                </StackLayout>
                             </StackLayout>
                             <ContentView.Triggers>
                                 <DataTrigger TargetType="ContentView" Binding="{Binding Lang}" Value="ar">

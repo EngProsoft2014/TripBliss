@@ -145,7 +145,7 @@
                                         <Label Text="{ex:Translate Name=lblTransportationServices}" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
                                             ></Label>
                                         <syncfusion:SfDataGrid ItemsSource="{Binding transportaionServices}" ColumnWidthMode="FitByCell"
-                                                                   GridLinesVisibility="Both" HeaderGridLinesVisibility="Both" FlowDirection="LeftToRight"
+                                                                   GridLinesVisibility="Both" HeaderGridLinesVisibility="Both" 
                                                                    VerticalOptions="FillAndExpand">
                                             <syncfusion:SfDataGrid.Columns>
                                                 <syncfusion:DataGridTextColumn MappingName="Date" HeaderTextAlignment="Center">
@@ -194,6 +194,14 @@
                                                     </syncfusion:DataGridTextColumn.HeaderTemplate>
                                                 </syncfusion:DataGridTextColumn>
                                             </syncfusion:SfDataGrid.Columns>
+                                            <syncfusion:SfDataGrid.Triggers>
+                                                <DataTrigger TargetType="syncfusion:SfDataGrid" Binding="{Binding Lang}" Value="en">
+                                                    <Setter Property="FlowDirection" Value="LeftToRight"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="syncfusion:SfDataGrid" Binding="{Binding Lang}" Value="ar">
+                                                    <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
+                                                </DataTrigger>
+                                            </syncfusion:SfDataGrid.Triggers>
                                         </syncfusion:SfDataGrid>
                                         <StackLayout.Triggers>
                                             <DataTrigger TargetType="StackLayout" Binding="{Binding transportaionServices.Count}" Value="0">
@@ -223,7 +231,7 @@
                                     <StackLayout Spacing="10" HeightRequest="250">
                                         <Label Text="{ex:Translate Name=lblAirFlightServices}" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
                                                    ></Label>
-                                        <syncfusion:SfDataGrid ItemsSource="{Binding airFlights}" ColumnWidthMode="FitByCell" FlowDirection="LeftToRight"
+                                        <syncfusion:SfDataGrid ItemsSource="{Binding airFlights}" ColumnWidthMode="FitByCell" 
                                                                    GridLinesVisibility="Both" HeaderGridLinesVisibility="Both" 
                                                                    VerticalOptions="FillAndExpand">
                                             <syncfusion:SfDataGrid.Columns>
@@ -327,6 +335,14 @@
                                                     </syncfusion:DataGridTextColumn.HeaderTemplate>
                                                 </syncfusion:DataGridTextColumn>
                                             </syncfusion:SfDataGrid.Columns>
+                                            <syncfusion:SfDataGrid.Triggers>
+                                                <DataTrigger TargetType="syncfusion:SfDataGrid" Binding="{Binding Lang}" Value="en">
+                                                    <Setter Property="FlowDirection" Value="LeftToRight"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="syncfusion:SfDataGrid" Binding="{Binding Lang}" Value="ar">
+                                                    <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
+                                                </DataTrigger>
+                                            </syncfusion:SfDataGrid.Triggers>
                                         </syncfusion:SfDataGrid>
                                         <StackLayout.Triggers>
                                             <DataTrigger TargetType="StackLayout" Binding="{Binding airFlights.Count}" Value="0">
@@ -356,7 +372,7 @@
                                     <StackLayout Spacing="10">
                                         <Label Text="{ex:Translate Name=lblVisaServices}" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
                                                     ></Label>
-                                        <syncfusion:SfDataGrid ItemsSource="{Binding visaServices}" ColumnWidthMode="FitByCell" FlowDirection="LeftToRight"
+                                        <syncfusion:SfDataGrid ItemsSource="{Binding visaServices}" ColumnWidthMode="FitByCell"
                                                            GridLinesVisibility="Both" HeaderGridLinesVisibility="Both">
                                             <syncfusion:SfDataGrid.Columns>
                                                 <syncfusion:DataGridTextColumn MappingName="VisaType" HeaderTextAlignment="Center">
@@ -387,6 +403,14 @@
                                                     </syncfusion:DataGridTextColumn.HeaderTemplate>
                                                 </syncfusion:DataGridTextColumn>
                                             </syncfusion:SfDataGrid.Columns>
+                                            <syncfusion:SfDataGrid.Triggers>
+                                                <DataTrigger TargetType="syncfusion:SfDataGrid" Binding="{Binding Lang}" Value="en">
+                                                    <Setter Property="FlowDirection" Value="LeftToRight"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="syncfusion:SfDataGrid" Binding="{Binding Lang}" Value="ar">
+                                                    <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
+                                                </DataTrigger>
+                                            </syncfusion:SfDataGrid.Triggers>
                                         </syncfusion:SfDataGrid>
                                         <StackLayout.Triggers>
                                             <DataTrigger TargetType="StackLayout" Binding="{Binding visaServices.Count}" Value="0">
@@ -485,11 +509,8 @@
                                     <Shadow  Brush="DarkGray" Opacity="1"></Shadow>
                                 </Border.Shadow>
                             </Border>
-                            <HorizontalStackLayout>
-                                <CheckBox Color="#76d973" VerticalOptions="CenterAndExpand"></CheckBox>
-                                <Label Text="{ex:Translate Name=lblSelectAll-ActiveDistributors}" FontSize="14" TextColor="Black" VerticalTextAlignment="Center"></Label>
-                            </HorizontalStackLayout>
-                            <CollectionView ItemsSource="{Binding distributors}" VerticalOptions="FillAndExpand">
+
+                            <CollectionView ItemsSource="{Binding distributors}" VerticalOptions="FillAndExpand" Margin="0,10,0,0">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate  x:Name="Data">
                                         <Border x:Name="BorderOfItem" StrokeShape="RoundRectangle 20" Margin="0,10">

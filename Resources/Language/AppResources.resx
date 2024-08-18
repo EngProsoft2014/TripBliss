@@ -327,16 +327,22 @@
   <data name="plcCompanyPhone-SignUp" xml:space="preserve">
     <value>Company Phone</value>
   </data>
-  <data name="plcConfirmPassword-SignUp" xml:space="preserve">
-    <value>Confirm Password</value>
+  <data name="plcCompanyEmail-SignUpPage" xml:space="preserve">
+    <value>Company Email</value>
   </data>
-  <data name="plcEmail-Login" xml:space="preserve">
-    <value>Email</value>
-  </data>
-  <data name="plcPassword-Lohin" xml:space="preserve">
+  <data name="plcPassword-Login" xml:space="preserve">
     <value>Password</value>
   </data>
   <data name="plcSearch" xml:space="preserve">
     <value>Search</value>
+  </data>
+  <data name="plcUserName-Login" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="plcEmail-SignUpPage" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="pickerTitleCompanyType-SignUpPage" xml:space="preserve">
+    <value>Select Company Type</value>
   </data>
 </root>

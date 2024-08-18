@@ -1,19 +1,45 @@
+using TripBliss.Helpers;
+using TripBliss.ViewModels;
+using TripBliss.ViewModels.TravelAgenciesViewModels;
+
 namespace TripBliss.Pages;
 
 public partial class LoginPage : Controls.CustomControl
 {
-	public LoginPage()
-	{
-		InitializeComponent();
-	}
+    LoginViewModel ViewModel { get => BindingContext as LoginViewModel; set => BindingContext = value; }
 
-    private async void OnForgot(object sender, TappedEventArgs e)
-    {
-       await Navigation.PushAsync(new ResetPage());
+    public LoginPage(LoginViewModel vm)
+	{
+        InitializeComponent();
+
+        BindingContext = vm;
+
+        entryEmail.Completed += (object sender, EventArgs e) =>
+        {
+            entryPassword.Focus();
+        };
+        entryPassword.Completed += (object sender, EventArgs e) =>
+        {
+            ViewModel.ClickLoginCommand.Execute(ViewModel.LoginRequest);
+        };
     }
 
-    private async void OnSignUp(object sender, TappedEventArgs e)
+    [Obsolete]
+    protected override bool OnBackButtonPressed()
     {
-        await Navigation.PushAsync(new SignUpPage());
+        // Run the async code on the UI thread
+        Dispatcher.Dispatch(() =>
+        {
+            Action action = () => Application.Current!.Quit();
+            Controls.StaticMember.ShowSnackBar("Do you want to exit the program?", Controls.StaticMember.SnackBarColor, Controls.StaticMember.SnackBarTextColor, action);
+        });
+
+        // Return true to prevent the default behavior
+        return true;
+    }
+
+    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        entryPassword.IsPassword = (entryPassword.IsPassword == true) ? false : true;
     }
 }

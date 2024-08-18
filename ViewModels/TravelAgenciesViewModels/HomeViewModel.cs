@@ -26,6 +26,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             Requests = new ObservableCollection<RequestClassModel>();
 
             Requests = Controls.StaticMember.LstRequestClass;
+
             //if(Controls.StaticMember.WayOfTab == 0)
             //{
             //    UserDialogs.Instance.ShowLoading();

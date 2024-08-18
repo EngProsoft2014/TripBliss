@@ -250,6 +250,8 @@
                 </Border>
             </StackLayout>
         </ScrollView>
+
+        <Button VerticalOptions="End" Text="{ex:Translate Name=btnApply-Forgot}" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="20,0"></Button>
     </StackLayout>
     
 </Controls:CustomControl>

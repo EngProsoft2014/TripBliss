@@ -327,16 +327,22 @@
   <data name="plcCompanyPhone-SignUp" xml:space="preserve">
     <value>هاتف الشركة</value>
   </data>
-  <data name="plcConfirmPassword-SignUp" xml:space="preserve">
-    <value>تأكيد كلمة المرور</value>
+  <data name="plcCompanyEmail-SignUpPage" xml:space="preserve">
+    <value>البريد إلكتروني للشركة</value>
   </data>
-  <data name="plcEmail-Login" xml:space="preserve">
-    <value>البريد إلكتروني</value>
-  </data>
-  <data name="plcPassword-Lohin" xml:space="preserve">
+  <data name="plcPassword-Login" xml:space="preserve">
     <value>كلمة المرور</value>
   </data>
   <data name="plcSearch" xml:space="preserve">
     <value>بحث</value>
+  </data>
+  <data name="plcUserName-Login" xml:space="preserve">
+    <value>اسم المستخدم</value>
+  </data>
+  <data name="plcEmail-SignUpPage" xml:space="preserve">
+    <value>البريد إلكترونى</value>
+  </data>
+  <data name="pickerTitleCompanyType-SignUpPage" xml:space="preserve">
+    <value>أختر نوع الشركة</value>
   </data>
 </root>

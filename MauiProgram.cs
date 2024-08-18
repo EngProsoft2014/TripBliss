@@ -5,6 +5,9 @@ using Mopups.Hosting;
 using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Core.Hosting;
 using TripBliss.Helpers;
+using Mopups.PreBaked.PopupPages.Login;
+using TripBliss.Pages;
+using TripBliss.ViewModels;
 
 namespace TripBliss
 {
@@ -41,6 +44,13 @@ namespace TripBliss
 #endif
             });
             builder.Services.AddScoped<IGenericRepository,GenericRepository>();
+
+            builder.Services.AddTransient<SignUpViewModel>();
+            builder.Services.AddTransient<ViewModels.LoginViewModel>();
+            
+
+            builder.Services.AddTransient<LoginPage>();
+            builder.Services.AddTransient<SignUpPage>();
 
             return builder.Build();
         }

@@ -18,11 +18,11 @@ namespace TripBliss.Constants
         // End Path Images And Files
 
         // Login Api
-        public static string LoginApi = "api/SignUp/GetSignIn";
+        public static string LoginApi = "api/ApplicationUser/Login";
         // End Login Api
 
         // Login School Api
-        public static string LoginSchoolApi = "api/Schools/GetSignInSchool";
+        public static string RegisterApi = "api/ApplicationUser/Register";
         // End Login School Api
 
         // Students Api

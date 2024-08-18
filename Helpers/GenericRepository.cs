@@ -15,19 +15,20 @@ namespace TripBliss.Helpers
 {
     public interface IGenericRepository
     {
-        public Task<T> GetAsync<T>(string uri, string authToken = "");
-        public Task<string> GetStrAsync<T>(string uri, string authToken = "");
-        public Task<string> GetStrMainAsync<T>(string uri, string authToken = "");
-        public Task<T> PostAsync<T>(string uri, T data, string authToken = "");
-        public Task<string> PostReturnString<T>(string uri, T data, string authToken = "");
-        public Task<string> PostDataAsync<T>(string uri, T data, string authToken = "");
-        public Task<string> PostMData<T>(string uri, T data, string authToken = "");
-        public Task<string> PostMultiPicAsync<T>(string uri, T data, string authToken = "");
-        public Task<T> PutAsync<T>(string uri, T data, string authToken = "");
-        public Task<string> PutDataAsync<T>(string uri, T data, string authToken = "");
-        public Task DeleteAsync(string uri, string authToken = "");
-        public Task<string> DeleteItemAsync(string uri);
-        public Task<R> PostAsync<T, R>(string uri, T data, string authToken = "");
+        Task<T> GetAsync<T>(string uri, string authToken = "");
+        Task<Models.ApplicationUserResponse> GetLoginAsync<T>(string uri, string authToken = "");
+        Task<T> PostAsync<T>(string uri, T data, string authToken = "");
+        Task<TR> PostTRAsync<T, TR>(string uri, T data, string authToken = "");
+        Task<string> PostStrAsync<T>(string uri, T data, string authToken = "");
+        Task<string> PostDataAsync<T>(string uri, T data, string authToken = "");
+        Task<string> PostMData<T>(string uri, T data, string authToken = "");
+        Task<string> PostMultiPicAsync<T>(string uri, T data, string authToken = "");
+        Task<T> PutAsync<T>(string uri, T data, string authToken = "");
+        Task<string> PutStrAsync<T>(string uri, T data, string authToken = "");
+        Task<string> PutDataAsync<T>(string uri, T data, string authToken = "");
+        Task DeleteAsync(string uri, string authToken = "");
+        Task<string> DeleteStrItemAsync(string uri, string authToken = "");
+        Task<R> PostAsync<T, R>(string uri, T data, string authToken = "");
     }
 
 
@@ -45,11 +46,15 @@ namespace TripBliss.Helpers
             return httpClient;
         }
 
+
         public async Task<T> GetAsync<T>(string uri, string authToken = "")
         {
+
             try
             {
-                HttpClient httpClient = CreateHttpClient(Constants.ApiConstants.BaseApiUrl + uri);
+                HttpClient httpClient = CreateHttpClient(Utility.ServerUrl + uri);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+
                 string jsonResult = string.Empty;
 
                 var responseMessage = await Policy
@@ -63,7 +68,8 @@ namespace TripBliss.Helpers
                         5,
                         retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
                     )
-                    .ExecuteAsync(async () => await httpClient.GetAsync(Constants.ApiConstants.BaseApiUrl + uri));
+                    .ExecuteAsync(async () =>
+                    await httpClient.GetAsync(Utility.ServerUrl + uri));
 
                 if (responseMessage.IsSuccessStatusCode)
                 {
@@ -73,13 +79,22 @@ namespace TripBliss.Helpers
                     return json;
                 }
 
-                if (responseMessage.StatusCode == HttpStatusCode.Forbidden ||
-                    responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                if (responseMessage.StatusCode == HttpStatusCode.Forbidden)
                 {
-                    throw new ServiceAuthenticationException(jsonResult);
+                    //throw new ServiceAuthenticationException(jsonResult);
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
                 }
 
-                throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
+                if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates\r\nthat the requested resource requires authentication.", "OK");
+                    //await StartData.UserLogout();
+                }
+
+                //throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
+                jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var json1 = JsonConvert.DeserializeObject<T>(jsonResult);
+                return json1;
 
             }
             catch (Exception e)
@@ -89,11 +104,14 @@ namespace TripBliss.Helpers
             }
         }
 
-        public async Task<string> GetStrAsync<T>(string uri, string authToken = "")
+        public async Task<Models.ApplicationUserResponse> GetLoginAsync<T>(string uri, string authToken = "")
         {
+
             try
             {
-                HttpClient httpClient = CreateHttpClient(Constants.ApiConstants.BaseApiUrl + uri);
+                HttpClient httpClient = CreateHttpClient(Utility.ServerUrl + uri);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+
                 string jsonResult = string.Empty;
 
                 var responseMessage = await Policy
@@ -107,75 +125,38 @@ namespace TripBliss.Helpers
                         5,
                         retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
                     )
-                    .ExecuteAsync(async () => await httpClient.GetAsync(Constants.ApiConstants.BaseApiUrl + uri));
+                    .ExecuteAsync(async () =>
+                    await httpClient.GetAsync(Utility.ServerUrl + uri));
+
+                if (responseMessage.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
+                }
+
+                if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates\r\nthat the requested resource requires authentication.", "OK");
+                    //await StartData.UserLogout();
+                }
 
                 if (responseMessage.IsSuccessStatusCode)
                 {
-                    jsonResult =
-                        await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    //var json = JsonConvert.DeserializeObject<T>(jsonResult);
-                    return jsonResult;
+                    jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    var json = JsonConvert.DeserializeObject<Models.ApplicationUserResponse>(jsonResult);
+                    return json;
                 }
-
-                if (responseMessage.StatusCode == HttpStatusCode.Forbidden ||
-                    responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                else
                 {
-                    //throw new ServiceAuthenticationException(jsonResult);
-                    return null;
+                    jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    var json = JsonConvert.DeserializeObject<Models.ApplicationUserResponse>(jsonResult);
+                    return json;
                 }
 
-                //throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
-                return null;
             }
             catch (Exception e)
             {
                 Debug.WriteLine($"{e.GetType().Name + " : " + e.Message}");
-                return null;
-            }
-        }
-
-        public async Task<string> GetStrMainAsync<T>(string uri, string authToken = "") // Without URL
-        {
-            try
-            {
-                HttpClient httpClient = CreateHttpClient(uri);
-                string jsonResult = string.Empty;
-
-                var responseMessage = await Policy
-                    .Handle<WebException>(ex =>
-                    {
-                        Debug.WriteLine($"{ex.GetType().Name + " : " + ex.Message}");
-                        return true;
-                    })
-                    .WaitAndRetryAsync
-                    (
-                        5,
-                        retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
-                    )
-                    .ExecuteAsync(async () => await httpClient.GetAsync(uri));
-
-                if (responseMessage.IsSuccessStatusCode)
-                {
-                    jsonResult =
-                        await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    //var json = JsonConvert.DeserializeObject<T>(jsonResult);
-                    return jsonResult;
-                }
-
-                if (responseMessage.StatusCode == HttpStatusCode.Forbidden ||
-                    responseMessage.StatusCode == HttpStatusCode.Unauthorized)
-                {
-                    //throw new ServiceAuthenticationException(jsonResult);
-                    return null;
-                }
-
-                //throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
-                return null;
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine($"{e.GetType().Name + " : " + e.Message}");
-                return null;
+                throw;
             }
         }
 
@@ -183,7 +164,10 @@ namespace TripBliss.Helpers
         {
             try
             {
-                HttpClient httpClient = CreateHttpClient(Constants.ApiConstants.BaseApiUrl + uri);
+                HttpClient httpClient = CreateHttpClient(Utility.ServerUrl + uri);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+
+                var cc = JsonConvert.SerializeObject(data);
 
                 var content = new StringContent(JsonConvert.SerializeObject(data));
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -201,7 +185,7 @@ namespace TripBliss.Helpers
                         5,
                         retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
                     )
-                    .ExecuteAsync(async () => await httpClient.PostAsync(Constants.ApiConstants.BaseApiUrl + uri, content, CancellationToken.None));
+                    .ExecuteAsync(async () => await httpClient.PostAsync(Utility.ServerUrl + uri, content, CancellationToken.None));
 
                 if (responseMessage.IsSuccessStatusCode)
                 {
@@ -210,13 +194,21 @@ namespace TripBliss.Helpers
                     return json;
                 }
 
-                if (responseMessage.StatusCode == HttpStatusCode.Forbidden ||
-                    responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                if (responseMessage.StatusCode == HttpStatusCode.Forbidden)
                 {
-                    throw new ServiceAuthenticationException(jsonResult);
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
                 }
 
-                throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
+                if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates\r\nthat the requested resource requires authentication.", "OK");
+                    //await StartData.UserLogout();
+                }
+
+                jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var json2 = JsonConvert.DeserializeObject<T>(jsonResult);
+                return json2;
+                //throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
 
             }
             catch (Exception e)
@@ -226,13 +218,14 @@ namespace TripBliss.Helpers
             }
         }
 
-        public async Task<string> PostReturnString<T>(string uri, T data, string authToken = "")
+        public async Task<TR> PostTRAsync<T, TR>(string uri, T data, string authToken = "")
         {
             try
             {
-                HttpClient httpClient = CreateHttpClient(Constants.ApiConstants.BaseApiUrl + uri);
+                HttpClient httpClient = CreateHttpClient(Utility.ServerUrl + uri);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
 
-                string cc = JsonConvert.SerializeObject(data);
+                var cc = JsonConvert.SerializeObject(data);
 
                 var content = new StringContent(JsonConvert.SerializeObject(data));
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -250,8 +243,65 @@ namespace TripBliss.Helpers
                         5,
                         retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
                     )
-                    .ExecuteAsync(async () => await httpClient.PostAsync(Constants.ApiConstants.BaseApiUrl + uri, content, CancellationToken.None));
+                    .ExecuteAsync(async () => await httpClient.PostAsync(Utility.ServerUrl + uri, content, CancellationToken.None));
 
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    var json = JsonConvert.DeserializeObject<TR>(jsonResult);
+                    return json;
+                }
+
+                if (responseMessage.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
+                }
+
+                if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates\r\nthat the requested resource requires authentication.", "OK");
+                    //await StartData.UserLogout();
+                }
+
+                jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var json2 = JsonConvert.DeserializeObject<TR>(jsonResult);
+                return json2;
+                //throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"{e.GetType().Name + " : " + e.Message}");
+                throw;
+            }
+        }
+
+        public async Task<string> PostStrAsync<T>(string uri, T data, string authToken = "")
+        {
+            try
+            {
+                HttpClient httpClient = CreateHttpClient(Utility.ServerUrl + uri);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+
+                var cc = JsonConvert.SerializeObject(data);
+
+                var content = new StringContent(JsonConvert.SerializeObject(data));
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                string jsonResult = string.Empty;
+
+                var responseMessage = await Policy
+                    .Handle<WebException>(ex =>
+                    {
+                        Debug.WriteLine($"{ex.GetType().Name + " : " + ex.Message}");
+                        return true;
+                    })
+                    .WaitAndRetryAsync
+                    (
+                        5,
+                        retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+                    )
+                    .ExecuteAsync(async () => await httpClient.PostAsync(Utility.ServerUrl + uri, content, CancellationToken.None));
 
                 if (responseMessage.IsSuccessStatusCode)
                 {
@@ -260,31 +310,37 @@ namespace TripBliss.Helpers
                     return jsonResult;
                 }
 
-                if (responseMessage.StatusCode == HttpStatusCode.Forbidden ||
-                    responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                if (responseMessage.StatusCode == HttpStatusCode.Forbidden)
                 {
-                    //throw new ServiceAuthenticationException(jsonResult);
-                    return null;
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
+                    return "";
                 }
 
-                //throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
-                return null;
+                if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates\r\nthat the requested resource requires authentication.", "OK");
+                    //await StartData.UserLogout();
+                    return "";
+                }
+
+                return "";
 
             }
             catch (Exception e)
             {
                 Debug.WriteLine($"{e.GetType().Name + " : " + e.Message}");
-                //return e.Message;
-                return null;
+                return "";
             }
         }
-
 
         public async Task<string> PostDataAsync<T>(string uri, T data, string authToken = "")
         {
             try
             {
-                HttpClient httpClient = CreateHttpClient(Constants.ApiConstants.BaseApiUrl + uri);
+                HttpClient httpClient = CreateHttpClient(Utility.ServerUrl + uri);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+
+                var cc = JsonConvert.SerializeObject(data);
 
                 var content = new StringContent(JsonConvert.SerializeObject(data));
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -304,7 +360,18 @@ namespace TripBliss.Helpers
                         5,
                         retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
                     )
-                    .ExecuteAsync(async () => await httpClient.PostAsync(Constants.ApiConstants.BaseApiUrl + uri, content, CancellationToken.None));
+                    .ExecuteAsync(async () => await httpClient.PostAsync(Utility.ServerUrl + uri, content, CancellationToken.None));
+
+                if (responseMessage.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
+                }
+
+                if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates\r\nthat the requested resource requires authentication.", "OK");
+                    //await StartData.UserLogout();
+                }
 
                 if (responseMessage.IsSuccessStatusCode)
                 {
@@ -319,6 +386,10 @@ namespace TripBliss.Helpers
                     {
                         return responseData.Replace("\"", "").Replace("Message", "").Replace(":", "").Replace("{", "").Replace("}", "").Trim();
                     }
+                    else if (responseData.Contains("Already Exist For This Schedule Date#") == true)//Duplicate Schedule Dates for Estimate or Invoice
+                    {
+                        return responseData.Replace("\"", "").Replace("Message", "").Replace(":", "").Replace("{", "").Replace("}", "").Trim();
+                    }
                     else if (responseMessage.ReasonPhrase == "Multiple Choices")
                     {
                         return "Multiple Choices";
@@ -329,13 +400,9 @@ namespace TripBliss.Helpers
                     }
                 }
 
-                if (responseMessage.StatusCode == HttpStatusCode.Forbidden ||
-                    responseMessage.StatusCode == HttpStatusCode.Unauthorized)
-                {
-                    throw new ServiceAuthenticationException(jsonResult);
-                }
 
-                throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
+
+                //throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
 
             }
             catch (Exception e)
@@ -349,7 +416,8 @@ namespace TripBliss.Helpers
         {
             try
             {
-                HttpClient httpClient = CreateHttpClient(Constants.ApiConstants.BaseApiUrl + uri);
+                HttpClient httpClient = CreateHttpClient(Utility.ServerUrl + uri);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
 
                 var content = new StringContent(JsonConvert.SerializeObject(data));
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -367,7 +435,18 @@ namespace TripBliss.Helpers
                         5,
                         retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
                     )
-                    .ExecuteAsync(async () => await httpClient.PostAsync(Constants.ApiConstants.BaseApiUrl + uri, content, CancellationToken.None));
+                    .ExecuteAsync(async () => await httpClient.PostAsync(Utility.ServerUrl + uri, content, CancellationToken.None));
+
+                if (responseMessage.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
+                }
+
+                if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates\r\nthat the requested resource requires authentication.", "OK");
+                    //await StartData.UserLogout();
+                }
 
                 if (responseMessage.IsSuccessStatusCode)
                 {
@@ -400,13 +479,8 @@ namespace TripBliss.Helpers
                     }
                 }
 
-                if (responseMessage.StatusCode == HttpStatusCode.Forbidden ||
-                    responseMessage.StatusCode == HttpStatusCode.Unauthorized)
-                {
-                    throw new ServiceAuthenticationException(jsonResult);
-                }
 
-                throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
+                //throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
 
             }
             catch (Exception e)
@@ -420,13 +494,17 @@ namespace TripBliss.Helpers
         {
             try
             {
-                HttpClient httpClient = CreateHttpClient(Constants.ApiConstants.BaseApiUrl + uri);
+                HttpClient httpClient = CreateHttpClient(Utility.ServerUrl + uri);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+
 
                 var content = new StringContent(JsonConvert.SerializeObject(data, Formatting.None,
                         new JsonSerializerSettings()
                         {
                             ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                         }));
+
+
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
                 string jsonResult = string.Empty;
@@ -442,7 +520,7 @@ namespace TripBliss.Helpers
                         5,
                         retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
                     )
-                    .ExecuteAsync(async () => await httpClient.PostAsync(Constants.ApiConstants.BaseApiUrl + uri, content, CancellationToken.None));
+                    .ExecuteAsync(async () => await httpClient.PostAsync(Utility.ServerUrl + uri, content, CancellationToken.None));
 
                 if (responseMessage.IsSuccessStatusCode)
                 {
@@ -451,13 +529,31 @@ namespace TripBliss.Helpers
                     return json.ToString();
                 }
 
-                if (responseMessage.StatusCode == HttpStatusCode.Forbidden ||
-                    responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                if (responseMessage.StatusCode == HttpStatusCode.Forbidden)
                 {
-                    throw new ServiceAuthenticationException(jsonResult);
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
                 }
 
-                throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
+                if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates\r\nthat the requested resource requires authentication.", "OK");
+                    //await StartData.UserLogout();
+                }
+
+                //if (responseMessage.StatusCode == HttpStatusCode.Forbidden ||
+                //    responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                //{
+                //    //throw new ServiceAuthenticationException(jsonResult);
+                //    var jsonResult2 = await responseMessage.Content.ReadAsStringAsync();
+                //    var json2 = JsonConvert.DeserializeObject<T>(jsonResult2);
+                //    return json2.ToString();
+                //}
+
+                var jsonResult3 = await responseMessage.Content.ReadAsStringAsync();
+                var json3 = JsonConvert.DeserializeObject<T>(jsonResult3);
+                return json3.ToString();
+
+                //throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
 
             }
             catch (Exception e)
@@ -471,7 +567,8 @@ namespace TripBliss.Helpers
         {
             try
             {
-                HttpClient httpClient = CreateHttpClient(Constants.ApiConstants.BaseApiUrl + uri);
+                HttpClient httpClient = CreateHttpClient(Utility.ServerUrl + uri);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
 
                 string cc = JsonConvert.SerializeObject(data);
 
@@ -491,7 +588,7 @@ namespace TripBliss.Helpers
                         5,
                         retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
                     )
-                    .ExecuteAsync(async () => await httpClient.PutAsync(Constants.ApiConstants.BaseApiUrl + uri, content, CancellationToken.None));
+                    .ExecuteAsync(async () => await httpClient.PutAsync(Utility.ServerUrl + uri, content, CancellationToken.None));
 
                 if (responseMessage.IsSuccessStatusCode)
                 {
@@ -500,13 +597,18 @@ namespace TripBliss.Helpers
                     return json;
                 }
 
-                if (responseMessage.StatusCode == HttpStatusCode.Forbidden ||
-                    responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                if (responseMessage.StatusCode == HttpStatusCode.Forbidden)
                 {
-                    throw new ServiceAuthenticationException(jsonResult);
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
                 }
 
-                throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
+                if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates\r\nthat the requested resource requires authentication.", "OK");
+                    //await StartData.UserLogout();
+                }
+
+                return JsonConvert.DeserializeObject<T>(await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false));
 
             }
             catch (Exception e)
@@ -516,11 +618,14 @@ namespace TripBliss.Helpers
             }
         }
 
-        public async Task<string> PutDataAsync<T>(string uri, T data, string authToken = "")
+        public async Task<string> PutStrAsync<T>(string uri, T data, string authToken = "")
         {
             try
             {
-                HttpClient httpClient = CreateHttpClient(Constants.ApiConstants.BaseApiUrl + uri);
+                HttpClient httpClient = CreateHttpClient(Utility.ServerUrl + uri);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+
+                string cc = JsonConvert.SerializeObject(data);
 
                 var content = new StringContent(JsonConvert.SerializeObject(data));
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -538,7 +643,76 @@ namespace TripBliss.Helpers
                         5,
                         retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
                     )
-                    .ExecuteAsync(async () => await httpClient.PutAsync(Constants.ApiConstants.BaseApiUrl + uri, content, CancellationToken.None));
+                    .ExecuteAsync(async () => await httpClient.PutAsync(Utility.ServerUrl + uri, content, CancellationToken.None));
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    //var json = JsonConvert.DeserializeObject<T>(jsonResult);
+                    return jsonResult;
+                }
+
+                if (responseMessage.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
+                    return "";
+                }
+
+                if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates\r\nthat the requested resource requires authentication.", "OK");
+                    //await StartData.UserLogout();
+                    return "";
+                }
+
+                jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+                return jsonResult;
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"{e.GetType().Name + " : " + e.Message}");
+                return "";
+            }
+        }
+
+        public async Task<string> PutDataAsync<T>(string uri, T data, string authToken = "")
+        {
+            try
+            {
+                HttpClient httpClient = CreateHttpClient(Utility.ServerUrl + uri);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+
+                string cc = JsonConvert.SerializeObject(data);
+
+                var content = new StringContent(JsonConvert.SerializeObject(data));
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                string jsonResult = string.Empty;
+
+                var responseMessage = await Policy
+                    .Handle<WebException>(ex =>
+                    {
+                        Debug.WriteLine($"{ex.GetType().Name + " : " + ex.Message}");
+                        return true;
+                    })
+                    .WaitAndRetryAsync
+                    (
+                        5,
+                        retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+                    )
+                    .ExecuteAsync(async () => await httpClient.PutAsync(Utility.ServerUrl + uri, content, CancellationToken.None));
+
+                if (responseMessage.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
+                }
+
+                if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates\r\nthat the requested resource requires authentication.", "OK");
+                    //await StartData.UserLogout();
+                }
 
                 if (responseMessage.IsSuccessStatusCode)
                 {
@@ -553,16 +727,14 @@ namespace TripBliss.Helpers
                     {
                         return responseData.Replace("\"", "").Replace("Message", "").Replace(":", "").Replace("{", "").Replace("}", "").Trim();
                     }
+                    else if (responseData.Contains("Already Exist For This Schedule Date#") == true)//Duplicate Schedule Dates for Estimate or Invoice
+                    {
+                        return responseData.Replace("\"", "").Replace("Message", "").Replace(":", "").Replace("{", "").Replace("}", "").Trim();
+                    }
                     else
                     {
                         return "api not responding";
                     }
-                }
-
-                if (responseMessage.StatusCode == HttpStatusCode.Forbidden ||
-                    responseMessage.StatusCode == HttpStatusCode.Unauthorized)
-                {
-                    throw new ServiceAuthenticationException(jsonResult);
                 }
 
                 throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
@@ -578,28 +750,48 @@ namespace TripBliss.Helpers
         public async Task DeleteAsync(string uri, string authToken = "")
         {
             HttpClient httpClient = CreateHttpClient(authToken);
-            await httpClient.DeleteAsync(Constants.ApiConstants.BaseApiUrl + uri);
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+            await httpClient.DeleteAsync(uri);
         }
 
         public async Task DeleteItemAsync(string uri, string authToken = "")
         {
             HttpClient httpClient = CreateHttpClient(authToken);
-            await httpClient.DeleteAsync(Constants.ApiConstants.BaseApiUrl + uri);
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+            await httpClient.DeleteAsync(uri);
         }
 
-        public async Task<string> DeleteItemAsync(string uri)
+        public async Task<string> DeleteStrItemAsync(string uri, string authToken = "")
         {
             var httpLient = new HttpClient();
             HttpResponseMessage response = new HttpResponseMessage();
             httpLient.DefaultRequestHeaders.Accept.Clear();
-            httpLient.DefaultRequestHeaders.Add("authorization", "Basic ");
+            //httpLient.DefaultRequestHeaders.Add("authorization", "Basic ");
+            httpLient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
 
             try
             {
-                response = await httpLient.DeleteAsync(Constants.ApiConstants.BaseApiUrl + uri);
+                response = await httpLient.DeleteAsync(Utility.ServerUrl + uri);
+                var responseData = await response.Content.ReadAsStringAsync();
+
+                if (response.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
+                }
+
+                if (response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates\r\nthat the requested resource requires authentication.", "OK");
+                    //await StartData.UserLogout();
+                }
+
                 if (response.IsSuccessStatusCode)
                 {
-                    return response.ToString();
+                    return responseData;
+                }
+                else if (responseData.Contains("Is Not Deleted") == true)
+                {
+                    return responseData.Replace("\"", "").Replace("Message", "").Replace(":", "").Replace("{", "").Replace("}", "").Trim();
                 }
                 else
                     return "api not responding";
@@ -614,7 +806,8 @@ namespace TripBliss.Helpers
         {
             try
             {
-                HttpClient httpClient = CreateHttpClient(Constants.ApiConstants.BaseApiUrl + uri);
+                HttpClient httpClient = CreateHttpClient(Utility.ServerUrl + uri);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
 
                 var content = new StringContent(JsonConvert.SerializeObject(data));
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -632,7 +825,7 @@ namespace TripBliss.Helpers
                         5,
                         retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
                     )
-                    .ExecuteAsync(async () => await httpClient.PostAsync(Constants.ApiConstants.BaseApiUrl + uri, content));
+                    .ExecuteAsync(async () => await httpClient.PostAsync(Utility.ServerUrl + uri, content));
 
                 if (responseMessage.IsSuccessStatusCode)
                 {
@@ -656,7 +849,5 @@ namespace TripBliss.Helpers
                 throw;
             }
         }
-
-
     }
 }

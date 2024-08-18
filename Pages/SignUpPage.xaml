@@ -9,41 +9,72 @@
              IsBusy="{Binding IsBusy}"
              NavigationPage.HasNavigationBar="False" 
              BackgroundColor="White">
-    <Controls:CustomControl.BindingContext>
+    <!--<Controls:CustomControl.BindingContext>
         <vm:SignUpViewModel></vm:SignUpViewModel>
-    </Controls:CustomControl.BindingContext>
+    </Controls:CustomControl.BindingContext>-->
     <ScrollView VerticalOptions="FillAndExpand">
-        <VerticalStackLayout Margin="30">
+        <VerticalStackLayout Margin="30,10,30,30">
             <Image Source="https://iconape.com/wp-content/png_logo_vector/bntu.png" WidthRequest="140" ></Image>
             <Border StrokeShape="RoundRectangle 20" StrokeThickness="1" Stroke="Gray" VerticalOptions="Center" Margin="0,10,0,0">
                 <VerticalStackLayout Margin="20" Spacing="20">
-                    <Image>
+                    <!--<Image>
                         <Image.Source>
                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                         </Image.Source>
-                    </Image>
+                    </Image>-->
+                    <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
+                        <Picker ItemsSource="{Binding LstCompanyType}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding OneCompanyType,Mode=TwoWay}"
+                            Title="{ex:Translate Name=pickerTitleCompanyType-SignUpPage}" Margin="10,2" FontFamily="Almarai-Regular"
+                            FontSize="14" TextColor="Black" TitleColor="#adadad"
+                            HorizontalOptions="CenterAndExpand">
+                        </Picker>
+                    </Border>
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                         <Entry Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcCompanyName-SignUp}" HorizontalTextAlignment="Center"
-                           Margin="10,2"   Text="{Binding Companyname}"></Entry>
+                           Margin="10,2" Text="{Binding CompanyName}"></Entry>
+                    </Border>
+                    <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
+                        <Entry Keyboard="Email" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcCompanyEmail-SignUpPage}" HorizontalTextAlignment="Center"
+                           Margin="10,2" Text="{Binding CompanyEmail}"></Entry>
                     </Border>
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                         <Entry Keyboard="Numeric" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcCompanyPhone-SignUp}"
-                           HorizontalTextAlignment="Center" Margin="10,2"   Text="{Binding Companyphone}"></Entry>
+                           HorizontalTextAlignment="Center" Margin="10,2" Text="{Binding CompanyPhone}"></Entry>
                     </Border>
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                        <Entry Keyboard="Email" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcEmail-Login}" HorizontalTextAlignment="Center"
-                           Margin="10,2"   Text="{Binding Email}"></Entry>
+                        <Entry Keyboard="Email" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcEmail-SignUpPage}" HorizontalTextAlignment="Center"
+                           Margin="10,2" Text="{Binding LoginRequest.Email}"></Entry>
                     </Border>
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                        <Entry Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcPassword-Lohin}" HorizontalTextAlignment="Center"
-                           Margin="10,2"   IsPassword="True" Text="{Binding Password}"></Entry>
+                        <Entry Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcUserName-Login}" HorizontalTextAlignment="Center"
+                           Margin="10,2" Text="{Binding LoginRequest.UserName}"></Entry>
                     </Border>
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                        <Entry Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcConfirmPassword-SignUp}"
-                           HorizontalTextAlignment="Center" Margin="10,2"   Text="{Binding Confirmpassword}"></Entry>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,2">
+                            <Entry x:Name="entryPassword" Keyboard="Text" IsPassword="True" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcPassword-Login}"
+                           HorizontalTextAlignment="Center" Text="{Binding LoginRequest.Password}" HorizontalOptions="CenterAndExpand"></Entry>
+
+                            <Image x:Name="imgEyePass" Margin="0,0,10,0" HorizontalOptions="End">
+                                <Image.Source>
+                                    <FontImageSource FontFamily="FontIconSolid" Glyph="" Color="Gray" Size="15"></FontImageSource>
+                                </Image.Source>
+                                <Image.Triggers>
+                                    <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference entryPassword},Path=IsPassword}" Value="False">
+                                        <Setter Property="Source">
+                                            <Setter.Value>
+                                                <FontImageSource FontFamily="FontIconSolid" Glyph="" Color="Gray" Size="15"></FontImageSource>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </DataTrigger>
+                                </Image.Triggers>
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
                     </Border>
                     <Button Text="{ex:Translate Name=lblSignUp-Login}" BackgroundColor="#2FA562" TextColor="White" WidthRequest="140" CornerRadius="20" Margin="0,30,0,0"
-                        ></Button>
+                         Command="{Binding ClickRegisterCommand}" CommandParameter="{Binding LoginRequest}"></Button>
                 </VerticalStackLayout>
             </Border>
             <Label Margin="0,15,0,0">

@@ -673,6 +673,24 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select Company Type.
+        /// </summary>
+        internal static string pickerTitleCompanyType_SignUpPage {
+            get {
+                return ResourceManager.GetString("pickerTitleCompanyType-SignUpPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Email.
+        /// </summary>
+        internal static string plcCompanyEmail_SignUpPage {
+            get {
+                return ResourceManager.GetString("plcCompanyEmail-SignUpPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Company Name.
         /// </summary>
         internal static string plcCompanyName_SignUp {
@@ -691,29 +709,20 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirm Password.
-        /// </summary>
-        internal static string plcConfirmPassword_SignUp {
-            get {
-                return ResourceManager.GetString("plcConfirmPassword-SignUp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
-        internal static string plcEmail_Login {
+        internal static string plcEmail_SignUpPage {
             get {
-                return ResourceManager.GetString("plcEmail-Login", resourceCulture);
+                return ResourceManager.GetString("plcEmail-SignUpPage", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
-        internal static string plcPassword_Lohin {
+        internal static string plcPassword_Login {
             get {
-                return ResourceManager.GetString("plcPassword-Lohin", resourceCulture);
+                return ResourceManager.GetString("plcPassword-Login", resourceCulture);
             }
         }
         
@@ -723,6 +732,15 @@ namespace TripBliss.Resources.Language {
         internal static string plcSearch {
             get {
                 return ResourceManager.GetString("plcSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Name.
+        /// </summary>
+        internal static string plcUserName_Login {
+            get {
+                return ResourceManager.GetString("plcUserName-Login", resourceCulture);
             }
         }
     }
