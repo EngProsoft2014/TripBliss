@@ -7,20 +7,22 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages.TravelAgenciesPages.Offer;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.Offer
 {
-    partial class ChooseOfferViewModel : BaseViewModel
+    partial class Tr_O_ChooseOfferViewModel : BaseViewModel
     {
         [ObservableProperty]
         public ObservableCollection<OfferModel> offers;
         [ObservableProperty]
         OfferModel selectedItem;
-
-        public ChooseOfferViewModel()
+        IGenericRepository Rep;
+        public Tr_O_ChooseOfferViewModel(IGenericRepository generic)
         {
+            Rep = generic;
             Offers = new ObservableCollection<OfferModel>();
 
             Offers = Controls.StaticMember.LstOffers;
@@ -91,9 +93,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.Offer
         [RelayCommand]
         async void SelectionOffer(OfferModel model)
         {
-            var Vm = new OfferDetailsViewModel(model);
-            var page = new OfferDetailsPage();
-            page.BindingContext = Vm;   
+            var vm = new Tr_O_OfferDetailsViewModel(model,Rep);
+            var page = new OfferDetailsPage(vm,Rep);
+            page.BindingContext = vm;   
             await App.Current.MainPage.Navigation.PushAsync(page);
         }
 

@@ -94,7 +94,7 @@
                                                     </VerticalStackLayout>
                                                 </StackLayout>
                                                 <Border.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HomeViewModel}}, Path=SelectionCommand}"
+                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_HomeViewModel}}, Path=SelectionCommand}"
                                                                           CommandParameter="{Binding}"></TapGestureRecognizer>
                                                 </Border.GestureRecognizers>
                                             </Border>
@@ -133,7 +133,7 @@
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
                     <tabView:SfTabItem.Content>
-                        <ContentView>
+                        <ContentView x:Name="DisConView">
                             <!--<ContentView.BindingContext>
                                 <dvm:TravelAgencyViewModel></dvm:TravelAgencyViewModel>
                             </ContentView.BindingContext>-->
@@ -142,7 +142,7 @@
                                     <Label Text="{ex:Translate Name=hdrDistributors}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="End"
                                            TextColor="Black"></Label>
                                     <Button Text="{ex:Translate Name=btnAddRequest}" WidthRequest="95" Padding="0,5,0,5" HeightRequest="35" FontSize="12"
-                                            Command="{Binding AddRequestCommand, Source={RelativeSource AncestorType={x:Type dvm:TravelAgencyViewModel}}}"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=SelectionCommand}"
                                         BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" Margin="0,0,0,0" FontAttributes="Bold">
                                     </Button>
                                 </StackLayout>
@@ -268,9 +268,9 @@
                     </tabView:SfTabItem.ImageSource>
                     <tabView:SfTabItem.Content>
                         <ContentView x:Name="conviewOffers">
-                            <ContentView.BindingContext>
+                            <!--<ContentView.BindingContext>
                                 <Tvm:ChooseOfferViewModel></Tvm:ChooseOfferViewModel>
-                            </ContentView.BindingContext>
+                            </ContentView.BindingContext>-->
                             <ContentView.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="VisualStateManager.VisualStateGroups">
@@ -361,7 +361,7 @@
                                                     <Label Text="{Binding Description}" FontSize="12" TextColor="Gray" LineBreakMode="WordWrap" Margin="0,4"></Label>
                                                 </StackLayout>
                                                 <Border.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type Tvm:ChooseOfferViewModel}}, Path=SelectionOfferCommand}"
+                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type Tvm:Tr_O_ChooseOfferViewModel}}, Path=SelectionOfferCommand}"
                                                                           CommandParameter="{Binding}"></TapGestureRecognizer>
                                                 </Border.GestureRecognizers>
                                             </Border>
@@ -385,9 +385,9 @@
                     </tabView:SfTabItem.ImageSource>
                     <tabView:SfTabItem.Content>
                         <ContentView x:Name="conviewHistory">
-                            <ContentView.BindingContext>
+                            <!--<ContentView.BindingContext>
                                 <vm:HistoryViewModel></vm:HistoryViewModel>
-                            </ContentView.BindingContext>
+                            </ContentView.BindingContext>-->
                             <ContentView.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="VisualStateManager.VisualStateGroups">
@@ -468,7 +468,7 @@
                                                                 <RoundRectangle CornerRadius="0,20,10,0"></RoundRectangle>
                                                             </Border.StrokeShape>
                                                             <Border.Triggers>
-                                                                <DataTrigger TargetType="Border" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:HistoryViewModel}}, Path=Lang}" Value="ar">
+                                                                <DataTrigger TargetType="Border" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_HistoryViewModel}}, Path=Lang}" Value="ar">
                                                                     <Setter Property="StrokeShape">
                                                                         <Setter.Value>
                                                                             <RoundRectangle Stroke="Gray" CornerRadius="0,0,5,20"></RoundRectangle>
@@ -521,9 +521,9 @@
                     </tabView:SfTabItem.ImageSource>
                     <tabView:SfTabItem.Content>
                         <ContentView x:Name="conviewMore">
-                            <ContentView.BindingContext>
+                            <!--<ContentView.BindingContext>
                                 <vm:MoreViewModel></vm:MoreViewModel>
-                            </ContentView.BindingContext>
+                            </ContentView.BindingContext>-->
                             <StackLayout Orientation="Vertical" Spacing="50">
                                 <Label Text="{ex:Translate Name=hdrMore}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                        TextColor="Black" Margin="0,20,0,10"></Label>

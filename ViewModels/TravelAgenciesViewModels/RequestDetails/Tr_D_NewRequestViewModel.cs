@@ -9,8 +9,9 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.ComponentModel;
 using Microsoft.VisualBasic;
-using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
+using TripBliss.Pages.DistributorsPages.ResponseDetailes;
 using TripBliss.ViewModels.DistributorsViewModels.CreateResponse;
+using TripBliss.Helpers;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {
@@ -35,8 +36,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
         #endregion
 
-        public NewRequestViewModel()
+        IGenericRepository Rep;
+        public NewRequestViewModel(IGenericRepository generic)
         {
+            Rep = generic;
             Hotels = new ObservableCollection<HotelServiceModel>();
             transportaionServices = new ObservableCollection<TransportaionServiceModel>();
             airFlights = new ObservableCollection<AirFlightModel>();

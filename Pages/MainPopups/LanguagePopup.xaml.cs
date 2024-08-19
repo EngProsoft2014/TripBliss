@@ -36,7 +36,7 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
         LoadSetting();
         await MopupService.Instance.PopAsync();
         Controls.StaticMember.WayOfTab = 4;
-        App.Current!.MainPage = new NavigationPage(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.HomeViewModel(Rep),Rep));
+        App.Current!.MainPage = new NavigationPage(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep),Rep));
     }
 
     [Obsolete]
@@ -50,7 +50,7 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
         LoadSetting();
         await MopupService.Instance.PopAsync();
         Controls.StaticMember.WayOfTab = 4;  
-        App.Current!.MainPage = new NavigationPage(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.HomeViewModel(Rep), Rep));
+        App.Current!.MainPage = new NavigationPage(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep), Rep));
     }
 
     [Obsolete]

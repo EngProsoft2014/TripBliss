@@ -13,7 +13,7 @@ using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels
 {
-    public partial class HomeViewModel : BaseViewModel
+    public partial class Tr_HomeViewModel : BaseViewModel
     {
         #region Prop
         [ObservableProperty]
@@ -21,7 +21,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
 
         #endregion
         IGenericRepository Rep;
-        public HomeViewModel(IGenericRepository generic)
+        public Tr_HomeViewModel(IGenericRepository generic)
         {
             Rep = generic;
             Requests = new ObservableCollection<RequestClassModel>();
@@ -124,7 +124,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         [RelayCommand]
         async void Selection(RequestClassModel model)
         {
-            await App.Current.MainPage.Navigation.PushAsync(new RequestDetailsPage());
+            await App.Current.MainPage.Navigation.PushAsync(new RequestDetailsPage(new RequestDetails.Tr_D_RequestDetailsViewModel(Rep)));
         } 
         #endregion
     }

@@ -8,9 +8,9 @@
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="HotelServicesPage">
-    <Controls:CustomControl.BindingContext>
+    <!--<Controls:CustomControl.BindingContext>
         <vm:HotelServiceViewModel></vm:HotelServiceViewModel>
-    </Controls:CustomControl.BindingContext>
+    </Controls:CustomControl.BindingContext>-->
     <StackLayout Orientation="Vertical" Margin="20">
         <StackLayout Orientation="Horizontal" >
             <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackClickedCommand}">

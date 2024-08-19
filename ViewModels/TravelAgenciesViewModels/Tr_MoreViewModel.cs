@@ -10,12 +10,12 @@ using TripBliss.Pages.MainPopups;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels
 {
-    partial class MoreViewModel : BaseViewModel
+    partial class Tr_MoreViewModel : BaseViewModel
     {
         IGenericRepository Rep;
-        public MoreViewModel()
+        public Tr_MoreViewModel(IGenericRepository generic)
         {
-
+            Rep = generic;
         }
 
         [RelayCommand]

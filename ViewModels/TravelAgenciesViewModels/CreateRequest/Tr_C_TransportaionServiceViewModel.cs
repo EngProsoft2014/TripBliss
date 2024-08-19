@@ -7,11 +7,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Helpers;
 using TripBliss.Models;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 {
-    partial class TransportaionServiceViewModel : BaseViewModel
+    public partial class Tr_C_TransportaionServiceViewModel : BaseViewModel
     {
         #region Prop
         [ObservableProperty]
@@ -20,14 +21,17 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         ObservableCollection<TransportaionServiceModel> transportation;
         #endregion
 
+        IGenericRepository Rep;
         #region Const
-        public TransportaionServiceViewModel()
+        public Tr_C_TransportaionServiceViewModel(IGenericRepository generic)
         {
+            Rep = generic;
             ServiceModdel = new TransportaionServiceModel();
             Transportation = new ObservableCollection<TransportaionServiceModel>();
         }
-        public TransportaionServiceViewModel(TransportaionServiceModel model)
+        public Tr_C_TransportaionServiceViewModel(TransportaionServiceModel model , IGenericRepository generic)
         {
+            Rep = generic;
             ServiceModdel = new TransportaionServiceModel();
             Transportation = new ObservableCollection<TransportaionServiceModel>();
             ServiceModdel = model;

@@ -9,18 +9,21 @@ using System.Threading.Tasks;
 using TripBliss.Models;
 using TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest;
 using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
+using TripBliss.Helpers;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {
-    partial class RequestDetailsViewModel : BaseViewModel
+    public partial class Tr_D_RequestDetailsViewModel : BaseViewModel
     {
         public ObservableCollection<TransportaitionRequestDetailesModel> transportaionServices { get; set; }
         public ObservableCollection<AirFlightModel> airFlights { get; set; }
         public ObservableCollection<VisaServiceModel> visaServices { get; set; }
         public ObservableCollection<DistributorsModel>? distributors { get; set; }
 
-        public RequestDetailsViewModel()
+        IGenericRepository Rep;
+        public Tr_D_RequestDetailsViewModel(IGenericRepository generic)
         {
+            Rep = generic;
             transportaionServices = new ObservableCollection<TransportaitionRequestDetailesModel>();
             airFlights = new ObservableCollection<AirFlightModel>();
             visaServices = new ObservableCollection<VisaServiceModel>();
@@ -280,7 +283,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         void Selection(DistributorsModel model)
         {
-            App.Current.MainPage.Navigation.PushAsync(new NewRequestPage());
+            App.Current.MainPage.Navigation.PushAsync(new NewRequestPage(new Tr_C_NewRequestViewModel(model,Rep),Rep));
         }
         [RelayCommand]
         void BackButton()

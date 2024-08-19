@@ -25,8 +25,7 @@
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                         <Picker ItemsSource="{Binding LstCompanyType}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding OneCompanyType,Mode=TwoWay}"
                             Title="{ex:Translate Name=pickerTitleCompanyType-SignUpPage}" Margin="10,2" FontFamily="Almarai-Regular"
-                            FontSize="14" TextColor="Black" TitleColor="#adadad"
-                            HorizontalOptions="CenterAndExpand">
+                            FontSize="14" TextColor="Black" TitleColor="#adadad" HorizontalOptions="CenterAndExpand">
                         </Picker>
                     </Border>
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
@@ -81,6 +80,7 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="{ex:Translate Name=lblHaveAccount-SignUp}" TextColor="Gray" FontSize="14" FontFamily="Almarai-Regular"></Span>
+                        <Span Text=" " TextColor="Gray" FontSize="14" FontFamily="Almarai-Regular"></Span>
                         <Span Text="{ex:Translate Name=lblSignIn-SignUp}" TextColor="Orange" FontSize="14" FontFamily="Almarai-Regular"
                               FontAttributes="Bold">
                             <Span.GestureRecognizers>

@@ -14,7 +14,7 @@ using TripBliss.Helpers;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 {
-    public partial class NewRequestViewModel : BaseViewModel
+    public partial class Tr_C_NewRequestViewModel : BaseViewModel
     {
 
 
@@ -36,7 +36,20 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         #endregion
 
         readonly IGenericRepository Rep;
-        public NewRequestViewModel(IGenericRepository GenericRep)
+        public Tr_C_NewRequestViewModel(IGenericRepository GenericRep)
+        {
+            Rep = GenericRep;
+            Hotels = new ObservableCollection<HotelServiceModel>();
+            transportaionServices = new ObservableCollection<TransportaionServiceModel>();
+            airFlights = new ObservableCollection<AirFlightModel>();
+            visaServices = new ObservableCollection<VisaServiceModel>();
+            Lang = Preferences.Default.Get("Lan", "en");
+            LoadData();
+            LoadTransportaionData();
+            LoadAirFlightData();
+            LoadVisaData();
+        }
+        public Tr_C_NewRequestViewModel(DistributorsModel model , IGenericRepository GenericRep)
         {
             Rep = GenericRep;
             Hotels = new ObservableCollection<HotelServiceModel>();
@@ -62,13 +75,13 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void AddHotel()
         {
-            App.Current.MainPage.Navigation.PushAsync(new HotelServicePage());
+            App.Current.MainPage.Navigation.PushAsync(new HotelServicePage(new Tr_C_HotelServiceViewModel(Rep) , Rep));
         }
         [RelayCommand]
         void SelectHotel(HotelServiceModel model)
         {
-            var vm = new HotelServiceViewModel(model);
-            var page = new HotelServicePage();
+            var vm = new Tr_C_HotelServiceViewModel(model,Rep);
+            var page = new HotelServicePage(vm,Rep);
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
         }
@@ -78,13 +91,13 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void AddTransportaion()
         {
-            App.Current.MainPage.Navigation.PushAsync(new TransportaionServicePage());
+            App.Current.MainPage.Navigation.PushAsync(new TransportaionServicePage(new Tr_C_TransportaionServiceViewModel(Rep),Rep));
         }
         [RelayCommand]
         void SelectTransportaion(TransportaionServiceModel model)
         {
-            var vm = new TransportaionServiceViewModel(model);
-            var page = new TransportaionServicePage();
+            var vm = new Tr_C_TransportaionServiceViewModel(model,Rep);
+            var page = new TransportaionServicePage(vm,Rep);
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
         }
@@ -94,13 +107,13 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void AddAirFlight()
         {
-            App.Current.MainPage.Navigation.PushAsync(new AirFlightServicePage(new AirFlightServicesViewModel(Rep)));
+            App.Current.MainPage.Navigation.PushAsync(new AirFlightServicePage(new Tr_C_AirFlightServicesViewModel(Rep)));
         }
         [RelayCommand]
         void SelectAirFlight(AirFlightModel model)
         {
-            var vm = new AirFlightServicesViewModel(model, Rep);
-            var page = new AirFlightServicePage(new AirFlightServicesViewModel(model, Rep));
+            var vm = new Tr_C_AirFlightServicesViewModel(model, Rep);
+            var page = new AirFlightServicePage(new Tr_C_AirFlightServicesViewModel(model, Rep));
             page.BindingContext = vm;
             App.Current!.MainPage!.Navigation.PushAsync(page);
         }
@@ -110,13 +123,13 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void AddVisa()
         {
-            App.Current.MainPage.Navigation.PushAsync(new VisaServicePage());
+            App.Current.MainPage.Navigation.PushAsync(new VisaServicePage(new Tr_C_VisaServiceViewModel(Rep),Rep));
         }
         [RelayCommand]
         void SelectVisa(VisaServiceModel model)
         {
-            var vm = new VisaServiceViewModel(model);
-            var page = new VisaServicePage();
+            var vm = new Tr_C_VisaServiceViewModel(model,Rep);
+            var page = new VisaServicePage(vm,Rep);
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
         }

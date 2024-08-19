@@ -5,7 +5,7 @@ namespace TripBliss.Pages.TravelAgenciesPages.CreateRequest;
 public partial class AirFlightServicePage : Controls.CustomControl
 {
 
-	public AirFlightServicePage(AirFlightServicesViewModel viewModel)
+	public AirFlightServicePage(Tr_C_AirFlightServicesViewModel viewModel)
 	{
 		InitializeComponent();
         BindingContext = viewModel;

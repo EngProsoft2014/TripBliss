@@ -96,8 +96,8 @@ namespace TripBliss.ViewModels
 
                             if (!string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
                             {
-                                var vm = new TravelAgenciesViewModels.HomeViewModel(Rep);
-                                var page = new Pages.TravelAgenciesPages.HomeAgencyPage(new HomeViewModel(Rep),Rep);
+                                var vm = new TravelAgenciesViewModels.Tr_HomeViewModel(Rep);
+                                var page = new Pages.TravelAgenciesPages.HomeAgencyPage(new Tr_HomeViewModel(Rep),Rep);
                                 page.BindingContext = vm;
                                 await App.Current!.MainPage!.Navigation.PushAsync(page);
                             }

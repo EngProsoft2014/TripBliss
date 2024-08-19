@@ -7,11 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
+using TripBliss.Helpers;
 
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 {
-    partial class HotelServiceViewModel : BaseViewModel
+    public partial class Tr_C_HotelServiceViewModel : BaseViewModel
     {
         #region prop
         [ObservableProperty]
@@ -20,16 +21,19 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         ObservableCollection<HotelServiceModel> hoteles;
         [ObservableProperty]
         int num;
-        
+
         #endregion
 
-        public HotelServiceViewModel()
+        IGenericRepository Rep;
+        public Tr_C_HotelServiceViewModel(IGenericRepository generic)
         {
+            Rep = generic;
             Hoteles = new ObservableCollection<HotelServiceModel>();
             HotelService = new HotelServiceModel();
         }
-        public HotelServiceViewModel(HotelServiceModel model)
+        public Tr_C_HotelServiceViewModel(HotelServiceModel model , IGenericRepository generic)
         {
+            Rep = generic;
             Hoteles = new ObservableCollection<HotelServiceModel>();
             HotelService = new HotelServiceModel();
             HotelService = model;

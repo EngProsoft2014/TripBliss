@@ -15,14 +15,14 @@ using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 {
-    public partial class TravelAgencyViewModel : BaseViewModel
+    public partial class Tr_C_TravelAgencyViewModel : BaseViewModel
     {
         [ObservableProperty]
         public ObservableCollection<DistributorsModel>? distributors;
 
 
         readonly IGenericRepository Rep;
-        public TravelAgencyViewModel(IGenericRepository GenericRep)
+        public Tr_C_TravelAgencyViewModel(IGenericRepository GenericRep)
         {
             Rep = GenericRep;
 
@@ -112,7 +112,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void OnAddRequest()
         {
-            App.Current.MainPage.Navigation.PushAsync(new ChooseDistributorPage());
+            App.Current.MainPage.Navigation.PushAsync(new ChooseDistributorPage(new Tr_C_TravelAgencyViewModel(Rep),Rep));
         }
 
         [RelayCommand]
@@ -123,7 +123,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void OnSelection()
         {
-            App.Current.MainPage.Navigation.PushAsync(new NewRequestPage(new NewRequestViewModel(Rep)));
+            App.Current.MainPage.Navigation.PushAsync(new NewRequestPage(new Tr_C_NewRequestViewModel(Rep),Rep));
         }
 
     }

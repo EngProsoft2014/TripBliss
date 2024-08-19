@@ -23,10 +23,10 @@
             <tabView:SfTabItem Header="{ex:Translate Name=btnRequestDetails-RequestDetails}" FontSize="14" BackgroundColor="#f6fcf2" 
                                FontFamily="Almarai-Regular">
                 <tabView:SfTabItem.Content>
-                    <ContentView Margin="20">
-                        <ContentView.BindingContext>
+                    <ContentView x:Name="DetailsContView" Margin="20">
+                        <!--<ContentView.BindingContext>
                             <vm:RequestDetailsViewModel></vm:RequestDetailsViewModel>
-                        </ContentView.BindingContext>
+                        </ContentView.BindingContext>-->
                         <StackLayout Orientation="Vertical" Spacing="10">
                             <StackLayout Orientation="Horizontal">
                                 <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackButtonCommand}">
@@ -470,7 +470,7 @@
             <tabView:SfTabItem Header="{ex:Translate Name=btnActiveDistributors-RequestDetails}" FontSize="14" BackgroundColor="#f6fcf2" 
                                FontFamily="Almarai-Regular">
                 <tabView:SfTabItem.Content>
-                    <ContentView Margin="20">
+                    <ContentView x:Name="ActiveContView" Margin="20">
                         <ContentView.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="VisualStateManager.VisualStateGroups">
@@ -493,9 +493,7 @@
                                 </Setter>
                             </Style>
                         </ContentView.Resources>
-                        <ContentView.BindingContext>
-                            <vm:RequestDetailsViewModel></vm:RequestDetailsViewModel>
-                        </ContentView.BindingContext>
+                        
                         <StackLayout Orientation="Vertical">
                             <StackLayout Orientation="Horizontal">
                                 <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackButtonCommand}">
@@ -562,7 +560,7 @@
                                                 </StackLayout>
                                             </StackLayout>
                                             <Border.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RequestDetailsViewModel}}, Path=SelectionCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_RequestDetailsViewModel}}, Path=SelectionCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
                                             </Border.GestureRecognizers>
                                         </Border>
 

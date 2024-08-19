@@ -1,29 +1,13 @@
+using TripBliss.Helpers;
+using TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest;
 namespace TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 
 public partial class NewRequestPage : Controls.CustomControl
 {
-	public NewRequestPage()
+	public NewRequestPage(Tr_C_NewRequestViewModel model , IGenericRepository generic)
 	{
 		InitializeComponent();
+        BindingContext = model;
 	}
 
-    private void Hotel_ItemTapped(object sender, ItemTappedEventArgs e)
-    {
-		Navigation.PushAsync(new HotelServicePage());
-    }
-
-    private void Transportation_ItemTapped(object sender, ItemTappedEventArgs e)
-    {
-        Navigation.PushAsync(new TransportaionServicePage());
-    }
-
-    private void AirFlight_ItemTapped(object sender, ItemTappedEventArgs e)
-    {
-        Navigation.PushAsync(new AirFlightServicePage());
-    }
-
-    private void Visa_ItemTapped(object sender, ItemTappedEventArgs e)
-    {
-        Navigation.PushAsync(new VisaServicePage());
-    }
 }

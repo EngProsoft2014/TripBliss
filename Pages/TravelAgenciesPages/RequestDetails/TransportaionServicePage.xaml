@@ -8,9 +8,9 @@
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="TransportaionServicePage">
-    <Controls:CustomControl.BindingContext>
+    <!--<Controls:CustomControl.BindingContext>
         <vm:TransportaionServiceViewModel></vm:TransportaionServiceViewModel>
-    </Controls:CustomControl.BindingContext>
+    </Controls:CustomControl.BindingContext>-->
     <StackLayout Orientation="Vertical" Margin="20">
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout  >

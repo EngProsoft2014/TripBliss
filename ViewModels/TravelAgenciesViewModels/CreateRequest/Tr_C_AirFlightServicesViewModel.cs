@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Helpers;
@@ -12,25 +11,13 @@ using TripBliss.Models;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 {
-    public partial class AirFlightServicesViewModel : BaseViewModel
+    public partial class Tr_C_AirFlightServicesViewModel : BaseViewModel
     {
-        readonly IGenericRepository Rep;
-        public AirFlightServicesViewModel(IGenericRepository GenericRep)
-        {
-            Rep = GenericRep;
-            
-        }
-        public AirFlightServicesViewModel(AirFlightModel model, IGenericRepository GenericRep)
-        {
-            Rep = GenericRep;
-            Moddel = model;
-        }
-
         #region prop
         [ObservableProperty]
-        ObservableCollection<AirFlightModel> airFlights = new ObservableCollection<AirFlightModel>();
+        ObservableCollection<AirFlightModel> airFlights;
         [ObservableProperty]
-        AirFlightModel moddel = new AirFlightModel();
+        AirFlightModel moddel;
         [ObservableProperty]
         int adult;
         [ObservableProperty]
@@ -40,9 +27,20 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         #endregion
 
-        async void Init()
+
+        IGenericRepository Rep;
+        public Tr_C_AirFlightServicesViewModel(IGenericRepository generic)
         {
-            await GetAllAirFlights();
+            Rep = generic;
+            AirFlights = new ObservableCollection<AirFlightModel>();
+            Moddel = new AirFlightModel();
+        }
+        public Tr_C_AirFlightServicesViewModel( AirFlightModel model,IGenericRepository generic)
+        {
+            Rep = generic;
+            AirFlights = new ObservableCollection<AirFlightModel>();
+            Moddel = new AirFlightModel();
+            Moddel = model;
         }
 
         #region RelayCommand
@@ -90,6 +88,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             App.Current.MainPage.Navigation.PopAsync();
         }
 
+
         [RelayCommand]
         async Task GetAllAirFlights()
         {
@@ -103,8 +102,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
         }
-
-
         #endregion
     }
 }

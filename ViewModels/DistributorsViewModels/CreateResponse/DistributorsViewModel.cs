@@ -97,7 +97,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
         [RelayCommand]
         async void OnAddRequest()
         {
-            await App.Current.MainPage.Navigation.PushAsync(new TripBliss.Pages.TravelAgenciesPages.CreateRequest.ChooseDistributorPage());
+            await App.Current.MainPage.Navigation.PushAsync(new TripBliss.Pages.DistributorsPages.ResponseDetailes.RequestDetailsPage());
         }
 
         [RelayCommand]

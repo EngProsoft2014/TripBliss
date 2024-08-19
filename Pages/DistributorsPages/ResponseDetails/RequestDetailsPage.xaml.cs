@@ -1,4 +1,4 @@
-namespace TripBliss.Pages.TravelAgenciesPages.RequestDetails;
+namespace TripBliss.Pages.DistributorsPages.ResponseDetailes;
 
 public partial class RequestDetailsPage : Controls.CustomControl
 {

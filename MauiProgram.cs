@@ -47,7 +47,7 @@ namespace TripBliss
 
             builder.Services.AddTransient<SignUpViewModel>();
             builder.Services.AddTransient<ViewModels.LoginViewModel>();
-            builder.Services.AddTransient<ViewModels.TravelAgenciesViewModels.CreateRequest.AirFlightServicesViewModel>();
+            builder.Services.AddTransient<ViewModels.TravelAgenciesViewModels.CreateRequest.Tr_C_AirFlightServicesViewModel>();
 
 
             builder.Services.AddTransient<LoginPage>();
