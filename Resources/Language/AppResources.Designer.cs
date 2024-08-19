@@ -133,6 +133,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Response.
+        /// </summary>
+        internal static string btnResponse_RequestDetails {
+            get {
+                return ResourceManager.GetString("btnResponse-RequestDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Agency.
         /// </summary>
         internal static string hdrAgency {
@@ -147,6 +156,15 @@ namespace TripBliss.Resources.Language {
         internal static string hdrChooseDistributor {
             get {
                 return ResourceManager.GetString("hdrChooseDistributor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create New Offer.
+        /// </summary>
+        internal static string hdrCreateOffer_CreateOffer {
+            get {
+                return ResourceManager.GetString("hdrCreateOffer-CreateOffer", resourceCulture);
             }
         }
         
@@ -214,11 +232,29 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Viewers.
+        /// </summary>
+        internal static string hdrViewers_OfferViewers {
+            get {
+                return ResourceManager.GetString("hdrViewers-OfferViewers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account.
         /// </summary>
         internal static string lblAccount_More {
             get {
                 return ResourceManager.GetString("lblAccount-More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Active.
+        /// </summary>
+        internal static string lblActive_HomeDist {
+            get {
+                return ResourceManager.GetString("lblActive-HomeDist", resourceCulture);
             }
         }
         
@@ -237,6 +273,15 @@ namespace TripBliss.Resources.Language {
         internal static string lblAirFlightServices {
             get {
                 return ResourceManager.GetString("lblAirFlightServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        internal static string lblAll_HomeDist1 {
+            get {
+                return ResourceManager.GetString("lblAll-HomeDist1", resourceCulture);
             }
         }
         
@@ -412,6 +457,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Image.
+        /// </summary>
+        internal static string lblImage_CreateOffer {
+            get {
+                return ResourceManager.GetString("lblImage-CreateOffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Infant.
         /// </summary>
         internal static string lblInfant_AirService {
@@ -493,6 +547,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not Active.
+        /// </summary>
+        internal static string lblNotActive_HomeDist1 {
+            get {
+                return ResourceManager.GetString("lblNotActive-HomeDist1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Notes.
         /// </summary>
         internal static string lblNotes_HotelService {
@@ -502,11 +565,38 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Offer Plan.
+        /// </summary>
+        internal static string lblOfferPlan_CreateOffer {
+            get {
+                return ResourceManager.GetString("lblOfferPlan-CreateOffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offer URL.
+        /// </summary>
+        internal static string lblOfferUrl_CreateOffer {
+            get {
+                return ResourceManager.GetString("lblOfferUrl-CreateOffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pass No..
         /// </summary>
         internal static string lblPassNo_VisaService {
             get {
                 return ResourceManager.GetString("lblPassNo-VisaService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price.
+        /// </summary>
+        internal static string lblPrice_RequestDetails {
+            get {
+                return ResourceManager.GetString("lblPrice-RequestDetails", resourceCulture);
             }
         }
         
@@ -619,6 +709,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Titel.
+        /// </summary>
+        internal static string lblTitel_CreateOffer {
+            get {
+                return ResourceManager.GetString("lblTitel-CreateOffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To.
         /// </summary>
         internal static string lblTo_TranService {
@@ -642,6 +741,15 @@ namespace TripBliss.Resources.Language {
         internal static string lblUsers_More {
             get {
                 return ResourceManager.GetString("lblUsers-More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Video URL.
+        /// </summary>
+        internal static string lblVideoUrl_CreateOffer {
+            get {
+                return ResourceManager.GetString("lblVideoUrl-CreateOffer", resourceCulture);
             }
         }
         

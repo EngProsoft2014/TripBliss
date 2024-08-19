@@ -4,7 +4,9 @@
              x:Class="TripBliss.Pages.DistributorsPages.Offer.OfferViewersPage"
              xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModels.Offer"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
+             xmlns:ex="clr-namespace:TripBliss.Extensions"
              Title="OfferViewersPage"
+             BackgroundColor="White"
              NavigationPage.HasNavigationBar="False">
 
     <Controls:CustomControl.BindingContext>
@@ -17,21 +19,26 @@
                 <ImageButton.Source>
                     <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                 </ImageButton.Source>
+                <ImageButton.Triggers>
+                    <DataTrigger TargetType="ImageButton" Binding="{Binding Lang}" Value="ar">
+                        <Setter Property="Rotation" Value="180"></Setter>
+                    </DataTrigger>
+                </ImageButton.Triggers>
             </ImageButton>
-            <Label Text="Viewers" FontSize="18" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
+            <Label Text="{ex:Translate Name=hdrViewers-OfferViewers}" FontSize="18" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
         </StackLayout>
 
-        <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="0,20,0,10" BackgroundColor="White">
+        <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="0,20,0,0" BackgroundColor="White">
             <Grid>
-                <SearchBar BackgroundColor="White" Placeholder="Search" HeightRequest="40" FontSize="15" TextColor="Black"></SearchBar>
-                <Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
-                    <Image WidthRequest="20" HeightRequest="20">
-                        <Image.Source>
-                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="White"></FontImageSource>
-                        </Image.Source>
-                        
-                    </Image>
-                </Border>
+                <SearchBar BackgroundColor="White" Placeholder="{ex:Translate Name=plcSearch}" HeightRequest="40" FontSize="15"
+                   TextColor="Black"></SearchBar>
+                <!--<Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
+            <Image WidthRequest="20" HeightRequest="20">
+                <Image.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="White"></FontImageSource>
+                </Image.Source>
+            </Image>
+        </Border>-->
             </Grid>
             <Border.Shadow>
                 <Shadow  Brush="DarkGray" Opacity="1"></Shadow>

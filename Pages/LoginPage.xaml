@@ -75,6 +75,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="{ex:Translate Name=lblDHAccount-Login}" FontSize="13" TextColor="Gray" FontFamily="Almarai-Regular"></Span>
+                            <Span Text=" " FontSize="13" TextColor="Gray" FontFamily="Almarai-Regular"></Span>
                             <Span Text="{ex:Translate Name=lblSignUp-Login}" TextColor="Orange" FontSize="13" FontFamily="Almarai-Regular"
                                   FontAttributes="Bold">
                                 <Span.GestureRecognizers>

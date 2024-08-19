@@ -345,4 +345,40 @@
   <data name="pickerTitleCompanyType-SignUpPage" xml:space="preserve">
     <value>Select Company Type</value>
   </data>
+  <data name="lblPrice-RequestDetails" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="lblActive-HomeDist" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="lblAll-HomeDist1" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="lblNotActive-HomeDist1" xml:space="preserve">
+    <value>Not Active</value>
+  </data>
+  <data name="btnResponse-RequestDetails" xml:space="preserve">
+    <value>Response</value>
+  </data>
+  <data name="hdrCreateOffer-CreateOffer" xml:space="preserve">
+    <value>Create New Offer</value>
+  </data>
+  <data name="hdrViewers-OfferViewers" xml:space="preserve">
+    <value>Viewers</value>
+  </data>
+  <data name="lblImage-CreateOffer" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="lblOfferPlan-CreateOffer" xml:space="preserve">
+    <value>Offer Plan</value>
+  </data>
+  <data name="lblOfferUrl-CreateOffer" xml:space="preserve">
+    <value>Offer URL</value>
+  </data>
+  <data name="lblTitel-CreateOffer" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="lblVideoUrl-CreateOffer" xml:space="preserve">
+    <value>Video URL</value>
+  </data>
 </root>

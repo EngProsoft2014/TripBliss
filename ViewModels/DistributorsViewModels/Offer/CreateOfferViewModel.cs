@@ -22,10 +22,57 @@ namespace TripBliss.ViewModels.DistributorsViewModels.Offer
             Lang = Preferences.Default.Get("Lan", "en");
         }
 
+        #region RelayCommand
         [RelayCommand]
         async Task BackPressed()
         {
             await App.Current!.MainPage!.Navigation.PopAsync();
         }
+        [RelayCommand]
+        async Task OpenCamera()
+        {
+            try
+            {
+                if (MediaPicker.Default.IsCaptureSupported)
+                {
+                    FileResult photo = await MediaPicker.Default.CapturePhotoAsync();
+
+                    if (photo != null)
+                    {
+                        // Do any Thing Here
+
+                    }
+                }
+                else
+                {
+                    await Permissions.RequestAsync<Permissions.Camera>();
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        [RelayCommand]
+        async Task OpenGallery()
+        {
+            try
+            {
+
+                FileResult photo = await MediaPicker.PickPhotoAsync();
+
+                if (photo != null)
+                {
+                    // Do any Thing Here
+
+                }
+                
+            }
+            catch
+            {
+
+            }
+        }
+        #endregion
     }
 }

@@ -168,7 +168,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             {
                 VisaType = "Tourist",
                 VisaNo = "048",
-                Notes = "Single Entry"
+                Notes = "Single Entry",
+                Price = "100"
             });
 
             visaServices.Add(new VisaServiceModel()

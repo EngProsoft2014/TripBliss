@@ -334,6 +334,15 @@
                                                         </DataTemplate>
                                                     </syncfusion:DataGridTextColumn.HeaderTemplate>
                                                 </syncfusion:DataGridTextColumn>
+                                                <syncfusion:DataGridTextColumn MappingName="price" HeaderTextAlignment="Center">
+                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <Label FontSize="14" Text="{ex:Translate Name=lblPrice-RequestDetails}" TextColor="Black" 
+                                                                   FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                   HorizontalOptions="CenterAndExpand"></Label>
+                                                        </DataTemplate>
+                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                </syncfusion:DataGridTextColumn>
                                             </syncfusion:SfDataGrid.Columns>
                                             <syncfusion:SfDataGrid.Triggers>
                                                 <DataTrigger TargetType="syncfusion:SfDataGrid" Binding="{Binding Lang}" Value="en">
@@ -399,6 +408,15 @@
                                                             <Label FontSize="14" Text="{ex:Translate Name=lblNotes-HotelService}" TextColor="Black" 
                                                                        FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                        HorizontalOptions="CenterAndExpand"></Label>
+                                                        </DataTemplate>
+                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                </syncfusion:DataGridTextColumn>
+                                                <syncfusion:DataGridTextColumn MappingName="Price" HeaderTextAlignment="Center">
+                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <Label FontSize="14" Text="{ex:Translate Name=lblPrice-RequestDetails}" TextColor="Black" 
+                                                                   FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                   HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
                                                     </syncfusion:DataGridTextColumn.HeaderTemplate>
                                                 </syncfusion:DataGridTextColumn>
