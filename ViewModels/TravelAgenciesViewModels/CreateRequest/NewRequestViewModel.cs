@@ -10,10 +10,11 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using System.ComponentModel;
 using Microsoft.VisualBasic;
 using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
+using TripBliss.Helpers;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 {
-    partial class NewRequestViewModel : BaseViewModel
+    public partial class NewRequestViewModel : BaseViewModel
     {
 
 
@@ -34,8 +35,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         #endregion
 
-        public NewRequestViewModel()
+        readonly IGenericRepository Rep;
+        public NewRequestViewModel(IGenericRepository GenericRep)
         {
+            Rep = GenericRep;
             Hotels = new ObservableCollection<HotelServiceModel>();
             transportaionServices = new ObservableCollection<TransportaionServiceModel>();
             airFlights = new ObservableCollection<AirFlightModel>();
@@ -91,15 +94,15 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void AddAirFlight()
         {
-            App.Current.MainPage.Navigation.PushAsync(new AirFlightServicePage());
+            App.Current.MainPage.Navigation.PushAsync(new AirFlightServicePage(new AirFlightServicesViewModel(Rep)));
         }
         [RelayCommand]
         void SelectAirFlight(AirFlightModel model)
         {
-            var vm = new AirFlightServicesViewModel(model);
-            var page = new AirFlightServicePage();
+            var vm = new AirFlightServicesViewModel(model, Rep);
+            var page = new AirFlightServicePage(new AirFlightServicesViewModel(model, Rep));
             page.BindingContext = vm;
-            App.Current.MainPage.Navigation.PushAsync(page);
+            App.Current!.MainPage!.Navigation.PushAsync(page);
         }
         #endregion
 

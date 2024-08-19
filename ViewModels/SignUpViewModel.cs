@@ -34,8 +34,8 @@ namespace TripBliss.ViewModels
         [ObservableProperty]
         ObservableCollection<CompanyTypeModel> lstCompanyType = new ObservableCollection<CompanyTypeModel>
         {
-            new CompanyTypeModel() { Id = 1, Name = Preferences.Default.Get("Lan", "en") == "en" ? "Distributor" : "موزع" },
-            new CompanyTypeModel() { Id = 2, Name = Preferences.Default.Get("Lan", "en") == "en" ? "Travel Agency" : "شركة سياحة" }
+            new CompanyTypeModel() { Id = 2, Name = Preferences.Default.Get("Lan", "en") == "en" ? "Travel Agency" : "شركة سياحة" },
+            new CompanyTypeModel() { Id = 3, Name = Preferences.Default.Get("Lan", "en") == "en" ? "Distributor" : "موزع" }
         };
         [ObservableProperty]
         CompanyTypeModel oneCompanyType = new CompanyTypeModel();
@@ -93,7 +93,7 @@ namespace TripBliss.ViewModels
                     IsBusy = true;
                     UserDialogs.Instance.ShowLoading();
 
-                    if(OneCompanyType?.Id == 1)
+                    if(OneCompanyType?.Id == 3)
                     {
                         model.DistributorCompany = new DistributorCompanyRequest();
                         model.DistributorCompany!.CompanyName = CompanyName;
@@ -115,9 +115,9 @@ namespace TripBliss.ViewModels
 
                     var json = await Rep.PostTRAsync<ApplicationUserRequest, ApplicationUserResponse>(Constants.ApiConstants.RegisterApi, model);
 
-                    if (json != null)
+                    if (json.Item1 != null && json.Item2 == "")
                     {
-                        UserModel = json;
+                        UserModel = json.Item1;
 
                         if (!string.IsNullOrEmpty(UserModel?.Id))
                         {
@@ -135,7 +135,7 @@ namespace TripBliss.ViewModels
                     }
                     else
                     {
-                        var toast = Toast.Make("Warning, Your user name is not registered !!", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make($"Warning, {json.Item2}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                     }
 

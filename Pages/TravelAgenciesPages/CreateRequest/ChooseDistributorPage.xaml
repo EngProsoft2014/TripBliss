@@ -8,9 +8,9 @@
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="Choose Distributor">
-    <Controls:CustomControl.BindingContext>
+    <!--<Controls:CustomControl.BindingContext>
         <vm:TravelAgencyViewModel></vm:TravelAgencyViewModel>
-    </Controls:CustomControl.BindingContext>
+    </Controls:CustomControl.BindingContext>-->
     <ContentPage.Resources>
         <Style TargetType="Border">
             <Setter Property="VisualStateManager.VisualStateGroups">

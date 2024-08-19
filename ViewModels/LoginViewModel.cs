@@ -76,9 +76,9 @@ namespace TripBliss.ViewModels
 
                     var json = await Rep.PostTRAsync<ApplicationUserLoginRequest, ApplicationUserResponse>(Constants.ApiConstants.LoginApi, model);
 
-                    if (json != null)
+                    if (json.Item1 != null)
                     {
-                        UserModel = json;
+                        UserModel = json.Item1;
 
                         if (!string.IsNullOrEmpty(UserModel?.Id))
                         {
@@ -96,8 +96,8 @@ namespace TripBliss.ViewModels
 
                             if (!string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
                             {
-                                var vm = new TravelAgenciesViewModels.HomeViewModel();
-                                var page = new Pages.TravelAgenciesPages.HomeAgencyPage();
+                                var vm = new TravelAgenciesViewModels.HomeViewModel(Rep);
+                                var page = new Pages.TravelAgenciesPages.HomeAgencyPage(new HomeViewModel(Rep),Rep);
                                 page.BindingContext = vm;
                                 await App.Current!.MainPage!.Navigation.PushAsync(page);
                             }
@@ -119,7 +119,7 @@ namespace TripBliss.ViewModels
                     }
                     else
                     {
-                        var toast = Toast.Make("Don't found this account, call me please.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make($"Warning, {json.Item2}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                     }
 

@@ -9,7 +9,8 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.ComponentModel;
 using Microsoft.VisualBasic;
-using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
+using TripBliss.Pages.DistributorsPages.ResponseDetailes;
+
 
 namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
 {

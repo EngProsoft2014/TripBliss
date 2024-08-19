@@ -4,19 +4,33 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Helpers;
 using TripBliss.Models;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 {
-    partial class AirFlightServicesViewModel : BaseViewModel
+    public partial class AirFlightServicesViewModel : BaseViewModel
     {
+        readonly IGenericRepository Rep;
+        public AirFlightServicesViewModel(IGenericRepository GenericRep)
+        {
+            Rep = GenericRep;
+            
+        }
+        public AirFlightServicesViewModel(AirFlightModel model, IGenericRepository GenericRep)
+        {
+            Rep = GenericRep;
+            Moddel = model;
+        }
+
         #region prop
         [ObservableProperty]
-        ObservableCollection<AirFlightModel> airFlights;
+        ObservableCollection<AirFlightModel> airFlights = new ObservableCollection<AirFlightModel>();
         [ObservableProperty]
-        AirFlightModel moddel;
+        AirFlightModel moddel = new AirFlightModel();
         [ObservableProperty]
         int adult;
         [ObservableProperty]
@@ -26,17 +40,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         #endregion
 
-        public AirFlightServicesViewModel()
+        async void Init()
         {
-
-            AirFlights = new ObservableCollection<AirFlightModel>();
-            Moddel = new AirFlightModel();
-        }
-        public AirFlightServicesViewModel(AirFlightModel model)
-        {
-            AirFlights = new ObservableCollection<AirFlightModel>();
-            Moddel = new AirFlightModel();
-            Moddel = model;
+            await GetAllAirFlights();
         }
 
         #region RelayCommand
@@ -82,7 +88,23 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             AirFlights.Add(Moddel);
             App.Current.MainPage.Navigation.PopAsync();
-        } 
+        }
+
+        [RelayCommand]
+        async Task GetAllAirFlights()
+        {
+            if (Connectivity.NetworkAccess == Microsoft.Maui.Networking.NetworkAccess.Internet)
+            {
+                var json = await Rep.GetAsync<ObservableCollection<AirFlightModel>>(Constants.ApiConstants.GetAllAirFlightApi);
+
+                if (json != null)
+                {
+                    AirFlights = new ObservableCollection<AirFlightModel>(json);
+                }
+            }
+        }
+
+
         #endregion
     }
 }

@@ -2,6 +2,7 @@
 using Mopups.Services;
 using System.Globalization;
 using TripBliss.Extensions;
+using TripBliss.Helpers;
 using TripBliss.Pages.DistributorsPages;
 using TripBliss.Pages.TravelAgenciesPages;
 using TripBliss.Resources.Language;
@@ -10,9 +11,11 @@ namespace TripBliss.Pages.MainPopups;
 
 public partial class LanguagePopup : Mopups.Pages.PopupPage
 {
-	public LanguagePopup()
+    IGenericRepository Rep;
+	public LanguagePopup(IGenericRepository generic)
 	{
         InitializeComponent();
+        Rep = generic;
         LoadSetting();
     }
 
@@ -33,7 +36,7 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
         LoadSetting();
         await MopupService.Instance.PopAsync();
         Controls.StaticMember.WayOfTab = 4;
-        App.Current!.MainPage = new NavigationPage(new HomeAgencyPage());
+        App.Current!.MainPage = new NavigationPage(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.HomeViewModel(Rep),Rep));
     }
 
     [Obsolete]
@@ -47,7 +50,7 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
         LoadSetting();
         await MopupService.Instance.PopAsync();
         Controls.StaticMember.WayOfTab = 4;  
-        App.Current!.MainPage = new NavigationPage(new HomeAgencyPage());
+        App.Current!.MainPage = new NavigationPage(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.HomeViewModel(Rep), Rep));
     }
 
     [Obsolete]

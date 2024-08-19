@@ -47,10 +47,12 @@ namespace TripBliss
 
             builder.Services.AddTransient<SignUpViewModel>();
             builder.Services.AddTransient<ViewModels.LoginViewModel>();
-            
+            builder.Services.AddTransient<ViewModels.TravelAgenciesViewModels.CreateRequest.AirFlightServicesViewModel>();
+
 
             builder.Services.AddTransient<LoginPage>();
             builder.Services.AddTransient<SignUpPage>();
+            builder.Services.AddTransient<Pages.TravelAgenciesPages.CreateRequest.AirFlightServicePage>();
 
             return builder.Build();
         }

@@ -5,12 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Helpers;
 using TripBliss.Pages.MainPopups;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels
 {
     partial class MoreViewModel : BaseViewModel
     {
+        IGenericRepository Rep;
         public MoreViewModel()
         {
 
@@ -19,7 +21,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         [RelayCommand]
         async Task SelectLanguage()
         {
-            await MopupService.Instance.PushAsync(new LanguagePopup());
+            await MopupService.Instance.PushAsync(new LanguagePopup(Rep));
         }
     }
 }

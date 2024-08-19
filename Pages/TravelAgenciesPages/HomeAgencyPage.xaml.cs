@@ -1,4 +1,5 @@
 
+using TripBliss.Helpers;
 using TripBliss.ViewModels.TravelAgenciesViewModels;
 using TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest;
 using TripBliss.ViewModels.TravelAgenciesViewModels.Offer;
@@ -7,9 +8,12 @@ namespace TripBliss.Pages.TravelAgenciesPages;
 
 public partial class HomeAgencyPage : Controls.CustomControl
 {
-    public HomeAgencyPage()
+    IGenericRepository Rep;
+    public HomeAgencyPage(HomeViewModel viewModel,IGenericRepository generic)
     {
         InitializeComponent();
+        
+        Rep = generic;
     }
 
     protected override void OnAppearing()
@@ -37,12 +41,12 @@ public partial class HomeAgencyPage : Controls.CustomControl
         Controls.StaticMember.WayOfTab = (int)e.NewIndex;
         if ((int)e.NewIndex == 0)
         {
-            conviewHome.BindingContext = new HomeViewModel();
+            conviewHome.BindingContext = new HomeViewModel(Rep);
         }
         if ((int)e.NewIndex == 1)
         {
-            conviewDist.BindingContext = new TravelAgencyViewModel();
-            conviewFevourites.BindingContext = new TravelAgencyViewModel();
+            conviewDist.BindingContext = new TravelAgencyViewModel(Rep);
+            conviewFevourites.BindingContext = new TravelAgencyViewModel(Rep);
         }
         if ((int)e.NewIndex == 2)
         {

@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages;
 using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
@@ -14,14 +15,17 @@ using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 {
-    partial class TravelAgencyViewModel : BaseViewModel
+    public partial class TravelAgencyViewModel : BaseViewModel
     {
         [ObservableProperty]
         public ObservableCollection<DistributorsModel>? distributors;
 
 
-        public TravelAgencyViewModel()
+        readonly IGenericRepository Rep;
+        public TravelAgencyViewModel(IGenericRepository GenericRep)
         {
+            Rep = GenericRep;
+
             Distributors = new ObservableCollection<DistributorsModel>();
 
             Distributors = Controls.StaticMember.LstDistributors;
@@ -119,7 +123,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void OnSelection()
         {
-            App.Current.MainPage.Navigation.PushAsync(new NewRequestPage());
+            App.Current.MainPage.Navigation.PushAsync(new NewRequestPage(new NewRequestViewModel(Rep)));
         }
 
     }

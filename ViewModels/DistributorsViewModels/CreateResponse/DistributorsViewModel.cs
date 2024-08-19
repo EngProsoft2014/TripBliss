@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Models;
 using TripBliss.Pages;
-using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
+using TripBliss.Pages.DistributorsPages.ResponseDetailes;
 
 
 namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
@@ -97,7 +97,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
         [RelayCommand]
         async void OnAddRequest()
         {
-            await App.Current.MainPage.Navigation.PushAsync(new ChooseDistributorPage());
+            await App.Current.MainPage.Navigation.PushAsync(new TripBliss.Pages.TravelAgenciesPages.CreateRequest.ChooseDistributorPage());
         }
 
         [RelayCommand]
@@ -105,11 +105,11 @@ namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
         {
            await App.Current.MainPage.Navigation.PopAsync();
         }
-        [RelayCommand]
-        async void OnSelection()
-        {
-            await App.Current.MainPage.Navigation.PushAsync(new NewRequestPage());
-        }
+        //[RelayCommand]
+        //async void OnSelection()
+        //{
+        //    await App.Current.MainPage.Navigation.PushAsync(new NewRequestPage());
+        //}
 
     }
 }

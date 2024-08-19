@@ -8,9 +8,9 @@
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="NewRequestPage">
-    <Controls:CustomControl.BindingContext>
+    <!--<Controls:CustomControl.BindingContext>
         <vm:NewRequestViewModel></vm:NewRequestViewModel>
-    </Controls:CustomControl.BindingContext>
+    </Controls:CustomControl.BindingContext>-->
     <ContentPage.Resources>
         <Style TargetType="StackLayout">
             <Setter Property="VisualStateManager.VisualStateGroups">

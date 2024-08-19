@@ -7,22 +7,23 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels
 {
-    partial class HomeViewModel : BaseViewModel
+    public partial class HomeViewModel : BaseViewModel
     {
         #region Prop
         [ObservableProperty]
         public ObservableCollection<RequestClassModel> requests;
 
         #endregion
-
-        public HomeViewModel()
+        IGenericRepository Rep;
+        public HomeViewModel(IGenericRepository generic)
         {
-
+            Rep = generic;
             Requests = new ObservableCollection<RequestClassModel>();
 
             Requests = Controls.StaticMember.LstRequestClass;

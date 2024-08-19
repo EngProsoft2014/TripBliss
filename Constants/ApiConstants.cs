@@ -21,13 +21,18 @@ namespace TripBliss.Constants
         public static string LoginApi = "api/ApplicationUser/Login";
         // End Login Api
 
-        // Login School Api
+        // Register Api
         public static string RegisterApi = "api/ApplicationUser/Register";
-        // End Login School Api
+        // End Register Api
 
-        // Students Api
-        public static string StudentsApi = "api/Students/GetStudentsByFamilyMemberId";
-        // End Students Api
+        // AllAirFlight Api
+        public static string GetAllAirFlightApi = "api/AirFlight";
+        // End AllAirFlight Api
+
+
+
+
+
 
         //  All Grades 
         public static string GetAllGrades = "api/Students/GetAllGrades";
