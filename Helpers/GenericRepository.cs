@@ -10,6 +10,8 @@ using Polly;
 using System.Text;
 using System.Threading;
 using TripBliss.Helpers;
+using static TripBliss.Helpers.ErrorsResult;
+
 
 namespace TripBliss.Helpers
 {
@@ -18,7 +20,7 @@ namespace TripBliss.Helpers
         Task<T> GetAsync<T>(string uri, string authToken = "");
         Task<Models.ApplicationUserResponse> GetLoginAsync<T>(string uri, string authToken = "");
         Task<T> PostAsync<T>(string uri, T data, string authToken = "");
-        Task<(TR,string)> PostTRAsync<T, TR>(string uri, T data, string authToken = "");
+        Task<(TR, ErrorResult?)> PostTRAsync<T, TR>(string uri, T data, string authToken = "");
         Task<string> PostStrAsync<T>(string uri, T data, string authToken = "");
         Task<string> PostDataAsync<T>(string uri, T data, string authToken = "");
         Task<string> PostMData<T>(string uri, T data, string authToken = "");
@@ -218,7 +220,7 @@ namespace TripBliss.Helpers
             }
         }
 
-        public async Task<(TR,string)> PostTRAsync<T, TR>(string uri, T data, string authToken = "")
+        public async Task<(TR, ErrorResult?)> PostTRAsync<T, TR>(string uri, T data, string authToken = "")
         {
             try
             {
@@ -245,42 +247,35 @@ namespace TripBliss.Helpers
                     )
                     .ExecuteAsync(async () => await httpClient.PostAsync(Utility.ServerUrl + uri, content, CancellationToken.None));
 
-                if (responseMessage.IsSuccessStatusCode)
-                {
-                    jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    var json = JsonConvert.DeserializeObject<TR>(jsonResult);
-                    return (json!,"");
-                }
-
-                if (responseMessage.StatusCode == HttpStatusCode.Forbidden)
-                {
-                    await App.Current!.MainPage!.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
-                }
-
-                if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
-                {
-                    await App.Current!.MainPage!.DisplayAlert("Warning", "Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates\r\nthat the requested resource requires authentication.", "OK");
-                    //await StartData.UserLogout();
-                }
-
                 jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
-                var json2 = JsonConvert.DeserializeObject<TR>(jsonResult);
-                if(json2 != null && responseMessage.IsSuccessStatusCode)
-                {
-                    return (json2,"");
+                if (responseMessage.IsSuccessStatusCode)
+                { 
+                    var json = JsonConvert.DeserializeObject<TR>(jsonResult);
+                    return (json!, null);
                 }
                 else
                 {
-                    return (json2!, responseMessage.ReasonPhrase + jsonResult.Replace("\"", "").Replace("status", "").Replace("0", "").Replace(":", "").Replace("errors", "").Replace(",", "").Replace("[", "").Replace("]", "").Replace("{", "").Replace("}", "").Trim());
-                }
-                //throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
+                    if (responseMessage.StatusCode == HttpStatusCode.Forbidden)
+                    {
+                        await App.Current!.MainPage!.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
+                    }
 
+                    if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                    {
+                        await App.Current!.MainPage!.DisplayAlert("Warning", "Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates\r\nthat the requested resource requires authentication.", "OK");
+                        //await StartData.UserLogout();
+                    }
+                    var model = JsonConvert.DeserializeObject<TR>("");
+                    var json = JsonConvert.DeserializeObject<ErrorResult>(jsonResult);
+                    return (model!, json);
+                }  
             }
             catch (Exception e)
             {
                 Debug.WriteLine($"{e.GetType().Name + " : " + e.Message}");
                 await App.Current!.MainPage!.DisplayAlert("Warning", "Found Problem Internal Server.", "OK");
-                throw;
+                var model = JsonConvert.DeserializeObject<TR>(""); 
+                return (model!, null); 
             }
         }
 

@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using Akavache;
 using System.Reactive.Linq;
+using TripBliss.Models;
 
 
 
@@ -22,10 +23,10 @@ namespace TripBliss.Services.Data
     public class ServicesService : IServicesService
     {
 
-        readonly Helpers.IGenericRepository _ORep;
+        readonly Helpers.IGenericRepository Rep;
         public ServicesService(Helpers.IGenericRepository ORep)
         {
-            _ORep = ORep;
+            Rep = ORep;
         }
 
         ImageSource Photo;
@@ -58,19 +59,25 @@ namespace TripBliss.Services.Data
             {
                 if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
-                    //if (Helpers.Settings.Phone != "" && Helpers.Settings.Password != "")
-                    //{
-                    //    var loginModel = await ORep.GetAsync<EmployeeModel>("api/Login/GetLogin?" + "UserName=" + Helpers.Settings.UserName + "&" + "Password=" + Helpers.Settings.Password + "&" + "PlayerId=" + Helpers.Settings.PlayerId);
+                    if (!string.IsNullOrEmpty(Preferences.Default.Get("username", "")) && !string.IsNullOrEmpty(Preferences.Default.Get("password", "")))
+                    {
+                        ApplicationUserLoginRequest model = new ApplicationUserLoginRequest()
+                        {
+                            UserName = Preferences.Default.Get("username", ""),
+                            Password = Preferences.Default.Get("password","")
+                        };
 
-                    //    if (loginModel != null)
-                    //    {
-                    //        MUserToken = loginModel.GernToken;
+                        var loginModel = await Rep.PostTRAsync<ApplicationUserLoginRequest, ApplicationUserResponse>(Constants.ApiConstants.LoginApi, model);
 
-                    //        await BlobCache.LocalMachine.InsertObject(UserTokenServiceKey, loginModel.GernToken, DateTimeOffset.Now.AddHours(24));
+                        if (loginModel.Item1 != null)
+                        {
+                            MUserToken = loginModel.Item1.Token!;
 
-                    //        return loginModel.GernToken;
-                    //    }
-                    //}
+                            await BlobCache.LocalMachine.InsertObject(UserTokenServiceKey, loginModel.Item1.Token!, DateTimeOffset.Now.AddMinutes(30));
+
+                            return loginModel.Item1.Token!;
+                        }
+                    }
                 }
             }
             else
@@ -78,7 +85,7 @@ namespace TripBliss.Services.Data
                 return MUserToken;
             }
 
-            return MUserToken;
+            return MUserToken!;
         }
     }
 }

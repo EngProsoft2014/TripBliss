@@ -115,7 +115,7 @@ namespace TripBliss.ViewModels
 
                     var json = await Rep.PostTRAsync<ApplicationUserRequest, ApplicationUserResponse>(Constants.ApiConstants.RegisterApi, model);
 
-                    if (json.Item1 != null && json.Item2 == "")
+                    if (json.Item1 != null && json.Item2 == null)
                     {
                         UserModel = json.Item1;
 
@@ -135,8 +135,19 @@ namespace TripBliss.ViewModels
                     }
                     else
                     {
-                        var toast = Toast.Make($"Warning, {json.Item2}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                        await toast.Show();
+                        if(json.Item2 != null)
+                        {
+                            if(json.Item2.errors != null)
+                            {
+                                StringBuilder builder = new StringBuilder();
+                                foreach (var str in json.Item2!.errors!)
+                                {
+                                    builder.Append(str.Key + " "+str.Value);
+                                }
+                                var toast = Toast.Make($"Warning, {builder.ToString()}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                                await toast.Show();
+                            }
+                        }
                     }
 
                     UserDialogs.Instance.HideHud();

@@ -29,7 +29,9 @@ namespace TripBliss.Constants
         public static string GetAllAirFlightApi = "api/AirFlight";
         // End AllAirFlight Api
 
-
+        // AllLocations Api
+        public static string GetAllLocationsApi = "api/";
+        // End AllLocations Api
 
 
 
