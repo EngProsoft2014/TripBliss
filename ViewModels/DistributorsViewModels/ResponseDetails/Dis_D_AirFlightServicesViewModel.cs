@@ -6,11 +6,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Helpers;
 using TripBliss.Models;
 
 namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 {
-    partial class AirFlightServicesViewModel : BaseViewModel
+    public partial class Dis_D_AirFlightServicesViewModel : BaseViewModel
     {
         #region prop
         [ObservableProperty]
@@ -26,13 +27,16 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 
         #endregion
 
-        public AirFlightServicesViewModel()
+        IGenericRepository Rep;
+        public Dis_D_AirFlightServicesViewModel(IGenericRepository generic)
         {
+            Rep = generic;
             AirFlights = new ObservableCollection<AirFlightModel>();
             Moddel = new AirFlightModel();
         }
-        public AirFlightServicesViewModel(AirFlightModel model)
+        public Dis_D_AirFlightServicesViewModel(AirFlightModel model, IGenericRepository generic)
         {
+            Rep = generic;
             AirFlights = new ObservableCollection<AirFlightModel>();
             Lang = Preferences.Default.Get("Lan", "en");
             Moddel = new AirFlightModel();

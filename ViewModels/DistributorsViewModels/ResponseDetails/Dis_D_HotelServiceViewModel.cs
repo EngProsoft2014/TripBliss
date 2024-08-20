@@ -7,11 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
+using TripBliss.Helpers;
 
 
-namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
+namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 {
-    partial class HotelServiceViewModel : BaseViewModel
+    public partial class Dis_D_HotelServiceViewModel : BaseViewModel
     {
         #region prop
         [ObservableProperty]
@@ -20,16 +21,20 @@ namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
         ObservableCollection<HotelServiceModel> hoteles;
         [ObservableProperty]
         int num;
-        
+
         #endregion
 
-        public HotelServiceViewModel()
+        IGenericRepository Rep;
+        public Dis_D_HotelServiceViewModel(IGenericRepository generic)
         {
+            Rep = generic;
             Hoteles = new ObservableCollection<HotelServiceModel>();
             HotelService = new HotelServiceModel();
         }
-        public HotelServiceViewModel(HotelServiceModel model)
+        public Dis_D_HotelServiceViewModel(HotelServiceModel model, IGenericRepository generic)
         {
+            Rep = generic;
+            Lang = Preferences.Default.Get("Lan", "en");
             Hoteles = new ObservableCollection<HotelServiceModel>();
             HotelService = new HotelServiceModel();
             HotelService = model;
@@ -48,17 +53,17 @@ namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
             Num -= 1;
         }
         [RelayCommand]
-        async void BackClicked()
+        void BackClicked()
         {
-            await App.Current.MainPage.Navigation.PopAsync();
+            App.Current.MainPage.Navigation.PopAsync();
         }
 
         [RelayCommand]
-        async void ApplyHotelClicked()
+        void ApplyHotelClicked()
         {
             HotelService.RoomNo = Num;
             Hoteles.Add(HotelService);
-            await App.Current.MainPage.Navigation.PopAsync();
+            App.Current.MainPage.Navigation.PopAsync();
         } 
         #endregion
     }

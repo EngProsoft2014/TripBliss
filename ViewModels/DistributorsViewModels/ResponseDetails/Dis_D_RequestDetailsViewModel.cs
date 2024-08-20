@@ -6,12 +6,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages.DistributorsPages.ResponseDetailes;
 
 namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 {
-    partial class RequestDetailsViewModel : BaseViewModel
+    public partial class Dis_D_RequestDetailsViewModel : BaseViewModel
     {
 
         #region prop
@@ -31,8 +32,10 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 
         #endregion
 
-        public RequestDetailsViewModel()
+        IGenericRepository Rep;
+        public Dis_D_RequestDetailsViewModel(IGenericRepository generic)
         {
+            Rep = generic;
             Hotels = new ObservableCollection<HotelServiceModel>();
             transportaionServices = new ObservableCollection<TransportaionServiceModel>();
             airFlights = new ObservableCollection<AirFlightModel>();
@@ -57,13 +60,13 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         void AddHotel()
         {
-            App.Current.MainPage.Navigation.PushAsync(new HotelServicePage());
+            App.Current.MainPage.Navigation.PushAsync(new HotelServicePage(new Dis_D_HotelServiceViewModel(Rep)));
         }
         [RelayCommand]
         void SelectHotel(HotelServiceModel model)
         {
-            var vm = new HotelServiceViewModel(model);
-            var page = new HotelServicePage();
+            var vm = new Dis_D_HotelServiceViewModel(model,Rep);
+            var page = new HotelServicePage(vm);
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
         }
@@ -73,13 +76,13 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         void AddTransportaion()
         {
-            App.Current.MainPage.Navigation.PushAsync(new TransportaionServicePage());
+            App.Current.MainPage.Navigation.PushAsync(new TransportaionServicePage(new Dis_D_TransportaionServiceViewModel(Rep)));
         }
         [RelayCommand]
         void SelectTransportaion(TransportaionServiceModel model)
         {
-            var vm = new TransportaionServiceViewModel(model);
-            var page = new TransportaionServicePage();
+            var vm = new Dis_D_TransportaionServiceViewModel(model,Rep);
+            var page = new TransportaionServicePage(vm);
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
         }
@@ -89,13 +92,13 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         void AddAirFlight()
         {
-            App.Current.MainPage.Navigation.PushAsync(new AirFlightServicePage());
+            App.Current.MainPage.Navigation.PushAsync(new AirFlightServicePage(new Dis_D_AirFlightServicesViewModel(Rep)));
         }
         [RelayCommand]
         void SelectAirFlight(AirFlightModel model)
         {
-            var vm = new AirFlightServicesViewModel(model);
-            var page = new AirFlightServicePage();
+            var vm = new Dis_D_AirFlightServicesViewModel(model,Rep);
+            var page = new AirFlightServicePage(vm);
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
         }
@@ -105,13 +108,13 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         void AddVisa()
         {
-            App.Current.MainPage.Navigation.PushAsync(new VisaServicePage());
+            App.Current.MainPage.Navigation.PushAsync(new VisaServicePage(new Dis_D_VisaServiceViewModel(Rep)));
         }
         [RelayCommand]
         void SelectVisa(VisaServiceModel model)
         {
-            var vm = new VisaServiceViewModel(model);
-            var page = new VisaServicePage();
+            var vm = new Dis_D_VisaServiceViewModel(model,Rep);
+            var page = new VisaServicePage(vm);
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
         }

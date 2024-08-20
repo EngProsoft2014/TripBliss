@@ -10,9 +10,9 @@
              NavigationPage.HasNavigationBar="False">
 
 
-    <Controls:CustomControl.BindingContext>
+    <!--<Controls:CustomControl.BindingContext>
         <vm:CreateOfferViewModel></vm:CreateOfferViewModel>
-    </Controls:CustomControl.BindingContext>
+    </Controls:CustomControl.BindingContext>-->
     <StackLayout Orientation="Vertical" Margin="20">
         <StackLayout Orientation="Horizontal">
             <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackPressedCommand}">

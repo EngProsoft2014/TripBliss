@@ -4,20 +4,24 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages.DistributorsPages.ResponseDetailes;
+using TripBliss.ViewModels.DistributorsViewModels.ResponseDetails;
 
 namespace TripBliss.ViewModels.DistributorsViewModels
 {
-    partial class HomeDistributorViewModel : BaseViewModel
+    public partial class Dis_HomeViewModel : BaseViewModel
     {
         #region Prop
         [ObservableProperty]
         public ObservableCollection<RequestClassModel> requests;
         #endregion
 
-        public HomeDistributorViewModel()
+        IGenericRepository Rep;
+        public Dis_HomeViewModel(IGenericRepository generic)
         {
+            Rep = generic;
             Requests = new ObservableCollection<RequestClassModel>();
             LoadData();
         }
@@ -105,7 +109,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         [RelayCommand]
         async Task Selection(RequestClassModel model)
         {
-            await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage());
+            await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new Dis_D_RequestDetailsViewModel(Rep)));
         }
         #endregion
     }

@@ -103,8 +103,8 @@ namespace TripBliss.ViewModels
                             }
                             if (string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && !string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
                             {
-                                var vm = new DistributorsViewModels.HomeDistributorViewModel();
-                                var page = new Pages.DistributorsPages.HomeDistributorsPage();
+                                var vm = new DistributorsViewModels.Dis_HomeViewModel(Rep);
+                                var page = new Pages.DistributorsPages.HomeDistributorsPage(vm,Rep);
                                 page.BindingContext = vm;
                                 await App.Current!.MainPage!.Navigation.PushAsync(page);
                             }

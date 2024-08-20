@@ -9,9 +9,9 @@
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False">
 
-    <Controls:CustomControl.BindingContext>
+    <!--<Controls:CustomControl.BindingContext>
         <vm:OfferViewersViewModel></vm:OfferViewersViewModel>
-    </Controls:CustomControl.BindingContext>
+    </Controls:CustomControl.BindingContext>-->
 
     <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20" Spacing="10">
         <StackLayout Orientation="Horizontal">

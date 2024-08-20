@@ -5,26 +5,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages.DistributorsPages.Offer;
 
 namespace TripBliss.ViewModels.DistributorsViewModels.Offer
 {
-    partial class OfferDetailsViewModel : BaseViewModel
+    public partial class Dis_O_OfferDetailsViewModel : BaseViewModel
     {
         #region Prop
         [ObservableProperty]
-        OfferModel selectedItem; 
+        OfferModel selectedItem;
         #endregion
 
+        IGenericRepository Rep;
         #region Cons
-        public OfferDetailsViewModel()
+        public Dis_O_OfferDetailsViewModel(IGenericRepository generic)
         {
-           
+           Rep = generic;
         }
 
-        public OfferDetailsViewModel(OfferModel model)
+        public Dis_O_OfferDetailsViewModel(OfferModel model, IGenericRepository generic)
         {
+            Rep = generic;
             SelectedItem = model;
             Lang = Preferences.Default.Get("Lan", "en");
         } 
@@ -46,7 +49,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.Offer
         [RelayCommand]
         async void GoToViewers()
         {
-            await App.Current.MainPage.Navigation.PushAsync(new OfferViewersPage());
+            await App.Current.MainPage.Navigation.PushAsync(new OfferViewersPage(new Dis_O_OfferViewersViewModel(Rep)));
         }
         #endregion
     }

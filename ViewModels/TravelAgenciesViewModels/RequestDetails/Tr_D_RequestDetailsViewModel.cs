@@ -283,7 +283,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         void Selection(DistributorsModel model)
         {
-            App.Current.MainPage.Navigation.PushAsync(new NewRequestPage(new Tr_C_NewRequestViewModel(model,Rep),Rep));
+            App.Current.MainPage.Navigation.PushAsync(new NewRequestPage(new Tr_D_NewRequestViewModel(Rep),Rep));
         }
         [RelayCommand]
         void BackButton()

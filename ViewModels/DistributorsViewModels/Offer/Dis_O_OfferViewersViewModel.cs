@@ -6,21 +6,20 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Helpers;
 using TripBliss.Models;
-using TripBliss.Pages;
-using TripBliss.Pages.DistributorsPages.ResponseDetailes;
 
-
-namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
+namespace TripBliss.ViewModels.DistributorsViewModels.Offer
 {
-    partial class DistributorsViewModel : BaseViewModel
+    public partial class Dis_O_OfferViewersViewModel : BaseViewModel
     {
         [ObservableProperty]
         public ObservableCollection<TravelAgenciesModel>? travelAgencies;
 
-
-        public DistributorsViewModel()
+        IGenericRepository Rep;
+        public Dis_O_OfferViewersViewModel(IGenericRepository generic)
         {
+            Rep = generic;
             TravelAgencies = new ObservableCollection<TravelAgenciesModel>();
             LoadData();
         }
@@ -93,23 +92,10 @@ namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
 
         }
 
-
         [RelayCommand]
-        async void OnAddRequest()
+        async void BackClicked()
         {
-            await App.Current.MainPage.Navigation.PushAsync(new TripBliss.Pages.DistributorsPages.ResponseDetailes.RequestDetailsPage());
+            await App.Current.MainPage.Navigation.PopAsync();
         }
-
-        [RelayCommand]
-        async void OnBackPressed()
-        {
-           await App.Current.MainPage.Navigation.PopAsync();
-        }
-        //[RelayCommand]
-        //async void OnSelection()
-        //{
-        //    await App.Current.MainPage.Navigation.PushAsync(new NewRequestPage());
-        //}
-
     }
 }

@@ -4,8 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages.DistributorsPages.Offer;
 
@@ -13,15 +15,17 @@ using TripBliss.Pages.DistributorsPages.Offer;
 
 namespace TripBliss.ViewModels.DistributorsViewModels.Offer
 {
-    partial class ChooseOfferViewModel : BaseViewModel
+    partial class Dis_O_ChooseOfferViewModel : BaseViewModel
     {
         [ObservableProperty]
         public ObservableCollection<OfferModel> offers;
         [ObservableProperty]
         OfferModel selectedItem;
 
-        public ChooseOfferViewModel()
+        IGenericRepository Rep;
+        public Dis_O_ChooseOfferViewModel(IGenericRepository generic)
         {
+            Rep = generic;
             //SelectedItem = new OfferModel();
             Offers = new ObservableCollection<OfferModel>();
             LoadData();
@@ -81,8 +85,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.Offer
         [RelayCommand]
         async Task SelectionOffer(OfferModel model)
         {
-            var Vm = new OfferDetailsViewModel(model);
-            var page = new OfferDetailsPage();
+            var Vm = new Dis_O_OfferDetailsViewModel(model,Rep);
+            var page = new OfferDetailsPage(Vm);
             page.BindingContext = Vm;   
             await App.Current!.MainPage!.Navigation.PushAsync(page);
         }
@@ -90,7 +94,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.Offer
         [RelayCommand]
         async Task CreateOffer()
         {
-            await App.Current!.MainPage!.Navigation.PushAsync(new CreateOfferPage());
+            await App.Current!.MainPage!.Navigation.PushAsync(new CreateOfferPage(new Dis_O_CreateOfferViewModel(Rep) ));
         }
 
     }

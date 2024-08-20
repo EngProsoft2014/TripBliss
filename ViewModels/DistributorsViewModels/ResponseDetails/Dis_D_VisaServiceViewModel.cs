@@ -6,11 +6,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Helpers;
 using TripBliss.Models;
 
-namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
+namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 {
-    partial class VisaServiceViewModel : BaseViewModel
+     public partial class Dis_D_VisaServiceViewModel : BaseViewModel
     {
         #region Prop
         [ObservableProperty]
@@ -19,16 +20,20 @@ namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
         ObservableCollection<VisaServiceModel> visaServices;
         #endregion
 
-        public VisaServiceViewModel()
+        IGenericRepository Rep;
+        public Dis_D_VisaServiceViewModel(IGenericRepository generic)
         {
+            Rep = generic;
             Moddel = new VisaServiceModel();
             VisaServices = new ObservableCollection<VisaServiceModel>();
         }
-        public VisaServiceViewModel(VisaServiceModel model)
+        public Dis_D_VisaServiceViewModel(VisaServiceModel model, IGenericRepository generic)
         {
+            Rep = generic;
             Moddel = new VisaServiceModel();
             VisaServices = new ObservableCollection<VisaServiceModel>();
             Moddel = model;
+            Lang = Preferences.Default.Get("Lan", "en");
         }
 
         #region RelayCommand

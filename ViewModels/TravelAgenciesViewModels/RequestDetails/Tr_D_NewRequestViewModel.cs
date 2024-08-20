@@ -9,13 +9,13 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.ComponentModel;
 using Microsoft.VisualBasic;
-using TripBliss.Pages.DistributorsPages.ResponseDetailes;
-using TripBliss.ViewModels.DistributorsViewModels.CreateResponse;
+using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 using TripBliss.Helpers;
+using TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {
-    partial class NewRequestViewModel : BaseViewModel
+    public partial class Tr_D_NewRequestViewModel : BaseViewModel
     {
 
 
@@ -37,7 +37,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         #endregion
 
         IGenericRepository Rep;
-        public NewRequestViewModel(IGenericRepository generic)
+        public Tr_D_NewRequestViewModel(IGenericRepository generic)
         {
             Rep = generic;
             Hotels = new ObservableCollection<HotelServiceModel>();
@@ -63,8 +63,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         void SelectHotel(HotelServiceModel model)
         {
-            var vm = new HotelServiceViewModel(model);
-            var page = new HotelServicePage();
+            var vm = new Tr_C_HotelServiceViewModel(model,Rep);
+            var page = new HotelServicePage(vm,Rep);
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
         } 
@@ -74,8 +74,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         void SelectTransportaion(TransportaionServiceModel model)
         {
-            var vm = new TransportaionServiceViewModel(model);
-            var page = new TransportaionServicePage();
+            var vm = new Tr_C_TransportaionServiceViewModel(model,Rep);
+            var page = new TransportaionServicePage(vm,Rep);
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
         } 
@@ -85,8 +85,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         void SelectAirFlight(AirFlightModel model)
         {
-            var vm = new AirFlightServicesViewModel(model);
-            var page = new AirFlightServicePage();
+            var vm = new Tr_C_AirFlightServicesViewModel(model,Rep);
+            var page = new AirFlightServicePage(vm,Rep);
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
         } 
@@ -96,8 +96,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         void SelectVisa(VisaServiceModel model)
         {
-            var vm = new VisaServiceViewModel(model);
-            var page = new VisaServicePage();
+            var vm = new Tr_C_VisaServiceViewModel(model,Rep);
+            var page = new VisaServicePage(vm,Rep);
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
         }

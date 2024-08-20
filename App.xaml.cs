@@ -5,6 +5,7 @@ using System.Globalization;
 using Mopups.PreBaked.PopupPages.Login;
 using TripBliss.Helpers;
 using TripBliss.Pages.TravelAgenciesPages;
+using TripBliss.ViewModels.DistributorsViewModels;
 namespace TripBliss
 {
     public partial class App : Application
@@ -16,7 +17,7 @@ namespace TripBliss
             InitializeComponent();
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(ApiConstants.syncFusionLicence);
             //MainPage = new AppShell();
-            //MainPage = new NavigationPage(new HomeDistributorsPage());
+            //MainPage = new NavigationPage(new HomeDistributorsPage(new Dis_HomeViewModel(Rep),Rep));
             MainPage = new NavigationPage(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep), Rep));
 
             //MainPage = new NavigationPage(new LoginPage(new ViewModels.LoginViewModel(Rep)));

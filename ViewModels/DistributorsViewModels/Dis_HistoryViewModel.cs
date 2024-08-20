@@ -5,20 +5,22 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Helpers;
 using TripBliss.Models;
 
 namespace TripBliss.ViewModels.DistributorsViewModels
 {
-    partial class HistoryViewModel : BaseViewModel
+    partial class Dis_HistoryViewModel : BaseViewModel
     {
         #region Prop
         [ObservableProperty]
         public ObservableCollection<RequestClassModel> requests;
         #endregion
 
-
-        public HistoryViewModel()
+        IGenericRepository Rep;
+        public Dis_HistoryViewModel(IGenericRepository generic)
         {
+            Rep = generic;
             Requests = new ObservableCollection<RequestClassModel>();
             LoadData();
         }

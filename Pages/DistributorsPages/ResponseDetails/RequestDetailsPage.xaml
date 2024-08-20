@@ -23,10 +23,10 @@
                 <tabView:SfTabItem Header="{ex:Translate Name=btnRequestDetails-RequestDetails}" FontSize="14" BackgroundColor="#f6fcf2"
                                    FontFamily="Almarai-Regular">
                     <tabView:SfTabItem.Content>
-                        <ContentView Margin="20">
-                            <ContentView.BindingContext>
+                        <ContentView x:Name="DetailsView" Margin="20">
+                            <!--<ContentView.BindingContext>
                                 <vm:RequestDetailsViewModel></vm:RequestDetailsViewModel>
-                            </ContentView.BindingContext>
+                            </ContentView.BindingContext>-->
                             <StackLayout Orientation="Vertical" Spacing="10">
                                 <StackLayout Orientation="Horizontal">
                                     <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackButtonCommand}">
@@ -470,10 +470,10 @@
                 <tabView:SfTabItem Header="{ex:Translate Name=btnResponse-RequestDetails}" FontSize="14" BackgroundColor="#f6fcf2"
                                    FontFamily="Almarai-Regular">
                     <tabView:SfTabItem.Content>
-                        <ContentView>
-                            <ContentView.BindingContext>
+                        <ContentView x:Name="ResponseView">
+                            <!--<ContentView.BindingContext>
                                 <vm:RequestDetailsViewModel></vm:RequestDetailsViewModel>
-                            </ContentView.BindingContext>
+                            </ContentView.BindingContext>-->
                             <ContentView.Resources>
                                 <Style TargetType="StackLayout">
                                     <Setter Property="VisualStateManager.VisualStateGroups">
@@ -558,7 +558,7 @@
                                                                 </ImageButton.Source>
                                                             </ImageButton>
                                                             <StackLayout.GestureRecognizers>
-                                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RequestDetailsViewModel}}, Path=SelectHotelCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=SelectHotelCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
                                                             </StackLayout.GestureRecognizers>
                                                         </StackLayout>
                                                     </DataTemplate>
@@ -614,7 +614,7 @@
                                                                 </ImageButton.Source>
                                                             </ImageButton>
                                                             <StackLayout.GestureRecognizers>
-                                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RequestDetailsViewModel}}, Path=SelectTransportaionCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=SelectTransportaionCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
                                                             </StackLayout.GestureRecognizers>
                                                         </StackLayout>
                                                     </DataTemplate>
@@ -677,7 +677,7 @@
                                                                 </ImageButton.Source>
                                                             </ImageButton>
                                                             <StackLayout.GestureRecognizers>
-                                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RequestDetailsViewModel}}, Path=SelectAirFlightCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=SelectAirFlightCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
                                                             </StackLayout.GestureRecognizers>
                                                         </StackLayout>
                                                     </DataTemplate>
@@ -736,7 +736,7 @@
                                                                 </ImageButton.Source>
                                                             </ImageButton>
                                                             <StackLayout.GestureRecognizers>
-                                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RequestDetailsViewModel}}, Path=SelectVisaCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=SelectVisaCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
                                                             </StackLayout.GestureRecognizers>
                                                         </StackLayout>
                                                     </DataTemplate>

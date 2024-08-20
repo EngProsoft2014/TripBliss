@@ -5,19 +5,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Helpers;
 using TripBliss.Models;
 
 namespace TripBliss.ViewModels.DistributorsViewModels.Offer
 {
-    partial class CreateOfferViewModel : BaseViewModel
+    public partial class Dis_O_CreateOfferViewModel : BaseViewModel
     {
         #region Prop
         [ObservableProperty]
         public OfferModel offer;
         #endregion
 
-        public CreateOfferViewModel()
+        IGenericRepository Rep;
+        public Dis_O_CreateOfferViewModel(IGenericRepository generic)
         {
+            Rep = generic;
             Offer = new OfferModel();
             Lang = Preferences.Default.Get("Lan", "en");
         }
