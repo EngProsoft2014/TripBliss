@@ -7,4 +7,5 @@ public record CarBrandResponse
     public int CarTypeId { get; set; }
     public string? CarTypename { get; set; }
     public bool Active { get; set; }
+
 }

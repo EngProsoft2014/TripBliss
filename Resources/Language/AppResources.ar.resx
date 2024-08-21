@@ -381,4 +381,7 @@
   <data name="lblVideoUrl-CreateOffer" xml:space="preserve">
     <value>رابط الفديو</value>
   </data>
+  <data name="lblLocation-HotelSevice" xml:space="preserve">
+    <value>الموقع</value>
+  </data>
 </root>

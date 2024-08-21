@@ -8,6 +8,7 @@ using TripBliss.Helpers;
 using Mopups.PreBaked.PopupPages.Login;
 using TripBliss.Pages;
 using TripBliss.ViewModels;
+using TripBliss.Services.Data;
 
 namespace TripBliss
 {
@@ -43,7 +44,9 @@ namespace TripBliss
             handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
 #endif
             });
+            builder.Services.AddSingleton<ServicesService>();
             builder.Services.AddScoped<IGenericRepository,GenericRepository>();
+            //builder.Services.AddScoped<IServicesService,ServicesService>();
 
             builder.Services.AddTransient<SignUpViewModel>();
             builder.Services.AddTransient<ViewModels.LoginViewModel>();

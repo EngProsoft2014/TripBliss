@@ -17,102 +17,31 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 {
     public partial class Tr_C_TravelAgencyViewModel : BaseViewModel
     {
+        #region Prop
         [ObservableProperty]
-        public ObservableCollection<DistributorsModel>? distributors;
+        public ObservableCollection<DistributorCompanyResponse>? distributorCompanys = new ObservableCollection<DistributorCompanyResponse>(); 
+        #endregion
 
+        #region Services
+        IGenericRepository Rep;
+        readonly Services.Data.ServicesService _service;
+        #endregion
 
-        readonly IGenericRepository Rep;
-        public Tr_C_TravelAgencyViewModel(IGenericRepository GenericRep)
+        #region Cons
+        public Tr_C_TravelAgencyViewModel(IGenericRepository GenericRep, Services.Data.ServicesService service)
         {
             Rep = GenericRep;
+            _service = service;
+            DistributorCompanys = Controls.StaticMember.LstDistributorCompanys;
 
-            Distributors = new ObservableCollection<DistributorsModel>();
+        } 
+        #endregion
 
-            Distributors = Controls.StaticMember.LstDistributors;
-
-            Lang = Preferences.Default.Get("Lan", "en");
-            //if (Controls.StaticMember.WayOfTab == 1)
-            //{
-            //    UserDialogs.Instance.ShowLoading();
-            //    LoadData();
-            //    UserDialogs.Instance.HideHud();
-            //}
-                
-        }
-
-
-        void LoadData()
-        {
-            Distributors.Add(new DistributorsModel
-            {
-                Address = "Egypt",
-                Name = "Akl Group",
-                Phone = "+20155154110",
-                Rate = "4.5",
-                Services = "Hotel - Ticketing - Transportation"
-            });
-
-            Distributors.Add(new DistributorsModel
-            {
-                Address = "Saudi Arabia",
-                Name = "Al Faisal Company",
-                Phone = "+966123456789",
-                Rate = "4.2",
-                Services = "Hotel - Transportation"
-            });
-
-            Distributors.Add(new DistributorsModel
-            {
-                Address = "United Arab Emirates",
-                Name = "Dubai Services",
-                Phone = "+971987654321",
-                Rate = "4.7",
-                Services = "Hotel - Ticketing - Tours"
-            });
-
-            Distributors.Add(new DistributorsModel
-            {
-                Address = "Qatar",
-                Name = "Qatar Hospitality",
-                Phone = "+974654321987",
-                Rate = "4.3",
-                Services = "Hotel - Transportation - Ticketing"
-            });
-
-            Distributors.Add(new DistributorsModel
-            {
-                Address = "Kuwait",
-                Name = "Kuwait Travels",
-                Phone = "+965321654987",
-                Rate = "4.6",
-                Services = "Hotel - Ticketing - Transportation"
-            });
-
-            Distributors.Add(new DistributorsModel
-            {
-                Address = "Bahrain",
-                Name = "Bahrain Tour Services",
-                Phone = "+973789456123",
-                Rate = "4.4",
-                Services = "Hotel - Tours - Transportation"
-            });
-
-            Distributors.Add(new DistributorsModel
-            {
-                Address = "Oman",
-                Name = "Oman Travel Agency",
-                Phone = "+968456123789",
-                Rate = "4.8",
-                Services = "Hotel - Ticketing - Transportation"
-            });
-
-        }
-
-
+        #region RelayCommands
         [RelayCommand]
         void OnAddRequest()
         {
-            App.Current.MainPage.Navigation.PushAsync(new ChooseDistributorPage(new Tr_C_TravelAgencyViewModel(Rep),Rep));
+            App.Current.MainPage.Navigation.PushAsync(new ChooseDistributorPage(new Tr_C_TravelAgencyViewModel(Rep, _service), Rep));
         }
 
         [RelayCommand]
@@ -123,8 +52,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void OnSelection()
         {
-            App.Current.MainPage.Navigation.PushAsync(new NewRequestPage(new Tr_C_NewRequestViewModel(Rep),Rep));
-        }
+            App.Current.MainPage.Navigation.PushAsync(new NewRequestPage(new Tr_C_NewRequestViewModel(Rep, _service), Rep));
+        } 
+        #endregion
 
     }
 }

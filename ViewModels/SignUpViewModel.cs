@@ -22,9 +22,11 @@ namespace TripBliss.ViewModels
     public partial class SignUpViewModel : BaseViewModel
     {
         readonly IGenericRepository Rep;
-        public SignUpViewModel(IGenericRepository GenericRep)
+        readonly Services.Data.ServicesService _service;
+        public SignUpViewModel(IGenericRepository GenericRep, Services.Data.ServicesService service)
         {
             Rep = GenericRep;
+            _service = service;
         }
 
         [ObservableProperty]
@@ -124,7 +126,7 @@ namespace TripBliss.ViewModels
                             var toast = Toast.Make("Successfully for your Register", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
 
-                            await App.Current!.MainPage!.Navigation.PushAsync(new Pages.LoginPage(new LoginViewModel(Rep)));
+                            await App.Current!.MainPage!.Navigation.PushAsync(new Pages.LoginPage(new LoginViewModel(Rep,_service)));
                             App.Current.MainPage.Navigation.RemovePage(App.Current.MainPage.Navigation.NavigationStack[App.Current.MainPage.Navigation.NavigationStack.Count - 2]);
                         }
                         else

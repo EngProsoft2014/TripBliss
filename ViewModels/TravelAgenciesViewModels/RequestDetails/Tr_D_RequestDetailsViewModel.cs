@@ -15,25 +15,28 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {
     public partial class Tr_D_RequestDetailsViewModel : BaseViewModel
     {
-        public ObservableCollection<TransportaitionRequestDetailesModel> transportaionServices { get; set; }
-        public ObservableCollection<AirFlightModel> airFlights { get; set; }
-        public ObservableCollection<VisaServiceModel> visaServices { get; set; }
-        public ObservableCollection<DistributorsModel>? distributors { get; set; }
+        public ObservableCollection<TransportaitionRequestDetailesModel> transportaionServices { get; set; } = new ObservableCollection<TransportaitionRequestDetailesModel>();
+        public ObservableCollection<AirFlightModel> airFlights { get; set; } = new ObservableCollection<AirFlightModel>();
+        public ObservableCollection<VisaServiceModel> visaServices { get; set; } = new ObservableCollection<VisaServiceModel>();
+        public ObservableCollection<DistributorsModel>? distributors { get; set; } = new ObservableCollection<DistributorsModel>();
 
+
+        #region Services
         IGenericRepository Rep;
-        public Tr_D_RequestDetailsViewModel(IGenericRepository generic)
+        readonly Services.Data.ServicesService _service;
+        #endregion
+
+        #region Cons
+        public Tr_D_RequestDetailsViewModel(IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
-            transportaionServices = new ObservableCollection<TransportaitionRequestDetailesModel>();
-            airFlights = new ObservableCollection<AirFlightModel>();
-            visaServices = new ObservableCollection<VisaServiceModel>();
-            distributors = new ObservableCollection<DistributorsModel>();
-            Lang = Preferences.Default.Get("Lan","en");
             LoadTransportaionData();
             LoadAirFlightData();
             LoadVisaData();
             LoadData();
-        }
+            _service = service;
+        } 
+        #endregion
 
         #region Methodes
         void LoadTransportaionData()
@@ -283,7 +286,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         void Selection(DistributorsModel model)
         {
-            App.Current.MainPage.Navigation.PushAsync(new NewRequestPage(new Tr_D_NewRequestViewModel(Rep),Rep));
+            App.Current.MainPage.Navigation.PushAsync(new NewRequestPage(new Tr_D_NewRequestViewModel(Rep,_service),Rep));
         }
         [RelayCommand]
         void BackButton()

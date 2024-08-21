@@ -18,6 +18,7 @@ using TripBliss.Controls;
 using TripBliss.ViewModels.TravelAgenciesViewModels;
 using TripBliss.Services;
 using TripBliss.Pages;
+using TripBliss.Constants;
 
 
 namespace TripBliss.ViewModels
@@ -25,10 +26,11 @@ namespace TripBliss.ViewModels
     public partial class LoginViewModel : BaseViewModel
     {
         readonly IGenericRepository Rep;
-
-        public LoginViewModel(IGenericRepository GenericRep)
+        readonly Services.Data.ServicesService _service;
+        public LoginViewModel(IGenericRepository GenericRep, Services.Data.ServicesService service)
         {
             Rep = GenericRep;
+            _service = service;
         }
 
 
@@ -45,7 +47,7 @@ namespace TripBliss.ViewModels
         [RelayCommand]
         public async Task GoSignUpPage()
         {
-            await App.Current!.MainPage!.Navigation.PushAsync(new SignUpPage(new SignUpViewModel(Rep)));
+            await App.Current!.MainPage!.Navigation.PushAsync(new SignUpPage(new SignUpViewModel(Rep, _service)));
         }
 
         [RelayCommand]
@@ -85,26 +87,26 @@ namespace TripBliss.ViewModels
                             var toast = Toast.Make("Successfully for your Login", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
 
-                            Preferences.Default.Set("userid", UserModel?.Id);
-                            Preferences.Default.Set("email", UserModel?.Email);
-                            Preferences.Default.Set("username", UserModel?.UserName);
-                            Preferences.Default.Set("password", UserModel?.Password);
-                            Preferences.Default.Set("userPermision", UserModel?.UserPermision);
-                            Preferences.Default.Set("userCategory", UserModel?.UserCategory);
-                            Preferences.Default.Set("travelAgencyCompanyId", UserModel?.TravelAgencyCompanyId);
-                            Preferences.Default.Set("distributorCompanyId", UserModel?.DistributorCompanyId);
+                            Preferences.Default.Set(ApiConstants.userid, UserModel?.Id);
+                            Preferences.Default.Set(ApiConstants.email, UserModel?.Email);
+                            Preferences.Default.Set(ApiConstants.username, UserModel?.UserName);
+                            Preferences.Default.Set(ApiConstants.password, UserModel?.Password);
+                            Preferences.Default.Set(ApiConstants.userPermision, UserModel?.UserPermision);
+                            Preferences.Default.Set(ApiConstants.userCategory, UserModel?.UserCategory);
+                            Preferences.Default.Set(ApiConstants.travelAgencyCompanyId, UserModel?.TravelAgencyCompanyId);
+                            Preferences.Default.Set(ApiConstants.distributorCompanyId, UserModel?.DistributorCompanyId);
 
                             if (!string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
                             {
-                                var vm = new TravelAgenciesViewModels.Tr_HomeViewModel(Rep);
-                                var page = new Pages.TravelAgenciesPages.HomeAgencyPage(new Tr_HomeViewModel(Rep),Rep);
+                                var vm = new TravelAgenciesViewModels.Tr_HomeViewModel(Rep, _service);
+                                var page = new Pages.TravelAgenciesPages.HomeAgencyPage(new Tr_HomeViewModel(Rep, _service),Rep,_service);
                                 page.BindingContext = vm;
                                 await App.Current!.MainPage!.Navigation.PushAsync(page);
                             }
                             if (string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && !string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
                             {
                                 var vm = new DistributorsViewModels.Dis_HomeViewModel(Rep);
-                                var page = new Pages.DistributorsPages.HomeDistributorsPage(vm,Rep);
+                                var page = new Pages.DistributorsPages.HomeDistributorsPage(vm,Rep,_service);
                                 page.BindingContext = vm;
                                 await App.Current!.MainPage!.Navigation.PushAsync(page);
                             }
@@ -113,7 +115,7 @@ namespace TripBliss.ViewModels
                         {
                             var toast = Toast.Make("Warning, Your user name is not registered !!", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
-                            await App.Current!.MainPage!.Navigation.PushAsync(new Pages.LoginPage(new LoginViewModel(Rep)));
+                            await App.Current!.MainPage!.Navigation.PushAsync(new Pages.LoginPage(new LoginViewModel(Rep,_service)));
                             App.Current.MainPage.Navigation.RemovePage(App.Current.MainPage.Navigation.NavigationStack[App.Current.MainPage.Navigation.NavigationStack.Count - 2]);
                         }
                     }

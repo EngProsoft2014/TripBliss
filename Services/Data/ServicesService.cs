@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Akavache;
 using System.Reactive.Linq;
 using TripBliss.Models;
+using TripBliss.Constants;
 
 
 
@@ -59,12 +60,12 @@ namespace TripBliss.Services.Data
             {
                 if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
-                    if (!string.IsNullOrEmpty(Preferences.Default.Get("username", "")) && !string.IsNullOrEmpty(Preferences.Default.Get("password", "")))
+                    if (!string.IsNullOrEmpty(Preferences.Default.Get(ApiConstants.username, "")) && !string.IsNullOrEmpty(Preferences.Default.Get(ApiConstants.password, "")))
                     {
                         ApplicationUserLoginRequest model = new ApplicationUserLoginRequest()
                         {
-                            UserName = Preferences.Default.Get("username", ""),
-                            Password = Preferences.Default.Get("password","")
+                            UserName = Preferences.Default.Get(ApiConstants.username, ""),
+                            Password = Preferences.Default.Get(ApiConstants.password, "")
                         };
 
                         var loginModel = await Rep.PostTRAsync<ApplicationUserLoginRequest, ApplicationUserResponse>(Constants.ApiConstants.LoginApi, model);

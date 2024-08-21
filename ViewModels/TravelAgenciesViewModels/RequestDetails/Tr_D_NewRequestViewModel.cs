@@ -20,10 +20,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
 
         #region prop
-        public ObservableCollection<HotelServiceModel> Hotels { get; set; }
-        public ObservableCollection<TransportaionServiceModel> transportaionServices { get; set; }
-        public ObservableCollection<AirFlightModel> airFlights { get; set; }
-        public ObservableCollection<VisaServiceModel> visaServices { get; set; }
+        public ObservableCollection<HotelServiceModel> Hotels { get; set; } = new ObservableCollection<HotelServiceModel>();
+        public ObservableCollection<TransportaionServiceModel> transportaionServices { get; set; } = new ObservableCollection<TransportaionServiceModel>();
+        public ObservableCollection<AirFlightModel> airFlights { get; set; } = new ObservableCollection<AirFlightModel>();
+        public ObservableCollection<VisaServiceModel> visaServices { get; set; } = new ObservableCollection<VisaServiceModel>();
 
         [ObservableProperty]
         HotelServiceModel selectedHotel;
@@ -36,20 +36,22 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
         #endregion
 
+        #region Services
         IGenericRepository Rep;
-        public Tr_D_NewRequestViewModel(IGenericRepository generic)
+        readonly Services.Data.ServicesService _service;
+        #endregion
+
+        #region Cons
+        public Tr_D_NewRequestViewModel(IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
-            Hotels = new ObservableCollection<HotelServiceModel>();
-            transportaionServices = new ObservableCollection<TransportaionServiceModel>();
-            airFlights = new ObservableCollection<AirFlightModel>();
-            visaServices = new ObservableCollection<VisaServiceModel>();
-            Lang = Preferences.Default.Get("Lan", "en");
+            _service = service;
             LoadData();
             LoadTransportaionData();
             LoadAirFlightData();
             LoadVisaData();
-        }
+        } 
+        #endregion
 
         #region Generl RelayCommand
         [RelayCommand]
@@ -63,7 +65,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         void SelectHotel(HotelServiceModel model)
         {
-            var vm = new Tr_C_HotelServiceViewModel(model,Rep);
+            var vm = new Tr_C_HotelServiceViewModel(model,Rep, _service);
             var page = new HotelServicePage(vm,Rep);
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
@@ -74,7 +76,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         void SelectTransportaion(TransportaionServiceModel model)
         {
-            var vm = new Tr_C_TransportaionServiceViewModel(model,Rep);
+            var vm = new Tr_C_TransportaionServiceViewModel(model,Rep, _service);
             var page = new TransportaionServicePage(vm,Rep);
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
@@ -85,7 +87,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         void SelectAirFlight(AirFlightModel model)
         {
-            var vm = new Tr_C_AirFlightServicesViewModel(model,Rep);
+            var vm = new Tr_C_AirFlightServicesViewModel(model,Rep,_service);
             var page = new AirFlightServicePage(vm,Rep);
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
@@ -96,7 +98,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         void SelectVisa(VisaServiceModel model)
         {
-            var vm = new Tr_C_VisaServiceViewModel(model,Rep);
+            var vm = new Tr_C_VisaServiceViewModel(model,Rep, _service);
             var page = new VisaServicePage(vm,Rep);
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);

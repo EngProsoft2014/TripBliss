@@ -9,11 +9,13 @@ namespace TripBliss.Pages.TravelAgenciesPages;
 public partial class HomeAgencyPage : Controls.CustomControl
 {
     IGenericRepository Rep;
-    public HomeAgencyPage(Tr_HomeViewModel viewModel,IGenericRepository generic)
+    readonly Services.Data.ServicesService _service;
+    public HomeAgencyPage(Tr_HomeViewModel viewModel,IGenericRepository generic, Services.Data.ServicesService service)
     {
         InitializeComponent();
         this.BindingContext = viewModel;
         Rep = generic;
+        _service = service;
     }
 
     protected override void OnAppearing()
@@ -41,11 +43,11 @@ public partial class HomeAgencyPage : Controls.CustomControl
         Controls.StaticMember.WayOfTab = (int)e.NewIndex;
         if ((int)e.NewIndex == 0)
         {
-            conviewHome.BindingContext = new Tr_HomeViewModel(Rep);
+            conviewHome.BindingContext = new Tr_HomeViewModel(Rep, _service);
         }
         if ((int)e.NewIndex == 1)
         {
-            DisConView.BindingContext = new Tr_C_TravelAgencyViewModel(Rep);
+            DisConView.BindingContext = new Tr_C_TravelAgencyViewModel(Rep, _service);
             //conviewDist.BindingContext = new Tr_C_TravelAgencyViewModel(Rep);
             //conviewFevourites.BindingContext = new Tr_C_TravelAgencyViewModel(Rep);
         }
@@ -59,7 +61,7 @@ public partial class HomeAgencyPage : Controls.CustomControl
         }
         if ((int)e.NewIndex == 4)
         {
-            conviewMore.BindingContext = new Tr_MoreViewModel(Rep);
+            conviewMore.BindingContext = new Tr_MoreViewModel(Rep, _service);
         }
     }
 }

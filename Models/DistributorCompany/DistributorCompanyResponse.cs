@@ -1,20 +1,20 @@
 ﻿namespace TripBliss.Models
 {
     public record DistributorCompanyResponse
-    (
-         string Id,
-         string? CompanyName,
-         string? Address,
-         string? Website,
-         string? Phone,
-         string? Email,
-         string? Policy,
-         string? Logo,
-         DateOnly? ExpireDateAcc,
-         bool? SendWithAllBulk,
-         string? StripeUsername,
-         string? StripePassword,
-         string? StripeSecretKey,
-         int? Review
-    );
+    {
+        string? Id { get; set; }
+        string? CompanyName { get; set; }
+        string? Address { get; set; }
+        string? Website { get; set; }
+        string? Phone { get; set; }
+        string? Email { get; set; }
+        string? Policy { get; set; }
+        string? Logo { get; set; }
+        DateOnly? ExpireDateAcc { get; set; }
+        bool? SendWithAllBulk { get; set; }
+        string? StripeUsername { get; set; }
+        string? StripePassword { get; set; }
+        string? StripeSecretKey { get; set; }
+        int? Review { get; set; }
+    };
 }

@@ -35,10 +35,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         #endregion
 
+        readonly Services.Data.ServicesService _service;
         readonly IGenericRepository Rep;
-        public Tr_C_NewRequestViewModel(IGenericRepository GenericRep)
+        public Tr_C_NewRequestViewModel(IGenericRepository GenericRep , Services.Data.ServicesService service)
         {
             Rep = GenericRep;
+            _service = service;
             Hotels = new ObservableCollection<HotelServiceModel>();
             transportaionServices = new ObservableCollection<TransportaionServiceModel>();
             airFlights = new ObservableCollection<AirFlightModel>();
@@ -75,12 +77,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void AddHotel()
         {
-            App.Current.MainPage.Navigation.PushAsync(new HotelServicePage(new Tr_C_HotelServiceViewModel(Rep) , Rep));
+            App.Current.MainPage.Navigation.PushAsync(new HotelServicePage(new Tr_C_HotelServiceViewModel(Rep,_service) , Rep));
         }
         [RelayCommand]
         void SelectHotel(HotelServiceModel model)
         {
-            var vm = new Tr_C_HotelServiceViewModel(model,Rep);
+            var vm = new Tr_C_HotelServiceViewModel(model,Rep,_service);
             var page = new HotelServicePage(vm,Rep);
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
@@ -91,12 +93,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void AddTransportaion()
         {
-            App.Current.MainPage.Navigation.PushAsync(new TransportaionServicePage(new Tr_C_TransportaionServiceViewModel(Rep),Rep));
+            App.Current.MainPage.Navigation.PushAsync(new TransportaionServicePage(new Tr_C_TransportaionServiceViewModel(Rep, _service),Rep));
         }
         [RelayCommand]
         void SelectTransportaion(TransportaionServiceModel model)
         {
-            var vm = new Tr_C_TransportaionServiceViewModel(model,Rep);
+            var vm = new Tr_C_TransportaionServiceViewModel(model,Rep, _service);
             var page = new TransportaionServicePage(vm,Rep);
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);
@@ -107,13 +109,13 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void AddAirFlight()
         {
-            App.Current.MainPage.Navigation.PushAsync(new AirFlightServicePage(new Tr_C_AirFlightServicesViewModel(Rep)));
+            App.Current.MainPage.Navigation.PushAsync(new AirFlightServicePage(new Tr_C_AirFlightServicesViewModel(Rep, _service)));
         }
         [RelayCommand]
         void SelectAirFlight(AirFlightModel model)
         {
-            var vm = new Tr_C_AirFlightServicesViewModel(model, Rep);
-            var page = new AirFlightServicePage(new Tr_C_AirFlightServicesViewModel(model, Rep));
+            var vm = new Tr_C_AirFlightServicesViewModel(model, Rep, _service);
+            var page = new AirFlightServicePage(new Tr_C_AirFlightServicesViewModel(model, Rep, _service));
             page.BindingContext = vm;
             App.Current!.MainPage!.Navigation.PushAsync(page);
         }
@@ -123,12 +125,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void AddVisa()
         {
-            App.Current.MainPage.Navigation.PushAsync(new VisaServicePage(new Tr_C_VisaServiceViewModel(Rep),Rep));
+            App.Current.MainPage.Navigation.PushAsync(new VisaServicePage(new Tr_C_VisaServiceViewModel(Rep, _service),Rep));
         }
         [RelayCommand]
         void SelectVisa(VisaServiceModel model)
         {
-            var vm = new Tr_C_VisaServiceViewModel(model,Rep);
+            var vm = new Tr_C_VisaServiceViewModel(model,Rep, _service);
             var page = new VisaServicePage(vm,Rep);
             page.BindingContext = vm;
             App.Current.MainPage.Navigation.PushAsync(page);

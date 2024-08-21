@@ -484,6 +484,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Location.
+        /// </summary>
+        internal static string lblLocation_HotelSevice {
+            get {
+                return ResourceManager.GetString("lblLocation-HotelSevice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Meals.
         /// </summary>
         internal static string lblMeals_HotelService {

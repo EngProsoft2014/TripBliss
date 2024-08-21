@@ -13,15 +13,17 @@ namespace TripBliss.ViewModels.DistributorsViewModels
     partial class Dis_MoreViewModel : BaseViewModel
     {
         IGenericRepository Rep;
-        public Dis_MoreViewModel(IGenericRepository generic)
+        readonly Services.Data.ServicesService _service;
+        public Dis_MoreViewModel(IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
+            _service = service;
         }
 
         [RelayCommand]
         async Task SelectLanguage()
         {
-            await MopupService.Instance.PushAsync(new LanguagePopup(Rep));
+            await MopupService.Instance.PushAsync(new LanguagePopup(Rep, _service));
         }
     }
 }

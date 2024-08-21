@@ -17,37 +17,53 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
     {
         #region prop
         [ObservableProperty]
-        HotelServiceModel? hotelService;
-        [ObservableProperty]
-        ObservableCollection<HotelServiceModel> hoteles;
+        HotelServiceModel? hotelService = new HotelServiceModel();
         [ObservableProperty]
         int num;
         [ObservableProperty]
         ObservableCollection<LocationResponse> locations = new ObservableCollection<LocationResponse>();
+        [ObservableProperty]
+        ObservableCollection<HotelResponse> hoteles = new ObservableCollection<HotelResponse>();
+        [ObservableProperty]
+        ObservableCollection<MealResponse> meals = new ObservableCollection<MealResponse>();
+        [ObservableProperty]
+        ObservableCollection<RoomTypeResponse> roomTypes = new ObservableCollection<RoomTypeResponse>();
+        [ObservableProperty]
+        ObservableCollection<RoomViewResponse> roomViews = new ObservableCollection<RoomViewResponse>();
 
         #endregion
 
-
+        #region Services
         readonly Services.Data.ServicesService _service;
-        IGenericRepository Rep;
+        IGenericRepository Rep; 
+        #endregion
 
+        #region Cons
         public Tr_C_HotelServiceViewModel(IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
-            Hoteles = new ObservableCollection<HotelServiceModel>();
-            HotelService = new HotelServiceModel();
-            _service = service;
+            GetLocation();
+            GetHotels();
+            GetMeals();
+            GetRoomTypes();
+            GetRoomViews();
         }
-        public Tr_C_HotelServiceViewModel(HotelServiceModel model, IGenericRepository generic)
+        public Tr_C_HotelServiceViewModel(HotelServiceModel model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
-            Hoteles = new ObservableCollection<HotelServiceModel>();
-            HotelService = new HotelServiceModel();
+            _service = service;
             HotelService = model;
-            Lang = Preferences.Default.Get("Lan", "en");
-        }
 
+            GetLocation();
+            GetHotels();
+            GetMeals();
+            GetRoomTypes();
+            GetRoomViews();
+        }
+        #endregion
+
+        #region Methods
         async void GetLocation()
         {
             IsBusy = true;
@@ -67,6 +83,83 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             IsBusy = false;
         }
 
+        async void GetHotels()
+        {
+            IsBusy = true;
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                string UserToken = await _service.UserToken();
+
+                var json = await Rep.GetAsync<ObservableCollection<HotelResponse>>(ApiConstants.GetAllHotelsApi, UserToken);
+
+                if (json != null)
+                {
+                    Hoteles = json;
+                }
+            }
+
+            IsBusy = false;
+        }
+
+        async void GetMeals()
+        {
+            IsBusy = true;
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                string UserToken = await _service.UserToken();
+
+                var json = await Rep.GetAsync<ObservableCollection<MealResponse>>(ApiConstants.GetAllMealsApi, UserToken);
+
+                if (json != null)
+                {
+                    Meals = json;
+                }
+            }
+
+            IsBusy = false;
+        }
+
+        async void GetRoomTypes()
+        {
+            IsBusy = true;
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                string UserToken = await _service.UserToken();
+
+                var json = await Rep.GetAsync<ObservableCollection<RoomTypeResponse>>(ApiConstants.GetAllRoomTypesApi, UserToken);
+
+                if (json != null)
+                {
+                    RoomTypes = json;
+                }
+            }
+
+            IsBusy = false;
+        }
+
+        async void GetRoomViews()
+        {
+            IsBusy = true;
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                string UserToken = await _service.UserToken();
+
+                var json = await Rep.GetAsync<ObservableCollection<RoomViewResponse>>(ApiConstants.GetAllRoomViewsApi, UserToken);
+
+                if (json != null)
+                {
+                    RoomViews = json;
+                }
+            }
+
+            IsBusy = false;
+        } 
+        #endregion
+
         #region RelayCommand
         [RelayCommand]
         void AddRoom()
@@ -80,17 +173,16 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             Num -= 1;
         }
         [RelayCommand]
-        async void BackClicked()
+        async Task BackClicked()
         {
             await App.Current.MainPage.Navigation.PopAsync();
         }
 
         [RelayCommand]
-        async void ApplyHotelClicked()
+        async Task ApplyHotelClicked()
         {
-            HotelService.RoomNo = Num;
-            Hoteles.Add(HotelService);
-            await App.Current.MainPage.Navigation.PopAsync();
+            HotelService!.RoomNo = Num;
+            await App.Current!.MainPage!.Navigation.PopAsync();
         }
         #endregion
     }

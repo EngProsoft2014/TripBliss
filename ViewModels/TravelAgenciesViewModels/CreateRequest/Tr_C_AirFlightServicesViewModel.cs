@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
 
@@ -15,9 +16,11 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
     {
         #region prop
         [ObservableProperty]
-        ObservableCollection<AirFlightModel> airFlights;
+        AirFlightModel moddel = new AirFlightModel();
         [ObservableProperty]
-        AirFlightModel moddel;
+        ObservableCollection<AirFlightResponse> airFlights = new ObservableCollection<AirFlightResponse>();
+        [ObservableProperty]
+        ObservableCollection<ClassAirFlightResponse> classes = new ObservableCollection<ClassAirFlightResponse>();
         [ObservableProperty]
         int adult;
         [ObservableProperty]
@@ -27,21 +30,68 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         #endregion
 
-
+        #region Services
         IGenericRepository Rep;
-        public Tr_C_AirFlightServicesViewModel(IGenericRepository generic)
+        readonly Services.Data.ServicesService _service;
+        #endregion
+
+        #region Cons
+        public Tr_C_AirFlightServicesViewModel(IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
-            AirFlights = new ObservableCollection<AirFlightModel>();
-            Moddel = new AirFlightModel();
+            _service = service;
+            GetAirFlights();
+            GetClasses();
         }
-        public Tr_C_AirFlightServicesViewModel( AirFlightModel model,IGenericRepository generic)
+        public Tr_C_AirFlightServicesViewModel(AirFlightModel model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
-            AirFlights = new ObservableCollection<AirFlightModel>();
-            Moddel = new AirFlightModel();
             Moddel = model;
+            _service = service;
+            GetAirFlights();
+            GetClasses();
         }
+        #endregion
+
+        #region Methods
+        async void GetAirFlights()
+        {
+            IsBusy = true;
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                string UserToken = await _service.UserToken();
+
+                var json = await Rep.GetAsync<ObservableCollection<AirFlightResponse>>(ApiConstants.GetAllAirFlightApi, UserToken);
+
+                if (json != null)
+                {
+                    AirFlights = json;
+                }
+            }
+
+            IsBusy = false;
+        }
+
+        async void GetClasses()
+        {
+            IsBusy = true;
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                string UserToken = await _service.UserToken();
+
+                var json = await Rep.GetAsync<ObservableCollection<ClassAirFlightResponse>>(ApiConstants.GetAllClassesAirFlightApi, UserToken);
+
+                if (json != null)
+                {
+                    Classes = json;
+                }
+            }
+
+            IsBusy = false;
+        }
+        #endregion
 
         #region RelayCommand
         [RelayCommand]
@@ -84,24 +134,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void AplyClicked()
         {
-            AirFlights.Add(Moddel);
             App.Current.MainPage.Navigation.PopAsync();
         }
 
-
-        [RelayCommand]
-        async Task GetAllAirFlights()
-        {
-            if (Connectivity.NetworkAccess == Microsoft.Maui.Networking.NetworkAccess.Internet)
-            {
-                var json = await Rep.GetAsync<ObservableCollection<AirFlightModel>>(Constants.ApiConstants.GetAllAirFlightApi);
-
-                if (json != null)
-                {
-                    AirFlights = new ObservableCollection<AirFlightModel>(json);
-                }
-            }
-        }
         #endregion
     }
 }

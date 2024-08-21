@@ -17,27 +17,22 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
     {
         #region Prop
         [ObservableProperty]
-        public ObservableCollection<RequestClassModel> requests;
-
+        public ObservableCollection<RequestClassModel> requests = new ObservableCollection<RequestClassModel>();
         #endregion
+
+        #region Services
+        readonly Services.Data.ServicesService _service;
         IGenericRepository Rep;
-        public Tr_HomeViewModel(IGenericRepository generic)
+        #endregion
+
+        #region Cons
+        public Tr_HomeViewModel(IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
-            Requests = new ObservableCollection<RequestClassModel>();
-
+            _service = service;
             Requests = Controls.StaticMember.LstRequestClass;
-
-            //if(Controls.StaticMember.WayOfTab == 0)
-            //{
-            //    UserDialogs.Instance.ShowLoading();
-            //    LoadData();
-            //    LoadData2();
-            //    UserDialogs.Instance.HideHud();
-            //}  
-
-        }
-
+        } 
+        #endregion
 
         #region Methods
         void LoadData()
@@ -124,7 +119,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         [RelayCommand]
         async void Selection(RequestClassModel model)
         {
-            await App.Current.MainPage.Navigation.PushAsync(new RequestDetailsPage(new RequestDetails.Tr_D_RequestDetailsViewModel(Rep)));
+            await App.Current.MainPage.Navigation.PushAsync(new RequestDetailsPage(new RequestDetails.Tr_D_RequestDetailsViewModel(Rep,_service)));
         } 
         #endregion
     }

@@ -6,8 +6,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Models.Visa;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 {
@@ -15,32 +17,57 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
     {
         #region Prop
         [ObservableProperty]
-        VisaServiceModel moddel;
+        VisaServiceModel moddel = new VisaServiceModel();
         [ObservableProperty]
-        ObservableCollection<VisaServiceModel> visaServices;
+        ObservableCollection<VisaResponse> visas = new ObservableCollection<VisaResponse>();
         #endregion
 
+        #region Services
         IGenericRepository Rep;
-        public Tr_C_VisaServiceViewModel(IGenericRepository generic)
+        readonly Services.Data.ServicesService _service; 
+        #endregion
+
+        #region Cons
+        public Tr_C_VisaServiceViewModel(IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
-            Moddel = new VisaServiceModel();
-            VisaServices = new ObservableCollection<VisaServiceModel>();
+            _service = service;
+            GetVisas();
         }
-        public Tr_C_VisaServiceViewModel(VisaServiceModel model, IGenericRepository generic)
+        public Tr_C_VisaServiceViewModel(VisaServiceModel model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
-            Moddel = new VisaServiceModel();
-            VisaServices = new ObservableCollection<VisaServiceModel>();
+            _service = service;
             Moddel = model;
-            Lang = Preferences.Default.Get("Lan", "en");
+            GetVisas();
         }
+        #endregion
+
+        #region Methods
+        async void GetVisas()
+        {
+            IsBusy = true;
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                string UserToken = await _service.UserToken();
+
+                var json = await Rep.GetAsync<ObservableCollection<VisaResponse>>(ApiConstants.GetVisasApi, UserToken);
+
+                if (json != null)
+                {
+                    Visas = json;
+                }
+            }
+
+            IsBusy = false;
+        } 
+        #endregion
 
         #region RelayCommand
         [RelayCommand]
         void Apply()
         {
-            VisaServices.Add(Moddel);
             App.Current.MainPage.Navigation.PopAsync();
         }
         [RelayCommand]

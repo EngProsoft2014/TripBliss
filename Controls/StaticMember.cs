@@ -7,22 +7,28 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Constants;
+using TripBliss.Helpers;
 using TripBliss.Models;
 
 namespace TripBliss.Controls
 {
     static class StaticMember
     {
+        #region Const Variables
         public static string SnackBarColor = "#187ad6";
         public static string SnackBarTextColor = "#FFFFFF";
-
         public static int WayOfTab { get; set; } = 0;
+        #endregion
 
+        #region Lists
         public static ObservableCollection<RequestClassModel> LstRequestClass { get; set; } = new ObservableCollection<RequestClassModel>();
-        public static ObservableCollection<DistributorsModel> LstDistributors { get; set; } = new ObservableCollection<DistributorsModel>();
+        public static ObservableCollection<DistributorCompanyResponse> LstDistributorCompanys { get; set; } = new ObservableCollection<DistributorCompanyResponse>();
         public static ObservableCollection<OfferModel> LstOffers { get; set; } = new ObservableCollection<OfferModel>();
-        public static ObservableCollection<RequestClassModel> LstHistories { get; set; } = new ObservableCollection<RequestClassModel>();
+        public static ObservableCollection<RequestClassModel> LstHistories { get; set; } = new ObservableCollection<RequestClassModel>(); 
+        #endregion
 
+        #region SnackBar Setting
         [Obsolete]
         public static async void ShowSnackBar(string Message, string BKColor, string TextColor, Action action1)
         {
@@ -45,10 +51,18 @@ namespace TripBliss.Controls
             var snackbar = CommunityToolkit.Maui.Alerts.Snackbar.Make(text, action, actionButtonText, duration, snackbarOptions);
 
             await snackbar.Show(cancellationTokenSource.Token);
-        }
+        } 
+        #endregion
 
-        public static void LoadStartData()
+        #region Services
+        static IGenericRepository? Rep;
+        static Services.Data.ServicesService? _service;
+        #endregion
+
+        public static void LoadStartData(IGenericRepository generic, Services.Data.ServicesService service)
         {
+            Rep = generic;
+            _service = service;
             UserDialogs.Instance.ShowLoading();
             //first Tab
             LstRequestClass.Add(new RequestClassModel()
@@ -125,63 +139,7 @@ namespace TripBliss.Controls
             });
 
             //scond Tab
-            LstDistributors.Add(new DistributorsModel
-            {
-                Address = "Egypt",
-                Name = "Akl Group",
-                Phone = "+20155154110",
-                Rate = "4.5",
-                Services = "Hotel - Ticketing - Transportation"
-            });
-            LstDistributors.Add(new DistributorsModel
-            {
-                Address = "Saudi Arabia",
-                Name = "Al Faisal Company",
-                Phone = "+966123456789",
-                Rate = "4.2",
-                Services = "Hotel - Transportation"
-            });
-            LstDistributors.Add(new DistributorsModel
-            {
-                Address = "United Arab Emirates",
-                Name = "Dubai Services",
-                Phone = "+971987654321",
-                Rate = "4.7",
-                Services = "Hotel - Ticketing - Tours"
-            });
-            LstDistributors.Add(new DistributorsModel
-            {
-                Address = "Qatar",
-                Name = "Qatar Hospitality",
-                Phone = "+974654321987",
-                Rate = "4.3",
-                Services = "Hotel - Transportation - Ticketing"
-            });
-            LstDistributors.Add(new DistributorsModel
-            {
-                Address = "Kuwait",
-                Name = "Kuwait Travels",
-                Phone = "+965321654987",
-                Rate = "4.6",
-                Services = "Hotel - Ticketing - Transportation"
-            });
-            LstDistributors.Add(new DistributorsModel
-            {
-                Address = "Bahrain",
-                Name = "Bahrain Tour Services",
-                Phone = "+973789456123",
-                Rate = "4.4",
-                Services = "Hotel - Tours - Transportation"
-            });
-            LstDistributors.Add(new DistributorsModel
-            {
-                Address = "Oman",
-                Name = "Oman Travel Agency",
-                Phone = "+968456123789",
-                Rate = "4.8",
-                Services = "Hotel - Ticketing - Transportation"
-            });
-
+            GetDistributorCompanys();
             //third Tab
             LstOffers.Add(new OfferModel()
             {
@@ -302,5 +260,23 @@ namespace TripBliss.Controls
 
             UserDialogs.Instance.HideHud();
         }
+
+        #region Load Data From Api Methods
+        static async void GetDistributorCompanys()
+        {
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                string UserToken = await _service!.UserToken();
+
+                var json = await Rep!.GetAsync<ObservableCollection<DistributorCompanyResponse>>(ApiConstants.GetDistributorCompanysApi, UserToken);
+
+                if (json != null)
+                {
+                    LstDistributorCompanys = json;
+                }
+            }
+        }
+        #endregion
     }
 }

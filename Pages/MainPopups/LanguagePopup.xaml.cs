@@ -12,10 +12,12 @@ namespace TripBliss.Pages.MainPopups;
 public partial class LanguagePopup : Mopups.Pages.PopupPage
 {
     IGenericRepository Rep;
-	public LanguagePopup(IGenericRepository generic)
+    readonly Services.Data.ServicesService _service;
+    public LanguagePopup(IGenericRepository generic, Services.Data.ServicesService service)
 	{
         InitializeComponent();
         Rep = generic;
+        _service = service;
         LoadSetting();
     }
 
@@ -32,11 +34,11 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
         TranslateExtension.Instance.SetCulture(cal);
         Preferences.Default.Set("Lan","ar");
 
-        Controls.StaticMember.LoadStartData();
+        Controls.StaticMember.LoadStartData(Rep,_service);
         LoadSetting();
         await MopupService.Instance.PopAsync();
         Controls.StaticMember.WayOfTab = 4;
-        App.Current!.MainPage = new NavigationPage(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep),Rep));
+        App.Current!.MainPage = new NavigationPage(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep,_service),Rep,_service));
     }
 
     [Obsolete]
@@ -46,11 +48,11 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
         TranslateExtension.Instance.SetCulture(cal);
         Preferences.Default.Set("Lan", "en");
 
-        Controls.StaticMember.LoadStartData();
+        Controls.StaticMember.LoadStartData(Rep, _service);
         LoadSetting();
         await MopupService.Instance.PopAsync();
         Controls.StaticMember.WayOfTab = 4;  
-        App.Current!.MainPage = new NavigationPage(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep), Rep));
+        App.Current!.MainPage = new NavigationPage(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep, _service), Rep,_service));
     }
 
     [Obsolete]

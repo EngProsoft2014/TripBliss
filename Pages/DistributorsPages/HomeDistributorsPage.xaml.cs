@@ -8,15 +8,17 @@ namespace TripBliss.Pages.DistributorsPages;
 public partial class HomeDistributorsPage : Controls.CustomControl
 {
     IGenericRepository Rep;
-	public HomeDistributorsPage(Dis_HomeViewModel model,IGenericRepository generic)
+    readonly Services.Data.ServicesService _service;
+    public HomeDistributorsPage(Dis_HomeViewModel model,IGenericRepository generic, Services.Data.ServicesService service)
 	{
 		InitializeComponent();
         Rep = generic;
+        _service = service; 
         BindingContext = model;
         AgencyView.BindingContext = new Dis_DistributorsViewModel(Rep);
         OffersView.BindingContext = new Dis_O_ChooseOfferViewModel(Rep);
         HistoryView.BindingContext = new Dis_HistoryViewModel(Rep);
-        MoreView.BindingContext = new Dis_MoreViewModel(Rep);
+        MoreView.BindingContext = new Dis_MoreViewModel(Rep,_service);
 	}
 
     [Obsolete]

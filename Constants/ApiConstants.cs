@@ -11,99 +11,87 @@ namespace TripBliss.Constants
 
         public const string syncFusionLicence = "Ngo9BigBOggjHTQxAR8/V1NCaF1cWWhAYVZpR2Nbe055flRGal9VVAciSV9jS3pTfkVlWXZfcHdQRGZbVQ=="; //Version= 24.x.x
 
-        // Path Images And Files
-        public static string ImagesStudentPath = "Uploads/StudentImgs/";
-        public static string ImagesTeacherPath = "Uploads/TeacherImgs/";
-        public static string QualificationFile = "Uploads/QualificationFile/";
-        // End Path Images And Files
+        #region Preferences Keys
+        // Preferences Key
+        public static string userid = "userid";
+        public static string email = "email";
+        public static string username = "username";
+        public static string password = "password";
+        public static string userPermision = "userPermision";
+        public static string userCategory = "userCategory";
+        public static string travelAgencyCompanyId = "travelAgencyCompanyId";
+        public static string distributorCompanyId = "distributorCompanyId";
+        //End Preferences Key 
+        #endregion
 
+        #region Login & Register Api
         // Login Api
         public static string LoginApi = "api/ApplicationUser/Login";
         // End Login Api
 
         // Register Api
         public static string RegisterApi = "api/ApplicationUser/Register";
-        // End Register Api
+        // End Register Api 
+        #endregion
 
-        // AllAirFlight Api
-        public static string GetAllAirFlightApi = "api/AirFlight";
-        // End AllAirFlight Api
-
+        #region Hotel Service Apis
         // AllLocations Api
         public static string GetAllLocationsApi = "api/";
         // End AllLocations Api
 
+        // AllHotels Api
+        public static string GetAllHotelsApi = "api/Hotel/current";
+        // End AllHotels Api
 
+        // AllMeals Api
+        public static string GetAllMealsApi = "api/Meal/current";
+        // End AllMeals Api
 
+        // AllRoomTypes Api
+        public static string GetAllRoomTypesApi = "api/RoomType/current";
+        // End RoomTypes Api
 
-        //  All Grades 
-        public static string GetAllGrades = "api/Students/GetAllGrades";
-        // End All Grades
+        // AllRoomViews Api
+        public static string GetAllRoomViewsApi = "api/RoomView/current";
+        // End AllRoomViews Api 
+        #endregion
 
-        //  Get Classes By GradeId 
-        public static string GetClassesByGradeId = "api/Students/GetClassesByGradeId?GradeId=";
-        // End Get Classes By GradeId 
+        #region Visa Service Api
+        // AllVisa Api
+        public static string GetVisasApi = "api/Visa/current";
+        // End AllVisa Api 
+        #endregion
 
+        #region AirFlight Service
+        // AllAirFlight Api
+        public static string GetAllAirFlightApi = "AirFlight/current";
+        // End AllAirFlight Api
 
-        //  Get Students By ClassId 
-        public static string GetStudentsByClassId = "api/Students/GetStudentsByClassId?ClassId=";
-        // End Get Students By ClassId  
+        // AllClassesAirFlight Api
+        public static string GetAllClassesAirFlightApi = "ClassAirFlight/current";
+        // End AllClassesAirFlight Api 
+        #endregion
 
-        // SignUp Member Api
-        public static string SignUpMemberApi = "api/SignUp/GetSignUpByFamilyId";
-        // End SignUp Member Api
+        #region Transportation Service Api
+        // AllCarBrands Api
+        public static string GetAllCarBrandsApi = "api/CarBrand/current";
+        // End AllCarBrands Api 
 
-        // SignUp By Id Api
-        public static string SignUpById = "api/SignUp/GetSignUpById";
-        // End SignUp By Id Api
+        // AllCarModels Api
+        public static string GetAllCarModelsApi = "api/CarModel/current";
+        // End AllCarModels Api 
 
-        // Students For Pickup
-        public static string StudentsForPickup = "api/Students/GetStudentsForPickup";
-        // End Students For Pickup
+        // AllCarTypes Api
+        public static string GetAllCarTypesApi = "api/CarType/current";
+        // End AllCarTypes Api  
+        #endregion
 
-        //  Students By FamilyId 
-        public static string StudentsByFamilyId = "api/Students/GetStudentsByFamilyId";
-        // End Students By FamilyId
+        #region Distributor Api
+        // AllDistributorCompanys Api
+        public static string GetDistributorCompanysApi = "DistributorCompany/curren";
+        // End AllDistributorCompanys Api 
+        #endregion
 
-        //  Students By FamilyMemberId Api
-        public static string StudentsByFamilyMemberId = "api/Students/GetStudentsByFamilyMemberId";
-        // End Students By FamilyMemberId Api
-
-        //  Students By SignUpId After SignUp Api
-        public static string StudentsBySignUpIdAfterSignUp = "api/Students/GetStudentsBySignUpIdAfterSignUp";
-        // End Students By SignUpId After SignUp Api
-
-        //  Members By FamilyMemberId Api
-        public static string MembersByFamilyMemberId = "api/Students/GetMembersByFamilyMemberId";
-        // End Members By FamilyMemberId Api
-
-        //  Parents By FamilyMemberId Api
-        public static string ParentsByFamilyMemberId = "api/Parents/GetParentByFamilyId";
-        // End Parents By FamilyMemberId Api
-
-        //  Prim Phone By FamilyMemberId Api
-        public static string PrimPhoneByFamilyMemberId = "api/Parents/GetPrimPhoneByFamilyId";
-        // Prim Phone By FamilyMemberId Api
-
-        //  Post SignUp Parent Or Carpool Api
-        public static string PostSignUpUser = "api/SignUp/PostSignUp";
-        // End Post SignUp Parent Or Carpool Api
-
-        //  Post Add Student Api
-        public static string PostAddStudent = "api/SignUpStudents/PostSignupStudents";
-        // End Post Add Student Api
-
-        //  Post CheckIn Student Api
-        public static string PostCheckInStudent = "api/CheckIn/PostCheckInStudent";
-        // End Post CheckIn Student Api
-
-        //  Post CheckOut Student from Class Api
-        public static string PostCheckOutStudentFromClass = "api/CheckIn/PostCheckoutStudentFromClass";
-        // End Post CheckOut Student from Class Api
-
-        // Delete Member
-        public static string DeleteUserMember = "api/Students/RemoveMember";
-        // End Delete Member
 
     }
 }

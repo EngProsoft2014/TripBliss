@@ -30,9 +30,13 @@
             <StackLayout >
                 <Border StrokeShape="RoundRectangle 15" Margin="0,25,0,40" BackgroundColor="White">
                     <StackLayout Orientation="Vertical" Padding="15,15,15,25">
+                        <Label Text="{ex:Translate Name=lblLocation-HotelSevice}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
+                            <Picker TextColor="Black" FontSize="14" ItemsSource="{Binding Locations}" ItemDisplayBinding="{Binding LocationName}"></Picker>
+                        </Border>
                         <Label Text="{ex:Translate Name=lblHotelName-HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                            <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" Text="{Binding HotelService.HotelName}"></Entry>
+                            <Picker TextColor="Black" FontSize="14" ItemsSource="{Binding Hoteles}" ItemDisplayBinding="{Binding HotelName}"></Picker>
                         </Border>
                         <StackLayout Orientation="Horizontal" Spacing="35">
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
@@ -52,15 +56,13 @@
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{ex:Translate lblRoomView-HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular"
-                                   Text="{Binding HotelService.RoomView}"></Entry>
+                                    <Picker TextColor="Black" FontSize="14" ItemsSource="{Binding RoomViews}" ItemDisplayBinding="{Binding RoomViewName}"></Picker>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{ex:Translate Name=lblRoomType-HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular"
-                                   Text="{Binding HotelService.RoomType}"></Entry>
+                                    <Picker TextColor="Black" FontSize="14" ItemsSource="{Binding RoomTypes}" ItemDisplayBinding="{Binding RoomTypeName}"></Picker>
                                 </Border>
                             </VerticalStackLayout>
                         </StackLayout>
@@ -68,8 +70,7 @@
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{ex:Translate Name=lblMeals-HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular"
-                                   Text="{Binding HotelService.Meals}"></Entry>
+                                    <Picker TextColor="Black" FontSize="14" ItemsSource="{Binding Meals}" ItemDisplayBinding="{Binding MealName}"></Picker>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand">
@@ -92,7 +93,6 @@
                                     </ImageButton>
                                 </StackLayout>
                             </VerticalStackLayout>
-
                         </StackLayout>
                         <Label Text="{ex:Translate lblNotes-HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,20,0,0"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10" HeightRequest="100">
