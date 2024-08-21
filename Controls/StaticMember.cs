@@ -64,7 +64,7 @@ namespace TripBliss.Controls
         {
             Rep = generic;
             _service = service;
-            UserDialogs.Instance.ShowLoading();
+            //UserDialogs.Instance.ShowLoading();
             //first Tab
             LstRequestClass.Add(new RequestClassModel()
             {
@@ -259,7 +259,7 @@ namespace TripBliss.Controls
 
             });
 
-            UserDialogs.Instance.HideHud();
+            //UserDialogs.Instance.HideHud();
         }
 
         #region Load Data From Api Methods

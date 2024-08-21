@@ -64,11 +64,11 @@ namespace TripBliss.Constants
 
         #region AirFlight Service
         // AllAirFlight Api
-        public static string GetAllAirFlightApi = "AirFlight/current";
+        public static string GetAllAirFlightApi = "api/AirFlight/current";
         // End AllAirFlight Api
 
         // AllClassesAirFlight Api
-        public static string GetAllClassesAirFlightApi = "ClassAirFlight/current";
+        public static string GetAllClassesAirFlightApi = "api/ClassAirFlight/current";
         // End AllClassesAirFlight Api 
         #endregion
 

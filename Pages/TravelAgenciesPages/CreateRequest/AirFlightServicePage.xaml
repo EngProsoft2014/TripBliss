@@ -34,7 +34,7 @@
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                             <!--<Entry Keyboard="Text" TextColor="Black" FontSize="14" FontFamily="OpenSansRegular"
                                Text="{Binding Moddel.Carrier}"></Entry>-->
-                            <Picker TextColor="Black" FontSize="14" ItemsSource="{Binding AirFlights}" ItemDisplayBinding="{Binding Carrier}"></Picker>
+                            <Picker TextColor="Black" FontSize="14" ItemsSource="{Binding AirFlights}" ItemDisplayBinding="{Binding AirLine}"></Picker>
                         </Border>
                         <StackLayout Orientation="Horizontal" Spacing="35">
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">

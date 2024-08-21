@@ -2,19 +2,20 @@
 {
     public record DistributorCompanyResponse
     {
-        string? Id { get; set; }
-        string? CompanyName { get; set; }
-        string? Address { get; set; }
-        string? Website { get; set; }
-        string? Phone { get; set; }
-        string? Email { get; set; }
-        string? Policy { get; set; }
-        string? Logo { get; set; }
-        DateOnly? ExpireDateAcc { get; set; }
-        bool? SendWithAllBulk { get; set; }
-        string? StripeUsername { get; set; }
-        string? StripePassword { get; set; }
-        string? StripeSecretKey { get; set; }
-        int? Review { get; set; }
+
+        public string? Id { get; set; }
+        public string? CompanyName { get; set; }
+        public string? Address { get; set; }
+        public string? Website { get; set; }
+        public string? Phone { get; set; }
+        public string? Email { get; set; }
+        public string? Policy { get; set; }
+        public string? Logo { get; set; }
+        public DateTime? ExpireDateAcc { get; set; }
+        public bool SendWithAllBulk { get; set; }
+        public string? StripeUsername { get; set; }
+        public string? StripePassword { get; set; }
+        public string? StripeSecretKey { get; set; }
+        public int Review { get; set; }
     };
 }

@@ -172,8 +172,8 @@
                                                                                     </Label.FormattedText>
                                                                                 </Label>
                                                                             </VerticalStackLayout>
-                                                                            <VerticalStackLayout Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="5">
-                                                                                <HorizontalStackLayout>
+                                                                            <VerticalStackLayout Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="15">
+                                                                                <HorizontalStackLayout Spacing="5">
                                                                                     <Label Text="{Binding Review}" FontSize="14" TextColor="Black" FontAttributes="Bold"
                                                                                            VerticalOptions="StartAndExpand"></Label>
                                                                                     <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
@@ -182,11 +182,11 @@
                                                                                         </Image.Source>
                                                                                     </Image>
                                                                                 </HorizontalStackLayout>
-                                                                                <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
-                                                                                    <Image.Source>
+                                                                                <ImageButton WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
+                                                                                    <ImageButton.Source>
                                                                                         <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
-                                                                                    </Image.Source>
-                                                                                </Image>
+                                                                                    </ImageButton.Source>
+                                                                                </ImageButton>
                                                                             </VerticalStackLayout>
                                                                         </StackLayout>
                                                                     </Border>
@@ -226,16 +226,16 @@
                                                                                     </Label.FormattedText>
                                                                                 </Label>
                                                                             </VerticalStackLayout>
-                                                                            <VerticalStackLayout Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="5">
-                                                                                <HorizontalStackLayout>
+                                                                            <VerticalStackLayout Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="15">
+                                                                                <HorizontalStackLayout Spacing="5">
                                                                                     <Label Text="{Binding Review}" FontSize="14" TextColor="Black" FontAttributes="Bold"
                                                                                              VerticalOptions="StartAndExpand"></Label>
-                                                                                    <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
-                                                                                        <Image.Source>
+                                                                                    <ImageButton WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
+                                                                                        <ImageButton.Source>
                                                                                             <FontImageSource Glyph="" FontFamily="FontIconSolid"
                                                                                                          Color="Gold"></FontImageSource>
-                                                                                        </Image.Source>
-                                                                                    </Image>
+                                                                                        </ImageButton.Source>
+                                                                                    </ImageButton>
                                                                                 </HorizontalStackLayout>
                                                                                 <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
                                                                                     <Image.Source>
