@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Controls;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
@@ -30,9 +31,16 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         {
             Rep = generic;
             _service = service;
+            Init();
             Requests = Controls.StaticMember.LstRequestClass;
         } 
         #endregion
+
+
+        async void Init()
+        {
+            await StaticMember.Load_Tr_StartData(Rep, _service);
+        }
 
         #region Methods
         void LoadData()

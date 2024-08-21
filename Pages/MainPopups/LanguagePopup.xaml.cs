@@ -34,7 +34,7 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
         TranslateExtension.Instance.SetCulture(cal);
         Preferences.Default.Set("Lan","ar");
 
-        Controls.StaticMember.LoadStartData(Rep,_service);
+        await Controls.StaticMember.Load_Tr_StartData(Rep,_service);
         LoadSetting();
         await MopupService.Instance.PopAsync();
         Controls.StaticMember.WayOfTab = 4;
@@ -48,7 +48,7 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
         TranslateExtension.Instance.SetCulture(cal);
         Preferences.Default.Set("Lan", "en");
 
-        Controls.StaticMember.LoadStartData(Rep, _service);
+        await Controls.StaticMember.Load_Tr_StartData(Rep, _service); 
         LoadSetting();
         await MopupService.Instance.PopAsync();
         Controls.StaticMember.WayOfTab = 4;  

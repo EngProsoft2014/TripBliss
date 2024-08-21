@@ -5,7 +5,7 @@ using System.Globalization;
 using Mopups.PreBaked.PopupPages.Login;
 using TripBliss.Helpers;
 using TripBliss.Pages.TravelAgenciesPages;
-using TripBliss.ViewModels.DistributorsViewModels;
+
 namespace TripBliss
 {
     public partial class App : Application
@@ -24,9 +24,27 @@ namespace TripBliss
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(ApiConstants.syncFusionLicence);
             //MainPage = new AppShell();
             //MainPage = new NavigationPage(new HomeDistributorsPage(new Dis_HomeViewModel(Rep),Rep));
-            MainPage = new NavigationPage(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep,service), Rep,service));
-            //MainPage = new NavigationPage(new LoginPage(new ViewModels.LoginViewModel(Rep)));
-            //MainPage = new NavigationPage(new LoginPage(new ViewModels.LoginViewModel(Rep)));
+            //MainPage = new NavigationPage(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep,service), Rep,service));
+
+            if (!string.IsNullOrEmpty(Preferences.Default.Get(ApiConstants.username, "")))
+            {
+                int CatUser = Preferences.Default.Get(ApiConstants.userCategory, 0);
+                if (CatUser != 0)
+                {
+                    MainPage = CatUser switch
+                    {
+                        2 => new NavigationPage(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep, _service),Rep, _service)),
+                        3 => new NavigationPage(new HomeDistributorsPage(new ViewModels.DistributorsViewModels.Dis_HomeViewModel(Rep), Rep, _service)),
+                        _ => new NavigationPage(new LoginPage(new ViewModels.LoginViewModel(Rep, _service)))
+                    };
+                }
+            }
+            else
+            {
+                MainPage = new NavigationPage(new LoginPage(new ViewModels.LoginViewModel(Rep, _service)));
+            }
+                
+
         }
 
 
@@ -46,8 +64,6 @@ namespace TripBliss
         protected override void OnStart()
         {
             base.OnStart();
-
-            Controls.StaticMember.LoadStartData(Rep,_service);
         }
     }
 }

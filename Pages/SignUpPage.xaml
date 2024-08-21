@@ -23,14 +23,14 @@
                         </Image.Source>
                     </Image>-->
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                        <Picker ItemsSource="{Binding LstCompanyType}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding OneCompanyType,Mode=TwoWay}"
-                            Title="{ex:Translate Name=pickerTitleCompanyType-SignUpPage}" Margin="10,2" FontFamily="Almarai-Regular"
+                        <Picker ItemsSource="{Binding LstCompanyType}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding OneCompanyType,Mode=TwoWay}" 
+                            Title="{ex:Translate Name=pickerTitleCompanyType-SignUpPage}" Margin="20,2" 
                             FontSize="14" TextColor="Black" TitleColor="#adadad" HorizontalOptions="CenterAndExpand">
                         </Picker>
                     </Border>
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                         <Entry Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcCompanyName-SignUp}" HorizontalTextAlignment="Center"
-                           Margin="10,2" Text="{Binding CompanyName}"></Entry>
+                           Margin="10,2" Text="{Binding CompanyName}" HorizontalOptions="CenterAndExpand"></Entry>
                     </Border>
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                         <Entry Keyboard="Email" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcCompanyEmail-SignUpPage}" HorizontalTextAlignment="Center"

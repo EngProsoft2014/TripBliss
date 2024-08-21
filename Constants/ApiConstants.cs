@@ -18,7 +18,7 @@ namespace TripBliss.Constants
         public static string username = "username";
         public static string password = "password";
         public static string userPermision = "userPermision";
-        public static string userCategory = "userCategory";
+        public static string userCategory = "userCategory"; //1 = system , 2 = Travel Agency , 3 = Distributor
         public static string travelAgencyCompanyId = "travelAgencyCompanyId";
         public static string distributorCompanyId = "distributorCompanyId";
         //End Preferences Key 
@@ -36,7 +36,7 @@ namespace TripBliss.Constants
 
         #region Hotel Service Apis
         // AllLocations Api
-        public static string GetAllLocationsApi = "api/";
+        public static string GetAllLocationsApi = "api/Location/current";
         // End AllLocations Api
 
         // AllHotels Api
@@ -88,7 +88,7 @@ namespace TripBliss.Constants
 
         #region Distributor Api
         // AllDistributorCompanys Api
-        public static string GetDistributorCompanysApi = "DistributorCompany/curren";
+        public static string GetDistributorCompaniesApi = "api/DistributorCompany/current";
         // End AllDistributorCompanys Api 
         #endregion
 

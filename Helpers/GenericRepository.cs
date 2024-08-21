@@ -18,6 +18,7 @@ namespace TripBliss.Helpers
     public interface IGenericRepository
     {
         Task<T> GetAsync<T>(string uri, string authToken = "");
+        Task<string> GetStrAsync<T>(string uri, string authToken = "");
         Task<Models.ApplicationUserResponse> GetLoginAsync<T>(string uri, string authToken = "");
         Task<T> PostAsync<T>(string uri, T data, string authToken = "");
         Task<(TR, ErrorResult?)> PostTRAsync<T, TR>(string uri, T data, string authToken = "");
@@ -97,6 +98,63 @@ namespace TripBliss.Helpers
                 jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
                 var json1 = JsonConvert.DeserializeObject<T>(jsonResult);
                 return json1;
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"{e.GetType().Name + " : " + e.Message}");
+                throw;
+            }
+        }
+
+        public async Task<string> GetStrAsync<T>(string uri, string authToken = "")
+        {
+
+            try
+            {
+                HttpClient httpClient = CreateHttpClient(Utility.ServerUrl + uri);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+
+                string jsonResult = string.Empty;
+
+                var responseMessage = await Policy
+                    .Handle<WebException>(ex =>
+                    {
+                        Debug.WriteLine($"{ex.GetType().Name + " : " + ex.Message}");
+                        return true;
+                    })
+                    .WaitAndRetryAsync
+                    (
+                        5,
+                        retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+                    )
+                    .ExecuteAsync(async () =>
+                    await httpClient.GetAsync(Utility.ServerUrl + uri));
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    jsonResult =
+                        await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    //var json = JsonConvert.DeserializeObject<T>(jsonResult);
+                    return jsonResult;
+                }
+
+                if (responseMessage.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    //throw new ServiceAuthenticationException(jsonResult);
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
+                }
+
+                if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates\r\nthat the requested resource requires authentication.", "OK");
+                    //await StartData.UserLogout();
+                }
+
+                //throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
+                jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+                //var json1 = JsonConvert.DeserializeObject<T>(jsonResult);
+                return jsonResult;
 
             }
             catch (Exception e)

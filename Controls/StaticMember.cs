@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui.Core;
 using Controls.UserDialogs.Maui;
 using Microsoft.AspNet.SignalR.Client.Http;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,7 +26,7 @@ namespace TripBliss.Controls
         public static ObservableCollection<RequestClassModel> LstRequestClass { get; set; } = new ObservableCollection<RequestClassModel>();
         public static ObservableCollection<DistributorCompanyResponse> LstDistributorCompanys { get; set; } = new ObservableCollection<DistributorCompanyResponse>();
         public static ObservableCollection<OfferModel> LstOffers { get; set; } = new ObservableCollection<OfferModel>();
-        public static ObservableCollection<RequestClassModel> LstHistories { get; set; } = new ObservableCollection<RequestClassModel>(); 
+        public static ObservableCollection<RequestClassModel> LstHistories { get; set; } = new ObservableCollection<RequestClassModel>();
         #endregion
 
         #region SnackBar Setting
@@ -51,7 +52,7 @@ namespace TripBliss.Controls
             var snackbar = CommunityToolkit.Maui.Alerts.Snackbar.Make(text, action, actionButtonText, duration, snackbarOptions);
 
             await snackbar.Show(cancellationTokenSource.Token);
-        } 
+        }
         #endregion
 
         #region Services
@@ -59,7 +60,7 @@ namespace TripBliss.Controls
         static Services.Data.ServicesService? _service;
         #endregion
 
-        public static void LoadStartData(IGenericRepository generic, Services.Data.ServicesService service)
+        public static async Task Load_Tr_StartData(IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
@@ -139,7 +140,7 @@ namespace TripBliss.Controls
             });
 
             //scond Tab
-            GetDistributorCompanys();
+            await GetDistributorCompanys();
             //third Tab
             LstOffers.Add(new OfferModel()
             {
@@ -262,21 +263,22 @@ namespace TripBliss.Controls
         }
 
         #region Load Data From Api Methods
-        static async void GetDistributorCompanys()
+        static async Task GetDistributorCompanys()
         {
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 string UserToken = await _service!.UserToken();
 
-                var json = await Rep!.GetAsync<ObservableCollection<DistributorCompanyResponse>>(ApiConstants.GetDistributorCompanysApi, UserToken);
+                string json = await Rep!.GetStrAsync<ObservableCollection<DistributorCompanyResponse>>(ApiConstants.GetDistributorCompaniesApi, UserToken);
 
                 if (json != null)
                 {
-                    LstDistributorCompanys = json;
+                    LstDistributorCompanys = JsonConvert.DeserializeObject<ObservableCollection<DistributorCompanyResponse>>(json); 
                 }
             }
         }
         #endregion
+
     }
 }

@@ -59,13 +59,15 @@ namespace TripBliss.Services.Data
             if (MUserToken == null)
             {
                 if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-                {
-                    if (!string.IsNullOrEmpty(Preferences.Default.Get(ApiConstants.username, "")) && !string.IsNullOrEmpty(Preferences.Default.Get(ApiConstants.password, "")))
+                {        
+                    if (!string.IsNullOrEmpty(Preferences.Default.Get(ApiConstants.username, "")))
                     {
+                        string Pass = await App.Current!.MainPage!.DisplayPromptAsync("Info", "Your Token expired, Please Enter Your Password", "Ok", "Cancel");
+
                         ApplicationUserLoginRequest model = new ApplicationUserLoginRequest()
                         {
                             UserName = Preferences.Default.Get(ApiConstants.username, ""),
-                            Password = Preferences.Default.Get(ApiConstants.password, "")
+                            Password = Pass
                         };
 
                         var loginModel = await Rep.PostTRAsync<ApplicationUserLoginRequest, ApplicationUserResponse>(Constants.ApiConstants.LoginApi, model);
