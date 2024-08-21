@@ -1,8 +1,10 @@
 ﻿namespace TripBliss.Models;
 
 public record CarModelRequest
-(
-     string ModelName,
-     string CarYear,
-     int CarBrandId
-);
+{
+    public string? ModelName { get; set; }
+    public string? CarYear { get; set; }
+    public int CarBrandId { get; set; }
+}
+
+

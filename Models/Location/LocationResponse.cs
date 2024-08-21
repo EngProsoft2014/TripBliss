@@ -1,9 +1,9 @@
 ﻿namespace TripBliss.Models
 {
     public record LocationResponse
-    (
-         int Id,
-         string LocationName,
-           bool Active
-    );
+    {
+        public int Id { get; set; }
+        public string? LocationName { get; set; }
+        public bool Active { get; set; }
+    }
 }

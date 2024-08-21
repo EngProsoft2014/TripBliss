@@ -1,7 +1,7 @@
 ﻿namespace TripBliss.Models;
 
 public record CarBrandRequest
-(
-    string BrandName,
-    int CarTypeId 
-);
+{
+    public string? BrandName { get; set; }
+    public int CarTypeId { get; set; }
+}

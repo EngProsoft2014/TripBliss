@@ -1,9 +1,9 @@
 ﻿namespace TripBliss.Models
 {
     public record RoomTypeResponse
-    (
-         int Id,
-         string RoomTypeName,
-         bool Active
-    );
+    {
+        public int Id { get; set; }
+        public string? RoomTypeName { get; set; }
+        public bool Active { get; set; }
+    }
 }

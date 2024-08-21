@@ -1,7 +1,7 @@
 ﻿namespace TripBliss.Models
 {
     public record LocationRequest
-    (
-         string LocationName 
-    );
+    {
+        public string? LocationName { get; set; }
+    }
 }

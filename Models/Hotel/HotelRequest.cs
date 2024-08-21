@@ -1,8 +1,8 @@
 ﻿namespace TripBliss.Models
 {
     public record HotelRequest
-    (
-         string HotelName ,
-         int LocationId 
-    );
+    {
+        public string? HotelName { get; set; }
+        public int LocationId { get; set; }
+    }
 }

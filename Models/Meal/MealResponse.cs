@@ -1,9 +1,9 @@
 ﻿namespace TripBliss.Models
 {
     public record MealResponse
-    (
-         int Id,
-         string MealName,
-           bool Active
-    );
+    {
+        public int Id { get; set; }
+        public string? MealName { get; set; }
+        public bool Active { get; set; }
+    }
 }

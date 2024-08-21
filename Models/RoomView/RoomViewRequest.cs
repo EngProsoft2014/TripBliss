@@ -1,7 +1,7 @@
 ﻿namespace TripBliss.Models
 {
     public record RoomViewRequest
-    (
-         string RoomViewName 
-    );
+    {
+        public string? RoomViewName { get; set; }
+    }
 }
