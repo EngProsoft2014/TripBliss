@@ -142,7 +142,7 @@
                                     <Label Text="{ex:Translate Name=hdrDistributors}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="End"
                                            TextColor="Black"></Label>
                                     <Button Text="{ex:Translate Name=btnAddRequest}" WidthRequest="95" Padding="0,5,0,5" HeightRequest="35" FontSize="12"
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=SelectionCommand}"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=AddRequestCommand}"
                                         BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" Margin="0,0,0,0" FontAttributes="Bold">
                                     </Button>
                                 </StackLayout>

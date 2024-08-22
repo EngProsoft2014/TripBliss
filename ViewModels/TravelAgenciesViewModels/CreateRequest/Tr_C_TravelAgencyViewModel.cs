@@ -34,14 +34,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             _service = service;
             DistributorCompanys = Controls.StaticMember.LstDistributorCompanys;
 
-        } 
+        }
         #endregion
 
         #region RelayCommands
         [RelayCommand]
-        void OnAddRequest()
+        void AddRequest()
         {
-            App.Current.MainPage.Navigation.PushAsync(new ChooseDistributorPage(new Tr_C_TravelAgencyViewModel(Rep, _service), Rep));
+            App.Current.MainPage.Navigation.PushAsync(new ChooseDistributorPage(this, Rep));
         }
 
         [RelayCommand]
