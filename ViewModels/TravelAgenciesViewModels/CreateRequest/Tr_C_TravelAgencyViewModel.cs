@@ -53,10 +53,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                
+                string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
                 string UserToken = await _service.UserToken();
 
-                var json = await Rep.GetAsync<ObservableCollection<DistributorCompanyResponse>>(ApiConstants.GetDistributorCompaniesApi, UserToken);
+                var json = await Rep.GetAsync<ObservableCollection<DistributorCompanyResponse>>(ApiConstants.GetDistributorCompaniesApi + $"{id}", UserToken);
 
                 if (json != null)
                 {

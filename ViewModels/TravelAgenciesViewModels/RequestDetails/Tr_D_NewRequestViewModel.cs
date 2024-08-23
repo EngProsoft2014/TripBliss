@@ -87,10 +87,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         void SelectAirFlight(AirFlightModel model)
         {
-            var vm = new Tr_C_AirFlightServicesViewModel(model,Rep,_service);
+            var vm = new Tr_C_AirFlightServicesViewModel(Rep,_service);
             var page = new AirFlightServicePage(vm,Rep);
             page.BindingContext = vm;
-            App.Current.MainPage.Navigation.PushAsync(page);
+            App.Current!.MainPage!.Navigation.PushAsync(page);
         } 
         #endregion
 

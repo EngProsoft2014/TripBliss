@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Models.AirFlight;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 {
@@ -16,7 +17,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
     {
         #region prop
         [ObservableProperty]
-        AirFlightModel moddel = new AirFlightModel();
+        RequestTravelAgencyAirFlightRequest model = new RequestTravelAgencyAirFlightRequest();      
+        [ObservableProperty]
+        AirFlightShow airFlightShowModel = new AirFlightShow();
         [ObservableProperty]
         ObservableCollection<AirFlightResponse> airFlights = new ObservableCollection<AirFlightResponse>();
         [ObservableProperty]
@@ -27,8 +30,15 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         int chiled;
         [ObservableProperty]
         int infant;
+        [ObservableProperty]
+        AirFlightResponse airFlightSelected;
+        [ObservableProperty]
+        ClassAirFlightResponse classSelected;
 
         #endregion
+
+        public delegate void AirFlightDelegte(AirFlightShow AirFlight);
+        public event AirFlightDelegte AirFlightClose;
 
         #region Services
         IGenericRepository Rep;
@@ -43,10 +53,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             GetAirFlights();
             GetClasses();
         }
-        public Tr_C_AirFlightServicesViewModel(AirFlightModel model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_C_AirFlightServicesViewModel(RequestTravelAgencyAirFlightRequest model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
-            Moddel = model;
+            Model = model;
             _service = service;
             GetAirFlights();
             GetClasses();
@@ -132,9 +142,18 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             Infant -= 1;
         }
         [RelayCommand]
-        void AplyClicked()
+        void AplyClicked(RequestTravelAgencyAirFlightRequest Request)
         {
-            App.Current.MainPage.Navigation.PopAsync();
+            AirFlightShowModel.AirFlightRequest = Request;
+            AirFlightShowModel.AirLine = AirFlightSelected.AirLine;
+            AirFlightShowModel.AirportFrom = Request.AirportFrom;
+            AirFlightShowModel.AirportTo = Request.AirportTo;
+            AirFlightShowModel.Date = Request.Date;
+            AirFlightShowModel.TotalPerson = Request.TotalPerson;
+
+            AirFlightClose.Invoke(AirFlightShowModel);
+
+            App.Current!.MainPage!.Navigation.PopAsync();
         }
 
         #endregion

@@ -17,5 +17,6 @@
         public string? StripePassword { get; set; }
         public string? StripeSecretKey { get; set; }
         public int Review { get; set; }
+        public bool Favourite { get; set; }
     };
 }

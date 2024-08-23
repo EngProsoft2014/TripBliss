@@ -47,6 +47,7 @@
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
             <StackLayout Spacing="10">
+                <!--Hotels-->
                 <StackLayout Orientation="Horizontal" Margin="0,15,0,0">
                     <Label Text="{ex:Translate Name=lblHotelServices}" FontSize="16" TextColor="DarkOrange" VerticalTextAlignment="Center"></Label>
                     <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
@@ -59,7 +60,7 @@
                     </Border>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <CollectionView ItemsSource="{Binding Hotels}" VerticalOptions="FillAndExpand" SelectionMode="Single">
+                    <CollectionView ItemsSource="{Binding ResponseTravelAgency.RequestTravelAgencyHotelResponse}" VerticalOptions="FillAndExpand" SelectionMode="Single">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
@@ -94,6 +95,8 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </Border>
+                
+                <!--Transportations-->
                 <StackLayout Orientation="Horizontal" Margin="0,0">
                     <Label Text="{ex:Translate Name=lblTransportationServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
                     <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
@@ -106,7 +109,7 @@
                     </Border>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <CollectionView ItemsSource="{Binding transportaionServices}" VerticalOptions="FillAndExpand">
+                    <CollectionView ItemsSource="{Binding RequestTravelAgency.RequestTravelAgencyTransportRequest}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
@@ -142,6 +145,8 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </Border>
+                
+                <!--AirFlights-->
                 <StackLayout Orientation="Horizontal" Margin="0,0">
                     <Label Text="{ex:Translate Name=lblAirFlightServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
                     <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
@@ -154,33 +159,32 @@
                     </Border>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <CollectionView ItemsSource="{Binding airFlights}" VerticalOptions="FillAndExpand">
+                    <CollectionView ItemsSource="{Binding AirFlightShowModel}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                     <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
                                         <Label>
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="QR " TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
-                                                    <Span Text="1178" TextColor="#2fa562" FontSize="12"></Span>
-                                                </FormattedString>
+                                                <Span Text="{Binding AirFlightShowModel.AirFlightRequest.RequestTravelAgencyId}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
+                                            </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
                                         <Label>
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding From}" TextColor="Gray" FontSize="12"></Span>
+                                                <Span Text="{Binding AirFlightShowModel.AirportFrom}" TextColor="Gray" FontSize="12"></Span>
                                                     <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                    <Span Text="{Binding To}" TextColor="Gray" FontSize="12"></Span>
+                                                <Span Text="{Binding AirFlightShowModel.AirportTo}" TextColor="Gray" FontSize="12"></Span>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
                                         <Label>
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding Child}" TextColor="Gray" FontSize="12"></Span>
+                                                <Span Text="{Binding AirFlightShowModel.TotalPerson}" TextColor="Gray" FontSize="12"></Span>
                                                     <Span Text="  " TextColor="Gray" FontSize="14"></Span>
-                                                    <Span Text="{Binding Date}" TextColor="Gray" FontSize="12"></Span>
+                                                <Span Text="{Binding AirFlightShowModel.Date}" TextColor="Gray" FontSize="12"></Span>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -197,6 +201,8 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </Border>
+                
+                <!--Visas-->
                 <StackLayout Orientation="Horizontal" Margin="0,0">
                     <Label Text="{ex:Translate Name=lblVisaServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
                     <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
@@ -209,7 +215,7 @@
                     </Border>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <CollectionView ItemsSource="{Binding visaServices}" VerticalOptions="FillAndExpand">
+                    <CollectionView ItemsSource="{Binding RequestTravelAgency.RequestTravelAgencyVisaRequest}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
@@ -251,7 +257,8 @@
             </StackLayout>
         </ScrollView>
 
-        <Button VerticalOptions="End" Text="{ex:Translate Name=btnApply-Forgot}" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="20,0"></Button>
+        <Button VerticalOptions="End" Text="{ex:Translate Name=btnApply-Forgot}" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="20,0" Command="{Binding AddToRequestCommand}"
+                CommandParameter="{Binding RequestTravelAgency}"></Button>
     </StackLayout>
     
 </Controls:CustomControl>

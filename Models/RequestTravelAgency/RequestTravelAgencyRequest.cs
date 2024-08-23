@@ -1,14 +1,20 @@
-﻿using System.Text.Json.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TripBliss.Models.RequestTravelAgencyVisa;
 
-namespace TripBlissApi.DTO
+namespace TripBliss.Models.RequestTravelAgency
 {
+
     public record RequestTravelAgencyRequest
-    (  
-         List<RequestTravelAgencyHotelRequest>? RequestTravelAgencyHotelRequest, 
-         List<RequestTravelAgencyTransportRequest>? RequestTravelAgencyTransportRequest,
-         List<RequestTravelAgencyAirFlightRequest>? RequestTravelAgencyAirFlightRequest,
-         List<RequestTravelAgencyVisaRequest>? RequestTravelAgencyVisaRequest,
-         List<ResponseWithDistributorRequest>? ResponseWithDistributorRequest,
-         [property: JsonIgnore] bool IsDelete = false
-    );
+    {
+        public List<RequestTravelAgencyHotelRequest>? RequestTravelAgencyHotelRequest{ get; set; }
+        public List<RequestTravelAgencyTransportRequest>? RequestTravelAgencyTransportRequest { get; set; }
+        public List<RequestTravelAgencyAirFlightRequest>? RequestTravelAgencyAirFlightRequest { get; set; }
+        public List<RequestTravelAgencyVisaRequest>? RequestTravelAgencyVisaRequest { get; set; }
+        public List<ResponseWithDistributorRequest>? ResponseWithDistributorRequest { get; set; }
+        public bool IsDelete { get; set; } = false;
+    }
 }

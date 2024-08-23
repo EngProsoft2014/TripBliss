@@ -88,7 +88,7 @@ namespace TripBliss.Constants
 
         #region Distributor Api
         // AllDistributorCompanys Api
-        public static string GetDistributorCompaniesApi = "api/DistributorCompany/current";
+        public static string GetDistributorCompaniesApi = "api/DistributorCompany/current/";
         // End AllDistributorCompanys Api 
         #endregion
 
@@ -108,7 +108,7 @@ namespace TripBliss.Constants
 
         #region Requests Api
         // Add Request Api
-        public static string AddRequestApi = "api/RequestTravelAgency/ ";
+        public static string AddRequestApi = "TravelAgency/";
         // End Add Request Api 
         #endregion
 
