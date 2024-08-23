@@ -1,12 +1,12 @@
 ﻿namespace TripBliss.Models
 {
     public record ResponseWithDistributorPaymentRequest
-    (
-         int ResponseWithDistributorId ,
-         int? PaymentMethod ,
-         int? dbcr,
-         int? AmountPayment ,
-         string? Refnumber ,
-         string? Notes 
-    );
+    {
+        public int ResponseWithDistributorId { get; set; }
+        public int? PaymentMethod { get; set; }
+        public int? dbcr { get; set; }
+        public int? AmountPayment { get; set; }
+        public string? Refnumber { get; set; }
+        public string? Notes { get; set; }
+    }
 }

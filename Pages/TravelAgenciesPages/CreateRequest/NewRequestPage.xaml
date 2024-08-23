@@ -159,7 +159,7 @@
                     </Border>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <CollectionView ItemsSource="{Binding AirFlightShowModel}" VerticalOptions="FillAndExpand">
+                    <CollectionView ItemsSource="{Binding LstTravelAgencyAirFlightResponse}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                     <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">

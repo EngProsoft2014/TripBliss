@@ -16,7 +16,7 @@ using TripBliss.Models.RequestTravelAgency;
 using CommunityToolkit.Maui.Alerts;
 using TripBliss.Pages.TravelAgenciesPages;
 using Controls.UserDialogs.Maui;
-using TripBliss.Models.AirFlight;
+
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 {
@@ -42,8 +42,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [ObservableProperty]
         ObservableCollection<RequestTravelAgencyAirFlightRequest> lstTravelAgencyAirFlightRequest = new ObservableCollection<RequestTravelAgencyAirFlightRequest>();
         [ObservableProperty]
-        ObservableCollection<AirFlightShow> airFlightShowModel = new ObservableCollection<AirFlightShow>();
-
+        ObservableCollection<RequestTravelAgencyAirFlightResponse> lstTravelAgencyAirFlightResponse = new ObservableCollection<RequestTravelAgencyAirFlightResponse>();
         #endregion
 
         readonly Services.Data.ServicesService _service;
@@ -113,12 +112,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         void AddAirFlight()
         {
             var pageView = new Tr_C_AirFlightServicesViewModel(Rep, _service);
-            pageView.AirFlightClose += (AirFlight) =>
+            pageView.AirFlightClose += (AirFlightRequest, AirFlightResponse) =>
             {
                 UserDialogs.Instance.ShowLoading();
 
-                AirFlightShowModel.Add(AirFlight);
-                LstTravelAgencyAirFlightRequest.Add(AirFlight.AirFlightRequest!);
+                LstTravelAgencyAirFlightResponse.Add(AirFlightResponse);
+                LstTravelAgencyAirFlightRequest.Add(AirFlightRequest);
                 
                 UserDialogs.Instance.HideHud();
             };
@@ -126,10 +125,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             App.Current!.MainPage!.Navigation.PushAsync(new AirFlightServicePage(pageView));
         }
         [RelayCommand]
-        void SelectAirFlight(AirFlightShow model)
+        void SelectAirFlight(RequestTravelAgencyAirFlightResponse Response)
         {
-            var vm = new Tr_C_AirFlightServicesViewModel(model.AirFlightRequest!, Rep, _service);
-            var page = new AirFlightServicePage(new Tr_C_AirFlightServicesViewModel(model.AirFlightRequest!, Rep, _service));
+            var vm = new Tr_C_AirFlightServicesViewModel(Response, Rep, _service);
+            var page = new AirFlightServicePage(new Tr_C_AirFlightServicesViewModel(Response, Rep, _service));
             page.BindingContext = vm;
             App.Current!.MainPage!.Navigation.PushAsync(page);
         }

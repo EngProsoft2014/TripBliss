@@ -1,9 +1,9 @@
 ﻿namespace TripBliss.Models.ResponseWithDistributorVisaDetails
 {
     public record ResponseWithDistributorVisaDetailsRequest
-    (
-         int ResponseWithDistributorVisaId,
-         int TravelAgencyGuestId,
-         string? Notes
-    );
+    {
+        public int ResponseWithDistributorVisaId { get; set; }
+        public int TravelAgencyGuestId { get; set; }
+        public string? Notes { get; set; }
+    }
 }

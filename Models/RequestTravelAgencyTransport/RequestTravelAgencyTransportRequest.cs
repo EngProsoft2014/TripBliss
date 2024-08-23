@@ -1,16 +1,16 @@
 ﻿namespace TripBliss.Models
 {
     public record RequestTravelAgencyTransportRequest
-    (
-         int? RequestTravelAgencyId ,
-         int CarTypeId ,
-         int CarBrandId ,
-         int CarModelId ,
-         DateOnly Date ,
-         TimeOnly Time ,
-         string FromLocation ,
-         string ToLocation ,
-         int TransportCount ,
-         bool IsDriver 
-    );
+    {
+        public int? RequestTravelAgencyId { get; set; }
+        public int CarTypeId { get; set; }
+        public int CarBrandId { get; set; }
+        public int CarModelId { get; set; }
+        public DateOnly Date { get; set; }
+        public TimeOnly Time { get; set; }
+        public string? FromLocation { get; set; }
+        public string? ToLocation { get; set; }
+        public int TransportCount { get; set; }
+        public bool IsDriver { get; set; }
+    }
 }

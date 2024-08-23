@@ -1,9 +1,9 @@
 ﻿namespace TripBliss.Models
 {
     public record DistributorCompanyServiceResponse
-    (
-         int Id,
-         string? DistributorCompanyId,
-         int? ServiceType
-    );
+    {
+        public int Id { get; set; }
+        public string? DistributorCompanyId { get; set; }
+        public int? ServiceType { get; set; }
+    }
 }

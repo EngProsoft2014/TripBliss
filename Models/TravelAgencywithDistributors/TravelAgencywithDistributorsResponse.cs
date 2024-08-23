@@ -1,10 +1,10 @@
 ﻿namespace TripBliss.Models
 {
     public record TravelAgencywithDistributorsResponse
-    (
-         int Id,
-         string TravelAgencyCompanyId,
-         string DistributorCompanyId,
-         bool Private
-    );
+    {
+        public int Id { get; set; }
+        public string? TravelAgencyCompanyId { get; set; }
+        public string? DistributorCompanyId { get; set; }
+        public bool Private { get; set; }
+    }
 }

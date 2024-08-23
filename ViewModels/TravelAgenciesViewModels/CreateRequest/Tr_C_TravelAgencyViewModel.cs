@@ -43,9 +43,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         async Task Inti()
         {
-            //await GetFavouiterDistributors();
             await GetDistributors();
-            
+            await GetFavouiterDistributors();
         }
         async Task GetDistributors()
         {
@@ -95,7 +94,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                string id = Preferences.Default.Get(ApiConstants.userid, "");
+                string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
                 string UserToken = await _service.UserToken();
 
                 var json = await Rep.PostTRAsync<string, DistributorCompanyResponse>(ApiConstants.AddfavouritesApi + $"{id}/TravelAgencywithDistributors", DistributorId, UserToken);
@@ -154,12 +153,15 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 if (IsFav)
                 {
                     string? Stat = await DeletFavouiterDistributors(Item.Id!);
-                    FavouriteDistributorCompanys.Remove(Item);
+                    if(!string.IsNullOrEmpty(Stat) && Stat == "true")
+                    {
+                        FavouriteDistributorCompanys.Remove(Item);
+                    }
+                    
                 }
                 else
                 {
                     await AddToFavouiter(Item.Id!);
-                    FavouriteDistributorCompanys.Add(Item);
                 }
             }
         }

@@ -1,9 +1,9 @@
 ﻿namespace TripBliss.Models
 {
     public record ResponseWithDistributorAirFlightDetailsRequest
-    (
-         int ResponseWithDistributorAirFlightId ,
-         int TravelAgencyGuestId ,
-         string? Notes 
-    );
+    {
+        public int ResponseWithDistributorAirFlightId { get; set; }
+        public int TravelAgencyGuestId { get; set; }
+        public string? Notes { get; set; }
+    }
 }

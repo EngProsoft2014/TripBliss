@@ -19,7 +19,7 @@
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout >
                 <Border StrokeShape="RoundRectangle 20" StrokeThickness="1" Stroke="Gray" VerticalOptions="Center" Margin="0,40,0,0">
-                    <VerticalStackLayout Margin="20" Spacing="20">
+                    <StackLayout Margin="20" Spacing="20">
                         <Image>
                             <Image.Source>
                                 <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
@@ -55,15 +55,15 @@
                             </StackLayout>
                         </Border>
                         <Button Text="{ex:Translate Name=btnLogIn-Login}" FontAttributes="Bold" TextColor="White" WidthRequest="140" FontSize="14" CornerRadius="25" Margin="0,30,0,0"
-                        Command="{Binding ClickLoginCommand}" CommandParameter="{Binding LoginRequest}">
-                            <Button.Background>
+                        Command="{Binding ClickLoginCommand}" CommandParameter="{Binding LoginRequest}" BackgroundColor="#2fb569">
+                            <!--<Button.Background>
                                 <LinearGradientBrush EndPoint="1,0">
                                     <GradientStop Color="#66e89e" Offset="0.1" />
                                     <GradientStop Color="#1c874b" Offset="1.1" />
                                 </LinearGradientBrush>
-                            </Button.Background>
+                            </Button.Background>-->
                         </Button>
-                    </VerticalStackLayout>
+                    </StackLayout>
                 </Border>
                 <Label Text="{ex:Translate Name=lblForgotPassword-Login}" TextColor="#0471DF" FontSize="13" BackgroundColor="Transparent"
                        HorizontalOptions="StartAndExpand" Margin="0,20,0,0" FontAttributes="Bold">

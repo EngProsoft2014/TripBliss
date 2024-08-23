@@ -1,10 +1,11 @@
 ﻿namespace TripBliss.Models.RequestTravelAgencyVisa
 {
     public record RequestTravelAgencyVisaResponse
-    (
-         int Id,
-         int RequestTravelAgencyId,
-         int VisaId,
-         int PersonCount
-    );
+    {
+        public int Id { get; set; }
+        public int RequestTravelAgencyId { get; set; }
+        public int VisaId { get; set; }
+        public string? VisaName { get; set; }
+        public int PersonCount { get; set; }
+    }
 }

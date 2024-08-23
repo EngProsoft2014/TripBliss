@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
-using TripBliss.Models.AirFlight;
+
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 {
@@ -17,9 +17,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
     {
         #region prop
         [ObservableProperty]
-        RequestTravelAgencyAirFlightRequest model = new RequestTravelAgencyAirFlightRequest();      
+        RequestTravelAgencyAirFlightRequest airFlightRequestModel = new RequestTravelAgencyAirFlightRequest();
         [ObservableProperty]
-        AirFlightShow airFlightShowModel = new AirFlightShow();
+        RequestTravelAgencyAirFlightResponse airFlightResponseModel = new RequestTravelAgencyAirFlightResponse();
         [ObservableProperty]
         ObservableCollection<AirFlightResponse> airFlights = new ObservableCollection<AirFlightResponse>();
         [ObservableProperty]
@@ -37,7 +37,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         #endregion
 
-        public delegate void AirFlightDelegte(AirFlightShow AirFlight);
+        public delegate void AirFlightDelegte(RequestTravelAgencyAirFlightRequest AirFlightRequest, RequestTravelAgencyAirFlightResponse AirFlightResponse);
         public event AirFlightDelegte AirFlightClose;
 
         #region Services
@@ -53,10 +53,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             GetAirFlights();
             GetClasses();
         }
-        public Tr_C_AirFlightServicesViewModel(RequestTravelAgencyAirFlightRequest model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_C_AirFlightServicesViewModel(RequestTravelAgencyAirFlightResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
-            Model = model;
+            AirFlightResponseModel = model;
             _service = service;
             GetAirFlights();
             GetClasses();
@@ -144,14 +144,18 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void AplyClicked(RequestTravelAgencyAirFlightRequest Request)
         {
-            AirFlightShowModel.AirFlightRequest = Request;
-            AirFlightShowModel.AirLine = AirFlightSelected.AirLine;
-            AirFlightShowModel.AirportFrom = Request.AirportFrom;
-            AirFlightShowModel.AirportTo = Request.AirportTo;
-            AirFlightShowModel.Date = Request.Date;
-            AirFlightShowModel.TotalPerson = Request.TotalPerson;
 
-            AirFlightClose.Invoke(AirFlightShowModel);
+            AirFlightResponseModel.AirFlightId = AirFlightSelected.Id;
+            AirFlightResponseModel.AirLine = AirFlightSelected.AirLine;
+            AirFlightResponseModel.ClassAirFlightId = ClassSelected.Id;
+            AirFlightResponseModel.ClassName = ClassSelected.ClassName;
+            AirFlightResponseModel.AirportFrom = Request.AirportFrom;
+            AirFlightResponseModel.AirportTo = Request.AirportTo;
+            AirFlightResponseModel.Date = Request.Date;
+            AirFlightResponseModel.TotalPerson = Request.TotalPerson;
+            AirFlightResponseModel.RequestTravelAgencyId = Request.RequestTravelAgencyId;
+
+            AirFlightClose.Invoke(Request, AirFlightResponseModel);
 
             App.Current!.MainPage!.Navigation.PopAsync();
         }

@@ -19,6 +19,7 @@ namespace TripBliss
         {
             _service = service;
             Rep = generic;
+
             LoadSetting();
             InitializeComponent();
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(ApiConstants.syncFusionLicence);
