@@ -140,7 +140,7 @@ namespace TripBliss.Controls
             });
 
             //scond Tab
-            await GetDistributorCompanys();
+            
             //third Tab
             LstOffers.Add(new OfferModel()
             {
@@ -262,23 +262,6 @@ namespace TripBliss.Controls
             //UserDialogs.Instance.HideHud();
         }
 
-        #region Load Data From Api Methods
-        static async Task GetDistributorCompanys()
-        {
-
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            {
-                string UserToken = await _service!.UserToken();
-
-                string json = await Rep!.GetStrAsync<ObservableCollection<DistributorCompanyResponse>>(ApiConstants.GetDistributorCompaniesApi, UserToken);
-
-                if (json != null)
-                {
-                    LstDistributorCompanys = JsonConvert.DeserializeObject<ObservableCollection<DistributorCompanyResponse>>(json); 
-                }
-            }
-        }
-        #endregion
 
     }
 }

@@ -92,6 +92,25 @@ namespace TripBliss.Constants
         // End AllDistributorCompanys Api 
         #endregion
 
+        #region favourites  Api
+        // Allfavourites  Api
+        public static string GetfavouritesApi = "TravelAgencywith/";
+        // End Allfavourites  Api 
+
+        // Addfavourites  Api
+        public static string AddfavouritesApi = "TravelAgencywith/";
+        // End Addfavourites  Api 
+
+        // Delete favourites  Api
+        public static string DeletefavouritesApi = "TravelAgencywith/";
+        // End Delete favourites  Api 
+        #endregion
+
+        #region Requests Api
+        // Add Request Api
+        public static string AddRequestApi = "api/RequestTravelAgency/ ";
+        // End Add Request Api 
+        #endregion
 
     }
 }

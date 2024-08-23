@@ -79,25 +79,25 @@ namespace TripBliss.Helpers
                     jsonResult =
                         await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
                     var json = JsonConvert.DeserializeObject<T>(jsonResult);
-                    return json;
+                    return json!;
                 }
 
                 if (responseMessage.StatusCode == HttpStatusCode.Forbidden)
                 {
                     //throw new ServiceAuthenticationException(jsonResult);
-                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
+                    await App.Current!.MainPage!.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
                 }
 
                 if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
                 {
-                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates\r\nthat the requested resource requires authentication.", "OK");
+                    await App.Current!.MainPage!.DisplayAlert("Warning", "Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates\r\nthat the requested resource requires authentication.", "OK");
                     //await StartData.UserLogout();
                 }
 
                 //throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
                 jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
                 var json1 = JsonConvert.DeserializeObject<T>(jsonResult);
-                return json1;
+                return json1!;
 
             }
             catch (Exception e)

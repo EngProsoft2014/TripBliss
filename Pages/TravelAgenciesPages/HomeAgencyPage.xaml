@@ -182,7 +182,8 @@
                                                                                         </Image.Source>
                                                                                     </Image>
                                                                                 </HorizontalStackLayout>
-                                                                                <ImageButton WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
+                                                                                <ImageButton WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand" CommandParameter="{Binding .}"
+                                                                                             Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=HeartClickedCommand}">
                                                                                     <ImageButton.Source>
                                                                                         <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
                                                                                     </ImageButton.Source>
@@ -208,7 +209,7 @@
                                             <tabView:SfTabItem.Content>
                                                 <ContentView x:Name="conviewFevourites">
                                                     <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20">
-                                                        <CollectionView ItemsSource="{Binding DistributorCompanys}" VerticalOptions="FillAndExpand" SelectionMode="None">
+                                                        <CollectionView ItemsSource="{Binding FavouriteDistributorCompanys}" VerticalOptions="FillAndExpand" SelectionMode="None">
                                                             <CollectionView.ItemTemplate>
                                                                 <DataTemplate>
                                                                     <Border StrokeShape="RoundRectangle 20" Margin="0,10">
@@ -237,11 +238,12 @@
                                                                                         </ImageButton.Source>
                                                                                     </ImageButton>
                                                                                 </HorizontalStackLayout>
-                                                                                <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
-                                                                                    <Image.Source>
+                                                                                <ImageButton WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand" CommandParameter="{Binding .}"
+                                                                                             Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=HeartClickedCommand}">
+                                                                                    <ImageButton.Source>
                                                                                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Red"></FontImageSource>
-                                                                                    </Image.Source>
-                                                                                </Image>
+                                                                                    </ImageButton.Source>
+                                                                                </ImageButton>
                                                                             </VerticalStackLayout>
                                                                         </StackLayout>
                                                                     </Border>

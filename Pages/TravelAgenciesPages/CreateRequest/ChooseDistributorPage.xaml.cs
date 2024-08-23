@@ -6,7 +6,7 @@ namespace TripBliss.Pages.TravelAgenciesPages.CreateRequest;
 public partial class ChooseDistributorPage : Controls.CustomControl
 {
 	
-	public ChooseDistributorPage(Tr_C_TravelAgencyViewModel model , IGenericRepository generic)
+	public ChooseDistributorPage(Tr_C_ChooseDistributorViewModel model , IGenericRepository generic)
 	{
 		InitializeComponent();
 		BindingContext = model;

@@ -56,6 +56,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Models\RequestTravelAgency\RequestTravelAgencyRequest.cs" />
+	  <Compile Remove="Models\RequestTravelAgency\RequestTravelAgencyResponse.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\Fonts\Almarai-Regular.ttf" />
 	  <None Remove="Resources\Fonts\ElMessiri-Bold.ttf" />
 	  <None Remove="Resources\Fonts\ElMessiri-Regular.ttf" />
@@ -87,6 +92,11 @@
 	<ItemGroup>
 	  <Folder Include="Pages\DistributorsPages\PopupPages\" />
 	  <Folder Include="Pages\TravelAgenciesPages\PopupPages\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="Models\RequestTravelAgency\RequestTravelAgencyRequest.cs" />
+	  <None Include="Models\RequestTravelAgency\RequestTravelAgencyResponse.cs" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages;
@@ -19,7 +20,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
     {
         #region Prop
         [ObservableProperty]
-        public ObservableCollection<DistributorCompanyResponse>? distributorCompanys = new ObservableCollection<DistributorCompanyResponse>(); 
+        public ObservableCollection<DistributorCompanyResponse>? distributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
+        [ObservableProperty]
+        public ObservableCollection<DistributorCompanyResponse>? favouriteDistributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
         #endregion
 
         #region Services
@@ -32,8 +35,100 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             Rep = GenericRep;
             _service = service;
-            DistributorCompanys = Controls.StaticMember.LstDistributorCompanys;
+            Inti();
+        }
+        #endregion
 
+        #region Methods
+
+        async Task Inti()
+        {
+            //await GetFavouiterDistributors();
+            await GetDistributors();
+            
+        }
+        async Task GetDistributors()
+        {
+            IsBusy = true;
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                
+                string UserToken = await _service.UserToken();
+
+                var json = await Rep.GetAsync<ObservableCollection<DistributorCompanyResponse>>(ApiConstants.GetDistributorCompaniesApi, UserToken);
+
+                if (json != null)
+                {
+
+                    DistributorCompanys!.Clear();
+                    DistributorCompanys = json;
+                }
+            }
+
+            IsBusy = false;
+        }
+        async Task GetFavouiterDistributors()
+        {
+            IsBusy = true;
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
+                string UserToken = await _service.UserToken();
+
+                var json = await Rep.GetAsync<ObservableCollection<DistributorCompanyResponse>>(ApiConstants.GetfavouritesApi + $"{id}/TravelAgencywithDistributors", UserToken);
+
+                if (json != null)
+                {
+                    FavouriteDistributorCompanys!.Clear();
+                    FavouriteDistributorCompanys = json;
+                }
+            }
+
+            IsBusy = false;
+        }
+
+        async Task AddToFavouiter(string DistributorId)
+        {
+            IsBusy = true;
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                string id = Preferences.Default.Get(ApiConstants.userid, "");
+                string UserToken = await _service.UserToken();
+
+                var json = await Rep.PostTRAsync<string, DistributorCompanyResponse>(ApiConstants.AddfavouritesApi + $"{id}/TravelAgencywithDistributors", DistributorId, UserToken);
+
+                if (json.Item1 != null)
+                {
+                    FavouriteDistributorCompanys!.Add(json.Item1!);
+                }
+            }
+
+            IsBusy = false;
+        }
+
+        async Task<string?> DeletFavouiterDistributors(string RecordId)
+        {
+            IsBusy = true;
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
+                string UserToken = await _service.UserToken();
+
+                string json = await Rep.DeleteStrItemAsync(ApiConstants.DeletefavouritesApi + $"{id}/TravelAgencywithDistributors/{RecordId}", UserToken);
+
+                if (json != null)
+                {
+                    return json;
+                }
+                
+            }
+
+            IsBusy = false;
+            return null;
         }
         #endregion
 
@@ -41,19 +136,33 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void AddRequest()
         {
-            App.Current.MainPage.Navigation.PushAsync(new ChooseDistributorPage(this, Rep));
+            App.Current!.MainPage!.Navigation.PushAsync(new ChooseDistributorPage(new Tr_C_ChooseDistributorViewModel(Rep,_service,DistributorCompanys), Rep));
         }
 
         [RelayCommand]
-        void OnBackPressed()
+        void BackPressed()
         {
-            App.Current.MainPage.Navigation.PopAsync();
+            App.Current!.MainPage!.Navigation.PopAsync();
         }
+
         [RelayCommand]
-        void OnSelection()
+        async Task HeartClicked(DistributorCompanyResponse Item)
         {
-            App.Current.MainPage.Navigation.PushAsync(new NewRequestPage(new Tr_C_NewRequestViewModel(Rep, _service), Rep));
-        } 
+            if (Item != null)
+            {
+                bool IsFav =  FavouriteDistributorCompanys!.Contains(Item);
+                if (IsFav)
+                {
+                    string? Stat = await DeletFavouiterDistributors(Item.Id!);
+                    FavouriteDistributorCompanys.Remove(Item);
+                }
+                else
+                {
+                    await AddToFavouiter(Item.Id!);
+                    FavouriteDistributorCompanys.Add(Item);
+                }
+            }
+        }
         #endregion
 
     }
