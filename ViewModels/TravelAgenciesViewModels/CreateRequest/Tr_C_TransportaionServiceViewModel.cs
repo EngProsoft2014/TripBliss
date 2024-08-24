@@ -17,7 +17,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
     {
         #region Prop
         [ObservableProperty]
-        TransportaionServiceModel serviceModdel = new TransportaionServiceModel();
+        RequestTravelAgencyTransportRequest? transportRequestModel = new RequestTravelAgencyTransportRequest();
+        [ObservableProperty]
+        RequestTravelAgencyTransportResponse? transportResponseModel = new RequestTravelAgencyTransportResponse();
+
         [ObservableProperty]
         ObservableCollection<CarBrandResponse> carBrands = new ObservableCollection<CarBrandResponse>();
         [ObservableProperty]
@@ -25,7 +28,16 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [ObservableProperty]
         ObservableCollection<CarTypeResponse> carTypes = new ObservableCollection<CarTypeResponse>();
 
+        [ObservableProperty]
+        CarBrandResponse selectrdBrand = new CarBrandResponse();
+        [ObservableProperty]
+        CarModelResponse selectrdModel = new CarModelResponse();
+        [ObservableProperty]
+        CarTypeResponse selectrdType = new CarTypeResponse();
+
         #endregion
+        public delegate void TransportDelegte(RequestTravelAgencyTransportRequest TransportRequest, RequestTravelAgencyTransportResponse TransportResponse);
+        public event TransportDelegte TransportClose;
 
         #region Services
         IGenericRepository Rep;
@@ -41,10 +53,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             GetCarModels();
             GetCarTypes();
         }
-        public Tr_C_TransportaionServiceViewModel(TransportaionServiceModel model , IGenericRepository generic , Services.Data.ServicesService service)
+        public Tr_C_TransportaionServiceViewModel(RequestTravelAgencyTransportResponse model , IGenericRepository generic , Services.Data.ServicesService service)
         {
             Rep = generic;
-            ServiceModdel = model;
+            TransportResponseModel = model;
             _service = service;
             GetCarBrands();
             GetCarModels();
@@ -113,12 +125,18 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         #region RelayCommand
         [RelayCommand]
-        void OnApply()
+        void OnApply(RequestTravelAgencyTransportRequest request)
         {
-            if (ServiceModdel != null)
-            {
-                App.Current.MainPage.Navigation.PopAsync();
-            }
+            request.CarBrandId = SelectrdBrand.Id;
+            request.CarTypeId = SelectrdType.Id;
+            request.CarModelId = SelectrdModel.Id;
+            TransportResponseModel!.FromLocation = request.FromLocation;
+            TransportResponseModel.ToLocation = request.ToLocation;
+            TransportResponseModel.Date = request.Date;
+            TransportResponseModel.TransportCount = request.TransportCount;
+
+            TransportClose.Invoke(request, TransportResponseModel);
+            App.Current!.MainPage!.Navigation.PopAsync();
         }
 
         [RelayCommand]

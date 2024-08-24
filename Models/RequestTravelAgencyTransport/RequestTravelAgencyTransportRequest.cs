@@ -6,7 +6,7 @@
         public int CarTypeId { get; set; }
         public int CarBrandId { get; set; }
         public int CarModelId { get; set; }
-        public DateOnly Date { get; set; }
+        public DateTime Date { get; set; }
         public TimeOnly Time { get; set; }
         public string? FromLocation { get; set; }
         public string? ToLocation { get; set; }

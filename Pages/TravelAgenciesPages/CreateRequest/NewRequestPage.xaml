@@ -26,7 +26,7 @@
                     </VisualStateGroup>
                 </VisualStateGroupList>
             </Setter>
-            
+
 
         </Style>
     </ContentPage.Resources>
@@ -60,7 +60,7 @@
                     </Border>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <CollectionView ItemsSource="{Binding ResponseTravelAgency.RequestTravelAgencyHotelResponse}" VerticalOptions="FillAndExpand" SelectionMode="Single">
+                    <CollectionView ItemsSource="{Binding LstTravelAgencyHotelResponse}" VerticalOptions="FillAndExpand" SelectionMode="Single">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
@@ -69,20 +69,20 @@
                                             <FormattedString>
                                                 <Span Text="{Binding HotelName}" TextColor="Gray" FontSize="12"></Span>
                                                 <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                <Span Text="{Binding RoomView}" TextColor="Gray" FontSize="12"></Span>
+                                                <Span Text="{Binding RoomViewName}" TextColor="Gray" FontSize="12"></Span>
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
                                     <Label>
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding Checkin}" TextColor="Gray" FontSize="12"></Span>
+                                                <Span Text="{Binding CheckIn}" TextColor="Gray" FontSize="12"></Span>
                                                 <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                <Span Text="{Binding Checkout}" TextColor="Gray" FontSize="12"></Span>
+                                                <Span Text="{Binding CheckOut}" TextColor="Gray" FontSize="12"></Span>
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
+                                    <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path= DeletHotelCommand}" CommandParameter="{Binding}">
                                         <ImageButton.Source>
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                         </ImageButton.Source>
@@ -95,7 +95,7 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </Border>
-                
+
                 <!--Transportations-->
                 <StackLayout Orientation="Horizontal" Margin="0,0">
                     <Label Text="{ex:Translate Name=lblTransportationServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
@@ -109,34 +109,34 @@
                     </Border>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <CollectionView ItemsSource="{Binding RequestTravelAgency.RequestTravelAgencyTransportRequest}" VerticalOptions="FillAndExpand">
+                    <CollectionView ItemsSource="{Binding LstTravelAgencyTransportResponse}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
-                                        <Label>
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="M.Sprinter " TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
-                                                    <Span Text="{Binding From}" TextColor="Gray" FontSize="12"></Span>
-                                                    <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                    <Span Text="{Binding To}" TextColor="Gray" FontSize="12"></Span>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Label>
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{Binding Nos}" TextColor="Gray" FontSize="12"></Span>
-                                                    <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                    <Span Text="{Binding Date}" TextColor="Gray" FontSize="12"></Span>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
-                                            <ImageButton.Source>
-                                                <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                            </ImageButton.Source>
-                                        </ImageButton>
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="M.Sprinter " TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
+                                                <Span Text="{Binding FromLocation}" TextColor="Gray" FontSize="12"></Span>
+                                                <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
+                                                <Span Text="{Binding ToLocation}" TextColor="Gray" FontSize="12"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding TransportCount}" TextColor="Gray" FontSize="12"></Span>
+                                                <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
+                                                <Span Text="{Binding Date}" TextColor="Gray" FontSize="12"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path= DeletTransPortationCommand}" CommandParameter="{Binding}">
+                                        <ImageButton.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                        </ImageButton.Source>
+                                    </ImageButton>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path=SelectTransportaionCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
                                     </StackLayout.GestureRecognizers>
@@ -145,7 +145,7 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </Border>
-                
+
                 <!--AirFlights-->
                 <StackLayout Orientation="Horizontal" Margin="0,0">
                     <Label Text="{ex:Translate Name=lblAirFlightServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
@@ -162,37 +162,37 @@
                     <CollectionView ItemsSource="{Binding LstTravelAgencyAirFlightResponse}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
-                                        <Label>
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                <Span Text="{Binding AirFlightShowModel.AirFlightRequest.RequestTravelAgencyId}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
+                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding RequestTravelAgencyId}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
                                             </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Label>
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                <Span Text="{Binding AirFlightShowModel.AirportFrom}" TextColor="Gray" FontSize="12"></Span>
-                                                    <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                <Span Text="{Binding AirFlightShowModel.AirportTo}" TextColor="Gray" FontSize="12"></Span>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Label>
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                <Span Text="{Binding AirFlightShowModel.TotalPerson}" TextColor="Gray" FontSize="12"></Span>
-                                                    <Span Text="  " TextColor="Gray" FontSize="14"></Span>
-                                                <Span Text="{Binding AirFlightShowModel.Date}" TextColor="Gray" FontSize="12"></Span>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
-                                            <ImageButton.Source>
-                                                <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                            </ImageButton.Source>
-                                        </ImageButton>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label >
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding AirportFrom}" TextColor="Gray" FontSize="12" ></Span>
+                                                <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
+                                                <Span Text="{Binding AirportTo}" TextColor="Gray" FontSize="12"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding TotalPerson}" TextColor="Gray" FontSize="12"></Span>
+                                                <Span Text="  " TextColor="Gray" FontSize="14"></Span>
+                                                <Span Text="{Binding Date}" TextColor="Gray" FontSize="12"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path= DeletAirFlightCommand}" CommandParameter="{Binding}">
+                                        <ImageButton.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                        </ImageButton.Source>
+                                    </ImageButton>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path=SelectAirFlightCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
                                     </StackLayout.GestureRecognizers>
@@ -201,7 +201,7 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </Border>
-                
+
                 <!--Visas-->
                 <StackLayout Orientation="Horizontal" Margin="0,0">
                     <Label Text="{ex:Translate Name=lblVisaServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
@@ -215,37 +215,37 @@
                     </Border>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                    <CollectionView ItemsSource="{Binding RequestTravelAgency.RequestTravelAgencyVisaRequest}" VerticalOptions="FillAndExpand">
+                    <CollectionView ItemsSource="{Binding LstTravelAgencyVisaResponse}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
-                                        <Label>
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="#" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
-                                                    <Span Text="{Binding VisaNo}" TextColor="#2fa562" FontSize="12"></Span>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Label>
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{Binding VisaType}" TextColor="Gray" FontSize="12"></Span>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Label>
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{Binding VisaNo}" TextColor="Gray" FontSize="12"></Span>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
-                                            <ImageButton.Source>
-                                                <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                            </ImageButton.Source>
-                                        </ImageButton>
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="#" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
+                                                <Span Text="{Binding VisaId}" TextColor="#2fa562" FontSize="12"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding VisaName}" TextColor="Gray" FontSize="12"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding VisaId}" TextColor="Gray" FontSize="12"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path= DeletVisaCommand}" CommandParameter="{Binding}">
+                                        <ImageButton.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                        </ImageButton.Source>
+                                    </ImageButton>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path=SelectVisaCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
                                     </StackLayout.GestureRecognizers>
@@ -260,5 +260,5 @@
         <Button VerticalOptions="End" Text="{ex:Translate Name=btnApply-Forgot}" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="20,0" Command="{Binding AddToRequestCommand}"
                 CommandParameter="{Binding RequestTravelAgency}"></Button>
     </StackLayout>
-    
+
 </Controls:CustomControl>

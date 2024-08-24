@@ -16,6 +16,7 @@ using TripBliss.Models.RequestTravelAgency;
 using CommunityToolkit.Maui.Alerts;
 using TripBliss.Pages.TravelAgenciesPages;
 using Controls.UserDialogs.Maui;
+using TripBliss.Models.RequestTravelAgencyVisa;
 
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
@@ -27,22 +28,28 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         #region prop
 
         [ObservableProperty]
-        HotelServiceModel selectedHotel;
-        [ObservableProperty]
-        TransportaionServiceModel selectedTransportaition;
-        [ObservableProperty]
-        AirFlightModel selectedAirFlight;
-        [ObservableProperty]
-        VisaServiceModel selectedVisa;     
-        [ObservableProperty]
         RequestTravelAgencyRequest requestTravelAgency= new RequestTravelAgencyRequest();       
-        [ObservableProperty]
-        RequestTravelAgencyResponse responseTravelAgency = new RequestTravelAgencyResponse();
+
 
         [ObservableProperty]
         ObservableCollection<RequestTravelAgencyAirFlightRequest> lstTravelAgencyAirFlightRequest = new ObservableCollection<RequestTravelAgencyAirFlightRequest>();
         [ObservableProperty]
         ObservableCollection<RequestTravelAgencyAirFlightResponse> lstTravelAgencyAirFlightResponse = new ObservableCollection<RequestTravelAgencyAirFlightResponse>();
+        [ObservableProperty]
+        ObservableCollection<RequestTravelAgencyHotelRequest> lstTravelAgencyHotelRequest = new ObservableCollection<RequestTravelAgencyHotelRequest>();
+        [ObservableProperty]
+        ObservableCollection<RequestTravelAgencyHotelResponse> lstTravelAgencyHotelResponse = new ObservableCollection<RequestTravelAgencyHotelResponse>();
+        [ObservableProperty]
+        ObservableCollection<RequestTravelAgencyVisaRequest> lstTravelAgencyVisaRequest = new ObservableCollection<RequestTravelAgencyVisaRequest>();
+        [ObservableProperty]
+        ObservableCollection<RequestTravelAgencyVisaResponse> lstTravelAgencyVisaResponse = new ObservableCollection<RequestTravelAgencyVisaResponse>();
+        [ObservableProperty]
+        ObservableCollection<RequestTravelAgencyTransportRequest> lstTravelAgencyTransportRequest = new ObservableCollection<RequestTravelAgencyTransportRequest>();
+        [ObservableProperty]
+        ObservableCollection<RequestTravelAgencyTransportResponse> lstTravelAgencyTransportResponse = new ObservableCollection<RequestTravelAgencyTransportResponse>();
+
+        
+
         #endregion
 
         readonly Services.Data.ServicesService _service;
@@ -71,7 +78,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void BackButtonClicked()
         {
-            App.Current.MainPage.Navigation.PopAsync();
+            App.Current!.MainPage!.Navigation.PopAsync();
         }
         #endregion
 
@@ -79,15 +86,42 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void AddHotel()
         {
-            App.Current.MainPage.Navigation.PushAsync(new HotelServicePage(new Tr_C_HotelServiceViewModel(Rep,_service) , Rep));
+            var vm = new Tr_C_HotelServiceViewModel(Rep, _service);
+            vm.HotelClose += (HoteltRequest, HotelResponse) =>
+            {
+                UserDialogs.Instance.ShowLoading();
+
+                LstTravelAgencyHotelRequest.Add(HoteltRequest);
+                LstTravelAgencyHotelResponse.Add(HotelResponse);
+
+                UserDialogs.Instance.HideHud();
+            };
+            var page = new HotelServicePage(vm, Rep);
+            
+            App.Current!.MainPage!.Navigation.PushAsync(page);
         }
         [RelayCommand]
-        void SelectHotel(HotelServiceModel model)
+        void SelectHotel(RequestTravelAgencyHotelResponse model)
         {
             var vm = new Tr_C_HotelServiceViewModel(model,Rep,_service);
+            vm.HotelClose += (HoteltRequest, HotelResponse) =>
+            {
+                UserDialogs.Instance.ShowLoading();
+
+                LstTravelAgencyHotelRequest.Add(HoteltRequest);
+                LstTravelAgencyHotelResponse.Add(HotelResponse);
+
+                UserDialogs.Instance.HideHud();
+            };
             var page = new HotelServicePage(vm,Rep);
             page.BindingContext = vm;
-            App.Current.MainPage.Navigation.PushAsync(page);
+            App.Current!.MainPage!.Navigation.PushAsync(page);
+        }
+
+        [RelayCommand]
+        void DeletHotel(RequestTravelAgencyHotelResponse model)
+        {
+            LstTravelAgencyHotelResponse.Remove(model);
         }
         #endregion
 
@@ -95,16 +129,40 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void AddTransportaion()
         {
-            App.Current.MainPage.Navigation.PushAsync(new TransportaionServicePage(new Tr_C_TransportaionServiceViewModel(Rep, _service),Rep));
+            var vm = new Tr_C_TransportaionServiceViewModel(Rep, _service);
+            vm.TransportClose += (TransportRequest, TransportResponse) =>
+            {
+                UserDialogs.Instance.ShowLoading();
+
+                LstTravelAgencyTransportRequest.Add(TransportRequest);
+                LstTravelAgencyTransportResponse.Add(TransportResponse);
+
+                UserDialogs.Instance.HideHud();
+            };
+            App.Current!.MainPage!.Navigation.PushAsync(new TransportaionServicePage(vm,Rep));
         }
         [RelayCommand]
-        void SelectTransportaion(TransportaionServiceModel model)
+        void SelectTransportaion(RequestTravelAgencyTransportResponse model)
         {
             var vm = new Tr_C_TransportaionServiceViewModel(model,Rep, _service);
+            vm.TransportClose += (TransportRequest, TransportResponse) =>
+            {
+                UserDialogs.Instance.ShowLoading();
+
+                LstTravelAgencyTransportRequest.Add(TransportRequest);
+                LstTravelAgencyTransportResponse.Add(TransportResponse);
+
+                UserDialogs.Instance.HideHud();
+            };
             var page = new TransportaionServicePage(vm,Rep);
-            page.BindingContext = vm;
-            App.Current.MainPage.Navigation.PushAsync(page);
+            App.Current!.MainPage!.Navigation.PushAsync(page);
         }
+        [RelayCommand]
+        void DeletTransPortation(RequestTravelAgencyTransportResponse model)
+        {
+            LstTravelAgencyTransportResponse.Remove(model);
+        }
+
         #endregion
 
         #region Air Flight RelayCommand
@@ -128,9 +186,22 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         void SelectAirFlight(RequestTravelAgencyAirFlightResponse Response)
         {
             var vm = new Tr_C_AirFlightServicesViewModel(Response, Rep, _service);
-            var page = new AirFlightServicePage(new Tr_C_AirFlightServicesViewModel(Response, Rep, _service));
-            page.BindingContext = vm;
+            vm.AirFlightClose += (AirFlightRequest, AirFlightResponse) =>
+            {
+                UserDialogs.Instance.ShowLoading();
+
+                LstTravelAgencyAirFlightResponse.Add(AirFlightResponse);
+                LstTravelAgencyAirFlightRequest.Add(AirFlightRequest);
+
+                UserDialogs.Instance.HideHud();
+            };
+            var page = new AirFlightServicePage(vm);
             App.Current!.MainPage!.Navigation.PushAsync(page);
+        }
+        [RelayCommand]
+        void DeletAirFlight(RequestTravelAgencyAirFlightResponse model)
+        {
+            LstTravelAgencyAirFlightResponse.Remove(model);
         }
         #endregion
 
@@ -138,21 +209,50 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void AddVisa()
         {
-            App.Current.MainPage.Navigation.PushAsync(new VisaServicePage(new Tr_C_VisaServiceViewModel(Rep, _service),Rep));
+            var vm = new Tr_C_VisaServiceViewModel( Rep, _service);
+            vm.VisaClose += (VisaRequest, VisaResponse) =>
+            {
+                UserDialogs.Instance.ShowLoading();
+
+                LstTravelAgencyVisaRequest.Add(VisaRequest);
+                LstTravelAgencyVisaResponse.Add(VisaResponse);
+
+                UserDialogs.Instance.HideHud();
+            };
+
+            App.Current!.MainPage!.Navigation.PushAsync(new VisaServicePage(vm, Rep));
         }
         [RelayCommand]
-        void SelectVisa(VisaServiceModel model)
+        void SelectVisa(RequestTravelAgencyVisaResponse model)
         {
             var vm = new Tr_C_VisaServiceViewModel(model,Rep, _service);
+            vm.VisaClose += (VisaRequest, VisaResponse) =>
+            {
+                UserDialogs.Instance.ShowLoading();
+
+                LstTravelAgencyVisaRequest.Add(VisaRequest);
+                LstTravelAgencyVisaResponse.Add(VisaResponse);
+
+                UserDialogs.Instance.HideHud();
+            };
             var page = new VisaServicePage(vm,Rep);
-            page.BindingContext = vm;
-            App.Current.MainPage.Navigation.PushAsync(page);
+            App.Current!.MainPage!.Navigation.PushAsync(page);
+        }
+        [RelayCommand]
+        void DeletVisa(RequestTravelAgencyVisaResponse model)
+        {
+            LstTravelAgencyVisaResponse.Remove(model);
         }
         #endregion
 
         #region AddRequest RelayCommand
-        async Task AddToRequest(RequestTravelAgencyRequest Request)
+        [RelayCommand]
+        async Task AddToRequest()
         {
+            RequestTravelAgency.RequestTravelAgencyHotelRequest = LstTravelAgencyHotelRequest.ToList();
+            RequestTravelAgency.RequestTravelAgencyTransportRequest = LstTravelAgencyTransportRequest.ToList();
+            RequestTravelAgency.RequestTravelAgencyAirFlightRequest = LstTravelAgencyAirFlightRequest.ToList();
+            RequestTravelAgency.RequestTravelAgencyVisaRequest = LstTravelAgencyVisaRequest.ToList();
             IsBusy = true;
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
@@ -160,7 +260,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
                 string UserToken = await _service.UserToken();
 
-                var json = await Rep.PostTRAsync<RequestTravelAgencyRequest, RequestTravelAgencyResponse>(ApiConstants.AddRequestApi +$"{id}/RequestTravelAgency" , Request, UserToken);
+                var json = await Rep.PostTRAsync<RequestTravelAgencyRequest, RequestTravelAgencyResponse>(ApiConstants.AddRequestApi +$"{id}/RequestTravelAgency" , RequestTravelAgency, UserToken);
 
                 if (json.Item1 != null)
                 {

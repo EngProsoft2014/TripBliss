@@ -5,5 +5,6 @@
         public int RequestTravelAgencyId { get; set; }
         public int VisaId { get; set; }
         public int PersonCount { get; set; }
+
     }
 }

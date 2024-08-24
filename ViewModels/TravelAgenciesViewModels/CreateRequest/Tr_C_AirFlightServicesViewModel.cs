@@ -107,39 +107,57 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void OnBackPressed()
         {
-            App.Current.MainPage.Navigation.PopAsync();
+            App.Current!.MainPage!.Navigation.PopAsync();
         }
 
         [RelayCommand]
         void AddAdult()
         {
-            Adult += 1;
+            if (AirFlightRequestModel.InfoAdultCount >=0)
+            {
+                AirFlightRequestModel.InfoAdultCount += 1;
+            }
         }
         [RelayCommand]
         void DeletAdult()
         {
-            Adult -= 1;
+            if (AirFlightRequestModel.InfoAdultCount > 0)
+            {
+                AirFlightRequestModel.InfoAdultCount -= 1;
+            }
         }
 
         [RelayCommand]
         void AddChild()
         {
-            Chiled += 1;
+            if (AirFlightRequestModel.InfoChildCount >= 0)
+            {
+                AirFlightRequestModel.InfoChildCount += 1;
+            }
         }
         [RelayCommand]
         void DeletChild()
         {
-            Chiled -= 1;
+            if (AirFlightRequestModel.InfoChildCount > 0)
+            {
+                AirFlightRequestModel.InfoChildCount -= 1;
+            }
         }
         [RelayCommand]
         void AddInfant()
         {
-            Infant += 1;
+            if (AirFlightRequestModel.InfoInfantCount >= 0)
+            {
+                AirFlightRequestModel.InfoInfantCount += 1;
+            }
         }
         [RelayCommand]
         void DeletInfant()
         {
-            Infant -= 1;
+            if (AirFlightRequestModel.InfoInfantCount > 0)
+            {
+                AirFlightRequestModel.InfoInfantCount -= 1;
+            }
         }
         [RelayCommand]
         void AplyClicked(RequestTravelAgencyAirFlightRequest Request)

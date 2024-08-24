@@ -17,9 +17,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
     {
         #region prop
         [ObservableProperty]
-        HotelServiceModel? hotelService = new HotelServiceModel();
+        RequestTravelAgencyHotelRequest? hotelRequestModel = new RequestTravelAgencyHotelRequest();
         [ObservableProperty]
-        int num;
+        RequestTravelAgencyHotelResponse? hotelResponseModel = new RequestTravelAgencyHotelResponse();
+
         [ObservableProperty]
         ObservableCollection<LocationResponse> locations = new ObservableCollection<LocationResponse>();
         [ObservableProperty]
@@ -31,7 +32,22 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [ObservableProperty]
         ObservableCollection<RoomViewResponse> roomViews = new ObservableCollection<RoomViewResponse>();
 
+
+        [ObservableProperty]
+        LocationResponse ? selectedLocation;
+        [ObservableProperty]
+        HotelResponse? selectedHotel;
+        [ObservableProperty]
+        MealResponse? selectedMeal;
+        [ObservableProperty]
+        RoomTypeResponse? selectedRoomType;
+        [ObservableProperty]
+        RoomViewResponse? selectedRoomView;
+
         #endregion
+
+        public delegate void HotelDelegte(RequestTravelAgencyHotelRequest HotelRequest, RequestTravelAgencyHotelResponse HotelResponse);
+        public event HotelDelegte HotelClose;
 
         #region Services
         readonly Services.Data.ServicesService _service;
@@ -49,11 +65,11 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             GetRoomTypes();
             GetRoomViews();
         }
-        public Tr_C_HotelServiceViewModel(HotelServiceModel model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_C_HotelServiceViewModel(RequestTravelAgencyHotelResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
-            HotelService = model;
+            HotelResponseModel = model;
 
             GetLocation();
             GetHotels();
@@ -164,13 +180,19 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void AddRoom()
         {
-            Num += 1;
+            if (HotelRequestModel!.RoomCount >=0)
+            {
+                HotelRequestModel!.RoomCount += 1;
+            }
         }
 
         [RelayCommand]
         void DeletRoom()
         {
-            Num -= 1;
+            if (HotelRequestModel!.RoomCount >= 0)
+            {
+                HotelRequestModel!.RoomCount -= 1;
+            }
         }
         [RelayCommand]
         async Task BackClicked()
@@ -179,9 +201,20 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         }
 
         [RelayCommand]
-        async Task ApplyHotelClicked()
+        async Task ApplyHotelClicked(RequestTravelAgencyHotelRequest request)
         {
-            HotelService!.RoomNo = Num;
+            request.HotelId = SelectedHotel!.Id;
+            request.RoomViewId = SelectedRoomView!.Id;
+            request.MealId = SelectedMeal!.Id;
+            request.LocationId = SelectedLocation!.Id;
+            request.RoomTypeId = SelectedRoomType!.Id;
+
+            HotelResponseModel!.HotelName = SelectedHotel!.HotelName;
+            HotelResponseModel!.CheckIn = request.CheckIn;
+            HotelResponseModel!.CheckOut = request.CheckOut;
+            HotelResponseModel!.RoomViewName = SelectedRoomView!.RoomViewName;
+
+            HotelClose.Invoke(request, HotelResponseModel);
             await App.Current!.MainPage!.Navigation.PopAsync();
         }
         #endregion

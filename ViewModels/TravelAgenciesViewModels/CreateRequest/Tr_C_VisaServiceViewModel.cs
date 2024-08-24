@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Models.RequestTravelAgencyVisa;
 using TripBliss.Models.Visa;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
@@ -16,11 +17,21 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
     public partial class Tr_C_VisaServiceViewModel : BaseViewModel
     {
         #region Prop
+
         [ObservableProperty]
-        VisaServiceModel moddel = new VisaServiceModel();
+        RequestTravelAgencyVisaRequest? visaRequestModel = new RequestTravelAgencyVisaRequest();
+        [ObservableProperty]
+        RequestTravelAgencyVisaResponse? visaResponseModel = new RequestTravelAgencyVisaResponse();
+
+
+        [ObservableProperty]
+        VisaResponse selectedVisa = new VisaResponse();
         [ObservableProperty]
         ObservableCollection<VisaResponse> visas = new ObservableCollection<VisaResponse>();
         #endregion
+
+        public delegate void VisaDelegte(RequestTravelAgencyVisaRequest VisaRequest, RequestTravelAgencyVisaResponse VisaResponse);
+        public event VisaDelegte VisaClose;
 
         #region Services
         IGenericRepository Rep;
@@ -34,11 +45,11 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             _service = service;
             GetVisas();
         }
-        public Tr_C_VisaServiceViewModel(VisaServiceModel model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_C_VisaServiceViewModel(RequestTravelAgencyVisaResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
-            Moddel = model;
+            visaResponseModel = model;
             GetVisas();
         }
         #endregion
@@ -66,9 +77,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         #region RelayCommand
         [RelayCommand]
-        void Apply()
+        void Apply(RequestTravelAgencyVisaRequest request)
         {
-            App.Current.MainPage.Navigation.PopAsync();
+            VisaRequestModel!.VisaId = SelectedVisa.Id;
+            VisaResponseModel!.VisaName = SelectedVisa.VisaName;
+            VisaClose.Invoke(request, VisaResponseModel);
+            App.Current!.MainPage!.Navigation.PopAsync();
         }
         [RelayCommand]
         void BackCLicked()

@@ -12,7 +12,7 @@ using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 {
-    public partial class Tr_C_ChooseDistributorViewModel : ObservableObject
+    public partial class Tr_C_ChooseDistributorViewModel : BaseViewModel
     {
         #region Prop
         [ObservableProperty]

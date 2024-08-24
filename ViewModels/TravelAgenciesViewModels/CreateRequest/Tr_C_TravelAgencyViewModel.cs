@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Models.DistributorCompany;
 using TripBliss.Pages;
 using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
 
@@ -43,8 +44,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         async Task Inti()
         {
+            UserDialogs.Instance.ShowLoading();
             await GetDistributors();
             await GetFavouiterDistributors();
+            UserDialogs.Instance.HideHud();
         }
         async Task GetDistributors()
         {

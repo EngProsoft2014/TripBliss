@@ -12,6 +12,7 @@ using Microsoft.VisualBasic;
 using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 using TripBliss.Helpers;
 using TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest;
+using TripBliss.Models.RequestTravelAgencyVisa;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {
@@ -63,18 +64,18 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
         #region Hotel RelayCommand
         [RelayCommand]
-        void SelectHotel(HotelServiceModel model)
+        void SelectHotel(RequestTravelAgencyHotelResponse model)
         {
             var vm = new Tr_C_HotelServiceViewModel(model,Rep, _service);
             var page = new HotelServicePage(vm,Rep);
             page.BindingContext = vm;
-            App.Current.MainPage.Navigation.PushAsync(page);
+            App.Current!.MainPage!.Navigation.PushAsync(page);
         } 
         #endregion
 
         #region Transportaiton RelayCommand
         [RelayCommand]
-        void SelectTransportaion(TransportaionServiceModel model)
+        void SelectTransportaion(RequestTravelAgencyTransportResponse model)
         {
             var vm = new Tr_C_TransportaionServiceViewModel(model,Rep, _service);
             var page = new TransportaionServicePage(vm,Rep);
@@ -96,7 +97,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
         #region Visa RelayCommand
         [RelayCommand]
-        void SelectVisa(VisaServiceModel model)
+        void SelectVisa(RequestTravelAgencyVisaResponse model)
         {
             var vm = new Tr_C_VisaServiceViewModel(model,Rep, _service);
             var page = new VisaServicePage(vm,Rep);
