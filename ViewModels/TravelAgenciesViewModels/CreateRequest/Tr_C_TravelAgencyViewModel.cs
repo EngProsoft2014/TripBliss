@@ -24,6 +24,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         public ObservableCollection<DistributorCompanyResponse>? distributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
         [ObservableProperty]
         public ObservableCollection<DistributorCompanyResponse>? favouriteDistributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
+        [ObservableProperty]
+        public int indexTap;
         #endregion
 
         #region Services

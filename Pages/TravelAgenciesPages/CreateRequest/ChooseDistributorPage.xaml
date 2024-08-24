@@ -68,7 +68,7 @@
             <CheckBox Color="#76d973" VerticalOptions="CenterAndExpand"></CheckBox>
             <Label Text="{ex:Translate Name=lblSelectAll-ActiveDistributors}" FontSize="14" TextColor="Black" VerticalTextAlignment="Center"></Label>
         </HorizontalStackLayout>
-        <CollectionView ItemsSource="{Binding DistributorCompanys}" VerticalOptions="FillAndExpand" SelectionMode="Multiple">
+        <CollectionView ItemsSource="{Binding DistributorCompanys}" VerticalOptions="FillAndExpand" SelectionMode="Multiple" SelectedItems="{Binding }">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Border StrokeShape="RoundRectangle 20" Margin="0,10">
