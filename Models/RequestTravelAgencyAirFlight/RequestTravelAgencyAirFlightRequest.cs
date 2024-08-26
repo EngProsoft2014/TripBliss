@@ -4,14 +4,13 @@ namespace TripBliss.Models
 {
     public record RequestTravelAgencyAirFlightRequest : INotifyPropertyChanged
     {
-        public int RequestTravelAgencyId { get; set; }
         public int AirFlightId { get; set; }
         public int ClassAirFlightId { get; set; }
         public DateTime Date { get; set; }
         public string AirportFrom { get; set; }
         public string AirportTo { get; set; }
-        public TimeOnly ETA { get; set; }
-        public TimeOnly ETD { get; set; }
+        public TimeSpan ETA { get; set; }
+        public TimeSpan ETD { get; set; }
         int _InfoAdultCount;
         public int InfoAdultCount
         {
@@ -63,6 +62,7 @@ namespace TripBliss.Models
             }
         }
         public int TotalPerson { get; set; }
+        public string? Notes { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
     };

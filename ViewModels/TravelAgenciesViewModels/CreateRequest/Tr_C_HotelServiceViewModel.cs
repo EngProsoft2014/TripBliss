@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
 using TripBliss.Helpers;
 using TripBliss.Constants;
+using CommunityToolkit.Maui.Alerts;
+using Controls.UserDialogs.Maui;
 
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
@@ -206,20 +208,39 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         async Task ApplyHotelClicked(RequestTravelAgencyHotelRequest request)
         {
-            request.HotelId = SelectedHotel!.Id;
-            request.RoomViewId = SelectedRoomView!.Id;
-            request.MealId = SelectedMeal!.Id;
-            request.LocationId = SelectedLocation!.Id;
-            request.RoomTypeId = SelectedRoomType!.Id;
+            if (SelectedHotel == null || SelectedHotel?.Id == 0)
+            {
+                var toast = Toast.Make("Please Complete This Field Required : Select Hotel.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            //else if (string.IsNullOrEmpty(Login.Password))
+            //{
 
-            HotelResponseModel!.HotelName = SelectedHotel!.HotelName;
-            HotelResponseModel!.CheckIn = request.CheckIn;
-            HotelResponseModel!.CheckOut = request.CheckOut;
-            HotelResponseModel!.RoomViewName = SelectedRoomView!.RoomViewName;
-            HotelResponseModel!.LocationName = SelectedLocation!.LocationName;
+            //}
+            else
+            {
+                IsBusy = true;
+                UserDialogs.Instance.ShowLoading();
 
-            HotelClose.Invoke(request, HotelResponseModel);
-            await App.Current!.MainPage!.Navigation.PopAsync();
+                request.HotelId = SelectedHotel!.Id;
+                request.RoomViewId = SelectedRoomView!.Id;
+                request.MealId = SelectedMeal!.Id;
+                request.LocationId = SelectedLocation!.Id;
+                request.RoomTypeId = SelectedRoomType!.Id;
+
+                HotelResponseModel!.HotelName = SelectedHotel!.HotelName;
+                HotelResponseModel!.CheckIn = request.CheckIn;
+                HotelResponseModel!.CheckOut = request.CheckOut;
+                HotelResponseModel!.RoomViewName = SelectedRoomView!.RoomViewName;
+                HotelResponseModel!.LocationName = SelectedLocation!.LocationName;
+
+                HotelClose.Invoke(request, HotelResponseModel);
+                await App.Current!.MainPage!.Navigation.PopAsync();
+
+                UserDialogs.Instance.HideHud();
+                IsBusy = false;
+            }
+
         }
         #endregion
     }

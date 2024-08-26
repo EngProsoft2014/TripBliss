@@ -17,6 +17,7 @@ using CommunityToolkit.Maui.Alerts;
 using TripBliss.Pages.TravelAgenciesPages;
 using Controls.UserDialogs.Maui;
 using TripBliss.Models.RequestTravelAgencyVisa;
+using Syncfusion.Maui.Data;
 
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
@@ -31,6 +32,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         RequestTravelAgencyRequest requestTravelAgency= new RequestTravelAgencyRequest();
         [ObservableProperty]
         ObservableCollection<DistributorCompanyResponse> distributorCompanies;
+        [ObservableProperty]
+        ObservableCollection<ResponseWithDistributorRequest> distributorRequests = new ObservableCollection<ResponseWithDistributorRequest>();
 
         [ObservableProperty]
         ObservableCollection<RequestTravelAgencyAirFlightRequest> lstTravelAgencyAirFlightRequest = new ObservableCollection<RequestTravelAgencyAirFlightRequest>();
@@ -253,18 +256,28 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         async Task AddToRequest()
         {
             
-            RequestTravelAgency.RequestTravelAgencyHotelRequest = new List<RequestTravelAgencyHotelRequest>(LstTravelAgencyHotelRequest.ToList());
-            RequestTravelAgency.RequestTravelAgencyTransportRequest = new List<RequestTravelAgencyTransportRequest>(LstTravelAgencyTransportRequest.ToList());
-            RequestTravelAgency.RequestTravelAgencyAirFlightRequest = new List<RequestTravelAgencyAirFlightRequest>(LstTravelAgencyAirFlightRequest.ToList());
-            RequestTravelAgency.RequestTravelAgencyVisaRequest = new List<RequestTravelAgencyVisaRequest>(LstTravelAgencyVisaRequest.ToList());
-            
+            RequestTravelAgency = new RequestTravelAgencyRequest();
+
+            RequestTravelAgency.RequestTravelAgencyHotelRequest = LstTravelAgencyHotelRequest.ToList();
+            RequestTravelAgency.RequestTravelAgencyTransportRequest = LstTravelAgencyTransportRequest.ToList();
+            RequestTravelAgency.RequestTravelAgencyAirFlightRequest = LstTravelAgencyAirFlightRequest.ToList();
+            RequestTravelAgency.RequestTravelAgencyVisaRequest = LstTravelAgencyVisaRequest.ToList();
+
+            DistributorCompanies.ForEach(s => DistributorRequests.Add(new ResponseWithDistributorRequest { DistributorCompanyId = s.Id }));
+            RequestTravelAgency.ResponseWithDistributorRequest = DistributorRequests.ToList();
+            //RequestTravelAgency.ResponseWithDistributorRequest!.ToList().ForEach(f =>
+            //{
+            //    DistributorCompanies.ForEach(s => f.DistributorCompanyId = s.Id);
+            //});
+
             IsBusy = true;
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
+                
                 string UserToken = await _service.UserToken();
 
+                string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
                 var json = await Rep.PostTRAsync<RequestTravelAgencyRequest, RequestTravelAgencyResponse>(ApiConstants.AddRequestApi +$"{id}/RequestTravelAgency" , RequestTravelAgency, UserToken);
 
                 if (json.Item1 != null)

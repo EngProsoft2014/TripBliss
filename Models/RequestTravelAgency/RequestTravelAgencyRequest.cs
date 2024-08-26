@@ -10,11 +10,11 @@ namespace TripBliss.Models.RequestTravelAgency
 
     public record RequestTravelAgencyRequest
     {
-        public List<RequestTravelAgencyHotelRequest>? RequestTravelAgencyHotelRequest{ get; set; }
-        public List<RequestTravelAgencyTransportRequest>? RequestTravelAgencyTransportRequest { get; set; }
-        public List<RequestTravelAgencyAirFlightRequest>? RequestTravelAgencyAirFlightRequest { get; set; }
-        public List<RequestTravelAgencyVisaRequest>? RequestTravelAgencyVisaRequest { get; set; }
-        public List<ResponseWithDistributorRequest>? ResponseWithDistributorRequest { get; set; }
+        public List<RequestTravelAgencyHotelRequest>? RequestTravelAgencyHotelRequest{ get; set; } = new List<RequestTravelAgencyHotelRequest>();
+        public List<RequestTravelAgencyTransportRequest>? RequestTravelAgencyTransportRequest { get; set; } = new List<RequestTravelAgencyTransportRequest>();
+        public List<RequestTravelAgencyAirFlightRequest>? RequestTravelAgencyAirFlightRequest { get; set; } = new List<RequestTravelAgencyAirFlightRequest>();
+        public List<RequestTravelAgencyVisaRequest>? RequestTravelAgencyVisaRequest { get; set; } = new List<RequestTravelAgencyVisaRequest>();
+        public List<ResponseWithDistributorRequest>? ResponseWithDistributorRequest { get; set; } = new List<ResponseWithDistributorRequest>();
         public bool IsDelete { get; set; } = false;
     }
 }

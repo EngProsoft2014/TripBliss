@@ -68,8 +68,7 @@
             <CheckBox Color="#76d973" VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged"></CheckBox>
             <Label Text="{ex:Translate Name=lblSelectAll-ActiveDistributors}" FontSize="14" TextColor="Black" VerticalTextAlignment="Center"></Label>
         </HorizontalStackLayout>
-        <CollectionView x:Name="ItemsCollectionView" ItemsSource="{Binding DistributorCompanys}" VerticalOptions="FillAndExpand" SelectionMode="Multiple"
-                        SelectedItems="{Binding SelectedDistributorCompanys}">
+        <CollectionView x:Name="ItemsCollectionView" ItemsSource="{Binding DistributorCompanys}" VerticalOptions="FillAndExpand" SelectionMode="Multiple">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Border StrokeShape="RoundRectangle 20" Margin="0,10" x:Name="bo">
@@ -104,9 +103,9 @@
                                 </ImageButton>
                             </VerticalStackLayout>
                         </StackLayout>
-                        <!--<Border.GestureRecognizers>
+                        <Border.GestureRecognizers>
                             <TapGestureRecognizer CommandParameter="{Binding}" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_ChooseDistributorViewModel}}, Path= SelectionCommand}"></TapGestureRecognizer>
-                        </Border.GestureRecognizers>-->
+                        </Border.GestureRecognizers>
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

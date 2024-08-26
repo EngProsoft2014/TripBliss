@@ -4,7 +4,7 @@ namespace TripBliss.Models
 {
     public record RequestTravelAgencyHotelRequest : INotifyPropertyChanged
     {
-        public int RequestTravelAgencyId { get; set; }
+
         public int LocationId { get; set; }
         public int HotelId { get; set; }
         public int RoomTypeId { get; set; }
@@ -27,10 +27,10 @@ namespace TripBliss.Models
                 }
         public DateTime CheckIn { get; set; }
         public DateTime CheckOut { get; set; }
-        public int NumberOfNights { get; set; }
+        public int NumberOfNights { get { return (CheckOut.Day - CheckIn.Day) - 1; } }
 
         int _RoomCount;
-        
+        public string? Notes { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
     }

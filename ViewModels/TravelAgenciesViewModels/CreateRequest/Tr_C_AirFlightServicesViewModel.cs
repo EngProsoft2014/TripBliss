@@ -165,16 +165,15 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         void AplyClicked(RequestTravelAgencyAirFlightRequest Request)
         {
 
-            AirFlightResponseModel.AirFlightId = AirFlightSelected.Id;
+            Request.AirFlightId = AirFlightSelected.Id;
             AirFlightResponseModel.AirLine = AirFlightSelected.AirLine;
-            AirFlightResponseModel.ClassAirFlightId = ClassSelected.Id;
+            Request.ClassAirFlightId = ClassSelected.Id;
             AirFlightResponseModel.ClassName = ClassSelected.ClassName;
             AirFlightResponseModel.AirportFrom = Request.AirportFrom;
             AirFlightResponseModel.AirportTo = Request.AirportTo;
             AirFlightResponseModel.Date = Request.Date;
             AirFlightResponseModel.TotalPerson = Request.TotalPerson;
-            AirFlightResponseModel.RequestTravelAgencyId = Request.RequestTravelAgencyId;
-            AirFlightResponseModel.TotalPerson = Request.InfoChildCount + Request.InfoAdultCount + Request.InfoInfantCount;
+            AirFlightResponseModel.TotalPerson = Request.TotalPerson = Request.InfoChildCount + Request.InfoAdultCount + Request.InfoInfantCount;
 
             AirFlightClose.Invoke(Request, AirFlightResponseModel);
 
