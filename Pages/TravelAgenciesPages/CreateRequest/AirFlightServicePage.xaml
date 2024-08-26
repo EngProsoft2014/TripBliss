@@ -157,7 +157,7 @@
                     </Border.Shadow>
                 </Border>
                 <Button VerticalOptions="EndAndExpand" Text="{ex:Translate Name=btnApply-Forgot}" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="20,0"
-                    Command="{Binding AplyClickedCommand}" CommandParameter="{Binding AirFlightRequestModel}"></Button>
+                    Command="{Binding ApplyClickedCommand}" CommandParameter="{Binding AirFlightRequestModel}"></Button>
             </StackLayout>
         </ScrollView>
     </StackLayout>

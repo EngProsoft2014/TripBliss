@@ -196,6 +196,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             {
                 UserDialogs.Instance.ShowLoading();
 
+                //AirFlightRequest.Id = AirFlightResponse.Id;
                 LstTravelAgencyAirFlightResponse.Add(AirFlightResponse);
                 LstTravelAgencyAirFlightRequest.Add(AirFlightRequest);
 
@@ -208,6 +209,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         void DeletAirFlight(RequestTravelAgencyAirFlightResponse model)
         {
             LstTravelAgencyAirFlightResponse.Remove(model);
+
+            //LstTravelAgencyAirFlightRequest.Remove(LstTravelAgencyAirFlightRequest.Where(s => s.Id == model.Id).FirstOrDefault()!);
         }
         #endregion
 

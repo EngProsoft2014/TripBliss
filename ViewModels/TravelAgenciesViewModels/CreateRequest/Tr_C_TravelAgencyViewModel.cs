@@ -138,15 +138,15 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         #region RelayCommands
         [RelayCommand]
-        void AddRequest()
+        async Task AddRequest()
         {
-            App.Current!.MainPage!.Navigation.PushAsync(new ChooseDistributorPage(new Tr_C_ChooseDistributorViewModel(Rep,_service,DistributorCompanys), Rep));
+            await App.Current!.MainPage!.Navigation.PushAsync(new ChooseDistributorPage(new Tr_C_ChooseDistributorViewModel(Rep,_service,DistributorCompanys), Rep));
         }
 
         [RelayCommand]
-        void BackPressed()
+        async Task BackPressed()
         {
-            App.Current!.MainPage!.Navigation.PopAsync();
+            await App.Current!.MainPage!.Navigation.PopAsync();
         }
 
         [RelayCommand]

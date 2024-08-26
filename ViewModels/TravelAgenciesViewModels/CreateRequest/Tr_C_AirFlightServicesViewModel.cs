@@ -158,9 +158,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             }
         }
         [RelayCommand]
-        async void AplyClicked(RequestTravelAgencyAirFlightRequest Request)
+        async Task ApplyClicked(RequestTravelAgencyAirFlightRequest Request)
         {
-            if (airFlightSelected == null || airFlightSelected?.Id == 0)
+            if (AirFlightSelected == null || AirFlightSelected?.Id == 0)
             {
                 var toast = Toast.Make("Please Complete This Field Required : Select Carrier.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
@@ -185,7 +185,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 var toast = Toast.Make("Please Complete This Field Required : To Location.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
-            else if (Request.ETD < Request.ETA)
+            else if (Request.ETD > Request.ETA)
             {
                 var toast = Toast.Make("The expected time of departure must be less than the expected time of arrival.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
@@ -200,7 +200,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 IsBusy = false;
                 UserDialogs.Instance.ShowLoading();
 
-                Request.AirFlightId = AirFlightSelected.Id;
+                Request.AirFlightId = AirFlightSelected!.Id;
                 AirFlightResponseModel.AirLine = AirFlightSelected.AirLine;
                 Request.ClassAirFlightId = ClassSelected!.Id;
                 AirFlightResponseModel.ClassName = ClassSelected.ClassName;

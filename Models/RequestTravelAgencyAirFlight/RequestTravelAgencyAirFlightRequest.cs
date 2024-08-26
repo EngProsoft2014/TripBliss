@@ -4,6 +4,7 @@ namespace TripBliss.Models
 {
     public record RequestTravelAgencyAirFlightRequest : INotifyPropertyChanged
     {
+        //public int Id { get; set; }
         public int AirFlightId { get; set; }
         public int ClassAirFlightId { get; set; }
         public DateTime Date { get; set; }

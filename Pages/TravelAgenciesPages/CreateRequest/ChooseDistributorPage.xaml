@@ -11,7 +11,7 @@
     <!--<Controls:CustomControl.BindingContext>
         <vm:TravelAgencyViewModel></vm:TravelAgencyViewModel>
     </Controls:CustomControl.BindingContext>-->
-    <ContentPage.Resources>
+    <!--<ContentPage.Resources>
         <Style TargetType="Border">
             <Setter Property="VisualStateManager.VisualStateGroups">
                 <VisualStateGroupList>
@@ -32,7 +32,7 @@
                 </VisualStateGroupList>
             </Setter>
         </Style>
-    </ContentPage.Resources>
+    </ContentPage.Resources>-->
     <StackLayout Orientation="Vertical" Margin="20">
         <StackLayout Orientation="Horizontal">
             <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackPressedCommand}">
@@ -65,7 +65,7 @@
             </Border.Shadow>
         </Border>
         <HorizontalStackLayout>
-            <CheckBox Color="#76d973" VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged"></CheckBox>
+            <CheckBox x:Name="chkBoxSelectAll" Color="#2fa562" VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged"></CheckBox>
             <Label Text="{ex:Translate Name=lblSelectAll-ActiveDistributors}" FontSize="14" TextColor="Black" VerticalTextAlignment="Center"></Label>
         </HorizontalStackLayout>
         <CollectionView x:Name="ItemsCollectionView" ItemsSource="{Binding DistributorCompanys}" VerticalOptions="FillAndExpand" SelectionMode="Multiple">
@@ -103,14 +103,46 @@
                                 </ImageButton>
                             </VerticalStackLayout>
                         </StackLayout>
+                        <Border.Triggers>
+                            <DataTrigger TargetType="Border" Binding="{Binding Source={x:Reference chkBoxSelectAll},Path=IsChecked}" Value="True">
+                                <Setter Property="Border.Stroke" Value="Green" />
+                                <Setter Property="Border.StrokeThickness" Value="3" />
+                                <Setter Property="Border.BackgroundColor" Value="Transparent" />
+                            </DataTrigger>
+                        </Border.Triggers>
+                        <Border.Resources>
+                            <ResourceDictionary>
+                                <Style TargetType="Border">
+                                    <Setter Property="VisualStateManager.VisualStateGroups">
+                                        <VisualStateGroupList>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal" >
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Border.Stroke" Value="Gray" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Border.Stroke" Value="Green" />
+                                                        <Setter Property="Border.StrokeThickness" Value="3" />
+                                                        <Setter Property="Border.BackgroundColor" Value="Transparent" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateGroupList>
+                                    </Setter>
+                                </Style>
+                            </ResourceDictionary>
+                        </Border.Resources>
                         <Border.GestureRecognizers>
-                            <TapGestureRecognizer CommandParameter="{Binding}" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_ChooseDistributorViewModel}}, Path= SelectionCommand}"></TapGestureRecognizer>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_ChooseDistributorViewModel}}, Path= SelectionCommand}" CommandParameter="{Binding}" 
+                                                  Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                         </Border.GestureRecognizers>
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
         <Button  Text="{ex:Translate Name=btnApply-Forgot}" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="0,5,0,0"
-                Command="{Binding ApllyCommand}"></Button>
+                Command="{Binding ApplyCommand}"></Button>
     </StackLayout>
 </Controls:CustomControl>

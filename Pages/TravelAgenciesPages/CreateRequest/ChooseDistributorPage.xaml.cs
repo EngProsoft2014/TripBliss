@@ -19,5 +19,12 @@ public partial class ChooseDistributorPage : Controls.CustomControl
         Model.SelectAll(e.Value);
     }
 
- 
+    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        if (sender is Border border)
+        {      
+            VisualStateManager.GoToState(border, "Selected");
+        }
+        
+    }
 }

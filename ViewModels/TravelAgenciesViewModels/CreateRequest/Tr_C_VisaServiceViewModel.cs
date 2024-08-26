@@ -74,7 +74,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         #region RelayCommand
         [RelayCommand]
-        async void Apply(RequestTravelAgencyVisaRequest request)
+        async Task Apply(RequestTravelAgencyVisaRequest request)
         {
             if (SelectedVisa == null || SelectedVisa?.Id == 0)
             {
@@ -86,22 +86,26 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 var toast = Toast.Make("Please Complete This Field Required : passengers Count.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
-            IsBusy = false;
-            UserDialogs.Instance.ShowLoading();
+            else
+            {
+                IsBusy = false;
+                UserDialogs.Instance.ShowLoading();
 
-            VisaRequestModel!.VisaId = SelectedVisa!.Id;
-            VisaResponseModel!.VisaName = SelectedVisa.VisaName;
-            VisaResponseModel!.PersonCount = request.PersonCount;
-            VisaClose.Invoke(request, VisaResponseModel);
-            await App.Current!.MainPage!.Navigation.PopAsync();
+                VisaRequestModel!.VisaId = SelectedVisa!.Id;
+                VisaResponseModel!.VisaName = SelectedVisa.VisaName;
+                VisaResponseModel!.PersonCount = request.PersonCount;
+                VisaClose.Invoke(request, VisaResponseModel);
+                await App.Current!.MainPage!.Navigation.PopAsync();
 
-            UserDialogs.Instance.HideHud();
-            IsBusy = true;
+                UserDialogs.Instance.HideHud();
+                IsBusy = true;
+            }
+            
         }
         [RelayCommand]
-        void BackCLicked()
+        async Task BackCLicked()
         {
-            App.Current!.MainPage!.Navigation.PopAsync();
+            await App.Current!.MainPage!.Navigation.PopAsync();
         } 
         #endregion
     }

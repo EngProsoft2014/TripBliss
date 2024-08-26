@@ -63,11 +63,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             _service = service;
             HotelRequestModel!.CheckIn = DateTime.Now;
             HotelRequestModel!.CheckOut = DateTime.Now.AddDays(7);
-            GetLocation();
-            GetHotels();
-            GetMeals();
-            GetRoomTypes();
-            GetRoomViews();
+            Init();
         }
         public Tr_C_HotelServiceViewModel(RequestTravelAgencyHotelResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
@@ -76,16 +72,31 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             HotelResponseModel = model;
             HotelRequestModel!.CheckIn = DateTime.Now;
             HotelRequestModel!.CheckOut = DateTime.Now.AddDays(7);
-            GetLocation();
-            GetHotels();
-            GetMeals();
-            GetRoomTypes();
-            GetRoomViews();
+            Init();
         }
         #endregion
 
         #region Methods
-        async void GetLocation()
+
+        async void Init()
+        {
+            await RunManyMethods();
+        }
+
+        async Task RunManyMethods()
+        {
+            UserDialogs.Instance.ShowLoading();
+            await Task.WhenAll(
+                GetLocation(),
+                GetHotels(), 
+                GetMeals(),
+                GetRoomViews(),
+                GetRoomTypes()
+                );
+            UserDialogs.Instance.HideHud();
+        }
+
+        async Task GetLocation()
         {
             
 
@@ -104,7 +115,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
            
         }
 
-        async void GetHotels()
+        async Task GetHotels()
         {
             
 
@@ -123,7 +134,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             
         }
 
-        async void GetMeals()
+        async Task GetMeals()
         {
             
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
@@ -141,7 +152,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             
         }
 
-        async void GetRoomTypes()
+        async Task GetRoomTypes()
         {
             
 
@@ -160,7 +171,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             
         }
 
-        async void GetRoomViews()
+        async Task GetRoomViews()
         {
             
 
@@ -235,6 +246,11 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             else if (request.RoomCount == 0 )
             {
                 var toast = Toast.Make("Please Complete This Field Required : Room Count.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (request.CheckIn < DateTime.Now)
+            {
+                var toast = Toast.Make("Please select checkin date today or after that.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (request.CheckIn > request.CheckOut)

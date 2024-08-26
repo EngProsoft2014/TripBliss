@@ -51,7 +51,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             Rep = generic;
             _service = service;
-            TransportRequestModel!.Date = DateTime.Now;
+            TransportRequestModel!.Date = DateOnly.FromDateTime(DateTime.Now);
             GetCarBrands();
             GetCarModels();
             GetCarTypes();
@@ -60,7 +60,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             Rep = generic;
             TransportResponseModel = model;
-            TransportRequestModel!.Date = DateTime.Now;
+            TransportRequestModel!.Date = DateOnly.FromDateTime(DateTime.Now);
             _service = service;
             GetCarBrands();
             GetCarModels();
@@ -121,7 +121,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         #region RelayCommand
         [RelayCommand]
-        async void OnApply(RequestTravelAgencyTransportRequest request)
+        async Task OnApply(RequestTravelAgencyTransportRequest request)
         {
             if (SelectrdType == null || SelectrdType?.Id == 0)
             {
@@ -143,7 +143,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 var toast = Toast.Make("Please Complete This Field Required : Transport Count.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
-            else if (request.Date < DateTime.Now)
+            else if (request.Date < DateOnly.FromDateTime(DateTime.Now))
             {
                 var toast = Toast.Make("Please Complete This Field Required : Date.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
@@ -188,9 +188,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         }
 
         [RelayCommand]
-        void OnBackButtonClicked()
+        async Task OnBackButtonClicked()
         {
-            App.Current.MainPage.Navigation.PopAsync();
+            await App.Current!.MainPage!.Navigation.PopAsync();
         } 
         #endregion
     }

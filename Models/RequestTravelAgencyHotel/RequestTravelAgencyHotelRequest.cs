@@ -10,6 +10,7 @@ namespace TripBliss.Models
         public int RoomTypeId { get; set; }
         public int RoomViewId { get; set; }
         public int MealId { get; set; }
+        int _RoomCount;
         public int RoomCount
                 {
                     get
@@ -29,7 +30,6 @@ namespace TripBliss.Models
         public DateTime CheckOut { get; set; }
         public int NumberOfNights { get { return (CheckOut - CheckIn).Days - 1; } }
 
-        int _RoomCount;
         public string? Notes { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;

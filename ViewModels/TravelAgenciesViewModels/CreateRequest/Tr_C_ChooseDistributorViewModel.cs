@@ -41,8 +41,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void BackPressed()
         {
-            App.Current.MainPage.Navigation.PopAsync();
+            App.Current!.MainPage!.Navigation.PopAsync();
         }
+
         [RelayCommand]
         void Selection(DistributorCompanyResponse model)
         {
@@ -55,8 +56,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 SelectedDistributorCompanys!.Add(model);
             }
         }
+
         [RelayCommand]
-        async void Aplly(DistributorCompanyResponse model)
+        async Task Apply(DistributorCompanyResponse model)
         {
             if (SelectedDistributorCompanys!.Count == 0 )
             {
@@ -66,21 +68,27 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             else
             {
                 await App.Current!.MainPage!.Navigation.PushAsync(new NewRequestPage(new Tr_C_NewRequestViewModel(SelectedDistributorCompanys!, Rep, _service), Rep));
-            }
-
-            
+            }   
         }
         #endregion
 
-        public void SelectAll(bool IsSelected)
+        public async void SelectAll(bool IsSelected)
         {
-            if (IsSelected)
+            if (DistributorCompanys?.Count > 0) 
             {
-                SelectedDistributorCompanys = new ObservableCollection<DistributorCompanyResponse>(DistributorCompanys);
+                if (IsSelected)
+                {
+                    SelectedDistributorCompanys = new ObservableCollection<DistributorCompanyResponse>(DistributorCompanys!);
+                }
+                else
+                {
+                    SelectedDistributorCompanys!.Clear();
+                }
             }
             else
             {
-                SelectedDistributorCompanys!.Clear();
+                var toast = Toast.Make("Sorry Don't have distribuitor.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
             }
         }
     }
