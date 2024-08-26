@@ -160,7 +160,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         async void AplyClicked(RequestTravelAgencyAirFlightRequest Request)
         {
-            if (AirFlightRequestModel == null || AirFlightRequestModel?.AirFlightId == 0)
+            if (airFlightSelected == null || airFlightSelected?.Id == 0)
             {
                 var toast = Toast.Make("Please Complete This Field Required : Select Carrier.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
