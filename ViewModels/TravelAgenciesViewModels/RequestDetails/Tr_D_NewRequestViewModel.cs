@@ -12,7 +12,6 @@ using Microsoft.VisualBasic;
 using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 using TripBliss.Helpers;
 using TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest;
-using TripBliss.Models.RequestTravelAgencyVisa;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {

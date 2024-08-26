@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
-using TripBliss.Models.RequestTravelAgencyVisa;
 using TripBliss.Models.Visa;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest

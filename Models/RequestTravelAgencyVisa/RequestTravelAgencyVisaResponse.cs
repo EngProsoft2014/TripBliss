@@ -1,4 +1,4 @@
-﻿namespace TripBliss.Models.RequestTravelAgencyVisa
+﻿namespace TripBliss.Models
 {
     public record RequestTravelAgencyVisaResponse
     {
