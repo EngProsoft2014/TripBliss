@@ -59,6 +59,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             Rep = generic;
             _service = service;
+            HotelRequestModel!.CheckIn = DateTime.Now;
+            HotelRequestModel!.CheckOut = DateTime.Now.AddDays(7);
             GetLocation();
             GetHotels();
             GetMeals();
@@ -70,7 +72,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             Rep = generic;
             _service = service;
             HotelResponseModel = model;
-
+            HotelRequestModel!.CheckIn = DateTime.Now;
+            HotelRequestModel!.CheckOut = DateTime.Now.AddDays(7);
             GetLocation();
             GetHotels();
             GetMeals();
@@ -213,6 +216,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             HotelResponseModel!.CheckIn = request.CheckIn;
             HotelResponseModel!.CheckOut = request.CheckOut;
             HotelResponseModel!.RoomViewName = SelectedRoomView!.RoomViewName;
+            HotelResponseModel!.LocationName = SelectedLocation!.LocationName;
 
             HotelClose.Invoke(request, HotelResponseModel);
             await App.Current!.MainPage!.Navigation.PopAsync();

@@ -7,9 +7,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Constants;
 using TripBliss.Controls;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Models.RequestTravelAgency;
 using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels
@@ -18,7 +20,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
     {
         #region Prop
         [ObservableProperty]
-        public ObservableCollection<RequestClassModel> requests = new ObservableCollection<RequestClassModel>();
+        public ObservableCollection<RequestTravelAgencyResponse> requests = new ObservableCollection<RequestTravelAgencyResponse>();
         #endregion
 
         #region Services
@@ -32,93 +34,114 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             Rep = generic;
             _service = service;
             Init();
-            Requests = Controls.StaticMember.LstRequestClass;
+            
         } 
         #endregion
 
 
         async void Init()
         {
-            await StaticMember.Load_Tr_StartData(Rep, _service);
+            await GetRequestes();
         }
 
         #region Methods
-        void LoadData()
+        async Task GetRequestes()
         {
-            Requests.Add(new RequestClassModel()
+            IsBusy = true;
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                Date = DateOnly.FromDateTime(DateTime.Now),
-                RugestName = "Group 1",
-                DistName = "Tark",
-                Statues = "Active",
-                Services = "Hotel - Tickting - Transportion"
+                string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
+                string UserToken = await _service.UserToken();
 
-            });
-            Requests.Add(new RequestClassModel()
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now),
-                RugestName = "Group 2",
-                DistName = "Ali",
-                Statues = "Not Active",
-                Services = "Hotel - Tickting - Transportion"
+                var json = await Rep.GetAsync<ObservableCollection<RequestTravelAgencyResponse>>(ApiConstants.AllRequestApi + $"{id}/RequestTravelAgency", UserToken);
 
-            });
-            Requests.Add(new RequestClassModel()
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now),
-                RugestName = "Group 3",
-                DistName = "Mohammed",
-                Statues = "Not Active",
-                Services = "Hotel - Tickting - Transportion"
+                if (json != null)
+                {
 
-            });
-            Requests.Add(new RequestClassModel()
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now),
-                RugestName = "Group 4",
-                DistName = "Abdullah",
-                Statues = "Active",
-                Services = "Hotel - Tickting - Transportion"
+                    Requests!.Clear();
+                    Requests = json;
+                }
+            }
 
-            });
-            Requests.Add(new RequestClassModel()
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now),
-                RugestName = "Group 5",
-                DistName = "Hassn",
-                Statues = "Active",
-                Services = "Hotel - Tickting - Transportion"
-
-            });
-            Requests.Add(new RequestClassModel()
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now),
-                RugestName = "Group 6",
-                DistName = "Omar",
-                Statues = "Not Active",
-                Services = "Hotel - Tickting - Transportion"
-
-            });
-            Requests.Add(new RequestClassModel()
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now),
-                RugestName = "Group 7",
-                DistName = "Tark",
-                Statues = "Active",
-                Services = "Hotel - Tickting - Transportion"
-
-            });
-            Requests.Add(new RequestClassModel()
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now),
-                RugestName = "Group 1",
-                DistName = "Tark",
-                Statues = "Not Active",
-                Services = "Hotel - Tickting - Transportion"
-
-            });
-
+            IsBusy = false;
         }
+        //void LoadData()
+        //{
+        //    Requests.Add(new RequestClassModel()
+        //    {
+        //        Date = DateOnly.FromDateTime(DateTime.Now),
+        //        RugestName = "Group 1",
+        //        DistName = "Tark",
+        //        Statues = "Active",
+        //        Services = "Hotel - Tickting - Transportion"
+
+        //    });
+        //    Requests.Add(new RequestClassModel()
+        //    {
+        //        Date = DateOnly.FromDateTime(DateTime.Now),
+        //        RugestName = "Group 2",
+        //        DistName = "Ali",
+        //        Statues = "Not Active",
+        //        Services = "Hotel - Tickting - Transportion"
+
+        //    });
+        //    Requests.Add(new RequestClassModel()
+        //    {
+        //        Date = DateOnly.FromDateTime(DateTime.Now),
+        //        RugestName = "Group 3",
+        //        DistName = "Mohammed",
+        //        Statues = "Not Active",
+        //        Services = "Hotel - Tickting - Transportion"
+
+        //    });
+        //    Requests.Add(new RequestClassModel()
+        //    {
+        //        Date = DateOnly.FromDateTime(DateTime.Now),
+        //        RugestName = "Group 4",
+        //        DistName = "Abdullah",
+        //        Statues = "Active",
+        //        Services = "Hotel - Tickting - Transportion"
+
+        //    });
+        //    Requests.Add(new RequestClassModel()
+        //    {
+        //        Date = DateOnly.FromDateTime(DateTime.Now),
+        //        RugestName = "Group 5",
+        //        DistName = "Hassn",
+        //        Statues = "Active",
+        //        Services = "Hotel - Tickting - Transportion"
+
+        //    });
+        //    Requests.Add(new RequestClassModel()
+        //    {
+        //        Date = DateOnly.FromDateTime(DateTime.Now),
+        //        RugestName = "Group 6",
+        //        DistName = "Omar",
+        //        Statues = "Not Active",
+        //        Services = "Hotel - Tickting - Transportion"
+
+        //    });
+        //    Requests.Add(new RequestClassModel()
+        //    {
+        //        Date = DateOnly.FromDateTime(DateTime.Now),
+        //        RugestName = "Group 7",
+        //        DistName = "Tark",
+        //        Statues = "Active",
+        //        Services = "Hotel - Tickting - Transportion"
+
+        //    });
+        //    Requests.Add(new RequestClassModel()
+        //    {
+        //        Date = DateOnly.FromDateTime(DateTime.Now),
+        //        RugestName = "Group 1",
+        //        DistName = "Tark",
+        //        Statues = "Not Active",
+        //        Services = "Hotel - Tickting - Transportion"
+
+        //    });
+
+        //}
 
 
         #endregion

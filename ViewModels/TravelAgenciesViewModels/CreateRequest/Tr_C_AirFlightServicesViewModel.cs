@@ -50,6 +50,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             Rep = generic;
             _service = service;
+            AirFlightRequestModel!.Date = DateTime.Now;
             GetAirFlights();
             GetClasses();
         }
@@ -58,6 +59,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             Rep = generic;
             AirFlightResponseModel = model;
             _service = service;
+            AirFlightRequestModel!.Date = DateTime.Now;
             GetAirFlights();
             GetClasses();
         }
@@ -172,6 +174,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             AirFlightResponseModel.Date = Request.Date;
             AirFlightResponseModel.TotalPerson = Request.TotalPerson;
             AirFlightResponseModel.RequestTravelAgencyId = Request.RequestTravelAgencyId;
+            AirFlightResponseModel.TotalPerson = Request.InfoChildCount + Request.InfoAdultCount + Request.InfoInfantCount;
 
             AirFlightClose.Invoke(Request, AirFlightResponseModel);
 

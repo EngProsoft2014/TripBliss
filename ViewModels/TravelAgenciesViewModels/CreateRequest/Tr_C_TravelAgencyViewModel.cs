@@ -23,7 +23,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [ObservableProperty]
         public ObservableCollection<DistributorCompanyResponse>? distributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
         [ObservableProperty]
-        public ObservableCollection<DistributorCompanyResponse>? favouriteDistributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
+        public ObservableCollection<TravelAgencywithDistributorsResponse>? favouriteDistributorCompanys = new ObservableCollection<TravelAgencywithDistributorsResponse>();
         [ObservableProperty]
         public int indexTap;
         #endregion
@@ -48,7 +48,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             UserDialogs.Instance.ShowLoading();
             await GetDistributors();
-            await GetFavouiterDistributors();
+            //await GetFavouiterDistributors();
             UserDialogs.Instance.HideHud();
         }
         async Task GetDistributors()
@@ -81,7 +81,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
                 string UserToken = await _service.UserToken();
 
-                var json = await Rep.GetAsync<ObservableCollection<DistributorCompanyResponse>>(ApiConstants.GetfavouritesApi + $"{id}/TravelAgencywithDistributors", UserToken);
+                var json = await Rep.GetAsync<ObservableCollection<TravelAgencywithDistributorsResponse>>(ApiConstants.GetfavouritesApi + $"{id}/TravelAgencywithDistributors", UserToken);
 
                 if (json != null)
                 {
@@ -102,7 +102,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
                 string UserToken = await _service.UserToken();
 
-                var json = await Rep.PostTRAsync<string, DistributorCompanyResponse>(ApiConstants.AddfavouritesApi + $"{id}/TravelAgencywithDistributors", DistributorId, UserToken);
+                var json = await Rep.PostTRAsync<string, TravelAgencywithDistributorsResponse>(ApiConstants.AddfavouritesApi + $"{id}/TravelAgencywithDistributors", DistributorId, UserToken);
 
                 if (json.Item1 != null)
                 {
@@ -154,13 +154,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             if (Item != null)
             {
-                bool IsFav =  FavouriteDistributorCompanys!.Contains(Item);
-                if (IsFav)
+                
+                if (Item.Favourite)
                 {
+                    TravelAgencywithDistributorsResponse? Model = FavouriteDistributorCompanys!.FirstOrDefault(a => a.DistributorCompany!.Id! == Item.Id!);
                     string? Stat = await DeletFavouiterDistributors(Item.Id!);
-                    if(!string.IsNullOrEmpty(Stat) && Stat == "true")
+                    if(!string.IsNullOrEmpty(Stat) && Stat == "true" && Model != null)
                     {
-                        FavouriteDistributorCompanys.Remove(Item);
+                        FavouriteDistributorCompanys!.Remove(Model!);
                     }
                     
                 }

@@ -28,8 +28,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         #region prop
 
         [ObservableProperty]
-        RequestTravelAgencyRequest requestTravelAgency= new RequestTravelAgencyRequest();       
-
+        RequestTravelAgencyRequest requestTravelAgency= new RequestTravelAgencyRequest();
+        [ObservableProperty]
+        ObservableCollection<DistributorCompanyResponse> distributorCompanies;
 
         [ObservableProperty]
         ObservableCollection<RequestTravelAgencyAirFlightRequest> lstTravelAgencyAirFlightRequest = new ObservableCollection<RequestTravelAgencyAirFlightRequest>();
@@ -64,10 +65,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             //LoadAirFlightData();
             //LoadVisaData();
         }
-        public Tr_C_NewRequestViewModel(DistributorsModel model , IGenericRepository GenericRep)
+        public Tr_C_NewRequestViewModel(ObservableCollection<DistributorCompanyResponse> distributors , IGenericRepository GenericRep , Services.Data.ServicesService service)
         {
             Rep = GenericRep;
             Lang = Preferences.Default.Get("Lan", "en");
+            DistributorCompanies = distributors;
+            _service = service;
             //LoadData();
             //LoadTransportaionData();
             //LoadAirFlightData();
@@ -249,10 +252,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         async Task AddToRequest()
         {
-            RequestTravelAgency.RequestTravelAgencyHotelRequest = LstTravelAgencyHotelRequest.ToList();
-            RequestTravelAgency.RequestTravelAgencyTransportRequest = LstTravelAgencyTransportRequest.ToList();
-            RequestTravelAgency.RequestTravelAgencyAirFlightRequest = LstTravelAgencyAirFlightRequest.ToList();
-            RequestTravelAgency.RequestTravelAgencyVisaRequest = LstTravelAgencyVisaRequest.ToList();
+            
+            RequestTravelAgency.RequestTravelAgencyHotelRequest = new List<RequestTravelAgencyHotelRequest>(LstTravelAgencyHotelRequest.ToList());
+            RequestTravelAgency.RequestTravelAgencyTransportRequest = new List<RequestTravelAgencyTransportRequest>(LstTravelAgencyTransportRequest.ToList());
+            RequestTravelAgency.RequestTravelAgencyAirFlightRequest = new List<RequestTravelAgencyAirFlightRequest>(LstTravelAgencyAirFlightRequest.ToList());
+            RequestTravelAgency.RequestTravelAgencyVisaRequest = new List<RequestTravelAgencyVisaRequest>(LstTravelAgencyVisaRequest.ToList());
+            
             IsBusy = true;
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)

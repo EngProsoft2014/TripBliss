@@ -49,6 +49,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             Rep = generic;
             _service = service;
+            TransportRequestModel!.Date = DateTime.Now;
             GetCarBrands();
             GetCarModels();
             GetCarTypes();
@@ -57,6 +58,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             Rep = generic;
             TransportResponseModel = model;
+            TransportRequestModel!.Date = DateTime.Now;
             _service = service;
             GetCarBrands();
             GetCarModels();
@@ -134,6 +136,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             TransportResponseModel.ToLocation = request.ToLocation;
             TransportResponseModel.Date = request.Date;
             TransportResponseModel.TransportCount = request.TransportCount;
+            TransportResponseModel.TypeName = SelectrdType.TypeName;
 
             TransportClose.Invoke(request, TransportResponseModel);
             App.Current!.MainPage!.Navigation.PopAsync();

@@ -17,6 +17,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         #region Prop
         [ObservableProperty]
         public ObservableCollection<DistributorCompanyResponse>? distributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
+        [ObservableProperty]
+        public ObservableCollection<DistributorCompanyResponse>? selectedDistributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
         #endregion
 
         #region Services
@@ -41,10 +43,35 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             App.Current.MainPage.Navigation.PopAsync();
         }
         [RelayCommand]
-        void Selection()
+        void Selection(DistributorCompanyResponse model)
         {
-            App.Current.MainPage.Navigation.PushAsync(new NewRequestPage(new Tr_C_NewRequestViewModel(Rep, _service), Rep));
+            if (SelectedDistributorCompanys!.Contains(model))
+            {
+                SelectedDistributorCompanys!.Remove(model);
+            }
+            else
+            {
+                SelectedDistributorCompanys!.Add(model);
+            }
+        }
+        [RelayCommand]
+        void Aplly(DistributorCompanyResponse model)
+        {
+            
+            App.Current!.MainPage!.Navigation.PushAsync(new NewRequestPage(new Tr_C_NewRequestViewModel(SelectedDistributorCompanys!,Rep, _service), Rep));
         }
         #endregion
+
+        public void SelectAll(bool IsSelected)
+        {
+            if (IsSelected)
+            {
+                SelectedDistributorCompanys = new ObservableCollection<DistributorCompanyResponse>(DistributorCompanys);
+            }
+            else
+            {
+                SelectedDistributorCompanys!.Clear();
+            }
+        }
     }
 }

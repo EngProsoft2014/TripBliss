@@ -65,13 +65,14 @@
             </Border.Shadow>
         </Border>
         <HorizontalStackLayout>
-            <CheckBox Color="#76d973" VerticalOptions="CenterAndExpand"></CheckBox>
+            <CheckBox Color="#76d973" VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged"></CheckBox>
             <Label Text="{ex:Translate Name=lblSelectAll-ActiveDistributors}" FontSize="14" TextColor="Black" VerticalTextAlignment="Center"></Label>
         </HorizontalStackLayout>
-        <CollectionView ItemsSource="{Binding DistributorCompanys}" VerticalOptions="FillAndExpand" SelectionMode="Multiple" SelectedItems="{Binding }">
+        <CollectionView x:Name="ItemsCollectionView" ItemsSource="{Binding DistributorCompanys}" VerticalOptions="FillAndExpand" SelectionMode="Multiple"
+                        SelectedItems="{Binding SelectedDistributorCompanys}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Border StrokeShape="RoundRectangle 20" Margin="0,10">
+                    <Border StrokeShape="RoundRectangle 20" Margin="0,10" x:Name="bo">
                         <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
                             <VerticalStackLayout Padding="10" Spacing="5">
                                 <Label Text="{Binding CompanyName}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
@@ -103,11 +104,14 @@
                                 </ImageButton>
                             </VerticalStackLayout>
                         </StackLayout>
+                        <!--<Border.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="{Binding}" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_ChooseDistributorViewModel}}, Path= SelectionCommand}"></TapGestureRecognizer>
+                        </Border.GestureRecognizers>-->
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
         <Button  Text="{ex:Translate Name=btnApply-Forgot}" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="0,5,0,0"
-                Command="{Binding SelectionCommand}"></Button>
+                Command="{Binding ApllyCommand}"></Button>
     </StackLayout>
 </Controls:CustomControl>

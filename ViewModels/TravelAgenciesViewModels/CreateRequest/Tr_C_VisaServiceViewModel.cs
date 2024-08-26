@@ -81,6 +81,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             VisaRequestModel!.VisaId = SelectedVisa.Id;
             VisaResponseModel!.VisaName = SelectedVisa.VisaName;
+            VisaResponseModel!.PersonCount = request.PersonCount;
             VisaClose.Invoke(request, VisaResponseModel);
             App.Current!.MainPage!.Navigation.PopAsync();
         }
