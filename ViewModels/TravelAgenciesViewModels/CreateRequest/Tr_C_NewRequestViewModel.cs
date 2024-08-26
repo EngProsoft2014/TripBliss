@@ -19,6 +19,7 @@ using Controls.UserDialogs.Maui;
 using Syncfusion.Maui.Data;
 
 
+
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 {
     public partial class Tr_C_NewRequestViewModel : BaseViewModel
@@ -254,47 +255,52 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         async Task AddToRequest()
         {
-            
-            RequestTravelAgency = new RequestTravelAgencyRequest();
-
-            RequestTravelAgency.RequestTravelAgencyHotelRequest = LstTravelAgencyHotelRequest.ToList();
-            RequestTravelAgency.RequestTravelAgencyTransportRequest = LstTravelAgencyTransportRequest.ToList();
-            RequestTravelAgency.RequestTravelAgencyAirFlightRequest = LstTravelAgencyAirFlightRequest.ToList();
-            RequestTravelAgency.RequestTravelAgencyVisaRequest = LstTravelAgencyVisaRequest.ToList();
-
-            DistributorCompanies.ForEach(s => DistributorRequests.Add(new ResponseWithDistributorRequest { DistributorCompanyId = s.Id }));
-            RequestTravelAgency.ResponseWithDistributorRequest = DistributorRequests.ToList();
-            //RequestTravelAgency.ResponseWithDistributorRequest!.ToList().ForEach(f =>
-            //{
-            //    DistributorCompanies.ForEach(s => f.DistributorCompanyId = s.Id);
-            //});
-
-            IsBusy = true;
-
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            if (LstTravelAgencyHotelRequest.Count ==0 & LstTravelAgencyTransportRequest.Count == 0 & LstTravelAgencyAirFlightRequest.Count == 0 & LstTravelAgencyVisaRequest.Count == 0)
             {
-                
-                string UserToken = await _service.UserToken();
-
-                string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
-                var json = await Rep.PostTRAsync<RequestTravelAgencyRequest, RequestTravelAgencyResponse>(ApiConstants.AddRequestApi +$"{id}/RequestTravelAgency" , RequestTravelAgency, UserToken);
-
-                if (json.Item1 != null)
-                {
-                    var toast = Toast.Make("Successfully for Add Request", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                    await toast.Show();
-
-                    await App.Current!.MainPage!.Navigation.PushAsync(new HomeAgencyPage(new Tr_HomeViewModel(Rep,_service),Rep,_service));
-                }
-                else
-                {
-                    var toast = Toast.Make($"Warning, {json.Item2}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                    await toast.Show();
-                }
+                var toast = Toast.Make("Please add at least one service.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
             }
+            else
+            {
+                RequestTravelAgency = new RequestTravelAgencyRequest();
 
-            IsBusy = false;
+                RequestTravelAgency.RequestTravelAgencyHotel = LstTravelAgencyHotelRequest.ToList();
+                RequestTravelAgency.RequestTravelAgencyTransport = LstTravelAgencyTransportRequest.ToList();
+                RequestTravelAgency.RequestTravelAgencyAirFlight = LstTravelAgencyAirFlightRequest.ToList();
+                RequestTravelAgency.RequestTravelAgencyVisa = LstTravelAgencyVisaRequest.ToList();
+
+                DistributorCompanies.ForEach(s => DistributorRequests.Add(new ResponseWithDistributorRequest { DistributorCompanyId = s.Id }));
+                RequestTravelAgency.ResponseWithDistributor = DistributorRequests.ToList();
+
+                IsBusy = false;
+
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                {
+
+                    string UserToken = await _service.UserToken();
+
+                    string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
+                    var json = await Rep.PostTRAsync<RequestTravelAgencyRequest, RequestTravelAgencyResponse>(ApiConstants.AddRequestApi + $"{id}/RequestTravelAgency", RequestTravelAgency, UserToken);
+
+                    if (json.Item1 != null)
+                    {
+                        var toast = Toast.Make("Successfully for Add Request", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
+
+                        await App.Current!.MainPage!.Navigation.PushAsync(new HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service));
+                    }
+                    else
+                    {
+                        var toast = Toast.Make($"Warning, {json.Item2}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
+                    }
+                }
+
+                IsBusy = true;
+            }
         }
+
+
         #endregion
 
 

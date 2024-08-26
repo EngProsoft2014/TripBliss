@@ -1,5 +1,7 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Controls.UserDialogs.Maui;
 using Microsoft.AspNet.SignalR.Client;
 using System;
 using System.Collections.Generic;
@@ -69,7 +71,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         #region Methods
         async void GetCarBrands()
         {
-            IsBusy = true;
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -82,13 +83,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     CarBrands = json;
                 }
             }
-
-            IsBusy = false;
         }
 
         async void GetCarModels()
         {
-            IsBusy = true;
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -102,12 +100,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
 
-            IsBusy = false;
         }
 
         async void GetCarTypes()
         {
-            IsBusy = true;
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -120,26 +116,75 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     CarTypes = json;
                 }
             }
-
-            IsBusy = false;
         }
         #endregion
 
         #region RelayCommand
         [RelayCommand]
-        void OnApply(RequestTravelAgencyTransportRequest request)
+        async void OnApply(RequestTravelAgencyTransportRequest request)
         {
-            request.CarBrandId = SelectrdBrand.Id;
-            request.CarTypeId = SelectrdType.Id;
-            request.CarModelId = SelectrdModel.Id;
-            TransportResponseModel!.FromLocation = request.FromLocation;
-            TransportResponseModel.ToLocation = request.ToLocation;
-            TransportResponseModel.Date = request.Date;
-            TransportResponseModel.TransportCount = request.TransportCount;
-            TransportResponseModel.TypeName = SelectrdType.TypeName;
+            if (SelectrdType == null || SelectrdType?.Id == 0)
+            {
+                var toast = Toast.Make("Please Complete This Field Required : Select Car Type.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (SelectrdBrand == null || SelectrdBrand?.Id == 0)
+            {
+                var toast = Toast.Make("Please Complete This Field Required : Select Car Brand.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (SelectrdModel == null || SelectrdModel?.Id == 0)
+            {
+                var toast = Toast.Make("Please Complete This Field Required : Select Car Model.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (request.TransportCount == 0)
+            {
+                var toast = Toast.Make("Please Complete This Field Required : Transport Count.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (request.Date < DateTime.Now)
+            {
+                var toast = Toast.Make("Please Complete This Field Required : Date.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (TimeOnly.FromTimeSpan(request.Time) < TimeOnly.FromDateTime(DateTime.Now))
+            {
+                var toast = Toast.Make("Please Complete This Field Required : Time.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (string.IsNullOrEmpty(request.FromLocation))
+            {
+                var toast = Toast.Make("Please Complete This Field Required : From Location.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (string.IsNullOrEmpty(request.ToLocation))
+            {
+                var toast = Toast.Make("Please Complete This Field Required : To Location.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else
+            {
+                IsBusy = false;
+                UserDialogs.Instance.ShowLoading();
 
-            TransportClose.Invoke(request, TransportResponseModel);
-            App.Current!.MainPage!.Navigation.PopAsync();
+
+                request.CarBrandId = SelectrdBrand!.Id;
+                request.CarTypeId = SelectrdType!.Id;
+                request.CarModelId = SelectrdModel!.Id;
+                TransportResponseModel!.FromLocation = request.FromLocation;
+                TransportResponseModel.ToLocation = request.ToLocation;
+                TransportResponseModel.Date = request.Date;
+                TransportResponseModel.TransportCount = request.TransportCount;
+                TransportResponseModel.TypeName = SelectrdType.TypeName;
+
+                TransportClose.Invoke(request, TransportResponseModel);
+                await App.Current!.MainPage!.Navigation.PopAsync();
+
+                UserDialogs.Instance.HideHud();
+                IsBusy = true;
+            }
+            
         }
 
         [RelayCommand]

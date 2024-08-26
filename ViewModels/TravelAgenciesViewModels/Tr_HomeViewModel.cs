@@ -41,7 +41,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
 
         async void Init()
         {
-            await GetRequestes();
+            //await GetRequestes();
         }
 
         #region Methods

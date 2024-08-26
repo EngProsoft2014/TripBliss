@@ -14,10 +14,11 @@ namespace TripBliss.ViewModels
         public BaseViewModel()
         {
             Lang = Preferences.Default.Get("Lan", "en");
+            IsBusy = true;
         }
 
         [ObservableProperty]
-        public bool isBusy;
+        public bool isBusy = true;
 
         [ObservableProperty]
         public string lang;

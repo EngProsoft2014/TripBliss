@@ -87,7 +87,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         #region Methods
         async void GetLocation()
         {
-            IsBusy = true;
+            
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -101,12 +101,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
 
-            IsBusy = false;
+           
         }
 
         async void GetHotels()
         {
-            IsBusy = true;
+            
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -120,13 +120,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
 
-            IsBusy = false;
+            
         }
 
         async void GetMeals()
         {
-            IsBusy = true;
-
+            
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 string UserToken = await _service.UserToken();
@@ -139,12 +138,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
 
-            IsBusy = false;
+            
         }
 
         async void GetRoomTypes()
         {
-            IsBusy = true;
+            
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -158,12 +157,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
 
-            IsBusy = false;
+            
         }
 
         async void GetRoomViews()
         {
-            IsBusy = true;
+            
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -177,7 +176,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
 
-            IsBusy = false;
+            
         } 
         #endregion
 
@@ -202,24 +201,51 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         async Task BackClicked()
         {
-            await App.Current.MainPage.Navigation.PopAsync();
+            await App.Current!.MainPage!.Navigation.PopAsync();
         }
 
         [RelayCommand]
         async Task ApplyHotelClicked(RequestTravelAgencyHotelRequest request)
         {
-            if (SelectedHotel == null || SelectedHotel?.Id == 0)
+            if (SelectedLocation == null || SelectedLocation?.Id == 0)
+            {
+                var toast = Toast.Make("Please Complete This Field Required : Select Location.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (SelectedHotel == null || SelectedHotel?.Id == 0)
             {
                 var toast = Toast.Make("Please Complete This Field Required : Select Hotel.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
-            //else if (string.IsNullOrEmpty(Login.Password))
-            //{
-
-            //}
+            else if (SelectedRoomView == null || SelectedRoomView?.Id == 0)
+            {
+                var toast = Toast.Make("Please Complete This Field Required : Select Room View.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (SelectedRoomType == null || SelectedRoomType?.Id == 0)
+            {
+                var toast = Toast.Make("Please Complete This Field Required : Select Room Type.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (SelectedMeal == null || SelectedMeal?.Id == 0)
+            {
+                var toast = Toast.Make("Please Complete This Field Required : Select Meal.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (request.RoomCount == 0 )
+            {
+                var toast = Toast.Make("Please Complete This Field Required : Room Count.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (request.CheckIn > request.CheckOut)
+            {
+                var toast = Toast.Make("Arrival date must be less than departure date.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
             else
             {
-                IsBusy = true;
+                
+                IsBusy = false;
                 UserDialogs.Instance.ShowLoading();
 
                 request.HotelId = SelectedHotel!.Id;
@@ -238,7 +264,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 await App.Current!.MainPage!.Navigation.PopAsync();
 
                 UserDialogs.Instance.HideHud();
-                IsBusy = false;
+                IsBusy = true;
             }
 
         }

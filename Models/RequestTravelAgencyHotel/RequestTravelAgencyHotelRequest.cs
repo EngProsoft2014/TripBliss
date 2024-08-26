@@ -27,7 +27,7 @@ namespace TripBliss.Models
                 }
         public DateTime CheckIn { get; set; }
         public DateTime CheckOut { get; set; }
-        public int NumberOfNights { get { return (CheckOut.Day - CheckIn.Day) - 1; } }
+        public int NumberOfNights { get { return (CheckOut - CheckIn).Days - 1; } }
 
         int _RoomCount;
         public string? Notes { get; set; }

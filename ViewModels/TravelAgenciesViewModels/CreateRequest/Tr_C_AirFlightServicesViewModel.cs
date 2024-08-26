@@ -1,5 +1,7 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Controls.UserDialogs.Maui;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -68,7 +70,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         #region Methods
         async void GetAirFlights()
         {
-            IsBusy = true;
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -81,13 +82,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     AirFlights = json;
                 }
             }
-
-            IsBusy = false;
         }
 
         async void GetClasses()
         {
-            IsBusy = true;
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -100,8 +98,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     Classes = json;
                 }
             }
-
-            IsBusy = false;
         }
         #endregion
 
@@ -162,22 +158,67 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             }
         }
         [RelayCommand]
-        void AplyClicked(RequestTravelAgencyAirFlightRequest Request)
+        async void AplyClicked(RequestTravelAgencyAirFlightRequest Request)
         {
+            if (AirFlightRequestModel == null || AirFlightRequestModel?.AirFlightId == 0)
+            {
+                var toast = Toast.Make("Please Complete This Field Required : Select Carrier.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (Request.Date < DateTime.Now)
+            {
+                var toast = Toast.Make("The selected date is less than today's date.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (ClassSelected == null || ClassSelected?.Id == 0)
+            {
+                var toast = Toast.Make("Please Complete This Field Required : Select Class.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (string.IsNullOrEmpty(Request.AirportFrom))
+            {
+                var toast = Toast.Make("Please Complete This Field Required : From Location.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (string.IsNullOrEmpty(Request.AirportTo))
+            {
+                var toast = Toast.Make("Please Complete This Field Required : To Location.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (Request.ETD < Request.ETA)
+            {
+                var toast = Toast.Make("The expected time of departure must be less than the expected time of arrival.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (Request.InfoAdultCount == 0 & Request.InfoChildCount == 0 && Request.InfoInfantCount == 0 )
+            {
+                var toast = Toast.Make("Please Complete This Field Required : Passengers Count.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else
+            {
+                IsBusy = false;
+                UserDialogs.Instance.ShowLoading();
 
-            Request.AirFlightId = AirFlightSelected.Id;
-            AirFlightResponseModel.AirLine = AirFlightSelected.AirLine;
-            Request.ClassAirFlightId = ClassSelected.Id;
-            AirFlightResponseModel.ClassName = ClassSelected.ClassName;
-            AirFlightResponseModel.AirportFrom = Request.AirportFrom;
-            AirFlightResponseModel.AirportTo = Request.AirportTo;
-            AirFlightResponseModel.Date = Request.Date;
-            AirFlightResponseModel.TotalPerson = Request.TotalPerson;
-            AirFlightResponseModel.TotalPerson = Request.TotalPerson = Request.InfoChildCount + Request.InfoAdultCount + Request.InfoInfantCount;
+                Request.AirFlightId = AirFlightSelected.Id;
+                AirFlightResponseModel.AirLine = AirFlightSelected.AirLine;
+                Request.ClassAirFlightId = ClassSelected!.Id;
+                AirFlightResponseModel.ClassName = ClassSelected.ClassName;
+                AirFlightResponseModel.AirportFrom = Request.AirportFrom;
+                AirFlightResponseModel.AirportTo = Request.AirportTo;
+                AirFlightResponseModel.Date = Request.Date;
+                AirFlightResponseModel.TotalPerson = Request.TotalPerson;
+                AirFlightResponseModel.TotalPerson = Request.TotalPerson = Request.InfoChildCount + Request.InfoAdultCount + Request.InfoInfantCount;
 
-            AirFlightClose.Invoke(Request, AirFlightResponseModel);
+                AirFlightClose.Invoke(Request, AirFlightResponseModel);
 
-            App.Current!.MainPage!.Navigation.PopAsync();
+                await App.Current!.MainPage!.Navigation.PopAsync();
+
+                UserDialogs.Instance.HideHud();
+                IsBusy = true;
+            }
+
+            
         }
 
         #endregion

@@ -1,5 +1,7 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Controls.UserDialogs.Maui;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -56,8 +58,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         #region Methods
         async void GetVisas()
         {
-            IsBusy = true;
-
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 string UserToken = await _service.UserToken();
@@ -69,25 +69,39 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     Visas = json;
                 }
             }
-
-            IsBusy = false;
         } 
         #endregion
 
         #region RelayCommand
         [RelayCommand]
-        void Apply(RequestTravelAgencyVisaRequest request)
+        async void Apply(RequestTravelAgencyVisaRequest request)
         {
-            VisaRequestModel!.VisaId = SelectedVisa.Id;
+            if (SelectedVisa == null || SelectedVisa?.Id == 0)
+            {
+                var toast = Toast.Make("Please Complete This Field Required : Select Type of Visa.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (request.PersonCount == 0)
+            {
+                var toast = Toast.Make("Please Complete This Field Required : passengers Count.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            IsBusy = false;
+            UserDialogs.Instance.ShowLoading();
+
+            VisaRequestModel!.VisaId = SelectedVisa!.Id;
             VisaResponseModel!.VisaName = SelectedVisa.VisaName;
             VisaResponseModel!.PersonCount = request.PersonCount;
             VisaClose.Invoke(request, VisaResponseModel);
-            App.Current!.MainPage!.Navigation.PopAsync();
+            await App.Current!.MainPage!.Navigation.PopAsync();
+
+            UserDialogs.Instance.HideHud();
+            IsBusy = true;
         }
         [RelayCommand]
         void BackCLicked()
         {
-            App.Current.MainPage.Navigation.PopAsync();
+            App.Current!.MainPage!.Navigation.PopAsync();
         } 
         #endregion
     }

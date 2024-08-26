@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -55,10 +56,19 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             }
         }
         [RelayCommand]
-        void Aplly(DistributorCompanyResponse model)
+        async void Aplly(DistributorCompanyResponse model)
         {
+            if (SelectedDistributorCompanys!.Count == 0 )
+            {
+                var toast = Toast.Make("Please select at least one distribuitor.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else
+            {
+                await App.Current!.MainPage!.Navigation.PushAsync(new NewRequestPage(new Tr_C_NewRequestViewModel(SelectedDistributorCompanys!, Rep, _service), Rep));
+            }
+
             
-            App.Current!.MainPage!.Navigation.PushAsync(new NewRequestPage(new Tr_C_NewRequestViewModel(SelectedDistributorCompanys!,Rep, _service), Rep));
         }
         #endregion
 

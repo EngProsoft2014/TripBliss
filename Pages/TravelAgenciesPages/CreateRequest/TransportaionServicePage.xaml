@@ -6,6 +6,7 @@
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              xmlns:ex="clr-namespace:TripBliss.Extensions"
              BackgroundColor="White"
+             IsEnabled="{Binding IsBusy}"
              NavigationPage.HasNavigationBar="False"
              Title="TransportaionServicePage">
     <!--<Controls:CustomControl.BindingContext>

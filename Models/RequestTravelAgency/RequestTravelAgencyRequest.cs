@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace TripBliss.Models.RequestTravelAgency
 {
 
     public record RequestTravelAgencyRequest
     {
-        public List<RequestTravelAgencyHotelRequest>? RequestTravelAgencyHotelRequest{ get; set; } = new List<RequestTravelAgencyHotelRequest>();
-        public List<RequestTravelAgencyTransportRequest>? RequestTravelAgencyTransportRequest { get; set; } = new List<RequestTravelAgencyTransportRequest>();
-        public List<RequestTravelAgencyAirFlightRequest>? RequestTravelAgencyAirFlightRequest { get; set; } = new List<RequestTravelAgencyAirFlightRequest>();
-        public List<RequestTravelAgencyVisaRequest>? RequestTravelAgencyVisaRequest { get; set; } = new List<RequestTravelAgencyVisaRequest>();
-        public List<ResponseWithDistributorRequest>? ResponseWithDistributorRequest { get; set; } = new List<ResponseWithDistributorRequest>();
-        public bool IsDelete { get; set; } = false;
+        public List<RequestTravelAgencyHotelRequest>? RequestTravelAgencyHotel { get; set; } = new List<RequestTravelAgencyHotelRequest>();
+        public List<RequestTravelAgencyTransportRequest>? RequestTravelAgencyTransport { get; set; } = new List<RequestTravelAgencyTransportRequest>();
+        public List<RequestTravelAgencyAirFlightRequest>? RequestTravelAgencyAirFlight { get; set; } = new List<RequestTravelAgencyAirFlightRequest>();
+        public List<RequestTravelAgencyVisaRequest>? RequestTravelAgencyVisa{ get; set; } = new List<RequestTravelAgencyVisaRequest>();
+        public List<ResponseWithDistributorRequest>? ResponseWithDistributor { get; set; } = new List<ResponseWithDistributorRequest>();
+
     }
 }
