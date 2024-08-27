@@ -8,8 +8,7 @@
                         xmlns:local="clr-namespace:TripBliss"
              Title="LoginPage"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="White"
-             IsBusy="{Binding IsBusy}">
+             BackgroundColor="White">
     <!--<Controls:CustomControl.BindingContext>
         <vm:LoginViewModel></vm:LoginViewModel>
     </Controls:CustomControl.BindingContext>-->
