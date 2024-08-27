@@ -7,12 +7,23 @@ using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Exceptions;
+using Newtonsoft.Json;
+
 
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 {
     public partial class Tr_C_AirFlightServicesViewModel : BaseViewModel
     {
+        //Test
+        public class AirLines
+        {
+            public string? iata_code { get; set; }
+            public string? name { get; set; }
+            public string? icao_code { get; set; }
+            public string? nameVM { get{ return name + $" ({iata_code})"; } }
+        }
+
         #region prop
         [ObservableProperty]
         RequestTravelAgencyAirFlightRequest airFlightRequestModel = new RequestTravelAgencyAirFlightRequest();
@@ -32,6 +43,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         AirFlightResponse airFlightSelected;
         [ObservableProperty]
         ClassAirFlightResponse classSelected;
+        //Test
+        [ObservableProperty]
+        ObservableCollection<AirLines> lstAirLines = new ObservableCollection<AirLines>();
 
         #endregion
 
@@ -49,7 +63,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             Rep = generic;
             _service = service;
             AirFlightRequestModel!.Date = DateTime.Now;
-            Inti();
+            Init();
         }
         public Tr_C_AirFlightServicesViewModel(RequestTravelAgencyAirFlightResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
@@ -57,19 +71,48 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             AirFlightResponseModel = model;
             _service = service;
             AirFlightRequestModel!.Date = DateTime.Now;
-            Inti();
+            Init();
 
 
         }
         #endregion
 
+
+
+
         #region Methods
-        async Task Inti()
+        async void Init()
         {
             UserDialogs.Instance.ShowLoading();
+            //Test
+            await GetAirLinesInfo();
             await Task.WhenAll(GetAirFlights(),GetClasses());
             UserDialogs.Instance.HideHud();
         }
+
+        //Test
+        public async Task GetAirLinesInfo()
+        {
+            var client = new HttpClient();
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri("https://iata-and-icao-codes.p.rapidapi.com/airlines"),
+                Headers =
+                        {
+                            { "x-rapidapi-key", "6fccfd7c71msh7934183b73f2229p11ce70jsn0061fc86c83f" },
+                            { "x-rapidapi-host", "iata-and-icao-codes.p.rapidapi.com" },
+                        },
+            };
+            using (var response = await client.SendAsync(request))
+            {
+                response.EnsureSuccessStatusCode();
+                var json = await response.Content.ReadAsStringAsync();
+                var body = JsonConvert.DeserializeObject<ObservableCollection<AirLines>>(json);
+                LstAirLines = body!;
+            }
+        }
+
         async Task GetAirFlights()
         {
 
@@ -162,6 +205,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         async Task ApplyClicked(RequestTravelAgencyAirFlightRequest Request)
         {
+
+            //Test
+            AirFlightSelected = AirFlights.FirstOrDefault()!;
+
             if (AirFlightSelected == null || AirFlightSelected?.Id == 0)
             {
                 var toast = Toast.Make("Please Complete This Field Required : Select Carrier.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TripBliss.Pages.TravelAgenciesPages.CreateRequest.AirFlightServicePage"
-             xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest"
-             xmlns:Controls="clr-namespace:TripBliss.Controls"
-             xmlns:ex="clr-namespace:TripBliss.Extensions"
-             BackgroundColor="White"
-             IsEnabled="{Binding IsBusy}"
-             NavigationPage.HasNavigationBar="False"
-             Title="AirFlightServicePage">
+                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                         x:Class="TripBliss.Pages.TravelAgenciesPages.CreateRequest.AirFlightServicePage"
+                         xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest"
+                         xmlns:Controls="clr-namespace:TripBliss.Controls"
+                         xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+                         xmlns:ex="clr-namespace:TripBliss.Extensions"
+                         BackgroundColor="White"
+                         IsEnabled="{Binding IsBusy}"
+                         NavigationPage.HasNavigationBar="False"
+                         Title="AirFlightServicePage">
     <!--<Controls:CustomControl.BindingContext>
         <vm:AirFlightServicesViewModel></vm:AirFlightServicesViewModel>
     </Controls:CustomControl.BindingContext>-->
@@ -33,9 +34,24 @@
                     <StackLayout Orientation="Vertical" Padding="15,15,15,25">
                         <Label Text="{ex:Translate Name=lblCarrier-AirService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                            <!--<Entry Keyboard="Text" TextColor="Black" FontSize="14" FontFamily="OpenSansRegular"
-                               Text="{Binding Moddel.Carrier}"></Entry>-->
-                            <Picker TextColor="Black" FontSize="14" ItemsSource="{Binding AirFlights}" ItemDisplayBinding="{Binding AirLine}" SelectedItem="{Binding AirFlightSelected}"></Picker>
+                            <!--<Picker TextColor="Black" FontSize="14" ItemsSource="{Binding AirFlights}" ItemDisplayBinding="{Binding AirLine}" SelectedItem="{Binding AirFlightSelected}"></Picker>-->
+                            <editors:SfComboBox x:Name="comboBox" 
+                                                  ItemsSource="{Binding LstAirLines}"
+
+                                                  FontSize="14" HeightRequest="40"
+                                                  NoResultsFoundText="No Result found"
+                                                  Placeholder="AirLines"
+                                                  SelectionTextHighlightColor="White"
+                                                  PlaceholderColor="Gray"
+                                                  DropDownItemHeight="30" 
+                                                  IsFilteringEnabled="True"
+                                                  IsEditable="True"
+                                                  IsClearButtonVisible="True"
+                                                  TextHighlightMode="MultipleOccurrence"
+                                                  HighlightedTextColor="Green"
+                                                  HighlightedTextFontAttributes="Bold"
+                                                  DisplayMemberPath="nameVM">
+                            </editors:SfComboBox>
                         </Border>
                         <StackLayout Orientation="Horizontal" Spacing="35">
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
