@@ -2,15 +2,11 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Exceptions;
 
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
@@ -53,8 +49,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             Rep = generic;
             _service = service;
             AirFlightRequestModel!.Date = DateTime.Now;
-            GetAirFlights();
-            GetClasses();
+            Inti();
         }
         public Tr_C_AirFlightServicesViewModel(RequestTravelAgencyAirFlightResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
@@ -62,13 +57,20 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             AirFlightResponseModel = model;
             _service = service;
             AirFlightRequestModel!.Date = DateTime.Now;
-            GetAirFlights();
-            GetClasses();
+            Inti();
+
+
         }
         #endregion
 
         #region Methods
-        async void GetAirFlights()
+        async Task Inti()
+        {
+            UserDialogs.Instance.ShowLoading();
+            await Task.WhenAll(GetAirFlights(),GetClasses());
+            UserDialogs.Instance.HideHud();
+        }
+        async Task GetAirFlights()
         {
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
@@ -84,7 +86,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             }
         }
 
-        async void GetClasses()
+        async Task GetClasses()
         {
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
@@ -165,7 +167,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 var toast = Toast.Make("Please Complete This Field Required : Select Carrier.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
-            else if (Request.Date < DateTime.Now)
+            else if (Request.Date.Date < DateTime.Now.Date)
             {
                 var toast = Toast.Make("The selected date is less than today's date.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();

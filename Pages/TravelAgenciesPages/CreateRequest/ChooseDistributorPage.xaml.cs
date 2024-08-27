@@ -28,6 +28,11 @@ public partial class ChooseDistributorPage : Controls.CustomControl
         chkBoxSelectAll.IsChecked = Model.SelectedDistributorCompanys!.Count == Model.DistributorCompanys!.Count ? true : false;       
     }
 
+    private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        Model.Search(e.NewTextValue);
+    }
+
     //private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     //{
     //    if (sender is Border border)

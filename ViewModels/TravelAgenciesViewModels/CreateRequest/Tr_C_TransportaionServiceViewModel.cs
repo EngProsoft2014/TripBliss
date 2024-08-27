@@ -52,9 +52,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             Rep = generic;
             _service = service;
             TransportRequestModel!.Date = DateOnly.FromDateTime(DateTime.Now);
-            GetCarBrands();
-            GetCarModels();
-            GetCarTypes();
+            Init();
         }
         public Tr_C_TransportaionServiceViewModel(RequestTravelAgencyTransportResponse model , IGenericRepository generic , Services.Data.ServicesService service)
         {
@@ -62,14 +60,18 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             TransportResponseModel = model;
             TransportRequestModel!.Date = DateOnly.FromDateTime(DateTime.Now);
             _service = service;
-            GetCarBrands();
-            GetCarModels();
-            GetCarTypes();
+            Init();
         }
         #endregion
 
         #region Methods
-        async void GetCarBrands()
+        async Task Init()
+        {
+            UserDialogs.Instance.ShowLoading();
+            await Task.WhenAll(GetCarBrands(), GetCarModels(), GetCarTypes());
+            UserDialogs.Instance.HideHud();
+        }
+        async Task GetCarBrands()
         {
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
@@ -85,7 +87,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             }
         }
 
-        async void GetCarModels()
+        async Task GetCarModels()
         {
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
@@ -102,7 +104,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         }
 
-        async void GetCarTypes()
+        async Task GetCarTypes()
         {
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)

@@ -292,8 +292,8 @@
             </StackLayout>
         </ScrollView>
 
-        <Button VerticalOptions="End" Text="{ex:Translate Name=btnApply-Forgot}" FontSize="16" FontAttributes="Bold" BackgroundColor="#2fa562" TextColor="White" Margin="20,0" Command="{Binding AddToRequestCommand}"
-                CommandParameter="{Binding RequestTravelAgency}"></Button>
+        <Button VerticalOptions="End" Text="{ex:Translate Name=btnConfirm-NewRequest}" FontSize="16" FontAttributes="Bold" BackgroundColor="#2fa562"
+                TextColor="White" Margin="20,0" Command="{Binding AddToRequestCommand}" CommandParameter="{Binding RequestTravelAgency}"></Button>
     </StackLayout>
 
 </Controls:CustomControl>

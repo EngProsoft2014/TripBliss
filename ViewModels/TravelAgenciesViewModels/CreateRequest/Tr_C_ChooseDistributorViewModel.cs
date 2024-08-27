@@ -18,6 +18,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
     {
         #region Prop
         [ObservableProperty]
+        public ObservableCollection<DistributorCompanyResponse>? orginalDistributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
+        [ObservableProperty]
         public ObservableCollection<DistributorCompanyResponse>? distributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
         [ObservableProperty]
         public ObservableCollection<DistributorCompanyResponse>? selectedDistributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
@@ -35,7 +37,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             Rep = GenericRep;
             _service = service;
             DistributorCompanys = List;
+            OrginalDistributorCompanys = List;
             DistributorCompanys.ForEach(f => f.IsSelected = false);
+            OrginalDistributorCompanys.ForEach(f => f.IsSelected = false);
         } 
         #endregion
 
@@ -77,6 +81,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 await App.Current!.MainPage!.Navigation.PushAsync(new NewRequestPage(new Tr_C_NewRequestViewModel(SelectedDistributorCompanys!, Rep, _service), Rep));
             }   
         }
+
+        
+        
         #endregion
 
         public async void SelectAll(bool IsSelected,string Way, DistributorCompanyResponse? model)
@@ -127,6 +134,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             {
                 var toast = Toast.Make("Sorry Don't have distribuitor.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
+            }
+        }
+
+        public void Search(string Name)
+        {
+            if (Name != null)
+            {
+                DistributorCompanys = new ObservableCollection<DistributorCompanyResponse>(OrginalDistributorCompanys!.Where(a => a.CompanyName!.Contains(Name)).ToList());
             }
         }
     }

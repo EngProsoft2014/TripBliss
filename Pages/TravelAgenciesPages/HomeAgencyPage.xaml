@@ -63,7 +63,6 @@
                                                 <StackLayout Orientation="Horizontal">
                                                     <VerticalStackLayout Padding="10" Spacing="5">
                                                         <Label Text="{Binding RugestName}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
-                                                        <Label Text="{Binding DistName}" FontSize="12" TextColor="Gray"></Label>
                                                         <Label Text="{Binding Services}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
                                                         <Label Margin="0,3,0,0">
                                                             <Label.FormattedText>
@@ -76,22 +75,10 @@
                                                     </VerticalStackLayout>
                                                     <VerticalStackLayout VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand"
                                                                          Margin="0,0,10,20" Spacing="1">
-                                                        <Label>
-                                                            <Label.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Text="All Distributors :" FontSize="10" TextColor="Gray"></Span>
-                                                                    <Span Text="5" FontSize="10" TextColor="Gray"></Span>
-                                                                </FormattedString>
-                                                            </Label.FormattedText>
-                                                        </Label>
-                                                        <Label>
-                                                            <Label.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Text="Active Distributors :" FontSize="10" TextColor="Gray"></Span>
-                                                                    <Span Text="2" FontSize="10" TextColor="Gray"></Span>
-                                                                </FormattedString>
-                                                            </Label.FormattedText>
-                                                        </Label>
+                                                        <Label Text="{Binding ResponseWithDistributorCount , StringFormat='All Distributors {0}'}" 
+                                                               FontSize="10" TextColor="Gray"></Label>
+                                                        <Label Text="{Binding ResponseWithDistributorCount , StringFormat='Active Distributors {0}'}" 
+                                                               FontSize="10" TextColor="Gray"></Label>
                                                     </VerticalStackLayout>
                                                 </StackLayout>
                                                 <Border.GestureRecognizers>

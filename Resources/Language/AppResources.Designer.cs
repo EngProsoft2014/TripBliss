@@ -88,6 +88,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        internal static string btnConfirm_NewRequest {
+            get {
+                return ResourceManager.GetString("btnConfirm-NewRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Distributors.
         /// </summary>
         internal static string btnDistributors {

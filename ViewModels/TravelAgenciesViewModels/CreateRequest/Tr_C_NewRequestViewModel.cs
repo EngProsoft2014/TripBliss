@@ -265,6 +265,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             }
             else
             {
+                string RequestName = await App.Current!.MainPage!.DisplayPromptAsync("Info","Pleas Add Request Name");
                 RequestTravelAgency = new RequestTravelAgencyRequest();
 
                 RequestTravelAgency.RequestTravelAgencyHotel = LstTravelAgencyHotelRequest.ToList();

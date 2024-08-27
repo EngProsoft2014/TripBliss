@@ -13,6 +13,7 @@ using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Models.Visa;
 
+
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 {
     public partial class Tr_C_VisaServiceViewModel : BaseViewModel
@@ -44,19 +45,26 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             Rep = generic;
             _service = service;
-            GetVisas();
+            Init();
         }
         public Tr_C_VisaServiceViewModel(RequestTravelAgencyVisaResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
             visaResponseModel = model;
-            GetVisas();
+            Init();
         }
         #endregion
 
         #region Methods
-        async void GetVisas()
+        async Task Init()
+        {
+            UserDialogs.Instance.ShowLoading();
+            await Task.WhenAll(GetVisas());
+            UserDialogs.Instance.HideHud();
+        }
+         
+        async Task GetVisas()
         {
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {

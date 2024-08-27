@@ -97,8 +97,9 @@
                         <Shadow Brush="LightGray" Offset="8,8" Opacity="0.8"></Shadow>
                     </Border.Shadow>
                 </Border>
-                <Button VerticalOptions="EndAndExpand" Text="{ex:Translate Name=btnApply-Forgot}" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="20,0,20,20"
-                    Command="{Binding ApplyCommand}" CommandParameter="{Binding TransportRequestModel}"></Button>
+                <Button VerticalOptions="EndAndExpand" Text="{ex:Translate Name=btnApply-Forgot}" BackgroundColor="#2fa562" TextColor="White"
+                        Margin="20,0,20,20" Command="{Binding ApplyCommand}" CommandParameter="{Binding TransportRequestModel}"
+                        FontSize="16" FontAttributes="Bold"></Button>
             </StackLayout>
         </ScrollView>
     </StackLayout>

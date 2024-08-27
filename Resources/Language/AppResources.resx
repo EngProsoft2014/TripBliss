@@ -384,4 +384,7 @@
   <data name="lblLocation-HotelSevice" xml:space="preserve">
     <value>Location</value>
   </data>
+  <data name="btnConfirm-NewRequest" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
 </root>
