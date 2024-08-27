@@ -96,21 +96,28 @@
                                         </Image.Source>
                                     </Image>
                                 </HorizontalStackLayout>
-                                <ImageButton WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
+                                <!--<ImageButton WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
                                     <ImageButton.Source>
                                         <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
                                     </ImageButton.Source>
-                                </ImageButton>
+                                </ImageButton>-->
                             </VerticalStackLayout>
                         </StackLayout>
                         <Border.Triggers>
-                            <DataTrigger TargetType="Border" Binding="{Binding Source={x:Reference chkBoxSelectAll},Path=IsChecked}" Value="True">
+                            <DataTrigger TargetType="Border" Binding="{Binding Source={x:Reference chkBoxSelectAll},Path=IsChecked}" Value="True" >
+                                <Setter Property="Border.Stroke" Value="Green" />
+                                <Setter Property="Border.StrokeThickness" Value="3" />
+                                <Setter Property="Border.BackgroundColor" Value="Transparent" />
+                            </DataTrigger>
+                            <DataTrigger TargetType="Border" Binding="{Binding IsSelected}" Value="True" >
                                 <Setter Property="Border.Stroke" Value="Green" />
                                 <Setter Property="Border.StrokeThickness" Value="3" />
                                 <Setter Property="Border.BackgroundColor" Value="Transparent" />
                             </DataTrigger>
                         </Border.Triggers>
-                        <Border.Resources>
+
+                        
+                        <!--<Border.Resources>
                             <ResourceDictionary>
                                 <Style TargetType="Border">
                                     <Setter Property="VisualStateManager.VisualStateGroups">
@@ -133,10 +140,11 @@
                                     </Setter>
                                 </Style>
                             </ResourceDictionary>
-                        </Border.Resources>
+                        </Border.Resources>-->
                         <Border.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_ChooseDistributorViewModel}}, Path= SelectionCommand}" CommandParameter="{Binding}" 
-                                                  Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" 
+                                                  Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_ChooseDistributorViewModel}}, Path= SelectionCommand}" CommandParameter="{Binding}" 
+                                                  ></TapGestureRecognizer>
                         </Border.GestureRecognizers>
                     </Border>
                 </DataTemplate>

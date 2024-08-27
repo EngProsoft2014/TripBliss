@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using TripBliss.Helpers;
 using static TripBliss.Helpers.ErrorsResult;
+using static SQLite.SQLite3;
 
 
 namespace TripBliss.Helpers
@@ -21,6 +22,7 @@ namespace TripBliss.Helpers
         Task<string> GetStrAsync<T>(string uri, string authToken = "");
         Task<Models.ApplicationUserResponse> GetLoginAsync<T>(string uri, string authToken = "");
         Task<T> PostAsync<T>(string uri, T data, string authToken = "");
+        Task<string> PostEAsync(string uri, string authToken = "");
         Task<(TR, ErrorResult?)> PostTRAsync<T, TR>(string uri, T data, string authToken = "");
         Task<string> PostStrAsync<T>(string uri, T data, string authToken = "");
         Task<string> PostDataAsync<T>(string uri, T data, string authToken = "");
@@ -219,6 +221,71 @@ namespace TripBliss.Helpers
                 throw;
             }
         }
+
+        public async Task<string> PostEAsync(string uri, string authToken = "")
+        {
+            try
+            {
+                HttpClient httpClient = CreateHttpClient(Utility.ServerUrl + uri);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+
+                string jsonResult = string.Empty;
+
+                var responseMessage = await Policy
+                    .Handle<WebException>(ex =>
+                    {
+                        Debug.WriteLine($"{ex.GetType().Name + " : " + ex.Message}");
+                        return true;
+                    })
+                    .WaitAndRetryAsync
+                    (
+                        5,
+                        retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+                    )
+                    .ExecuteAsync(async () => await httpClient.PostAsync(Utility.ServerUrl + uri, null));
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    if (responseMessage.ReasonPhrase == "No Content")
+                    {
+                        return "No Content";
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                }
+
+                if (responseMessage.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    await App.Current!.MainPage!.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
+                }
+
+                if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    await App.Current!.MainPage!.DisplayAlert("Warning", "Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates\r\nthat the requested resource requires authentication.", "OK");
+                    //await StartData.UserLogout();
+                }
+
+                jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+                if (responseMessage.ReasonPhrase == "No Content")
+                {
+                    return "No Content";
+                }
+                else
+                {
+                    return "";
+                }
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"{e.GetType().Name + " : " + e.Message}");
+                throw;
+            }
+        }
+
 
         public async Task<T> PostAsync<T>(string uri, T data, string authToken = "")
         {
@@ -824,7 +891,7 @@ namespace TripBliss.Helpers
 
         public async Task<string> DeleteStrItemAsync(string uri, string authToken = "")
         {
-            var httpLient = new HttpClient();
+            HttpClient httpLient = CreateHttpClient(authToken);
             HttpResponseMessage response = new HttpResponseMessage();
             httpLient.DefaultRequestHeaders.Accept.Clear();
             //httpLient.DefaultRequestHeaders.Add("authorization", "Basic ");
@@ -837,12 +904,12 @@ namespace TripBliss.Helpers
 
                 if (response.StatusCode == HttpStatusCode.Forbidden)
                 {
-                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
+                    await App.Current!.MainPage!.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
                 }
 
                 if (response.StatusCode == HttpStatusCode.Unauthorized)
                 {
-                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates\r\nthat the requested resource requires authentication.", "OK");
+                    await App.Current!.MainPage!.DisplayAlert("Warning", "Equivalent to HTTP status 401. System.Net.HttpStatusCode.Unauthorized indicates\r\nthat the requested resource requires authentication.", "OK");
                     //await StartData.UserLogout();
                 }
 

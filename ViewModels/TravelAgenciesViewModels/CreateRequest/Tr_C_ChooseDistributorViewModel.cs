@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Syncfusion.Maui.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,6 +21,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         public ObservableCollection<DistributorCompanyResponse>? distributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
         [ObservableProperty]
         public ObservableCollection<DistributorCompanyResponse>? selectedDistributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
+
         #endregion
 
         #region Services
@@ -33,6 +35,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             Rep = GenericRep;
             _service = service;
             DistributorCompanys = List;
+            DistributorCompanys.ForEach(f => f.IsSelected = false);
         } 
         #endregion
 
@@ -50,10 +53,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             if (SelectedDistributorCompanys!.Contains(model))
             {
                 SelectedDistributorCompanys!.Remove(model);
+                DistributorCompanys!.Where(x => x.Id == model.Id).FirstOrDefault()!.IsSelected = false;
+                model.IsSelected = false;
             }
             else
             {
                 SelectedDistributorCompanys!.Add(model);
+                DistributorCompanys!.Where(x => x.Id == model.Id).FirstOrDefault()!.IsSelected = true;
+                model.IsSelected = true;
             }
         }
 
@@ -72,17 +79,48 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         }
         #endregion
 
-        public async void SelectAll(bool IsSelected)
+        public async void SelectAll(bool IsSelected,string Way, DistributorCompanyResponse? model)
         {
             if (DistributorCompanys?.Count > 0) 
             {
                 if (IsSelected)
                 {
                     SelectedDistributorCompanys = new ObservableCollection<DistributorCompanyResponse>(DistributorCompanys!);
+                    DistributorCompanys.ForEach(f => f.IsSelected = true);
                 }
                 else
                 {
-                    SelectedDistributorCompanys!.Clear();
+                    if(model != null)
+                    {
+                        SelectedDistributorCompanys!.Clear();
+                        DistributorCompanys.ForEach(f => f.IsSelected = false);
+
+                        model.IsSelected = true;
+                        SelectedDistributorCompanys.Add(model);
+                        DistributorCompanys.Where(_ => _.Id == model.Id).FirstOrDefault()!.IsSelected = true;
+                    }
+                    else
+                    {
+                        if(DistributorCompanys.Count == SelectedDistributorCompanys!.Count)
+                        {
+                            if(Way == "all")
+                            {
+                                SelectedDistributorCompanys!.Clear();
+                                DistributorCompanys.ForEach(f => f.IsSelected = false);
+                            }
+                        }
+                        else
+                        {
+                            if (Way == "signal")
+                            {
+                                SelectedDistributorCompanys!.Clear();
+                                SelectedDistributorCompanys = new ObservableCollection<DistributorCompanyResponse>(DistributorCompanys!.Where(x=> x.IsSelected == true).ToList());
+                                //DistributorCompanys.ForEach(f => f.IsSelected = true);
+                            }
+
+                        }
+
+                    }           
                 }
             }
             else

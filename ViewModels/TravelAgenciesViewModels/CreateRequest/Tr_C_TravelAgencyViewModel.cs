@@ -1,6 +1,8 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
+using Syncfusion.Maui.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,9 +23,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
     {
         #region Prop
         [ObservableProperty]
-        public ObservableCollection<DistributorCompanyResponse>? distributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
+        public ObservableCollection<DistributorCompanyResponse> distributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
         [ObservableProperty]
-        public ObservableCollection<TravelAgencywithDistributorsResponse>? favouriteDistributorCompanys = new ObservableCollection<TravelAgencywithDistributorsResponse>();
+        public ObservableCollection<TravelAgencywithDistributorsResponse> favouriteDistributorCompanys = new ObservableCollection<TravelAgencywithDistributorsResponse>();
         [ObservableProperty]
         public int indexTap;
         #endregion
@@ -48,7 +50,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             UserDialogs.Instance.ShowLoading();
             await GetDistributors();
-            //await GetFavouiterDistributors();
+            await GetFavouiterDistributors();
             UserDialogs.Instance.HideHud();
         }
         async Task GetDistributors()
@@ -93,7 +95,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             IsBusy = false;
         }
 
-        async Task AddToFavouiter(string DistributorId)
+        async Task AddToFavouiter(TravelAgencywithDistributorsRequest DistributorModel)
         {
             IsBusy = true;
 
@@ -102,18 +104,19 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
                 string UserToken = await _service.UserToken();
 
-                var json = await Rep.PostTRAsync<string, TravelAgencywithDistributorsResponse>(ApiConstants.AddfavouritesApi + $"{id}/TravelAgencywithDistributors", DistributorId, UserToken);
+                var json = await Rep.PostTRAsync<TravelAgencywithDistributorsRequest, TravelAgencywithDistributorsResponse>(ApiConstants.AddfavouritesApi + $"{id}/TravelAgencywithDistributors", DistributorModel, UserToken);
 
                 if (json.Item1 != null)
                 {
                     FavouriteDistributorCompanys!.Add(json.Item1!);
+                    DistributorCompanys.Where(x => x.Id == json.Item1!.DistributorCompanyId).FirstOrDefault()!.Favourite = true;
                 }
             }
 
             IsBusy = false;
         }
 
-        async Task<string?> DeletFavouiterDistributors(string RecordId)
+        async Task<string?> DeletFavouiterDistributors(int RecordId)
         {
             IsBusy = true;
 
@@ -122,13 +125,17 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
                 string UserToken = await _service.UserToken();
 
-                string json = await Rep.DeleteStrItemAsync(ApiConstants.DeletefavouritesApi + $"{id}/TravelAgencywithDistributors/{RecordId}", UserToken);
+                string json = await Rep.PostEAsync(ApiConstants.DeletefavouritesApi + $"{id}/TravelAgencywithDistributors/{RecordId}", UserToken);
 
-                if (json != null)
+                if (!string.IsNullOrEmpty(json) && json == "No Content")
                 {
                     return json;
                 }
-                
+                else
+                {
+                    var toast = Toast.Make("Failed favourite delete", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
             }
 
             IsBusy = false;
@@ -140,7 +147,22 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         async Task AddRequest()
         {
-            await App.Current!.MainPage!.Navigation.PushAsync(new ChooseDistributorPage(new Tr_C_ChooseDistributorViewModel(Rep,_service,DistributorCompanys), Rep));
+            if(IndexTap == 0)
+            {
+                await App.Current!.MainPage!.Navigation.PushAsync(new ChooseDistributorPage(new Tr_C_ChooseDistributorViewModel(Rep, _service, DistributorCompanys), Rep));
+            }
+            else
+            {
+                ObservableCollection<DistributorCompanyResponse> LstDisModel = new ObservableCollection<DistributorCompanyResponse>();
+                FavouriteDistributorCompanys.ForEach(f =>
+                {
+                    if(f.DistributorCompany != null)
+                    {
+                        LstDisModel.Add(f.DistributorCompany!);
+                    } 
+                });
+                await App.Current!.MainPage!.Navigation.PushAsync(new ChooseDistributorPage(new Tr_C_ChooseDistributorViewModel(Rep, _service, LstDisModel), Rep));
+            }
         }
 
         [RelayCommand]
@@ -154,20 +176,47 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             if (Item != null)
             {
-                
-                if (Item.Favourite)
+                TravelAgencywithDistributorsRequest obj = new TravelAgencywithDistributorsRequest
+                {
+                    DistributorCompanyId = Item.Id,
+                };
+
+
+                if (Item.Favourite!.Value)
                 {
                     TravelAgencywithDistributorsResponse? Model = FavouriteDistributorCompanys!.FirstOrDefault(a => a.DistributorCompany!.Id! == Item.Id!);
-                    string? Stat = await DeletFavouiterDistributors(Item.Id!);
-                    if(!string.IsNullOrEmpty(Stat) && Stat == "true" && Model != null)
+                    if (Model != null)
                     {
-                        FavouriteDistributorCompanys!.Remove(Model!);
+                        string? Stat = await DeletFavouiterDistributors(Model!.Id);
+                        if (!string.IsNullOrEmpty(Stat) && Stat == "No Content")
+                        {
+                            FavouriteDistributorCompanys!.Remove(Model!);
+                            DistributorCompanys.Where(x => x.Id == Model.DistributorCompanyId).FirstOrDefault()!.Favourite = false;
+                        }
                     }
-                    
                 }
                 else
                 {
-                    await AddToFavouiter(Item.Id!);
+                    await AddToFavouiter(obj);
+                }
+            }
+        }
+
+        [RelayCommand]
+        async Task HeartClickedFavourite(TravelAgencywithDistributorsResponse model)
+        {
+            if (!string.IsNullOrEmpty(model.DistributorCompanyId) && model.DistributorCompany != null)
+            {
+                TravelAgencywithDistributorsRequest obj = new TravelAgencywithDistributorsRequest
+                {
+                    DistributorCompanyId = model.DistributorCompanyId,
+                };
+
+                string? Stat = await DeletFavouiterDistributors(model.Id);
+                if (!string.IsNullOrEmpty(Stat) && Stat == "No Content")
+                {
+                    FavouriteDistributorCompanys!.Remove(model);
+                    DistributorCompanys.Where(x => x.Id == model.DistributorCompanyId).FirstOrDefault()!.Favourite = false;
                 }
             }
         }

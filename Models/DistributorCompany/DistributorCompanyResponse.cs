@@ -1,6 +1,8 @@
-﻿namespace TripBliss.Models
+﻿using System.ComponentModel;
+
+namespace TripBliss.Models
 {
-    public record DistributorCompanyResponse
+    public record DistributorCompanyResponse : INotifyPropertyChanged
     {
 
         public string? Id { get; set; }
@@ -17,6 +19,42 @@
         public string? StripePassword { get; set; }
         public string? StripeSecretKey { get; set; }
         public int Review { get; set; }
-        public bool Favourite { get; set; }
+
+        bool? _Favourite;
+        public bool? Favourite
+        {
+            get
+            {
+                return _Favourite;
+            }
+            set
+            {
+                _Favourite = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Favourite"));
+                }
+            }
+        }
+
+        bool _IsSelected;
+        public bool IsSelected
+        {
+            get
+            {
+                return _IsSelected;
+            }
+            set
+            {
+                _IsSelected = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("IsSelected"));
+                }
+            }
+        }
+        
+
+        public event PropertyChangedEventHandler? PropertyChanged;
     };
 }

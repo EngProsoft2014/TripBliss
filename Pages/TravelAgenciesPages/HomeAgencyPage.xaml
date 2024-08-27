@@ -6,6 +6,7 @@
              xmlns:dvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest"
              xmlns:Tvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.Offer"
              xmlns:ex="clr-namespace:TripBliss.Extensions"
+                        xmlns:model="clr-namespace:TripBliss.Models"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              x:Class="TripBliss.Pages.TravelAgenciesPages.HomeAgencyPage"
              Title="HomeAgencyPage"
@@ -182,12 +183,31 @@
                                                                                         </Image.Source>
                                                                                     </Image>
                                                                                 </HorizontalStackLayout>
-                                                                                <ImageButton WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand" CommandParameter="{Binding .}"
-                                                                                             Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=HeartClickedCommand}">
+                                                                                <Image VerticalOptions="StartAndExpand">
+                                                                                    <Image.Source>
+                                                                                        <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray" Size="20"></FontImageSource>
+                                                                                    </Image.Source>
+                                                                                    <Image.GestureRecognizers>
+                                                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=HeartClickedCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                                                    </Image.GestureRecognizers>
+                                                                                    <Image.Triggers>
+                                                                                        <DataTrigger TargetType="Image" Binding="{Binding Favourite}" Value="True">
+                                                                                            <Setter Property="Source">
+                                                                                                <Setter.Value>
+                                                                                                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Red" Size="20"></FontImageSource>
+                                                                                                </Setter.Value>
+                                                                                            </Setter>
+                                                                                        </DataTrigger>
+                                                                                    </Image.Triggers>
+                                                                                </Image>
+                                                                                <!--<ImageButton WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand"
+                                                                                             Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=HeartClickedCommand}" CommandParameter="{Binding .}">
                                                                                     <ImageButton.Source>
                                                                                         <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
                                                                                     </ImageButton.Source>
-                                                                                </ImageButton>
+                                                                                    
+                                                                                </ImageButton>-->
+                                                                               
                                                                             </VerticalStackLayout>
                                                                         </StackLayout>
                                                                     </Border>
@@ -238,12 +258,29 @@
                                                                                         </ImageButton.Source>
                                                                                     </ImageButton>
                                                                                 </HorizontalStackLayout>
-                                                                                <ImageButton WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand" CommandParameter="{Binding .}"
-                                                                                             Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=HeartClickedCommand}">
+                                                                                <!--<ImageButton WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand" 
+                                                                                             Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=HeartClickedCommand}" CommandParameter="{Binding}">
                                                                                     <ImageButton.Source>
                                                                                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Red"></FontImageSource>
                                                                                     </ImageButton.Source>
-                                                                                </ImageButton>
+                                                                                </ImageButton>-->
+                                                                                <Image VerticalOptions="StartAndExpand">
+                                                                                    <Image.Source>
+                                                                                        <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Red" Size="20"></FontImageSource>
+                                                                                    </Image.Source>
+                                                                                    <Image.GestureRecognizers>
+                                                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=HeartClickedFavouriteCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                                                    </Image.GestureRecognizers>
+                                                                                    <Image.Triggers>
+                                                                                        <DataTrigger TargetType="Image" Binding="{Binding Favourite}" Value="True">
+                                                                                            <Setter Property="Source">
+                                                                                                <Setter.Value>
+                                                                                                    <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray" Size="20"></FontImageSource>
+                                                                                                </Setter.Value>
+                                                                                            </Setter>
+                                                                                        </DataTrigger>
+                                                                                    </Image.Triggers>
+                                                                                </Image>
                                                                             </VerticalStackLayout>
                                                                         </StackLayout>
                                                                     </Border>
