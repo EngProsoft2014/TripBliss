@@ -11,7 +11,7 @@
         public int CarModelId { get; set; }
         public string? ModelName { get; set; }
         public DateOnly Date { get; set; }
-        public TimeOnly Time { get; set; }
+        public TimeSpan Time { get; set; }
         public string? FromLocation { get; set; }
         public string? ToLocation { get; set; }
         public int TransportCount { get; set; }

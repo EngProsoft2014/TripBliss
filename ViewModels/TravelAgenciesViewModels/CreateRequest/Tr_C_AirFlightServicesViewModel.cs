@@ -71,7 +71,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             AirFlightResponseModel = model;
             _service = service;
             AirFlightRequestModel!.Date = DateTime.Now;
-            Init();
+            Init(model);
 
 
         }
@@ -81,12 +81,36 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
 
         #region Methods
-        async void Init()
+        async void Init(RequestTravelAgencyAirFlightResponse model)
         {
             UserDialogs.Instance.ShowLoading();
             //Test
             await GetAirLinesInfo();
             await Task.WhenAll(GetAirFlights(),GetClasses());
+            UserDialogs.Instance.HideHud();
+            AirFlightRequestModel = new RequestTravelAgencyAirFlightRequest
+            {
+                Date = model.Date,
+                AirportFrom = model.AirportFrom,
+                AirportTo = model.AirportTo,
+                ETA = model.ETA,
+                ETD = model.ETD,
+                InfoAdultCount = model.InfoAdultCount,
+                InfoChildCount = model.InfoChildCount,
+                InfoInfantCount = model.InfoInfantCount,
+                Notes = model.Notes
+
+            };
+            AirFlightSelected = AirFlights.FirstOrDefault(a=>a.Id == model.AirFlightId)!;
+            ClassSelected = Classes.FirstOrDefault(a=>a.Id == model.ClassAirFlightId)!;
+        }
+
+        async void Init()
+        {
+            UserDialogs.Instance.ShowLoading();
+            //Test
+            await GetAirLinesInfo();
+            await Task.WhenAll(GetAirFlights(), GetClasses());
             UserDialogs.Instance.HideHud();
         }
 
@@ -249,14 +273,20 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 IsBusy = false;
                 UserDialogs.Instance.ShowLoading();
 
-                Request.AirFlightId = AirFlightSelected!.Id;
+                Request.AirFlightId = AirFlightResponseModel.AirFlightId = AirFlightSelected!.Id;
                 AirFlightResponseModel.AirLine = AirFlightSelected.AirLine;
-                Request.ClassAirFlightId = ClassSelected!.Id;
+                Request.ClassAirFlightId = AirFlightResponseModel.ClassAirFlightId = ClassSelected!.Id;
                 AirFlightResponseModel.ClassName = ClassSelected.ClassName;
                 AirFlightResponseModel.AirportFrom = Request.AirportFrom;
                 AirFlightResponseModel.AirportTo = Request.AirportTo;
                 AirFlightResponseModel.Date = Request.Date;
                 AirFlightResponseModel.Notes = Request.Notes;
+                AirFlightResponseModel.ETA = Request.ETA;
+                AirFlightResponseModel.ETD = Request.ETD;
+                AirFlightResponseModel.InfoAdultCount = Request.InfoAdultCount;
+                AirFlightResponseModel.InfoChildCount = Request.InfoChildCount;
+                AirFlightResponseModel.InfoInfantCount = Request.InfoInfantCount;
+                
                 AirFlightResponseModel.TotalPerson = Request.TotalPerson;
                 AirFlightResponseModel.TotalPerson = Request.TotalPerson = Request.InfoChildCount + Request.InfoAdultCount + Request.InfoInfantCount;
 

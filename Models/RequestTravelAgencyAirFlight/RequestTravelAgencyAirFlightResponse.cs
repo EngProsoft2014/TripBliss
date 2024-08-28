@@ -11,8 +11,8 @@
         public DateTime Date { get; set; }
         public string? AirportFrom { get; set; }
         public string? AirportTo { get; set; }
-        public TimeOnly ETA { get; set; }
-        public TimeOnly ETD { get; set; }
+        public TimeSpan ETA { get; set; }
+        public TimeSpan ETD { get; set; }
         public int InfoAdultCount { get; set; }
         public int InfoChildCount { get; set; }
         public int InfoInfantCount { get; set; }

@@ -72,17 +72,34 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             HotelResponseModel = model;
             HotelRequestModel!.CheckIn = DateTime.Now;
             HotelRequestModel!.CheckOut = DateTime.Now.AddDays(7);
-            Init();
+            Init(model);
         }
         #endregion
 
         #region Methods
 
+        async void Init(RequestTravelAgencyHotelResponse model)
+        {
+            await RunManyMethods();
+            HotelRequestModel = new RequestTravelAgencyHotelRequest
+            {
+                CheckIn = model.CheckIn,
+                CheckOut = model.CheckOut,
+                Notes = model.Notes,
+                RoomCount = model.RoomCount,
+                
+            };
+            SelectedHotel = Hoteles.FirstOrDefault(a=>a.Id == model.HotelId)!;
+            SelectedLocation = Locations.FirstOrDefault(a=>a.Id == model.LocationId)!;
+            SelectedRoomType = RoomTypes.FirstOrDefault(a=>a.Id == model.RoomTypeId)!;
+            SelectedRoomView = RoomViews.FirstOrDefault(a=>a.Id == model.RoomViewId)!;
+            SelectedMeal = Meals.FirstOrDefault(a=>a.Id == model.MealId)!;
+        }
+
         async void Init()
         {
             await RunManyMethods();
         }
-
         async Task RunManyMethods()
         {
             UserDialogs.Instance.ShowLoading();
@@ -253,7 +270,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 var toast = Toast.Make("Please select checkin date today or after that.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
-            else if (request.CheckIn > request.CheckOut)
+            else if (request.CheckIn.Date > request.CheckOut.Date)
             {
                 var toast = Toast.Make("Arrival date must be less than departure date.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
@@ -264,11 +281,11 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 IsBusy = false;
                 UserDialogs.Instance.ShowLoading();
 
-                request.HotelId = SelectedHotel!.Id;
-                request.RoomViewId = SelectedRoomView!.Id;
-                request.MealId = SelectedMeal!.Id;
-                request.LocationId = SelectedLocation!.Id;
-                request.RoomTypeId = SelectedRoomType!.Id;
+                request.HotelId = HotelResponseModel!.HotelId = SelectedHotel!.Id;
+                request.RoomViewId = HotelResponseModel!.RoomViewId = SelectedRoomView!.Id;
+                request.MealId = HotelResponseModel!.MealId = SelectedMeal!.Id;
+                request.LocationId = HotelResponseModel!.LocationId = SelectedLocation!.Id;
+                request.RoomTypeId = HotelResponseModel!.RoomTypeId = SelectedRoomType!.Id;
 
                 HotelResponseModel!.HotelName = SelectedHotel!.HotelName;
                 HotelResponseModel!.CheckIn = request.CheckIn;
@@ -276,6 +293,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 HotelResponseModel!.Notes = request.Notes;
                 HotelResponseModel!.RoomViewName = SelectedRoomView!.RoomViewName;
                 HotelResponseModel!.LocationName = SelectedLocation!.LocationName;
+                HotelResponseModel!.RoomCount = request.RoomCount;
 
 
                 HotelClose.Invoke(request, HotelResponseModel);

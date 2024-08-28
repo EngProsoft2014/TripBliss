@@ -60,11 +60,31 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             TransportResponseModel = model;
             TransportRequestModel!.Date = DateOnly.FromDateTime(DateTime.Now);
             _service = service;
-            Init();
+            Init(model);
         }
         #endregion
 
         #region Methods
+        async Task Init(RequestTravelAgencyTransportResponse model)
+        {
+            UserDialogs.Instance.ShowLoading();
+            await Task.WhenAll(GetCarBrands(), GetCarModels(), GetCarTypes());
+            UserDialogs.Instance.HideHud();
+
+            TransportRequestModel = new RequestTravelAgencyTransportRequest
+            {
+                FromLocation = model.FromLocation,
+                ToLocation = model.ToLocation,
+                Date = model.Date,
+                Notes = model.Notes,
+                Time = model.Time,
+                TransportCount = model.TransportCount,
+            };
+            SelectrdBrand = CarBrands.FirstOrDefault(a=>a.Id == model.CarBrandId)!;
+            SelectrdModel = CarModel.FirstOrDefault(a=>a.Id == model.CarModelId)!;
+            SelectrdType = CarTypes.FirstOrDefault(a=>a.Id == model.CarTypeId)!;
+
+        }
         async Task Init()
         {
             UserDialogs.Instance.ShowLoading();
@@ -174,6 +194,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 request.CarBrandId = SelectrdBrand!.Id;
                 request.CarTypeId = SelectrdType!.Id;
                 request.CarModelId = SelectrdModel!.Id;
+
+                TransportResponseModel!.CarBrandId = SelectrdBrand!.Id;
+                TransportResponseModel.CarTypeId = SelectrdType!.Id;
+                TransportResponseModel.CarModelId = SelectrdModel!.Id;
                 TransportResponseModel!.FromLocation = request.FromLocation;
                 TransportResponseModel.ToLocation = request.ToLocation;
                 TransportResponseModel.Date = request.Date;

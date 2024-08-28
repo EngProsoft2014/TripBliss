@@ -93,12 +93,15 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             var vm = new Tr_C_HotelServiceViewModel(Rep, _service);
             vm.HotelClose += (HoteltRequest, HotelResponse) =>
             {
-                UserDialogs.Instance.ShowLoading();
+                try
+                {
+                    LstTravelAgencyHotelRequest.Add(HoteltRequest);
+                    LstTravelAgencyHotelResponse.Add(HotelResponse);
+                } catch (Exception ex)
+                {
 
-                LstTravelAgencyHotelRequest.Add(HoteltRequest);
-                LstTravelAgencyHotelResponse.Add(HotelResponse);
-
-                UserDialogs.Instance.HideHud();
+                }
+                
             };
             var page = new HotelServicePage(vm, Rep);
 
@@ -107,15 +110,19 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void SelectHotel(RequestTravelAgencyHotelResponse model)
         {
+            var index = LstTravelAgencyHotelResponse.IndexOf(model);
             var vm = new Tr_C_HotelServiceViewModel(model, Rep, _service);
             vm.HotelClose += (HoteltRequest, HotelResponse) =>
             {
-                UserDialogs.Instance.ShowLoading();
+                if (HotelResponse != model)
+                {
+                    LstTravelAgencyHotelResponse.Remove(model);
+                    LstTravelAgencyHotelRequest.Remove(LstTravelAgencyHotelRequest[index]);
 
-                LstTravelAgencyHotelRequest.Add(HoteltRequest);
-                LstTravelAgencyHotelResponse.Add(HotelResponse);
-
-                UserDialogs.Instance.HideHud();
+                    LstTravelAgencyHotelRequest.Add(HoteltRequest);
+                    LstTravelAgencyHotelResponse.Add(HotelResponse);
+                }
+                
             };
             var page = new HotelServicePage(vm, Rep);
             page.BindingContext = vm;
@@ -136,27 +143,34 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             var vm = new Tr_C_TransportaionServiceViewModel(Rep, _service);
             vm.TransportClose += (TransportRequest, TransportResponse) =>
             {
-                UserDialogs.Instance.ShowLoading();
+                try
+                {
+                    LstTravelAgencyTransportRequest.Add(TransportRequest);
+                    LstTravelAgencyTransportResponse.Add(TransportResponse);
+                }
+                catch (Exception ex)
+                {
 
-                LstTravelAgencyTransportRequest.Add(TransportRequest);
-                LstTravelAgencyTransportResponse.Add(TransportResponse);
-
-                UserDialogs.Instance.HideHud();
+                }
             };
             App.Current!.MainPage!.Navigation.PushAsync(new TransportaionServicePage(vm, Rep));
         }
         [RelayCommand]
         void SelectTransportaion(RequestTravelAgencyTransportResponse model)
         {
+            var index = LstTravelAgencyTransportResponse.IndexOf(model);
             var vm = new Tr_C_TransportaionServiceViewModel(model, Rep, _service);
             vm.TransportClose += (TransportRequest, TransportResponse) =>
             {
-                UserDialogs.Instance.ShowLoading();
+                if (TransportResponse != model)
+                {
+                    LstTravelAgencyTransportResponse.Remove(model);
+                    LstTravelAgencyTransportRequest.Remove(LstTravelAgencyTransportRequest[index]);
 
-                LstTravelAgencyTransportRequest.Add(TransportRequest);
-                LstTravelAgencyTransportResponse.Add(TransportResponse);
-
-                UserDialogs.Instance.HideHud();
+                    LstTravelAgencyTransportRequest.Add(TransportRequest);
+                    LstTravelAgencyTransportResponse.Add(TransportResponse);
+                }
+                
             };
             var page = new TransportaionServicePage(vm, Rep);
             App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -176,12 +190,17 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             var pageView = new Tr_C_AirFlightServicesViewModel(Rep, _service);
             pageView.AirFlightClose += (AirFlightRequest, AirFlightResponse) =>
             {
-                UserDialogs.Instance.ShowLoading();
+                try
+                {
+                    LstTravelAgencyAirFlightResponse.Add(AirFlightResponse);
+                    LstTravelAgencyAirFlightRequest.Add(AirFlightRequest);
+                }
+                catch (Exception ex)
+                {
 
-                LstTravelAgencyAirFlightResponse.Add(AirFlightResponse);
-                LstTravelAgencyAirFlightRequest.Add(AirFlightRequest);
+                }
+                
 
-                UserDialogs.Instance.HideHud();
             };
 
             App.Current!.MainPage!.Navigation.PushAsync(new AirFlightServicePage(pageView));
@@ -189,16 +208,19 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void SelectAirFlight(RequestTravelAgencyAirFlightResponse Response)
         {
+            var index = LstTravelAgencyAirFlightResponse.IndexOf(Response);
             var vm = new Tr_C_AirFlightServicesViewModel(Response, Rep, _service);
             vm.AirFlightClose += (AirFlightRequest, AirFlightResponse) =>
             {
-                UserDialogs.Instance.ShowLoading();
+                if (AirFlightResponse != Response)
+                {
+                    LstTravelAgencyAirFlightResponse.Remove(Response);
+                    LstTravelAgencyAirFlightRequest.Remove(LstTravelAgencyAirFlightRequest[index]);
 
-                //AirFlightRequest.Id = AirFlightResponse.Id;
-                LstTravelAgencyAirFlightResponse.Add(AirFlightResponse);
-                LstTravelAgencyAirFlightRequest.Add(AirFlightRequest);
-
-                UserDialogs.Instance.HideHud();
+                    LstTravelAgencyAirFlightResponse.Add(AirFlightResponse);
+                    LstTravelAgencyAirFlightRequest.Add(AirFlightRequest);
+                }
+                
             };
             var page = new AirFlightServicePage(vm);
             App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -219,9 +241,16 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             var vm = new Tr_C_VisaServiceViewModel(Rep, _service);
             vm.VisaClose += (VisaRequest, VisaResponse) =>
             {
+                try
+                {
+                    LstTravelAgencyVisaRequest.Add(VisaRequest);
+                    LstTravelAgencyVisaResponse.Add(VisaResponse);
+                }
+                catch(Exception ex)
+                {
 
-                LstTravelAgencyVisaRequest.Add(VisaRequest);
-                LstTravelAgencyVisaResponse.Add(VisaResponse);
+                }
+                
             };
 
             App.Current!.MainPage!.Navigation.PushAsync(new VisaServicePage(vm, Rep));

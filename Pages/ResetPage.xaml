@@ -6,7 +6,6 @@
              xmlns:ex="clr-namespace:TripBliss.Extensions"
              x:Class="TripBliss.Pages.ResetPage"
              Title="ResetPage"
-             IsBusy="{Binding IsBusy}"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False">
     <Controls:CustomControl.BindingContext>

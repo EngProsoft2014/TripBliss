@@ -72,7 +72,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             };
             SelectedVisa = Visas.FirstOrDefault(x => x.Id == model.VisaId)!;
         }
-         
+
+        async Task Init()
+        {
+            UserDialogs.Instance.ShowLoading();
+            await Task.WhenAll(GetVisas());
+            UserDialogs.Instance.HideHud();
+        }
+
         async Task GetVisas()
         {
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
