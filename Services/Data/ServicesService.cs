@@ -9,6 +9,7 @@ using Akavache;
 using System.Reactive.Linq;
 using TripBliss.Models;
 using TripBliss.Constants;
+using CommunityToolkit.Maui.Alerts;
 
 
 
@@ -79,6 +80,11 @@ namespace TripBliss.Services.Data
                             await BlobCache.LocalMachine.InsertObject(UserTokenServiceKey, loginModel.Item1.Token!, DateTimeOffset.Now.AddMinutes(30));
 
                             return loginModel.Item1.Token!;
+                        }
+                        else
+                        {
+                            var toast = Toast.Make("Warning, Your password is invalid", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            await toast.Show();
                         }
                     }
                 }

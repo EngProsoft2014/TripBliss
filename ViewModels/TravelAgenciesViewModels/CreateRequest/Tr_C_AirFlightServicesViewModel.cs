@@ -256,6 +256,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 AirFlightResponseModel.AirportFrom = Request.AirportFrom;
                 AirFlightResponseModel.AirportTo = Request.AirportTo;
                 AirFlightResponseModel.Date = Request.Date;
+                AirFlightResponseModel.Notes = Request.Notes;
                 AirFlightResponseModel.TotalPerson = Request.TotalPerson;
                 AirFlightResponseModel.TotalPerson = Request.TotalPerson = Request.InfoChildCount + Request.InfoAdultCount + Request.InfoInfantCount;
 

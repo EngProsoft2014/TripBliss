@@ -62,8 +62,8 @@
                                             <Border StrokeShape="RoundRectangle 20" Margin="20,10">
                                                 <StackLayout Orientation="Horizontal">
                                                     <VerticalStackLayout Padding="10" Spacing="5">
-                                                        <Label Text="{Binding RugestName}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
-                                                        <Label Text="{Binding Services}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                                        <Label Text="{Binding RequestName}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+                                                        <Label Text="{Binding ChoosenServices}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
                                                         <Label Margin="0,3,0,0">
                                                             <Label.FormattedText>
                                                                 <FormattedString>
@@ -77,7 +77,7 @@
                                                                          Margin="0,0,10,20" Spacing="1">
                                                         <Label Text="{Binding ResponseWithDistributorCount , StringFormat='All Distributors {0}'}" 
                                                                FontSize="10" TextColor="Gray"></Label>
-                                                        <Label Text="{Binding ResponseWithDistributorCount , StringFormat='Active Distributors {0}'}" 
+                                                        <Label Text="{Binding TotalPriceDisAcceptCount , StringFormat='Active Distributors {0}'}" 
                                                                FontSize="10" TextColor="Gray"></Label>
                                                     </VerticalStackLayout>
                                                 </StackLayout>
@@ -639,6 +639,9 @@
                                         </Image.Source>
                                     </Image>
                                     <Label Text="{ex:Translate Name=lblExit-More}" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                    <HorizontalStackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectExitCommand}"></TapGestureRecognizer>
+                                    </HorizontalStackLayout.GestureRecognizers>
                                 </HorizontalStackLayout>
                             </StackLayout>
                             <ContentView.Triggers>

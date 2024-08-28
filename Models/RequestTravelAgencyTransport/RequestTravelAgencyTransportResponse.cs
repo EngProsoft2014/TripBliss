@@ -16,5 +16,6 @@
         public string? ToLocation { get; set; }
         public int TransportCount { get; set; }
         public bool IsDriver { get; set; }
+        public string? Notes { get; set; }
     }
 }

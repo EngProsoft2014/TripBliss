@@ -1,8 +1,7 @@
-﻿namespace TripBliss.Models.ResponseWithDistributorsVisa
+﻿namespace TripBliss.Models
 {
-    public record ResponseWithDistributorsVisaResponse
+    public record ResponseWithDistributorVisaRequest
     {
-        public int Id { get; set; }
         public int ResponseWithDistributorId { get; set; }
         public int RequestTravelAgencyVisaId { get; set; }
         public int Price { get; set; }
@@ -12,4 +11,3 @@
         public bool AcceptAgen { get; set; }
     }
 }
-

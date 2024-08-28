@@ -13,7 +13,7 @@
         <vm:ResetViewModel></vm:ResetViewModel>
     </Controls:CustomControl.BindingContext>
     <VerticalStackLayout Margin="30">
-        <Image Source="https://iconape.com/wp-content/png_logo_vector/bntu.png" WidthRequest="140" ></Image>
+        <Image Source="logosmall.svg" WidthRequest="300" Margin="20"></Image>
         <Border StrokeShape="RoundRectangle 20" StrokeThickness="1" Stroke="Gray" VerticalOptions="Center" Margin="0,40,0,0">
             <VerticalStackLayout Margin="20" Spacing="20">
                 <Image>

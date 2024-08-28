@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Helpers;
+using TripBliss.Pages;
 using TripBliss.Pages.MainPopups;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels
@@ -24,6 +25,19 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         async Task SelectLanguage()
         {
             await MopupService.Instance.PushAsync(new LanguagePopup(Rep, _service));
+        }
+
+        [RelayCommand]
+        [Obsolete]
+        Task SelectExit()
+        {
+            Action action = async() =>
+            {
+                Preferences.Default.Clear();
+                await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service)));
+            };
+            Controls.StaticMember.ShowSnackBar("Do you want to Logout?", Controls.StaticMember.SnackBarColor, Controls.StaticMember.SnackBarTextColor, action);
+            return Task.CompletedTask;
         }
     }
 }

@@ -12,7 +12,6 @@ using Microsoft.VisualBasic;
 using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
 using TripBliss.Helpers;
 using TripBliss.Constants;
-using TripBliss.Models.RequestTravelAgency;
 using CommunityToolkit.Maui.Alerts;
 using TripBliss.Pages.TravelAgenciesPages;
 using Controls.UserDialogs.Maui;
@@ -29,7 +28,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         #region prop
 
         [ObservableProperty]
-        RequestTravelAgencyRequest requestTravelAgency= new RequestTravelAgencyRequest();
+        RequestTravelAgencyRequest requestTravelAgency = new RequestTravelAgencyRequest();
         [ObservableProperty]
         ObservableCollection<DistributorCompanyResponse> distributorCompanies;
         [ObservableProperty]
@@ -52,13 +51,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [ObservableProperty]
         ObservableCollection<RequestTravelAgencyTransportResponse> lstTravelAgencyTransportResponse = new ObservableCollection<RequestTravelAgencyTransportResponse>();
 
-        
 
         #endregion
 
         readonly Services.Data.ServicesService _service;
         readonly IGenericRepository Rep;
-        public Tr_C_NewRequestViewModel(IGenericRepository GenericRep , Services.Data.ServicesService service)
+        public Tr_C_NewRequestViewModel(IGenericRepository GenericRep, Services.Data.ServicesService service)
         {
             Rep = GenericRep;
             _service = service;
@@ -68,7 +66,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             //LoadAirFlightData();
             //LoadVisaData();
         }
-        public Tr_C_NewRequestViewModel(ObservableCollection<DistributorCompanyResponse> distributors , IGenericRepository GenericRep , Services.Data.ServicesService service)
+        public Tr_C_NewRequestViewModel(ObservableCollection<DistributorCompanyResponse> distributors, IGenericRepository GenericRep, Services.Data.ServicesService service)
         {
             Rep = GenericRep;
             Lang = Preferences.Default.Get("Lan", "en");
@@ -103,13 +101,13 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 UserDialogs.Instance.HideHud();
             };
             var page = new HotelServicePage(vm, Rep);
-            
+
             App.Current!.MainPage!.Navigation.PushAsync(page);
         }
         [RelayCommand]
         void SelectHotel(RequestTravelAgencyHotelResponse model)
         {
-            var vm = new Tr_C_HotelServiceViewModel(model,Rep,_service);
+            var vm = new Tr_C_HotelServiceViewModel(model, Rep, _service);
             vm.HotelClose += (HoteltRequest, HotelResponse) =>
             {
                 UserDialogs.Instance.ShowLoading();
@@ -119,7 +117,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
                 UserDialogs.Instance.HideHud();
             };
-            var page = new HotelServicePage(vm,Rep);
+            var page = new HotelServicePage(vm, Rep);
             page.BindingContext = vm;
             App.Current!.MainPage!.Navigation.PushAsync(page);
         }
@@ -145,12 +143,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
                 UserDialogs.Instance.HideHud();
             };
-            App.Current!.MainPage!.Navigation.PushAsync(new TransportaionServicePage(vm,Rep));
+            App.Current!.MainPage!.Navigation.PushAsync(new TransportaionServicePage(vm, Rep));
         }
         [RelayCommand]
         void SelectTransportaion(RequestTravelAgencyTransportResponse model)
         {
-            var vm = new Tr_C_TransportaionServiceViewModel(model,Rep, _service);
+            var vm = new Tr_C_TransportaionServiceViewModel(model, Rep, _service);
             vm.TransportClose += (TransportRequest, TransportResponse) =>
             {
                 UserDialogs.Instance.ShowLoading();
@@ -160,7 +158,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
                 UserDialogs.Instance.HideHud();
             };
-            var page = new TransportaionServicePage(vm,Rep);
+            var page = new TransportaionServicePage(vm, Rep);
             App.Current!.MainPage!.Navigation.PushAsync(page);
         }
         [RelayCommand]
@@ -182,7 +180,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
                 LstTravelAgencyAirFlightResponse.Add(AirFlightResponse);
                 LstTravelAgencyAirFlightRequest.Add(AirFlightRequest);
-                
+
                 UserDialogs.Instance.HideHud();
             };
 
@@ -218,15 +216,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void AddVisa()
         {
-            var vm = new Tr_C_VisaServiceViewModel( Rep, _service);
+            var vm = new Tr_C_VisaServiceViewModel(Rep, _service);
             vm.VisaClose += (VisaRequest, VisaResponse) =>
             {
-                UserDialogs.Instance.ShowLoading();
 
                 LstTravelAgencyVisaRequest.Add(VisaRequest);
                 LstTravelAgencyVisaResponse.Add(VisaResponse);
-
-                UserDialogs.Instance.HideHud();
             };
 
             App.Current!.MainPage!.Navigation.PushAsync(new VisaServicePage(vm, Rep));
@@ -234,17 +229,23 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void SelectVisa(RequestTravelAgencyVisaResponse model)
         {
-            var vm = new Tr_C_VisaServiceViewModel(model,Rep, _service);
+            var index = LstTravelAgencyVisaResponse.IndexOf(model);
+            var vm = new Tr_C_VisaServiceViewModel(model, Rep, _service);
+
             vm.VisaClose += (VisaRequest, VisaResponse) =>
             {
-                UserDialogs.Instance.ShowLoading();
+                if (model != VisaResponse)
+                {
+                    LstTravelAgencyVisaResponse.Remove(model);
+                    LstTravelAgencyVisaRequest.Remove(LstTravelAgencyVisaRequest[index]);
 
-                LstTravelAgencyVisaRequest.Add(VisaRequest);
-                LstTravelAgencyVisaResponse.Add(VisaResponse);
+                    LstTravelAgencyVisaRequest.Add(VisaRequest);
+                    LstTravelAgencyVisaResponse.Add(VisaResponse);
+                }
 
-                UserDialogs.Instance.HideHud();
             };
-            var page = new VisaServicePage(vm,Rep);
+
+            var page = new VisaServicePage(vm, Rep);
             App.Current!.MainPage!.Navigation.PushAsync(page);
         }
         [RelayCommand]
@@ -258,7 +259,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         async Task AddToRequest()
         {
-            if (LstTravelAgencyHotelRequest.Count ==0 & LstTravelAgencyTransportRequest.Count == 0 & LstTravelAgencyAirFlightRequest.Count == 0 & LstTravelAgencyVisaRequest.Count == 0)
+            if (LstTravelAgencyHotelRequest.Count == 0 & LstTravelAgencyTransportRequest.Count == 0 & LstTravelAgencyAirFlightRequest.Count == 0 & LstTravelAgencyVisaRequest.Count == 0)
             {
                 var toast = Toast.Make("Please add at least one service.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
@@ -266,41 +267,57 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             else
             {
                 string RequestName = await App.Current!.MainPage!.DisplayPromptAsync("Complete info", "Add Request Name, Please");
-                RequestTravelAgency = new RequestTravelAgencyRequest();
-
-                RequestTravelAgency.RequestTravelAgencyHotel = LstTravelAgencyHotelRequest.ToList();
-                RequestTravelAgency.RequestTravelAgencyTransport = LstTravelAgencyTransportRequest.ToList();
-                RequestTravelAgency.RequestTravelAgencyAirFlight = LstTravelAgencyAirFlightRequest.ToList();
-                RequestTravelAgency.RequestTravelAgencyVisa = LstTravelAgencyVisaRequest.ToList();
-
-                DistributorCompanies.ForEach(s => DistributorRequests.Add(new ResponseWithDistributorRequest { DistributorCompanyId = s.Id }));
-                RequestTravelAgency.ResponseWithDistributor = DistributorRequests.ToList();
-
-                IsBusy = false;
-
-                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                if (string.IsNullOrEmpty(RequestName))
                 {
+                    var toast = Toast.Make("Add Request name is required.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
+                else if (RequestName.Length < 2 || RequestName.Length > 16)
+                {
+                    var toast = Toast.Make("The request name is required to count from 3 to 15 letters", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
+                else
+                {
+                    RequestTravelAgency = new RequestTravelAgencyRequest();
 
-                    string UserToken = await _service.UserToken();
+                    RequestTravelAgency.RequestName = RequestName;
+                    RequestTravelAgency.RequestTravelAgencyHotel = LstTravelAgencyHotelRequest.ToList();
+                    RequestTravelAgency.RequestTravelAgencyTransport = LstTravelAgencyTransportRequest.ToList();
+                    RequestTravelAgency.RequestTravelAgencyAirFlight = LstTravelAgencyAirFlightRequest.ToList();
+                    RequestTravelAgency.RequestTravelAgencyVisa = LstTravelAgencyVisaRequest.ToList();
 
-                    string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
-                    var json = await Rep.PostTRAsync<RequestTravelAgencyRequest, RequestTravelAgencyResponse>(ApiConstants.AddRequestApi + $"{id}/RequestTravelAgency", RequestTravelAgency, UserToken);
+                    DistributorCompanies.ForEach(s => DistributorRequests.Add(new ResponseWithDistributorRequest { DistributorCompanyId = s.Id }));
+                    RequestTravelAgency.ResponseWithDistributor = DistributorRequests.ToList();
 
-                    if (json.Item1 != null)
+                    IsBusy = false;
+
+                    if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                     {
-                        var toast = Toast.Make("Successfully for Add Request", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                        await toast.Show();
 
-                        await App.Current!.MainPage!.Navigation.PushAsync(new HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service));
+                        string UserToken = await _service.UserToken();
+
+                        string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
+                        var json = await Rep.PostTRAsync<RequestTravelAgencyRequest, RequestTravelAgencyResponse>(ApiConstants.AddRequestApi + $"{id}/RequestTravelAgency", RequestTravelAgency, UserToken);
+
+                        if (json.Item1 != null)
+                        {
+                            var toast = Toast.Make("Successfully for Add Request", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            await toast.Show();
+
+                            Controls.StaticMember.WayOfTab = 0;
+                            await App.Current!.MainPage!.Navigation.PushAsync(new HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service));
+                        }
+                        else
+                        {
+                            var toast = Toast.Make($"Warning, {json.Item2}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            await toast.Show();
+                        }
                     }
-                    else
-                    {
-                        var toast = Toast.Make($"Warning, {json.Item2}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                        await toast.Show();
-                    }
+
+                    IsBusy = true;
                 }
 
-                IsBusy = true;
             }
         }
 

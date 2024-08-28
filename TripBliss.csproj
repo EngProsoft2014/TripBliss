@@ -57,6 +57,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Pages\DistributorsPages\PopupPages\**" />
+	  <AndroidResource Remove="Pages\TravelAgenciesPages\PopupPages\**" />
+	  <Compile Remove="Pages\DistributorsPages\PopupPages\**" />
+	  <Compile Remove="Pages\TravelAgenciesPages\PopupPages\**" />
+	  <EmbeddedResource Remove="Pages\DistributorsPages\PopupPages\**" />
+	  <EmbeddedResource Remove="Pages\TravelAgenciesPages\PopupPages\**" />
+	  <MauiCss Remove="Pages\DistributorsPages\PopupPages\**" />
+	  <MauiCss Remove="Pages\TravelAgenciesPages\PopupPages\**" />
+	  <MauiXaml Remove="Pages\DistributorsPages\PopupPages\**" />
+	  <MauiXaml Remove="Pages\TravelAgenciesPages\PopupPages\**" />
+	  <None Remove="Pages\DistributorsPages\PopupPages\**" />
+	  <None Remove="Pages\TravelAgenciesPages\PopupPages\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\AppIcon\logo.svg" />
 	  <None Remove="Resources\Fonts\Almarai-Regular.ttf" />
 	  <None Remove="Resources\Fonts\ElMessiri-Bold.ttf" />
@@ -87,11 +102,6 @@
 		<PackageReference Include="Syncfusion.Maui.DataGrid" Version="26.2.8" />
 		<PackageReference Include="Syncfusion.Maui.Inputs" Version="26.2.8" />
 		<PackageReference Include="Syncfusion.Maui.TabView" Version="24.2.9" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Pages\DistributorsPages\PopupPages\" />
-	  <Folder Include="Pages\TravelAgenciesPages\PopupPages\" />
 	</ItemGroup>
 
 	<ItemGroup>

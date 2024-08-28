@@ -273,8 +273,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 HotelResponseModel!.HotelName = SelectedHotel!.HotelName;
                 HotelResponseModel!.CheckIn = request.CheckIn;
                 HotelResponseModel!.CheckOut = request.CheckOut;
+                HotelResponseModel!.Notes = request.Notes;
                 HotelResponseModel!.RoomViewName = SelectedRoomView!.RoomViewName;
                 HotelResponseModel!.LocationName = SelectedLocation!.LocationName;
+
 
                 HotelClose.Invoke(request, HotelResponseModel);
                 await App.Current!.MainPage!.Navigation.PopAsync();

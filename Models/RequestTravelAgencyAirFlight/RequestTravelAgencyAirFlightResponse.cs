@@ -17,5 +17,6 @@
         public int InfoChildCount { get; set; }
         public int InfoInfantCount { get; set; }
         public int TotalPerson { get; set; }
+        public string? Notes { get; set; }
     }
 }

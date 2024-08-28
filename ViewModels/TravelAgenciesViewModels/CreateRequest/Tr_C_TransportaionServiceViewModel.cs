@@ -179,6 +179,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 TransportResponseModel.Date = request.Date;
                 TransportResponseModel.TransportCount = request.TransportCount;
                 TransportResponseModel.TypeName = SelectrdType.TypeName;
+                TransportResponseModel.Notes = request.Notes;
 
                 TransportClose.Invoke(request, TransportResponseModel);
                 await App.Current!.MainPage!.Navigation.PopAsync();

@@ -207,11 +207,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             if (!string.IsNullOrEmpty(model.DistributorCompanyId) && model.DistributorCompany != null)
             {
-                TravelAgencywithDistributorsRequest obj = new TravelAgencywithDistributorsRequest
-                {
-                    DistributorCompanyId = model.DistributorCompanyId,
-                };
-
                 string? Stat = await DeletFavouiterDistributors(model.Id);
                 if (!string.IsNullOrEmpty(Stat) && Stat == "No Content")
                 {

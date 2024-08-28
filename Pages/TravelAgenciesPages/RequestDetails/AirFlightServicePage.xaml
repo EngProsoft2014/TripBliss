@@ -33,20 +33,20 @@
                         <Label Text="{ex:Translate Name=lblCarrier-AirService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                             <Entry Keyboard="Text" TextColor="Black" FontSize="14" FontFamily="OpenSansRegular" IsReadOnly="True"
-                               Text="{Binding Moddel.Carrier}"></Entry>
+                               Text="{Binding AirFlightResponseModel.AirLine}"></Entry>
                         </Border>
                         <StackLayout Orientation="Horizontal" Spacing="35">
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{ex:Translate Name=lblDate-TranService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <DatePicker FontSize="13" TextColor="Black" Date="{Binding Moddel.Date}"></DatePicker>
+                                    <DatePicker FontSize="13" TextColor="Black" Date="{Binding AirFlightResponseModel.Date}"></DatePicker>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{ex:Translate Name=lblClass-AirService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                     <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
-                                   Text="{Binding Moddel.Class}"></Entry>
+                                   Text="{Binding AirFlightResponseModel.ClassName}"></Entry>
                                 </Border>
                             </VerticalStackLayout>
                         </StackLayout>
@@ -55,14 +55,14 @@
                                 <Label Text="{ex:Translate  Name=lblFrom-TranService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                     <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
-                                       Text="{Binding Moddel.From}"></Entry>
+                                       Text="{Binding AirFlightResponseModel.AirportFrom}"></Entry>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{ex:Translate Name=lblTo-TranService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                     <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
-                                       Text="{Binding Moddel.To}"></Entry>
+                                       Text="{Binding AirFlightResponseModel.AirportTo}"></Entry>
                                 </Border>
                             </VerticalStackLayout>
                         </StackLayout>
@@ -71,14 +71,14 @@
                                 <Label Text="{ex:Translate Name=lblETD-AirService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                     <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
-                                       Text="{Binding Moddel.ETD}"></Entry>
+                                       Text="{Binding AirFlightResponseModel.ETD}"></Entry>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{ex:Translate Name=lblETA-AirService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                     <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
-                                       Text="{Binding Moddel.ETA}"></Entry>
+                                       Text="{Binding AirFlightResponseModel.ETA}"></Entry>
                                 </Border>
                             </VerticalStackLayout>
 
@@ -88,7 +88,7 @@
                                 <Label Text="{ex:Translate Name=lblAdult-AirService}" TextColor="#2fa562" FontSize="14" HorizontalTextAlignment="Center"></Label>
                                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="CenterAndExpand" Padding="10,5" Stroke="Gray"
                                     VerticalOptions="CenterAndExpand">
-                                    <Label Text="{Binding Adult}" TextColor="#2fa562" FontSize="20" VerticalTextAlignment="Center" 
+                                    <Label Text="{Binding AirFlightResponseModel.InfoAdultCount}" TextColor="#2fa562" FontSize="20" VerticalTextAlignment="Center" 
                                        FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
                                 </Border>
                             </VerticalStackLayout>
@@ -96,7 +96,7 @@
                                 <Label Text="{ex:Translate Name=lblChild-AirService}" TextColor="#2fa562" FontSize="14" HorizontalTextAlignment="Center"></Label>
                                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="CenterAndExpand" Padding="10,5" Stroke="Gray"
                                     VerticalOptions="CenterAndExpand">
-                                    <Label Text="{Binding Chiled}" TextColor="#2fa562" FontSize="20" VerticalTextAlignment="Center" 
+                                    <Label Text="{Binding AirFlightResponseModel.InfoChildCount}" TextColor="#2fa562" FontSize="20" VerticalTextAlignment="Center" 
                                        FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
                                 </Border>
                             </VerticalStackLayout>
@@ -104,7 +104,7 @@
                                 <Label Text="{ex:Translate Name=lblInfant-AirService}" TextColor="#2fa562" FontSize="14" HorizontalTextAlignment="Center"></Label>
                                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="CenterAndExpand" Padding="10,5" Stroke="Gray"
                                     VerticalOptions="CenterAndExpand">
-                                    <Label Text="{Binding Infant}" TextColor="#2fa562" FontSize="20" VerticalTextAlignment="Center" 
+                                    <Label Text="{Binding AirFlightResponseModel.InfoInfantCount}" TextColor="#2fa562" FontSize="20" VerticalTextAlignment="Center" 
                                        FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
                                 </Border>
                             </VerticalStackLayout>
@@ -112,7 +112,7 @@
                         <Label Text="{ex:Translate Name=lblNotes-HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="100">
                             <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
-                               Text="{Binding Moddel.Notes}"></Entry>
+                               Text="{Binding AirFlightResponseModel.Notes}"></Entry>
                         </Border>
                     </StackLayout>
                     <Border.Shadow>

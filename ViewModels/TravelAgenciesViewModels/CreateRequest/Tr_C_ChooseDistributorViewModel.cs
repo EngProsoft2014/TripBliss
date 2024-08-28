@@ -18,8 +18,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
     {
         #region Prop
         [ObservableProperty]
-        public ObservableCollection<DistributorCompanyResponse>? orginalDistributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
-        [ObservableProperty]
         public ObservableCollection<DistributorCompanyResponse>? distributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
         [ObservableProperty]
         public ObservableCollection<DistributorCompanyResponse>? selectedDistributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
@@ -36,12 +34,11 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             Rep = GenericRep;
             _service = service;
-            DistributorCompanys = List;
-            OrginalDistributorCompanys = List;
+            DistributorCompanys = List;     
             DistributorCompanys.ForEach(f => f.IsSelected = false);
-            OrginalDistributorCompanys.ForEach(f => f.IsSelected = false);
-        } 
+        }
         #endregion
+
 
         #region RelayCommands
 
@@ -122,7 +119,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                             {
                                 SelectedDistributorCompanys!.Clear();
                                 SelectedDistributorCompanys = new ObservableCollection<DistributorCompanyResponse>(DistributorCompanys!.Where(x=> x.IsSelected == true).ToList());
-                                //DistributorCompanys.ForEach(f => f.IsSelected = true);
                             }
 
                         }
@@ -137,12 +133,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             }
         }
 
-        public void Search(string Name)
-        {
-            if (Name != null)
-            {
-                DistributorCompanys = new ObservableCollection<DistributorCompanyResponse>(OrginalDistributorCompanys!.Where(a => a.CompanyName!.Contains(Name)).ToList());
-            }
-        }
+        //public void Search(string Name)
+        //{
+        //    if (Name != null)
+        //    {
+        //        DistributorCompanys = new ObservableCollection<DistributorCompanyResponse>(OrginalDistributorCompanys!.Where(a => a.CompanyName!.Contains(Name)).ToList());
+        //    }
+        //}
     }
 }

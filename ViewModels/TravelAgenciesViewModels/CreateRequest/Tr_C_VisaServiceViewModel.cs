@@ -45,23 +45,32 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             Rep = generic;
             _service = service;
-            Init();
+            Task.WhenAll(GetVisas());
         }
         public Tr_C_VisaServiceViewModel(RequestTravelAgencyVisaResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
-            visaResponseModel = model;
-            Init();
+                    
+            Init(model);
+
+
         }
         #endregion
 
         #region Methods
-        async Task Init()
+        async Task Init(RequestTravelAgencyVisaResponse model)
         {
             UserDialogs.Instance.ShowLoading();
             await Task.WhenAll(GetVisas());
             UserDialogs.Instance.HideHud();
+
+            VisaRequestModel = new RequestTravelAgencyVisaRequest
+            {
+                PersonCount = model.PersonCount,
+                Notes = model.Notes,
+            };
+            SelectedVisa = Visas.FirstOrDefault(x => x.Id == model.VisaId)!;
         }
          
         async Task GetVisas()
@@ -99,9 +108,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 IsBusy = false;
                 UserDialogs.Instance.ShowLoading();
 
-                VisaRequestModel!.VisaId = SelectedVisa!.Id;
+                VisaResponseModel!.VisaId = request.VisaId = SelectedVisa!.Id;
                 VisaResponseModel!.VisaName = SelectedVisa.VisaName;
                 VisaResponseModel!.PersonCount = request.PersonCount;
+                VisaResponseModel!.Notes = request.Notes;
                 VisaClose.Invoke(request, VisaResponseModel);
                 await App.Current!.MainPage!.Navigation.PopAsync();
 

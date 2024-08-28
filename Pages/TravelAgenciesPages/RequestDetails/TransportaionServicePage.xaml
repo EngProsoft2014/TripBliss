@@ -35,14 +35,14 @@
                                 <Label Text="{ex:Translate Name=lblCarType-TranService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                     <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
-                                       Text="{Binding ServiceModdel.CarType}"></Entry>
+                                       Text="{Binding TransportResponseModel.TypeName}"></Entry>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{ex:Translate lblBrand-TranServices}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                     <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
-                                       Text="{Binding ServiceModdel.Brand}"></Entry>
+                                       Text="{Binding TransportResponseModel.BrandName}"></Entry>
                                 </Border>
                             </VerticalStackLayout>
                         </StackLayout>
@@ -51,14 +51,14 @@
                                 <Label Text="{ex:Translate lblModel-TranService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                     <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
-                                       Text="{Binding ServiceModdel.Model}"></Entry>
+                                       Text="{Binding TransportResponseModel.ModelName}"></Entry>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{ex:Translate lblNos-TranService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                     <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
-                                       Text="{Binding ServiceModdel.Nos}"></Entry>
+                                       Text="{Binding TransportResponseModel.Nos}"></Entry>
                                 </Border>
                             </VerticalStackLayout>
                         </StackLayout>
@@ -66,30 +66,30 @@
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{ex:Translate lblDate-TranService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Label FontSize="13" TextColor="Black" Text="{Binding ServiceModdel.Date}" VerticalTextAlignment="Center" Padding="10,0,10,0"></Label>
+                                    <Label FontSize="13" TextColor="Black" Text="{Binding TransportResponseModel.Date}" VerticalTextAlignment="Center" Padding="10,0,10,0"></Label>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{ex:Translate Name=lblTime-TranService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Label FontSize="13" TextColor="Black" Text="{Binding ServiceModdel.time}" VerticalTextAlignment="Center" Padding="10,0,10,0"></Label>
+                                    <Label FontSize="13" TextColor="Black" Text="{Binding TransportResponseModel.Time}" VerticalTextAlignment="Center" Padding="10,0,10,0"></Label>
                                 </Border>
                             </VerticalStackLayout>
                         </StackLayout>
                         <Label Text="{ex:Translate Name=lblFrom-TranService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                             <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
-                               Text="{Binding ServiceModdel.From}"></Entry>
+                               Text="{Binding TransportResponseModel.FromLocation}"></Entry>
                         </Border>
                         <Label Text="{ex:Translate Name=lblTo-TranService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                             <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
-                               Text="{Binding ServiceModdel.To}"></Entry>
+                               Text="{Binding TransportResponseModel.ToLocation}"></Entry>
                         </Border>
                         <Label Text="{ex:Translate lblNotes-HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="100">
                             <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
-                               Text="{Binding ServiceModdel.Notes}"></Entry>
+                               Text="{Binding TransportResponseModel.Notes}"></Entry>
                         </Border>
                     </StackLayout>
                     <Border.Shadow>

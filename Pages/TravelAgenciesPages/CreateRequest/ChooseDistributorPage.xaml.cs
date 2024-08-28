@@ -1,4 +1,5 @@
 
+using AndroidX.Lifecycle;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest;
@@ -9,36 +10,27 @@ public partial class ChooseDistributorPage : Controls.CustomControl
     //Tr_C_ChooseDistributorViewModel ViewModel { get => BindingContext as Tr_C_ChooseDistributorViewModel; set => BindingContext = value; }
 
     Tr_C_ChooseDistributorViewModel Model;
-    public ChooseDistributorPage(Tr_C_ChooseDistributorViewModel model , IGenericRepository generic)
-	{
-		InitializeComponent();
-		BindingContext = model;
+    public ChooseDistributorPage(Tr_C_ChooseDistributorViewModel model, IGenericRepository generic)
+    {
+        InitializeComponent();
+        BindingContext = model;
         Model = model;
-	}
+    }
 
     private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
     {
-        Model.SelectAll(e.Value,"all", null);
+        Model.SelectAll(e.Value, "all", null);
     }
 
     private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     {
         Model.SelectAll(false, "signal", sender as DistributorCompanyResponse);
 
-        chkBoxSelectAll.IsChecked = Model.SelectedDistributorCompanys!.Count == Model.DistributorCompanys!.Count ? true : false;       
+        chkBoxSelectAll.IsChecked = Model.SelectedDistributorCompanys!.Count == Model.DistributorCompanys!.Count ? true : false;
     }
 
     private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
     {
-        Model.Search(e.NewTextValue);
+        ItemsCollectionView.ItemsSource = Model.DistributorCompanys!.Where(x => (x.CompanyName!).ToLower().Contains(e.NewTextValue.ToLower()));
     }
-
-    //private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
-    //{
-    //    if (sender is Border border)
-    //    {      
-    //        VisualStateManager.GoToState(border, "Selected");
-    //    }
-
-    //}
 }

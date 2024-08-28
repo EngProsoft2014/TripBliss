@@ -4,7 +4,7 @@ namespace TripBliss.Models
 {
     public record ResponseWithDistributorRequest
     {
-        public int RequestTravelAgencyId { get; set; }
+        //public int RequestTravelAgencyId { get; set; }
         public string? DistributorCompanyId { get; set; }
         [JsonIgnore]
         public DateOnly? ExpireDatePay { get; set; } 

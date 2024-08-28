@@ -18,5 +18,6 @@
         public DateTime CheckIn { get; set; }
         public DateTime CheckOut { get; set; }
         public int NumberOfNights { get; set; }
+        public string? Notes { get; set; }
     }
 }

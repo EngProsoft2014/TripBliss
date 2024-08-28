@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using System;
@@ -11,7 +12,6 @@ using TripBliss.Constants;
 using TripBliss.Controls;
 using TripBliss.Helpers;
 using TripBliss.Models;
-using TripBliss.Models.RequestTravelAgency;
 using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels
@@ -56,18 +56,23 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                 string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
                 string UserToken = await _service.UserToken();
 
-                var json = await Rep.GetAsync<ObservableCollection<RequestTravelAgencyResponse>>(ApiConstants.AllRequestApi + $"{id}/RequestTravelAgency", UserToken);
-
-                if (json != null)
+                if(!string.IsNullOrEmpty(UserToken))
                 {
+                    var json = await Rep.GetAsync<ObservableCollection<RequestTravelAgencyResponse>>(ApiConstants.AllRequestApi + $"{id}/RequestTravelAgency", UserToken);
 
-                    Requests!.Clear();
-                    Requests = json;
+                    if (json != null)
+                    {
+
+                        Requests!.Clear();
+                        Requests = json;
+                    }
                 }
+
             }
 
             IsBusy = false;
         }
+
         //void LoadData()
         //{
         //    Requests.Add(new RequestClassModel()
