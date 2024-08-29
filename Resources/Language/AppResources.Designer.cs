@@ -484,6 +484,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IsDriver.
+        /// </summary>
+        internal static string lblIsDriver_RequestDetails {
+            get {
+                return ResourceManager.GetString("lblIsDriver-RequestDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         internal static string lblLanguage_More {
@@ -516,6 +525,15 @@ namespace TripBliss.Resources.Language {
         internal static string lblModel_TranService {
             get {
                 return ResourceManager.GetString("lblModel-TranService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Model.
+        /// </summary>
+        internal static string lblModelName_RequestDetails {
+            get {
+                return ResourceManager.GetString("lblModelName-RequestDetails", resourceCulture);
             }
         }
         
@@ -750,6 +768,15 @@ namespace TripBliss.Resources.Language {
         internal static string lblTransportationServices {
             get {
                 return ResourceManager.GetString("lblTransportationServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        internal static string lblTypeName_RequestDetails {
+            get {
+                return ResourceManager.GetString("lblTypeName-RequestDetails", resourceCulture);
             }
         }
         

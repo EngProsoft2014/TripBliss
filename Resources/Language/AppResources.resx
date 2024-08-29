@@ -387,4 +387,13 @@
   <data name="btnConfirm-NewRequest" xml:space="preserve">
     <value>Confirm</value>
   </data>
+  <data name="lblIsDriver-RequestDetails" xml:space="preserve">
+    <value>IsDriver</value>
+  </data>
+  <data name="lblModelName-RequestDetails" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="lblTypeName-RequestDetails" xml:space="preserve">
+    <value>Type</value>
+  </data>
 </root>

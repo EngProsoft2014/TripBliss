@@ -68,7 +68,7 @@
                                                             <Label.FormattedText>
                                                                 <FormattedString>
                                                                     <Span Text="Date : " FontSize="12" TextColor="Blue" ></Span>
-                                                                    <Span Text="{Binding Date}" FontSize="12" TextColor="Blue" ></Span>
+                                                                    <Span Text="{Binding CreateDate,StringFormat='{0:d}'}" FontSize="12" TextColor="Blue" ></Span>
                                                                 </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>

@@ -155,9 +155,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
 
         #region RelayCommand
         [RelayCommand]
-        async void Selection(RequestClassModel model)
+        async Task Selection(RequestTravelAgencyResponse model)
         {
-            await App.Current.MainPage.Navigation.PushAsync(new RequestDetailsPage(new RequestDetails.Tr_D_RequestDetailsViewModel(Rep,_service)));
+            await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new RequestDetails.Tr_D_RequestDetailsViewModel(model.Id,Rep,_service)));
         } 
         #endregion
     }

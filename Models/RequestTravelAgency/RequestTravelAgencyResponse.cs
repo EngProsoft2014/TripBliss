@@ -22,6 +22,7 @@ namespace TripBliss.Models
         public int CountTransport { get; set; }
         public int CountVisa { get; set; }
         public string ChoosenServices { get; set; } = string.Empty;
+        public DateTime CreateDate { get; set; }
         public List<ResponseWithDistributorResponse>? ResponseWithDistributor { get; set; }
 
     }

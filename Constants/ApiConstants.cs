@@ -114,6 +114,13 @@ namespace TripBliss.Constants
         // Get All Request Api
         public static string AllRequestApi = "TravelAgency/";
         // End Get All Request Api 
+
+
+        // Get Request DetailesApi
+        public static string RequestDetailesApi = "TravelAgency/";
+        // End Get Request Detailes Api 
+
+
         #endregion
 
     }
