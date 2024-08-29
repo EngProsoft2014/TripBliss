@@ -51,18 +51,22 @@
 
                             </Label>
 
-                            <CheckBox x:Name="cheEnglish" Color="Green"></CheckBox>
+                            <!--<CheckBox x:Name="cheEnglish" Color="Green" IsEnabled="False"></CheckBox>-->
+                            <Image x:Name="imgCheckEnglish" IsVisible="False" HorizontalOptions="End">
+                                <Image.Source>
+                                    <FontImageSource FontFamily="FontIconSolid" Glyph="" Color="Green" Size="20"></FontImageSource>
+                                </Image.Source>
+                            </Image>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="EnglishTap"></TapGestureRecognizer>
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
 
-
                         <Line X1="150"  HorizontalOptions="FillAndExpand" BackgroundColor="#212121"></Line>
 
                         <StackLayout Orientation="Horizontal" Spacing="0" Padding="20,0,20,0">
                             <Label x:Name="lblArabic"
-                                   Text="Arabic"
+                                   Text="العربية"
                                    TextColor="#333"
                                    FontSize="16"
                                    FontFamily="AlmaraiBold"
@@ -73,7 +77,12 @@
 
                             </Label>
 
-                            <CheckBox x:Name="cheArabic" Color="Green"></CheckBox>
+                            <!--<CheckBox x:Name="cheArabic" Color="Green" IsEnabled="False"></CheckBox>-->
+                            <Image x:Name="imgCheckArabic" IsVisible="False" HorizontalOptions="End">
+                                <Image.Source>
+                                    <FontImageSource FontFamily="FontIconSolid" Glyph="" Color="Green" Size="20"></FontImageSource>
+                                </Image.Source>
+                            </Image>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="ArabicTap"></TapGestureRecognizer>
                             </StackLayout.GestureRecognizers>

@@ -305,14 +305,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
         #region RelayCommand
         [RelayCommand]
-        void Selection(DistributorsModel model)
+        async Task Selection(DistributorsModel model)
         {
-            App.Current.MainPage.Navigation.PushAsync(new NewRequestPage(new Tr_D_NewRequestViewModel(Rep,_service),Rep));
+            await App.Current!.MainPage!.Navigation.PushAsync(new NewRequestPage(new Tr_D_NewRequestViewModel(Rep,_service),Rep));
         }
         [RelayCommand]
-        void BackButton()
+        async Task BackButton()
         {
-            App.Current.MainPage.Navigation.PopAsync();
+            await App.Current!.MainPage!.Navigation.PopAsync();
         } 
         #endregion
     }

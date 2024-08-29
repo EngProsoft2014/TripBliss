@@ -288,9 +288,9 @@ namespace TripBliss.Resources.Language {
         /// <summary>
         ///   Looks up a localized string similar to All.
         /// </summary>
-        internal static string lblAll_HomeDist1 {
+        internal static string lblAll_HomeDist {
             get {
-                return ResourceManager.GetString("lblAll-HomeDist1", resourceCulture);
+                return ResourceManager.GetString("lblAll-HomeDist", resourceCulture);
             }
         }
         
@@ -585,9 +585,9 @@ namespace TripBliss.Resources.Language {
         /// <summary>
         ///   Looks up a localized string similar to Not Active.
         /// </summary>
-        internal static string lblNotActive_HomeDist1 {
+        internal static string lblNotActive_HomeDist {
             get {
-                return ResourceManager.GetString("lblNotActive-HomeDist1", resourceCulture);
+                return ResourceManager.GetString("lblNotActive-HomeDist", resourceCulture);
             }
         }
         

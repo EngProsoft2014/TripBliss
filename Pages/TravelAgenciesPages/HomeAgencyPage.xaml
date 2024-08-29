@@ -54,7 +54,7 @@
                             </ContentView.Resources>
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="10">
                                 <Label Text="{ex:Translate Name=hdrMyRequests}" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
-                                   TextColor="Black" Margin="20,20,20,10"></Label>
+                                   TextColor="Black" Margin="20,20,20,5"></Label>
                                 <CollectionView ItemsSource="{Binding Requests}"
                                             VerticalOptions="FillAndExpand" SelectionMode="Single">
                                     <CollectionView.ItemTemplate>
@@ -67,8 +67,8 @@
                                                         <Label Margin="0,3,0,0">
                                                             <Label.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span Text="Date : " FontSize="12" TextColor="Blue" ></Span>
-                                                                    <Span Text="{Binding CreateDate,StringFormat='{0:d}'}" FontSize="12" TextColor="Blue" ></Span>
+                                                                    <Span Text="Date : " FontSize="12" TextColor="#333" ></Span>
+                                                                    <Span Text="{Binding CreateDate,StringFormat='{0:MM-dd-yyyy}'}" FontSize="11" TextColor="Blue" ></Span>
                                                                 </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>

@@ -10,6 +10,7 @@ using System.Reactive.Linq;
 using TripBliss.Models;
 using TripBliss.Constants;
 using CommunityToolkit.Maui.Alerts;
+using Controls.UserDialogs.Maui;
 
 
 
@@ -71,7 +72,9 @@ namespace TripBliss.Services.Data
                             Password = Pass
                         };
 
+                        UserDialogs.Instance.ShowLoading();
                         var loginModel = await Rep.PostTRAsync<ApplicationUserLoginRequest, ApplicationUserResponse>(Constants.ApiConstants.LoginApi, model);
+                        UserDialogs.Instance.HideHud();
 
                         if (loginModel.Item1 != null)
                         {

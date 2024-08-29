@@ -351,12 +351,6 @@
   <data name="lblActive-HomeDist" xml:space="preserve">
     <value>Active</value>
   </data>
-  <data name="lblAll-HomeDist1" xml:space="preserve">
-    <value>All</value>
-  </data>
-  <data name="lblNotActive-HomeDist1" xml:space="preserve">
-    <value>Not Active</value>
-  </data>
   <data name="btnResponse-RequestDetails" xml:space="preserve">
     <value>Response</value>
   </data>
@@ -395,5 +389,11 @@
   </data>
   <data name="lblTypeName-RequestDetails" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="lblAll-HomeDist" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="lblNotActive-HomeDist" xml:space="preserve">
+    <value>Not Active</value>
   </data>
 </root>

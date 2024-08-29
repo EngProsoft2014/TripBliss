@@ -40,10 +40,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
 
 
         async void Init()
-        {
-            
+        {           
             await GetRequestes();
-            
         }
 
         #region Methods
@@ -55,19 +53,18 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             {
                 string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
                 string UserToken = await _service.UserToken();
-
-                if(!string.IsNullOrEmpty(UserToken))
+                if (!string.IsNullOrEmpty(UserToken))
                 {
+                    UserDialogs.Instance.ShowLoading();
                     var json = await Rep.GetAsync<ObservableCollection<RequestTravelAgencyResponse>>(ApiConstants.AllRequestApi + $"{id}/RequestTravelAgency", UserToken);
-
+                    UserDialogs.Instance.HideHud();
                     if (json != null)
                     {
-
                         Requests!.Clear();
                         Requests = json;
-                    }
+                    } 
                 }
-
+                
             }
 
             IsBusy = false;
