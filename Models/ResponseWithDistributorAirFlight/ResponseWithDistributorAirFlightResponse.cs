@@ -12,5 +12,6 @@
         public string? Notes { get; set; }
         public bool AcceptPriceDis { get; set; }
         public bool AcceptAgen { get; set; }
+        public RequestTravelAgencyAirFlightResponse RequestTravelAgencyAirFlight { get; set; } = default!;
     }
 }

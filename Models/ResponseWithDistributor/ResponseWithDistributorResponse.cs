@@ -13,5 +13,11 @@
         public int TotalPriceDisAccept { get; set; }
         public int TotalPriceAgentAccept { get; set; }
         public string RequestName { get; set; } = string.Empty;
+        public int CountAirFlight { get; set; }
+        public int CountHotel { get; set; }
+        public int CountTransport { get; set; }
+        public int CountVisa { get; set; }
+        public string ChoosenServices { get; set; } = string.Empty;
+        public DateTime CreateDate { get; set; }
     }
 }

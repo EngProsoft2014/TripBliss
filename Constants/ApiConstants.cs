@@ -123,5 +123,10 @@ namespace TripBliss.Constants
 
         #endregion
 
+
+        // Get All Response Dist Api
+        public static string AllResponseDistApi = "Distributor/";
+        // End Get All Response Dist Api 
+
     }
 }

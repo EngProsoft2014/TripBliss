@@ -35,7 +35,7 @@ namespace TripBliss
                     MainPage = CatUser switch
                     {
                         2 => new NavigationPage(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep, _service),Rep, _service)),
-                        3 => new NavigationPage(new HomeDistributorsPage(new ViewModels.DistributorsViewModels.Dis_HomeViewModel(Rep), Rep, _service)),
+                        3 => new NavigationPage(new HomeDistributorsPage(new ViewModels.DistributorsViewModels.Dis_HomeViewModel(Rep,_service), Rep, _service)),
                         _ => new NavigationPage(new LoginPage(new ViewModels.LoginViewModel(Rep, _service)))
                     };
                 }
