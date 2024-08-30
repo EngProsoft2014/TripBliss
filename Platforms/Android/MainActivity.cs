@@ -1,5 +1,7 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.Content.PM;
+using Android.Content.Res;
 using Android.OS;
 using Android.Views;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
@@ -46,6 +48,16 @@ namespace TripBliss
             {
                 h.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
             });
+        }
+
+        protected override void AttachBaseContext(Context? @base)
+        {
+            Configuration configuration = new(@base!.Resources!.Configuration)
+            {
+                FontScale = 1.0f
+            };
+            ApplyOverrideConfiguration(configuration);
+            base.AttachBaseContext(@base);
         }
 
     }
