@@ -2,11 +2,13 @@
 using Controls.UserDialogs.Maui;
 using Mopups.Services;
 using System.Globalization;
+using TripBliss.Constants;
 using TripBliss.Extensions;
 using TripBliss.Helpers;
 using TripBliss.Pages.DistributorsPages;
 using TripBliss.Pages.TravelAgenciesPages;
 using TripBliss.Resources.Language;
+using TripBliss.ViewModels.TravelAgenciesViewModels;
 
 namespace TripBliss.Pages.MainPopups;
 
@@ -44,7 +46,8 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
         LoadSetting();
         await MopupService.Instance.PopAsync();
         Controls.StaticMember.WayOfTab = 0;
-        await App.Current!.MainPage!.Navigation.PushAsync(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep, _service), Rep, _service));
+
+        CurrentUser();
 
         UserDialogs.Instance.HideHud();
     }
@@ -65,7 +68,8 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
         LoadSetting();
         await MopupService.Instance.PopAsync();
         Controls.StaticMember.WayOfTab = 0;
-        await App.Current!.MainPage!.Navigation.PushAsync(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep, _service), Rep, _service));
+        CurrentUser();
+
 
         UserDialogs.Instance.HideHud();
     }
@@ -85,7 +89,8 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
             lblEnglish.TextColor = Color.FromHex("#333");
 
             Task.Delay(1000);
-        } else
+        } 
+        else
         {
             lblEnglish.TextColor = color;
 
@@ -95,6 +100,27 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
             lblArabic.TextColor = Color.FromHex("#333");
 
             Task.Delay(1000);
+        }
+    }
+
+    [Obsolete]
+    async void CurrentUser()
+    {
+        var TrId = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId,"");
+        var DisId = Preferences.Default.Get(ApiConstants.distributorCompanyId,"");
+        if (!string.IsNullOrEmpty(TrId) && string.IsNullOrEmpty(DisId))
+        {
+            var vm = new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep, _service);
+            var page = new Pages.TravelAgenciesPages.HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service);
+            page.BindingContext = vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
+        }
+        if (string.IsNullOrEmpty(TrId) && !string.IsNullOrEmpty(DisId))
+        {
+            var vm = new ViewModels.DistributorsViewModels.Dis_HomeViewModel(Rep, _service);
+            var page = new Pages.DistributorsPages.HomeDistributorsPage(vm, Rep, _service);
+            page.BindingContext = vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
         }
     }
 }

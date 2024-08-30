@@ -42,7 +42,7 @@
                         </Border>
                         <Label Text="{ex:Translate Name=lblPrice-RequestDetails}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                            <Entry Keyboard="Numeric" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
+                            <Entry Keyboard="Numeric" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" 
                                    Text="{Binding Moddel.Price}"></Entry>
                         </Border>
                         <Label Text="{ex:Translate Name=lblNotes-HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,0"></Label>

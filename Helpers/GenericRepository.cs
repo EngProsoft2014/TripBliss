@@ -347,6 +347,7 @@ namespace TripBliss.Helpers
 
         public async Task<(TR, ErrorResult?)> PostTRAsync<T, TR>(string uri, T data, string authToken = "")
         {
+
             try
             {
                 HttpClient httpClient = CreateHttpClient(Utility.ServerUrl + uri);

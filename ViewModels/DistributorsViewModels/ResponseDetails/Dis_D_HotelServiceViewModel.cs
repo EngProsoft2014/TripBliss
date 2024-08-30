@@ -18,7 +18,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [ObservableProperty]
         ResponseWithDistributorHotelResponse? hotelService = new ResponseWithDistributorHotelResponse();
 
-
+        public delegate void HotelDelegte(ResponseWithDistributorHotelResponse HotelResponse);
+        public event HotelDelegte HotelClose;
         #endregion
 
         IGenericRepository Rep;
@@ -36,19 +37,18 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 
         #region RelayCommand
         [RelayCommand]
-        void BackClicked()
+        async Task BackClicked()
         {
-            App.Current.MainPage.Navigation.PopAsync();
+            await App.Current!.MainPage!.Navigation.PopAsync();
         }
 
-       
-        //[RelayCommand]
-        //void ApplyHotelClicked()
-        //{
-        //    HotelService.RoomNo = Num;
-        //    Hoteles.Add(HotelService);
-        //    App.Current.MainPage.Navigation.PopAsync();
-        //} 
+
+        [RelayCommand]
+        async Task ApplyHotelClicked(ResponseWithDistributorHotelResponse HotelResponseModel)
+        {
+            
+            await App.Current!.MainPage!.Navigation.PopAsync();
+        }
         #endregion
     }
 }

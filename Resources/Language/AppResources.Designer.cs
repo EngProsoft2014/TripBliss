@@ -88,6 +88,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string btnCancle_PopupLan {
+            get {
+                return ResourceManager.GetString("btnCancle-PopupLan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         internal static string btnConfirm_NewRequest {
@@ -228,6 +237,15 @@ namespace TripBliss.Resources.Language {
         internal static string hdrOffers {
             get {
                 return ResourceManager.GetString("hdrOffers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Language.
+        /// </summary>
+        internal static string hdrSelectLan_PopupLan {
+            get {
+                return ResourceManager.GetString("hdrSelectLan-PopupLan", resourceCulture);
             }
         }
         

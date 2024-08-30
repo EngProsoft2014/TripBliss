@@ -396,4 +396,10 @@
   <data name="lblNotActive-HomeDist" xml:space="preserve">
     <value>Not Active</value>
   </data>
+  <data name="btnCancle-PopupLan" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="hdrSelectLan-PopupLan" xml:space="preserve">
+    <value>Select Language</value>
+  </data>
 </root>

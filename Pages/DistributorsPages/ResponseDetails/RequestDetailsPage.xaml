@@ -8,6 +8,7 @@
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              xmlns:ex="clr-namespace:TripBliss.Extensions"
              BackgroundColor="White"
+             IsEnabled="{Binding IsBusy}"
              NavigationPage.HasNavigationBar="False"
              Title="RequestDetailsPage">
     <Controls:CustomControl.Resources>
@@ -1066,6 +1067,8 @@
                                         </Border>
                                     </StackLayout>
                                 </ScrollView>
+                                <Button VerticalOptions="EndAndExpand" Text="{ex:Translate btnApply-Forgot}" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="20,0,20,20"
+                                        Command="{Binding AddToRequestCommand}"></Button>
                             </StackLayout>
                             <ContentView.Triggers>
                                 <DataTrigger TargetType="ContentView" Binding="{Binding Lang}" Value="ar">

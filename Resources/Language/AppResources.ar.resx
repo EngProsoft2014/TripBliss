@@ -396,4 +396,10 @@
   <data name="lblTypeName-RequestDetails" xml:space="preserve">
     <value>نوع</value>
   </data>
+  <data name="btnCancle-PopupLan" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="hdrSelectLan-PopupLan" xml:space="preserve">
+    <value>اختر اللغة</value>
+  </data>
 </root>
