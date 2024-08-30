@@ -16,9 +16,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
     {
         #region Prop
         [ObservableProperty]
-        TransportaionServiceModel serviceModdel;
-        [ObservableProperty]
-        ObservableCollection<TransportaionServiceModel> transportation;
+        ResponseWithDistributorTransportResponse serviceModdel = new ResponseWithDistributorTransportResponse();
+
         #endregion
 
         IGenericRepository Rep;
@@ -26,14 +25,10 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         public Dis_D_TransportaionServiceViewModel(IGenericRepository generic)
         {
             Rep = generic;
-            ServiceModdel = new TransportaionServiceModel();
-            Transportation = new ObservableCollection<TransportaionServiceModel>();
         }
-        public Dis_D_TransportaionServiceViewModel(TransportaionServiceModel model, IGenericRepository generic)
+        public Dis_D_TransportaionServiceViewModel(ResponseWithDistributorTransportResponse model, IGenericRepository generic)
         {
             Rep = generic;
-            ServiceModdel = new TransportaionServiceModel();
-            Transportation = new ObservableCollection<TransportaionServiceModel>();
             ServiceModdel = model;
             Lang = Preferences.Default.Get("Lan", "en");
         } 
@@ -41,19 +36,19 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 
         #region RelayCommand
         [RelayCommand]
-        void OnApply()
+        async Task OnApply()
         {
             if (ServiceModdel != null)
             {
-                Transportation.Add(ServiceModdel);
-                App.Current.MainPage.Navigation.PopAsync();
+                //Transportation.Add(ServiceModdel);
+                await App.Current!.MainPage!.Navigation.PopAsync();
             }
         }
 
         [RelayCommand]
-        void OnBackButtonClicked()
+        async Task OnBackButtonClicked()
         {
-            App.Current.MainPage.Navigation.PopAsync();
+            await App.Current!.MainPage!.Navigation.PopAsync();
         } 
         #endregion
     }

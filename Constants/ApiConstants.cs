@@ -128,5 +128,9 @@ namespace TripBliss.Constants
         public static string AllResponseDistApi = "Distributor/";
         // End Get All Response Dist Api 
 
+        // Get  Response Detalis Dist Api
+        public static string ResponseDetailsDistApi = "Distributor/";
+        // End Get  Response Detalis Dist Api 
+
     }
 }

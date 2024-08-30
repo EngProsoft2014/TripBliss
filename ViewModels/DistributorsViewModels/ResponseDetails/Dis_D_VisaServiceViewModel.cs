@@ -15,38 +15,33 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
     {
         #region Prop
         [ObservableProperty]
-        VisaServiceModel moddel;
-        [ObservableProperty]
-        ObservableCollection<VisaServiceModel> visaServices;
+        ResponseWithDistributorVisaResponse moddel = new ResponseWithDistributorVisaResponse();
         #endregion
 
         IGenericRepository Rep;
         public Dis_D_VisaServiceViewModel(IGenericRepository generic)
         {
             Rep = generic;
-            Moddel = new VisaServiceModel();
-            VisaServices = new ObservableCollection<VisaServiceModel>();
+
         }
-        public Dis_D_VisaServiceViewModel(VisaServiceModel model, IGenericRepository generic)
+        public Dis_D_VisaServiceViewModel(ResponseWithDistributorVisaResponse model, IGenericRepository generic)
         {
             Rep = generic;
-            Moddel = new VisaServiceModel();
-            VisaServices = new ObservableCollection<VisaServiceModel>();
             Moddel = model;
             Lang = Preferences.Default.Get("Lan", "en");
         }
 
         #region RelayCommand
         [RelayCommand]
-        void Apply()
+        async Task Apply()
         {
-            VisaServices.Add(Moddel);
-            App.Current.MainPage.Navigation.PopAsync();
+            
+            await App.Current!.MainPage!.Navigation.PopAsync();
         }
         [RelayCommand]
-        void BackCLicked()
+        async Task BackCLicked()
         {
-            App.Current.MainPage.Navigation.PopAsync();
+            await App.Current!.MainPage!.Navigation.PopAsync();
         } 
         #endregion
     }

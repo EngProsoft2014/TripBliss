@@ -20,12 +20,16 @@ namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
         [ObservableProperty]
         public ObservableCollection<TravelAgenciesModel>? travelAgencies;
 
+        #region Services
+        readonly Services.Data.ServicesService _service;
         IGenericRepository Rep;
-        public Dis_DistributorsViewModel(IGenericRepository generic)
+        #endregion
+        public Dis_DistributorsViewModel(IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             TravelAgencies = new ObservableCollection<TravelAgenciesModel>();
             LoadData();
+            _service = service;
         }
 
 
@@ -100,7 +104,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
         [RelayCommand]
         async void OnAddRequest()
         {
-            await App.Current.MainPage.Navigation.PushAsync(new RequestDetailsPage(new Dis_D_RequestDetailsViewModel(Rep)));
+            //await App.Current.MainPage.Navigation.PushAsync(new RequestDetailsPage(new Dis_D_RequestDetailsViewModel(Rep,_service)));
         }
 
         [RelayCommand]

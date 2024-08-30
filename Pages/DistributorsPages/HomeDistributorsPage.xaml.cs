@@ -17,7 +17,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
         Rep = generic;
         _service = service; 
         BindingContext = model;  
-        AgencyView.BindingContext = new Dis_DistributorsViewModel(Rep);
+        AgencyView.BindingContext = new Dis_DistributorsViewModel(Rep,_service);
         OffersView.BindingContext = new Dis_O_ChooseOfferViewModel(Rep);
         HistoryView.BindingContext = new Dis_HistoryViewModel(Rep);
         MoreView.BindingContext = new Dis_MoreViewModel(Rep,_service);

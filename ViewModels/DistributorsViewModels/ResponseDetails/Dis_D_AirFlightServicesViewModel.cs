@@ -14,16 +14,10 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
     public partial class Dis_D_AirFlightServicesViewModel : BaseViewModel
     {
         #region prop
+
         [ObservableProperty]
-        ObservableCollection<AirFlightModel> airFlights;
-        [ObservableProperty]
-        AirFlightModel moddel;
-        [ObservableProperty]
-        int adult;
-        [ObservableProperty]
-        int chiled;
-        [ObservableProperty]
-        int infant;
+        ResponseWithDistributorAirFlightResponse moddel = new ResponseWithDistributorAirFlightResponse();
+
 
         #endregion
 
@@ -31,61 +25,25 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         public Dis_D_AirFlightServicesViewModel(IGenericRepository generic)
         {
             Rep = generic;
-            AirFlights = new ObservableCollection<AirFlightModel>();
-            Moddel = new AirFlightModel();
+
         }
-        public Dis_D_AirFlightServicesViewModel(AirFlightModel model, IGenericRepository generic)
+        public Dis_D_AirFlightServicesViewModel(ResponseWithDistributorAirFlightResponse model, IGenericRepository generic)
         {
             Rep = generic;
-            AirFlights = new ObservableCollection<AirFlightModel>();
-            Lang = Preferences.Default.Get("Lan", "en");
-            Moddel = new AirFlightModel();
             Moddel = model;
         }
 
         #region RelayCommand
         [RelayCommand]
-        void OnBackPressed()
+        async Task OnBackPressed()
         {
-            App.Current.MainPage.Navigation.PopAsync();
-        }
-
-        [RelayCommand]
-        void AddAdult()
-        {
-            Adult += 1;
+            await App.Current!.MainPage!.Navigation.PopAsync();
         }
         [RelayCommand]
-        void DeletAdult()
+        async Task AplyClicked()
         {
-            Adult -= 1;
-        }
-
-        [RelayCommand]
-        void AddChild()
-        {
-            Chiled += 1;
-        }
-        [RelayCommand]
-        void DeletChild()
-        {
-            Chiled -= 1;
-        }
-        [RelayCommand]
-        void AddInfant()
-        {
-            Infant += 1;
-        }
-        [RelayCommand]
-        void DeletInfant()
-        {
-            Infant -= 1;
-        }
-        [RelayCommand]
-        void AplyClicked()
-        {
-            AirFlights.Add(Moddel);
-            App.Current.MainPage.Navigation.PopAsync();
+            
+            await App.Current!.MainPage!.Navigation.PopAsync();
         } 
         #endregion
     }

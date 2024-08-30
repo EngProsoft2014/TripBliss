@@ -145,9 +145,9 @@ namespace TripBliss.ViewModels.DistributorsViewModels
 
         #region RelayCommand
         [RelayCommand]
-        async Task Selection(RequestClassModel model)
+        async Task Selection(ResponseWithDistributorResponse model)
         {
-            await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new Dis_D_RequestDetailsViewModel(Rep)));
+            await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new Dis_D_RequestDetailsViewModel(model.Id,Rep,_service)));
         }
         #endregion
     }
