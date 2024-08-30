@@ -80,7 +80,7 @@ namespace TripBliss.Services.Data
                         {
                             MUserToken = loginModel.Item1.Token!;
 
-                            await BlobCache.LocalMachine.InsertObject(UserTokenServiceKey, loginModel.Item1.Token!, DateTimeOffset.Now.AddMinutes(30));
+                            await BlobCache.LocalMachine.InsertObject(UserTokenServiceKey, loginModel.Item1.Token!, DateTimeOffset.Now.AddMinutes(43200));
 
                             return loginModel.Item1.Token!;
                         }

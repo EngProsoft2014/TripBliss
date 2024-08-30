@@ -10,6 +10,7 @@ namespace TripBliss.Models
     {
         public int Id { get; set; }
         public int RequestTravelAgencyId { get; set; }
+        public string? RequestName { get; set; }
         public string? DistributorCompanyId { get; set; }
         public DateOnly ExpireDatePay { get; set; }
         public int TotalPriceDisAccept { get; set; }
@@ -18,9 +19,7 @@ namespace TripBliss.Models
         public List<ResponseWithDistributorHotelResponse>? ResponseWithDistributorHotel { get; set; }
         public List<ResponseWithDistributorTransportResponse>? ResponseWithDistributorTransport { get; set; }
         public List<ResponseWithDistributorAirFlightResponse>? ResponseWithDistributorAirFlight { get; set; }
-        public List<ResponseWithDistributorDocResponse>? ResponseWithDistributorDoc { get; set; }
         public List<ResponseWithDistributorVisaResponse>? ResponseWithDistributorVisa { get; set; }
-        public List<ResponseWithDistributorPaymentResponse>? ResponseWithDistributorPayment { get; set; }
 
     }
 }

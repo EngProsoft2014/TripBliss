@@ -42,7 +42,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task AplyClicked()
         {
-            
+            bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Are You Accept This Price?", "Yes", "No");
+            Moddel!.AcceptPriceDis = answer;
             await App.Current!.MainPage!.Navigation.PopAsync();
         } 
         #endregion

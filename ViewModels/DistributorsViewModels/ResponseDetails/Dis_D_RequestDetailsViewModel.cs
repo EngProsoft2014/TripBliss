@@ -138,7 +138,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                 string UserToken = await _service.UserToken();
 
                 var json = await Rep.GetAsync<ResponseWithDistributorDetailsResponse>(ApiConstants.ResponseDetailsDistApi + $"{DisId}/ResponseWithDistributor/{ReqId}", UserToken);
-
+                
                 if (json != null)
                 {
                     Response = json;
@@ -507,8 +507,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [Obsolete]
         async Task AddToRequest()
         {
-            bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Are You Accept This Price?", "Yes", "No");
-            Response.TotalPriceDisAccept = answer ? 1 : 0;
+            
+            
             IsBusy = false;
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)

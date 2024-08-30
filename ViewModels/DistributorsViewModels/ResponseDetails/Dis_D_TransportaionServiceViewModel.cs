@@ -40,7 +40,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         {
             if (ServiceModdel != null)
             {
-                //Transportation.Add(ServiceModdel);
+                bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Are You Accept This Price?", "Yes", "No");
+                ServiceModdel!.AcceptPriceDis = answer;
                 await App.Current!.MainPage!.Navigation.PopAsync();
             }
         }
@@ -48,6 +49,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task OnBackButtonClicked()
         {
+            
             await App.Current!.MainPage!.Navigation.PopAsync();
         } 
         #endregion

@@ -43,8 +43,9 @@
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\logo.svg" Color="#E3FCE4" ForegroundScale="0.65" />
 		
+		
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\logosmall.svg" Color="White" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\logo.svg" Color="White" BaseSize="128,128" />
 		
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />

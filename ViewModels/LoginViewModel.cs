@@ -60,6 +60,7 @@ namespace TripBliss.ViewModels
         }
 
         [RelayCommand]
+        [Obsolete]
         public async Task ClickLogin(ApplicationUserLoginRequest model)
         {
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
@@ -101,7 +102,7 @@ namespace TripBliss.ViewModels
                             Preferences.Default.Set(ApiConstants.travelAgencyCompanyId, UserModel.TravelAgencyCompanyId);
                             Preferences.Default.Set(ApiConstants.distributorCompanyId, UserModel.DistributorCompanyId);
 
-                            await BlobCache.LocalMachine.InsertObject(ServicesService.UserTokenServiceKey, UserModel?.Token, DateTimeOffset.Now.AddMinutes(30));
+                            await BlobCache.LocalMachine.InsertObject(ServicesService.UserTokenServiceKey, UserModel?.Token, DateTimeOffset.Now.AddMinutes(43200));
 
                             if (!string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
                             {

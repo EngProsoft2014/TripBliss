@@ -46,7 +46,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task ApplyHotelClicked(ResponseWithDistributorHotelResponse HotelResponseModel)
         {
-            
+            bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Are You Accept This Price?", "Yes", "No");
+            HotelService!.AcceptPriceDis = answer;
             await App.Current!.MainPage!.Navigation.PopAsync();
         }
         #endregion

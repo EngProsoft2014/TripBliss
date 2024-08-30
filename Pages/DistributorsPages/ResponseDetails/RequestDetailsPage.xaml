@@ -40,7 +40,7 @@
                                             </DataTrigger>
                                         </ImageButton.Triggers>
                                     </ImageButton>
-                                    <Label Text="{Binding RequestDetailes.RequestName}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                                    <Label Text="{Binding Response.RequestName}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                 </StackLayout>
                                 <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
@@ -372,7 +372,7 @@
                                            GridLinesVisibility="Both" HeaderGridLinesVisibility="Both" 
                                            VerticalOptions="FillAndExpand">
                                                 <syncfusion:SfDataGrid.Columns>
-                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlightResponse.Date" HeaderTextAlignment="Center">
+                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlight.Date" HeaderTextAlignment="Center">
                                                         <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                             <DataTemplate>
                                                                 <Label FontSize="14" Text="{ex:Translate lblDate-TranService}" TextColor="Black" FontAutoScalingEnabled="False"
@@ -381,7 +381,7 @@
                                                             </DataTemplate>
                                                         </syncfusion:DataGridTextColumn.HeaderTemplate>
                                                     </syncfusion:DataGridTextColumn>
-                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlightResponse.AirLine" HeaderTextAlignment="Center">
+                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlight.AirLine" HeaderTextAlignment="Center">
                                                         <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                             <DataTemplate>
                                                                 <Label FontSize="14" Text="{ex:Translate Name=lblCarrier-AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
@@ -390,7 +390,7 @@
                                                             </DataTemplate>
                                                         </syncfusion:DataGridTextColumn.HeaderTemplate>
                                                     </syncfusion:DataGridTextColumn>
-                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlightResponse.ClassName" HeaderTextAlignment="Center">
+                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlight.ClassName" HeaderTextAlignment="Center">
                                                         <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                             <DataTemplate>
                                                                 <Label FontSize="14" Text="{ex:Translate Name=lblClass-AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
@@ -399,7 +399,7 @@
                                                             </DataTemplate>
                                                         </syncfusion:DataGridTextColumn.HeaderTemplate>
                                                     </syncfusion:DataGridTextColumn>
-                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlightResponse.AirportFrom" HeaderTextAlignment="Center">
+                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlight.AirportFrom" HeaderTextAlignment="Center">
                                                         <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                             <DataTemplate>
                                                                 <Label FontSize="14" Text="{ex:Translate Name=lblFrom-TranService}" TextColor="Black" FontAutoScalingEnabled="False" 
@@ -408,7 +408,7 @@
                                                             </DataTemplate>
                                                         </syncfusion:DataGridTextColumn.HeaderTemplate>
                                                     </syncfusion:DataGridTextColumn>
-                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlightResponse.AirportTo" HeaderTextAlignment="Center">
+                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlight.AirportTo" HeaderTextAlignment="Center">
                                                         <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                             <DataTemplate>
                                                                 <Label FontSize="14" Text="{ex:Translate Name=lblTo-TranService}" TextColor="Black" FontAutoScalingEnabled="False" 
@@ -417,7 +417,7 @@
                                                             </DataTemplate>
                                                         </syncfusion:DataGridTextColumn.HeaderTemplate>
                                                     </syncfusion:DataGridTextColumn>
-                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlightResponse.ETD" HeaderTextAlignment="Center">
+                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlight.ETD" HeaderTextAlignment="Center">
                                                         <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                             <DataTemplate>
                                                                 <Label FontSize="14" Text="{ex:Translate Name=lblETD-AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
@@ -426,7 +426,7 @@
                                                             </DataTemplate>
                                                         </syncfusion:DataGridTextColumn.HeaderTemplate>
                                                     </syncfusion:DataGridTextColumn>
-                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlightResponse.ETA" HeaderTextAlignment="Center">
+                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlight.ETA" HeaderTextAlignment="Center">
                                                         <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                             <DataTemplate>
                                                                 <Label FontSize="14" Text="{ex:Translate Name=lblETA-AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
@@ -435,7 +435,7 @@
                                                             </DataTemplate>
                                                         </syncfusion:DataGridTextColumn.HeaderTemplate>
                                                     </syncfusion:DataGridTextColumn>
-                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlightResponse.InfoAdultCount" HeaderTextAlignment="Center">
+                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlight.InfoAdultCount" HeaderTextAlignment="Center">
                                                         <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                             <DataTemplate>
                                                                 <Label FontSize="14" Text="{ex:Translate lblAdult-AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
@@ -444,7 +444,7 @@
                                                             </DataTemplate>
                                                         </syncfusion:DataGridTextColumn.HeaderTemplate>
                                                     </syncfusion:DataGridTextColumn>
-                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlightResponse.InfoChildCount" HeaderTextAlignment="Center">
+                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlight.InfoChildCount" HeaderTextAlignment="Center">
                                                         <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                             <DataTemplate>
                                                                 <Label FontSize="14" Text="{ex:Translate Name=lblChild-AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
@@ -453,7 +453,7 @@
                                                             </DataTemplate>
                                                         </syncfusion:DataGridTextColumn.HeaderTemplate>
                                                     </syncfusion:DataGridTextColumn>
-                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlightResponse.InfoInfantCount" HeaderTextAlignment="Center">
+                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlight.InfoInfantCount" HeaderTextAlignment="Center">
                                                         <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                             <DataTemplate>
                                                                 <Label FontSize="14" Text="{ex:Translate Name=lblInfant-AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
@@ -462,7 +462,7 @@
                                                             </DataTemplate>
                                                         </syncfusion:DataGridTextColumn.HeaderTemplate>
                                                     </syncfusion:DataGridTextColumn>
-                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlightResponse.Notes" HeaderTextAlignment="Center">
+                                                    <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyAirFlight.Notes" HeaderTextAlignment="Center">
                                                         <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                             <DataTemplate>
                                                                 <Label FontSize="14" Text="{ex:Translate Name=lblNotes-HotelService}" TextColor="Black" FontAutoScalingEnabled="False" 
@@ -812,7 +812,7 @@
                             </ContentView.Resources>
                             <StackLayout Orientation="Vertical" Margin="20" Spacing="10">
                                 <StackLayout Orientation="Horizontal">
-                                    <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackButtonClickedCommand}">
+                                    <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackButtonCommand}">
                                         <ImageButton.Source>
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                         </ImageButton.Source>
@@ -822,22 +822,15 @@
                                             </DataTrigger>
                                         </ImageButton.Triggers>
                                     </ImageButton>
-                                    <Label Text="Request Name" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                                    <Label Text="{Binding Response.RequestName}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                 </StackLayout>
-                                <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
+                                <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Padding="0,10">
                                     <StackLayout Spacing="10">
                                         <!--Hotel-->
                                         <StackLayout Orientation="Horizontal" Margin="0,15,0,0">
                                             <Label Text="{ex:Translate Name=lblHotelServices}" FontSize="16" TextColor="DarkOrange" VerticalTextAlignment="Center"></Label>
-                                            <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                                                    StrokeThickness="1.5" Padding="2">
-                                                <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddHotelCommand}">
-                                                    <ImageButton.Source>
-                                                        <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                                                    </ImageButton.Source>
-                                                </ImageButton>
-                                            </Border>
+
                                         </StackLayout>
                                         <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
                                             <CollectionView ItemsSource="{Binding Response.ResponseWithDistributorHotel}" VerticalOptions="FillAndExpand">
@@ -865,18 +858,19 @@
                                                                         </Label.FormattedText>
                                                                     </Label>
                                                                     <Label Text="{Binding Price,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" 
-                                                                           VerticalOptions="EndAndExpand" FontSize="11"></Label>
+                                                                           VerticalOptions="EndAndExpand" FontSize="11">
+                                                                        <Label.Triggers>
+                                                                            <DataTrigger TargetType="Label" Binding="{Binding Price}" Value="0">
+                                                                                <Setter Property="IsVisible" Value="False"></Setter>
+                                                                            </DataTrigger>
+                                                                        </Label.Triggers>
+                                                                    </Label>
                                                                     <StackLayout.GestureRecognizers>
                                                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=SelectHotelCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                                     </StackLayout.GestureRecognizers>
                                                                 </StackLayout>
                                                             </ScrollView>
 
-                                                            <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="0,0,5,0">
-                                                                <ImageButton.Source>
-                                                                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                                                </ImageButton.Source>
-                                                            </ImageButton>
                                                         </Grid>
 
                                                     </DataTemplate>
@@ -886,14 +880,7 @@
                                         <!--Transportaion-->
                                         <StackLayout Orientation="Horizontal" Margin="0,0">
                                             <Label Text="{ex:Translate Name=lblTransportationServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-                                            <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                    StrokeThickness="1.5" Padding="2">
-                                                <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddTransportaionCommand}">
-                                                    <ImageButton.Source>
-                                                        <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                                                    </ImageButton.Source>
-                                                </ImageButton>
-                                            </Border>
+
                                         </StackLayout>
                                         <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
                                             <CollectionView ItemsSource="{Binding Response.ResponseWithDistributorTransport}" VerticalOptions="FillAndExpand" SelectionMode="Single">
@@ -921,19 +908,19 @@
                                                                         </Label.FormattedText>
                                                                     </Label>
                                                                     <Label Text="{Binding Price,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue"
-                                                                           VerticalOptions="EndAndExpand" FontSize="11"></Label>
+                                                                           VerticalOptions="EndAndExpand" FontSize="11">
+                                                                        <Label.Triggers>
+                                                                            <DataTrigger TargetType="Label" Binding="{Binding Price}" Value="0">
+                                                                                <Setter Property="IsVisible" Value="False"></Setter>
+                                                                            </DataTrigger>
+                                                                        </Label.Triggers>
+                                                                    </Label>
                                                                     <StackLayout.GestureRecognizers>
                                                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=SelectTransportaionCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                                     </StackLayout.GestureRecognizers>
                                                                 </StackLayout>
                                                             </ScrollView>
 
-                                                            <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="0,0,5,0">
-                                                                <ImageButton.Source>
-                                                                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                                                </ImageButton.Source>
-                                                            </ImageButton>
-                                                            
                                                         </Grid>
 
 
@@ -944,14 +931,7 @@
                                         <!--Air Flight-->
                                         <StackLayout Orientation="Horizontal" Margin="0,0">
                                             <Label Text="{ex:Translate Name=lblAirFlightServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-                                            <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                    StrokeThickness="1.5" Padding="2">
-                                                <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddAirFlightCommand}">
-                                                    <ImageButton.Source>
-                                                        <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                                                    </ImageButton.Source>
-                                                </ImageButton>
-                                            </Border>
+
                                         </StackLayout>
                                         <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
                                             <CollectionView ItemsSource="{Binding Response.ResponseWithDistributorAirFlight}" VerticalOptions="FillAndExpand"  SelectionMode="Single">
@@ -984,19 +964,20 @@
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
-                                                                    <Label Text="{Binding Price,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue"
-                                                                           VerticalOptions="EndAndExpand" FontSize="11"></Label>
+                                                                    <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue"
+                                                                           VerticalOptions="EndAndExpand" FontSize="11">
+                                                                        <Label.Triggers>
+                                                                            <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
+                                                                                <Setter Property="IsVisible" Value="False"></Setter>
+                                                                            </DataTrigger>
+                                                                        </Label.Triggers>
+                                                                    </Label>
                                                                     <StackLayout.GestureRecognizers>
                                                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=SelectAirFlightCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                                     </StackLayout.GestureRecognizers>
                                                                 </StackLayout>
                                                             </ScrollView>
 
-                                                            <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="0,0,5,0">
-                                                                <ImageButton.Source>
-                                                                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                                                </ImageButton.Source>
-                                                            </ImageButton>
                                                         </Grid>
 
 
@@ -1007,14 +988,7 @@
                                         <!--Visa-->
                                         <StackLayout Orientation="Horizontal" Margin="0,0">
                                             <Label Text="{ex:Translate Name=lblVisaServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-                                            <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                    StrokeThickness="1.5" Padding="2">
-                                                <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddVisaCommand}">
-                                                    <ImageButton.Source>
-                                                        <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                                                    </ImageButton.Source>
-                                                </ImageButton>
-                                            </Border>
+
                                         </StackLayout>
                                         <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
                                             <CollectionView ItemsSource="{Binding Response.ResponseWithDistributorVisa}" VerticalOptions="FillAndExpand" SelectionMode="Single">
@@ -1047,18 +1021,20 @@
                                                                         </Label.FormattedText>
                                                                     </Label>
                                                                     <Label Text="{Binding Price,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue"
-                                                                           VerticalOptions="EndAndExpand" FontSize="11"></Label>
+                                                                           VerticalOptions="EndAndExpand" FontSize="11">
+                                                                        <Label.Triggers>
+                                                                            <DataTrigger TargetType="Label" Binding="{Binding Price}" Value="0">
+                                                                                <Setter Property="IsVisible" Value="False"></Setter>
+                                                                            </DataTrigger>
+                                                                        </Label.Triggers>
+                                                                    </Label>
                                                                     <StackLayout.GestureRecognizers>
-                                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=SelectAirFlightCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=SelectVisaCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                                     </StackLayout.GestureRecognizers>
                                                                 </StackLayout>
                                                             </ScrollView>
 
-                                                            <ImageButton WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="0,0,5,0">
-                                                                <ImageButton.Source>
-                                                                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                                                </ImageButton.Source>
-                                                            </ImageButton>
+
                                                         </Grid>
 
                                                     </DataTemplate>
@@ -1067,7 +1043,7 @@
                                         </Border>
                                     </StackLayout>
                                 </ScrollView>
-                                <Button VerticalOptions="EndAndExpand" Text="{ex:Translate btnApply-Forgot}" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="20,0,20,20"
+                                <Button VerticalOptions="End" Text="{ex:Translate btnApply-Forgot}" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="20,0,20,20"
                                         Command="{Binding AddToRequestCommand}"></Button>
                             </StackLayout>
                             <ContentView.Triggers>
