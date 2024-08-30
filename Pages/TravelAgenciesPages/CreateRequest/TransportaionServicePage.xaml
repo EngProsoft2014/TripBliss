@@ -24,7 +24,7 @@
                     </DataTrigger>
                 </ImageButton.Triggers>
             </ImageButton>
-            <Label Text="{ex:Translate Name=lblTransportationServices}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="{ex:Translate Name=lblTransportationServices}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand" Padding="0,0,0,20" VerticalScrollBarVisibility="Never">
@@ -33,63 +33,63 @@
                     <StackLayout Orientation="Vertical" Padding="15,15,15,25" >
                         <StackLayout Orientation="Horizontal" Spacing="35">
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
-                                <Label Text="{ex:Translate Name=lblCarType-TranService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Label Text="{ex:Translate Name=lblCarType-TranService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Picker TextColor="Black" FontSize="14" ItemsSource="{Binding CarTypes}" ItemDisplayBinding="{Binding TypeName}"
+                                    <Picker TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding CarTypes}" ItemDisplayBinding="{Binding TypeName}"
                                             SelectedItem="{Binding SelectrdType}"></Picker>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
-                                <Label Text="{ex:Translate lblBrand-TranServices}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Label Text="{ex:Translate lblBrand-TranServices}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Picker TextColor="Black" FontSize="14" ItemsSource="{Binding CarBrands}" ItemDisplayBinding="{Binding BrandName}"
+                                    <Picker TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding CarBrands}" ItemDisplayBinding="{Binding BrandName}"
                                             SelectedItem="{Binding SelectrdBrand}"></Picker>
                                 </Border>
                             </VerticalStackLayout>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" Spacing="35">
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
-                                <Label Text="{ex:Translate lblModel-TranService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Label Text="{ex:Translate lblModel-TranService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Picker TextColor="Black" FontSize="14" ItemsSource="{Binding CarModel}" ItemDisplayBinding="{Binding ModelName}"
+                                    <Picker TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding CarModel}" ItemDisplayBinding="{Binding ModelName}"
                                             SelectedItem="{Binding SelectrdModel}"></Picker>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
-                                <Label Text="{ex:Translate lblNos-TranService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Label Text="{ex:Translate lblNos-TranService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Entry Keyboard="Numeric" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular"
+                                    <Entry Keyboard="Numeric" TextColor="Black" FontAutoScalingEnabled="False" FontSize="13" FontFamily="OpenSansRegular"
                                        Text="{Binding TransportRequestModel.TransportCount}"></Entry>
                                 </Border>
                             </VerticalStackLayout>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" Spacing="35">
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
-                                <Label Text="{ex:Translate lblDate-TranService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Label Text="{ex:Translate lblDate-TranService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <DatePicker FontSize="13" TextColor="Black" Date="{Binding TransportRequestModel.Date}"></DatePicker>
+                                    <DatePicker FontSize="13" TextColor="Black" FontAutoScalingEnabled="False" Date="{Binding TransportRequestModel.Date}"></DatePicker>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
-                                <Label Text="{ex:Translate Name=lblTime-TranService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Label Text="{ex:Translate Name=lblTime-TranService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <TimePicker FontSize="13" TextColor="Black" Time="{Binding TransportRequestModel.Time}"></TimePicker>
+                                    <TimePicker FontSize="13" TextColor="Black" FontAutoScalingEnabled="False" Time="{Binding TransportRequestModel.Time}"></TimePicker>
                                 </Border>
                             </VerticalStackLayout>
                         </StackLayout>
-                        <Label Text="{ex:Translate Name=lblFrom-TranService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                        <Label Text="{ex:Translate Name=lblFrom-TranService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                            <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular"
+                            <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontAutoScalingEnabled="False" FontFamily="OpenSansRegular"
                                Text="{Binding TransportRequestModel.FromLocation}"></Entry>
                         </Border>
-                        <Label Text="{ex:Translate Name=lblTo-TranService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                        <Label Text="{ex:Translate Name=lblTo-TranService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                            <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular"
+                            <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontAutoScalingEnabled="False" FontFamily="OpenSansRegular"
                                Text="{Binding TransportRequestModel.ToLocation}"></Entry>
                         </Border>
-                        <Label Text="{ex:Translate lblNotes-HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                        <Label Text="{ex:Translate lblNotes-HotelService}" TextColor="#2fa562" FontAutoScalingEnabled="False" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="100">
-                            <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" 
+                            <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontAutoScalingEnabled="False" FontFamily="OpenSansRegular" 
                                Text="{Binding TransportRequestModel.Notes}"></Entry>
                         </Border>
                     </StackLayout>
@@ -97,7 +97,7 @@
                         <Shadow Brush="LightGray" Offset="8,8" Opacity="0.8"></Shadow>
                     </Border.Shadow>
                 </Border>
-                <Button VerticalOptions="EndAndExpand" Text="{ex:Translate Name=btnApply-Forgot}" BackgroundColor="#2fa562" TextColor="White"
+                <Button VerticalOptions="EndAndExpand" Text="{ex:Translate Name=btnApply-Forgot}" FontAutoScalingEnabled="False" BackgroundColor="#2fa562" TextColor="White"
                         Margin="20,0,20,20" Command="{Binding ApplyCommand}" CommandParameter="{Binding TransportRequestModel}"
                         FontSize="16" FontAttributes="Bold"></Button>
             </StackLayout>

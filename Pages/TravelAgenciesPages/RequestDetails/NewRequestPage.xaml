@@ -42,13 +42,13 @@
                     </DataTrigger>
                 </ImageButton.Triggers>
             </ImageButton>
-            <Label Text="{ex:Translate Name=hdrNewRequest}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="{ex:Translate Name=hdrNewRequest}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout Spacing="10">
                 <StackLayout Orientation="Horizontal" Margin="0,15,15,0">
-                    <Label Text="{ex:Translate Name=lblHotelServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" 
+                    <Label Text="{ex:Translate Name=lblHotelServices}" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" 
                            VerticalTextAlignment="Center"></Label>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
@@ -56,7 +56,7 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
-                                        <Label>
+                                    <Label FontAutoScalingEnabled="False">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{Binding HotelName}" TextColor="Gray" FontSize="12"></Span>
@@ -65,7 +65,7 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Label>
+                                    <Label FontAutoScalingEnabled="False">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{Binding Checkin}" TextColor="Gray" FontSize="12"></Span>
@@ -84,7 +84,7 @@
                     </CollectionView>
                 </Border>
                 <StackLayout Orientation="Horizontal" Margin="0,0">
-                    <Label Text="{ex:Translate Name=lblTransportationServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" 
+                    <Label Text="{ex:Translate Name=lblTransportationServices}" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" 
                            VerticalTextAlignment="Center"></Label>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
@@ -92,7 +92,7 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
-                                        <Label>
+                                    <Label FontAutoScalingEnabled="False">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="M.Sprinter " TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
@@ -102,7 +102,7 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Label>
+                                    <Label FontAutoScalingEnabled="False">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{Binding Nos}" TextColor="Gray" FontSize="12"></Span>
@@ -121,7 +121,7 @@
                     </CollectionView>
                 </Border>
                 <StackLayout Orientation="Horizontal" Margin="0,0">
-                    <Label Text="{ex:Translate Name=lblAirFlightServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None"
+                    <Label Text="{ex:Translate Name=lblAirFlightServices}" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None"
                            VerticalTextAlignment="Center"></Label>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
@@ -129,7 +129,7 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
-                                        <Label>
+                                    <Label FontAutoScalingEnabled="False">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="QR " TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
@@ -137,7 +137,7 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Label>
+                                    <Label FontAutoScalingEnabled="False">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{Binding From}" TextColor="Gray" FontSize="12"></Span>
@@ -146,7 +146,7 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Label>
+                                    <Label FontAutoScalingEnabled="False">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{Binding Child}" TextColor="Gray" FontSize="12"></Span>
@@ -165,7 +165,7 @@
                     </CollectionView>
                 </Border>
                 <StackLayout Orientation="Horizontal" Margin="0,0">
-                    <Label Text="{ex:Translate Name=lblVisaServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None"
+                    <Label Text="{ex:Translate Name=lblVisaServices}" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None"
                            VerticalTextAlignment="Center"></Label>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
@@ -173,7 +173,7 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5">
-                                    <Label>
+                                    <Label FontAutoScalingEnabled="False">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="#" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
@@ -181,14 +181,14 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <Label>
+                                    <Label FontAutoScalingEnabled="False">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{Binding VisaType}" TextColor="Gray" FontSize="12"></Span>
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <Label>
+                                    <Label FontAutoScalingEnabled="False">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{Binding VisaNo}" TextColor="Gray" FontSize="12"></Span>
@@ -206,7 +206,7 @@
                 </Border>
             </StackLayout>
         </ScrollView>
-        <Button VerticalOptions="End" Text="{ex:Translate Name=btnApply-Forgot}" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="20,0"></Button>
+        <Button VerticalOptions="End" Text="{ex:Translate Name=btnApply-Forgot}" FontAutoScalingEnabled="False" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="20,0"></Button>
 
     </StackLayout>
     

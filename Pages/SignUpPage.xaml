@@ -22,17 +22,17 @@
                         </Image.Source>
                     </Image>-->
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                        <Picker ItemsSource="{Binding LstCompanyType}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding OneCompanyType,Mode=TwoWay}" 
+                        <Picker ItemsSource="{Binding LstCompanyType}" FontAutoScalingEnabled="False" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding OneCompanyType,Mode=TwoWay}" 
                             Title="{ex:Translate Name=pickerTitleCompanyType-SignUpPage}" Margin="20,2" 
                             FontSize="14" TextColor="Black" TitleColor="#adadad" HorizontalOptions="CenterAndExpand">
                         </Picker>
                     </Border>
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                        <Entry Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcCompanyName-SignUp}" HorizontalTextAlignment="Center"
+                        <Entry Keyboard="Text" TextColor="Black" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcCompanyName-SignUp}" HorizontalTextAlignment="Center"
                            Margin="10,2" Text="{Binding CompanyName}" HorizontalOptions="CenterAndExpand"></Entry>
                     </Border>
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                        <Entry Keyboard="Email" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcCompanyEmail-SignUpPage}" HorizontalTextAlignment="Center"
+                        <Entry Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcCompanyEmail-SignUpPage}" HorizontalTextAlignment="Center"
                            Margin="10,2" Text="{Binding CompanyEmail}"></Entry>
                     </Border>
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
@@ -40,16 +40,16 @@
                            HorizontalTextAlignment="Center" Margin="10,2" Text="{Binding CompanyPhone}"></Entry>
                     </Border>
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                        <Entry Keyboard="Email" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcEmail-SignUpPage}" HorizontalTextAlignment="Center"
+                        <Entry Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcEmail-SignUpPage}" HorizontalTextAlignment="Center"
                            Margin="10,2" Text="{Binding LoginRequest.Email}"></Entry>
                     </Border>
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                        <Entry Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcUserName-Login}" HorizontalTextAlignment="Center"
+                        <Entry Keyboard="Text" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcUserName-Login}" HorizontalTextAlignment="Center"
                            Margin="10,2" Text="{Binding LoginRequest.UserName}"></Entry>
                     </Border>
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,2">
-                            <Entry x:Name="entryPassword" Keyboard="Text" IsPassword="True" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcPassword-Login}"
+                            <Entry x:Name="entryPassword" FontAutoScalingEnabled="False" Keyboard="Text" IsPassword="True" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcPassword-Login}"
                            HorizontalTextAlignment="Center" Text="{Binding LoginRequest.Password}" HorizontalOptions="CenterAndExpand"></Entry>
 
                             <Image x:Name="imgEyePass" Margin="0,0,10,0" HorizontalOptions="End">
@@ -71,7 +71,7 @@
                             </Image>
                         </StackLayout>
                     </Border>
-                    <Button Text="{ex:Translate Name=lblSignUp-Login}" BackgroundColor="#2FA562" TextColor="White" WidthRequest="140" CornerRadius="20" Margin="0,15,0,0"
+                    <Button Text="{ex:Translate Name=lblSignUp-Login}" FontAutoScalingEnabled="False" BackgroundColor="#2FA562" TextColor="White" WidthRequest="140" CornerRadius="20" Margin="0,15,0,0"
                          Command="{Binding ClickRegisterCommand}" CommandParameter="{Binding LoginRequest}"></Button>
                 </VerticalStackLayout>
             </Border>

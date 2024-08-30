@@ -31,19 +31,19 @@
             </StackLayout>
 
 
-            <Label Text="02 Day Left" TextColor="Gray" VerticalOptions="CenterAndExpand" FontSize="10"></Label>
+            <Label Text="02 Day Left" TextColor="Gray" FontAutoScalingEnabled="False" VerticalOptions="CenterAndExpand" FontSize="10"></Label>
         </StackLayout>
       
         <ScrollView>
             <VerticalStackLayout Spacing="20">
                 <Image Source="offer.jpg"></Image>
-                <Label Text="{ex:Translate Name=lblDiscription-OfferDetails}" FontSize="14" TextColor="Black"></Label>
-                <Label Text="{Binding SelectedItem.Description}" FontSize="12" TextColor="Gray"></Label>
+                <Label Text="{ex:Translate Name=lblDiscription-OfferDetails}" FontAutoScalingEnabled="False" FontSize="14" TextColor="Black"></Label>
+                <Label Text="{Binding SelectedItem.Description}" FontSize="12" FontAutoScalingEnabled="False" TextColor="Gray"></Label>
             </VerticalStackLayout>
         </ScrollView>
 
 
-        <Button Text="{ex:Translate Name=btnAddRequest}" WidthRequest="95" HeightRequest="40" FontSize="12" Command="{Binding AddRequestCommand}"
+        <Button Text="{ex:Translate Name=btnAddRequest}" WidthRequest="95" FontAutoScalingEnabled="False" HeightRequest="40" FontSize="12" Command="{Binding AddRequestCommand}"
                     BackgroundColor="#2fa562"
                     CornerRadius="20"
                     TextColor="White" 

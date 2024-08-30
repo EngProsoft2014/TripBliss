@@ -42,14 +42,14 @@
                     </DataTrigger>
                 </ImageButton.Triggers>
             </ImageButton>
-            <Label Text="{ex:Translate Name=hdrNewRequest}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="{ex:Translate Name=hdrNewRequest}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
             <StackLayout Spacing="10">
                 <!--Hotels-->
                 <StackLayout Orientation="Horizontal" Margin="0,15,0,0">
-                    <Label Text="{ex:Translate Name=lblHotelServices}" FontSize="16" TextColor="DarkOrange" VerticalTextAlignment="Center"></Label>
+                    <Label Text="{ex:Translate Name=lblHotelServices}" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" VerticalTextAlignment="Center"></Label>
                     <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
                             StrokeThickness="1.5" Padding="2">
                         <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddHotelCommand}">
@@ -66,7 +66,7 @@
                                 <Grid HorizontalOptions="FillAndExpand">
                                     <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand" HorizontalScrollBarVisibility="Never" Padding="3,0,33,0">
                                         <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" HorizontalOptions="FillAndExpand">
-                                            <Label VerticalTextAlignment="Center">
+                                            <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{Binding LocationName}" TextColor="Gray" FontSize="12"></Span>
@@ -75,7 +75,7 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <Label VerticalTextAlignment="Center">
+                                            <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{Binding CheckIn, StringFormat='{0:d}'}" TextColor="Gray" FontSize="12"></Span>
@@ -105,7 +105,7 @@
 
                 <!--Transportations-->
                 <StackLayout Orientation="Horizontal" Margin="0,0">
-                    <Label Text="{ex:Translate Name=lblTransportationServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Label Text="{ex:Translate Name=lblTransportationServices}" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
                     <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
                     StrokeThickness="1.5" Padding="2">
                         <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddTransportaionCommand}">
@@ -122,8 +122,8 @@
                                 <Grid HorizontalOptions="FillAndExpand">
                                     <ScrollView Orientation="Horizontal" Padding="3,0,33,0" HorizontalScrollBarVisibility="Never">
                                         <StackLayout Orientation="Horizontal" Spacing="10" Padding="3" Margin="0,5">
-                                            <Label Text="{Binding TypeName}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                                            <Label TextColor="Gray" FontSize="12" VerticalTextAlignment="Center">
+                                            <Label Text="{Binding TypeName}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="12" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                            <Label TextColor="Gray" FontAutoScalingEnabled="False" FontSize="12" VerticalTextAlignment="Center">
                                                 <Label.Text>
                                                     <MultiBinding StringFormat="{}{0} - {1}">
                                                         <Binding Path="FromLocation" />
@@ -139,7 +139,7 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>-->
                                             </Label>
-                                            <Label VerticalTextAlignment="Center">
+                                            <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{Binding TransportCount,StringFormat='{0} pax'}" TextColor="Gray" FontSize="12"></Span>
@@ -168,7 +168,7 @@
 
                 <!--AirFlights-->
                 <StackLayout Orientation="Horizontal" Margin="0,0">
-                    <Label Text="{ex:Translate Name=lblAirFlightServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Label Text="{ex:Translate Name=lblAirFlightServices}" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
                     <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
                     StrokeThickness="1.5" Padding="2">
                         <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddAirFlightCommand}">
@@ -185,14 +185,14 @@
                                 <Grid HorizontalOptions="FillAndExpand">
                                     <ScrollView Orientation="Horizontal" Padding="3,0,33,0" HorizontalScrollBarVisibility="Never">
                                         <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" HorizontalOptions="FillAndExpand">
-                                            <Label VerticalTextAlignment="Center">
+                                            <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{Binding RequestTravelAgencyId , StringFormat='RF {0}'}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <Label VerticalTextAlignment="Center">
+                                            <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{Binding AirportFrom}" TextColor="Gray" FontSize="12" ></Span>
@@ -201,7 +201,7 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <Label VerticalTextAlignment="Center">
+                                            <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{Binding TotalPerson,StringFormat='{0} pax'}" TextColor="Gray" FontSize="12"></Span>
@@ -231,7 +231,7 @@
 
                 <!--Visas-->
                 <StackLayout Orientation="Horizontal" Margin="0,0">
-                    <Label Text="{ex:Translate Name=lblVisaServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Label Text="{ex:Translate Name=lblVisaServices}" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
                     <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
                     StrokeThickness="1.5" Padding="2">
                         <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddVisaCommand}">
@@ -249,7 +249,7 @@
                                 <Grid HorizontalOptions="FillAndExpand">
                                     <ScrollView  Orientation="Horizontal" Padding="3,0,33,0" HorizontalScrollBarVisibility="Never">
                                         <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" HorizontalOptions="FillAndExpand">
-                                            <Label>
+                                            <Label FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="#" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
@@ -257,14 +257,14 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <Label>
+                                            <Label FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{Binding VisaName}" TextColor="Gray" FontSize="12"></Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <Label>
+                                            <Label FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{Binding PersonCount,StringFormat='{0} pax'}" TextColor="Gray" FontSize="12"></Span>
@@ -292,7 +292,7 @@
             </StackLayout>
         </ScrollView>
 
-        <Button VerticalOptions="End" Text="{ex:Translate Name=btnConfirm-NewRequest}" FontSize="16" FontAttributes="Bold" BackgroundColor="#2fa562"
+        <Button VerticalOptions="End" Text="{ex:Translate Name=btnConfirm-NewRequest}" FontAutoScalingEnabled="False" FontSize="16" FontAttributes="Bold" BackgroundColor="#2fa562"
                 TextColor="White" Margin="20,0" Command="{Binding AddToRequestCommand}" CommandParameter="{Binding RequestTravelAgency}"></Button>
     </StackLayout>
 

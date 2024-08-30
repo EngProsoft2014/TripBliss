@@ -23,69 +23,69 @@
                     </DataTrigger>
                 </ImageButton.Triggers>
             </ImageButton>
-            <Label Text="{ex:Translate Name=lblHotelServices}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="{ex:Translate Name=lblHotelServices}" FontSize="18" FontAutoScalingEnabled="False" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout >
                 <Border StrokeShape="RoundRectangle 15" Margin="0,40" BackgroundColor="White">
                     <StackLayout Orientation="Vertical" Padding="15">
-                        <Label Text="{ex:Translate Name=lblHotelName-HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                        <Label Text="{ex:Translate Name=lblHotelName-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                            <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" Text="{Binding HotelResponseModel.HotelName}"
+                            <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontAutoScalingEnabled="False" FontFamily="OpenSansRegular" Text="{Binding HotelResponseModel.HotelName}"
                            IsReadOnly="True"></Entry>
                         </Border>
                         <StackLayout Orientation="Horizontal" Spacing="35">
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
-                                <Label Text="{ex:Translate Name=lblCheckIn-HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Label Text="{ex:Translate Name=lblCheckIn-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Label FontSize="13" TextColor="Black" Text="{Binding HotelResponseModel.Checkin}" VerticalTextAlignment="Center" Padding="10,0,10,0"></Label>
+                                    <Label FontSize="13" TextColor="Black" Text="{Binding HotelResponseModel.Checkin}" FontAutoScalingEnabled="False" VerticalTextAlignment="Center" Padding="10,0,10,0"></Label>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
-                                <Label Text="{ex:Translate Name=lblCheckOut-HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Label Text="{ex:Translate Name=lblCheckOut-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Label FontSize="13" TextColor="Black" Text="{Binding HotelResponseModel.Checkout}" VerticalTextAlignment="Center" Padding="10,0,10,0"></Label>
+                                    <Label FontSize="13" TextColor="Black" Text="{Binding HotelResponseModel.Checkout}" FontAutoScalingEnabled="False" VerticalTextAlignment="Center" Padding="10,0,10,0"></Label>
                                 </Border>
                             </VerticalStackLayout>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" Spacing="35">
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
-                                <Label Text="{ex:Translate lblRoomView-HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Label Text="{ex:Translate lblRoomView-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
+                                    <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontAutoScalingEnabled="False" FontFamily="OpenSansRegular" IsReadOnly="True"
                                    Text="{Binding HotelResponseModel.RoomView}"></Entry>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
-                                <Label Text="{ex:Translate Name=lblRoomType-HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Label Text="{ex:Translate Name=lblRoomType-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
+                                    <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontAutoScalingEnabled="False" FontFamily="OpenSansRegular" IsReadOnly="True"
                                    Text="{Binding HotelResponseModel.RoomType}"></Entry>
                                 </Border>
                             </VerticalStackLayout>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" Spacing="35">
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
-                                <Label Text="{ex:Translate Name=lblMeals-HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Label Text="{ex:Translate Name=lblMeals-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
+                                    <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontAutoScalingEnabled="False" FontFamily="OpenSansRegular" IsReadOnly="True"
                                    Text="{Binding HotelResponseModel.Meals}"></Entry>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="5">
-                                <Label Text="{ex:Translate Name=lblNoOfRoom-HotelService}" TextColor="#2fa562" FontSize="14" HorizontalTextAlignment="Center" Margin="0,20,0,0"></Label>
+                                <Label Text="{ex:Translate Name=lblNoOfRoom-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" HorizontalTextAlignment="Center" Margin="0,20,0,0"></Label>
                                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="CenterAndExpand" Padding="10,5" Stroke="Gray"
                             VerticalOptions="EndAndExpand" Margin='0,0,0,15'>
-                                    <Label Text="{Binding HotelResponseModel.RoomCount}" TextColor="#2fa562" FontSize="20" VerticalTextAlignment="Center" 
+                                    <Label Text="{Binding HotelResponseModel.RoomCount}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="20" VerticalTextAlignment="Center" 
                                FontAttributes="Bold" ></Label>
                                 </Border>
                             </VerticalStackLayout>
 
                         </StackLayout>
-                        <Label Text="{ex:Translate lblNotes-HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,0"></Label>
+                        <Label Text="{ex:Translate lblNotes-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,0"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10" HeightRequest="100">
-                            <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
+                            <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontAutoScalingEnabled="False" FontFamily="OpenSansRegular" IsReadOnly="True"
                            Text="{Binding HotelResponseModel.Notes}"></Entry>
                         </Border>
                     </StackLayout>

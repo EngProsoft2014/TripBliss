@@ -27,7 +27,7 @@
             <StackLayout HorizontalOptions="FillAndExpand" Spacing="10">
                 <Border Padding="0,10,0,10" BackgroundColor="#FFFFFF" VerticalOptions="Center" >
                     <StackLayout  BackgroundColor="#FFFFFF">
-                        <Label Text="Select Language"
+                        <Label Text="Select Language" FontAutoScalingEnabled="False"
                            TextColor="#333333"
                            FontSize="13"
                            FontFamily="AlmaraiRegular"
@@ -36,10 +36,10 @@
                            HorizontalOptions="CenterAndExpand"
                            Padding="8"></Label>
 
-                        <Line X1="150"  HorizontalOptions="FillAndExpand" BackgroundColor="#212121"></Line>
+                        <Line X1="150" HorizontalOptions="FillAndExpand" BackgroundColor="#212121"></Line>
 
                         <StackLayout Orientation="Horizontal" Spacing="0" Padding="20,0,20,0">
-                            <Label x:Name="lblEnglish"
+                            <Label x:Name="lblEnglish" FontAutoScalingEnabled="False"
                                    Text="English"
                                    TextColor="Gray"
                                    FontSize="16"
@@ -65,7 +65,7 @@
                         <Line X1="150"  HorizontalOptions="FillAndExpand" BackgroundColor="#212121"></Line>
 
                         <StackLayout Orientation="Horizontal" Spacing="0" Padding="20,0,20,0">
-                            <Label x:Name="lblArabic"
+                            <Label x:Name="lblArabic" FontAutoScalingEnabled="False"
                                    Text="العربية"
                                    TextColor="#333"
                                    FontSize="16"
@@ -97,7 +97,7 @@
                 </Border>
                 <Border Padding="10" BackgroundColor="#FFFFFF" VerticalOptions="Center">
 
-                    <Label Text="Cancel"
+                    <Label Text="Cancel" FontAutoScalingEnabled="False"
                            TextColor="Gray"
                            FontSize="14"
                            FontFamily="AlmaraiBold"

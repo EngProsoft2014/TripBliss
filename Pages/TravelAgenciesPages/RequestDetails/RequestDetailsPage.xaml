@@ -39,7 +39,7 @@
                                         </DataTrigger>
                                     </ImageButton.Triggers>
                                 </ImageButton>
-                                <Label Text="{Binding RequestDetailes.RequestName}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                                <Label Text="{Binding RequestDetailes.RequestName}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                             </StackLayout>
                             <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
@@ -50,7 +50,7 @@
                                             <DataTemplate>
 
                                                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,10">
-                                                    <Label Text="{ex:Translate Name=lblHotelServices}" TextColor="DarkOrange" Margin="0,0,0,10" FontAttributes="Bold" FontSize="16">
+                                                    <Label Text="{ex:Translate Name=lblHotelServices}" FontAutoScalingEnabled="False" TextColor="DarkOrange" Margin="0,0,0,10" FontAttributes="Bold" FontSize="16">
 
                                                     </Label>
                                                     <!--<StackLayout Orientation="Horizontal" Margin="0,10" Spacing="5">
@@ -73,7 +73,7 @@
                                                                 HorizontalOptions="FillAndExpand">
                                                             <StackLayout Orientation="Vertical" >
                                                                 <StackLayout Orientation="Horizontal">
-                                                                    <Label VerticalTextAlignment="Center" Padding="5">
+                                                                    <Label VerticalTextAlignment="Center" Padding="5" FontAutoScalingEnabled="False">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
                                                                                 <Span Text="{Binding LocationName}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
@@ -84,65 +84,65 @@
                                                                     </Label>
                                                                     <Line StrokeThickness="1" Y1="0" Y2="40" Stroke="Gray" HorizontalOptions="EndAndExpand"></Line>
                                                                     <VerticalStackLayout Margin="10,0" VerticalOptions="CenterAndExpand">
-                                                                        <Label Text="{Binding NumberOfNights}" FontSize="11" TextColor="#387955" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
-                                                                        <Label Text="{ex:Translate Name=lblNights-RequestDetails}" FontSize="11" TextColor="#387955"
+                                                                        <Label Text="{Binding NumberOfNights}" FontAutoScalingEnabled="False" FontSize="11" TextColor="#387955" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+                                                                        <Label Text="{ex:Translate Name=lblNights-RequestDetails}" FontAutoScalingEnabled="False" FontSize="11" TextColor="#387955"
                                                                                FontAttributes="Bold"></Label>
                                                                     </VerticalStackLayout>
                                                                 </StackLayout>
                                                                 <BoxView HorizontalOptions="FillAndExpand" Color="Gray" HeightRequest=".5"></BoxView>
                                                                 <VerticalStackLayout>
                                                                     <StackLayout Orientation="Horizontal" Padding="5">
-                                                                        <Label Text="{ex:Translate Name=lblCheckIn-HotelService}" TextColor="Black" FontSize="13"
+                                                                        <Label Text="{ex:Translate Name=lblCheckIn-HotelService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="13"
                                                                FontFamily="Almarai-Regular"></Label>
-                                                                        <Label Text=": " TextColor="Black" FontSize="13"></Label>
-                                                                        <Label Text="{Binding CheckIn , StringFormat='{0:d}'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="End"></Label>
-                                                                        <Label Text="{ex:Translate Name=lblCheckOut-HotelService}" TextColor="Black" FontSize="13"
+                                                                        <Label Text=": " TextColor="Black" FontSize="13" FontAutoScalingEnabled="False"></Label>
+                                                                        <Label Text="{Binding CheckIn , StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="End"></Label>
+                                                                        <Label Text="{ex:Translate Name=lblCheckOut-HotelService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="13"
                                                                FontFamily="Almarai-Regular" HorizontalOptions="EndAndExpand"></Label>
-                                                                        <Label Text=": " TextColor="Black" FontSize="13"></Label>
-                                                                        <Label Text="{Binding CheckOut ,StringFormat='{0:d}'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="End"></Label>
+                                                                        <Label Text=": " TextColor="Black" FontSize="13" FontAutoScalingEnabled="False"></Label>
+                                                                        <Label Text="{Binding CheckOut ,StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="End"></Label>
                                                                     </StackLayout>
-                                                                    <Label Text="{ex:Translate Name=lblRoomDetails-RequestDetails}" TextColor="#387955" FontSize="14"
+                                                                    <Label Text="{ex:Translate Name=lblRoomDetails-RequestDetails}" FontAutoScalingEnabled="False" TextColor="#387955" FontSize="14"
                                                            FontAttributes="Bold" Margin="0,5" Padding="5"></Label>
                                                                     <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="7" Margin="10,0">
                                                                         <VerticalStackLayout Spacing="3">
                                                                             <StackLayout Orientation="Horizontal">
 
-                                                                                <Label Text="{ex:Translate Name=lblRoomType-HotelService}" TextColor="Gray" FontSize="14"
+                                                                                <Label Text="{ex:Translate Name=lblRoomType-HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                        FontAttributes="Bold"></Label>
-                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding RoomTypeName}" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding RoomTypeName}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
 
-                                                                                <Label Text="{ex:Translate Name=lblView-RequestDetails}" TextColor="Gray" FontSize="14"
+                                                                                <Label Text="{ex:Translate Name=lblView-RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                        FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
-                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding RoomViewName}" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding RoomViewName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
                                                                             </StackLayout>
                                                                             <StackLayout Orientation="Horizontal">
-                                                                                <Label Text="{ex:Translate Name=lblNoOfRoom-HotelService}" TextColor="Gray" FontSize="14"
+                                                                                <Label Text="{ex:Translate Name=lblNoOfRoom-HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                        FontAttributes="Bold"></Label>
-                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding RoomCount}" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{ex:Translate Name=lblMeals-HotelService}" TextColor="Gray" FontSize="14"
+                                                                                <Label Text=": " TextColor="Gray" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding RoomCount}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{ex:Translate Name=lblMeals-HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                        HorizontalOptions="EndAndExpand" FontAttributes="Bold"></Label>
-                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding MealName}" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding MealName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
                                                                             </StackLayout>
                                                                             <StackLayout Orientation="Horizontal">
-                                                                                <Label Text="{ex:Translate Name=lblRatePR-RequestDetails-RequestDetails}" TextColor="Gray" FontSize="14"
+                                                                                <Label Text="{ex:Translate Name=lblRatePR-RequestDetails-RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                        FontAttributes="Bold"></Label>
-                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                <Label Text="70" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                <Label Text="$" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{ex:Translate Name=lblRateBasis-RequestDetails}" TextColor="Gray" FontSize="14"
+                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="70" TextColor="DarkOrange" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="$" TextColor="DarkOrange" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{ex:Translate Name=lblRateBasis-RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                        HorizontalOptions="EndAndExpand" FontAttributes="Bold"></Label>
-                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                <Label Text="2B/S" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="2B/S" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
                                                                             </StackLayout>
                                                                             <StackLayout Orientation="Horizontal">
-                                                                                <Label Text="{ex:Translate Name=lblMRPD-RequestDetails}" TextColor="Gray"
+                                                                                <Label Text="{ex:Translate Name=lblMRPD-RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray"
                                                                        FontSize="14" FontAttributes="Bold"></Label>
-                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                <Label Text="10" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="10" TextColor="DarkOrange" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
                                                                             </StackLayout>
                                                                         </VerticalStackLayout>
                                                                     </Border>
@@ -156,7 +156,7 @@
 
                                     </CarouselView>
                                     <StackLayout Spacing="10">
-                                        <Label Text="{ex:Translate Name=lblTransportationServices}" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
+                                        <Label Text="{ex:Translate Name=lblTransportationServices}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
                                             ></Label>
                                         <syncfusion:SfDataGrid ItemsSource="{Binding RequestDetailes.RequestTravelAgencyTransport}" ColumnWidthMode="FitByCell"
                                                                    GridLinesVisibility="Both" HeaderGridLinesVisibility="Both"
@@ -165,7 +165,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="Date" HeaderTextAlignment="Center">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="{ex:Translate Name=lblDate-TranService}" TextColor="Black" 
+                                                            <Label FontSize="14" Text="{ex:Translate Name=lblDate-TranService}" FontAutoScalingEnabled="False" TextColor="Black" 
                                                                        FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                        HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -174,7 +174,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="FromLocation" HeaderTextAlignment="Center">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="{ex:Translate Name=lblFrom-TranService}" TextColor="Black" 
+                                                            <Label FontSize="14" Text="{ex:Translate Name=lblFrom-TranService}" FontAutoScalingEnabled="False" TextColor="Black" 
                                                                        FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                        HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -183,7 +183,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="ToLocation" HeaderTextAlignment="Center">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="{ex:Translate Name=lblTo-TranService}" TextColor="Black" 
+                                                            <Label FontSize="14" Text="{ex:Translate Name=lblTo-TranService}" FontAutoScalingEnabled="False" TextColor="Black" 
                                                                        FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                        HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -192,7 +192,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="BrandName" HeaderTextAlignment="Center">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="{ex:Translate Name=hdrvehicle-RequestDetails}" TextColor="Black" 
+                                                            <Label FontSize="14" Text="{ex:Translate Name=hdrvehicle-RequestDetails}" FontAutoScalingEnabled="False" TextColor="Black" 
                                                                        FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                        HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -201,7 +201,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="TransportCount" HeaderTextAlignment="Center">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="{ex:Translate Name=lblNo-RequestDetails}" TextColor="Black" 
+                                                            <Label FontSize="14" Text="{ex:Translate Name=lblNo-RequestDetails}" FontAutoScalingEnabled="False" TextColor="Black" 
                                                                        FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                        HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -210,7 +210,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="IsDriver" HeaderTextAlignment="Center">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="{ex:Translate Name=lblIsDriver-RequestDetails}" TextColor="Black" 
+                                                            <Label FontSize="14" Text="{ex:Translate Name=lblIsDriver-RequestDetails}" FontAutoScalingEnabled="False" TextColor="Black" 
                                                                    FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                    HorizontalOptions="CenterAndExpand"></Label>
                                                             </DataTemplate>
@@ -219,7 +219,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="TypeName" HeaderTextAlignment="Center">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="{ex:Translate Name=lblTypeName-RequestDetails}" TextColor="Black" 
+                                                            <Label FontSize="14" Text="{ex:Translate Name=lblTypeName-RequestDetails}" FontAutoScalingEnabled="False" TextColor="Black" 
                                                                    FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                    HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -228,7 +228,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="ModelName" HeaderTextAlignment="Center">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="{ex:Translate Name=lblModelName-RequestDetails}" TextColor="Black" 
+                                                            <Label FontSize="14" Text="{ex:Translate Name=lblModelName-RequestDetails}" FontAutoScalingEnabled="False" TextColor="Black" 
                                                                    FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                    HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -238,7 +238,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="Notes" HeaderTextAlignment="Center">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="{ex:Translate Name=lblNotes-HotelService}" TextColor="Black" 
+                                                            <Label FontSize="14" Text="{ex:Translate Name=lblNotes-HotelService}" FontAutoScalingEnabled="False" TextColor="Black" 
                                                                    FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                    HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -247,7 +247,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="BrandName" HeaderTextAlignment="Center" Visible="False">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="BrandName" TextColor="Black" 
+                                                            <Label FontSize="14" Text="BrandName" TextColor="Black" FontAutoScalingEnabled="False" 
                                                                    FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                    HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -256,7 +256,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="CarModelId" HeaderTextAlignment="Center" Visible="False">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="CarModelId" TextColor="Black" 
+                                                            <Label FontSize="14" Text="CarModelId" TextColor="Black" FontAutoScalingEnabled="False"
                                                                    FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                    HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -265,7 +265,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="CarBrandId" HeaderTextAlignment="Center" Visible="False">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="CarBrandId" TextColor="Black" 
+                                                            <Label FontSize="14" Text="CarBrandId" TextColor="Black" FontAutoScalingEnabled="False" 
                                                                    FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                    HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -274,7 +274,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="CarTypeId" HeaderTextAlignment="Center" Visible="False">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="CarTypeId" TextColor="Black" 
+                                                            <Label FontSize="14" Text="CarTypeId" TextColor="Black" FontAutoScalingEnabled="False" 
                                                                    FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                    HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -283,7 +283,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyId" HeaderTextAlignment="Center" Visible="False">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="RequestTravelAgencyId" TextColor="Black" 
+                                                            <Label FontSize="14" Text="RequestTravelAgencyId" TextColor="Black" FontAutoScalingEnabled="False" 
                                                                    FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                    HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -292,7 +292,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="Id" HeaderTextAlignment="Center" Visible="False">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="Id" TextColor="Black" 
+                                                            <Label FontSize="14" Text="Id" TextColor="Black" FontAutoScalingEnabled="False" 
                                                                    FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                    HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -334,7 +334,7 @@
                                         </StackLayout.Triggers>
                                     </StackLayout>
                                     <StackLayout Spacing="10" HeightRequest="250">
-                                        <Label Text="{ex:Translate Name=lblAirFlightServices}" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
+                                        <Label Text="{ex:Translate Name=lblAirFlightServices}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontAttributes="Bold" FontSize="16"
                                                    ></Label>
                                         <syncfusion:SfDataGrid ItemsSource="{Binding RequestDetailes.RequestTravelAgencyAirFlight}" ColumnWidthMode="FitByCell" 
                                                                    GridLinesVisibility="Both" HeaderGridLinesVisibility="Both" 
@@ -343,7 +343,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="Date" HeaderTextAlignment="Center">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="{ex:Translate lblDate-TranService}" TextColor="Black" 
+                                                            <Label FontSize="14" Text="{ex:Translate lblDate-TranService}" TextColor="Black" FontAutoScalingEnabled="False"
                                                                        FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                        HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -352,7 +352,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="AirLine" HeaderTextAlignment="Center">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="{ex:Translate Name=lblCarrier-AirService}" TextColor="Black" 
+                                                            <Label FontSize="14" Text="{ex:Translate Name=lblCarrier-AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
                                                                        FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                        HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -361,7 +361,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="ClassName" HeaderTextAlignment="Center">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="{ex:Translate Name=lblClass-AirService}" TextColor="Black" 
+                                                            <Label FontSize="14" Text="{ex:Translate Name=lblClass-AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
                                                                        FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                        HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -370,7 +370,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="AirportFrom" HeaderTextAlignment="Center">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="{ex:Translate Name=lblFrom-TranService}" TextColor="Black" 
+                                                            <Label FontSize="14" Text="{ex:Translate Name=lblFrom-TranService}" TextColor="Black" FontAutoScalingEnabled="False" 
                                                                        FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                        HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -379,7 +379,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="AirportTo" HeaderTextAlignment="Center">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="{ex:Translate Name=lblTo-TranService}" TextColor="Black" 
+                                                            <Label FontSize="14" Text="{ex:Translate Name=lblTo-TranService}" TextColor="Black" FontAutoScalingEnabled="False" 
                                                                        FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                        HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -388,7 +388,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="ETD" HeaderTextAlignment="Center">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="{ex:Translate Name=lblETD-AirService}" TextColor="Black" 
+                                                            <Label FontSize="14" Text="{ex:Translate Name=lblETD-AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
                                                                        FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                        HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -397,7 +397,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="ETA" HeaderTextAlignment="Center">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="{ex:Translate Name=lblETA-AirService}" TextColor="Black" 
+                                                            <Label FontSize="14" Text="{ex:Translate Name=lblETA-AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
                                                                        FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                        HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -406,7 +406,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="InfoAdultCount" HeaderTextAlignment="Center">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="{ex:Translate lblAdult-AirService}" TextColor="Black" 
+                                                            <Label FontSize="14" Text="{ex:Translate lblAdult-AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
                                                                        FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                        HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -415,7 +415,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="InfoChildCount" HeaderTextAlignment="Center">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="{ex:Translate Name=lblChild-AirService}" TextColor="Black" 
+                                                            <Label FontSize="14" Text="{ex:Translate Name=lblChild-AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
                                                                        FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                        HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -424,7 +424,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="InfoInfantCount" HeaderTextAlignment="Center">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="{ex:Translate Name=lblInfant-AirService}" TextColor="Black" 
+                                                            <Label FontSize="14" Text="{ex:Translate Name=lblInfant-AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
                                                                        FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                        HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -433,7 +433,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="Notes" HeaderTextAlignment="Center">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="{ex:Translate Name=lblNotes-HotelService}" TextColor="Black" 
+                                                            <Label FontSize="14" Text="{ex:Translate Name=lblNotes-HotelService}" TextColor="Black" FontAutoScalingEnabled="False" 
                                                                        FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                        HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -442,7 +442,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="TotalPerson" HeaderTextAlignment="Center" Visible="False">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="TotalPerson" TextColor="Black" 
+                                                            <Label FontSize="14" Text="TotalPerson" TextColor="Black" FontAutoScalingEnabled="False" 
                                                                    FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                    HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -451,7 +451,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="ClassAirFlightId" HeaderTextAlignment="Center" Visible="False">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="ClassAirFlightId" TextColor="Black" 
+                                                            <Label FontSize="14" Text="ClassAirFlightId" TextColor="Black" FontAutoScalingEnabled="False" 
                                                                    FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                    HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -460,7 +460,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="AirFlightId" HeaderTextAlignment="Center" Visible="False">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="AirFlightId" TextColor="Black" 
+                                                            <Label FontSize="14" Text="AirFlightId" TextColor="Black" FontAutoScalingEnabled="False" 
                                                                    FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                    HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -469,7 +469,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyId" HeaderTextAlignment="Center" Visible="False">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="RequestTravelAgencyId" TextColor="Black" 
+                                                            <Label FontSize="14" Text="RequestTravelAgencyId" TextColor="Black" FontAutoScalingEnabled="False" 
                                                                     FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                     HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -478,7 +478,7 @@
                                                 <syncfusion:DataGridTextColumn MappingName="Id" HeaderTextAlignment="Center" Visible="False">
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <Label FontSize="14" Text="Id" TextColor="Black" 
+                                                            <Label FontSize="14" Text="Id" TextColor="Black" FontAutoScalingEnabled="False" 
                                                                     FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                     HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
@@ -529,7 +529,7 @@
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
                                                             <Label FontSize="14" Text="{ex:Translate Name=lblVisaType-VisaService}" TextColor="Black" 
-                                                                 FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                 FontAttributes="Bold" VerticalTextAlignment="Center" FontAutoScalingEnabled="False"
                                                                        HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
                                                     </syncfusion:DataGridTextColumn.HeaderTemplate>
@@ -538,7 +538,7 @@
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
                                                             <Label FontSize="14" Text="{ex:Translate Name=lblPassNo-VisaService}" TextColor="Black" 
-                                                                        FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                        FontAttributes="Bold" VerticalTextAlignment="Center" FontAutoScalingEnabled="False"
                                                                         HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
                                                     </syncfusion:DataGridTextColumn.HeaderTemplate>
@@ -547,7 +547,7 @@
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
                                                             <Label FontSize="14" Text="{ex:Translate Name=lblNotes-HotelService}" TextColor="Black" 
-                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                       FontAttributes="Bold" VerticalTextAlignment="Center" FontAutoScalingEnabled="False"
                                                                        HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
                                                     </syncfusion:DataGridTextColumn.HeaderTemplate>
@@ -556,7 +556,7 @@
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
                                                             <Label FontSize="14" Text="VisaId" TextColor="Black" 
-                                                                   FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                   FontAttributes="Bold" VerticalTextAlignment="Center" FontAutoScalingEnabled="False"
                                                                    HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
                                                     </syncfusion:DataGridTextColumn.HeaderTemplate>
@@ -565,7 +565,7 @@
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
                                                             <Label FontSize="14" Text="RequestTravelAgencyId" TextColor="Black" 
-                                                                   FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                   FontAttributes="Bold" VerticalTextAlignment="Center" FontAutoScalingEnabled="False"
                                                                    HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
                                                     </syncfusion:DataGridTextColumn.HeaderTemplate>
@@ -574,7 +574,7 @@
                                                     <syncfusion:DataGridTextColumn.HeaderTemplate>
                                                         <DataTemplate>
                                                             <Label FontSize="14" Text="Id" TextColor="Black" 
-                                                                   FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                   FontAttributes="Bold" VerticalTextAlignment="Center" FontAutoScalingEnabled="False"
                                                                    HorizontalOptions="CenterAndExpand"></Label>
                                                         </DataTemplate>
                                                     </syncfusion:DataGridTextColumn.HeaderTemplate>
@@ -666,11 +666,11 @@
                                     </ImageButton.Triggers>
                                 </ImageButton>
                                 <Label Text="{ex:Translate Name=btnDistributors}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
-                                               TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+                                               TextColor="Black" VerticalOptions="CenterAndExpand" FontAutoScalingEnabled="False" ></Label>
                             </StackLayout>
                             <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="0,20,0,0" BackgroundColor="White">
                                 <Grid>
-                                    <SearchBar BackgroundColor="White" Placeholder="{ex:Translate Name=plcSearch}" HeightRequest="40" FontSize="15" 
+                                    <SearchBar BackgroundColor="White" Placeholder="{ex:Translate Name=plcSearch}" FontAutoScalingEnabled="False" HeightRequest="40" FontSize="15" 
                                                TextColor="Black"></SearchBar>
                                     <!--<Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
                                         <Image WidthRequest="20" HeightRequest="20">
@@ -690,10 +690,10 @@
                                         <Border x:Name="BorderOfItem" StrokeShape="RoundRectangle 20" Margin="0,10">
                                             <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
                                                 <VerticalStackLayout Padding="10" Spacing="5">
-                                                    <Label Text="{Binding DistributorCompanyName}" FontSize="14" TextColor="Black" FontAttributes="Bold"></Label>
-                                                    <Label Text="{Binding Phone}" FontSize="12" TextColor="Gray"></Label>
-                                                    <Label Text="{Binding Services}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
-                                                    <Label Margin="0,3,0,0">
+                                                    <Label Text="{Binding DistributorCompanyName}" FontAutoScalingEnabled="False" FontSize="14" TextColor="Black" FontAttributes="Bold"></Label>
+                                                    <Label Text="{Binding Phone}" FontSize="12" FontAutoScalingEnabled="False" TextColor="Gray"></Label>
+                                                    <Label Text="{Binding Services}" FontSize="12" FontAutoScalingEnabled="False" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                                    <Label Margin="0,3,0,0" FontAutoScalingEnabled="False">
                                                         <Label.FormattedText>
                                                             <FormattedString>
                                                                 <Span Text="Address : " FontSize="12" TextColor="DeepSkyBlue" ></Span>
@@ -705,7 +705,7 @@
                                                 <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand">
                                                     <StackLayout Orientation="Horizontal" Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="10"
                                                                      VerticalOptions="StartAndExpand">
-                                                        <Label Text="{Binding DistributorCompanyReview}" FontSize="14" TextColor="Black" FontAttributes="Bold"
+                                                        <Label Text="{Binding DistributorCompanyReview}" FontAutoScalingEnabled="False" FontSize="14" TextColor="Black" FontAttributes="Bold"
                                                                     VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"></Label>
                                                         <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand">
                                                             <Image.Source>

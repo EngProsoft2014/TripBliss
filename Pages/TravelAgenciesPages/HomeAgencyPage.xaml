@@ -53,7 +53,7 @@
                                 </Style>
                             </ContentView.Resources>
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="10">
-                                <Label Text="{ex:Translate Name=hdrMyRequests}" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                                <Label Text="{ex:Translate Name=hdrMyRequests}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
                                    TextColor="Black" Margin="20,20,20,5"></Label>
                                 <CollectionView ItemsSource="{Binding Requests}"
                                             VerticalOptions="FillAndExpand" SelectionMode="Single">
@@ -62,9 +62,9 @@
                                             <Border StrokeShape="RoundRectangle 20" Margin="20,10">
                                                 <StackLayout Orientation="Horizontal">
                                                     <VerticalStackLayout Padding="10" Spacing="5">
-                                                        <Label Text="{Binding RequestName}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
-                                                        <Label Text="{Binding ChoosenServices}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
-                                                        <Label Margin="0,3,0,0">
+                                                        <Label Text="{Binding RequestName}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+                                                        <Label Text="{Binding ChoosenServices}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                                        <Label Margin="0,3,0,0" FontAutoScalingEnabled="False">
                                                             <Label.FormattedText>
                                                                 <FormattedString>
                                                                     <Span Text="Date : " FontSize="12" TextColor="#333" ></Span>
@@ -76,9 +76,9 @@
                                                     <VerticalStackLayout VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand"
                                                                          Margin="0,0,10,20" Spacing="1">
                                                         <Label Text="{Binding ResponseWithDistributorCount , StringFormat='All Distributors {0}'}" 
-                                                               FontSize="10" TextColor="Gray"></Label>
+                                                               FontSize="10" TextColor="Gray" FontAutoScalingEnabled="False"></Label>
                                                         <Label Text="{Binding TotalPriceDisAcceptCount , StringFormat='Active Distributors {0}'}" 
-                                                               FontSize="10" TextColor="Gray"></Label>
+                                                               FontSize="10" TextColor="Gray" FontAutoScalingEnabled="False"></Label>
                                                     </VerticalStackLayout>
                                                 </StackLayout>
                                                 <Border.GestureRecognizers>
@@ -127,9 +127,9 @@
                             </ContentView.BindingContext>-->
                             <StackLayout Orientation="Vertical">
                                 <StackLayout Orientation="Horizontal" Margin="20">
-                                    <Label Text="{ex:Translate Name=hdrDistributors}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="End"
+                                    <Label Text="{ex:Translate Name=hdrDistributors}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="End"
                                            TextColor="Black"></Label>
-                                    <Button Text="{ex:Translate Name=btnAddRequest}" WidthRequest="95" Padding="0,5,0,5" HeightRequest="35" FontSize="12"
+                                    <Button Text="{ex:Translate Name=btnAddRequest}" FontAutoScalingEnabled="False" WidthRequest="95" Padding="0,5,0,5" HeightRequest="35" FontSize="12"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=AddRequestCommand}"
                                         BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" Margin="0,0,0,0" FontAttributes="Bold">
                                     </Button>
@@ -148,10 +148,10 @@
                                                                     <Border StrokeShape="RoundRectangle 20" Margin="0,10">
                                                                         <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
                                                                             <VerticalStackLayout Padding="10" Spacing="5">
-                                                                                <Label Text="{Binding CompanyName}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding Phone}" FontSize="12" TextColor="Gray"></Label>
-                                                                                <Label Text="{Binding Services}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
-                                                                                <Label Margin="0,3,0,0">
+                                                                                <Label Text="{Binding CompanyName}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding Phone}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Gray"></Label>
+                                                                                <Label Text="{Binding Services}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                                                                <Label Margin="0,3,0,0" FontAutoScalingEnabled="False">
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
                                                                                             <Span Text="Address : " FontSize="12" TextColor="DeepSkyBlue" ></Span>
@@ -162,7 +162,7 @@
                                                                             </VerticalStackLayout>
                                                                             <VerticalStackLayout Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="15">
                                                                                 <HorizontalStackLayout Spacing="5">
-                                                                                    <Label Text="{Binding Review}" FontSize="14" TextColor="Black" FontAttributes="Bold"
+                                                                                    <Label Text="{Binding Review}" FontAutoScalingEnabled="False" FontSize="14" TextColor="Black" FontAttributes="Bold"
                                                                                            VerticalOptions="StartAndExpand"></Label>
                                                                                     <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
                                                                                         <Image.Source>
@@ -222,10 +222,10 @@
                                                                     <Border StrokeShape="RoundRectangle 20" Margin="0,10">
                                                                         <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
                                                                             <VerticalStackLayout Padding="10" Spacing="5">
-                                                                                <Label Text="{Binding DistributorCompany.CompanyName}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding DistributorCompany.Phone}" FontSize="12" TextColor="Gray"></Label>
-                                                                                <Label Text="{Binding Services}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
-                                                                                <Label Margin="0,3,0,0">
+                                                                                <Label Text="{Binding DistributorCompany.CompanyName}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding DistributorCompany.Phone}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Gray"></Label>
+                                                                                <Label Text="{Binding Services}" FontSize="12" FontAutoScalingEnabled="False" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                                                                <Label Margin="0,3,0,0" FontAutoScalingEnabled="False">
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
                                                                                             <Span Text="Address : " FontSize="12" TextColor="DeepSkyBlue" ></Span>
@@ -236,7 +236,7 @@
                                                                             </VerticalStackLayout>
                                                                             <VerticalStackLayout Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="15">
                                                                                 <HorizontalStackLayout Spacing="5">
-                                                                                    <Label Text="{Binding DistributorCompany.Review}" FontSize="14" TextColor="Black" FontAttributes="Bold"
+                                                                                    <Label Text="{Binding DistributorCompany.Review}" FontAutoScalingEnabled="False" FontSize="14" TextColor="Black" FontAttributes="Bold"
                                                                                              VerticalOptions="StartAndExpand"></Label>
                                                                                     <ImageButton WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
                                                                                         <ImageButton.Source>
@@ -333,12 +333,12 @@
 
                             <StackLayout Orientation="Vertical" Margin="20">
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="{ex:Translate Name=hdrOffers}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                                    <Label Text="{ex:Translate Name=hdrOffers}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                 </StackLayout>
                                 <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="0,20,0,0" BackgroundColor="White">
                                     <Grid>
-                                        <SearchBar BackgroundColor="White" Placeholder="{ex:Translate Name=plcSearch}" HeightRequest="40" FontSize="15" TextColor="Black"></SearchBar>
+                                        <SearchBar BackgroundColor="White" FontAutoScalingEnabled="False" Placeholder="{ex:Translate Name=plcSearch}" HeightRequest="40" FontSize="15" TextColor="Black"></SearchBar>
                                         <!--<Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
                                             <Image WidthRequest="20" HeightRequest="20">
                                                 <Image.Source>
@@ -360,15 +360,15 @@
                                                 <StackLayout Orientation="Vertical">
                                                     <StackLayout Orientation="Horizontal">
                                                         <VerticalStackLayout>
-                                                            <Label Text="{Binding OfferTitel}" FontSize="16" TextColor="Black"></Label>
-                                                            <Label Text="02 DAY LEFT" FontSize="10" TextColor="Gray"></Label>
+                                                            <Label Text="{Binding OfferTitel}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black"></Label>
+                                                            <Label Text="02 DAY LEFT" FontSize="10" FontAutoScalingEnabled="False" TextColor="Gray"></Label>
                                                         </VerticalStackLayout>
                                                         <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" HorizontalOptions="EndAndExpand" WidthRequest="100">
                                                             <Border StrokeShape="RoundRectangle 7" BackgroundColor="#fd9702" Padding="5" WidthRequest="45"
                                                                 VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
                                                                 <StackLayout Orientation="Vertical">
-                                                                    <Label Text="{Binding PriceBeforeOffer}" FontSize="10" TextDecorations="Strikethrough" TextColor="White"></Label>
-                                                                    <Label Text="SAR" FontSize="8" HorizontalOptions="EndAndExpand" TranslationX="-5" TextColor="White"></Label>
+                                                                    <Label Text="{Binding PriceBeforeOffer}" FontAutoScalingEnabled="False" FontSize="10" TextDecorations="Strikethrough" TextColor="White"></Label>
+                                                                    <Label Text="SAR" FontSize="8" FontAutoScalingEnabled="False" HorizontalOptions="EndAndExpand" TranslationX="-5" TextColor="White"></Label>
                                                                 </StackLayout>
                                                                 <Border.Shadow>
                                                                     <Shadow Brush="#333" Opacity="1"></Shadow>
@@ -377,8 +377,8 @@
                                                             <Border StrokeShape="RoundRectangle 7" BackgroundColor="#2aa55e" Padding="5" TranslationX="-10" WidthRequest="55" HeightRequest="45"
                                                                 VerticalOptions="CenterAndExpand">
                                                                 <StackLayout Orientation="Vertical">
-                                                                    <Label Text="{Binding PriceAfterOffer}" FontSize="14" TextColor="White" FontAttributes="Bold"></Label>
-                                                                    <Label Text="SAR" FontSize="8" HorizontalOptions="EndAndExpand" TextColor="White"></Label>
+                                                                    <Label Text="{Binding PriceAfterOffer}" FontAutoScalingEnabled="False" FontSize="14" TextColor="White" FontAttributes="Bold"></Label>
+                                                                    <Label Text="SAR" FontSize="8" FontAutoScalingEnabled="False" HorizontalOptions="EndAndExpand" TextColor="White"></Label>
                                                                 </StackLayout>
                                                                 <Border.Shadow>
                                                                     <Shadow Brush="#333" Opacity="1"></Shadow>
@@ -448,13 +448,13 @@
                                 </Style>
                             </ContentView.Resources>
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="10">
-                                <Label Text="{ex:Translate Name=hdrHistory}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                                <Label Text="{ex:Translate Name=hdrHistory}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                        TextColor="Black" Margin="0,20,0,10"></Label>
                                 <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="20,0" BackgroundColor="White">
                                     <Grid>
                                         <SearchBar BackgroundColor="White" FlowDirection="RightToLeft"
                                                    Placeholder="{ex:Translate Name=plcSearch}" 
-                                                   HeightRequest="40"
+                                                   HeightRequest="40" FontAutoScalingEnabled="False"
                                                    FontSize="15" 
                                                    TextColor="Black">
                                         </SearchBar>
@@ -476,10 +476,10 @@
                                             <Border StrokeShape="RoundRectangle 20" Margin="20,10">
                                                 <StackLayout Orientation="Horizontal">
                                                     <VerticalStackLayout Padding="10" Spacing="5">
-                                                        <Label Text="{Binding RugestName}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
-                                                        <Label Text="{Binding DistName}" FontSize="12" TextColor="Gray"></Label>
-                                                        <Label Text="{Binding Services}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
-                                                        <Label Margin="0,3,0,0">
+                                                        <Label Text="{Binding RugestName}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+                                                        <Label Text="{Binding DistName}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Gray"></Label>
+                                                        <Label Text="{Binding Services}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                                        <Label Margin="0,3,0,0" FontAutoScalingEnabled="False">
                                                             <Label.FormattedText>
                                                                 <FormattedString>
                                                                     <Span Text="Date : " FontSize="12" TextColor="Blue" ></Span>
@@ -491,7 +491,7 @@
                                                     <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand" Spacing="1">
                                                         <Border HorizontalOptions="EndAndExpand"
                                             VerticalOptions="StartAndExpand" Padding="0,3" WidthRequest="80">
-                                                            <Label Text="{Binding Statues}" TextColor="Gray" FontSize="10" HorizontalTextAlignment="Center">
+                                                            <Label Text="{Binding Statues}" TextColor="Gray" FontAutoScalingEnabled="False" FontSize="10" HorizontalTextAlignment="Center">
                                                                 <Label.Triggers>
                                                                     <DataTrigger TargetType="Label" Binding="{Binding Statues}" Value="Active">
                                                                         <Setter Property="TextColor" Value="Green"></Setter>
@@ -516,7 +516,7 @@
                                                         </Border>
                                                         <VerticalStackLayout VerticalOptions="EndAndExpand" Margin="0,0,10,20"
                                                                              HorizontalOptions="EndAndExpand">
-                                                            <Label>
+                                                            <Label FontAutoScalingEnabled="False">
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
                                                                         <Span Text="All Distributors :" FontSize="10" TextColor="Gray"></Span>
@@ -524,7 +524,7 @@
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>
-                                                            <Label>
+                                                            <Label FontAutoScalingEnabled="False">
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
                                                                         <Span Text="Active Distributors :" FontSize="10" TextColor="Gray"></Span>
@@ -562,7 +562,7 @@
                                 <vm:MoreViewModel></vm:MoreViewModel>
                             </ContentView.BindingContext>-->
                             <StackLayout Orientation="Vertical" Spacing="50">
-                                <Label Text="{ex:Translate Name=hdrMore}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                                <Label Text="{ex:Translate Name=hdrMore}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                        TextColor="Black" Margin="0,20,0,10"></Label>
                                 <!--User-->
                                 <VerticalStackLayout Margin="20,0" Spacing="20">
@@ -572,7 +572,7 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="{ex:Translate Name=lblAccount-More}" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                        <Label Text="{ex:Translate Name=lblAccount-More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="8">
                                         <Image WidthRequest="20" HeightRequest="20">
@@ -580,7 +580,7 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="{ex:Translate Name=lblUsers-More}" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                        <Label Text="{ex:Translate Name=lblUsers-More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="8">
                                         <Image WidthRequest="20" HeightRequest="20">
@@ -588,7 +588,7 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="{ex:Translate Name=lblFavorites-More}" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                        <Label Text="{ex:Translate Name=lblFavorites-More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                     </HorizontalStackLayout>
                                 </VerticalStackLayout>
                                 <!--Settings-->
@@ -607,7 +607,7 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="{ex:Translate Name=lblTermesConditions-More}" TextColor="Gray" FontSize="14" 
+                                        <Label Text="{ex:Translate Name=lblTermesConditions-More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" 
                                                VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="8">
@@ -616,7 +616,7 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="{ex:Translate Name=lblSupport-More}" TextColor="Gray" FontSize="14"
+                                        <Label Text="{ex:Translate Name=lblSupport-More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="8">
@@ -625,7 +625,7 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="{ex:Translate Name=lblLanguage-More}" TextColor="Gray" FontSize="14"
+                                        <Label Text="{ex:Translate Name=lblLanguage-More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                         <HorizontalStackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding SelectLanguageCommand}"></TapGestureRecognizer>
@@ -638,7 +638,7 @@
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                         </Image.Source>
                                     </Image>
-                                    <Label Text="{ex:Translate Name=lblExit-More}" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                    <Label Text="{ex:Translate Name=lblExit-More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                     <HorizontalStackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding SelectExitCommand}"></TapGestureRecognizer>
                                     </HorizontalStackLayout.GestureRecognizers>
