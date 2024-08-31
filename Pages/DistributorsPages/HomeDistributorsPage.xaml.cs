@@ -9,6 +9,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
 {
     IGenericRepository Rep;
     readonly Services.Data.ServicesService _service;
+    Dis_HomeViewModel Model;
 
     [Obsolete]
     public HomeDistributorsPage(Dis_HomeViewModel model,IGenericRepository generic, Services.Data.ServicesService service)
@@ -17,6 +18,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
         Rep = generic;
         _service = service; 
         BindingContext = model;  
+        Model = model;
         AgencyView.BindingContext = new Dis_DistributorsViewModel(Rep,_service);
         OffersView.BindingContext = new Dis_O_ChooseOfferViewModel(Rep);
         HistoryView.BindingContext = new Dis_HistoryViewModel(Rep);
@@ -50,6 +52,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
             chkActive.IsChecked = false;
             chkNotActive.Color = Color.FromHex("#a1a1a1");
             chkNotActive.IsChecked = false;
+            
         }
         else
         {
@@ -96,6 +99,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
             chkActive.Color = Color.FromHex("#46b356");
             chkNotActive.Color = Color.FromHex("#a1a1a1");
             chkNotActive.IsChecked = false;
+            colRequests.ItemsSource = Model.Requests.Where(a=>a.TotalPriceAgentAccept >0);
         }
         else
         {
@@ -121,6 +125,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
             chkActive.Color = Color.FromHex("#a1a1a1");
             chkActive.IsChecked = false;
             chkNotActive.Color = Color.FromHex("#46b356");
+            colRequests.ItemsSource = Model.Requests.Where(a => a.TotalPriceAgentAccept == 0);
         }
         else
         {
@@ -146,6 +151,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
             chkActive.IsChecked = false;
             chkNotActive.Color = Color.FromHex("#a1a1a1");
             chkNotActive.IsChecked = false;
+            colRequests.ItemsSource = Model.Requests;
         }
         else
         {

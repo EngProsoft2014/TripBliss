@@ -37,6 +37,7 @@
         <Setter Property="Padding" Value="14,10"/>
         <Setter Property="MinimumHeightRequest" Value="44"/>
         <Setter Property="MinimumWidthRequest" Value="44"/>
+        <Setter Property="FontAutoScalingEnabled" Value="False"></Setter>
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
@@ -78,6 +79,7 @@
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="MinimumHeightRequest" Value="44"/>
         <Setter Property="MinimumWidthRequest" Value="44"/>
+        <Setter Property="FontAutoScalingEnabled" Value="False"></Setter>
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
@@ -97,6 +99,7 @@
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="FontFamily" Value="Almarai-Regular"/>
         <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontAutoScalingEnabled" Value="False"></Setter>
         <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
         <Setter Property="MinimumHeightRequest" Value="44"/>
         <Setter Property="MinimumWidthRequest" Value="44"/>
@@ -119,6 +122,7 @@
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="FontFamily" Value="Almarai-Regular"/>
         <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontAutoScalingEnabled" Value="False"></Setter>
         <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
         <Setter Property="MinimumHeightRequest" Value="44"/>
         <Setter Property="MinimumWidthRequest" Value="44"/>
@@ -169,6 +173,7 @@
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="FontFamily" Value="Almarai-Regular" />
         <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontAutoScalingEnabled" Value="False"></Setter>
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
@@ -190,6 +195,7 @@
     <Style TargetType="Label" x:Key="Headline">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource MidnightBlue}, Dark={StaticResource White}}" />
         <Setter Property="FontSize" Value="32" />
+        <Setter Property="FontAutoScalingEnabled" Value="False"></Setter>
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
@@ -198,6 +204,7 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource MidnightBlue}, Dark={StaticResource White}}" />
         <Setter Property="FontSize" Value="24" />
         <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="FontAutoScalingEnabled" Value="False"></Setter>
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
 
@@ -212,6 +219,7 @@
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="FontFamily" Value="Almarai-Regular"/>
         <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontAutoScalingEnabled" Value="False"></Setter>
         <Setter Property="MinimumHeightRequest" Value="44"/>
         <Setter Property="MinimumWidthRequest" Value="44"/>
         <Setter Property="VisualStateManager.VisualStateGroups">
@@ -250,6 +258,7 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
         <Setter Property="FontFamily" Value="Almarai-Regular"/>
         <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontAutoScalingEnabled" Value="False"></Setter>
         <Setter Property="MinimumHeightRequest" Value="44"/>
         <Setter Property="MinimumWidthRequest" Value="44"/>
         <Setter Property="VisualStateManager.VisualStateGroups">
@@ -276,6 +285,7 @@
         <Setter Property="CancelButtonColor" Value="{StaticResource Gray500}" />
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="FontFamily" Value="Almarai-Regular" />
+        <Setter Property="FontAutoScalingEnabled" Value="False"></Setter>
         <Setter Property="FontSize" Value="14" />
         <Setter Property="MinimumHeightRequest" Value="44"/>
         <Setter Property="MinimumWidthRequest" Value="44"/>
@@ -382,6 +392,7 @@
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="MinimumHeightRequest" Value="44"/>
         <Setter Property="MinimumWidthRequest" Value="44"/>
+        <Setter Property="FontAutoScalingEnabled" Value="False"></Setter>
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">

@@ -41,7 +41,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [ObservableProperty]
         ObservableCollection<RequestTravelAgencyHotelRequest> lstTravelAgencyHotelRequest = new ObservableCollection<RequestTravelAgencyHotelRequest>();
         [ObservableProperty]
-        ObservableCollection<RequestTravelAgencyHotelResponse> lstTravelAgencyHotelResponse = new ObservableCollection<RequestTravelAgencyHotelResponse>();
+        ObservableCollection<ResponseWithDistributorHotel> lstTravelAgencyHotelResponse = new ObservableCollection<ResponseWithDistributorHotel>();
         [ObservableProperty]
         ObservableCollection<RequestTravelAgencyVisaRequest> lstTravelAgencyVisaRequest = new ObservableCollection<RequestTravelAgencyVisaRequest>();
         [ObservableProperty]
@@ -108,7 +108,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             App.Current!.MainPage!.Navigation.PushAsync(page);
         }
         [RelayCommand]
-        void SelectHotel(RequestTravelAgencyHotelResponse model)
+        void SelectHotel(ResponseWithDistributorHotel model)
         {
             var index = LstTravelAgencyHotelResponse.IndexOf(model);
             var vm = new Tr_C_HotelServiceViewModel(model, Rep, _service);
@@ -130,7 +130,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         }
 
         [RelayCommand]
-        void DeletHotel(RequestTravelAgencyHotelResponse model)
+        void DeletHotel(ResponseWithDistributorHotel model)
         {
             LstTravelAgencyHotelResponse.Remove(model);
         }

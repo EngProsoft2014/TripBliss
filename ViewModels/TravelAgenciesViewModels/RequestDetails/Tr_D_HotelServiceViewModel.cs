@@ -1,27 +1,22 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using TripBliss.Models;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using TripBliss.Helpers;
-using TripBliss.Constants;
-using CommunityToolkit.Maui.Alerts;
 using Controls.UserDialogs.Maui;
+using System.Collections.ObjectModel;
+using TripBliss.Constants;
+using TripBliss.Helpers;
+using TripBliss.Models;
 
 
-namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
+namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {
-    public partial class Tr_C_HotelServiceViewModel : BaseViewModel
+    public partial class Tr_D_HotelServiceViewModel : BaseViewModel
     {
         #region prop
         [ObservableProperty]
         RequestTravelAgencyHotelRequest? hotelRequestModel = new RequestTravelAgencyHotelRequest();
         [ObservableProperty]
-        ResponseWithDistributorHotel? hotelResponseModel = new ResponseWithDistributorHotel();
+        ResponseWithDistributorHotelResponse? hotelService = new ResponseWithDistributorHotelResponse();
 
         [ObservableProperty]
         ObservableCollection<LocationResponse> locations = new ObservableCollection<LocationResponse>();
@@ -34,9 +29,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [ObservableProperty]
         ObservableCollection<RoomViewResponse> roomViews = new ObservableCollection<RoomViewResponse>();
 
-
         [ObservableProperty]
-        LocationResponse ? selectedLocation;
+        LocationResponse? selectedLocation;
         [ObservableProperty]
         HotelResponse? selectedHotel;
         [ObservableProperty]
@@ -46,54 +40,45 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [ObservableProperty]
         RoomViewResponse? selectedRoomView;
 
-        #endregion
-
-        public delegate void HotelDelegte(RequestTravelAgencyHotelRequest HotelRequest, ResponseWithDistributorHotel HotelResponse);
+        public delegate void HotelDelegte(ResponseWithDistributorHotelResponse HotelResponse);
         public event HotelDelegte HotelClose;
+        #endregion
 
         #region Services
         readonly Services.Data.ServicesService _service;
-        IGenericRepository Rep; 
+        IGenericRepository Rep;
         #endregion
-
-        #region Cons
-        public Tr_C_HotelServiceViewModel(IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_D_HotelServiceViewModel(IGenericRepository generic)
         {
             Rep = generic;
-            _service = service;
-            HotelRequestModel!.CheckIn = DateTime.Now;
-            HotelRequestModel!.CheckOut = DateTime.Now.AddDays(7);
             Init();
         }
-        public Tr_C_HotelServiceViewModel(ResponseWithDistributorHotel model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_D_HotelServiceViewModel(ResponseWithDistributorHotelResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
+            Lang = Preferences.Default.Get("Lan", "en");
+            HotelService = model;
             _service = service;
-            HotelResponseModel = model;
-            HotelRequestModel!.CheckIn = DateTime.Now;
-            HotelRequestModel!.CheckOut = DateTime.Now.AddDays(7);
             Init(model);
         }
-        #endregion
 
         #region Methods
-
-        async void Init(ResponseWithDistributorHotel model)
+        async void Init(ResponseWithDistributorHotelResponse model)
         {
             await RunManyMethods();
             HotelRequestModel = new RequestTravelAgencyHotelRequest
             {
-                CheckIn = model.CheckIn,
-                CheckOut = model.CheckOut,
+                CheckIn = model.RequestTravelAgencyHotel.CheckIn,
+                CheckOut = model.RequestTravelAgencyHotel.CheckOut,
                 Notes = model.Notes,
-                RoomCount = model.RoomCount,
-                
+                RoomCount = model.RequestTravelAgencyHotel.RoomCount,
+
             };
-            SelectedHotel = Hoteles.FirstOrDefault(a=>a.Id == model.HotelId)!;
-            SelectedLocation = Locations.FirstOrDefault(a=>a.Id == model.LocationId)!;
-            SelectedRoomType = RoomTypes.FirstOrDefault(a=>a.Id == model.RoomTypeId)!;
-            SelectedRoomView = RoomViews.FirstOrDefault(a=>a.Id == model.RoomViewId)!;
-            SelectedMeal = Meals.FirstOrDefault(a=>a.Id == model.MealId)!;
+            SelectedHotel = Hoteles.FirstOrDefault(a => a.Id == model.RequestTravelAgencyHotel.HotelId)!;
+            SelectedLocation = Locations.FirstOrDefault(a => a.Id == model.RequestTravelAgencyHotel.LocationId)!;
+            SelectedRoomType = RoomTypes.FirstOrDefault(a => a.Id == model.RequestTravelAgencyHotel.RoomTypeId)!;
+            SelectedRoomView = RoomViews.FirstOrDefault(a => a.Id == model.RequestTravelAgencyHotel.RoomViewId)!;
+            SelectedMeal = Meals.FirstOrDefault(a => a.Id == model.RequestTravelAgencyHotel.MealId)!;
         }
 
         async void Init()
@@ -105,7 +90,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             UserDialogs.Instance.ShowLoading();
             await Task.WhenAll(
                 GetLocation(),
-                GetHotels(), 
+                GetHotels(),
                 GetMeals(),
                 GetRoomViews(),
                 GetRoomTypes()
@@ -115,7 +100,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         async Task GetLocation()
         {
-            
+
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -129,12 +114,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
 
-           
+
         }
 
         async Task GetHotels()
         {
-            
+
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -148,12 +133,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
 
-            
+
         }
 
         async Task GetMeals()
         {
-            
+
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 string UserToken = await _service.UserToken();
@@ -166,12 +151,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
 
-            
+
         }
 
         async Task GetRoomTypes()
         {
-            
+
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -185,12 +170,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
 
-            
+
         }
 
         async Task GetRoomViews()
         {
-            
+
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -204,15 +189,15 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
 
-            
-        } 
+
+        }
         #endregion
 
         #region RelayCommand
         [RelayCommand]
         void AddRoom()
         {
-            if (HotelRequestModel!.RoomCount >=0)
+            if (HotelRequestModel!.RoomCount >= 0)
             {
                 HotelRequestModel!.RoomCount += 1;
             }
@@ -221,7 +206,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void DeletRoom()
         {
-            if (HotelRequestModel!.RoomCount > 0)
+            if (HotelRequestModel!.RoomCount >= 0)
             {
                 HotelRequestModel!.RoomCount -= 1;
             }
@@ -260,14 +245,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 var toast = Toast.Make("Please Complete This Field Required : Select Meal.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
-            else if (request.RoomCount == 0 )
+            else if (request.RoomCount == 0)
             {
                 var toast = Toast.Make("Please Complete This Field Required : Room Count.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                await toast.Show();
-            }
-            else if (request.CheckIn < DateTime.Now)
-            {
-                var toast = Toast.Make("Please select checkin date today or after that.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (request.CheckIn.Date > request.CheckOut.Date)
@@ -277,28 +257,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             }
             else
             {
-                
+
                 IsBusy = false;
                 UserDialogs.Instance.ShowLoading();
-
-                request.HotelId = HotelResponseModel!.HotelId = SelectedHotel!.Id;
-                request.RoomViewId = HotelResponseModel!.RoomViewId = SelectedRoomView!.Id;
-                request.MealId = HotelResponseModel!.MealId = SelectedMeal!.Id;
-                request.LocationId = HotelResponseModel!.LocationId = SelectedLocation!.Id;
-                request.RoomTypeId = HotelResponseModel!.RoomTypeId = SelectedRoomType!.Id;
-
-                HotelResponseModel!.HotelName = SelectedHotel!.HotelName;
-                HotelResponseModel!.CheckIn = request.CheckIn;
-                HotelResponseModel!.CheckOut = request.CheckOut;
-                HotelResponseModel!.Notes = request.Notes;
-                HotelResponseModel!.RoomViewName = SelectedRoomView!.RoomViewName;
-                HotelResponseModel!.LocationName = SelectedLocation!.LocationName;
-                HotelResponseModel!.RoomCount = request.RoomCount;
-
-
-                HotelClose.Invoke(request, HotelResponseModel);
                 await App.Current!.MainPage!.Navigation.PopAsync();
-
                 UserDialogs.Instance.HideHud();
                 IsBusy = true;
             }

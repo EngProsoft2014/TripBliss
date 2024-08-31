@@ -2,26 +2,20 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
-using Microsoft.AspNet.SignalR.Client;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
 
-namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
+namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {
-    public partial class Tr_C_TransportaionServiceViewModel : BaseViewModel
+    public partial class Tr_D_TransportaionServiceViewModel : BaseViewModel
     {
         #region Prop
         [ObservableProperty]
-        RequestTravelAgencyTransportRequest? transportRequestModel = new RequestTravelAgencyTransportRequest();
+        ResponseWithDistributorTransportResponse serviceModdel = new ResponseWithDistributorTransportResponse();
         [ObservableProperty]
-        RequestTravelAgencyTransportResponse? transportResponseModel = new RequestTravelAgencyTransportResponse();
+        RequestTravelAgencyTransportRequest? transportRequestModel = new RequestTravelAgencyTransportRequest();
 
         [ObservableProperty]
         ObservableCollection<CarBrandResponse> carBrands = new ObservableCollection<CarBrandResponse>();
@@ -36,36 +30,29 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         CarModelResponse selectrdModel = new CarModelResponse();
         [ObservableProperty]
         CarTypeResponse selectrdType = new CarTypeResponse();
-
         #endregion
-        public delegate void TransportDelegte(RequestTravelAgencyTransportRequest TransportRequest, RequestTravelAgencyTransportResponse TransportResponse);
-        public event TransportDelegte TransportClose;
 
         #region Services
         IGenericRepository Rep;
         readonly Services.Data.ServicesService _service;
         #endregion
-
         #region Const
-        public Tr_C_TransportaionServiceViewModel(IGenericRepository generic , Services.Data.ServicesService service)
+        public Tr_D_TransportaionServiceViewModel(IGenericRepository generic)
         {
             Rep = generic;
-            _service = service;
-            TransportRequestModel!.Date = DateOnly.FromDateTime(DateTime.Now);
-            Init();
         }
-        public Tr_C_TransportaionServiceViewModel(RequestTravelAgencyTransportResponse model , IGenericRepository generic , Services.Data.ServicesService service)
+        public Tr_D_TransportaionServiceViewModel(ResponseWithDistributorTransportResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
-            TransportResponseModel = model;
-            TransportRequestModel!.Date = DateOnly.FromDateTime(DateTime.Now);
+            ServiceModdel = model;
+            Lang = Preferences.Default.Get("Lan", "en");
             _service = service;
             Init(model);
         }
         #endregion
 
         #region Methods
-        async Task Init(RequestTravelAgencyTransportResponse model)
+        async Task Init(ResponseWithDistributorTransportResponse model)
         {
             UserDialogs.Instance.ShowLoading();
             await Task.WhenAll(GetCarBrands(), GetCarModels(), GetCarTypes());
@@ -73,16 +60,16 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
             TransportRequestModel = new RequestTravelAgencyTransportRequest
             {
-                FromLocation = model.FromLocation,
-                ToLocation = model.ToLocation,
-                Date = model.Date,
+                FromLocation = model.RequestTravelAgencyTransport.FromLocation,
+                ToLocation = model.RequestTravelAgencyTransport.ToLocation,
+                Date = model.RequestTravelAgencyTransport.Date,
                 Notes = model.Notes,
-                Time = model.Time,
-                TransportCount = model.TransportCount,
+                Time = model.RequestTravelAgencyTransport.Time,
+                TransportCount = model.RequestTravelAgencyTransport.TransportCount,
             };
-            SelectrdBrand = CarBrands.FirstOrDefault(a=>a.Id == model.CarBrandId)!;
-            SelectrdModel = CarModel.FirstOrDefault(a=>a.Id == model.CarModelId)!;
-            SelectrdType = CarTypes.FirstOrDefault(a=>a.Id == model.CarTypeId)!;
+            SelectrdBrand = CarBrands.FirstOrDefault(a => a.Id == model.RequestTravelAgencyTransport.CarBrandId)!;
+            SelectrdModel = CarModel.FirstOrDefault(a => a.Id == model.RequestTravelAgencyTransport.CarModelId)!;
+            SelectrdType = CarTypes.FirstOrDefault(a => a.Id == model.RequestTravelAgencyTransport.CarTypeId)!;
 
         }
         async Task Init()
@@ -165,11 +152,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 var toast = Toast.Make("Please Complete This Field Required : Transport Count.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
-            else if (request.Date < DateOnly.FromDateTime(DateTime.Now))
-            {
-                var toast = Toast.Make("Please Complete This Field Required : Date.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                await toast.Show();
-            }
             else if (string.IsNullOrEmpty(request.FromLocation))
             {
                 var toast = Toast.Make("Please Complete This Field Required : From Location.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
@@ -184,36 +166,18 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             {
                 IsBusy = false;
                 UserDialogs.Instance.ShowLoading();
-
-
-                request.CarBrandId = SelectrdBrand!.Id;
-                request.CarTypeId = SelectrdType!.Id;
-                request.CarModelId = SelectrdModel!.Id;
-
-                TransportResponseModel!.CarBrandId = SelectrdBrand!.Id;
-                TransportResponseModel.CarTypeId = SelectrdType!.Id;
-                TransportResponseModel.CarModelId = SelectrdModel!.Id;
-                TransportResponseModel!.FromLocation = request.FromLocation;
-                TransportResponseModel.ToLocation = request.ToLocation;
-                TransportResponseModel.Date = request.Date;
-                TransportResponseModel.TransportCount = request.TransportCount;
-                TransportResponseModel.TypeName = SelectrdType.TypeName;
-                TransportResponseModel.Notes = request.Notes;
-
-                TransportClose.Invoke(request, TransportResponseModel);
                 await App.Current!.MainPage!.Navigation.PopAsync();
-
                 UserDialogs.Instance.HideHud();
                 IsBusy = true;
             }
-            
+
         }
 
         [RelayCommand]
         async Task OnBackButtonClicked()
         {
             await App.Current!.MainPage!.Navigation.PopAsync();
-        } 
+        }
         #endregion
     }
 }

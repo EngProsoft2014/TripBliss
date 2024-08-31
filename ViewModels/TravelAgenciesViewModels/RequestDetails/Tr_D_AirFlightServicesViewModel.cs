@@ -2,18 +2,15 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
+using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
-using TripBliss.Exceptions;
-using Newtonsoft.Json;
 
-
-
-namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
+namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {
-    public partial class Tr_C_AirFlightServicesViewModel : BaseViewModel
+    public partial class Tr_D_AirFlightServicesViewModel : BaseViewModel
     {
         //Test
         public class AirLines
@@ -21,14 +18,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             public string? iata_code { get; set; }
             public string? name { get; set; }
             public string? icao_code { get; set; }
-            public string? nameVM { get{ return name + $" ({iata_code})"; } }
+            public string? nameVM { get { return name + $" ({iata_code})"; } }
         }
-
         #region prop
+
+        [ObservableProperty]
+        ResponseWithDistributorAirFlightResponse moddel = new ResponseWithDistributorAirFlightResponse();
         [ObservableProperty]
         RequestTravelAgencyAirFlightRequest airFlightRequestModel = new RequestTravelAgencyAirFlightRequest();
-        [ObservableProperty]
-        RequestTravelAgencyAirFlightResponse airFlightResponseModel = new RequestTravelAgencyAirFlightResponse();
         [ObservableProperty]
         ObservableCollection<AirFlightResponse> airFlights = new ObservableCollection<AirFlightResponse>();
         [ObservableProperty]
@@ -43,60 +40,49 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         #endregion
 
-        public delegate void AirFlightDelegte(RequestTravelAgencyAirFlightRequest AirFlightRequest, RequestTravelAgencyAirFlightResponse AirFlightResponse);
-        public event AirFlightDelegte AirFlightClose;
-
         #region Services
         IGenericRepository Rep;
         readonly Services.Data.ServicesService _service;
         #endregion
 
         #region Cons
-        public Tr_C_AirFlightServicesViewModel(IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_D_AirFlightServicesViewModel(IGenericRepository generic)
         {
             Rep = generic;
-            _service = service;
-            AirFlightRequestModel!.Date = DateTime.Now;
-            Init();
+
         }
-        public Tr_C_AirFlightServicesViewModel(RequestTravelAgencyAirFlightResponse model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_D_AirFlightServicesViewModel(ResponseWithDistributorAirFlightResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
-            AirFlightResponseModel = model;
+            Moddel = model;
             _service = service;
-            AirFlightRequestModel!.Date = DateTime.Now;
             Init(model);
-
-
         }
         #endregion
 
-
-
-
         #region Methods
-        async void Init(RequestTravelAgencyAirFlightResponse model)
+        async void Init(ResponseWithDistributorAirFlightResponse model)
         {
             UserDialogs.Instance.ShowLoading();
             //Test
             await GetAirLinesInfo();
-            await Task.WhenAll(GetAirFlights(),GetClasses());
+            await Task.WhenAll(GetAirFlights(), GetClasses());
             UserDialogs.Instance.HideHud();
             AirFlightRequestModel = new RequestTravelAgencyAirFlightRequest
             {
-                Date = model.Date,
-                AirportFrom = model.AirportFrom,
-                AirportTo = model.AirportTo,
-                ETA = model.ETA,
-                ETD = model.ETD,
-                InfoAdultCount = model.InfoAdultCount,
-                InfoChildCount = model.InfoChildCount,
-                InfoInfantCount = model.InfoInfantCount,
+                Date = model.RequestTravelAgencyAirFlight.Date,
+                AirportFrom = model!.RequestTravelAgencyAirFlight!.AirportFrom!,
+                AirportTo = model!.RequestTravelAgencyAirFlight!.AirportTo!,
+                ETA = model.RequestTravelAgencyAirFlight.ETA,
+                ETD = model.RequestTravelAgencyAirFlight.ETD,
+                InfoAdultCount = model!.RequestTravelAgencyAirFlight!.InfoAdultCount!,
+                InfoChildCount = model.RequestTravelAgencyAirFlight.InfoChildCount,
+                InfoInfantCount = model.RequestTravelAgencyAirFlight.InfoInfantCount,
                 Notes = model.Notes
 
             };
-            AirFlightSelected = AirFlights.FirstOrDefault(a=>a.Id == model.AirFlightId)!;
-            ClassSelected = Classes.FirstOrDefault(a=>a.Id == model.ClassAirFlightId)!;
+            AirFlightSelected = AirFlights.FirstOrDefault(a => a.Id == model.RequestTravelAgencyAirFlight.AirFlightId)!;
+            ClassSelected = Classes.FirstOrDefault(a => a.Id == model.RequestTravelAgencyAirFlight.ClassAirFlightId)!;
         }
 
         async void Init()
@@ -174,7 +160,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void AddAdult()
         {
-            if (AirFlightRequestModel.InfoAdultCount >=0)
+            if (AirFlightRequestModel.InfoAdultCount >= 0)
             {
                 AirFlightRequestModel.InfoAdultCount += 1;
             }
@@ -257,7 +243,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 var toast = Toast.Make("The expected time of departure must be less than the expected time of arrival.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
-            else if (Request.InfoAdultCount == 0 & Request.InfoChildCount == 0 && Request.InfoInfantCount == 0 )
+            else if (Request.InfoAdultCount == 0 & Request.InfoChildCount == 0 && Request.InfoInfantCount == 0)
             {
                 var toast = Toast.Make("Please Complete This Field Required : Passengers Count.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
@@ -267,32 +253,13 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 IsBusy = false;
                 UserDialogs.Instance.ShowLoading();
 
-                Request.AirFlightId = AirFlightResponseModel.AirFlightId = AirFlightSelected!.Id;
-                AirFlightResponseModel.AirLine = AirFlightSelected.AirLine;
-                Request.ClassAirFlightId = AirFlightResponseModel.ClassAirFlightId = ClassSelected!.Id;
-                AirFlightResponseModel.ClassName = ClassSelected.ClassName;
-                AirFlightResponseModel.AirportFrom = Request.AirportFrom;
-                AirFlightResponseModel.AirportTo = Request.AirportTo;
-                AirFlightResponseModel.Date = Request.Date;
-                AirFlightResponseModel.Notes = Request.Notes;
-                AirFlightResponseModel.ETA = Request.ETA;
-                AirFlightResponseModel.ETD = Request.ETD;
-                AirFlightResponseModel.InfoAdultCount = Request.InfoAdultCount;
-                AirFlightResponseModel.InfoChildCount = Request.InfoChildCount;
-                AirFlightResponseModel.InfoInfantCount = Request.InfoInfantCount;
-                
-                AirFlightResponseModel.TotalPerson = Request.TotalPerson;
-                AirFlightResponseModel.TotalPerson = Request.TotalPerson = Request.InfoChildCount + Request.InfoAdultCount + Request.InfoInfantCount;
-
-                AirFlightClose.Invoke(Request, AirFlightResponseModel);
-
                 await App.Current!.MainPage!.Navigation.PopAsync();
 
                 UserDialogs.Instance.HideHud();
                 IsBusy = true;
             }
 
-            
+
         }
 
         #endregion

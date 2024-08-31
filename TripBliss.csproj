@@ -45,7 +45,7 @@
 		
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\biglogo.svg" Color="White"/>
+		<MauiSplashScreen Include="Resources\Splash\logosmall.svg" Color="White" />
 		
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -74,6 +74,7 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\AppIcon\logo.svg" />
+	  <None Remove="Resources\Fonts\Almarai-Light.ttf" />
 	  <None Remove="Resources\Fonts\Almarai-Regular.ttf" />
 	  <None Remove="Resources\Fonts\ElMessiri-Bold.ttf" />
 	  <None Remove="Resources\Fonts\ElMessiri-Regular.ttf" />
@@ -81,9 +82,10 @@
 	  <None Remove="Resources\Fonts\Font Awesome 6 Free-Regular-400.otf" />
 	  <None Remove="Resources\Fonts\Font Awesome 6 Free-Solid-900.otf" />
 	  <None Remove="Resources\Fonts\Inter-Medium.ttf" />
+	  <None Remove="Resources\Fonts\OpenSans-Regular.ttf" />
+	  <None Remove="Resources\Fonts\OpenSans-Semibold.ttf" />
 	  <None Remove="Resources\Images\bntu.svg" />
 	  <None Remove="Resources\Images\offer.jpg" />
-	  <None Remove="Resources\Splash\biglogo.svg" />
 	  <None Remove="Resources\Splash\logo.svg" />
 	  <None Remove="Resources\Splash\logosmall.svg" />
 	</ItemGroup>

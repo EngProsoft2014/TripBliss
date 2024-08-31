@@ -25,12 +25,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             Requests = new ObservableCollection<RequestClassModel>();
             Requests = Controls.StaticMember.LstHistories;
 
-            //if (Controls.StaticMember.WayOfTab == 3)
-            //{
-            //    UserDialogs.Instance.ShowLoading();
-            //    LoadData();
-            //    UserDialogs.Instance.HideHud();
-            //}
+            if (Controls.StaticMember.WayOfTab == 3)
+            {
+                UserDialogs.Instance.ShowLoading();
+                LoadData();
+                UserDialogs.Instance.HideHud();
+            }
 
         }
 

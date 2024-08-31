@@ -51,21 +51,10 @@
                                     </Setter>
                                 </Style>
                             </ContentView.Resources>
-                            <!--<ContentView.BindingContext>
-                                <vm:HomeDistributorViewModel></vm:HomeDistributorViewModel>
-                            </ContentView.BindingContext>-->
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="10">
                                 <Label Text="{ex:Translate Name=hdrMyRequests}" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
                                    TextColor="Black" Margin="20,20,20,10"></Label>
                                 <StackLayout Orientation="Horizontal" Margin="20,0">
-                                    <!--<RadioButton GroupName="Group1" Content="{ex:Translate Name=lblActive-HomeDist}" TextColor="#1e9e44" FontSize="14" 
-                                                 HorizontalOptions="StartAndExpand" FontAttributes="Bold"></RadioButton>
-                                    <RadioButton GroupName="Group1" Content="{ex:Translate Name=lblNotActive-HomeDist}" TextColor="#1e9e44" FontSize="14" 
-                                                 FontAttributes="Bold"></RadioButton>
-                                    <RadioButton GroupName="Group1" Content="{ex:Translate Name=lblAll-HomeDist}" IsChecked="True" TextColor="#1e9e44" FontSize="14" HorizontalOptions="EndAndExpand" 
-                                                 FontAttributes="Bold">
-                                    </RadioButton>-->
-
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="20,0">
                                         <StackLayout Orientation="Horizontal">
                                             <CheckBox x:Name="chkActive" Color="Gray">

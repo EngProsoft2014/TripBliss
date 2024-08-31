@@ -1,6 +1,6 @@
 ﻿namespace TripBliss.Models
 {
-    public record RequestTravelAgencyHotelResponse
+    public record ResponseWithDistributorHotel
     {
         public int Id { get; set; }
         public int RequestTravelAgencyId { get; set; }

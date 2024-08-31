@@ -402,4 +402,13 @@
   <data name="hdrSelectLan-PopupLan" xml:space="preserve">
     <value>اختر اللغة</value>
   </data>
+  <data name="lblNoteForAgency-HotelService" xml:space="preserve">
+    <value>ملاحظة للوكالة</value>
+  </data>
+  <data name="lblNoteForDist-HotelService" xml:space="preserve">
+    <value>ملاحظة للموزع</value>
+  </data>
+  <data name="btnPayNow-NewRequest" xml:space="preserve">
+    <value>ادفع الآن</value>
+  </data>
 </root>

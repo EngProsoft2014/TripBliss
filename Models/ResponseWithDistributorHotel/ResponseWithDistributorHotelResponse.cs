@@ -27,7 +27,7 @@ namespace TripBliss.Models
         public string? Notes { get; set; }
         public bool AcceptPriceDis { get; set; }
         public bool AcceptAgen { get; set; }
-        public RequestTravelAgencyHotelResponse RequestTravelAgencyHotel { get; set; } = default!;
+        public ResponseWithDistributorHotel RequestTravelAgencyHotel { get; set; } = default!;
 
         public event PropertyChangedEventHandler? PropertyChanged;
     }

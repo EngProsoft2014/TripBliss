@@ -29,12 +29,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.Offer
 
             Lang = Preferences.Default.Get("Lan", "en");
 
-            //if (Controls.StaticMember.WayOfTab == 2)
-            //{
-            //    UserDialogs.Instance.ShowLoading();
-            //    LoadData();
-            //    UserDialogs.Instance.HideHud();
-            //}
+            if (Controls.StaticMember.WayOfTab == 2)
+            {
+                UserDialogs.Instance.ShowLoading();
+                LoadData();
+                UserDialogs.Instance.HideHud();
+            }
 
         }
 

@@ -692,15 +692,9 @@
                                                 <VerticalStackLayout Padding="10" Spacing="5">
                                                     <Label Text="{Binding DistributorCompanyName}" FontAutoScalingEnabled="False" FontSize="14" TextColor="Black" FontAttributes="Bold"></Label>
                                                     <Label Text="{Binding Phone}" FontSize="12" FontAutoScalingEnabled="False" TextColor="Gray"></Label>
-                                                    <Label Text="{Binding Services}" FontSize="12" FontAutoScalingEnabled="False" TextColor="Orange" Margin="0,3,0,0"></Label>
-                                                    <Label Margin="0,3,0,0" FontAutoScalingEnabled="False">
-                                                        <Label.FormattedText>
-                                                            <FormattedString>
-                                                                <Span Text="Address : " FontSize="12" TextColor="DeepSkyBlue" ></Span>
-                                                                <Span Text="{Binding Address}" FontSize="12" TextColor="DeepSkyBlue" ></Span>
-                                                            </FormattedString>
-                                                        </Label.FormattedText>
-                                                    </Label>
+                                                    <Label Text="{Binding ChoosenServices}" FontSize="12" FontAutoScalingEnabled="False" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                                    <Label Text="{Binding CreateDate,StringFormat='{0:MM-dd-yyyy}'}" FontSize="12" TextColor="DeepSkyBlue" Margin="0,3,0,0"
+                                                           FontAutoScalingEnabled="False"></Label>
                                                 </VerticalStackLayout>
                                                 <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand">
                                                     <StackLayout Orientation="Horizontal" Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="10"

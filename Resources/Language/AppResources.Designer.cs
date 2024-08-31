@@ -142,6 +142,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pay Now.
+        /// </summary>
+        internal static string btnPayNow_NewRequest {
+            get {
+                return ResourceManager.GetString("btnPayNow-NewRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Request Details.
         /// </summary>
         internal static string btnRequestDetails_RequestDetails {
@@ -606,6 +615,24 @@ namespace TripBliss.Resources.Language {
         internal static string lblNotActive_HomeDist {
             get {
                 return ResourceManager.GetString("lblNotActive-HomeDist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Note For Agency.
+        /// </summary>
+        internal static string lblNoteForAgency_HotelService {
+            get {
+                return ResourceManager.GetString("lblNoteForAgency-HotelService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Note For Distributor.
+        /// </summary>
+        internal static string lblNoteForDist_HotelService {
+            get {
+                return ResourceManager.GetString("lblNoteForDist-HotelService", resourceCulture);
             }
         }
         

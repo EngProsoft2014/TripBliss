@@ -12,6 +12,10 @@ using Microsoft.VisualBasic;
 using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 using TripBliss.Helpers;
 using TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest;
+using Controls.UserDialogs.Maui;
+using TripBliss.Constants;
+using CommunityToolkit.Maui.Alerts;
+using TripBliss.Pages.TravelAgenciesPages;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {
@@ -20,20 +24,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
 
         #region prop
-        public ObservableCollection<HotelServiceModel> Hotels { get; set; } = new ObservableCollection<HotelServiceModel>();
-        public ObservableCollection<TransportaionServiceModel> transportaionServices { get; set; } = new ObservableCollection<TransportaionServiceModel>();
-        public ObservableCollection<AirFlightModel> airFlights { get; set; } = new ObservableCollection<AirFlightModel>();
-        public ObservableCollection<VisaServiceModel> visaServices { get; set; } = new ObservableCollection<VisaServiceModel>();
-
         [ObservableProperty]
-        HotelServiceModel selectedHotel;
-        [ObservableProperty]
-        TransportaionServiceModel selectedTransportaition;
-        [ObservableProperty]
-        AirFlightModel selectedAirFlight;
-        [ObservableProperty]
-        VisaServiceModel selectedVisa;
-
+        ResponseWithDistributorDetailsResponse response = new ResponseWithDistributorDetailsResponse();
+        
         #endregion
 
         #region Services
@@ -42,14 +35,11 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         #endregion
 
         #region Cons
-        public Tr_D_NewRequestViewModel(IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_D_NewRequestViewModel(ResponseWithDistributorResponse distributorResponse, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
-            LoadData();
-            LoadTransportaionData();
-            LoadAirFlightData();
-            LoadVisaData();
+            _ = Init(distributorResponse.DistributorCompanyId, distributorResponse.Id);
         } 
         #endregion
 
@@ -59,13 +49,45 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         {
             App.Current.MainPage.Navigation.PopAsync();
         }
+        [RelayCommand]
+        async Task Apply()
+        {
+            bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Are You Accept This Finall Price?", "Yes", "No");
+
+            IsBusy = false;
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet && answer)
+            {
+
+                string UserToken = await _service.UserToken();
+
+                
+                var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorResponse>(ApiConstants.ResponseDetailsDistApi + $"{Response.DistributorCompanyId}/ResponseWithDistributor/{Response.Id}", Response, UserToken);
+
+                if (json.Item1 != null)
+                {
+                    var toast = Toast.Make("Successfully for Add Response", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+
+                    Controls.StaticMember.WayOfTab = 0;
+                    await App.Current!.MainPage!.Navigation.PushAsync(new HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service));
+                }
+                else
+                {
+                    var toast = Toast.Make($"Warning, {json.Item2}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
+            }
+
+            IsBusy = true;
+        }
         #endregion
 
         #region Hotel RelayCommand
         [RelayCommand]
-        void SelectHotel(RequestTravelAgencyHotelResponse model)
+        void SelectHotel(ResponseWithDistributorHotelResponse model)
         {
-            var vm = new Tr_C_HotelServiceViewModel(model,Rep, _service);
+            var vm = new Tr_D_HotelServiceViewModel(model,Rep,_service);
             var page = new HotelServicePage(vm,Rep);
             page.BindingContext = vm;
             App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -74,20 +96,20 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
         #region Transportaiton RelayCommand
         [RelayCommand]
-        void SelectTransportaion(RequestTravelAgencyTransportResponse model)
+        async Task SelectTransportaion(ResponseWithDistributorTransportResponse model)
         {
-            var vm = new Tr_C_TransportaionServiceViewModel(model,Rep, _service);
+            var vm = new Tr_D_TransportaionServiceViewModel(model,Rep, _service);
             var page = new TransportaionServicePage(vm,Rep);
             page.BindingContext = vm;
-            App.Current.MainPage.Navigation.PushAsync(page);
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
         } 
         #endregion
 
         #region Air Flight RelayCommand
         [RelayCommand]
-        void SelectAirFlight(AirFlightModel model)
+        void SelectAirFlight(ResponseWithDistributorAirFlightResponse model)
         {
-            var vm = new Tr_C_AirFlightServicesViewModel(Rep,_service);
+            var vm = new Tr_D_AirFlightServicesViewModel(model,Rep,_service);
             var page = new AirFlightServicePage(vm,Rep);
             page.BindingContext = vm;
             App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -96,344 +118,39 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
         #region Visa RelayCommand
         [RelayCommand]
-        void SelectVisa(RequestTravelAgencyVisaResponse model)
+        async Task SelectVisa(ResponseWithDistributorVisaResponse model)
         {
-            var vm = new Tr_C_VisaServiceViewModel(model,Rep, _service);
+            var vm = new Tr_D_VisaServiceViewModel(model,Rep, _service);
             var page = new VisaServicePage(vm,Rep);
             page.BindingContext = vm;
-            App.Current.MainPage.Navigation.PushAsync(page);
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
         }
         #endregion
 
         #region Methodes
-        void LoadData()
+        async Task Init(string distId,int ReqId)
         {
-            var checkinDate = DateOnly.FromDateTime(DateTime.Now.Date);
-
-            // Hotel Data
-            Hotels.Add(new HotelServiceModel()
-            {
-                Checkin = checkinDate,
-                Checkout = checkinDate.AddDays(30),
-                HotelName = "AL RHAIA HOTEL",
-                Meals = "3",
-                Notes = "Good Clean",
-                RoomNo = 5,
-                RoomType = "Vip",
-                RoomView = "Nile"
-            });
-
-            Hotels.Add(new HotelServiceModel()
-            {
-                Checkin = checkinDate.AddDays(1),
-                Checkout = checkinDate.AddDays(31),
-                HotelName = "LUXURY SUITES",
-                Meals = "2",
-                Notes = "Excellent Service",
-                RoomNo = 10,
-                RoomType = "Suite",
-                RoomView = "City"
-            });
-
-            Hotels.Add(new HotelServiceModel()
-            {
-                Checkin = checkinDate.AddDays(2),
-                Checkout = checkinDate.AddDays(32),
-                HotelName = "BEACH RESORT",
-                Meals = "3",
-                Notes = "Great Location",
-                RoomNo = 15,
-                RoomType = "Deluxe",
-                RoomView = "Sea"
-            });
-
-            Hotels.Add(new HotelServiceModel()
-            {
-                Checkin = checkinDate.AddDays(3),
-                Checkout = checkinDate.AddDays(33),
-                HotelName = "MOUNTAIN INN",
-                Meals = "1",
-                Notes = "Cozy Atmosphere",
-                RoomNo = 20,
-                RoomType = "Standard",
-                RoomView = "Mountain"
-            });
-
-            Hotels.Add(new HotelServiceModel()
-            {
-                Checkin = checkinDate.AddDays(4),
-                Checkout = checkinDate.AddDays(34),
-                HotelName = "CITY CENTRAL HOTEL",
-                Meals = "2",
-                Notes = "Convenient Location",
-                RoomNo = 25,
-                RoomType = "Standard",
-                RoomView = "City"
-            });
-
-            Hotels.Add(new HotelServiceModel()
-            {
-                Checkin = checkinDate.AddDays(5),
-                Checkout = checkinDate.AddDays(35),
-                HotelName = "FOREST RETREAT",
-                Meals = "3",
-                Notes = "Peaceful Surroundings",
-                RoomNo = 30,
-                RoomType = "Deluxe",
-                RoomView = "Forest"
-            });
-
-            Hotels.Add(new HotelServiceModel()
-            {
-                Checkin = checkinDate.AddDays(6),
-                Checkout = checkinDate.AddDays(36),
-                HotelName = "DESERT OASIS",
-                Meals = "2",
-                Notes = "Unique Experience",
-                RoomNo = 35,
-                RoomType = "Vip",
-                RoomView = "Desert"
-            });
-
+            UserDialogs.Instance.ShowLoading();
+            await GetRequestDetailes(distId,ReqId);
+            UserDialogs.Instance.HideHud();
         }
-        void LoadTransportaionData()
+        async Task GetRequestDetailes(string distId, int ReqId)
         {
-            var todayDate = DateOnly.FromDateTime(DateTime.Now.Date);
-            var currentTime = TimeOnly.FromDateTime(DateTime.Now);
 
-            transportaionServices.Add(new TransportaionServiceModel()
+            
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                Brand = "Bmw",
-                CarType = "Suv",
-                Date = todayDate,
-                From = "Cairo",
-                Model = "2024",
-                Nos = 4,
-                time = currentTime,
-                To = "Asuut",
-                Notes = "Black Color"
-            });
+                string UserToken = await _service.UserToken();
 
-            transportaionServices.Add(new TransportaionServiceModel()
-            {
-                Brand = "Mercedes",
-                CarType = "Sedan",
-                Date = todayDate.AddDays(1),
-                From = "Alexandria",
-                Model = "2023",
-                Nos = 3,
-                time = currentTime.AddHours(1),
-                To = "Cairo",
-                Notes = "White Color"
-            });
+                var json = await Rep.GetAsync<ResponseWithDistributorDetailsResponse>(ApiConstants.ResponseDetailsDistApi + $"{distId}/ResponseWithDistributor/{ReqId}", UserToken);
 
-            transportaionServices.Add(new TransportaionServiceModel()
-            {
-                Brand = "Audi",
-                CarType = "Coupe",
-                Date = todayDate.AddDays(2),
-                From = "Giza",
-                Model = "2022",
-                Nos = 2,
-                time = currentTime.AddHours(2),
-                To = "Luxor",
-                Notes = "Red Color"
-            });
-
-            transportaionServices.Add(new TransportaionServiceModel()
-            {
-                Brand = "Tesla",
-                CarType = "Electric",
-                Date = todayDate.AddDays(3),
-                From = "Hurghada",
-                Model = "2024",
-                Nos = 4,
-                time = currentTime.AddHours(3),
-                To = "Sharm El-Sheikh",
-                Notes = "Blue Color"
-            });
-
-            transportaionServices.Add(new TransportaionServiceModel()
-            {
-                Brand = "Toyota",
-                CarType = "Van",
-                Date = todayDate.AddDays(4),
-                From = "Aswan",
-                Model = "2021",
-                Nos = 8,
-                time = currentTime.AddHours(4),
-                To = "Cairo",
-                Notes = "Green Color"
-            });
-
-            transportaionServices.Add(new TransportaionServiceModel()
-            {
-                Brand = "Honda",
-                CarType = "Hatchback",
-                Date = todayDate.AddDays(5),
-                From = "Suez",
-                Model = "2020",
-                Nos = 4,
-                time = currentTime.AddHours(5),
-                To = "Port Said",
-                Notes = "Yellow Color"
-            });
-
-            transportaionServices.Add(new TransportaionServiceModel()
-            {
-                Brand = "Ford",
-                CarType = "Truck",
-                Date = todayDate.AddDays(6),
-                From = "Ismailia",
-                Model = "2023",
-                Nos = 6,
-                time = currentTime.AddHours(6),
-                To = "Cairo",
-                Notes = "Silver Color"
-            });
-
+                if (json != null)
+                {
+                    Response = json;
+                }
+            }
         }
-        void LoadAirFlightData()
-        {
-            var flightDate = DateOnly.FromDateTime(DateTime.Now);
-
-            airFlights.Add(new AirFlightModel()
-            {
-                Class = "B",
-                Infant = 1,
-                Adult = 3,
-                Date = flightDate.AddDays(1),
-                Carrier = "Delta",
-                Child = 2,
-                ETA = "12:00 PM",
-                ETD = "03:00 PM",
-                From = "Canada",
-                To = "Egypt",
-                Notes = "Comfortable Seats"
-            });
-
-            airFlights.Add(new AirFlightModel()
-            {
-                Class = "C",
-                Infant = 0,
-                Adult = 1,
-                Date = flightDate.AddDays(2),
-                Carrier = "Emirates",
-                Child = 1,
-                ETA = "10:00 AM",
-                ETD = "01:00 PM",
-                From = "UK",
-                To = "Egypt",
-                Notes = "Excellent In-Flight Entertainment"
-            });
-
-            airFlights.Add(new AirFlightModel()
-            {
-                Class = "D",
-                Infant = 1,
-                Adult = 4,
-                Date = flightDate.AddDays(3),
-                Carrier = "Qatar Airways",
-                Child = 2,
-                ETA = "08:00 AM",
-                ETD = "11:00 AM",
-                From = "Australia",
-                To = "Egypt",
-                Notes = "Friendly Staff"
-            });
-
-            airFlights.Add(new AirFlightModel()
-            {
-                Class = "E",
-                Infant = 2,
-                Adult = 2,
-                Date = flightDate.AddDays(4),
-                Carrier = "Singapore Airlines",
-                Child = 1,
-                ETA = "09:00 AM",
-                ETD = "12:00 PM",
-                From = "Germany",
-                To = "Egypt",
-                Notes = "Spacious Legroom"
-            });
-
-            airFlights.Add(new AirFlightModel()
-            {
-                Class = "F",
-                Infant = 3,
-                Adult = 1,
-                Date = flightDate.AddDays(5),
-                Carrier = "Turkish Airlines",
-                Child = 0,
-                ETA = "11:00 AM",
-                ETD = "02:00 PM",
-                From = "France",
-                To = "Egypt",
-                Notes = "Great Food"
-            });
-
-            airFlights.Add(new AirFlightModel()
-            {
-                Class = "G",
-                Infant = 1,
-                Adult = 3,
-                Date = flightDate.AddDays(6),
-                Carrier = "British Airways",
-                Child = 2,
-                ETA = "07:00 AM",
-                ETD = "10:00 AM",
-                From = "Italy",
-                To = "Egypt",
-                Notes = "Smooth Flight"
-            });
-
-        }
-        void LoadVisaData()
-        {
-
-            visaServices.Add(new VisaServiceModel()
-            {
-                VisaType = "Tourist",
-                VisaNo = "048",
-                Notes = "Single Entry"
-            });
-
-            visaServices.Add(new VisaServiceModel()
-            {
-                VisaType = "Student",
-                VisaNo = "052",
-                Notes = "University Enrollment"
-            });
-
-            visaServices.Add(new VisaServiceModel()
-            {
-                VisaType = "Business",
-                VisaNo = "061",
-                Notes = "Multiple Entry"
-            });
-
-            visaServices.Add(new VisaServiceModel()
-            {
-                VisaType = "Transit",
-                VisaNo = "072",
-                Notes = "24-hour Validity"
-            });
-
-            visaServices.Add(new VisaServiceModel()
-            {
-                VisaType = "Medical",
-                VisaNo = "083",
-                Notes = "Hospital Treatment"
-            });
-
-            visaServices.Add(new VisaServiceModel()
-            {
-                VisaType = "Diplomatic",
-                VisaNo = "091",
-                Notes = "Government Official"
-            });
-
-        } 
+        
         #endregion
 
 

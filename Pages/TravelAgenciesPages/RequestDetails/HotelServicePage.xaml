@@ -8,9 +8,7 @@
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="HotelService">
-    <!--<Controls:CustomControl.BindingContext>
-        <vm:HotelServiceViewModel></vm:HotelServiceViewModel>
-    </Controls:CustomControl.BindingContext>-->
+    
     <StackLayout Orientation="Vertical" Margin="20">
         <StackLayout Orientation="Horizontal" >
             <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackClickedCommand}">
@@ -23,29 +21,34 @@
                     </DataTrigger>
                 </ImageButton.Triggers>
             </ImageButton>
-            <Label Text="{ex:Translate Name=lblHotelServices}" FontSize="18" FontAutoScalingEnabled="False" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
-                   TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+            <Label Text="{ex:Translate Name=lblHotelServices}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+               TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
-        <ScrollView VerticalOptions="FillAndExpand">
+        <ScrollView VerticalOptions="FillAndExpand" Padding="0,0,0,20" VerticalScrollBarVisibility="Never">
             <StackLayout >
-                <Border StrokeShape="RoundRectangle 15" Margin="0,40" BackgroundColor="White">
-                    <StackLayout Orientation="Vertical" Padding="15">
+                <Border StrokeShape="RoundRectangle 15" Margin="0,25,0,40" BackgroundColor="White">
+                    <StackLayout Orientation="Vertical" Padding="15,15,15,25">
+                        <Label Text="{ex:Translate Name=lblLocation-HotelSevice}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
+                            <Picker x:Name="LocPick" TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding Locations}" ItemDisplayBinding="{Binding LocationName}"
+                                SelectedItem="{Binding SelectedLocation}" SelectedIndexChanged="LocationPicker"></Picker>
+                        </Border>
                         <Label Text="{ex:Translate Name=lblHotelName-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                            <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontAutoScalingEnabled="False" FontFamily="OpenSansRegular" Text="{Binding HotelResponseModel.HotelName}"
-                           ></Entry>
+                            <Picker x:Name="HotelPick" TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding Hoteles}" ItemDisplayBinding="{Binding HotelName}"
+                                SelectedItem="{Binding SelectedHotel}"></Picker>
                         </Border>
                         <StackLayout Orientation="Horizontal" Spacing="35">
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{ex:Translate Name=lblCheckIn-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Label FontSize="13" TextColor="Black" Text="{Binding HotelResponseModel.Checkin}" FontAutoScalingEnabled="False" VerticalTextAlignment="Center" Padding="10,0,10,0"></Label>
+                                    <DatePicker FontSize="13" TextColor="Black" FontAutoScalingEnabled="False" Date="{Binding HotelRequestModel.CheckIn}"></DatePicker>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{ex:Translate Name=lblCheckOut-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Label FontSize="13" TextColor="Black" Text="{Binding HotelResponseModel.Checkout}" FontAutoScalingEnabled="False" VerticalTextAlignment="Center" Padding="10,0,10,0"></Label>
+                                    <DatePicker FontSize="13" TextColor="Black" FontAutoScalingEnabled="False" Date="{Binding HotelRequestModel.CheckOut}"></DatePicker>
                                 </Border>
                             </VerticalStackLayout>
                         </StackLayout>
@@ -53,15 +56,15 @@
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{ex:Translate lblRoomView-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontAutoScalingEnabled="False" FontFamily="OpenSansRegular" IsReadOnly="True"
-                                   Text="{Binding HotelResponseModel.RoomView}"></Entry>
+                                    <Picker TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding RoomViews}" ItemDisplayBinding="{Binding RoomViewName}"
+                                        SelectedItem="{Binding SelectedRoomView}"></Picker>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{ex:Translate Name=lblRoomType-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontAutoScalingEnabled="False" FontFamily="OpenSansRegular" IsReadOnly="True"
-                                   Text="{Binding HotelResponseModel.RoomType}"></Entry>
+                                    <Picker TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding RoomTypes}" ItemDisplayBinding="{Binding RoomTypeName}"
+                                        SelectedItem="{Binding SelectedRoomType}"></Picker>
                                 </Border>
                             </VerticalStackLayout>
                         </StackLayout>
@@ -69,31 +72,44 @@
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{ex:Translate Name=lblMeals-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontAutoScalingEnabled="False" FontFamily="OpenSansRegular" IsReadOnly="True"
-                                   Text="{Binding HotelResponseModel.Meals}"></Entry>
+                                    <Picker TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding Meals}" ItemDisplayBinding="{Binding MealName}"
+                                        SelectedItem="{Binding SelectedMeal}"></Picker>
                                 </Border>
                             </VerticalStackLayout>
-                            <VerticalStackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="5">
-                                <Label Text="{ex:Translate Name=lblNoOfRoom-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" HorizontalTextAlignment="Center" Margin="0,20,0,0"></Label>
-                                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="CenterAndExpand" Padding="10,5" Stroke="Gray"
-                            VerticalOptions="EndAndExpand" Margin='0,0,0,15'>
-                                    <Label Text="{Binding HotelResponseModel.RoomCount}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="20" VerticalTextAlignment="Center" 
-                               FontAttributes="Bold" ></Label>
-                                </Border>
+                            <VerticalStackLayout HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand">
+                                <Label Text="{ex:Translate Name=lblNoOfRoom-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14"
+                                   HorizontalTextAlignment="Center" Margin="0,20,0,0"></Label>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand">
+                                    <ImageButton WidthRequest="20" Command="{Binding AddRoomCommand}">
+                                        <ImageButton.Source>
+                                            <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
+                                        </ImageButton.Source>
+                                    </ImageButton>
+                                    <Border StrokeShape="RoundRectangle 5" HorizontalOptions="CenterAndExpand" Padding="10,5" Stroke="Gray">
+                                        <Label Text="{Binding HotelRequestModel.RoomCount}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="20" VerticalTextAlignment="Center" 
+                               FontAttributes="Bold"></Label>
+                                    </Border>
+                                    <ImageButton WidthRequest="20" Command="{Binding DeletRoomCommand}">
+                                        <ImageButton.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
+                                        </ImageButton.Source>
+                                    </ImageButton>
+                                </StackLayout>
                             </VerticalStackLayout>
-
                         </StackLayout>
-                        <Label Text="{ex:Translate lblNotes-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,0"></Label>
+                        <Label Text="{ex:Translate lblNoteForDist-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,20,0,0"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10" HeightRequest="100">
-                            <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontAutoScalingEnabled="False" FontFamily="OpenSansRegular" IsReadOnly="True"
-                           Text="{Binding HotelResponseModel.Notes}"></Entry>
+                            <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontAutoScalingEnabled="False" FontFamily="OpenSansRegular" 
+                                Text="{Binding HotelRequestModel.Notes}"></Entry>
                         </Border>
                     </StackLayout>
                     <Border.Shadow>
                         <Shadow Brush="LightGray" Offset="8,8" Opacity="0.8"></Shadow>
                     </Border.Shadow>
                 </Border>
-
+                <Button VerticalOptions="EndAndExpand" Text="{ex:Translate Name=btnApply-Forgot}" FontAutoScalingEnabled="False" BackgroundColor="#2fa562" TextColor="White" 
+                    Margin="20,0" Command="{Binding ApplyHotelClickedCommand}" CommandParameter="{Binding HotelRequestModel}"
+                    FontSize="16" FontAttributes="Bold"></Button>
             </StackLayout>
         </ScrollView>
     </StackLayout>

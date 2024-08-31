@@ -222,8 +222,6 @@
                                         </ImageButton.Source>
                                     </ImageButton>
                                 </Grid>
-                                
-
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
