@@ -43,9 +43,9 @@
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\logo.svg" Color="#E3FCE4" ForegroundScale="0.65" />
 		
-		
+
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\logo.svg" Color="White" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\biglogo.svg" Color="White" BaseSize="180,100"/>
 		
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -83,6 +83,7 @@
 	  <None Remove="Resources\Fonts\Inter-Medium.ttf" />
 	  <None Remove="Resources\Images\bntu.svg" />
 	  <None Remove="Resources\Images\offer.jpg" />
+	  <None Remove="Resources\Splash\biglogo.svg" />
 	  <None Remove="Resources\Splash\logo.svg" />
 	  <None Remove="Resources\Splash\logosmall.svg" />
 	</ItemGroup>
