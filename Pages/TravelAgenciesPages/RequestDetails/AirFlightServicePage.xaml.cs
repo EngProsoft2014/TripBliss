@@ -9,8 +9,6 @@ public partial class AirFlightServicePage : Controls.CustomControl
 	{
 		InitializeComponent();
 		BindingContext = model;
-		bool cc = model.Moddel.AcceptAgen;
-        this.IsEnabled = !cc;
 
     }
 }

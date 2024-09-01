@@ -19,8 +19,5 @@ public partial class HotelServicePage : Controls.CustomControl
         HotelPick.ItemsSource = Model.Hoteles.Where(a=>a.LocationId == cc!.Id).ToList();
     }
 
-    private void HotelPicker(object sender, EventArgs e)
-    {
 
-    }
 }

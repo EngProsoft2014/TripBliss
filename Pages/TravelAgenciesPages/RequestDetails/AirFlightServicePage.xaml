@@ -171,8 +171,19 @@
                 </Border>
                 <Button VerticalOptions="EndAndExpand" FontAutoScalingEnabled="False" Text="{ex:Translate Name=btnApply-Forgot}" FontSize="16" FontAttributes="Bold" 
                     BackgroundColor="#2fa562" TextColor="White" Margin="20,0" Command="{Binding ApplyClickedCommand}" 
-                    CommandParameter="{Binding AirFlightRequestModel}"></Button>
+                    CommandParameter="{Binding AirFlightRequestModel}">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Moddel.AcceptAgen}" Value="True">
+                            <Setter Property="IsVisible" Value="False"></Setter>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
             </StackLayout>
+            <ScrollView.Triggers>
+                <DataTrigger TargetType="ScrollView" Binding="{Binding Moddel.AcceptAgen}" Value="True">
+                    <Setter Property="IsEnabled" Value="False"></Setter>
+                </DataTrigger>
+            </ScrollView.Triggers>
         </ScrollView>
     </StackLayout>
 

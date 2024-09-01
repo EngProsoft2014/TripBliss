@@ -51,8 +51,19 @@
                 </Border>
                 <Button VerticalOptions="EndAndExpand" Text="{ex:Translate Name=btnApply-Forgot}" FontAutoScalingEnabled="False" BackgroundColor="#2fa562" 
                     FontSize="16" FontAttributes="Bold" TextColor="White" Margin="20,0,20,20"
-                    Command="{Binding ApplyCommand}" CommandParameter="{Binding VisaRequestModel}"></Button>
+                    Command="{Binding ApplyCommand}" CommandParameter="{Binding VisaRequestModel}">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding VisaResponseModel.AcceptAgen}" Value="True">
+                            <Setter Property="IsVisible" Value="False"></Setter>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
             </StackLayout>
+            <ScrollView.Triggers>
+                <DataTrigger TargetType="ScrollView" Binding="{Binding VisaResponseModel.AcceptAgen}" Value="True">
+                    <Setter Property="IsEnabled" Value="False"></Setter>
+                </DataTrigger>
+            </ScrollView.Triggers>
         </ScrollView>
     </StackLayout>
 </Controls:CustomControl>

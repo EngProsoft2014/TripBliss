@@ -42,11 +42,11 @@
                     </DataTrigger>
                 </ImageButton.Triggers>
             </ImageButton>
-            <Label Text="{ex:Translate Name=hdrNewRequest}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="Confirm Response" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
-            <Button Text="{ex:Translate Name=btnPayNow-NewRequest}" FontAutoScalingEnabled="False" WidthRequest="95" Padding="0,5,0,5" HeightRequest="35" FontSize="12"
+            <Button Text="{ex:Translate Name=btnPayNow-NewRequest}" FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" FontSize="12"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_NewRequestViewModel}}, Path=Command}"
-                    BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" Margin="0,0,0,0" FontAttributes="Bold">
+                    BackgroundColor="#33a7f5" CornerRadius="5" TextColor="White" WidthRequest="70" Margin="0,0,0,0" FontAttributes="Bold">
             </Button>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand">
@@ -61,7 +61,7 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid HorizontalOptions="FillAndExpand">
-                                    <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand" HorizontalScrollBarVisibility="Never" Padding="3,0,3,0">
+                                    <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand" HorizontalScrollBarVisibility="Never" Padding="3,0,35,0">
                                         <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" HorizontalOptions="FillAndExpand">
                                             <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
@@ -94,7 +94,7 @@
                                             </StackLayout.GestureRecognizers>
                                         </StackLayout>
                                     </ScrollView>
-                                    <CheckBox Color="Green" WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="5,0"
+                                    <CheckBox Color="Green" WidthRequest="20" HeightRequest="20" BackgroundColor="White" HorizontalOptions="EndAndExpand" Margin="5,0"
                                               IsChecked="{Binding AcceptAgen}">
                                         <CheckBox.Triggers>
                                             <DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="true">
@@ -122,7 +122,7 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid HorizontalOptions="FillAndExpand">
-                                    <ScrollView Orientation="Horizontal" Padding="3,0,3,0" HorizontalScrollBarVisibility="Never">
+                                    <ScrollView Orientation="Horizontal" Padding="3,0,35,0" HorizontalScrollBarVisibility="Never">
                                         <StackLayout Orientation="Horizontal" Spacing="10" Padding="3" Margin="0,5">
                                             <Label Text="{Binding RequestTravelAgencyTransport.TypeName}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="12" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
                                             <Label TextColor="Gray" FontAutoScalingEnabled="False" FontSize="12" VerticalTextAlignment="Center">
@@ -156,7 +156,7 @@
                                             </StackLayout.GestureRecognizers>
                                         </StackLayout>
                                     </ScrollView>
-                                    <CheckBox Color="Green" WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="5,0"
+                                    <CheckBox Color="Green" WidthRequest="20" BackgroundColor="White" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="5,0"
                                               IsChecked="{Binding AcceptAgen}">
                                         <CheckBox.Triggers>
                                             <DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="true">
@@ -186,7 +186,7 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid HorizontalOptions="FillAndExpand">
-                                    <ScrollView Orientation="Horizontal" Padding="3,0,3,0" HorizontalScrollBarVisibility="Never">
+                                    <ScrollView Orientation="Horizontal" Padding="3,0,35,0" HorizontalScrollBarVisibility="Never">
                                         <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" HorizontalOptions="FillAndExpand">
                                             <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
@@ -225,7 +225,7 @@
                                             </StackLayout.GestureRecognizers>
                                         </StackLayout>
                                     </ScrollView>
-                                    <CheckBox Color="Green" WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="5,0"
+                                    <CheckBox Color="Green" WidthRequest="20" BackgroundColor="White" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="5,0"
                                               IsChecked="{Binding AcceptAgen}">
                                         <CheckBox.Triggers>
                                             <DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="true">
@@ -254,7 +254,7 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid HorizontalOptions="FillAndExpand">
-                                    <ScrollView  Orientation="Horizontal" Padding="3,0,33,0" HorizontalScrollBarVisibility="Never">
+                                    <ScrollView  Orientation="Horizontal" Padding="3,0,35,0" HorizontalScrollBarVisibility="Never">
                                         <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" HorizontalOptions="FillAndExpand">
                                             <Label FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
@@ -291,7 +291,7 @@
                                             </StackLayout.GestureRecognizers>
                                         </StackLayout>
                                     </ScrollView>
-                                    <CheckBox Color="Green" WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="5,0"
+                                    <CheckBox Color="Green" WidthRequest="20" BackgroundColor="White" HeightRequest="20" HorizontalOptions="EndAndExpand" Margin="5,0"
                                               IsChecked="{Binding AcceptAgen}">
                                         <CheckBox.Triggers>
                                             <DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="true">

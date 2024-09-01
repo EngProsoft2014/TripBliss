@@ -98,8 +98,19 @@
                 </Border>
                 <Button VerticalOptions="EndAndExpand" Text="{ex:Translate Name=btnApply-Forgot}" FontAutoScalingEnabled="False" BackgroundColor="#2fa562" TextColor="White"
                     Margin="20,0,20,20" Command="{Binding ApplyCommand}" CommandParameter="{Binding TransportRequestModel}"
-                    FontSize="16" FontAttributes="Bold"></Button>
+                    FontSize="16" FontAttributes="Bold">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding ServiceModdel.AcceptAgen}" Value="True">
+                            <Setter Property="IsVisible" Value="False"></Setter>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
             </StackLayout>
+            <ScrollView.Triggers>
+                <DataTrigger TargetType="ScrollView" Binding="{Binding ServiceModdel.AcceptAgen}" Value="True">
+                    <Setter Property="IsEnabled" Value="False"></Setter>
+                </DataTrigger>
+            </ScrollView.Triggers>
         </ScrollView>
     </StackLayout>
 

@@ -11,7 +11,5 @@ public partial class VisaServicePage : Controls.CustomControl
 	{
 		InitializeComponent();
 		this.BindingContext = model;
-		bool cc = model.Moddel.AcceptAgen;
-		this.IsEnabled = !cc;
 	}
 }

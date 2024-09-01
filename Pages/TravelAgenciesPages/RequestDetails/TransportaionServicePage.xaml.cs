@@ -12,9 +12,6 @@ public partial class TransportaionServicePage : Controls.CustomControl
 		InitializeComponent();
 		this.BindingContext = model;
         Model = model;
-		bool cc = model.ServiceModdel.AcceptAgen;
-		this.IsEnabled = !cc;
-
     }
 
     private void TypePic_SelectedIndexChanged(object sender, EventArgs e)

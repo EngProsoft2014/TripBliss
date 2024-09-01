@@ -9,8 +9,6 @@ public partial class HotelServicePage : Controls.CustomControl
     public HotelServicePage(Tr_D_HotelServiceViewModel model,IGenericRepository  generic)
 	{
 		InitializeComponent();
-		bool cc = model!.HotelService!.AcceptAgen;
-		this.IsEnabled = !cc;
         Model = model;
 
     }
