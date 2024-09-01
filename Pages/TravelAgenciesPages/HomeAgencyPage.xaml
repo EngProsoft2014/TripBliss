@@ -26,7 +26,7 @@
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
                     <tabView:SfTabItem.Content>
-                        <ContentView x:Name="conviewHome">
+                        <ContentView x:Name="conviewHome" Margin="{OnPlatform iOS='20,0,20,0'}">
                             <!--<ContentView.BindingContext>
                                 <vm:HomeViewModel></vm:HomeViewModel>
                             </ContentView.BindingContext>-->
@@ -52,11 +52,14 @@
                                     </Setter>
                                 </Style>
                             </ContentView.Resources>
-                            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="10">
+                            <StackLayout Orientation="Vertical" VerticalOptions="{OnPlatform Android=FillAndExpand, iOS=StartAndExpand}" Spacing="10">
                                 <Label Text="{ex:Translate Name=hdrMyRequests}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
-                                   TextColor="Black" Margin="20,20,20,5"></Label>
-                                <CollectionView ItemsSource="{Binding Requests}"
-                                            VerticalOptions="FillAndExpand" SelectionMode="Single">
+                                   TextColor="Black" VerticalOptions="Start" Margin="{OnPlatform Android='20,20,20,5', iOS='20,0,20,5'}"></Label>
+                                <CollectionView ItemsSource="{Binding Requests}" VerticalScrollBarVisibility="Never"
+                                            VerticalOptions="FillAndExpand" SelectionMode="Single" >
+                                    <CollectionView.ItemsLayout>
+                                        <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
+                                    </CollectionView.ItemsLayout>
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
                                             <Border StrokeShape="RoundRectangle 20" Margin="20,10">

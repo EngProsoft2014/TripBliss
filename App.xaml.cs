@@ -5,6 +5,7 @@ using System.Globalization;
 using Mopups.PreBaked.PopupPages.Login;
 using TripBliss.Helpers;
 using TripBliss.Pages.TravelAgenciesPages;
+using Akavache;
 
 namespace TripBliss
 {
@@ -20,8 +21,12 @@ namespace TripBliss
             _service = service;
             Rep = generic;
 
+            BlobCache.ApplicationName = "TripBlissDB";
+            BlobCache.EnsureInitialized();
+
             LoadSetting();
             InitializeComponent();
+
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(ApiConstants.syncFusionLicence);
             //MainPage = new AppShell();
             //MainPage = new NavigationPage(new HomeDistributorsPage(new Dis_HomeViewModel(Rep),Rep));
