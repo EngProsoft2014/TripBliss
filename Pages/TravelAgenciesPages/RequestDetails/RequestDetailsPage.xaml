@@ -16,29 +16,33 @@
         </Style>
     </Controls:CustomControl.Resources>
 
-    <tabView:SfTabView TabBarPlacement="Bottom" VerticalOptions="EndAndExpand" IndicatorBackground="#1c874b" FlowDirection="LeftToRight"
+    <tabView:SfTabView TabBarPlacement="Bottom" VerticalOptions="FillAndExpand" IndicatorBackground="#1c874b" FlowDirection="LeftToRight"
                                IndicatorPlacement="Top" TabBarHeight="55" >
         <tabView:SfTabView.Items>
             <!--Request Details-->
             <tabView:SfTabItem Header="{ex:Translate Name=btnRequestDetails-RequestDetails}" FontSize="14" BackgroundColor="#f6fcf2" 
                                FontFamily="Almarai-Regular">
                 <tabView:SfTabItem.Content>
-                    <ContentView x:Name="DetailsContView" Margin="20">
+                    <ContentView x:Name="DetailsContView" Margin="{OnPlatform Android=20, iOS='20,0,20,0'}">
                         <!--<ContentView.BindingContext>
                             <vm:RequestDetailsViewModel></vm:RequestDetailsViewModel>
                         </ContentView.BindingContext>-->
                         <StackLayout Orientation="Vertical" Spacing="10">
                             <StackLayout Orientation="Horizontal">
-                                <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackButtonCommand}">
-                                    <ImageButton.Source>
-                                        <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                    </ImageButton.Source>
-                                    <ImageButton.Triggers>
+                                
+                                <Image VerticalOptions="CenterAndExpand">
+                                    <Image.Source>
+                                        <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                                    </Image.Source>
+                                    <Image.Triggers>
                                         <DataTrigger TargetType="ImageButton" Binding="{Binding Lang}" Value="ar">
                                             <Setter Property="Rotation" Value="180"></Setter>
                                         </DataTrigger>
-                                    </ImageButton.Triggers>
-                                </ImageButton>
+                                    </Image.Triggers>
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BackButtonCommand}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
                                 <Label Text="{Binding RequestDetailes.RequestName}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                             </StackLayout>
@@ -629,7 +633,7 @@
             <tabView:SfTabItem Header="{ex:Translate Name=btnActiveDistributors-RequestDetails}" FontSize="14" BackgroundColor="#f6fcf2" 
                                FontFamily="Almarai-Regular">
                 <tabView:SfTabItem.Content>
-                    <ContentView x:Name="ActiveContView" Margin="20">
+                    <ContentView x:Name="ActiveContView" Margin="{OnPlatform Android=20, iOS='20,0,20,0'}">
                         <ContentView.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="VisualStateManager.VisualStateGroups">
@@ -655,20 +659,23 @@
 
                         <StackLayout Orientation="Vertical">
                             <StackLayout Orientation="Horizontal">
-                                <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackButtonCommand}">
-                                    <ImageButton.Source>
-                                        <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                    </ImageButton.Source>
-                                    <ImageButton.Triggers>
+                                <Image VerticalOptions="CenterAndExpand">
+                                    <Image.Source>
+                                        <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                                    </Image.Source>
+                                    <Image.Triggers>
                                         <DataTrigger TargetType="ImageButton" Binding="{Binding Lang}" Value="ar">
                                             <Setter Property="Rotation" Value="180"></Setter>
                                         </DataTrigger>
-                                    </ImageButton.Triggers>
-                                </ImageButton>
+                                    </Image.Triggers>
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BackButtonCommand}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
                                 <Label Text="{ex:Translate Name=btnDistributors}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                                TextColor="Black" VerticalOptions="CenterAndExpand" FontAutoScalingEnabled="False" ></Label>
                             </StackLayout>
-                            <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="0,20,0,0" BackgroundColor="White">
+                            <Border StrokeShape="RoundRectangle 25" Stroke="Gray" HeightRequest="40" Margin="0,20,0,0" BackgroundColor="White">
                                 <Grid>
                                     <SearchBar BackgroundColor="White" Placeholder="{ex:Translate Name=plcSearch}" FontAutoScalingEnabled="False" HeightRequest="40" FontSize="15" 
                                                TextColor="Black"></SearchBar>
@@ -681,7 +688,7 @@
                                     </Border>-->
                                 </Grid>
                                 <Border.Shadow>
-                                    <Shadow  Brush="DarkGray" Opacity="1"></Shadow>
+                                    <Shadow  Brush="DarkGray" Opacity="1" Radius="{OnPlatform Android=5 , iOS=3}"></Shadow>
                                 </Border.Shadow>
                             </Border>
                             <CollectionView ItemsSource="{Binding RequestDetailes.ResponseWithDistributor}" VerticalOptions="FillAndExpand" Margin="0,10,0,0">

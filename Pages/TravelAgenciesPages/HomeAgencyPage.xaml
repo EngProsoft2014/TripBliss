@@ -17,7 +17,7 @@
     <StackLayout Orientation="Vertical">
 
         <tabView:SfTabView x:Name="tabMain" TabBarHeight="60" TabBarPlacement="Bottom" IndicatorPlacement="Top" IndicatorBackground="#1c874b" FlowDirection="LeftToRight"
-                           VerticalOptions="EndAndExpand" SelectionChanged="tabMain_SelectionChanged">
+                           VerticalOptions="FillAndExpand" SelectionChanged="tabMain_SelectionChanged">
             <tabView:SfTabView.Items>
                 <!--Home-->
                 <tabView:SfTabItem Header="{ex:Translate btnHome}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2" 
@@ -129,7 +129,7 @@
                                 <dvm:TravelAgencyViewModel></dvm:TravelAgencyViewModel>
                             </ContentView.BindingContext>-->
                             <StackLayout Orientation="Vertical">
-                                <StackLayout Orientation="Horizontal" Margin="20">
+                                <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android=20, iOS='20,0,20,0'}">
                                     <Label Text="{ex:Translate Name=hdrDistributors}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="End"
                                            TextColor="Black"></Label>
                                     <Button Text="{ex:Translate Name=btnAddRequest}" FontAutoScalingEnabled="False" WidthRequest="95" Padding="0,5,0,5" HeightRequest="35" FontSize="12"
@@ -146,6 +146,9 @@
                                                 <ContentView x:Name="conviewDist">
                                                     <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20">
                                                         <CollectionView ItemsSource="{Binding DistributorCompanys}" VerticalOptions="FillAndExpand" SelectionMode="None">
+                                                            <CollectionView.ItemsLayout>
+                                                                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
+                                                            </CollectionView.ItemsLayout>
                                                             <CollectionView.ItemTemplate>
                                                                 <DataTemplate>
                                                                     <Border StrokeShape="RoundRectangle 20" Margin="0,10">
@@ -220,6 +223,9 @@
                                                 <ContentView x:Name="conviewFevourites">
                                                     <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20">
                                                         <CollectionView ItemsSource="{Binding FavouriteDistributorCompanys}" VerticalOptions="FillAndExpand" SelectionMode="None">
+                                                            <CollectionView.ItemsLayout>
+                                                                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
+                                                            </CollectionView.ItemsLayout>
                                                             <CollectionView.ItemTemplate>
                                                                 <DataTemplate>
                                                                     <Border StrokeShape="RoundRectangle 20" Margin="0,10">
@@ -241,12 +247,11 @@
                                                                                 <HorizontalStackLayout Spacing="5">
                                                                                     <Label Text="{Binding DistributorCompany.Review}" FontAutoScalingEnabled="False" FontSize="14" TextColor="Black" FontAttributes="Bold"
                                                                                              VerticalOptions="StartAndExpand"></Label>
-                                                                                    <ImageButton WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
-                                                                                        <ImageButton.Source>
-                                                                                            <FontImageSource Glyph="" FontFamily="FontIconSolid"
-                                                                                                         Color="Gold"></FontImageSource>
-                                                                                        </ImageButton.Source>
-                                                                                    </ImageButton>
+                                                                                    <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
+                                                                                        <Image.Source>
+                                                                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gold"></FontImageSource>
+                                                                                        </Image.Source>
+                                                                                    </Image>
                                                                                 </HorizontalStackLayout>
                                                                                 <!--<ImageButton WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand" 
                                                                                              Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=HeartClickedCommand}" CommandParameter="{Binding}">
@@ -334,12 +339,12 @@
                                 </Style>
                             </ContentView.Resources>
 
-                            <StackLayout Orientation="Vertical" Margin="20">
+                            <StackLayout Orientation="Vertical" Margin="{OnPlatform iOS='20,0,20,0'}">
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{ex:Translate Name=hdrOffers}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                 </StackLayout>
-                                <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="0,20,0,0" BackgroundColor="White">
+                                <Border StrokeShape="RoundRectangle 25" HeightRequest="40" Stroke="Gray" Margin="0,20,0,10" BackgroundColor="White">
                                     <Grid>
                                         <SearchBar BackgroundColor="White" FontAutoScalingEnabled="False" Placeholder="{ex:Translate Name=plcSearch}" HeightRequest="40" FontSize="15" TextColor="Black"></SearchBar>
                                         <!--<Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
@@ -351,11 +356,14 @@
                                         </Border>-->
                                     </Grid>
                                     <Border.Shadow>
-                                        <Shadow  Brush="DarkGray" Opacity="1"></Shadow>
+                                        <Shadow  Brush="{OnPlatform Android=DarkGray,iOS=LightGray}" Opacity="1"></Shadow>
                                     </Border.Shadow>
                                 </Border>
                                 <CollectionView x:Name="colOffers" ItemsSource="{Binding Offers}" VerticalOptions="FillAndExpand" SelectionMode="Single"
-                                                Margin="0,10,0,0">
+                                                Margin="0,10,0,0" VerticalScrollBarVisibility="Never">
+                                    <CollectionView.ItemsLayout>
+                                        <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
+                                    </CollectionView.ItemsLayout>
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
                                             <Border StrokeShape="RoundRectangle 10" Stroke="Gray" StrokeThickness="1" Margin="0,10"
@@ -374,7 +382,7 @@
                                                                     <Label Text="SAR" FontSize="8" FontAutoScalingEnabled="False" HorizontalOptions="EndAndExpand" TranslationX="-5" TextColor="White"></Label>
                                                                 </StackLayout>
                                                                 <Border.Shadow>
-                                                                    <Shadow Brush="#333" Opacity="1"></Shadow>
+                                                                    <Shadow Brush="{OnPlatform Android=#333, iOS=LightGray}" Opacity="1"></Shadow>
                                                                 </Border.Shadow>
                                                             </Border>
                                                             <Border StrokeShape="RoundRectangle 7" BackgroundColor="#2aa55e" Padding="5" TranslationX="-10" WidthRequest="55" HeightRequest="45"
@@ -384,7 +392,7 @@
                                                                     <Label Text="SAR" FontSize="8" FontAutoScalingEnabled="False" HorizontalOptions="EndAndExpand" TextColor="White"></Label>
                                                                 </StackLayout>
                                                                 <Border.Shadow>
-                                                                    <Shadow Brush="#333" Opacity="1"></Shadow>
+                                                                    <Shadow Brush="{OnPlatform Android=#333, iOS=LightGray}" Opacity="1"></Shadow>
                                                                 </Border.Shadow>
                                                                 <!--<Border.Triggers>
                                                                     <DataTrigger TargetType="Border" Binding="{Binding Source={RelativeSource AncestorType={x:Type Tvm:ChooseOfferViewModel}}, Path=Lang}" Value="ar">
@@ -453,9 +461,9 @@
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="10">
                                 <Label Text="{ex:Translate Name=hdrHistory}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                        TextColor="Black" Margin="0,20,0,10"></Label>
-                                <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="20,0" BackgroundColor="White">
+                                <Border StrokeShape="RoundRectangle 25" Stroke="Gray" HeightRequest="40" Margin="20,0" BackgroundColor="White">
                                     <Grid>
-                                        <SearchBar BackgroundColor="White" FlowDirection="RightToLeft"
+                                        <SearchBar BackgroundColor="White" 
                                                    Placeholder="{ex:Translate Name=plcSearch}" 
                                                    HeightRequest="40" FontAutoScalingEnabled="False"
                                                    FontSize="15" 
@@ -470,10 +478,13 @@
                                         </Border>-->
                                     </Grid>
                                     <Border.Shadow>
-                                        <Shadow  Brush="DarkGray" Opacity="1"></Shadow>
+                                        <Shadow  Brush="{OnPlatform Android=DarkGray,iOS=LightGray}" Opacity="1"></Shadow>
                                     </Border.Shadow>
                                 </Border>
-                                <CollectionView ItemsSource="{Binding Requests}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <CollectionView ItemsSource="{Binding Requests}" Margin="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
+                                    <CollectionView.ItemsLayout>
+                                        <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
+                                    </CollectionView.ItemsLayout>
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
                                             <Border StrokeShape="RoundRectangle 20" Margin="20,10">
@@ -566,7 +577,7 @@
                             </ContentView.BindingContext>-->
                             <StackLayout Orientation="Vertical" Spacing="50">
                                 <Label Text="{ex:Translate Name=hdrMore}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
-                                       TextColor="Black" Margin="0,20,0,10"></Label>
+                                       TextColor="Black" Margin="{OnPlatform Android='0,20,0,10',iOS='0,0,0,10'}"></Label>
                                 <!--User-->
                                 <VerticalStackLayout Margin="20,0" Spacing="20">
                                     <HorizontalStackLayout Spacing="8">

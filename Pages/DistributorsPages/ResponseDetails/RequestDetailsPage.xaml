@@ -17,35 +17,38 @@
         </Style>
     </Controls:CustomControl.Resources>
     <StackLayout Orientation="Vertical">
-        <tabView:SfTabView TabBarPlacement="Bottom" VerticalOptions="EndAndExpand" IndicatorBackground="#1c874b"
+        <tabView:SfTabView TabBarPlacement="Bottom" VerticalOptions="FillAndExpand" IndicatorBackground="#1c874b"
                                IndicatorPlacement="Top" TabBarHeight="55" FlowDirection="LeftToRight">
             <tabView:SfTabView.Items>
                 <!--Request Details-->
                 <tabView:SfTabItem Header="{ex:Translate Name=btnRequestDetails-RequestDetails}" FontSize="14" BackgroundColor="#f6fcf2"
                                    FontFamily="Almarai-Regular">
                     <tabView:SfTabItem.Content>
-                        <ContentView x:Name="DetailsView" Margin="20">
+                        <ContentView x:Name="DetailsView" Margin="{OnPlatform Android=20, iOS='20,0,20,0'}">
                             <!--<ContentView.BindingContext>
                                 <vm:RequestDetailsViewModel></vm:RequestDetailsViewModel>
                             </ContentView.BindingContext>-->
                             <StackLayout Orientation="Vertical" Spacing="10">
                                 <StackLayout Orientation="Horizontal">
-                                    <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackButtonCommand}">
-                                        <ImageButton.Source>
-                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                        </ImageButton.Source>
-                                        <ImageButton.Triggers>
+                                    <Image VerticalOptions="CenterAndExpand">
+                                        <Image.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                                        </Image.Source>
+                                        <Image.Triggers>
                                             <DataTrigger TargetType="ImageButton" Binding="{Binding Lang}" Value="ar">
                                                 <Setter Property="Rotation" Value="180"></Setter>
                                             </DataTrigger>
-                                        </ImageButton.Triggers>
-                                    </ImageButton>
+                                        </Image.Triggers>
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BackButtonCommand}"></TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                     <Label Text="{Binding Response.RequestName}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                 </StackLayout>
                                 <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
                                     <StackLayout Spacing="20">
-
+                                        <!--HotelService-->
                                         <CarouselView ItemsSource="{Binding Response.ResponseWithDistributorHotel}" HorizontalOptions="FillAndExpand" Loop="False">
                                             <CarouselView.ItemTemplate>
                                                 <DataTemplate>
@@ -143,6 +146,8 @@
                                             </CarouselView.ItemTemplate>
 
                                         </CarouselView>
+
+                                        <!--TransportationServices-->
                                         <StackLayout Spacing="10">
                                             <Label Text="{ex:Translate Name=lblTransportationServices}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
                                                    ></Label>
@@ -365,6 +370,8 @@
                                                 </DataTrigger>
                                             </StackLayout.Triggers>
                                         </StackLayout>
+
+                                        <!--AirFlightService-->
                                         <StackLayout Spacing="10" HeightRequest="250">
                                             <Label Text="{ex:Translate Name=lblAirFlightServices}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontAttributes="Bold" FontSize="16"
                            ></Label>
@@ -615,6 +622,8 @@
                                                 </DataTrigger>
                                             </StackLayout.Triggers>
                                         </StackLayout>
+
+                                        <!--VisaService-->
                                         <StackLayout Spacing="10">
                                             <Label Text="{ex:Translate Name=lblVisaServices}" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
                             ></Label>
@@ -806,22 +815,23 @@
                                             </VisualStateGroup>
                                         </VisualStateGroupList>
                                     </Setter>
-
-
                                 </Style>
                             </ContentView.Resources>
-                            <StackLayout Orientation="Vertical" Margin="20" Spacing="10">
+                            <StackLayout Orientation="Vertical" Margin="{OnPlatform Android=20, iOS='20,0,20,0'}" Spacing="10">
                                 <StackLayout Orientation="Horizontal">
-                                    <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackButtonCommand}">
-                                        <ImageButton.Source>
-                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                                        </ImageButton.Source>
-                                        <ImageButton.Triggers>
+                                    <Image VerticalOptions="CenterAndExpand">
+                                        <Image.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                                        </Image.Source>
+                                        <Image.Triggers>
                                             <DataTrigger TargetType="ImageButton" Binding="{Binding Lang}" Value="ar">
                                                 <Setter Property="Rotation" Value="180"></Setter>
                                             </DataTrigger>
-                                        </ImageButton.Triggers>
-                                    </ImageButton>
+                                        </Image.Triggers>
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BackButtonCommand}"></TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                     <Label Text="{Binding Response.RequestName}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                 </StackLayout>

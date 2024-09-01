@@ -35,20 +35,23 @@
     </ContentPage.Resources>-->
     <StackLayout Orientation="Vertical" Margin="20">
         <StackLayout Orientation="Horizontal">
-            <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackPressedCommand}">
-                <ImageButton.Source>
-                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                </ImageButton.Source>
-                <ImageButton.Triggers>
+            <Image VerticalOptions="CenterAndExpand">
+                <Image.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                </Image.Source>
+                <Image.Triggers>
                     <DataTrigger TargetType="ImageButton" Binding="{Binding Lang}" Value="ar">
                         <Setter Property="Rotation" Value="180"></Setter>
                     </DataTrigger>
-                </ImageButton.Triggers>
-            </ImageButton>
+                </Image.Triggers>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackPressedCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
             <Label Text="{ex:Translate Name=hdrChooseDistributor}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
-        <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="0,20,0,0" BackgroundColor="White">
+        <Border StrokeShape="RoundRectangle 25" Stroke="Gray" HeightRequest="40" Margin="0,20,0,0" BackgroundColor="White">
             <Grid>
                 <SearchBar x:Name="searchBar" BackgroundColor="White" FontAutoScalingEnabled="False" Placeholder="{ex:Translate Name=plcSearch}" HeightRequest="40" FontSize="15"
                            TextColor="Black" TextChanged="searchBar_TextChanged"></SearchBar>
@@ -61,7 +64,7 @@
                 </Border>-->
             </Grid>
             <Border.Shadow>
-                <Shadow  Brush="DarkGray" Opacity="1"></Shadow>
+                <Shadow  Brush="{OnPlatform Android=DarkGray,iOS=LightGray}" Radius="{OnPlatform Android=5,iOS=2}" Opacity="1"></Shadow>
             </Border.Shadow>
         </Border>
         <HorizontalStackLayout>
@@ -69,6 +72,9 @@
             <Label Text="{ex:Translate Name=lblSelectAll-ActiveDistributors}" FontAutoScalingEnabled="False" FontSize="14" TextColor="Black" VerticalTextAlignment="Center"></Label>
         </HorizontalStackLayout>
         <CollectionView x:Name="ItemsCollectionView" ItemsSource="{Binding DistributorCompanys}" VerticalOptions="FillAndExpand" SelectionMode="Multiple">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
+            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Border StrokeShape="RoundRectangle 20" Margin="0,10" x:Name="bo">

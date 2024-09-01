@@ -32,16 +32,19 @@
     </ContentPage.Resources>
     <StackLayout Orientation="Vertical" Margin="20" Spacing="10">
         <StackLayout Orientation="Horizontal">
-            <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackButtonClickedCommand}">
-                <ImageButton.Source>
-                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                </ImageButton.Source>
-                <ImageButton.Triggers>
+            <Image VerticalOptions="CenterAndExpand">
+                <Image.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                </Image.Source>
+                <Image.Triggers>
                     <DataTrigger TargetType="ImageButton" Binding="{Binding Lang}" Value="ar">
                         <Setter Property="Rotation" Value="180"></Setter>
                     </DataTrigger>
-                </ImageButton.Triggers>
-            </ImageButton>
+                </Image.Triggers>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackButtonClickedCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
             <Label Text="{ex:Translate Name=hdrNewRequest}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
@@ -49,15 +52,15 @@
             <StackLayout Spacing="10">
                 <!--Hotels-->
                 <StackLayout Orientation="Horizontal" Margin="0,15,0,0">
-                    <Label Text="{ex:Translate Name=lblHotelServices}" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" VerticalTextAlignment="Center"></Label>
-                    <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                            StrokeThickness="1.5" Padding="2">
-                        <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddHotelCommand}">
-                            <ImageButton.Source>
-                                <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                            </ImageButton.Source>
-                        </ImageButton>
-                    </Border>
+                    <Label Text="{ex:Translate Name=lblHotelServices}" HorizontalOptions="StartAndExpand" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" VerticalTextAlignment="Center"></Label>
+                    <Image HorizontalOptions="End">
+                        <Image.Source>
+                            <FontImageSource Glyph="" FontFamily="FontIcon" Color="#2fa562" Size="25"></FontImageSource>
+                        </Image.Source>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AddHotelCommand}"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
                     <CollectionView ItemsSource="{Binding LstTravelAgencyHotelResponse}" VerticalOptions="FillAndExpand" SelectionMode="Single">
@@ -105,15 +108,15 @@
 
                 <!--Transportations-->
                 <StackLayout Orientation="Horizontal" Margin="0,0">
-                    <Label Text="{ex:Translate Name=lblTransportationServices}" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-                    <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                    StrokeThickness="1.5" Padding="2">
-                        <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddTransportaionCommand}">
-                            <ImageButton.Source>
-                                <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                            </ImageButton.Source>
-                        </ImageButton>
-                    </Border>
+                    <Label Text="{ex:Translate Name=lblTransportationServices}" HorizontalOptions="StartAndExpand" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Image HorizontalOptions="End">
+                        <Image.Source>
+                            <FontImageSource Glyph="" FontFamily="FontIcon" Color="#2fa562" Size="25"></FontImageSource>
+                        </Image.Source>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AddTransportaionCommand}"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
                     <CollectionView ItemsSource="{Binding LstTravelAgencyTransportResponse}" VerticalOptions="FillAndExpand">
@@ -130,14 +133,6 @@
                                                         <Binding Path="ToLocation" />
                                                     </MultiBinding>
                                                 </Label.Text>
-                                                <!--<Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="{Binding TypeName , StringFormat='{0}'}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
-                                                        <Span Text="{Binding FromLocation}" TextColor="Gray" FontSize="12"></Span>
-                                                        <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                        <Span Text="{Binding ToLocation}" TextColor="Gray" FontSize="12"></Span>
-                                                    </FormattedString>
-                                                </Label.FormattedText>-->
                                             </Label>
                                             <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
@@ -168,15 +163,15 @@
 
                 <!--AirFlights-->
                 <StackLayout Orientation="Horizontal" Margin="0,0">
-                    <Label Text="{ex:Translate Name=lblAirFlightServices}" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-                    <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                    StrokeThickness="1.5" Padding="2">
-                        <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddAirFlightCommand}">
-                            <ImageButton.Source>
-                                <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                            </ImageButton.Source>
-                        </ImageButton>
-                    </Border>
+                    <Label Text="{ex:Translate Name=lblAirFlightServices}" HorizontalOptions="StartAndExpand" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Image HorizontalOptions="End">
+                        <Image.Source>
+                            <FontImageSource Glyph="" FontFamily="FontIcon" Color="#2fa562" Size="25"></FontImageSource>
+                        </Image.Source>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AddAirFlightCommand}"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
                     <CollectionView ItemsSource="{Binding LstTravelAgencyAirFlightResponse}" VerticalOptions="FillAndExpand">
@@ -229,15 +224,15 @@
 
                 <!--Visas-->
                 <StackLayout Orientation="Horizontal" Margin="0,0">
-                    <Label Text="{ex:Translate Name=lblVisaServices}" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
-                    <Border StrokeShape="RoundRectangle 8" WidthRequest="25" HeightRequest="25" HorizontalOptions="EndAndExpand" Stroke="#2fa562"
-                    StrokeThickness="1.5" Padding="2">
-                        <ImageButton WidthRequest="20" VerticalOptions="StartAndExpand" Command="{Binding AddVisaCommand}">
-                            <ImageButton.Source>
-                                <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                            </ImageButton.Source>
-                        </ImageButton>
-                    </Border>
+                    <Label Text="{ex:Translate Name=lblVisaServices}" HorizontalOptions="StartAndExpand" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Image HorizontalOptions="End">
+                        <Image.Source>
+                            <FontImageSource Glyph="" FontFamily="FontIcon" Color="#2fa562" Size="25"></FontImageSource>
+                        </Image.Source>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AddVisaCommand}"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
                     <CollectionView ItemsSource="{Binding LstTravelAgencyVisaResponse}" VerticalOptions="FillAndExpand">
