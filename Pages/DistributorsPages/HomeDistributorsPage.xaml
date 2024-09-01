@@ -17,7 +17,7 @@
     <StackLayout Orientation="Vertical">
 
         <tabView:SfTabView TabBarHeight="60" TabBarPlacement="Bottom" IndicatorPlacement="Top" IndicatorBackground="#1c874b"
-                       VerticalOptions="FillAndExpand" FlowDirection="LeftToRight">
+                       VerticalOptions="FillAndExpand" FlowDirection="LeftToRight" SelectionChanged="SfTabView_SelectionChanged">
 
 
             <tabView:SfTabView.Items>
@@ -28,7 +28,7 @@
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
                     <tabView:SfTabItem.Content>
-                        <ContentView>
+                        <ContentView x:Name="HomeView">
                             <ContentView.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="VisualStateManager.VisualStateGroups">
@@ -189,7 +189,7 @@
                             </ContentView.BindingContext>-->
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="{OnPlatform Android=20, iOS='20,0,20,0'}" Spacing="10">
                                 <Label Text="{ex:Translate Name=hdrAgency}" FontSize="18" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
-                                <Border StrokeShape="RoundRectangle 25" HeightRequest="40" Stroke="Gray" Margin="0,20,0,10" BackgroundColor="White">
+                                <Border StrokeShape="RoundRectangle 25" HeightRequest="40" Stroke="Gray" Margin="{OnPlatform Android='0,20,0,10',iOS='0,10,0,10'}" BackgroundColor="White">
                                     <Grid>
                                         <SearchBar BackgroundColor="White" Placeholder="{ex:Translate Name=plcSearch}" HeightRequest="40" FontSize="15"
                                                    TextColor="Black"></SearchBar>
@@ -282,7 +282,7 @@
                             <!--<ContentView.BindingContext>
                                 <Tvm:ChooseOfferViewModel></Tvm:ChooseOfferViewModel>
                             </ContentView.BindingContext>-->
-                            <StackLayout Orientation="Vertical" Margin="20">
+                            <StackLayout Orientation="Vertical" Margin="{OnPlatform Android=20, iOS='20,0,20,0'}">
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{ex:Translate Name=hdrOffers}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
@@ -295,7 +295,7 @@
                                         </Image.GestureRecognizers>
                                     </Image>
                                 </StackLayout>
-                                <Border StrokeShape="RoundRectangle 25" HeightRequest="40" Stroke="Gray" Margin="0,20,0,0" BackgroundColor="White">
+                                <Border StrokeShape="RoundRectangle 25" HeightRequest="40" Stroke="Gray" Margin="{OnPlatform Android='0,20,0,10',iOS='0,10,0,10'}" BackgroundColor="White">
                                     <Grid>
                                         <SearchBar BackgroundColor="White" Placeholder="{ex:Translate Name=plcSearch}" HeightRequest="40" FontSize="15"
                                                    TextColor="Black"></SearchBar>
@@ -334,7 +334,7 @@
                                                                     <Label Text="SAR" FontSize="8" HorizontalOptions="EndAndExpand" TranslationX="-5" TextColor="White"></Label>
                                                                 </StackLayout>
                                                                 <Border.Shadow>
-                                                                    <Shadow Brush="#333" Opacity="1"></Shadow>
+                                                                    <Shadow  Brush="{OnPlatform Android=DarkGray,iOS=LightGray}" Opacity="1"></Shadow>
                                                                 </Border.Shadow>
                                                             </Border>
                                                             <Border StrokeShape="RoundRectangle 7" BackgroundColor="#2aa55e" Padding="5" TranslationX="-10" WidthRequest="55" HeightRequest="45"
@@ -344,8 +344,8 @@
                                                                 <Label Text="SAR" FontSize="8" HorizontalOptions="EndAndExpand" TextColor="White"></Label>
                                                             </StackLayout>
                                                             <Border.Shadow>
-                                                                <Shadow Brush="#333" Opacity="1"></Shadow>
-                                                            </Border.Shadow>
+                                                                    <Shadow  Brush="{OnPlatform Android=DarkGray,iOS=LightGray}" Opacity="1"></Shadow>
+                                                                </Border.Shadow>
                                                         </Border>
                                                         </StackLayout>
                                                         
@@ -403,8 +403,8 @@
                             </ContentView.BindingContext>-->
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="10">
                                 <Label Text="{ex:Translate  Name=hdrHistory}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
-                                       TextColor="Black" Margin="0,20,0,10"></Label>
-                                <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="20,0" BackgroundColor="White">
+                                       TextColor="Black" Margin="{OnPlatform Android='0,20,0,10',iOS='0,0,0,10'}"></Label>
+                                <Border StrokeShape="RoundRectangle 25" Stroke="Gray" HeightRequest="40" Margin="{OnPlatform Android='20,0', iOS='20,10'}" BackgroundColor="White">
                                     <Grid>
                                         <SearchBar BackgroundColor="White" Placeholder="{ex:Translate Name=plcSearch}" HeightRequest="40" FontSize="15" 
                                                    TextColor="Black"></SearchBar>
@@ -417,10 +417,10 @@
                                         </Border>-->
                                     </Grid>
                                     <Border.Shadow>
-                                        <Shadow  Brush="DarkGray" Opacity="1"></Shadow>
+                                        <Shadow  Brush="{OnPlatform Android=DarkGray,iOS=LightGray}" Opacity="1"></Shadow>
                                     </Border.Shadow>
                                 </Border>
-                                <CollectionView ItemsSource="{Binding Requests}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <CollectionView ItemsSource="{Binding Requests}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Margin="{OnPlatform iOS='20,0,20,0'}">
                                     <CollectionView.ItemsLayout>
                                         <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
                                     </CollectionView.ItemsLayout>

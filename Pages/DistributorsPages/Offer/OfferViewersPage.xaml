@@ -15,16 +15,19 @@
 
     <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20" Spacing="10">
         <StackLayout Orientation="Horizontal">
-            <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackClickedCommand}">
-                <ImageButton.Source>
-                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                </ImageButton.Source>
-                <ImageButton.Triggers>
-                    <DataTrigger TargetType="ImageButton" Binding="{Binding Lang}" Value="ar">
+            <Image VerticalOptions="CenterAndExpand">
+                <Image.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                </Image.Source>
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
                         <Setter Property="Rotation" Value="180"></Setter>
                     </DataTrigger>
-                </ImageButton.Triggers>
-            </ImageButton>
+                </Image.Triggers>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackClickedCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
             <Label Text="{ex:Translate Name=hdrViewers-OfferViewers}" FontSize="18" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
         </StackLayout>
 

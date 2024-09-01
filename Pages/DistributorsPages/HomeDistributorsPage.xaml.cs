@@ -2,6 +2,8 @@ using TripBliss.Helpers;
 using TripBliss.ViewModels.DistributorsViewModels;
 using TripBliss.ViewModels.DistributorsViewModels.CreateResponse;
 using TripBliss.ViewModels.DistributorsViewModels.Offer;
+using TripBliss.ViewModels.TravelAgenciesViewModels.Offer;
+using TripBliss.ViewModels.TravelAgenciesViewModels;
 
 namespace TripBliss.Pages.DistributorsPages;
 
@@ -163,6 +165,31 @@ public partial class HomeDistributorsPage : Controls.CustomControl
             {
                 chkAll.IsChecked = true;
             }
+        }
+    }
+
+    private void SfTabView_SelectionChanged(object sender, Syncfusion.Maui.TabView.TabSelectionChangedEventArgs e)
+    {
+        Controls.StaticMember.WayOfTab = (int)e.NewIndex;
+        if ((int)e.NewIndex == 0)
+        {
+            HomeView.BindingContext = new Dis_HomeViewModel(Rep, _service);
+        }
+        if ((int)e.NewIndex == 1)
+        {
+            AgencyView.BindingContext = new Dis_DistributorsViewModel(Rep, _service);
+        }
+        if ((int)e.NewIndex == 2)
+        {
+            OffersView.BindingContext = new Dis_O_ChooseOfferViewModel(Rep);
+        }
+        if ((int)e.NewIndex == 3)
+        {
+            HistoryView.BindingContext = new Dis_HistoryViewModel(Rep);
+        }
+        if ((int)e.NewIndex == 4)
+        {
+            MoreView.BindingContext = new Dis_MoreViewModel(Rep, _service);
         }
     }
 }

@@ -37,7 +37,7 @@
                     <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
                 </Image.Source>
                 <Image.Triggers>
-                    <DataTrigger TargetType="ImageButton" Binding="{Binding Lang}" Value="ar">
+                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
                         <Setter Property="Rotation" Value="180"></Setter>
                     </DataTrigger>
                 </Image.Triggers>

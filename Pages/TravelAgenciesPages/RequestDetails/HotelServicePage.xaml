@@ -11,16 +11,19 @@
     
     <StackLayout Orientation="Vertical" Margin="20">
         <StackLayout Orientation="Horizontal" >
-            <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackClickedCommand}">
-                <ImageButton.Source>
-                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                </ImageButton.Source>
-                <ImageButton.Triggers>
-                    <DataTrigger TargetType="ImageButton" Binding="{Binding Lang}" Value="ar">
+            <Image VerticalOptions="CenterAndExpand">
+                <Image.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                </Image.Source>
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
                         <Setter Property="Rotation" Value="180"></Setter>
                     </DataTrigger>
-                </ImageButton.Triggers>
-            </ImageButton>
+                </Image.Triggers>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackClickedCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
             <Label Text="{ex:Translate Name=lblHotelServices}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
@@ -80,20 +83,27 @@
                                 <Label Text="{ex:Translate Name=lblNoOfRoom-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14"
                                    HorizontalTextAlignment="Center" Margin="0,20,0,0"></Label>
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand">
-                                    <ImageButton WidthRequest="20" Command="{Binding AddRoomCommand}">
-                                        <ImageButton.Source>
-                                            <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                                        </ImageButton.Source>
-                                    </ImageButton>
+
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562" Size="20"></FontImageSource>
+                                        </Image.Source>
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding AddRoomCommand}"></TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                     <Border StrokeShape="RoundRectangle 5" HorizontalOptions="CenterAndExpand" Padding="10,5" Stroke="Gray">
                                         <Label Text="{Binding HotelRequestModel.RoomCount}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="20" VerticalTextAlignment="Center" 
-                               FontAttributes="Bold"></Label>
+                                            FontAttributes="Bold"></Label>
                                     </Border>
-                                    <ImageButton WidthRequest="20" Command="{Binding DeletRoomCommand}">
-                                        <ImageButton.Source>
-                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                                        </ImageButton.Source>
-                                    </ImageButton>
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="#2fa562" Size="20"></FontImageSource>
+                                        </Image.Source>
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding DeletRoomCommand}"></TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                 </StackLayout>
                             </VerticalStackLayout>
                         </StackLayout>

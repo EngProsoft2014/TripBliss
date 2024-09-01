@@ -13,16 +13,19 @@
     </Controls:CustomControl.BindingContext>-->
     <StackLayout Orientation="Vertical"  Margin="20" Spacing="15">
         <StackLayout Orientation="Horizontal" >
-            <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackClickedCommand}">
-                <ImageButton.Source>
-                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                </ImageButton.Source>
-                <ImageButton.Triggers>
-                    <DataTrigger TargetType="ImageButton" Binding="{Binding Lang}" Value="ar">
+            <Image VerticalOptions="CenterAndExpand">
+                <Image.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                </Image.Source>
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
                         <Setter Property="Rotation" Value="180"></Setter>
                     </DataTrigger>
-                </ImageButton.Triggers>
-            </ImageButton>
+                </Image.Triggers>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCLickedCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
             <Label Text="{Binding SelectedItem.OfferTitel}" FontSize="16" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" TextColor="Black"
                    Margin="0,0,0,0"></Label>
             <ImageButton WidthRequest="25" HeightRequest="25" VerticalOptions="CenterAndExpand" Command="{Binding GoToViewersCommand}">

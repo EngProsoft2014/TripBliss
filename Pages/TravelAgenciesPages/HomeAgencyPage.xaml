@@ -339,7 +339,7 @@
                                 </Style>
                             </ContentView.Resources>
 
-                            <StackLayout Orientation="Vertical" Margin="{OnPlatform iOS='20,0,20,0'}">
+                            <StackLayout Orientation="Vertical" Margin="{OnPlatform Android=20, iOS='20,0,20,0'}">
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{ex:Translate Name=hdrOffers}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
@@ -460,7 +460,7 @@
                             </ContentView.Resources>
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="10">
                                 <Label Text="{ex:Translate Name=hdrHistory}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
-                                       TextColor="Black" Margin="0,20,0,10"></Label>
+                                       TextColor="Black" Margin="{OnPlatform Android='0,20,0,10', iOS='20,0,20,0'}"></Label>
                                 <Border StrokeShape="RoundRectangle 25" Stroke="Gray" HeightRequest="40" Margin="20,0" BackgroundColor="White">
                                     <Grid>
                                         <SearchBar BackgroundColor="White" 
@@ -481,13 +481,13 @@
                                         <Shadow  Brush="{OnPlatform Android=DarkGray,iOS=LightGray}" Opacity="1"></Shadow>
                                     </Border.Shadow>
                                 </Border>
-                                <CollectionView ItemsSource="{Binding Requests}" Margin="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
+                                <CollectionView ItemsSource="{Binding Requests}" Margin="{OnPlatform Android='20,0,20,0',iOS=20}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
                                     <CollectionView.ItemsLayout>
                                         <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
                                     </CollectionView.ItemsLayout>
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
-                                            <Border StrokeShape="RoundRectangle 20" Margin="20,10">
+                                            <Border StrokeShape="RoundRectangle 20" Margin="{OnPlatform Android='0,10',iOS='20,10'}">
                                                 <StackLayout Orientation="Horizontal">
                                                     <VerticalStackLayout Padding="10" Spacing="5">
                                                         <Label Text="{Binding RugestName}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>

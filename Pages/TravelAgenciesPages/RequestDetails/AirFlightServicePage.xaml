@@ -12,16 +12,19 @@
     
     <StackLayout Orientation="Vertical" Margin="20">
         <StackLayout Orientation="Horizontal">
-            <ImageButton WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" Command="{Binding BackPressedCommand}">
-                <ImageButton.Source>
-                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
-                </ImageButton.Source>
-                <ImageButton.Triggers>
-                    <DataTrigger TargetType="ImageButton" Binding="{Binding Lang}" Value="ar">
+            <Image VerticalOptions="CenterAndExpand">
+                <Image.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                </Image.Source>
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
                         <Setter Property="Rotation" Value="180"></Setter>
                     </DataTrigger>
-                </ImageButton.Triggers>
-            </ImageButton>
+                </Image.Triggers>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackPressedCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
             <Label Text="{ex:Translate Name=lblAirFlightServices}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
@@ -97,68 +100,89 @@
                             </VerticalStackLayout>
 
                         </StackLayout>
+
                         <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
                             <VerticalStackLayout>
                                 <Label Text="{ex:Translate Name=lblAdult-AirService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" HorizontalTextAlignment="Center"></Label>
                                 <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="10" >
-                                    <ImageButton WidthRequest="20" Command="{Binding AddAdultCommand}">
-                                        <ImageButton.Source>
-                                            <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                                        </ImageButton.Source>
-                                    </ImageButton>
+
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562" Size="20"></FontImageSource>
+                                        </Image.Source>
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding AddAdultCommand}"></TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                     <Border StrokeShape="RoundRectangle 5" HorizontalOptions="CenterAndExpand" Padding="10,5" Stroke="Gray">
                                         <Label Text="{Binding AirFlightRequestModel.InfoAdultCount}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="20" VerticalTextAlignment="Center" 
-                                   FontAttributes="Bold"></Label>
+                                       FontAttributes="Bold"></Label>
                                     </Border>
-
-                                    <ImageButton WidthRequest="20" Command="{Binding DeletAdultCommand}">
-                                        <ImageButton.Source>
-                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                                        </ImageButton.Source>
-                                    </ImageButton>
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="#2fa562" Size="20"></FontImageSource>
+                                        </Image.Source>
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding DeletAdultCommand}"></TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                 </StackLayout>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="CenterAndExpand">
                                 <Label Text="{ex:Translate Name=lblChild-AirService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" HorizontalTextAlignment="Center"></Label>
-                                <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="10">
-                                    <ImageButton WidthRequest="20" Command="{Binding AddChildCommand}">
-                                        <ImageButton.Source>
-                                            <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                                        </ImageButton.Source>
-                                    </ImageButton>
+
+                                <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="10" >
+
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562" Size="20"></FontImageSource>
+                                        </Image.Source>
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding AddChildCommand}"></TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                     <Border StrokeShape="RoundRectangle 5" HorizontalOptions="CenterAndExpand" Padding="10,5" Stroke="Gray">
                                         <Label Text="{Binding AirFlightRequestModel.InfoChildCount}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="20" VerticalTextAlignment="Center" 
-                                   FontAttributes="Bold"></Label>
+                                            FontAttributes="Bold"></Label>
                                     </Border>
-
-                                    <ImageButton WidthRequest="20" Command="{Binding DeletChildCommand}">
-                                        <ImageButton.Source>
-                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                                        </ImageButton.Source>
-                                    </ImageButton>
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="#2fa562" Size="20"></FontImageSource>
+                                        </Image.Source>
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding DeletChildCommand}"></TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                 </StackLayout>
                             </VerticalStackLayout>
                             <VerticalStackLayout>
                                 <Label Text="{ex:Translate Name=lblInfant-AirService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" HorizontalTextAlignment="Center"></Label>
-                                <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="10">
-                                    <ImageButton WidthRequest="20" Command="{Binding AddInfantCommand}">
-                                        <ImageButton.Source>
-                                            <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                                        </ImageButton.Source>
-                                    </ImageButton>
+                                <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="10" >
+
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="#2fa562" Size="20"></FontImageSource>
+                                        </Image.Source>
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding AddInfantCommand}"></TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                     <Border StrokeShape="RoundRectangle 5" HorizontalOptions="CenterAndExpand" Padding="10,5" Stroke="Gray">
                                         <Label Text="{Binding AirFlightRequestModel.InfoInfantCount}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="20" VerticalTextAlignment="Center" 
-                                   FontAttributes="Bold" ></Label>
+                                            FontAttributes="Bold"></Label>
                                     </Border>
-
-                                    <ImageButton WidthRequest="20" Command="{Binding DeletInfantCommand}">
-                                        <ImageButton.Source>
-                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="#2fa562"></FontImageSource>
-                                        </ImageButton.Source>
-                                    </ImageButton>
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="#2fa562" Size="20"></FontImageSource>
+                                        </Image.Source>
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding DeletInfantCommand}"></TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                 </StackLayout>
                             </VerticalStackLayout>
                         </StackLayout>
+                        
                         <Label Text="{ex:Translate Name=lblNoteForDist-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="100">
                             <Entry Keyboard="Text" FontAutoScalingEnabled="False" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" 

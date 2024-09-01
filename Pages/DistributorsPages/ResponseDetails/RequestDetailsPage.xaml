@@ -35,7 +35,7 @@
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
                                         </Image.Source>
                                         <Image.Triggers>
-                                            <DataTrigger TargetType="ImageButton" Binding="{Binding Lang}" Value="ar">
+                                            <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
                                                 <Setter Property="Rotation" Value="180"></Setter>
                                             </DataTrigger>
                                         </Image.Triggers>
@@ -47,9 +47,9 @@
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                 </StackLayout>
                                 <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
-                                    <StackLayout Spacing="20">
+                                    <StackLayout Spacing="{OnPlatform Android=20, iOS=0}">
                                         <!--HotelService-->
-                                        <CarouselView ItemsSource="{Binding Response.ResponseWithDistributorHotel}" HorizontalOptions="FillAndExpand" Loop="False">
+                                        <CarouselView ItemsSource="{Binding Response.ResponseWithDistributorHotel}" HorizontalOptions="FillAndExpand" HorizontalScrollBarVisibility="Never" Loop="False" WidthRequest="{OnPlatform iOS=350}" HeightRequest="{OnPlatform iOS=300}">
                                             <CarouselView.ItemTemplate>
                                                 <DataTemplate>
 
@@ -824,7 +824,7 @@
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
                                         </Image.Source>
                                         <Image.Triggers>
-                                            <DataTrigger TargetType="ImageButton" Binding="{Binding Lang}" Value="ar">
+                                            <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
                                                 <Setter Property="Rotation" Value="180"></Setter>
                                             </DataTrigger>
                                         </Image.Triggers>
