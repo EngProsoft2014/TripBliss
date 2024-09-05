@@ -2,7 +2,6 @@
 {
     public record ResponseWithDistributorPaymentRequest
     {
-        public int ResponseWithDistributorId { get; set; }
         public int? PaymentMethod { get; set; }
         public int? dbcr { get; set; }
         public int? AmountPayment { get; set; }
