@@ -51,7 +51,12 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         {
             
             await App.Current!.MainPage!.Navigation.PopAsync();
-        } 
+        }
+        [RelayCommand]
+        async Task ActiveClicked()
+        {
+
+        }
         #endregion
     }
 }

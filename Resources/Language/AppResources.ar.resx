@@ -351,12 +351,6 @@
   <data name="lblActive-HomeDist" xml:space="preserve">
     <value>نشط </value>
   </data>
-  <data name="lblAll-HomeDist" xml:space="preserve">
-    <value>الجميع</value>
-  </data>
-  <data name="lblNotActive-HomeDist" xml:space="preserve">
-    <value>غير نشط</value>
-  </data>
   <data name="btnResponse-RequestDetails" xml:space="preserve">
     <value>الردود</value>
   </data>
@@ -396,6 +390,12 @@
   <data name="lblTypeName-RequestDetails" xml:space="preserve">
     <value>نوع</value>
   </data>
+  <data name="lblAll-HomeDist" xml:space="preserve">
+    <value>الجميع</value>
+  </data>
+  <data name="lblNotActive-HomeDist" xml:space="preserve">
+    <value>غير نشط</value>
+  </data>
   <data name="btnCancle-PopupLan" xml:space="preserve">
     <value>إلغاء</value>
   </data>
@@ -410,5 +410,14 @@
   </data>
   <data name="btnPayNow-NewRequest" xml:space="preserve">
     <value>ادفع الآن</value>
+  </data>
+  <data name="OSBlance-payment" xml:space="preserve">
+    <value>الرصيد المستحق</value>
+  </data>
+  <data name="FullPayment-payment" xml:space="preserve">
+    <value>الدفع الكامل</value>
+  </data>
+  <data name="ActiveDetails - HotelServices" xml:space="preserve">
+    <value>تفعيل تفاصيل</value>
   </data>
 </root>

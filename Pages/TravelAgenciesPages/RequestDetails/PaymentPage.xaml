@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ex="clr-namespace:TripBliss.Extensions"
+             xmlns:Controls="clr-namespace:TripBliss.Controls"
+             x:Class="TripBliss.Pages.TravelAgenciesPages.RequestDetails.PaymentPage"
+             Title="PaymentPage"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout Orientation="Vertical" Margin="20" Spacing="20">
+        <StackLayout Orientation="Horizontal">
+            <Image VerticalOptions="CenterAndExpand">
+                <Image.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                </Image.Source>
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                        <Setter Property="Rotation" Value="180"></Setter>
+                    </DataTrigger>
+                </Image.Triggers>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackButtonClickedCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="{ex:Translate Name=btnPayNow-NewRequest}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                   TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+        </StackLayout>
+        <Border StrokeShape="RoundRectangle 20" HeightRequest="200" BackgroundColor="#33a7f5" StrokeThickness="0">
+            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                <HorizontalStackLayout VerticalOptions="CenterAndExpand" Spacing="5" HorizontalOptions="CenterAndExpand">
+                    <Label Text="{Binding OutStandingprice}" FontSize="32"></Label>
+                    <Label Text="SAR" FontSize="16" VerticalTextAlignment="Center" TranslationY="-7"></Label>
+                </HorizontalStackLayout>
+                <Label Text="{ex:Translate Name=OSBlance-payment}" FontSize="18" HorizontalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+        </Border>
+        <HorizontalStackLayout>
+            <CheckBox x:Name="FBCheck" Color="#33a7f5"  CheckedChanged="FBCheck_CheckedChanged" IsChecked="True"></CheckBox>
+            <Label Text="{ex:Translate Name=FullPayment-payment}" TextColor="Black" VerticalTextAlignment="Center" FontSize="14" FontAttributes="Bold"
+                   ></Label>
+            <Entry x:Name="AmmountEntry" Text="{Binding CustomPrice}" Keyboard="Numeric" FontSize="14" TextColor="Black" HorizontalOptions="FillAndExpand"
+                   Placeholder="Pleas Enter ammount" Margin="15,0,0,0" TextChanged="AmmountEntry_TextChanged"></Entry>
+        </HorizontalStackLayout>
+        <Grid VerticalOptions="FillAndExpand">
+            <CollectionView ItemsSource="{Binding Payments}" VerticalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border StrokeShape="RoundRectangle 20" Padding="15">
+                            <StackLayout Orientation="Horizontal" Spacing="15">
+                                <Image VerticalOptions="CenterAndExpand">
+                                    <Image.Source>
+                                        <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Black" Size="25"></FontImageSource>
+                                    </Image.Source>
+                                </Image>
+                                <Label Text="02-05-2024" TextColor="Black" VerticalTextAlignment="End" FontSize="14"></Label>
+                                <Label Text="{Binding AmountPayment}" TextColor="Green" VerticalTextAlignment="End" FontSize="14" HorizontalOptions="EndAndExpand"></Label>
+                            </StackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout VerticalItemSpacing="10" Orientation="Vertical"></GridItemsLayout>
+                </CollectionView.ItemsLayout>
+            </CollectionView>
+            <Button Text="{ex:Translate Name=btnConfirm-NewRequest}" BackgroundColor="#33a7f5" FontSize="14" TextColor="White" FontAttributes="Bold"
+                    Command="{Binding AddPaymentCommand}" VerticalOptions="End"></Button>
+        </Grid>
+    </StackLayout>
+</Controls:CustomControl>

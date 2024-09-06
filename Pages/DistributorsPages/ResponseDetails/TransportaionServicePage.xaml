@@ -28,6 +28,9 @@
             </Image>
             <Label Text="{ex:Translate Name=lblTransportationServices}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+            <Button Text="{ex:Translate Name=ActiveDetails - HotelServices}" Padding="3" HeightRequest="35" FontSize="{OnPlatform Android=12,iOS=14}"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_TransportaionServiceViewModel}}, Path=ActiveClickedCommand}"
+                    BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" WidthRequest="90" Margin="0" FontAttributes="Bold"></Button>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout >

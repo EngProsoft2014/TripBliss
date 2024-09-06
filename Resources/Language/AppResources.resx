@@ -409,6 +409,15 @@
     <value>Note For Distributor</value>
   </data>
   <data name="btnPayNow-NewRequest" xml:space="preserve">
-    <value>Pay Now</value>
+    <value>Payment</value>
+  </data>
+  <data name="OSBlance-payment" xml:space="preserve">
+    <value>OutStanding Balance</value>
+  </data>
+  <data name="FullPayment-payment" xml:space="preserve">
+    <value>Full Payment</value>
+  </data>
+  <data name="ActiveDetails - HotelServices" xml:space="preserve">
+    <value>Activate details</value>
   </data>
 </root>

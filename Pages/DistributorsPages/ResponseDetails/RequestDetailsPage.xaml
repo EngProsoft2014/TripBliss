@@ -834,6 +834,7 @@
                                     </Image>
                                     <Label Text="{Binding Response.RequestName}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+                                    
                                 </StackLayout>
                                 <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Padding="0,10">
                                     <StackLayout Spacing="10">
@@ -880,7 +881,11 @@
                                                                     </StackLayout.GestureRecognizers>
                                                                 </StackLayout>
                                                             </ScrollView>
-
+                                                            <Grid.Triggers>
+                                                                <DataTrigger TargetType="Grid" Binding="{Binding AcceptAgen}" Value="True">
+                                                                    <Setter Property="BackgroundColor" Value="LightGreen"></Setter>
+                                                                </DataTrigger>
+                                                            </Grid.Triggers>
                                                         </Grid>
 
                                                     </DataTemplate>
@@ -928,9 +933,14 @@
                                                                     <StackLayout.GestureRecognizers>
                                                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=SelectTransportaionCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                                     </StackLayout.GestureRecognizers>
+
                                                                 </StackLayout>
                                                             </ScrollView>
-
+                                                            <Grid.Triggers>
+                                                                <DataTrigger TargetType="Grid" Binding="{Binding AcceptAgen}" Value="True">
+                                                                    <Setter Property="BackgroundColor" Value="LightGreen"></Setter>
+                                                                </DataTrigger>
+                                                            </Grid.Triggers>
                                                         </Grid>
 
 
@@ -986,8 +996,13 @@
                                                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=SelectAirFlightCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                                     </StackLayout.GestureRecognizers>
                                                                 </StackLayout>
-                                                            </ScrollView>
 
+                                                            </ScrollView>
+                                                            <Grid.Triggers>
+                                                                <DataTrigger TargetType="Grid" Binding="{Binding AcceptAgen}" Value="True">
+                                                                    <Setter Property="BackgroundColor" Value="LightGreen"></Setter>
+                                                                </DataTrigger>
+                                                            </Grid.Triggers>
                                                         </Grid>
 
 
@@ -1043,8 +1058,11 @@
                                                                     </StackLayout.GestureRecognizers>
                                                                 </StackLayout>
                                                             </ScrollView>
-
-
+                                                            <Grid.Triggers>
+                                                                <DataTrigger TargetType="Grid" Binding="{Binding AcceptAgen}" Value="True">
+                                                                    <Setter Property="BackgroundColor" Value="LightGreen"></Setter>
+                                                                </DataTrigger>
+                                                            </Grid.Triggers>
                                                         </Grid>
 
                                                     </DataTemplate>

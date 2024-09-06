@@ -45,9 +45,17 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
         #region Generl RelayCommand
         [RelayCommand]
-        void BackButtonClicked()
+        async Task BackButtonClicked()
         {
-            App.Current.MainPage.Navigation.PopAsync();
+            await App.Current!.MainPage!.Navigation.PopAsync();
+        }
+        [RelayCommand]
+        async Task PaymentClicked()
+        {
+            var vm = new Tr_D_PaymentViewModel(Response.Id,Response.TotalPriceAgentAccept, Rep, _service);
+            var page = new PaymentPage(vm);
+            page.BindingContext = vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
         }
         [RelayCommand]
         async Task Apply()

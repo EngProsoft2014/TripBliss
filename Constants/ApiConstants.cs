@@ -9,7 +9,7 @@ namespace TripBliss.Constants
     {
         public static string BaseApiUrl; 
 
-        public const string syncFusionLicence = "Ngo9BigBOggjHTQxAR8/V1NCaF1cWWhAYVZpR2Nbe055flRGal9VVAciSV9jS3pTfkVlWXZfcHdQRGZbVQ=="; //Version= 24.x.x
+        public const string syncFusionLicence = "Ngo9BigBOggjHTQxAR8/V1NCaF1cWWhIfkxwWmFZfVpgfF9GZ1ZUTGYuP1ZhSXxXdkxjX39WcHNQT2NfVUI="; //Version= 24.x.x
 
         #region Preferences Keys
         // Preferences Key
@@ -132,5 +132,9 @@ namespace TripBliss.Constants
         public static string ResponseDetailsDistApi = "Distributor/";
         // End Get  Response Detalis Dist Api 
 
+
+        // Get All Payment Api
+        public static string AllPaymentApi = "ResponseWithDistributorPayment/";
+        // End Get All Payment Api 
     }
 }

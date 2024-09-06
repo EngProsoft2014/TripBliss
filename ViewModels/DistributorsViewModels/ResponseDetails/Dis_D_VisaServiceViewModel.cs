@@ -11,7 +11,7 @@ using TripBliss.Models;
 
 namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 {
-     public partial class Dis_D_VisaServiceViewModel : BaseViewModel
+    public partial class Dis_D_VisaServiceViewModel : BaseViewModel
     {
         #region Prop
         [ObservableProperty]
@@ -43,7 +43,12 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         async Task BackCLicked()
         {
             await App.Current!.MainPage!.Navigation.PopAsync();
-        } 
+        }
+        [RelayCommand]
+        async Task ActiveClicked()
+        {
+
+        }
         #endregion
     }
 }

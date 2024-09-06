@@ -61,6 +61,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activate details.
+        /// </summary>
+        internal static string ActiveDetails___HotelServices {
+            get {
+                return ResourceManager.GetString("ActiveDetails - HotelServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Active Distributors.
         /// </summary>
         internal static string btnActiveDistributors_RequestDetails {
@@ -142,7 +151,7 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pay Now.
+        ///   Looks up a localized string similar to Payment.
         /// </summary>
         internal static string btnPayNow_NewRequest {
             get {
@@ -165,6 +174,15 @@ namespace TripBliss.Resources.Language {
         internal static string btnResponse_RequestDetails {
             get {
                 return ResourceManager.GetString("btnResponse-RequestDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Full Payment.
+        /// </summary>
+        internal static string FullPayment_payment {
+            get {
+                return ResourceManager.GetString("FullPayment-payment", resourceCulture);
             }
         }
         
@@ -867,6 +885,15 @@ namespace TripBliss.Resources.Language {
         internal static string lblVisaType_VisaService {
             get {
                 return ResourceManager.GetString("lblVisaType-VisaService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OutStanding Balance.
+        /// </summary>
+        internal static string OSBlance_payment {
+            get {
+                return ResourceManager.GetString("OSBlance-payment", resourceCulture);
             }
         }
         

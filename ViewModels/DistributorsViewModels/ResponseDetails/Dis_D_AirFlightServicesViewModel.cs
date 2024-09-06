@@ -45,7 +45,12 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Are You Accept This Price?", "Yes", "No");
             Moddel!.AcceptPriceDis = answer;
             await App.Current!.MainPage!.Navigation.PopAsync();
-        } 
+        }
+        [RelayCommand]
+        async Task ActiveClicked()
+        {
+
+        }
         #endregion
     }
 }
