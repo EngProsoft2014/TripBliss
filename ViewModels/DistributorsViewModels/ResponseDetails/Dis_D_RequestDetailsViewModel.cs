@@ -66,7 +66,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task SelectHotel(ResponseWithDistributorHotelResponse model)
         {
-            var vm = new Dis_D_HotelServiceViewModel(model, Rep);
+            var vm = new Dis_D_HotelServiceViewModel(model, Rep, _service);
             var page = new HotelServicePage(vm);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -82,7 +82,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task SelectTransportaion(ResponseWithDistributorTransportResponse model)
         {
-            var vm = new Dis_D_TransportaionServiceViewModel(model, Rep);
+            var vm = new Dis_D_TransportaionServiceViewModel(model, Rep, _service);
             var page = new TransportaionServicePage(vm);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -98,7 +98,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task SelectAirFlight(ResponseWithDistributorAirFlightResponse model)
         {
-            var vm = new Dis_D_AirFlightServicesViewModel(model, Rep);
+            var vm = new Dis_D_AirFlightServicesViewModel(model, Rep, _service);
             var page = new AirFlightServicePage(vm);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -114,7 +114,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task SelectVisa(ResponseWithDistributorVisaResponse model)
         {
-            var vm = new Dis_D_VisaServiceViewModel(model, Rep);
+            var vm = new Dis_D_VisaServiceViewModel(model, Rep,_service);
             var page = new VisaServicePage(vm);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);

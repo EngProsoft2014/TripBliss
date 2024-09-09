@@ -38,15 +38,18 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 		<NeutralLanguage>en-US</NeutralLanguage>
 	</PropertyGroup>
+	<!--<PropertyGroup>
+		<AndroidLinkMode>SdkOnly</AndroidLinkMode>
+	</PropertyGroup>-->
 
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\logo.svg" Color="#FFFFFF" ForegroundScale="0.65" />
-		
+
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\logosmall.svg" Color="White" />
-		
+
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 
@@ -200,6 +203,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ActivateDetailsPages\HotelServicesActivateDetails.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ActivateDetailsPages\MainActivatePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ActivateDetailsPages\TansportServicesActivateDetails.xaml">

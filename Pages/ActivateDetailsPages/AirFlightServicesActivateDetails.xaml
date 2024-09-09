@@ -2,12 +2,87 @@
 <Custom:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Custom="clr-namespace:TripBliss.Controls"
+             xmlns:ex="clr-namespace:TripBliss.Extensions"
              x:Class="TripBliss.Pages.ActivateDetailsPages.AirFlightServicesActivateDetails"
-             Title="AirFlightServicesActivateDetails">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="AirFlightServicesActivateDetails"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout Orientation="Vertical" Margin="20">
+        <StackLayout Orientation="Horizontal">
+            <Image VerticalOptions="CenterAndExpand">
+                <Image.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                </Image.Source>
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                        <Setter Property="Rotation" Value="180"></Setter>
+                    </DataTrigger>
+                </Image.Triggers>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackPressedCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="{ex:Translate Name=ActiveDetails - HotelServices}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+               TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+        </StackLayout>
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout >
+                <Border StrokeShape="RoundRectangle 15" Margin="{OnPlatform Android='0,20',iOS='0,20'}" BackgroundColor="White">
+                    <StackLayout Orientation="Vertical" Padding="15">
+                        <Label Text="{ex:Translate Name=lblCarrier-AirService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
+                            <Entry Keyboard="Text" TextColor="Black" FontSize="14" FontFamily="OpenSansRegular"
+                           Text="{Binding Moddel.RequestTravelAgencyAirFlight.AirLine}" IsReadOnly="True"></Entry>
+                        </Border>
+                        <StackLayout Orientation="Horizontal" Spacing="35">
+                            <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                                <Label Text="{ex:Translate Name=lblDate-TranService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
+                                    <Label FontSize="13" TextColor="Black" Margin="7"
+                                       Text="{Binding Moddel.RequestTravelAgencyAirFlight.Date,StringFormat='{0:MM-dd-yyyy}'}"></Label>
+                                </Border>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                                <Label Text="{ex:Translate Name=lblClass-AirService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
+                                    <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular"
+                               Text="{Binding Moddel.RequestTravelAgencyAirFlight.ClassName}" IsReadOnly="True"></Entry>
+                                </Border>
+                            </VerticalStackLayout>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="35">
+                            <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                                <Label Text="{ex:Translate Name=lblETD-AirService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
+                                    <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular"
+                                   Text="{Binding Moddel.RequestTravelAgencyAirFlight.ETD}" IsReadOnly="True"></Entry>
+                                </Border>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                                <Label Text="{ex:Translate Name=lblETA-AirService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
+                                    <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular"
+                                   Text="{Binding Moddel.RequestTravelAgencyAirFlight.ETA}" IsReadOnly="True"></Entry>
+                                </Border>
+                            </VerticalStackLayout>
+
+                        </StackLayout>
+                        <Label Text="Guest Id" TextColor="#2fa562" FontSize="14" Margin="0,20,0,5"></Label>
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
+                            <Entry Keyboard="Numeric" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" Text="{Binding Moddel.Total}"></Entry>
+                        </Border>
+                        <Label Text="{ex:Translate Name=lblPrice-RequestDetails}" TextColor="#2fa562" FontSize="14" Margin="0,20,0,5"></Label>
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
+                            <Entry Keyboard="Numeric" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" Text="{Binding Moddel.Total}"></Entry>
+                        </Border>
+                    </StackLayout>
+                    <Border.Shadow>
+                        <Shadow Brush="LightGray" Offset="8,8" Opacity="0.8"></Shadow>
+                    </Border.Shadow>
+                </Border>
+                <Button VerticalOptions="EndAndExpand" Text="{ex:Translate Name=btnApply-Forgot}" FontSize="16" FontAttributes="Bold" 
+                    BackgroundColor="#2fa562" TextColor="White" Margin="20,0,20,20" Command="{Binding AplyClickedCommand}"></Button>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
 </Custom:CustomControl>

@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Pages.ActivateDetailsPages;
+using TripBliss.ViewModels.ActivateViewModels;
 
 namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 {
@@ -21,16 +23,20 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 
         #endregion
 
+        #region Services
         IGenericRepository Rep;
+        readonly Services.Data.ServicesService _service;
+        #endregion
         public Dis_D_AirFlightServicesViewModel(IGenericRepository generic)
         {
             Rep = generic;
 
         }
-        public Dis_D_AirFlightServicesViewModel(ResponseWithDistributorAirFlightResponse model, IGenericRepository generic)
+        public Dis_D_AirFlightServicesViewModel(ResponseWithDistributorAirFlightResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             Moddel = model;
+            _service = service;
         }
 
         #region RelayCommand
@@ -49,7 +55,10 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task ActiveClicked()
         {
-
+            var vm = new MainActivateViewModel(Rep, _service);
+            var page = new MainActivatePage(vm);
+            page.BindingContext = vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
         }
         #endregion
     }

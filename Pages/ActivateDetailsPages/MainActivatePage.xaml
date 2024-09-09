@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ex="clr-namespace:TripBliss.Extensions"
+             xmlns:Controls="clr-namespace:TripBliss.Controls"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModels.ResponseDetails"
+             x:Class="TripBliss.Pages.ActivateDetailsPages.MainActivatePage"
+             Title="MainActivatePage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+    <Controls:CustomControl.Resources>
+        <Style TargetType="StackLayout">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup Name="CommonStates">
+                        <VisualState Name="Normal"></VisualState>
+                        <VisualState Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+                            </VisualState.Setters>
+                        </VisualState>
+
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </Controls:CustomControl.Resources>
+    <StackLayout Orientation="Vertical" Margin="{OnPlatform Android=20, iOS='20,0,20,0'}" Spacing="10">
+        <StackLayout Orientation="Horizontal">
+            <Image VerticalOptions="CenterAndExpand">
+                <Image.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                </Image.Source>
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                        <Setter Property="Rotation" Value="180"></Setter>
+                    </DataTrigger>
+                </Image.Triggers>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackButtonCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="{ex:Translate Name=ActiveDetails - HotelServices}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+               TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+        </StackLayout>
+        <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Padding="0,10">
+            <StackLayout Spacing="10">
+                <!--Hotel-->
+                <StackLayout Orientation="Vertical" Margin="0,15,0,0">
+                    <Label Text="{ex:Translate Name=lblHotelServices}" FontSize="16" TextColor="DarkOrange" VerticalTextAlignment="Center"></Label>
+                    <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
+                        <CollectionView ItemsSource="{Binding Response.ResponseWithDistributorHotel}" VerticalOptions="FillAndExpand">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand" HorizontalScrollBarVisibility="Never" Padding="3,0,33,0">
+                                            <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" HorizontalOptions="FillAndExpand">
+                                                <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding RequestTravelAgencyHotel.LocationName}" TextColor="Gray" FontSize="12"></Span>
+                                                            <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
+                                                            <Span Text="{Binding RequestTravelAgencyHotel.HotelName}" TextColor="Gray" FontSize="12"></Span>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding RequestTravelAgencyHotel.CheckIn, StringFormat='{0:d}'}" TextColor="Gray" FontSize="12"></Span>
+                                                            <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
+                                                            <Span Text="{Binding RequestTravelAgencyHotel.CheckOut , StringFormat='{0:d}'}" TextColor="Gray" FontSize="12"></Span>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label Text="{Binding Price,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" 
+                                               VerticalOptions="EndAndExpand" FontSize="11">
+                                                    <Label.Triggers>
+                                                        <DataTrigger TargetType="Label" Binding="{Binding Price}" Value="0">
+                                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                                        </DataTrigger>
+                                                    </Label.Triggers>
+                                                </Label>
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=SelectHotelCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                </StackLayout.GestureRecognizers>
+                                            </StackLayout>
+                                        </ScrollView>
+                                        <Grid.Triggers>
+                                            <DataTrigger TargetType="Grid" Binding="{Binding AcceptAgen}" Value="True">
+                                                <Setter Property="BackgroundColor" Value="LightGreen"></Setter>
+                                            </DataTrigger>
+                                        </Grid.Triggers>
+                                    </Grid>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Border>
+                </StackLayout>
+                <!--Transportaion-->
+                <StackLayout Orientation="Vertical" Margin="0,0">
+                    <Label Text="{ex:Translate Name=lblTransportationServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
+                        <CollectionView ItemsSource="{Binding Response.ResponseWithDistributorTransport}" VerticalOptions="FillAndExpand" SelectionMode="Single">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <ScrollView Orientation="Horizontal" Padding="3,0,33,0" HorizontalScrollBarVisibility="Never">
+                                            <StackLayout Orientation="Horizontal" Spacing="10" Padding="3" Margin="0,5">
+                                                <Label Text="{Binding RequestTravelAgencyTransport.TypeName}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="12" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                                <Label TextColor="Gray" FontAutoScalingEnabled="False" FontSize="12" VerticalTextAlignment="Center">
+                                                    <Label.Text>
+                                                        <MultiBinding StringFormat="{}{0} - {1}">
+                                                            <Binding Path="RequestTravelAgencyTransport.FromLocation" />
+                                                            <Binding Path="RequestTravelAgencyTransport.ToLocation" />
+                                                        </MultiBinding>
+                                                    </Label.Text>
+
+                                                </Label>
+                                                <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding RequestTravelAgencyTransport.TransportCount,StringFormat='{0} pax'}" TextColor="Gray" FontSize="12"></Span>
+                                                            <Span Text="{Binding RequestTravelAgencyTransport.Date, StringFormat='   {0:d}'}" TextColor="Gray" FontSize="12"></Span>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label Text="{Binding Price,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue"
+                                               VerticalOptions="EndAndExpand" FontSize="11">
+                                                    <Label.Triggers>
+                                                        <DataTrigger TargetType="Label" Binding="{Binding Price}" Value="0">
+                                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                                        </DataTrigger>
+                                                    </Label.Triggers>
+                                                </Label>
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=SelectTransportaionCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                </StackLayout.GestureRecognizers>
+
+                                            </StackLayout>
+                                        </ScrollView>
+                                        <Grid.Triggers>
+                                            <DataTrigger TargetType="Grid" Binding="{Binding AcceptAgen}" Value="True">
+                                                <Setter Property="BackgroundColor" Value="LightGreen"></Setter>
+                                            </DataTrigger>
+                                        </Grid.Triggers>
+                                    </Grid>
+
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Border>
+                </StackLayout>
+                <!--Air Flight-->
+                <StackLayout Orientation="Vertical" Margin="0,0">
+                    <Label Text="{ex:Translate Name=lblAirFlightServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
+                        <CollectionView ItemsSource="{Binding Response.ResponseWithDistributorAirFlight}" VerticalOptions="FillAndExpand"  SelectionMode="Single">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <ScrollView Orientation="Horizontal" Padding="3,0,33,0" HorizontalScrollBarVisibility="Never">
+                                            <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" HorizontalOptions="FillAndExpand">
+                                                <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding RequestTravelAgencyAirFlight.RequestTravelAgencyId , StringFormat='RF {0}'}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding RequestTravelAgencyAirFlight.AirportFrom}" TextColor="Gray" FontSize="12" ></Span>
+                                                            <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
+                                                            <Span Text="{Binding RequestTravelAgencyAirFlight.AirportTo}" TextColor="Gray" FontSize="12"></Span>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding RequestTravelAgencyAirFlight.TotalPerson,StringFormat='{0} pax'}" TextColor="Gray" FontSize="12"></Span>
+                                                            <Span Text="{Binding RequestTravelAgencyAirFlight.Date , StringFormat='    {0:d}'}" TextColor="Gray" FontSize="12"></Span>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue"
+                                               VerticalOptions="EndAndExpand" FontSize="11">
+                                                    <Label.Triggers>
+                                                        <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
+                                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                                        </DataTrigger>
+                                                    </Label.Triggers>
+                                                </Label>
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=SelectAirFlightCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                </StackLayout.GestureRecognizers>
+                                            </StackLayout>
+
+                                        </ScrollView>
+                                        <Grid.Triggers>
+                                            <DataTrigger TargetType="Grid" Binding="{Binding AcceptAgen}" Value="True">
+                                                <Setter Property="BackgroundColor" Value="LightGreen"></Setter>
+                                            </DataTrigger>
+                                        </Grid.Triggers>
+                                    </Grid>
+
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Border>
+                </StackLayout>
+                <!--Visa-->
+                <StackLayout Orientation="Vertical" Margin="0,0" Spacing="5">
+                    <Label Text="{ex:Translate Name=lblVisaServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
+                        <CollectionView ItemsSource="{Binding Response.ResponseWithDistributorVisa}" VerticalOptions="FillAndExpand" SelectionMode="Single">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <ScrollView  Orientation="Horizontal" Padding="3,0,33,0" HorizontalScrollBarVisibility="Never">
+                                            <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" HorizontalOptions="FillAndExpand">
+                                                <Label FontAutoScalingEnabled="False">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="#" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
+                                                            <Span Text="{Binding RequestTravelAgencyVisa.VisaId}" TextColor="#2fa562" FontSize="12"></Span>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label FontAutoScalingEnabled="False">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding RequestTravelAgencyVisa.VisaName}" TextColor="Gray" FontSize="12"></Span>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label FontAutoScalingEnabled="False">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding RequestTravelAgencyVisa.PersonCount,StringFormat='{0} pax'}" TextColor="Gray" FontSize="12"></Span>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label Text="{Binding Price,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue"
+                                               VerticalOptions="EndAndExpand" FontSize="11">
+                                                    <Label.Triggers>
+                                                        <DataTrigger TargetType="Label" Binding="{Binding Price}" Value="0">
+                                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                                        </DataTrigger>
+                                                    </Label.Triggers>
+                                                </Label>
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=SelectVisaCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                </StackLayout.GestureRecognizers>
+                                            </StackLayout>
+                                        </ScrollView>
+                                        <Grid.Triggers>
+                                            <DataTrigger TargetType="Grid" Binding="{Binding AcceptAgen}" Value="True">
+                                                <Setter Property="BackgroundColor" Value="LightGreen"></Setter>
+                                            </DataTrigger>
+                                        </Grid.Triggers>
+                                    </Grid>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Border>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+        <Button VerticalOptions="End" Text="{ex:Translate btnApply-Forgot}" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="20,0,20,20"
+            Command="{Binding AddToRequestCommand}"></Button>
+    </StackLayout>
+</Controls:CustomControl>

@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
 using TripBliss.Helpers;
+using TripBliss.Pages.ActivateDetailsPages;
+using TripBliss.ViewModels.ActivateViewModels;
 
 
 namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
@@ -22,15 +24,19 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         public event HotelDelegte HotelClose;
         #endregion
 
+        #region Services
         IGenericRepository Rep;
+        readonly Services.Data.ServicesService _service;
+        #endregion
         public Dis_D_HotelServiceViewModel(IGenericRepository generic)
         {
             Rep = generic;
             
         }
-        public Dis_D_HotelServiceViewModel(ResponseWithDistributorHotelResponse model, IGenericRepository generic)
+        public Dis_D_HotelServiceViewModel(ResponseWithDistributorHotelResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
+            _service = service;
             Lang = Preferences.Default.Get("Lan", "en");
             HotelService = model;
         }
@@ -53,7 +59,10 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task ActiveClicked()
         {
-
+            var vm = new MainActivateViewModel(Rep,_service);
+            var page = new MainActivatePage(vm);
+            page.BindingContext = vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
         }
         #endregion
     }
