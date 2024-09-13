@@ -42,7 +42,7 @@
                    Placeholder="Pleas Enter ammount" Margin="15,0,0,0" TextChanged="AmmountEntry_TextChanged"></Entry>
         </HorizontalStackLayout>
         <Grid VerticalOptions="FillAndExpand">
-            <CollectionView ItemsSource="{Binding Payments}" VerticalOptions="FillAndExpand">
+            <CollectionView ItemsSource="{Binding Payments}" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Margin="0,0,0,100">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border StrokeShape="RoundRectangle 20" Padding="15">
@@ -52,7 +52,7 @@
                                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Black" Size="25"></FontImageSource>
                                     </Image.Source>
                                 </Image>
-                                <Label Text="02-05-2024" TextColor="Black" VerticalTextAlignment="End" FontSize="14"></Label>
+                                <Label Text="{Binding CreatedDate, StringFormat='{0:MM-dd-yyyy}'}" TextColor="Black" VerticalTextAlignment="End" FontSize="14"></Label>
                                 <Label Text="{Binding AmountPayment}" TextColor="Green" VerticalTextAlignment="End" FontSize="14" HorizontalOptions="EndAndExpand"></Label>
                             </StackLayout>
                         </Border>

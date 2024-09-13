@@ -6,6 +6,8 @@ using System.Collections.ObjectModel;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Pages.ActivateDetailsPages;
+using TripBliss.ViewModels.ActivateViewModels;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {
@@ -30,6 +32,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         CarModelResponse selectrdModel = new CarModelResponse();
         [ObservableProperty]
         CarTypeResponse selectrdType = new CarTypeResponse();
+        [ObservableProperty]
+        public int totalPayment = 0;
         #endregion
 
         #region Services
@@ -41,12 +45,13 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         {
             Rep = generic;
         }
-        public Tr_D_TransportaionServiceViewModel(ResponseWithDistributorTransportResponse model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_D_TransportaionServiceViewModel(int payment,ResponseWithDistributorTransportResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             ServiceModdel = model;
             Lang = Preferences.Default.Get("Lan", "en");
             _service = service;
+            TotalPayment = payment;
             Init(model);
         }
         #endregion
@@ -177,6 +182,24 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         async Task OnBackButtonClicked()
         {
             await App.Current!.MainPage!.Navigation.PopAsync();
+        }
+
+        [RelayCommand]
+        async Task ActiveClicked()
+        {
+            if (TotalPayment == 0)
+            {
+                var toast = Toast.Make("Please make sure to pay part of the amount due.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else
+            {
+                var vm = new MainActivateViewModel(ServiceModdel, Rep, _service);
+                var page = new MainActivatePage(vm);
+                page.BindingContext = vm;
+                await App.Current!.MainPage!.Navigation.PushAsync(page);
+            }
+            
         }
         #endregion
     }

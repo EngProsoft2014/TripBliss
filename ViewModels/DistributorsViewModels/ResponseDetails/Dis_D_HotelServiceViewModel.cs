@@ -10,6 +10,7 @@ using CommunityToolkit.Mvvm.Input;
 using TripBliss.Helpers;
 using TripBliss.Pages.ActivateDetailsPages;
 using TripBliss.ViewModels.ActivateViewModels;
+using CommunityToolkit.Maui.Alerts;
 
 
 namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
@@ -19,6 +20,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         #region prop
         [ObservableProperty]
         ResponseWithDistributorHotelResponse? hotelService = new ResponseWithDistributorHotelResponse();
+        [ObservableProperty]
+        int totalPayment = 0;
 
         public delegate void HotelDelegte(ResponseWithDistributorHotelResponse HotelResponse);
         public event HotelDelegte HotelClose;
@@ -33,10 +36,11 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             Rep = generic;
             
         }
-        public Dis_D_HotelServiceViewModel(ResponseWithDistributorHotelResponse model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Dis_D_HotelServiceViewModel(int payment, ResponseWithDistributorHotelResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
+            TotalPayment = payment;
             Lang = Preferences.Default.Get("Lan", "en");
             HotelService = model;
         }
@@ -59,10 +63,19 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task ActiveClicked()
         {
-            var vm = new MainActivateViewModel(Rep,_service);
-            var page = new MainActivatePage(vm);
-            page.BindingContext = vm;
-            await App.Current!.MainPage!.Navigation.PushAsync(page);
+            if (TotalPayment == 0)
+            {
+                var toast = Toast.Make("The Agency must pay part of the amount due.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else
+            {
+                var vm = new MainActivateViewModel(HotelService!, Rep, _service);
+                var page = new MainActivatePage(vm);
+                page.BindingContext = vm;
+                await App.Current!.MainPage!.Navigation.PushAsync(page);
+            }
+            
         }
         #endregion
     }

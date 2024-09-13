@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         #region Prop
         [ObservableProperty]
         ResponseWithDistributorVisaResponse moddel = new ResponseWithDistributorVisaResponse();
+        [ObservableProperty]
+        int totalPayment = 0;
         #endregion
 
         #region Services
@@ -29,10 +32,11 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             Rep = generic;
 
         }
-        public Dis_D_VisaServiceViewModel(ResponseWithDistributorVisaResponse model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Dis_D_VisaServiceViewModel(int payment,ResponseWithDistributorVisaResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             Moddel = model;
+            TotalPayment = payment;
             Lang = Preferences.Default.Get("Lan", "en");
             _service = service;
         }
@@ -53,10 +57,19 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task ActiveClicked()
         {
-            var vm = new MainActivateViewModel(Rep, _service);
-            var page = new MainActivatePage(vm);
-            page.BindingContext = vm;
-            await App.Current!.MainPage!.Navigation.PushAsync(page);
+            if (TotalPayment == 0)
+            {
+                var toast = Toast.Make("The Agency must pay part of the amount due.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else
+            {
+                var vm = new MainActivateViewModel(Moddel, Rep, _service);
+                var page = new MainActivatePage(vm);
+                page.BindingContext = vm;
+                await App.Current!.MainPage!.Navigation.PushAsync(page);
+            }
+                
         }
         #endregion
     }

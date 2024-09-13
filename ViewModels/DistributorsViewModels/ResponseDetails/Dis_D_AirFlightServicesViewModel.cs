@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 
         [ObservableProperty]
         ResponseWithDistributorAirFlightResponse moddel = new ResponseWithDistributorAirFlightResponse();
+        [ObservableProperty]
+        int totalPayment = 0;
 
 
         #endregion
@@ -32,11 +35,12 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             Rep = generic;
 
         }
-        public Dis_D_AirFlightServicesViewModel(ResponseWithDistributorAirFlightResponse model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Dis_D_AirFlightServicesViewModel(int payment,ResponseWithDistributorAirFlightResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             Moddel = model;
             _service = service;
+            TotalPayment = payment;
         }
 
         #region RelayCommand
@@ -55,10 +59,19 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task ActiveClicked()
         {
-            var vm = new MainActivateViewModel(Rep, _service);
-            var page = new MainActivatePage(vm);
-            page.BindingContext = vm;
-            await App.Current!.MainPage!.Navigation.PushAsync(page);
+            if (TotalPayment == 0)
+            {
+                var toast = Toast.Make("The Agency must pay part of the amount due.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else
+            {
+                var vm = new MainActivateViewModel(Moddel, Rep, _service);
+                var page = new MainActivatePage(vm);
+                page.BindingContext = vm;
+                await App.Current!.MainPage!.Navigation.PushAsync(page);
+            }
+                
         }
         #endregion
     }

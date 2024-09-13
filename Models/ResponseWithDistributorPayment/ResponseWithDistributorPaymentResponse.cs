@@ -12,6 +12,7 @@
         public int? AmountPayment { get; set; }
         public string? Refnumber { get; set; }
         public string? Notes { get; set; }
+        public DateTime? CreatedDate { get; set; }
     }
 }
 

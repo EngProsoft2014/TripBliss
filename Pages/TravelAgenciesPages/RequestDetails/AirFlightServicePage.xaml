@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TripBliss.Pages.TravelAgenciesPages.RequestDetails.AirFlightServicePage"
              xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest"
+             xmlns:Dvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails"
              xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              xmlns:ex="clr-namespace:TripBliss.Extensions"
@@ -27,6 +28,9 @@
             </Image>
             <Label Text="{ex:Translate Name=lblAirFlightServices}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+            <Button Text="{ex:Translate Name=ActiveDetails - HotelServices}" Padding="3" HeightRequest="35" FontSize="{OnPlatform Android=12,iOS=14}"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type Dvm:Tr_D_AirFlightServicesViewModel}}, Path=ActiveClickedCommand}"
+                    BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" WidthRequest="90" Margin="0" FontAttributes="Bold"></Button>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand" Padding="0,0,0,20" VerticalScrollBarVisibility="Never">
             <StackLayout >

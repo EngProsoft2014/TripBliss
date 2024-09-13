@@ -52,7 +52,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         async Task PaymentClicked()
         {
-            var vm = new Tr_D_PaymentViewModel(Response.Id,Response.TotalPriceAgentAccept, Rep, _service);
+            var vm = new Tr_D_PaymentViewModel(Response.Id , Response.TotalPriceAgentAccept,Response.TotalPayment, Rep, _service);
             var page = new PaymentPage(vm);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -95,7 +95,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         void SelectHotel(ResponseWithDistributorHotelResponse model)
         {
-            var vm = new Tr_D_HotelServiceViewModel(model,Rep,_service);
+            var vm = new Tr_D_HotelServiceViewModel(Response.TotalPayment,model,Rep,_service);
             var page = new HotelServicePage(vm,Rep);
             page.BindingContext = vm;
             App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -106,7 +106,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         async Task SelectTransportaion(ResponseWithDistributorTransportResponse model)
         {
-            var vm = new Tr_D_TransportaionServiceViewModel(model,Rep, _service);
+            var vm = new Tr_D_TransportaionServiceViewModel(Response.TotalPayment,model,Rep, _service);
             var page = new TransportaionServicePage(vm,Rep);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -117,7 +117,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         void SelectAirFlight(ResponseWithDistributorAirFlightResponse model)
         {
-            var vm = new Tr_D_AirFlightServicesViewModel(model,Rep,_service);
+            var vm = new Tr_D_AirFlightServicesViewModel(Response.TotalPayment,model,Rep,_service);
             var page = new AirFlightServicePage(vm,Rep);
             page.BindingContext = vm;
             App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -128,7 +128,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         async Task SelectVisa(ResponseWithDistributorVisaResponse model)
         {
-            var vm = new Tr_D_VisaServiceViewModel(model,Rep, _service);
+            var vm = new Tr_D_VisaServiceViewModel(Response.TotalPayment,model,Rep, _service);
             var page = new VisaServicePage(vm,Rep);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -144,7 +144,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         }
         async Task GetRequestDetailes(string distId, int ReqId)
         {
-
+            IsBusy = false;
             
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -157,6 +157,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     Response = json;
                 }
             }
+
+            IsBusy = true;
         }
         
         #endregion

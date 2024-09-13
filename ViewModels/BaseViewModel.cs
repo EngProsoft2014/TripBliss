@@ -1,11 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using TripBliss.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TripBliss.Services;
+using TripBliss.Constants;
 
 namespace TripBliss.ViewModels
 {
@@ -15,6 +9,7 @@ namespace TripBliss.ViewModels
         {
             Lang = Preferences.Default.Get("Lan", "en");
             IsBusy = true;
+            checkTOD();
         }
 
         [ObservableProperty]
@@ -22,5 +17,21 @@ namespace TripBliss.ViewModels
 
         [ObservableProperty]
         public string lang;
+        [ObservableProperty]
+        string tOD;
+
+        void checkTOD()
+        {
+            string TId = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
+            string DId = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
+            if (!string.IsNullOrEmpty(TId))
+            {
+                TOD = "T";
+            }
+            else if(!string.IsNullOrEmpty(DId))
+            {
+                TOD = "D";
+            }
+        }
     }
 }

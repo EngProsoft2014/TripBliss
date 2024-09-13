@@ -19,7 +19,11 @@
         public int CountHotel { get; set; }
         public int CountTransport { get; set; }
         public int CountVisa { get; set; }
+        public int CountPayment { get; set; }
+        public int TotalPayment { get; set; }
         public string ChoosenServices { get; set; } = string.Empty;
         public DateTime? CreateDate { get; set; }
+
+
     }
 }

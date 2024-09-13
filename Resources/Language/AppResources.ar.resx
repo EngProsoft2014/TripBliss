@@ -420,4 +420,16 @@
   <data name="ActiveDetails - HotelServices" xml:space="preserve">
     <value>تفعيل تفاصيل</value>
   </data>
+  <data name="RoomRef-HotelActive" xml:space="preserve">
+    <value>رقم مرجع الغرفة</value>
+  </data>
+  <data name="GuestId-HotelActive" xml:space="preserve">
+    <value>معرف الضيف</value>
+  </data>
+  <data name="PlateNumber-TransportActive" xml:space="preserve">
+    <value>رقم اللوحة</value>
+  </data>
+  <data name="DriverNumber-TransportActive" xml:space="preserve">
+    <value>رقم السائق</value>
+  </data>
 </root>

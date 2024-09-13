@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using TripBliss.Helpers;
 using TripBliss.Pages;
 using TripBliss.Pages.MainPopups;
+using TripBliss.Pages.TravelAgenciesPages;
+using TripBliss.Pages.TravelAgenciesPages.Guests;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels
 {
@@ -38,6 +40,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             };
             Controls.StaticMember.ShowSnackBar("Do you want to Logout?", Controls.StaticMember.SnackBarColor, Controls.StaticMember.SnackBarTextColor, action);
             return Task.CompletedTask;
+        }
+        [RelayCommand]
+        async Task GuestClick()
+        {
+            var vm = new GuestsViewModel(Rep,_service);
+            var page = new Tr_G_GuestsPage();
+            page.BindingContext = vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
         }
     }
 }

@@ -418,6 +418,18 @@
     <value>Full Payment</value>
   </data>
   <data name="ActiveDetails - HotelServices" xml:space="preserve">
-    <value>Activate details</value>
+    <value>Active details</value>
+  </data>
+  <data name="RoomRef-HotelActive" xml:space="preserve">
+    <value>Room Reference Number</value>
+  </data>
+  <data name="GuestId-HotelActive" xml:space="preserve">
+    <value>Guest Id</value>
+  </data>
+  <data name="PlateNumber-TransportActive" xml:space="preserve">
+    <value>Plate Number</value>
+  </data>
+  <data name="DriverNumber-TransportActive" xml:space="preserve">
+    <value>Driver Number</value>
   </data>
 </root>

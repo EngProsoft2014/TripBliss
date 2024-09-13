@@ -61,7 +61,7 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Activate details.
+        ///   Looks up a localized string similar to Active details.
         /// </summary>
         internal static string ActiveDetails___HotelServices {
             get {
@@ -178,11 +178,29 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Driver Number.
+        /// </summary>
+        internal static string DriverNumber_TransportActive {
+            get {
+                return ResourceManager.GetString("DriverNumber-TransportActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Full Payment.
         /// </summary>
         internal static string FullPayment_payment {
             get {
                 return ResourceManager.GetString("FullPayment-payment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Guest Id.
+        /// </summary>
+        internal static string GuestId_HotelActive {
+            get {
+                return ResourceManager.GetString("GuestId-HotelActive", resourceCulture);
             }
         }
         
@@ -907,6 +925,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Plate Number.
+        /// </summary>
+        internal static string PlateNumber_TransportActive {
+            get {
+                return ResourceManager.GetString("PlateNumber-TransportActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Company Email.
         /// </summary>
         internal static string plcCompanyEmail_SignUpPage {
@@ -966,6 +993,15 @@ namespace TripBliss.Resources.Language {
         internal static string plcUserName_Login {
             get {
                 return ResourceManager.GetString("plcUserName-Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Room Reference Number.
+        /// </summary>
+        internal static string RoomRef_HotelActive {
+            get {
+                return ResourceManager.GetString("RoomRef-HotelActive", resourceCulture);
             }
         }
     }

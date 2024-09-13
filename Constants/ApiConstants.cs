@@ -123,18 +123,72 @@ namespace TripBliss.Constants
 
         #endregion
 
-
+        #region Response Dist
         // Get All Response Dist Api
         public static string AllResponseDistApi = "Distributor/";
         // End Get All Response Dist Api 
 
         // Get  Response Detalis Dist Api
         public static string ResponseDetailsDistApi = "Distributor/";
-        // End Get  Response Detalis Dist Api 
+        // End Get  Response Detalis Dist Api  
+        #endregion
 
-
+        #region Payment
         // Get All Payment Api
-        public static string AllPaymentApi = "ResponseWithDistributorPayment/";
-        // End Get All Payment Api 
+        public static string AllPaymentApi = "ResponseWithDistributor/";
+        // End Get All Payment Api  
+        #endregion
+
+        #region Hotel Active
+        // Get All Hotel Active Details Api
+        public static string HotelActive = "api/ResponseWithDistributorHotelDetails/ResponseWithDistributor/";
+        // End Get All Hotel Active Details Api  
+
+
+        // Delete Active Details Api
+        public static string DeleteHotelActive = "api/ResponseWithDistributorHotelDetails/ResponseWithDistributorHotel/";
+        // End Delete Active Details Api   
+        #endregion
+
+        #region Transport Active
+        // Get All Transport Active Details Api
+        public static string TransportActive = "api/ResponseWithDistributorTransportDetails/ResponseWithDistributor/";
+        // End Get All Transport Active Details Api  
+
+
+        // Delete Active Details Api
+        public static string DeleteTransportActive = "api/ResponseWithDistributorTransportDetails/ResponseWithDistributorTransport/";
+        // End Delete Active Details Api   
+        #endregion
+
+        #region AirFlight Active
+        // Get All AirFlight Active Details Api
+        public static string AirFlightActive = "api/ResponseWithDistributorAirFlightDetails/ResponseWithDistributor/";
+        // End Get All AirFlight Active Details Api  
+
+
+        // Delete Active Details Api
+        public static string DeleteAirFlightActive = "api/ResponseWithDistributorAirFlightDetails/ResponseWithDistributorAirFlight/";
+        // End Delete Active Details Api   
+        #endregion
+
+        #region Visa Active
+        // Get All Visa Active Details Api
+        public static string VisaActive = "api/ResponseWithDistributorVisaDetails/ResponseWithDistributor/";
+        // End Get All Visa Active Details Api  
+
+
+        // Delete Active Details Api
+        public static string DeleteVisaActive = "api/ResponseWithDistributorVisaDetails/ResponseWithDistributorVisa/";
+        // End Delete Active Details Api   
+        #endregion
+
+        #region Guest
+        // Get All Guests Details Api
+        public static string GuestApi = "TravelAgencyCompany/";
+        // End Get All Guests Details Api   
+        #endregion
     }
 }
+
+//

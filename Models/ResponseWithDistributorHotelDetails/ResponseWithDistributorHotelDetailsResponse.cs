@@ -1,11 +1,60 @@
-﻿namespace TripBliss.Models
+﻿using System.ComponentModel;
+
+namespace TripBliss.Models
 {
-    public record ResponseWithDistributorHotelDetailsResponse
+    public record ResponseWithDistributorHotelDetailsResponse : INotifyPropertyChanged
     {
-        public int Id { get; set; }
-        public int ResponseWithDistributorHotelId { get; set; }
-        public int TravelAgencyGuestId { get; set; }
-        public string? RoomRef { get; set; }
+        int? _Id;
+        public int? Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                _Id = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Id"));
+                }
+            }
+        }
+        public int? ResponseWithDistributorHotelId { get; set; }
+        int? _TravelAgencyGuestId;
+        public int? TravelAgencyGuestId
+        {
+            get
+            {
+                return _TravelAgencyGuestId;
+            }
+            set
+            {
+                _TravelAgencyGuestId = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("TravelAgencyGuestId"));
+                }
+            }
+        }
+         string? _RoomRef;
+        public string? RoomRef
+        {
+            get
+            {
+                return _RoomRef;
+            }
+            set
+            {
+                _RoomRef = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("RoomRef"));
+                }
+            }
+        }
         public string? Notes { get; set; }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

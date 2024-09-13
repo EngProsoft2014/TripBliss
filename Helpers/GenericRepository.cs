@@ -96,6 +96,12 @@ namespace TripBliss.Helpers
                     //await StartData.UserLogout();
                 }
 
+                if (responseMessage.StatusCode == HttpStatusCode.NotFound)
+                {
+                    await App.Current!.MainPage!.DisplayAlert("Warning", "Equivalent to HTTP status 404. System.Net.HttpStatusCode.NotFound indicates\r\nthat the requested resource requires Data.", "OK");
+                    
+                }
+
                 //throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
                 jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
                 var json1 = JsonConvert.DeserializeObject<T>(jsonResult);

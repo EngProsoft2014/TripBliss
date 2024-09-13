@@ -17,6 +17,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         #region Prop
         int ReqId;
         int Totalprice;
+        int Totalpayment;
         [ObservableProperty]
         int outStandingprice;
         [ObservableProperty]
@@ -29,12 +30,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         #endregion
 
         #region Cons
-        public Tr_D_PaymentViewModel(int id,int totalPrice, IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_D_PaymentViewModel(int id,int totalPrice,int totalPayment, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
             ReqId = id;
-            OutStandingprice = Totalprice = totalPrice;
+            Totalpayment = totalPayment;
+            OutStandingprice = totalPrice - totalPayment;
+            Totalprice = totalPrice;
             Init();
         }
         #endregion
@@ -52,7 +55,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 string UserToken = await _service.UserToken();
                 ResponseWithDistributorPaymentRequest paymentRequest = new ResponseWithDistributorPaymentRequest
                 {
-                    AmountPayment = Totalprice - OutStandingprice,
+                    AmountPayment = Totalprice - Totalpayment - OutStandingprice,
                     PaymentMethod = 1,
                     dbcr = 1,
                     Notes ="",
@@ -65,7 +68,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 {
                     var toast = Toast.Make("Successfully for Paying Ammount", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
-
+                    Totalpayment = (int)(Totalpayment + paymentRequest.AmountPayment);
                     await GetPayDetailes();
                 }
                 else
@@ -116,11 +119,11 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             }
             else if (CustomPrice !=0)
             {
-                OutStandingprice = Totalprice - CustomPrice;
+                OutStandingprice = Totalprice - Totalpayment - CustomPrice;
             }
             else
             {
-                OutStandingprice = Totalprice;
+                OutStandingprice = Totalprice - Totalpayment;
             }
         }
         #endregion

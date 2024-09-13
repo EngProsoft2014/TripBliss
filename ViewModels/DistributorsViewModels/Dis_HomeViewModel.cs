@@ -25,21 +25,22 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         IGenericRepository Rep;
         #endregion
 
+        #region Cons
         public Dis_HomeViewModel(IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
             Requests = new ObservableCollection<ResponseWithDistributorResponse>();
             Init();
-        }
+        } 
+        #endregion
 
-
+        #region Methods
         async void Init()
         {
             await GetRequestes();
         }
 
-        #region Methods
         async Task GetRequestes()
         {
             IsBusy = true;
@@ -65,89 +66,14 @@ namespace TripBliss.ViewModels.DistributorsViewModels
             IsBusy = false;
         }
 
-        //void LoadData()
-        //{
-        //    Requests.Add(new RequestClassModel()
-        //    {
-        //        Date = DateOnly.FromDateTime(DateTime.Now),
-        //        RugestName = "Group 1",
-        //        DistName = "Tark",
-        //        Statues = "Active",
-        //        Services = "Hotel - Tickting - Transportion"
 
-        //    });
-        //    Requests.Add(new RequestClassModel()
-        //    {
-        //        Date = DateOnly.FromDateTime(DateTime.Now),
-        //        RugestName = "Group 2",
-        //        DistName = "Ali",
-        //        Statues = "Not Active",
-        //        Services = "Hotel - Tickting - Transportion"
-
-        //    });
-        //    Requests.Add(new RequestClassModel()
-        //    {
-        //        Date = DateOnly.FromDateTime(DateTime.Now),
-        //        RugestName = "Group 3",
-        //        DistName = "Mohammed",
-        //        Statues = "Not Active",
-        //        Services = "Hotel - Tickting - Transportion"
-
-        //    });
-        //    Requests.Add(new RequestClassModel()
-        //    {
-        //        Date = DateOnly.FromDateTime(DateTime.Now),
-        //        RugestName = "Group 4",
-        //        DistName = "Abdullah",
-        //        Statues = "Active",
-        //        Services = "Hotel - Tickting - Transportion"
-
-        //    });
-        //    Requests.Add(new RequestClassModel()
-        //    {
-        //        Date = DateOnly.FromDateTime(DateTime.Now),
-        //        RugestName = "Group 5",
-        //        DistName = "Hassn",
-        //        Statues = "Active",
-        //        Services = "Hotel - Tickting - Transportion"
-
-        //    });
-        //    Requests.Add(new RequestClassModel()
-        //    {
-        //        Date = DateOnly.FromDateTime(DateTime.Now),
-        //        RugestName = "Group 6",
-        //        DistName = "Omar",
-        //        Statues = "Not Active",
-        //        Services = "Hotel - Tickting - Transportion"
-
-        //    });
-        //    Requests.Add(new RequestClassModel()
-        //    {
-        //        Date = DateOnly.FromDateTime(DateTime.Now),
-        //        RugestName = "Group 7",
-        //        DistName = "Tark",
-        //        Statues = "Active",
-        //        Services = "Hotel - Tickting - Transportion"
-
-        //    });
-        //    Requests.Add(new RequestClassModel()
-        //    {
-        //        Date = DateOnly.FromDateTime(DateTime.Now),
-        //        RugestName = "Group 1",
-        //        DistName = "Tark",
-        //        Statues = "Not Active",
-        //        Services = "Hotel - Tickting - Transportion"
-
-        //    });
-
-        //}
         #endregion
 
         #region RelayCommand
         [RelayCommand]
         async Task Selection(ResponseWithDistributorResponse model)
         {
-            await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new Dis_D_RequestDetailsViewModel(model.Id,Rep,_service)));
+            await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new Dis_D_RequestDetailsViewModel(model.Id, Rep, _service)));
         }
         #endregion
     }

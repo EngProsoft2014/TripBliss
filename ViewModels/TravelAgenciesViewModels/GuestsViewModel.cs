@@ -1,61 +1,45 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
 
-namespace TripBliss.ViewModels.ActivateViewModels
+namespace TripBliss.ViewModels.TravelAgenciesViewModels
 {
-    
-    public partial class AirFlightActivateViewModel : BaseViewModel
+    public partial class GuestsViewModel : BaseViewModel
     {
-        #region Prop
-        [ObservableProperty]
-        ResponseWithDistributorAirFlightDetailsResponse model = new ResponseWithDistributorAirFlightDetailsResponse();
         [ObservableProperty]
         ObservableCollection<TravelAgencyGuestResponse> guests = new ObservableCollection<TravelAgencyGuestResponse>();
-        [ObservableProperty]
-        TravelAgencyGuestResponse selectedGuest = new TravelAgencyGuestResponse();
-        #endregion
 
         #region Services
-        readonly Services.Data.ServicesService _service;
         IGenericRepository Rep;
+        readonly Services.Data.ServicesService _service;
         #endregion
-
-        #region Cons
-        public AirFlightActivateViewModel(ResponseWithDistributorAirFlightDetailsResponse detailsResponse, IGenericRepository generic, Services.Data.ServicesService service)
+        public GuestsViewModel(IGenericRepository generic, Services.Data.ServicesService service)
         {
-            _service = service;
             Rep = generic;
-            Model = detailsResponse;
+            _service = service;
             Init();
         }
 
-        #endregion
-
-        #region RelayCommand
         [RelayCommand]
-        async Task Apply()
+        async Task BackClicked()
         {
-            Model.TravelAgencyGuestId = selectedGuest?.Id ?? 0;
             await App.Current!.MainPage!.Navigation.PopAsync();
         }
-
-        [RelayCommand]
-        async Task BackPressed()
-        {
-            await App.Current!.MainPage!.Navigation.PopAsync();
-        } 
-        #endregion
 
         #region Methods
         async void Init()
         {
             await GetAllGuests();
-            SelectedGuest = Guests.FirstOrDefault(g => g.Id == Model.TravelAgencyGuestId) ?? new TravelAgencyGuestResponse();
+            
         }
         async Task GetAllGuests()
         {
@@ -67,9 +51,9 @@ namespace TripBliss.ViewModels.ActivateViewModels
                 string UserToken = await _service.UserToken();
                 if (!string.IsNullOrEmpty(UserToken))
                 {
-                    //UserDialogs.Instance.ShowLoading();
+                    UserDialogs.Instance.ShowLoading();
                     var json = await Rep.GetAsync<ObservableCollection<TravelAgencyGuestResponse>>(ApiConstants.GuestApi + $"{id}/TravelAgencyGuest", UserToken);
-                    //UserDialogs.Instance.HideHud();
+                    UserDialogs.Instance.HideHud();
                     if (json != null)
                     {
                         Guests!.Clear();

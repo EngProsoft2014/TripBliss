@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Custom:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Custom="clr-namespace:TripBliss.Controls"
+             xmlns:ex="clr-namespace:TripBliss.Extensions"
+             x:Class="TripBliss.Pages.TravelAgenciesPages.Guests.Tr_G_GuestsPage"
+             Title="Tr_GuestsPage"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout Orientation="Vertical" Spacing="10">
+        <StackLayout Orientation="Horizontal" Margin="20">
+            <Image VerticalOptions="CenterAndExpand">
+                <Image.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                </Image.Source>
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                        <Setter Property="Rotation" Value="180"></Setter>
+                    </DataTrigger>
+                </Image.Triggers>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackClickedCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="Guests" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                   TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+        </StackLayout>
+        <Border StrokeShape="RoundRectangle 25" Stroke="Gray" HeightRequest="40" Margin="20,0" BackgroundColor="White">
+            <Grid>
+                <SearchBar BackgroundColor="White" 
+                   Placeholder="{ex:Translate Name=plcSearch}" 
+                   HeightRequest="40" FontAutoScalingEnabled="False"
+                   FontSize="15" 
+                   TextColor="Black">
+                </SearchBar>
+            </Grid>
+            <Border.Shadow>
+                <Shadow  Brush="{OnPlatform Android=DarkGray,iOS=LightGray}" Opacity="1"></Shadow>
+            </Border.Shadow>
+        </Border>
+        <CollectionView ItemsSource="{Binding Guests}" Margin="{OnPlatform Android='20,0,20,0',iOS=20}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border StrokeShape="RoundRectangle 20" Margin="{OnPlatform Android='0,10',iOS='20,10'}">
+                        <StackLayout Orientation="Horizontal">
+                            <VerticalStackLayout Padding="10" Spacing="5">
+                                <Label Text="{Binding GuestName}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+                                <Label Text="{Binding Nationality}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Gray"></Label>
+                                <Label Text="{Binding Email}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                <Label Text="{Binding Phone,StringFormat='Phone : {0}'}" FontSize="12" TextColor="Blue" Margin="0,3,0,0" FontAutoScalingEnabled="False"></Label>
+                            </VerticalStackLayout>
+                            
+                        </StackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</Custom:CustomControl>
