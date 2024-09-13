@@ -24,15 +24,13 @@ public partial class PaymentPage : Controls.CustomControl
         }
     }
 
-    private void FBCheck_CheckedChanged(object sender, CheckedChangedEventArgs e)
+
+    private async void FBCheck_CheckedChanged_1(object sender, CheckedChangedEventArgs e)
     {
-        if (e.Value)
+        if (e.Value && Model != null)
         {
-            AmmountEntry.IsVisible = false;
-        }
-        else
-        {
-            AmmountEntry.IsVisible = true;
+            await Model.CalcOutPrice(0);
+            AmmountEntry.Text = "";
         }
     }
 }

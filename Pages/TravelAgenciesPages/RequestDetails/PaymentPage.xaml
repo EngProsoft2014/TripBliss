@@ -35,11 +35,17 @@
             </StackLayout>
         </Border>
         <HorizontalStackLayout>
-            <CheckBox x:Name="FBCheck" Color="#33a7f5"  CheckedChanged="FBCheck_CheckedChanged" IsChecked="True"></CheckBox>
+            <CheckBox x:Name="FBCheck" Color="#33a7f5" CheckedChanged="FBCheck_CheckedChanged_1"  IsChecked="True"></CheckBox>
             <Label Text="{ex:Translate Name=FullPayment-payment}" TextColor="Black" VerticalTextAlignment="Center" FontSize="14" FontAttributes="Bold"
                    ></Label>
             <Entry x:Name="AmmountEntry" Text="{Binding CustomPrice}" Keyboard="Numeric" FontSize="14" TextColor="Black" HorizontalOptions="FillAndExpand"
-                   Placeholder="Pleas Enter ammount" Margin="15,0,0,0" TextChanged="AmmountEntry_TextChanged"></Entry>
+                   Placeholder="Pleas Enter ammount" Margin="15,0,0,0" TextChanged="AmmountEntry_TextChanged">
+                <Entry.Triggers>
+                    <DataTrigger TargetType="Entry" Binding="{Binding Source={x:Reference FBCheck},Path=IsChecked}" Value="True">
+                        <Setter Property="IsVisible" Value="False"></Setter>
+                    </DataTrigger>
+                </Entry.Triggers>
+            </Entry>
         </HorizontalStackLayout>
         <Grid VerticalOptions="FillAndExpand">
             <CollectionView ItemsSource="{Binding Payments}" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Margin="0,0,0,100">

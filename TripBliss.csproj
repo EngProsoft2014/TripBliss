@@ -37,27 +37,20 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 		<NeutralLanguage>en-US</NeutralLanguage>
-	</PropertyGroup>propertygroupandroidlinkmodesdkonlyandroidlinkmodepropertygroup
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
-	  <AndroidKeyStore>False</AndroidKeyStore>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
-	  <AndroidKeyStore>False</AndroidKeyStore>
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
 	</PropertyGroup>
-	<PropertyGroup>
-		<AndroidLinkMode>None</AndroidLinkMode>
-	</PropertyGroup>
-
 
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\logo.svg" Color="#FFFFFF" ForegroundScale="0.65" />
-
+		
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\logosmall.svg" Color="White" />
-
+		
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 
@@ -135,9 +128,6 @@
 	  <Compile Update="Controls\CustomControl.xaml.cs">
 	    <DependentUpon>CustomControl.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\ActivateDetailsPages\TransportServicesActivateDetails.xaml.cs">
-	    <DependentUpon>TransportServicesActivateDetails.xaml</DependentUpon>
-	  </Compile>
 	  <Compile Update="Pages\DistributorsPages\HomeDistributorsPage.xaml.cs">
 	    <DependentUpon>HomeDistributorsPage.xaml</DependentUpon>
 	  </Compile>
@@ -167,9 +157,6 @@
 	  </Compile>
 	  <Compile Update="Pages\TravelAgenciesPages\CreateRequest\ChooseDistributorPage.xaml.cs">
 	    <DependentUpon>ChooseDistributorPage.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Pages\TravelAgenciesPages\Guests\Tr_G_GuestsPage.xaml.cs">
-	    <DependentUpon>Tr_G_GuestsPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\TravelAgenciesPages\Offer\OfferDetailsPage.xaml.cs">
 	    <DependentUpon>OfferDetailsPage.xaml</DependentUpon>
@@ -219,10 +206,7 @@
 	  <MauiXaml Update="Pages\ActivateDetailsPages\HotelServicesActivateDetails.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\ActivateDetailsPages\MainActivatePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\ActivateDetailsPages\TransportServicesActivateDetails.xaml">
+	  <MauiXaml Update="Pages\ActivateDetailsPages\TansportServicesActivateDetails.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ActivateDetailsPages\VisaServicesActivateDetails.xaml">
@@ -310,9 +294,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\VisaServicePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\TravelAgenciesPages\Guests\Tr_G_GuestsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
