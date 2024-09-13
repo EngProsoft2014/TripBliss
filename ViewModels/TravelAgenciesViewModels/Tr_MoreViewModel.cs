@@ -10,6 +10,7 @@ using TripBliss.Pages;
 using TripBliss.Pages.MainPopups;
 using TripBliss.Pages.TravelAgenciesPages;
 using TripBliss.Pages.TravelAgenciesPages.Guests;
+using TripBliss.ViewModels.TravelAgenciesViewModels.Guests;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels
 {
@@ -45,6 +46,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         async Task GuestClick()
         {
             var vm = new GuestsViewModel(Rep,_service);
+            
             var page = new Tr_G_GuestsPage();
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);

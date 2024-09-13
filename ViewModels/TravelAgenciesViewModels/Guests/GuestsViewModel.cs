@@ -9,30 +9,63 @@ using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
-using TripBliss.Models;
+using TripBliss.Models.RequestTravelAgencyGuest;
+using TripBliss.Pages.TravelAgenciesPages.Guests;
 
-namespace TripBliss.ViewModels.TravelAgenciesViewModels
+namespace TripBliss.ViewModels.TravelAgenciesViewModels.Guests
 {
     public partial class GuestsViewModel : BaseViewModel
     {
+        #region Prop
         [ObservableProperty]
-        ObservableCollection<TravelAgencyGuestResponse> guests = new ObservableCollection<TravelAgencyGuestResponse>();
+        ObservableCollection<TravelAgencyGuestResponse> guests = new ObservableCollection<TravelAgencyGuestResponse>(); 
+        #endregion
 
         #region Services
         IGenericRepository Rep;
         readonly Services.Data.ServicesService _service;
         #endregion
+
+        #region Con
         public GuestsViewModel(IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
             Init();
-        }
+        } 
+        #endregion
+
+
 
         [RelayCommand]
         async Task BackClicked()
         {
             await App.Current!.MainPage!.Navigation.PopAsync();
+        }
+        [RelayCommand]
+        async Task AddGuest()
+        {
+            var vm = new AddGuestViewModel(Rep,_service);
+            vm.GuestClose += async () =>
+            {
+                Init();
+            };
+            var page = new Tr_AddGuestPage();
+            page.BindingContext= vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
+        }
+
+        [RelayCommand]
+        public async Task SelectGuest(TravelAgencyGuestResponse guest)
+        {
+            var vm = new AddGuestViewModel(guest,Rep, _service);
+            vm.GuestClose += async () =>
+            {
+                Init();
+            };
+            var page = new Tr_AddGuestPage();
+            page.BindingContext = vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
         }
 
         #region Methods
