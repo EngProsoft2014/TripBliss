@@ -424,12 +424,30 @@
     <value>Room Reference Number</value>
   </data>
   <data name="GuestId-HotelActive" xml:space="preserve">
-    <value>Guest Id</value>
+    <value>Guest Name</value>
   </data>
   <data name="PlateNumber-TransportActive" xml:space="preserve">
     <value>Plate Number</value>
   </data>
   <data name="DriverNumber-TransportActive" xml:space="preserve">
     <value>Driver Number</value>
+  </data>
+  <data name="hdAirFlightDetails" xml:space="preserve">
+    <value>Air Flight Details</value>
+  </data>
+  <data name="hdHotelDetails" xml:space="preserve">
+    <value>Hotel Details</value>
+  </data>
+  <data name="hdTransportaionDetails" xml:space="preserve">
+    <value>Transportaion Details</value>
+  </data>
+  <data name="hdVisaDetails" xml:space="preserve">
+    <value>Visa Details</value>
+  </data>
+  <data name="hdConfirmResponse" xml:space="preserve">
+    <value>Confirm Response</value>
+  </data>
+  <data name="hdAddGuest" xml:space="preserve">
+    <value>Add Guest</value>
   </data>
 </root>

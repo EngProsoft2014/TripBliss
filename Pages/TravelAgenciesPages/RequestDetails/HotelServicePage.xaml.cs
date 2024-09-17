@@ -10,7 +10,6 @@ public partial class HotelServicePage : Controls.CustomControl
 	{
 		InitializeComponent();
         Model = model;
-
     }
 
     private void LocationPicker(object sender, EventArgs e)

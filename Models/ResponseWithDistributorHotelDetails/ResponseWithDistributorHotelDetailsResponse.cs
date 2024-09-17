@@ -37,7 +37,8 @@ namespace TripBliss.Models
                 }
             }
         }
-         string? _RoomRef;
+        public string? TravelAgencyGuestName { get; set; }
+        string? _RoomRef;
         public string? RoomRef
         {
             get

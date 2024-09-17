@@ -43,7 +43,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.Offer
                     if (photo != null)
                     {
                         // Do any Thing Here
-
+                        
                     }
                 }
                 else

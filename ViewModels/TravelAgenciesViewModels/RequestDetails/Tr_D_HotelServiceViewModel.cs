@@ -64,6 +64,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             HotelService = model;
             _service = service;
             TotalPayment = payment;
+
             Init(model);
         }
 
@@ -77,7 +78,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 CheckOut = model.RequestTravelAgencyHotel.CheckOut,
                 Notes = model.Notes,
                 RoomCount = model.RequestTravelAgencyHotel.RoomCount,
-
+                // just  a seconde
             };
             SelectedHotel = Hoteles.FirstOrDefault(a => a.Id == model.RequestTravelAgencyHotel.HotelId)!;
             SelectedLocation = Locations.FirstOrDefault(a => a.Id == model.RequestTravelAgencyHotel.LocationId)!;

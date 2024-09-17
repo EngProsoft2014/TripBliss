@@ -21,7 +21,7 @@
                     <TapGestureRecognizer Command="{Binding BackPressedCommand}"></TapGestureRecognizer>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="{ex:Translate Name=lblAirFlightServices}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="{ex:Translate Name=hdAddGuest}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand" Padding="0,0,0,20" VerticalScrollBarVisibility="Never">

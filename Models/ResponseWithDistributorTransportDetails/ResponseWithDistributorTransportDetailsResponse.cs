@@ -37,6 +37,7 @@ namespace TripBliss.Models
                 }
             }
         }
+        public string? TravelAgencyGuestName { get; set; }
         string? _PlateNumber;
         public string? PlateNumber
         {

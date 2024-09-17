@@ -196,11 +196,47 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Guest Id.
+        ///   Looks up a localized string similar to Guest Name.
         /// </summary>
         internal static string GuestId_HotelActive {
             get {
                 return ResourceManager.GetString("GuestId-HotelActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Guest.
+        /// </summary>
+        internal static string hdAddGuest {
+            get {
+                return ResourceManager.GetString("hdAddGuest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Air Flight Details.
+        /// </summary>
+        internal static string hdAirFlightDetails {
+            get {
+                return ResourceManager.GetString("hdAirFlightDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Response.
+        /// </summary>
+        internal static string hdConfirmResponse {
+            get {
+                return ResourceManager.GetString("hdConfirmResponse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hotel Details.
+        /// </summary>
+        internal static string hdHotelDetails {
+            get {
+                return ResourceManager.GetString("hdHotelDetails", resourceCulture);
             }
         }
         
@@ -309,6 +345,24 @@ namespace TripBliss.Resources.Language {
         internal static string hdrViewers_OfferViewers {
             get {
                 return ResourceManager.GetString("hdrViewers-OfferViewers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transportaion Details.
+        /// </summary>
+        internal static string hdTransportaionDetails {
+            get {
+                return ResourceManager.GetString("hdTransportaionDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visa Details.
+        /// </summary>
+        internal static string hdVisaDetails {
+            get {
+                return ResourceManager.GetString("hdVisaDetails", resourceCulture);
             }
         }
         

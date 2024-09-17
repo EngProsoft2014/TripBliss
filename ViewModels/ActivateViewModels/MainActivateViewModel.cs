@@ -37,7 +37,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
             Id = model.Id;
             DisId = model.ResponseWithDistributorId;
             UserDialogs.Instance.ShowLoading();
-            GetAllRooms( model.ResponseWithDistributorId , model.Id);
+            GetAllRooms(model.ResponseWithDistributorId, model.Id);
             UserDialogs.Instance.HideHud();
         }
 

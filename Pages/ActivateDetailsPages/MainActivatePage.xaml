@@ -60,7 +60,7 @@
                                                     <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{ex:Translate Name=GuestId-HotelActive}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
-                                                            <Span Text="{Binding TravelAgencyGuestId , StringFormat='  : {0}'}" TextColor="Gray" FontSize="12" ></Span>
+                                                            <Span Text="{Binding TravelAgencyGuestName , StringFormat='  : {0}'}" TextColor="Gray" FontSize="12" ></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -77,11 +77,6 @@
                                                 </StackLayout.GestureRecognizers>
                                             </StackLayout>
                                         </ScrollView>
-                                        <Grid.Triggers>
-                                            <DataTrigger TargetType="Grid" Binding="{Binding AcceptAgen}" Value="True">
-                                                <Setter Property="BackgroundColor" Value="LightGreen"></Setter>
-                                            </DataTrigger>
-                                        </Grid.Triggers>
                                     </Grid>
 
                                 </DataTemplate>
@@ -108,7 +103,7 @@
                                                     <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{ex:Translate Name=GuestId-HotelActive}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
-                                                            <Span Text="{Binding TravelAgencyGuestId , StringFormat='  : {0}'}" TextColor="Gray" FontSize="12" ></Span>
+                                                            <Span Text="{Binding TravelAgencyGuestName , StringFormat='  : {0}'}" TextColor="Gray" FontSize="12" ></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -127,11 +122,6 @@
 
                                             </StackLayout>
                                         </ScrollView>
-                                        <Grid.Triggers>
-                                            <DataTrigger TargetType="Grid" Binding="{Binding AcceptAgen}" Value="True">
-                                                <Setter Property="BackgroundColor" Value="LightGreen"></Setter>
-                                            </DataTrigger>
-                                        </Grid.Triggers>
                                     </Grid>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
@@ -157,7 +147,7 @@
                                                     <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{ex:Translate Name=GuestId-HotelActive}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
-                                                            <Span Text="{Binding TravelAgencyGuestId , StringFormat='  : {0}'}" TextColor="Gray" FontSize="12" FontAttributes="Bold"></Span>
+                                                            <Span Text="{Binding TravelAgencyGuestName , StringFormat='  : {0}'}" TextColor="Gray" FontSize="12" FontAttributes="Bold"></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -167,11 +157,6 @@
                                             </StackLayout>
 
                                         </ScrollView>
-                                        <Grid.Triggers>
-                                            <DataTrigger TargetType="Grid" Binding="{Binding AcceptAgen}" Value="True">
-                                                <Setter Property="BackgroundColor" Value="LightGreen"></Setter>
-                                            </DataTrigger>
-                                        </Grid.Triggers>
                                     </Grid>
                                     
                                 </DataTemplate>
@@ -198,7 +183,7 @@
                                                     <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{ex:Translate Name=GuestId-HotelActive}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
-                                                            <Span Text="{Binding TravelAgencyGuestId , StringFormat='  : {0}'}" TextColor="Gray" FontSize="12"></Span>
+                                                            <Span Text="{Binding TravelAgencyGuestName , StringFormat='  : {0}'}" TextColor="Gray" FontSize="12"></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -207,11 +192,6 @@
                                                 </StackLayout.GestureRecognizers>
                                             </StackLayout>
                                         </ScrollView>
-                                        <Grid.Triggers>
-                                            <DataTrigger TargetType="Grid" Binding="{Binding AcceptAgen}" Value="True">
-                                                <Setter Property="BackgroundColor" Value="LightGreen"></Setter>
-                                            </DataTrigger>
-                                        </Grid.Triggers>
                                     </Grid>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>

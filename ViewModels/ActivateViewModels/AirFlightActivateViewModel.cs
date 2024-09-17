@@ -54,29 +54,33 @@ namespace TripBliss.ViewModels.ActivateViewModels
         #region Methods
         async void Init()
         {
-            await GetAllGuests();
-            SelectedGuest = Guests.FirstOrDefault(g => g.Id == Model.TravelAgencyGuestId) ?? new TravelAgencyGuestResponse();
+            await GetAllGuests();       
         }
+
         async Task GetAllGuests()
         {
             IsBusy = true;
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
-                string UserToken = await _service.UserToken();
-                if (!string.IsNullOrEmpty(UserToken))
+                string TravelAgencyId = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
+                string DistributorId = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
+                if (!string.IsNullOrEmpty(TravelAgencyId) && string.IsNullOrEmpty(DistributorId))
                 {
-                    //UserDialogs.Instance.ShowLoading();
-                    var json = await Rep.GetAsync<ObservableCollection<TravelAgencyGuestResponse>>(ApiConstants.GuestApi + $"{id}/TravelAgencyGuest", UserToken);
-                    //UserDialogs.Instance.HideHud();
-                    if (json != null)
+                    string UserToken = await _service.UserToken();
+                    if (!string.IsNullOrEmpty(UserToken))
                     {
-                        Guests!.Clear();
-                        Guests = json;
+                        UserDialogs.Instance.ShowLoading();
+                        var json = await Rep.GetAsync<ObservableCollection<TravelAgencyGuestResponse>>(ApiConstants.GuestApi + $"{TravelAgencyId}/TravelAgencyGuest", UserToken);
+                        UserDialogs.Instance.HideHud();
+                        if (json != null)
+                        {
+                            Guests!.Clear();
+                            Guests = json;
+                            SelectedGuest = Guests?.FirstOrDefault(g => g.Id == Model.TravelAgencyGuestId) ?? new TravelAgencyGuestResponse();
+                        }
                     }
                 }
-
             }
 
             IsBusy = false;

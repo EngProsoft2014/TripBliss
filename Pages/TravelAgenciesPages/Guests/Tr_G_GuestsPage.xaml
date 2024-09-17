@@ -29,24 +29,25 @@
             <Border StrokeShape="RoundRectangle 25" Stroke="Gray" HeightRequest="40" Margin="20,0" BackgroundColor="White">
                 <Grid>
                     <SearchBar BackgroundColor="White" 
-               Placeholder="{ex:Translate Name=plcSearch}" 
-               HeightRequest="40" FontAutoScalingEnabled="False"
-               FontSize="15" 
-               TextColor="Black">
+                               Placeholder="{ex:Translate Name=plcSearch}" 
+                               HeightRequest="40" FontAutoScalingEnabled="False"
+                               FontSize="15" 
+                               TextChanged="SearchBar_TextChanged"
+                               TextColor="Black">
                     </SearchBar>
                 </Grid>
                 <Border.Shadow>
                     <Shadow  Brush="{OnPlatform Android=DarkGray,iOS=LightGray}" Opacity="1"></Shadow>
                 </Border.Shadow>
             </Border>
-            <CollectionView ItemsSource="{Binding Guests}" Margin="{OnPlatform Android='20,0,20,0',iOS=20}" SelectionMode="Single"
+            <CollectionView x:Name="colGuests" ItemsSource="{Binding Guests}" Margin="{OnPlatform Android='20,0,20,0',iOS=20}" SelectionMode="Single" 
                             VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <SwipeView>
+                        <SwipeView BackgroundColor="White">
                             <SwipeView.LeftItems>
                                 <SwipeItems>
                                     <SwipeItem Text="Delete">
@@ -76,14 +77,16 @@
             </CollectionView>
         </StackLayout>
         <!--Add Button-->
-        <Border StrokeShape="RoundRectangle 35" BackgroundColor="Green" WidthRequest="56" HeightRequest="56" VerticalOptions="End" 
+        <Border StrokeShape="RoundRectangle 35" BackgroundColor="Green" WidthRequest="50" HeightRequest="50" VerticalOptions="End" 
                 HorizontalOptions="End" Margin="20">
-            <Image WidthRequest="25" >
+            <Image Margin="10">
                 <Image.Source>
-                    <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="White"></FontImageSource>
+                    <FontImageSource Glyph="+" FontFamily="FontIconSolid" Color="White" Size="10"></FontImageSource>
                 </Image.Source>
-
             </Image>
+            <Border.Shadow>
+                <Shadow Brush="{OnPlatform Android=Gray, iOS=LightGray}" Radius="{OnPlatform Android=5, iOS=3}"></Shadow>
+            </Border.Shadow>
             <Border.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding AddGuestCommand}"></TapGestureRecognizer>
             </Border.GestureRecognizers>

@@ -424,12 +424,30 @@
     <value>رقم مرجع الغرفة</value>
   </data>
   <data name="GuestId-HotelActive" xml:space="preserve">
-    <value>معرف الضيف</value>
+    <value>اسم العميل</value>
   </data>
   <data name="PlateNumber-TransportActive" xml:space="preserve">
     <value>رقم اللوحة</value>
   </data>
   <data name="DriverNumber-TransportActive" xml:space="preserve">
     <value>رقم السائق</value>
+  </data>
+  <data name="hdAirFlightDetails" xml:space="preserve">
+    <value>معلومات رحلة الطيران</value>
+  </data>
+  <data name="hdHotelDetails" xml:space="preserve">
+    <value>معلومات الفندق</value>
+  </data>
+  <data name="hdTransportaionDetails" xml:space="preserve">
+    <value>معلومات الانتقالات</value>
+  </data>
+  <data name="hdVisaDetails" xml:space="preserve">
+    <value>معلومات الفيزا</value>
+  </data>
+  <data name="hdConfirmResponse" xml:space="preserve">
+    <value>تأكيد الرد</value>
+  </data>
+  <data name="hdAddGuest" xml:space="preserve">
+    <value>إضافة عميل</value>
   </data>
 </root>

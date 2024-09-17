@@ -37,6 +37,7 @@ namespace TripBliss.Models.ResponseWithDistributorVisaDetails
                 }
             }
         }
+        public string? TravelAgencyGuestName { get; set; }
         public string? Notes { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;

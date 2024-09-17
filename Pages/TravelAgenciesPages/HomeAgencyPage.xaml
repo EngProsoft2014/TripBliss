@@ -596,7 +596,7 @@
                                         </Image>
                                         <Label Text="{ex:Translate Name=lblUsers-More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                     </HorizontalStackLayout>
-                                    <HorizontalStackLayout Spacing="8">
+                                    <!--<HorizontalStackLayout Spacing="8">
                                         <Image WidthRequest="20" HeightRequest="20" >
                                             <Image.Source>
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
@@ -606,7 +606,7 @@
                                         <HorizontalStackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding GuestClickCommand}"></TapGestureRecognizer>
                                         </HorizontalStackLayout.GestureRecognizers>
-                                    </HorizontalStackLayout>
+                                    </HorizontalStackLayout>-->
                                     <HorizontalStackLayout Spacing="8">
                                         <Image WidthRequest="20" HeightRequest="20">
                                             <Image.Source>
