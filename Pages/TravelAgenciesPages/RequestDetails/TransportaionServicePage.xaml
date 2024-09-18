@@ -44,15 +44,49 @@
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{ex:Translate Name=lblCarType-TranService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Picker x:Name="TypePic" TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding CarTypes}" ItemDisplayBinding="{Binding TypeName}"
-                                        SelectedItem="{Binding SelectrdType}" SelectedIndexChanged="TypePic_SelectedIndexChanged"></Picker>
+                                    <VerticalStackLayout>
+                                        <Picker x:Name="TypePic" TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding CarTypes}" ItemDisplayBinding="{Binding TypeName}"
+                                        SelectedItem="{Binding SelectrdType}" SelectedIndexChanged="TypePic_SelectedIndexChanged">
+                                            <Picker.Triggers>
+                                                <DataTrigger TargetType="Picker" Binding="{Binding ServiceModdel.AcceptAgen}" Value="True">
+                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                </DataTrigger>
+                                            </Picker.Triggers>
+                                        </Picker>
+                                        <Label Text="{Binding ServiceModdel.RequestTravelAgencyTransport.TypeName}" TextColor="Black" FontSize="14"
+                                               IsVisible="False" Margin="10">
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label" Binding="{Binding ServiceModdel.AcceptAgen}" Value="True">
+                                                    <Setter Property="IsVisible" Value="True"></Setter>
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+                                    </VerticalStackLayout>
+                                    
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{ex:Translate lblBrand-TranServices}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Picker x:Name="BrandPick" TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding CarBrands}" ItemDisplayBinding="{Binding BrandName}"
-                                        SelectedItem="{Binding SelectrdBrand}" SelectedIndexChanged="BrandPick_SelectedIndexChanged"></Picker>
+                                    <VerticalStackLayout>
+                                        <Picker x:Name="BrandPick" TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding CarBrands}" ItemDisplayBinding="{Binding BrandName}"
+                                        SelectedItem="{Binding SelectrdBrand}" SelectedIndexChanged="BrandPick_SelectedIndexChanged">
+                                            <Picker.Triggers>
+                                                <DataTrigger TargetType="Picker" Binding="{Binding ServiceModdel.AcceptAgen}" Value="True">
+                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                </DataTrigger>
+                                            </Picker.Triggers>
+                                        </Picker>
+                                        <Label Text="{Binding ServiceModdel.RequestTravelAgencyTransport.BrandName}" TextColor="Black" FontSize="14"
+                                                IsVisible="False" Margin="10">
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label" Binding="{Binding ServiceModdel.AcceptAgen}" Value="True">
+                                                    <Setter Property="IsVisible" Value="True"></Setter>
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+                                    </VerticalStackLayout>
+                                    
                                 </Border>
                             </VerticalStackLayout>
                         </StackLayout>
@@ -60,8 +94,25 @@
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{ex:Translate lblModel-TranService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Picker x:Name="ModelPick" TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding CarModel}" ItemDisplayBinding="{Binding ModelName}"
-                                        SelectedItem="{Binding SelectrdModel}"></Picker>
+                                    <VerticalStackLayout>
+                                        <Picker x:Name="ModelPick" TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding CarModel}" ItemDisplayBinding="{Binding ModelName}"
+                                        SelectedItem="{Binding SelectrdModel}">
+                                            <Picker.Triggers>
+                                                <DataTrigger TargetType="Picker" Binding="{Binding ServiceModdel.AcceptAgen}" Value="True">
+                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                </DataTrigger>
+                                            </Picker.Triggers>
+                                        </Picker>
+                                        <Label Text="{Binding ServiceModdel.RequestTravelAgencyTransport.ModelName}" TextColor="Black" FontSize="14"
+        IsVisible="False" Margin="10">
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label" Binding="{Binding ServiceModdel.AcceptAgen}" Value="True">
+                                                    <Setter Property="IsVisible" Value="True"></Setter>
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+                                    </VerticalStackLayout>
+                                    
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">

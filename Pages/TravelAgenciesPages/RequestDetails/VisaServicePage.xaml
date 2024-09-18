@@ -39,8 +39,25 @@
                     <StackLayout Orientation="Vertical" Padding="15,15,15,25">
                         <Label Text="{ex:Translate Name=lblVisaType-VisaService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                            <Picker TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding Visas}" ItemDisplayBinding="{Binding VisaName}"
-                                SelectedItem="{Binding SelectedVisa}"></Picker>
+                            <VerticalStackLayout>
+                                <Picker TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding Visas}" ItemDisplayBinding="{Binding VisaName}"
+                                        SelectedItem="{Binding SelectedVisa}">
+                                    <Picker.Triggers>
+                                        <DataTrigger TargetType="Picker" Binding="{Binding Moddel.AcceptAgen}" Value="True">
+                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                        </DataTrigger>
+                                    </Picker.Triggers>
+                                </Picker>
+                                <Label Text="{Binding Moddel.RequestTravelAgencyVisa.VisaName}" TextColor="Black" FontSize="14"
+                                       IsVisible="False" Margin="10">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding Moddel.AcceptAgen}" Value="True">
+                                            <Setter Property="IsVisible" Value="True"></Setter>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                            </VerticalStackLayout>
+                            
                         </Border>
                         <Label Text="{ex:Translate Name=lblPassNo-VisaService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
@@ -67,7 +84,7 @@
                 </Button>
             </StackLayout>
             <ScrollView.Triggers>
-                <DataTrigger TargetType="ScrollView" Binding="{Binding VisaResponseModel.AcceptAgen}" Value="True">
+                <DataTrigger TargetType="ScrollView" Binding="{Binding Moddel.AcceptAgen}" Value="True">
                     <Setter Property="IsEnabled" Value="False"></Setter>
                 </DataTrigger>
             </ScrollView.Triggers>

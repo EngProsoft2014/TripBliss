@@ -39,7 +39,8 @@
                         <Label Text="{ex:Translate Name=lblCarrier-AirService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                             <!--<Picker TextColor="Black" FontSize="14" ItemsSource="{Binding AirFlights}" ItemDisplayBinding="{Binding AirLine}" SelectedItem="{Binding AirFlightSelected}"></Picker>-->
-                            <editors:SfComboBox x:Name="comboBox" 
+                            <VerticalStackLayout>
+                                <editors:SfComboBox x:Name="comboBox" 
                                               ItemsSource="{Binding LstAirLines}"
 
                                               FontSize="14" HeightRequest="40"
@@ -55,7 +56,23 @@
                                               HighlightedTextColor="Green"
                                               HighlightedTextFontAttributes="Bold"
                                               DisplayMemberPath="nameVM">
-                            </editors:SfComboBox>
+                            
+                                <editors:SfComboBox.Triggers>
+                                        <DataTrigger TargetType="editors:SfComboBox" Binding="{Binding Moddel.AcceptAgen}" Value="True">
+                                        <Setter Property="IsVisible" Value="False"></Setter>
+                                    </DataTrigger>
+                                </editors:SfComboBox.Triggers>
+                                </editors:SfComboBox>
+                                <Label Text="{Binding Moddel.RequestTravelAgencyAirFlight.AirLine}" TextColor="Black" FontSize="14"
+                                       IsVisible="False" Margin="10">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding Moddel.AcceptAgen}" Value="True">
+                                            <Setter Property="IsVisible" Value="True"></Setter>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                            </VerticalStackLayout>
+                            
                         </Border>
                         <StackLayout Orientation="Horizontal" Spacing="35">
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
@@ -67,7 +84,25 @@
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{ex:Translate Name=lblClass-AirService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Picker TextColor="Black" FontSize="14" ItemsSource="{Binding Classes}" FontAutoScalingEnabled="False" ItemDisplayBinding="{Binding ClassName}" SelectedItem="{Binding ClassSelected}"></Picker>
+                                    <VerticalStackLayout>
+                                        <Picker TextColor="Black" FontSize="14" ItemsSource="{Binding Classes}" FontAutoScalingEnabled="False" 
+                                            ItemDisplayBinding="{Binding ClassName}" SelectedItem="{Binding ClassSelected}">
+                                        <Picker.Triggers>
+                                            <DataTrigger TargetType="Picker" Binding="{Binding Moddel.AcceptAgen}" Value="True">
+                                                <Setter Property="IsVisible" Value="False"></Setter>
+                                            </DataTrigger>
+                                        </Picker.Triggers>
+                                    </Picker>
+                                        <Label Text="{Binding Moddel.RequestTravelAgencyAirFlight.ClassName}" TextColor="Black" FontSize="14"
+                                           IsVisible="False" Margin="10">
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label" Binding="{Binding Moddel.AcceptAgen}" Value="True">
+                                                    <Setter Property="IsVisible" Value="True"></Setter>
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+                                    </VerticalStackLayout>
+                                    
                                 </Border>
                             </VerticalStackLayout>
                         </StackLayout>

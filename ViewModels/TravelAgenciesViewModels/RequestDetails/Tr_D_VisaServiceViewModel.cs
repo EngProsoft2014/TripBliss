@@ -51,12 +51,19 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             Moddel = model;
             _service = service;
             TotalPayment = payment;
-            Init(model);
+            if (model.AcceptAgen)
+            {
+                Init();
+            }
+            else
+            {
+                Init(model);
+            }
         } 
         #endregion
 
         #region Methods
-        async Task Init(ResponseWithDistributorVisaResponse model)
+        async void Init(ResponseWithDistributorVisaResponse model)
         {
             UserDialogs.Instance.ShowLoading();
             await Task.WhenAll(GetVisas());
@@ -70,11 +77,13 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             SelectedVisa = Visas.FirstOrDefault(x => x.Id == model.RequestTravelAgencyVisa.VisaId)!;
         }
 
-        async Task Init()
+         void Init()
         {
-            UserDialogs.Instance.ShowLoading();
-            await Task.WhenAll(GetVisas());
-            UserDialogs.Instance.HideHud();
+            VisaRequestModel = new RequestTravelAgencyVisaRequest
+            {
+                PersonCount = Moddel.RequestTravelAgencyVisa.PersonCount,
+                Notes = Moddel.Notes,
+            };
         }
 
         async Task GetVisas()

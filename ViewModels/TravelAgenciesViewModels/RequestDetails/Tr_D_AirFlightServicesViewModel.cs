@@ -61,7 +61,15 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             Moddel = model;
             _service = service;
             TotalPayment = payment;
-            Init(model);
+            if (model.AcceptAgen == false)
+            {
+                Init(model);
+            }
+            else
+            {
+                Init();
+            }
+            
         }
         #endregion
 
@@ -90,13 +98,21 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             ClassSelected = Classes.FirstOrDefault(a => a.Id == model.RequestTravelAgencyAirFlight.ClassAirFlightId)!;
         }
 
-        async void Init()
+        void Init()
         {
-            UserDialogs.Instance.ShowLoading();
-            //Test
-            await GetAirLinesInfo();
-            await Task.WhenAll(GetAirFlights(), GetClasses());
-            UserDialogs.Instance.HideHud();
+            AirFlightRequestModel = new RequestTravelAgencyAirFlightRequest
+            {
+                Date = Moddel.RequestTravelAgencyAirFlight.Date,
+                AirportFrom = Moddel!.RequestTravelAgencyAirFlight!.AirportFrom!,
+                AirportTo = Moddel!.RequestTravelAgencyAirFlight!.AirportTo!,
+                ETA = Moddel.RequestTravelAgencyAirFlight.ETA,
+                ETD = Moddel.RequestTravelAgencyAirFlight.ETD,
+                InfoAdultCount = Moddel!.RequestTravelAgencyAirFlight!.InfoAdultCount!,
+                InfoChildCount = Moddel.RequestTravelAgencyAirFlight.InfoChildCount,
+                InfoInfantCount = Moddel.RequestTravelAgencyAirFlight.InfoInfantCount,
+                Notes = Moddel.Notes
+
+            };
         }
 
         //Test

@@ -40,6 +40,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         IGenericRepository Rep;
         readonly Services.Data.ServicesService _service;
         #endregion
+
         #region Const
         public Tr_D_TransportaionServiceViewModel(IGenericRepository generic)
         {
@@ -52,12 +53,19 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             Lang = Preferences.Default.Get("Lan", "en");
             _service = service;
             TotalPayment = payment;
-            Init(model);
+            if (model.AcceptAgen)
+            {
+                Init();
+            }
+            else
+            {
+                Init(model);
+            }
         }
         #endregion
 
         #region Methods
-        async Task Init(ResponseWithDistributorTransportResponse model)
+        async void Init(ResponseWithDistributorTransportResponse model)
         {
             UserDialogs.Instance.ShowLoading();
             await Task.WhenAll(GetCarBrands(), GetCarModels(), GetCarTypes());
@@ -77,11 +85,17 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             SelectrdType = CarTypes.FirstOrDefault(a => a.Id == model.RequestTravelAgencyTransport.CarTypeId)!;
 
         }
-        async Task Init()
+        void Init()
         {
-            UserDialogs.Instance.ShowLoading();
-            await Task.WhenAll(GetCarBrands(), GetCarModels(), GetCarTypes());
-            UserDialogs.Instance.HideHud();
+            TransportRequestModel = new RequestTravelAgencyTransportRequest
+            {
+                FromLocation = ServiceModdel.RequestTravelAgencyTransport.FromLocation,
+                ToLocation = ServiceModdel.RequestTravelAgencyTransport.ToLocation,
+                Date = ServiceModdel.RequestTravelAgencyTransport.Date,
+                Notes = ServiceModdel.Notes,
+                Time = ServiceModdel.RequestTravelAgencyTransport.Time,
+                TransportCount = ServiceModdel.RequestTravelAgencyTransport.TransportCount,
+            };
         }
         async Task GetCarBrands()
         {

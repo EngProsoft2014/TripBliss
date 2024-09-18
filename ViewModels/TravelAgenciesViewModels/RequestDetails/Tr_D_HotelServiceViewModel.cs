@@ -32,15 +32,15 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         ObservableCollection<RoomViewResponse> roomViews = new ObservableCollection<RoomViewResponse>();
 
         [ObservableProperty]
-        LocationResponse? selectedLocation;
+        LocationResponse? selectedLocation = new LocationResponse();
         [ObservableProperty]
-        HotelResponse? selectedHotel;
+        HotelResponse? selectedHotel = new HotelResponse();
         [ObservableProperty]
-        MealResponse? selectedMeal;
+        MealResponse? selectedMeal = new MealResponse();
         [ObservableProperty]
-        RoomTypeResponse? selectedRoomType;
+        RoomTypeResponse? selectedRoomType = new RoomTypeResponse();
         [ObservableProperty]
-        RoomViewResponse? selectedRoomView;
+        RoomViewResponse? selectedRoomView = new RoomViewResponse();
         [ObservableProperty]
         public int totalPayment = 0;
 
@@ -64,8 +64,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             HotelService = model;
             _service = service;
             TotalPayment = payment;
-
-            Init(model);
+            if (model.AcceptAgen == false)
+            {
+                Init(model);
+            }
+            else
+            {
+                Init();
+            }
         }
 
         #region Methods
@@ -89,7 +95,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
         async void Init()
         {
-            await RunManyMethods();
+            HotelRequestModel = new RequestTravelAgencyHotelRequest
+            {
+                CheckIn = HotelService!.RequestTravelAgencyHotel.CheckIn,
+                CheckOut = HotelService.RequestTravelAgencyHotel.CheckOut,
+                Notes = HotelService.Notes,
+                RoomCount = HotelService.RequestTravelAgencyHotel.RoomCount,
+                
+            };
         }
         async Task RunManyMethods()
         {
