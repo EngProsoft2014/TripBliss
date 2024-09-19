@@ -10,7 +10,7 @@
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="AirFlightServicePage">
-    
+
     <StackLayout Orientation="Vertical" Margin="20">
         <StackLayout Orientation="Horizontal">
             <Image VerticalOptions="CenterAndExpand">
@@ -28,8 +28,8 @@
             </Image>
             <Label Text="{ex:Translate Name=lblAirFlightServices}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
-            <Button Text="{ex:Translate Name=ActiveDetails - HotelServices}" Padding="3" HeightRequest="35" FontSize="{OnPlatform Android=12,iOS=14}"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type Dvm:Tr_D_AirFlightServicesViewModel}}, Path=ActiveClickedCommand}"
+            <Button Text="Attachments" Padding="3" HeightRequest="35" FontSize="{OnPlatform Android=12,iOS=14}"
+                    Command="{Binding ActiveClickedCommand}"
                     BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" WidthRequest="90" Margin="0" FontAttributes="Bold"></Button>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand" Padding="0,0,0,20" VerticalScrollBarVisibility="Never">
@@ -56,12 +56,12 @@
                                               HighlightedTextColor="Green"
                                               HighlightedTextFontAttributes="Bold"
                                               DisplayMemberPath="nameVM">
-                            
-                                <editors:SfComboBox.Triggers>
+
+                                    <editors:SfComboBox.Triggers>
                                         <DataTrigger TargetType="editors:SfComboBox" Binding="{Binding Moddel.AcceptAgen}" Value="True">
-                                        <Setter Property="IsVisible" Value="False"></Setter>
-                                    </DataTrigger>
-                                </editors:SfComboBox.Triggers>
+                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                        </DataTrigger>
+                                    </editors:SfComboBox.Triggers>
                                 </editors:SfComboBox>
                                 <Label Text="{Binding Moddel.RequestTravelAgencyAirFlight.AirLine}" TextColor="Black" FontSize="14"
                                        IsVisible="False" Margin="10">
@@ -72,7 +72,7 @@
                                     </Label.Triggers>
                                 </Label>
                             </VerticalStackLayout>
-                            
+
                         </Border>
                         <StackLayout Orientation="Horizontal" Spacing="35">
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
@@ -87,12 +87,12 @@
                                     <VerticalStackLayout>
                                         <Picker TextColor="Black" FontSize="14" ItemsSource="{Binding Classes}" FontAutoScalingEnabled="False" 
                                             ItemDisplayBinding="{Binding ClassName}" SelectedItem="{Binding ClassSelected}">
-                                        <Picker.Triggers>
-                                            <DataTrigger TargetType="Picker" Binding="{Binding Moddel.AcceptAgen}" Value="True">
-                                                <Setter Property="IsVisible" Value="False"></Setter>
-                                            </DataTrigger>
-                                        </Picker.Triggers>
-                                    </Picker>
+                                            <Picker.Triggers>
+                                                <DataTrigger TargetType="Picker" Binding="{Binding Moddel.AcceptAgen}" Value="True">
+                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                </DataTrigger>
+                                            </Picker.Triggers>
+                                        </Picker>
                                         <Label Text="{Binding Moddel.RequestTravelAgencyAirFlight.ClassName}" TextColor="Black" FontSize="14"
                                            IsVisible="False" Margin="10">
                                             <Label.Triggers>
@@ -102,7 +102,7 @@
                                             </Label.Triggers>
                                         </Label>
                                     </VerticalStackLayout>
-                                    
+
                                 </Border>
                             </VerticalStackLayout>
                         </StackLayout>
@@ -221,7 +221,7 @@
                                 </StackLayout>
                             </VerticalStackLayout>
                         </StackLayout>
-                        
+
                         <Label Text="{ex:Translate Name=lblNoteForDist-HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="100">
                             <Entry Keyboard="Text" FontAutoScalingEnabled="False" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" 

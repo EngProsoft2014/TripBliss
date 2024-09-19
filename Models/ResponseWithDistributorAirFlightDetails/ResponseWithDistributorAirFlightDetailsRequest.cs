@@ -2,8 +2,9 @@
 {
     public record ResponseWithDistributorAirFlightDetailsRequest
     {
-        public int ResponseWithDistributorAirFlightId { get; set; }
-        public int TravelAgencyGuestId { get; set; }
-        public string? Notes { get; set; }
+        public byte[] ImgFile { get; set; } = default!;
+        //public int ResponseWithDistributorAirFlightId { get; set; }
+        //public int TravelAgencyGuestId { get; set; }
+        //public string? Notes { get; set; }
     }
 }

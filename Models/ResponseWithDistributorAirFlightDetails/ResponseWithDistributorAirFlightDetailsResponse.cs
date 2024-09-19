@@ -21,24 +21,26 @@ namespace TripBliss.Models
             }
         }
         public int? ResponseWithDistributorAirFlightId { get; set; }
-        int? _TravelAgencyGuestId;
-        public int? TravelAgencyGuestId
+        public string ImgName { get; set; } = string.Empty;
+        public string UrlImgName { get; set; } = string.Empty;
+        public string? Notes { get; set; }
+
+        ImageSource? _ImageFile;
+        public ImageSource? ImageFile
         {
             get
             {
-                return _TravelAgencyGuestId;
+                return _ImageFile;
             }
             set
             {
-                _TravelAgencyGuestId = value;
+                _ImageFile = value;
                 if (PropertyChanged != null)
                 {
-                    PropertyChanged(this, new PropertyChangedEventArgs("TravelAgencyGuestId"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("ImageFile"));
                 }
             }
         }
-        public string? TravelAgencyGuestName { get; set; }
-        public string? Notes { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
     }

@@ -2,8 +2,8 @@
 {
     public record ResponseWithDistributorVisaDetailsRequest
     {
+        public int Id { get; set; }
         public int ResponseWithDistributorVisaId { get; set; }
-        public int TravelAgencyGuestId { get; set; }
-        public string? Notes { get; set; }
+        public byte[] ImgFile { get; set; } = default!;
     }
 }

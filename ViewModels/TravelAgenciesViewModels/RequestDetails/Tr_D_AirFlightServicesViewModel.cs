@@ -8,6 +8,7 @@ using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages.ActivateDetailsPages;
+using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 using TripBliss.ViewModels.ActivateViewModels;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
@@ -293,12 +294,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             }
             else
             {
-                //var vm = new MainActivateViewModel(Moddel, Rep, _service);
-                //var page = new MainActivatePage(vm);
-                //page.BindingContext = vm;
-                //await App.Current!.MainPage!.Navigation.PushAsync(page);
-
-                // Attach images here
+                var vm = new AirFlightActivateViewModel(Moddel, Rep, _service);
+                var page = new AirFlightAttachmentsPage(vm);
+                page.BindingContext = vm;
+                await App.Current!.MainPage!.Navigation.PushAsync(page);
             }
 
         }

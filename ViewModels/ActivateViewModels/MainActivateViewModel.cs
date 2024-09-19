@@ -98,14 +98,14 @@ namespace TripBliss.ViewModels.ActivateViewModels
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
         }
-        [RelayCommand]
-        public async Task SelectAirFlight(ResponseWithDistributorAirFlightDetailsResponse model)
-        {
-            var vm = new AirFlightActivateViewModel(model, Rep, _service);
-            var page = new AirFlightServicesActivateDetails();
-            page.BindingContext = vm;
-            await App.Current!.MainPage!.Navigation.PushAsync(page);
-        }
+        //[RelayCommand]
+        //public async Task SelectAirFlight(ResponseWithDistributorAirFlightDetailsResponse model)
+        //{
+        //    var vm = new AirFlightActivateViewModel(model, Rep, _service);
+        //    var page = new AirFlightServicesActivateDetails();
+        //    page.BindingContext = vm;
+        //    await App.Current!.MainPage!.Navigation.PushAsync(page);
+        //}
         [RelayCommand]
         public async Task SelectVisa(ResponseWithDistributorVisaDetailsResponse model)
         {

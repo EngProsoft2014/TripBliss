@@ -43,7 +43,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
         [RelayCommand]
         async Task Apply()
         {
-            Model.TravelAgencyGuestId = selectedGuest?.Id ?? 0;
+            //Model.TravelAgencyGuestId = selectedGuest?.Id ?? 0;
             await App.Current!.MainPage!.Navigation.PopAsync();
         }
 
@@ -80,7 +80,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                         {
                             Guests!.Clear();
                             Guests = json;
-                            SelectedGuest = Guests?.FirstOrDefault(g => g.Id == Model.TravelAgencyGuestId) ?? new TravelAgencyGuestResponse();
+                            //SelectedGuest = Guests?.FirstOrDefault(g => g.Id == Model.TravelAgencyGuestId) ?? new TravelAgencyGuestResponse();
                         }
                     }
                 }

@@ -21,23 +21,7 @@ namespace TripBliss.Models
             }
         }
         public int? ResponseWithDistributorTransportId { get; set; }
-        int? _TravelAgencyGuestId;
-        public int? TravelAgencyGuestId
-        {
-            get
-            {
-                return _TravelAgencyGuestId;
-            }
-            set
-            {
-                _TravelAgencyGuestId = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("TravelAgencyGuestId"));
-                }
-            }
-        }
-        public string? TravelAgencyGuestName { get; set; }
+        public string? LeaderName { get; set; }
         string? _PlateNumber;
         public string? PlateNumber
         {

@@ -101,7 +101,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 CheckOut = HotelService.RequestTravelAgencyHotel.CheckOut,
                 Notes = HotelService.Notes,
                 RoomCount = HotelService.RequestTravelAgencyHotel.RoomCount,
-                
+
             };
         }
         async Task RunManyMethods()

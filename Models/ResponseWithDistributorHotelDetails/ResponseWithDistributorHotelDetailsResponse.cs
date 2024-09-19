@@ -21,23 +21,7 @@ namespace TripBliss.Models
             }
         }
         public int? ResponseWithDistributorHotelId { get; set; }
-        int? _TravelAgencyGuestId;
-        public int? TravelAgencyGuestId
-        {
-            get
-            {
-                return _TravelAgencyGuestId;
-            }
-            set
-            {
-                _TravelAgencyGuestId = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("TravelAgencyGuestId"));
-                }
-            }
-        }
-        public string? TravelAgencyGuestName { get; set; }
+        public string? GuestName { get; set; }
         string? _RoomRef;
         public string? RoomRef
         {
