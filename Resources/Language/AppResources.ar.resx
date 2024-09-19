@@ -450,4 +450,25 @@
   <data name="hdAddGuest" xml:space="preserve">
     <value>إضافة عميل</value>
   </data>
+  <data name="btnattachment-VisaDetails" xml:space="preserve">
+    <value>المرفقات</value>
+  </data>
+  <data name="hdrVisaAttachment" xml:space="preserve">
+    <value>مرفقات التأشيرة</value>
+  </data>
+  <data name="hdrAirFlightAttachment" xml:space="preserve">
+    <value>ملحقات الرحلات الجوية</value>
+  </data>
+  <data name="btnTakePhoto-attatchmentPopup" xml:space="preserve">
+    <value>التقط الصورة</value>
+  </data>
+  <data name="btnPickPhoto-attatchmentPopup" xml:space="preserve">
+    <value>إختر الصورة من المعرض</value>
+  </data>
+  <data name="hdrAddPhoto-attachmentPopup" xml:space="preserve">
+    <value>أضف صورة</value>
+  </data>
+  <data name="btnDelete All-AttatchmentPage" xml:space="preserve">
+    <value>حذف الكل</value>
+  </data>
 </root>

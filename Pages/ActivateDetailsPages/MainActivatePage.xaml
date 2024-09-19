@@ -60,7 +60,7 @@
                                                     <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{ex:Translate Name=GuestId-HotelActive}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
-                                                            <Span Text="{Binding TravelAgencyGuestName , StringFormat='  : {0}'}" TextColor="Gray" FontSize="12" ></Span>
+                                                            <Span Text="{Binding GuestName , StringFormat='  : {0}'}" TextColor="Gray" FontSize="12" ></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -103,7 +103,7 @@
                                                     <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{ex:Translate Name=GuestId-HotelActive}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
-                                                            <Span Text="{Binding TravelAgencyGuestName , StringFormat='  : {0}'}" TextColor="Gray" FontSize="12" ></Span>
+                                                            <Span Text="{Binding LeaderName , StringFormat='  : {0}'}" TextColor="Gray" FontSize="12" ></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>

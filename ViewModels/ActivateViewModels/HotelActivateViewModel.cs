@@ -23,7 +23,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
         [ObservableProperty]
         TravelAgencyGuestResponse selectedGuest = new TravelAgencyGuestResponse();
         #endregion
-
+        //GuestName
         #region Services
         readonly Services.Data.ServicesService _service;
         IGenericRepository Rep;
@@ -57,7 +57,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
         #region Methods
         async void Init()
         {
-            await GetAllGuests();    
+            //await GetAllGuests();    
         }
 
         async Task GetAllGuests()

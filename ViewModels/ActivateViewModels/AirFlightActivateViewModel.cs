@@ -84,7 +84,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                     if (!string.IsNullOrEmpty(UserToken))
                     {
                         UserDialogs.Instance.ShowLoading();
-                        var json = await Rep.GetAsync<ObservableCollection<ResponseWithDistributorAirFlightDetailsResponse>>($"api/ResponseWithDistributorAirFlightDetails/ResponseWithDistributor/{Model.ResponseWithDistributorId}/{Model.Id}", UserToken);
+                        var json = await Rep.GetAsync<ObservableCollection<ResponseWithDistributorAirFlightDetailsResponse>>($"{ApiConstants.AirFlightImageApi}{Model.ResponseWithDistributorId}/{Model.Id}", UserToken);
                         UserDialogs.Instance.HideHud();
 
                         if (json != null)
@@ -101,34 +101,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
             }
         }
 
-        //async Task GetAllGuests()
-        //{
-        //    IsBusy = true;
-
-        //    if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-        //    {
-        //        string TravelAgencyId = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
-        //        string DistributorId = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
-        //        if (!string.IsNullOrEmpty(TravelAgencyId) && string.IsNullOrEmpty(DistributorId))
-        //        {
-        //            string UserToken = await _service.UserToken();
-        //            if (!string.IsNullOrEmpty(UserToken))
-        //            {
-        //                UserDialogs.Instance.ShowLoading();
-        //                var json = await Rep.GetAsync<ObservableCollection<TravelAgencyGuestResponse>>(ApiConstants.GuestApi + $"{TravelAgencyId}/TravelAgencyGuest", UserToken);
-        //                UserDialogs.Instance.HideHud();
-        //                if (json != null)
-        //                {
-        //                    Guests!.Clear();
-        //                    Guests = json;
-        //                    //SelectedGuest = Guests?.FirstOrDefault(g => g.Id == Model.TravelAgencyGuestId) ?? new TravelAgencyGuestResponse();
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    IsBusy = false;
-        //}
+       
 
         [RelayCommand]
         async Task OpenFullScreenImage(ResponseWithDistributorAirFlightDetailsResponse model)
@@ -217,7 +190,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                 }
 
                 string UserToken = await _service.UserToken();
-                string Postjson = await Rep.PostMultiPicAsync($"api/ResponseWithDistributorAirFlightDetails/ResponseWithDistributor/{Model.ResponseWithDistributorId}/{Model.Id}", LstAirFltRequest, UserToken);
+                string Postjson = await Rep.PostMultiPicAsync($"{ApiConstants.AirFlightImageApi}{Model.ResponseWithDistributorId}/{Model.Id}", LstAirFltRequest, UserToken);
 
                 UserDialogs.Instance.HideHud();
             }
@@ -246,7 +219,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                         IsBusy = false;          
                         UserDialogs.Instance.ShowLoading();
                         string UserToken = await _service.UserToken();
-                        var json = await Rep.PostAsync<string>(string.Format($"api/ResponseWithDistributorAirFlightDetails/ResponseWithDistributorAirFlight/{Model.Id}/{model.Id}"),null, UserToken);
+                        var json = await Rep.PostAsync<string>(string.Format($"{ApiConstants.AirFlightAttachmentsApi}{Model.Id}/{model.Id}"),null, UserToken);
                         UserDialogs.Instance.HideHud();
                         if (json == null)
                         {
@@ -278,22 +251,25 @@ namespace TripBliss.ViewModels.ActivateViewModels
                     if (LstAirFlightDetails.Count > 0) //Id = 0 (Photo New)
                     {
                         IsBusy = false;
-
+                        bool ans = await App.Current!.MainPage!.DisplayAlert("Info", "Do you agree to delete all photos?", "OK", "Cancel");
                         var obj = LstAirFlightDetails.Where(x => x.Id != null && x.Id != 0).FirstOrDefault();
-                        if(obj != null)
+                        if (ans)
                         {
-                            UserDialogs.Instance.ShowLoading();
-                            string UserToken = await _service.UserToken();
-                            var json = await Rep.PostAsync<string>(string.Format($"api/ResponseWithDistributorAirFlightDetails/ResponseWithDistributorAirFlight/{Model.Id}"), null, UserToken);
-                            UserDialogs.Instance.HideHud();
-                            if (json == null)
+                            if (obj != null)
+                            {
+                                UserDialogs.Instance.ShowLoading();
+                                string UserToken = await _service.UserToken();
+                                var json = await Rep.PostAsync<string>(string.Format($"{ApiConstants.AirFlightAttachmentsApi}{Model.Id}"), null, UserToken);
+                                UserDialogs.Instance.HideHud();
+                                if (json == null)
+                                {
+                                    LstAirFlightDetails.Clear();
+                                }
+                            }
+                            else
                             {
                                 LstAirFlightDetails.Clear();
                             }
-                        }
-                        else
-                        {
-                            LstAirFlightDetails.Clear();
                         }
 
                         IsBusy = true;

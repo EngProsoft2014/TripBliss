@@ -188,7 +188,30 @@ namespace TripBliss.Constants
         public static string GuestApi = "TravelAgencyCompany/";
         // End Get All Guests Details Api   
         #endregion
+
+        #region AirFlight Attachments
+        // AirFlight Attachments Api
+        public static string AirFlightAttachmentsApi = "api/ResponseWithDistributorAirFlightDetails/ResponseWithDistributorAirFlight/";
+        // End AirFlight Attachments Api   
+        #endregion
+
+        #region Get AirFlight Image
+        // AirFlight Attachments Api
+        public static string AirFlightImageApi = "api/ResponseWithDistributorAirFlightDetails/ResponseWithDistributor/";
+        // End Get AirFlight Image Api   
+        #endregion
+
+        #region Visa Attachments
+        // Visa Attachments Api
+        public static string DeleteVisaAttachmentsApi = "api/ResponseWithDistributorVisaDetails/ResponseWithDistributorVisa/";
+        // End Visa Attachments Api   
+        #endregion
+
+        #region Get or Post Visa Image
+        // Visa Attachments Api
+        public static string GetOrPostVisaImageApi = "api/ResponseWithDistributorVisaDetails/ResponseWithDistributor/";
+        // End Get Visa Image Api   
+        #endregion
     }
 }
 
-//

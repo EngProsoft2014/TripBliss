@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
+using Mopups.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,11 +16,20 @@ namespace TripBliss.ViewModels.ActivateViewModels
     {
         #region Prop
         [ObservableProperty]
-        ResponseWithDistributorVisaDetailsResponse model = new ResponseWithDistributorVisaDetailsResponse();
+        ResponseWithDistributorVisaResponse model = new ResponseWithDistributorVisaResponse();
+
+        [ObservableProperty]
+        ResponseWithDistributorVisaDetailsResponse activeVisa = new ResponseWithDistributorVisaDetailsResponse();
+
+        [ObservableProperty]
+        ObservableCollection<ResponseWithDistributorVisaDetailsResponse> lstVisaDetails = new ObservableCollection<ResponseWithDistributorVisaDetailsResponse>();
         [ObservableProperty]
         ObservableCollection<TravelAgencyGuestResponse> guests = new ObservableCollection<TravelAgencyGuestResponse>();
         [ObservableProperty]
         TravelAgencyGuestResponse selectedGuest = new TravelAgencyGuestResponse();
+
+        [ObservableProperty]
+        ImageSource imageFile;
         #endregion
 
         #region Services
@@ -28,64 +38,245 @@ namespace TripBliss.ViewModels.ActivateViewModels
         #endregion
 
         #region Con
-        public VisaActivateViewModel(ResponseWithDistributorVisaDetailsResponse detailsResponse, IGenericRepository generic, Services.Data.ServicesService service)
+        public VisaActivateViewModel(ResponseWithDistributorVisaResponse detailsResponse, IGenericRepository generic, Services.Data.ServicesService service)
         {
             _service = service;
             Rep = generic;
             Model = detailsResponse;
             Init();
-        } 
+        }
         #endregion
 
         #region RelayCommand
         [RelayCommand]
         async Task Apply()
         {
-           // Model.TravelAgencyGuestId = selectedGuest?.Id ?? 0;
+            // Model.TravelAgencyGuestId = selectedGuest?.Id ?? 0;
             await App.Current!.MainPage!.Navigation.PopAsync();
         }
 
         [RelayCommand]
-        async Task BackCLicked()
+        async Task BackPressed()
         {
             await App.Current!.MainPage!.Navigation.PopAsync();
         }
         #endregion
-        
+
         #region Methods
         async void Init()
         {
-            await GetAllGuests(); 
+            await GetImage();
         }
 
-        async Task GetAllGuests()
+        async Task GetImage()
         {
-            IsBusy = true;
-
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                string TravelAgencyId = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
-                string DistributorId = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
-                if (!string.IsNullOrEmpty(TravelAgencyId) && string.IsNullOrEmpty(DistributorId))
+
+                if (Model != null)
                 {
                     string UserToken = await _service.UserToken();
                     if (!string.IsNullOrEmpty(UserToken))
                     {
                         UserDialogs.Instance.ShowLoading();
-                        var json = await Rep.GetAsync<ObservableCollection<TravelAgencyGuestResponse>>(ApiConstants.GuestApi + $"{TravelAgencyId}/TravelAgencyGuest", UserToken);
+                        var json = await Rep.GetAsync<ObservableCollection<ResponseWithDistributorVisaDetailsResponse>>($"{ApiConstants.GetOrPostVisaImageApi}{Model.ResponseWithDistributorId}/{Model.Id}", UserToken);
                         UserDialogs.Instance.HideHud();
+
                         if (json != null)
                         {
-                            Guests!.Clear();
-                            Guests = json;
-                            //SelectedGuest = Guests?.FirstOrDefault(g => g.Id == Model.TravelAgencyGuestId) ?? new TravelAgencyGuestResponse();
+                            LstVisaDetails = json;
+
+                            foreach (var item in LstVisaDetails)
+                            {
+                                item.ImageFile = ImageSource.FromUri(new Uri($"{Helpers.Utility.ServerUrl}{item.UrlImgName}"));
+                            }
                         }
                     }
-                }                 
+                }
+            }
+        }
+
+        
+
+        [RelayCommand]
+        async Task OpenFullScreenImage(ResponseWithDistributorVisaDetailsResponse model)
+        {
+            IsBusy = false;
+            UserDialogs.Instance.ShowLoading();
+            await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(model.ImageFile!));
+            UserDialogs.Instance.HideHud();
+            IsBusy = true;
+        }
+
+        [RelayCommand]
+        async Task OnOpenAddImagesPopup()
+        {
+            IsBusy = false;
+
+            var page = new Pages.MainPopups.AddAttachmentsPopup();
+            page.ImageClose += async (img) =>
+            {
+                if (!string.IsNullOrEmpty(img))
+                {
+                    byte[] bytes = Convert.FromBase64String(img);
+
+                    LstVisaDetails.Add(new ResponseWithDistributorVisaDetailsResponse
+                    {
+                        Id = ActiveVisa.Id,
+                        ResponseWithDistributorVisaId = ActiveVisa.ResponseWithDistributorVisaId,
+                        ImgName = img,
+                        ImageFile = ImageSource.FromStream(() => new MemoryStream(bytes)),
+                    });
+                    await MopupService.Instance.PopAsync();
+
+                }
+            };
+
+            await MopupService.Instance.PushAsync(page);
+
+            IsBusy = true;
+        }
+
+
+
+        public async Task GetAllAirFlight(int DisId, int Id)
+        {
+            IsBusy = false;
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                string id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
+                string UserToken = await _service.UserToken();
+                if (!string.IsNullOrEmpty(UserToken))
+                {
+                    UserDialogs.Instance.ShowLoading();
+                    var json = await Rep.GetAsync<ResponseWithDistributorVisaDetailsResponse>(ApiConstants.AirFlightActive + $"{DisId}/{Id}", UserToken);
+                    UserDialogs.Instance.HideHud();
+                    if (json != null)
+                    {
+                        ActiveVisa = json;
+                    }
+                }
+
             }
 
-            IsBusy = false;
+            IsBusy = true;
         }
+
+        [RelayCommand]
+        async Task DoneUploadPictures()
+        {
+            IsBusy = false;
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                UserDialogs.Instance.ShowLoading();
+
+                List<ResponseWithDistributorVisaDetailsRequest> LstVisaRequest = new List<ResponseWithDistributorVisaDetailsRequest>();
+                foreach (var item in LstVisaDetails)
+                {
+                    if (item.Id == 0 || item.Id == null)
+                    {
+                        LstVisaRequest.Add(new ResponseWithDistributorVisaDetailsRequest
+                        {
+                            ImgFile = Convert.FromBase64String(item.ImgName),
+                        });
+                    }
+                }
+
+                string UserToken = await _service.UserToken();
+                string Postjson = await Rep.PostMultiPicAsync($"{ApiConstants.GetOrPostVisaImageApi}{Model.ResponseWithDistributorId}/{Model.Id}", LstVisaRequest, UserToken);
+
+                UserDialogs.Instance.HideHud();
+            }
+
+            IsBusy = true;
+        }
+
+        [RelayCommand]
+        async Task DeletePhoto(ResponseWithDistributorVisaDetailsResponse model)
+        {
+            try
+            {
+                if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+                {
+                    await App.Current!.MainPage!.DisplayAlert("Error", "No Internet connection!", "OK");
+                    return;
+                }
+                else
+                {
+                    if (model.Id == 0 || model.Id == null) //Id = 0 (Photo New)
+                    {
+                        LstVisaDetails.Remove(model);
+                    }
+                    else //Id != 0 (already Photo save)
+                    {
+                        IsBusy = false;
+                        UserDialogs.Instance.ShowLoading();
+                        string UserToken = await _service.UserToken();
+                        var json = await Rep.PostAsync<string>(string.Format($"{ApiConstants.DeleteVisaAttachmentsApi}{Model.Id}/{model.Id}"), null, UserToken);
+                        UserDialogs.Instance.HideHud();
+                        if (json == null)
+                        {
+                            LstVisaDetails.Remove(model);
+                        }
+                        IsBusy = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await App.Current!.MainPage!.DisplayAlert("Error", ex.Message, "OK");
+            }
+        }
+
+
+        [RelayCommand]
+        async Task DeleteAllPhotos()
+        {
+            try
+            {
+                if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+                {
+                    await App.Current!.MainPage!.DisplayAlert("Error", "No Internet connection!", "OK");
+                    return;
+                }
+                else
+                {
+                    if (LstVisaDetails.Count > 0) //Id = 0 (Photo New)
+                    {
+                        IsBusy = false;
+                        bool ans = await App.Current!.MainPage!.DisplayAlert("Info", "Do you agree to delete all photos?","OK","Cancel");
+                        var obj = LstVisaDetails.Where(x => x.Id != null && x.Id != 0).FirstOrDefault();
+                        if (ans)
+                        {
+                            if (obj != null)
+                            {
+                                UserDialogs.Instance.ShowLoading();
+                                string UserToken = await _service.UserToken();
+                                var json = await Rep.PostAsync<string>(string.Format($"{ApiConstants.DeleteVisaAttachmentsApi}{Model.Id}"), null, UserToken);
+                                UserDialogs.Instance.HideHud();
+                                if (json == null)
+                                {
+                                    LstVisaDetails.Clear();
+                                }
+                            }
+                            else
+                            {
+                                LstVisaDetails.Clear();
+                            }
+                        }
+
+                        IsBusy = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await App.Current!.MainPage!.DisplayAlert("Error", ex.Message, "OK");
+            }
+        }
+
         #endregion
     }
 }

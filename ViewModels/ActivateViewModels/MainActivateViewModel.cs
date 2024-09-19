@@ -109,10 +109,10 @@ namespace TripBliss.ViewModels.ActivateViewModels
         [RelayCommand]
         public async Task SelectVisa(ResponseWithDistributorVisaDetailsResponse model)
         {
-            var vm = new VisaActivateViewModel(model, Rep, _service);
-            var page = new VisaServicesActivateDetails();
-            page.BindingContext = vm;
-            await App.Current!.MainPage!.Navigation.PushAsync(page);
+            //var vm = new VisaActivateViewModel(model, Rep, _service);
+            //var page = new VisaServicesActivateDetails();
+            //page.BindingContext = vm;
+            //await App.Current!.MainPage!.Navigation.PushAsync(page);
         }
         [RelayCommand]
         public async Task AddToRequest()

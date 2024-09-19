@@ -450,4 +450,25 @@
   <data name="hdAddGuest" xml:space="preserve">
     <value>Add Guest</value>
   </data>
+  <data name="btnattachment-VisaDetails" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <data name="hdrVisaAttachment" xml:space="preserve">
+    <value>Visa Attachment</value>
+  </data>
+  <data name="hdrAirFlightAttachment" xml:space="preserve">
+    <value>Air Flight Attachment</value>
+  </data>
+  <data name="btnTakePhoto-attatchmentPopup" xml:space="preserve">
+    <value>Take Photo</value>
+  </data>
+  <data name="btnPickPhoto-attatchmentPopup" xml:space="preserve">
+    <value>Pick Photo from Gallery</value>
+  </data>
+  <data name="hdrAddPhoto-attachmentPopup" xml:space="preserve">
+    <value>Add Photo</value>
+  </data>
+  <data name="btnDeleteAll-AttatchmentPage" xml:space="preserve">
+    <value>Delete All</value>
+  </data>
 </root>

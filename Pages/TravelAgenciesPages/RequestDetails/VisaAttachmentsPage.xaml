@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                        xmlns:vm="clr-namespace:TripBliss.ViewModels.ActivateViewModels"
-                        xmlns:Controls="clr-namespace:TripBliss.Controls"          
-                        x:Class="TripBliss.Pages.TravelAgenciesPages.RequestDetails.AirFlightAttachmentsPage"
-                        xmlns:ex="clr-namespace:TripBliss.Extensions"
-                        Title="AirFlightAttachmentsPage"
-                        IsEnabled="{Binding IsBusy}"
-                        NavigationPage.HasNavigationBar="False"
-                        BackgroundColor="White">
-
-
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.ActivateViewModels"
+             xmlns:Controls="clr-namespace:TripBliss.Controls"
+             xmlns:ex="clr-namespace:TripBliss.Extensions"
+             x:Class="TripBliss.Pages.TravelAgenciesPages.RequestDetails.VisaAttachmentsPage"
+             Title="VisaAttachmentsPage"
+             IsEnabled="{Binding IsBusy}"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="WithVsmButton" TargetType="Button">
@@ -56,8 +54,8 @@
                     <TapGestureRecognizer Command="{Binding BackPressedCommand}"></TapGestureRecognizer>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="{ex:Translate Name=hdrAirFlightAttachment}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
-               TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+            <Label Text="{ex:Translate Name=hdrVisaAttachment}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+           TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
 
             <Image Margin="0,0,0,0" HorizontalOptions="End">
                 <Image.Source>
@@ -72,18 +70,18 @@
         <StackLayout Margin="0,20,0,10">
 
             <Button Text="{ex:Translate Name=btnDelete All-AttatchmentPage}" 
-                    Style="{x:StaticResource WithVsmButton}" 
-                    TextColor="#2fa562" 
-                    BackgroundColor="White"
-                    HeightRequest="40" 
-                    CornerRadius="5" 
-                    BorderColor="#2fa562" 
-                    BorderWidth="2"
-                    HorizontalOptions="StartAndExpand"
-                    Command="{Binding DeleteAllPhotosCommand}">
+                Style="{x:StaticResource WithVsmButton}" 
+                TextColor="#2fa562" 
+                BackgroundColor="White"
+                HeightRequest="40" 
+                CornerRadius="5" 
+                BorderColor="#2fa562" 
+                BorderWidth="2"
+                HorizontalOptions="StartAndExpand"
+                Command="{Binding DeleteAllPhotosCommand}">
             </Button>
             <StackLayout.Triggers>
-                <DataTrigger TargetType="StackLayout" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
+                <DataTrigger TargetType="StackLayout" Binding="{Binding LstVisaDetails.Count}" Value="0">
                     <Setter Property="IsVisible" Value="False"></Setter>
                 </DataTrigger>
             </StackLayout.Triggers>
@@ -92,10 +90,10 @@
         <StackLayout VerticalOptions="FillAndExpand" Margin="0,0,0,30">
 
             <ListView x:Name="lstPictures" SelectionMode="None"
-                          ItemsSource="{Binding LstAirFlightDetails}" 
-                          HasUnevenRows="True" 
-                          SeparatorVisibility="None"
-                          VerticalScrollBarVisibility="Never">
+                      ItemsSource="{Binding LstVisaDetails}" 
+                      HasUnevenRows="True" 
+                      SeparatorVisibility="None"
+                      VerticalScrollBarVisibility="Never">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -107,7 +105,8 @@
                                             <Border BackgroundColor="White" Padding="0" VerticalOptions="FillAndExpand">
                                                 <Image x:Name="PicSch" Source="{Binding ImageFile}" WidthRequest="130" HeightRequest="90" Aspect="Fill">
                                                     <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirFlightActivateViewModel}}, Path=OpenFullScreenImageCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:VisaActivateViewModel}}, Path=OpenFullScreenImageCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                        <!--<TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:VisaActivateViewModel}}, Path=DeletePhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>-->
                                                     </Image.GestureRecognizers>
                                                 </Image>
                                                 <Border.StrokeShape>
@@ -127,7 +126,7 @@
                                                 </Image.Source>
                                             </Image>
                                             <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirFlightActivateViewModel}}, Path=DeletePhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:VisaActivateViewModel}}, Path=DeletePhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                             </StackLayout.GestureRecognizers>
                                         </StackLayout>
 
@@ -141,35 +140,35 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 <ListView.Triggers>
-                    <DataTrigger TargetType="ListView" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
+                    <DataTrigger TargetType="ListView" Binding="{Binding LstVisaDetails.Count}" Value="0">
                         <Setter Property="IsVisible" Value="False"></Setter>
                         <Setter Property="HeightRequest" Value="0"></Setter>
                     </DataTrigger>
                 </ListView.Triggers>
             </ListView>
             <StackLayout.Triggers>
-                <DataTrigger TargetType="StackLayout" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
+                <DataTrigger TargetType="StackLayout" Binding="{Binding LstVisaDetails.Count}" Value="0">
                     <Setter Property="IsVisible" Value="False"></Setter>
                     <Setter Property="HeightRequest" Value="0"></Setter>
                 </DataTrigger>
             </StackLayout.Triggers>
         </StackLayout>
         <Button x:Name="btnDone" HeightRequest="50"
-                VerticalOptions="End"
-                Text="{ex:Translate Name=btnConfirm-NewRequest}" 
-                FontSize="16"
-                FontAttributes="Bold"
-                BackgroundColor="#2fa562" 
-                TextColor="White"
-                Command="{Binding DoneUploadPicturesCommand}"
-                Margin="{OnPlatform Android='50,20,50,20',iOS='50,20,50,50'}"
-                Padding="0" 
-                CornerRadius="20">
+            VerticalOptions="End"
+            Text="{ex:Translate Name=btnConfirm-NewRequest}" 
+            FontSize="16"
+            FontAttributes="Bold"
+            BackgroundColor="#2fa562" 
+            TextColor="White"
+            Command="{Binding DoneUploadPicturesCommand}"
+            Margin="{OnPlatform Android='50,20,50,20',iOS='50,20,50,50'}"
+            Padding="0" 
+            CornerRadius="20">
             <Button.Triggers>
-                <DataTrigger TargetType="Button" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
+                <DataTrigger TargetType="Button" Binding="{Binding LstVisaDetails.Count}" Value="0">
                     <Setter Property="IsVisible" Value="False"></Setter>
                 </DataTrigger>
-                <DataTrigger TargetType="Button" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
+                <DataTrigger TargetType="Button" Binding="{Binding LstVisaDetails.Count}" Value="0">
                     <Setter Property="IsVisible" Value="False"></Setter>
                 </DataTrigger>
             </Button.Triggers>
@@ -179,7 +178,7 @@
         <StackLayout x:Name="stkNoData" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Image Source="noresult.png" Aspect="AspectFill" VerticalOptions="FillAndExpand"></Image>
             <StackLayout.Triggers>
-                <DataTrigger TargetType="StackLayout" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
+                <DataTrigger TargetType="StackLayout" Binding="{Binding LstVisaDetails.Count}" Value="0">
                     <Setter Property="IsVisible" Value="True"></Setter>
                 </DataTrigger>
             </StackLayout.Triggers>

@@ -97,6 +97,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attachments.
+        /// </summary>
+        internal static string btnattachment_VisaDetails {
+            get {
+                return ResourceManager.GetString("btnattachment-VisaDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string btnCancle_PopupLan {
@@ -111,6 +120,15 @@ namespace TripBliss.Resources.Language {
         internal static string btnConfirm_NewRequest {
             get {
                 return ResourceManager.GetString("btnConfirm-NewRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete All.
+        /// </summary>
+        internal static string btnDeleteAll_AttatchmentPage {
+            get {
+                return ResourceManager.GetString("btnDeleteAll-AttatchmentPage", resourceCulture);
             }
         }
         
@@ -160,6 +178,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pick Photo from Gallery.
+        /// </summary>
+        internal static string btnPickPhoto_attatchmentPopup {
+            get {
+                return ResourceManager.GetString("btnPickPhoto-attatchmentPopup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Request Details.
         /// </summary>
         internal static string btnRequestDetails_RequestDetails {
@@ -174,6 +201,15 @@ namespace TripBliss.Resources.Language {
         internal static string btnResponse_RequestDetails {
             get {
                 return ResourceManager.GetString("btnResponse-RequestDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Take Photo.
+        /// </summary>
+        internal static string btnTakePhoto_attatchmentPopup {
+            get {
+                return ResourceManager.GetString("btnTakePhoto-attatchmentPopup", resourceCulture);
             }
         }
         
@@ -241,11 +277,29 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Photo.
+        /// </summary>
+        internal static string hdrAddPhoto_attachmentPopup {
+            get {
+                return ResourceManager.GetString("hdrAddPhoto-attachmentPopup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Agency.
         /// </summary>
         internal static string hdrAgency {
             get {
                 return ResourceManager.GetString("hdrAgency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Air Flight Attachment.
+        /// </summary>
+        internal static string hdrAirFlightAttachment {
+            get {
+                return ResourceManager.GetString("hdrAirFlightAttachment", resourceCulture);
             }
         }
         
@@ -345,6 +399,15 @@ namespace TripBliss.Resources.Language {
         internal static string hdrViewers_OfferViewers {
             get {
                 return ResourceManager.GetString("hdrViewers-OfferViewers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visa Attachment.
+        /// </summary>
+        internal static string hdrVisaAttachment {
+            get {
+                return ResourceManager.GetString("hdrVisaAttachment", resourceCulture);
             }
         }
         
