@@ -69,7 +69,7 @@
 
         <StackLayout Margin="0,20,0,10">
 
-            <Button Text="{ex:Translate Name=btnDelete All-AttatchmentPage}" 
+            <Button Text="{ex:Translate Name=btnDeleteAll-AttatchmentPage}" 
                 Style="{x:StaticResource WithVsmButton}" 
                 TextColor="#2fa562" 
                 BackgroundColor="White"
