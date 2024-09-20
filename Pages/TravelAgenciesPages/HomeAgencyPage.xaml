@@ -27,9 +27,6 @@
                     </tabView:SfTabItem.ImageSource>
                     <tabView:SfTabItem.Content>
                         <ContentView x:Name="conviewHome" Margin="{OnPlatform iOS='20,0,20,0'}">
-                            <!--<ContentView.BindingContext>
-                                <vm:HomeViewModel></vm:HomeViewModel>
-                            </ContentView.BindingContext>-->
                             <ContentView.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="VisualStateManager.VisualStateGroups">
@@ -572,9 +569,6 @@
                     </tabView:SfTabItem.ImageSource>
                     <tabView:SfTabItem.Content>
                         <ContentView x:Name="conviewMore">
-                            <!--<ContentView.BindingContext>
-                                <vm:MoreViewModel></vm:MoreViewModel>
-                            </ContentView.BindingContext>-->
                             <StackLayout Orientation="Vertical" Spacing="50">
                                 <Label Text="{ex:Translate Name=hdrMore}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                        TextColor="Black" Margin="{OnPlatform Android='0,20,0,10',iOS='0,0,0,10'}"></Label>
@@ -612,7 +606,6 @@
                                             <Image.Source>
                                                 <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
                                             </Image.Source>
-                                            
                                         </Image>
                                         <Label Text="{ex:Translate Name=lblDocuments-MorePage}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                         <HorizontalStackLayout.GestureRecognizers>

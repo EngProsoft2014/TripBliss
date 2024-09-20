@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              xmlns:ex="clr-namespace:TripBliss.Extensions"
+             xmlns:stepProgressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
              x:Class="TripBliss.Pages.TravelAgenciesPages.Tr_DocumentsPage"
              Title="Tr_DocumentsPage"
              NavigationPage.HasNavigationBar="False"
@@ -25,5 +26,16 @@
             <Label Text="{ex:Translate Name=lblDocuments-MorePage}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
+        <stepProgressBar:SfStepProgressBar
+                    x:Name="stepProgress"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"                                        
+                    Orientation="Horizontal"                                                                                       
+                    LabelSpacing="12"
+                    ActiveStepIndex="2"
+                    ActiveStepProgressValue="60"
+                    ProgressAnimationDuration="2500"
+                    ItemsSource="{Binding StepProgressItem}">
+        </stepProgressBar:SfStepProgressBar>
     </StackLayout>
 </Controls:CustomControl>

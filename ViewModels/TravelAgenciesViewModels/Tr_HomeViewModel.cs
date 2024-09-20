@@ -33,7 +33,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         {
             Rep = generic;
             _service = service;
-            Init();
+            //Init();
             
         } 
         #endregion

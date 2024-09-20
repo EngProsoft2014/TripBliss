@@ -6,6 +6,7 @@ using Mopups.PreBaked.PopupPages.Login;
 using TripBliss.Helpers;
 using TripBliss.Pages.TravelAgenciesPages;
 using Akavache;
+using TripBliss.ViewModels.TravelAgenciesViewModels;
 
 namespace TripBliss
 {
@@ -28,9 +29,6 @@ namespace TripBliss
             InitializeComponent();
 
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(ApiConstants.syncFusionLicence);
-            //MainPage = new AppShell();
-            //MainPage = new NavigationPage(new HomeDistributorsPage(new Dis_HomeViewModel(Rep),Rep));
-            //MainPage = new NavigationPage(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep,service), Rep,service));
 
             if (!string.IsNullOrEmpty(Preferences.Default.Get(ApiConstants.username, "")))
             {
@@ -39,8 +37,8 @@ namespace TripBliss
                 {
                     MainPage = CatUser switch
                     {
-                        2 => new NavigationPage(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep, _service),Rep, _service)),
-                        3 => new NavigationPage(new HomeDistributorsPage(new ViewModels.DistributorsViewModels.Dis_HomeViewModel(Rep,_service), Rep, _service)),
+                        2 => new NavigationPage(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep, _service), Rep, _service)),
+                        3 => new NavigationPage(new HomeDistributorsPage(new ViewModels.DistributorsViewModels.Dis_HomeViewModel(Rep, _service), Rep, _service)),
                         _ => new NavigationPage(new LoginPage(new ViewModels.LoginViewModel(Rep, _service)))
                     };
                 }
@@ -49,7 +47,7 @@ namespace TripBliss
             {
                 MainPage = new NavigationPage(new LoginPage(new ViewModels.LoginViewModel(Rep, _service)));
             }
-                
+
 
         }
 
