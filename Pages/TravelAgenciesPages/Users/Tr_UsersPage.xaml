@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Controls="clr-namespace:TripBliss.Controls"
+             x:Class="TripBliss.Pages.TravelAgenciesPages.Users.Tr_UsersPage"
+             Title="Tr_UsersPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+    <StackLayout Orientation="Vertical" Margin="20">
+        <StackLayout Orientation="Horizontal">
+            <Image VerticalOptions="CenterAndExpand">
+                <Image.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                </Image.Source>
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                        <Setter Property="Rotation" Value="180"></Setter>
+                    </DataTrigger>
+                </Image.Triggers>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackPressedCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="Users" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+           TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+
+            <Image Margin="0,0,0,0" HorizontalOptions="End">
+                <Image.Source>
+                    <FontImageSource FontFamily="FontIconSolid" Color="#2fa562" Glyph="" Size="30"></FontImageSource>
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddUserClickCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+        <VerticalStackLayout Margin="0,30,0,0" Spacing="10">
+            <Label Text="Abdullah Khaled" FontSize="14" TextColor="Black" VerticalTextAlignment="Center"></Label>
+            <BoxView HeightRequest="1.5" BackgroundColor="Gray"></BoxView>
+        </VerticalStackLayout>
+    </StackLayout>
+</Controls:CustomControl>

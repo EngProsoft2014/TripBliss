@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              xmlns:ex="clr-namespace:TripBliss.Extensions"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels"
              x:Class="TripBliss.Pages.TravelAgenciesPages.Tr_DocumentsPage"
              Title="Tr_DocumentsPage"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="White">
-    <StackLayout Orientation="Vertical" Margin="20">
+    <StackLayout Orientation="Vertical" Margin="20" Spacing="10">
         <StackLayout Orientation="Horizontal">
             <Image VerticalOptions="CenterAndExpand">
                 <Image.Source>
@@ -24,7 +25,78 @@
             </Image>
             <Label Text="{ex:Translate Name=lblDocuments-MorePage}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+            <Label Text="In Review" FontAutoScalingEnabled="False" FontSize="14" HorizontalOptions="End"
+                   TextColor="Red" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
+        <Label Text="Pleas Add commercial register or Tax card or Quality certificate" FontAutoScalingEnabled="False" FontSize="16"
+               FontAttributes="Bold" HorizontalOptions="CenterAndExpand" TextColor="Red" Margin="0,30,0,0"></Label>
 
+        <VerticalStackLayout Spacing="20">
+            <Entry Text="{Binding NameDoc}" FontSize="14" TextColor="Black" Keyboard="Text" Placeholder="File Name" PlaceholderColor="Gray"></Entry>
+            <StackLayout Orientation="Horizontal" Margin="0,20,0,0" HorizontalOptions="FillAndExpand">
+                <!--Image-->
+                <StackLayout HorizontalOptions="Start">
+                    <Border BackgroundColor="White" Padding="0" VerticalOptions="FillAndExpand">
+                        <Image x:Name="PicSch" Source="{Binding ImageFile}" WidthRequest="130" HeightRequest="90" Aspect="Fill">
+
+                        </Image>
+                        <Border.StrokeShape>
+                            <RoundRectangle Stroke="LightGray" StrokeThickness="1" CornerRadius="10"></RoundRectangle>
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Offset="1,2" Brush="Black" Radius="1" Opacity="1"></Shadow>
+                        </Border.Shadow>
+                    </Border>
+
+                </StackLayout>
+                <Button x:Name="btnDone" HeightRequest="50" WidthRequest="100"
+                        VerticalOptions="End"
+                        Text="{ex:Translate Name=btnConfirm-NewRequest}" 
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        BackgroundColor="#2fa562" 
+                        TextColor="White"
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=DoneUploadDocCommand}" CommandParameter="{Binding}"
+                        Margin="{OnPlatform Android='50,20,50,20',iOS='50,20,50,50'}"
+                        Padding="0" 
+                        CornerRadius="10">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
+                            <Setter Property="IsVisible" Value="False"></Setter>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
+                            <Setter Property="IsVisible" Value="False"></Setter>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+            </StackLayout>
+            <!--Image Pdf-->
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="5,0,0,0" Spacing="20">
+                <Image>
+                    <Image.Source>
+                        <FontImageSource FontFamily="FontIcon" Color="DimGray" Glyph="" Size="30"></FontImageSource>
+                    </Image.Source>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=PickPhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image>
+                    <Image.Source>
+                        <FontImageSource FontFamily="FontIcon" Color="DimGray" Glyph="" Size="30"></FontImageSource>
+                    </Image.Source>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=PickPhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image>
+                    <Image.Source>
+                        <FontImageSource FontFamily="FontIconSolid" Color="DimGray" Glyph="" Size="30"></FontImageSource>
+                    </Image.Source>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=TakePhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+        </VerticalStackLayout>
     </StackLayout>
 </Controls:CustomControl>

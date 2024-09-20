@@ -10,7 +10,9 @@ using TripBliss.Pages;
 using TripBliss.Pages.MainPopups;
 using TripBliss.Pages.TravelAgenciesPages;
 using TripBliss.Pages.TravelAgenciesPages.Guests;
+using TripBliss.Pages.TravelAgenciesPages.Users;
 using TripBliss.ViewModels.TravelAgenciesViewModels.Guests;
+using TripBliss.ViewModels.TravelAgenciesViewModels.Users;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels
 {
@@ -54,6 +56,15 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         {
             var vm = new Tr_DocumentsViewModel(Rep,_service);
             var page = new Tr_DocumentsPage(vm);
+            page.BindingContext = vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
+        }
+
+        [RelayCommand]
+        async Task UsersClick()
+        {
+            var vm = new Tr_UsersViewModel(Rep, _service);
+            var page = new Tr_UsersPage(vm);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
         }

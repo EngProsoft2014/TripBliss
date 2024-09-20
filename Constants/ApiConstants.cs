@@ -236,6 +236,18 @@ namespace TripBliss.Constants
         public static string PostVisaImageApi = "api/ResponseWithDistributorVisaDetails/ResponseWithDistributor/";
         // End Get Visa Image Api   
         #endregion
+
+        #region Get Tavel Doc
+        // Get Tavel Doc Api
+        public static string GetTravelDocApi = "TravelAgencyCompany/";
+        // End Get Tavel Doce Api   
+        #endregion
+
+        #region Post Tavel Doc
+        // Get Tavel Doc Api
+        public static string PostTravelDocApi = "TravelAgencyCompany/";
+        // End Get Tavel Doce Api   
+        #endregion
     }
 }
 

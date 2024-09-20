@@ -55,13 +55,7 @@
                             </StackLayout>
                         </Border>
                         <Button Text="{ex:Translate Name=btnLogIn-Login}" FontAutoScalingEnabled="False" FontAttributes="Bold" TextColor="White" WidthRequest="140" FontSize="14" CornerRadius="25" Margin="0,30,0,0"
-                        Command="{Binding ClickLoginCommand}" CommandParameter="{Binding LoginRequest}" BackgroundColor="#2fb569">
-                            <!--<Button.Background>
-                                <LinearGradientBrush EndPoint="1,0">
-                                    <GradientStop Color="#66e89e" Offset="0.1" />
-                                    <GradientStop Color="#1c874b" Offset="1.1" />
-                                </LinearGradientBrush>
-                            </Button.Background>-->
+                                Command="{Binding ClickLoginCommand}" CommandParameter="{Binding LoginRequest}" BackgroundColor="#2fb569">
                         </Button>
                     </StackLayout>
                 </Border>

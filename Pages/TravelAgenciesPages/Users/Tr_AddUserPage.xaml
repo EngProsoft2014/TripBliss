@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Controls="clr-namespace:TripBliss.Controls" 
+             xmlns:ex="clr-namespace:TripBliss.Extensions"
+             x:Class="TripBliss.Pages.TravelAgenciesPages.Users.Tr_AddUserPage"
+             Title="Tr_AddUserPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+    <StackLayout Orientation="Vertical" Margin="20">
+        <StackLayout Orientation="Horizontal">
+            <Image VerticalOptions="CenterAndExpand">
+                <Image.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                </Image.Source>
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                        <Setter Property="Rotation" Value="180"></Setter>
+                    </DataTrigger>
+                </Image.Triggers>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackPressedCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="Add User" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                   TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+
+        </StackLayout>
+        <VerticalStackLayout VerticalOptions="CenterAndExpand" Spacing="15">
+            <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
+                <Entry x:Name="entryEmail" Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcEmail-SignUpPage}"
+                       HorizontalTextAlignment="Center" Margin="10,2"   Text="{Binding AddModel.Email}"></Entry>
+            </Border>
+            <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,2">
+                    <Entry x:Name="entryPassword" FontAutoScalingEnabled="False" Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcPassword-Login}"
+                           HorizontalTextAlignment="Center" Text="{Binding AddModel.Password}" IsPassword="True" HorizontalOptions="CenterAndExpand">
+                    </Entry>
+
+                    <Image x:Name="imgEyePass" Margin="0,0,10,0" HorizontalOptions="End">
+                        <Image.Source>
+                            <FontImageSource FontFamily="FontIconSolid" Glyph="" Color="Gray" Size="15"></FontImageSource>
+                        </Image.Source>
+                        <Image.Triggers>
+                            <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference entryPassword},Path=IsPassword}" Value="False">
+                                <Setter Property="Source">
+                                    <Setter.Value>
+                                        <FontImageSource FontFamily="FontIconSolid" Glyph="" Color="Gray" Size="15"></FontImageSource>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Image.Triggers>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+            </Border>
+            <Button Text="Add" FontAutoScalingEnabled="False" FontAttributes="Bold" TextColor="White" WidthRequest="140" FontSize="14" CornerRadius="25" Margin="0,30,0,0"
+                    Command="{Binding ClickRegisterCommand}" CommandParameter="{Binding LoginRequest}" BackgroundColor="#2fb569">
+            </Button>
+        </VerticalStackLayout>
+    </StackLayout>
+</Controls:CustomControl>

@@ -589,6 +589,9 @@
                                             </Image.Source>
                                         </Image>
                                         <Label Text="{ex:Translate Name=lblUsers-More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                        <HorizontalStackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding UsersClickCommand}"></TapGestureRecognizer>
+                                        </HorizontalStackLayout.GestureRecognizers>
                                     </HorizontalStackLayout>
                                     <!--<HorizontalStackLayout Spacing="8">
                                         <Image WidthRequest="20" HeightRequest="20" >
