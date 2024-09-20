@@ -17,7 +17,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.Users
     public partial class Tr_UsersViewModel : BaseViewModel
     {
         [ObservableProperty]
-        ObservableCollection<ApplicationUserRequest> applicationUsers = new ObservableCollection<ApplicationUserRequest>()
+        ObservableCollection<ApplicationUserRequest> applicationUsers = new ObservableCollection<ApplicationUserRequest>();
         #region Services
         readonly Services.Data.ServicesService _service;
         IGenericRepository Rep;
