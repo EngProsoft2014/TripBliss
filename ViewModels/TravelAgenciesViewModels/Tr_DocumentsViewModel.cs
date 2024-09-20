@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using Mopups.Services;
@@ -13,7 +14,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
     public partial class Tr_DocumentsViewModel : BaseViewModel
     {
         [ObservableProperty]
-        TravelAgencyCompanyDocResponse doc = new TravelAgencyCompanyDocResponse();
+        ObservableCollection<TravelAgencyCompanyDocResponse> lstDoc = new ObservableCollection<TravelAgencyCompanyDocResponse>();
         #region Servises
         IGenericRepository Rep;
 
@@ -25,7 +26,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         {
             Rep = generic;
             _service = service;
-            Init();
+            //Init();
         }
         #endregion
 
@@ -46,56 +47,76 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             IsBusy = true;
         }
         [RelayCommand]
-        async Task TakePhoto()
+        async Task TakePhoto(TravelAgencyCompanyDocResponse model)
         {
-            try
+            if (string.IsNullOrEmpty(model.NameDoc))
             {
-                // Check if the camera is available
-                if (MediaPicker.Default.IsCaptureSupported)
+                var toast = Toast.Make("Please Complete This Field Required : File Name.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else
+            {
+                try
                 {
-                    // Capture the photo
-                    var photo = await MediaPicker.Default.CapturePhotoAsync();
-
-                    if (photo != null)
+                    // Check if the camera is available
+                    if (MediaPicker.Default.IsCaptureSupported)
                     {
-                        // Get the file path to save it
-                        var stream = await photo.OpenReadAsync();
-                        byte[] bytes = Convert.FromBase64String(Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream)));
+                        // Capture the photo
+                        var photo = await MediaPicker.Default.CapturePhotoAsync();
 
-                        Doc.UploadFile = Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream));
+                        if (photo != null)
+                        {
+                            // Get the file path to save it
+                            var stream = await photo.OpenReadAsync();
+                            byte[] bytes = Convert.FromBase64String(Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream)));
 
+                            model.UploadFile = Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream));
+                            await DoneUploadDoc(model);
+
+                        }
+                    }
+                    else
+                    {
+                        await App.Current!.MainPage!.DisplayAlert("Error", "Camera not supported on this device.", "OK");
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    await App.Current!.MainPage!.DisplayAlert("Error", "Camera not supported on this device.", "OK");
+                    await App.Current!.MainPage!.DisplayAlert("Error", ex.Message, "OK");
                 }
             }
-            catch (Exception ex)
-            {
-                await App.Current!.MainPage!.DisplayAlert("Error", ex.Message, "OK");
-            }
+            
         }
         [RelayCommand]
         async Task PickPhoto(TravelAgencyCompanyDocResponse model)
         {
-            try
+            if (string.IsNullOrEmpty(model.NameDoc))
             {
-                // Open the photo gallery
-                var photo = await MediaPicker.Default.PickPhotoAsync();
-
-                if (photo != null)
+                var toast = Toast.Make("Please Complete This Field Required : File Name.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else
+            {
+                try
                 {
-                    // Open a stream to read the photo
-                    var stream = await photo.OpenReadAsync();
-                    byte[] bytes = Convert.FromBase64String(Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream)));
-                    Doc.UploadFile = Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream));
+                    // Open the photo gallery
+                    var photo = await MediaPicker.Default.PickPhotoAsync();
+
+                    if (photo != null)
+                    {
+                        // Open a stream to read the photo
+                        var stream = await photo.OpenReadAsync();
+                        byte[] bytes = Convert.FromBase64String(Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream)));
+                        model.UploadFile = Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream));
+                        await DoneUploadDoc(model);
+                    }
+                }
+                catch (Exception ex)
+                {
+
                 }
             }
-            catch (Exception ex)
-            {
-
-            }
+            
         }
         #endregion
 
@@ -115,19 +136,32 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                 {
                     string Id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId,"");
                     UserDialogs.Instance.ShowLoading();
-                    var json = await Rep.GetAsync<TravelAgencyCompanyDocResponse>($"{ApiConstants.GetTravelDocApi}{Id}/TravelAgencyCompanyDoc", UserToken);
+                    var json = await Rep.GetAsync<ObservableCollection<TravelAgencyCompanyDocResponse>>($"{ApiConstants.GetTravelDocApi}{Id}/TravelAgencyCompanyDoc", UserToken);
                     UserDialogs.Instance.HideHud();
 
                     if (json != null)
                     {
-                        Doc = json;
+                        if (json.Count == 0)
+                        {
+                            json.Add(new TravelAgencyCompanyDocResponse());
+                            json.Add(new TravelAgencyCompanyDocResponse());
+                            LstDoc = json;
+                        }
+                        else if (json.Count == 1)
+                        {
+                            json.Add(new TravelAgencyCompanyDocResponse());
+                            LstDoc = json;
+                        }
+                        else
+                        {
+                            LstDoc = json;
+                        }
                     }
                 }
             }
         }
 
-        [RelayCommand]
-        async Task DoneUploadDoc()
+        async Task DoneUploadDoc(TravelAgencyCompanyDocResponse model)
         {
             IsBusy = false;
 
@@ -138,7 +172,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                 
 
                 string UserToken = await _service.UserToken();
-                var Postjson = await Rep.PostAsync($"{ApiConstants.PostTravelDocApi}{Id}/TravelAgencyCompanyDoc", Doc!, UserToken);
+                var Postjson = await Rep.PostAsync($"{ApiConstants.PostTravelDocApi}{Id}/TravelAgencyCompanyDoc", model!, UserToken);
 
                 UserDialogs.Instance.HideHud();
             }

@@ -31,9 +31,11 @@
         <Label Text="Pleas Add commercial register or Tax card or Quality certificate" FontAutoScalingEnabled="False" FontSize="16"
                FontAttributes="Bold" HorizontalOptions="CenterAndExpand" TextColor="Red" Margin="0,30,0,0"></Label>
 
-        <VerticalStackLayout Spacing="20">
-            <Entry Text="{Binding NameDoc}" FontSize="14" TextColor="Black" Keyboard="Text" Placeholder="File Name" PlaceholderColor="Gray"></Entry>
-            <StackLayout Orientation="Horizontal" Margin="0,20,0,0" HorizontalOptions="FillAndExpand">
+        <VerticalStackLayout Spacing="5">
+            <Border StrokeShape="RoundRectangle 10">
+                <Entry Text="{Binding NameDoc}" FontSize="14" TextColor="Black" Keyboard="Text" Placeholder="File Name" PlaceholderColor="Gray"></Entry>
+            </Border>
+            <StackLayout Orientation="Horizontal" Margin="0,0,0,0" HorizontalOptions="FillAndExpand">
                 <!--Image-->
                 <StackLayout HorizontalOptions="Start">
                     <Border BackgroundColor="White" Padding="0" VerticalOptions="FillAndExpand">
@@ -49,54 +51,35 @@
                     </Border>
 
                 </StackLayout>
-                <Button x:Name="btnDone" HeightRequest="50" WidthRequest="100"
-                        VerticalOptions="End"
-                        Text="{ex:Translate Name=btnConfirm-NewRequest}" 
-                        FontSize="16"
-                        FontAttributes="Bold"
-                        BackgroundColor="#2fa562" 
-                        TextColor="White"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=DoneUploadDocCommand}" CommandParameter="{Binding}"
-                        Margin="{OnPlatform Android='50,20,50,20',iOS='50,20,50,50'}"
-                        Padding="0" 
-                        CornerRadius="10">
-                    <Button.Triggers>
-                        <DataTrigger TargetType="Button" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
-                            <Setter Property="IsVisible" Value="False"></Setter>
-                        </DataTrigger>
-                        <DataTrigger TargetType="Button" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
-                            <Setter Property="IsVisible" Value="False"></Setter>
-                        </DataTrigger>
-                    </Button.Triggers>
-                </Button>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Margin="5,0,0,0" Spacing="20">
+                    <Image>
+                        <Image.Source>
+                            <FontImageSource FontFamily="FontIcon" Color="DimGray" Glyph="" Size="30"></FontImageSource>
+                        </Image.Source>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=PickPhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image>
+                        <Image.Source>
+                            <FontImageSource FontFamily="FontIcon" Color="DimGray" Glyph="" Size="30"></FontImageSource>
+                        </Image.Source>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=PickPhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image>
+                        <Image.Source>
+                            <FontImageSource FontFamily="FontIconSolid" Color="DimGray" Glyph="" Size="30"></FontImageSource>
+                        </Image.Source>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=TakePhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
             </StackLayout>
             <!--Image Pdf-->
-            <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="5,0,0,0" Spacing="20">
-                <Image>
-                    <Image.Source>
-                        <FontImageSource FontFamily="FontIcon" Color="DimGray" Glyph="" Size="30"></FontImageSource>
-                    </Image.Source>
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=PickPhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
-                    </Image.GestureRecognizers>
-                </Image>
-                <Image>
-                    <Image.Source>
-                        <FontImageSource FontFamily="FontIcon" Color="DimGray" Glyph="" Size="30"></FontImageSource>
-                    </Image.Source>
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=PickPhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
-                    </Image.GestureRecognizers>
-                </Image>
-                <Image>
-                    <Image.Source>
-                        <FontImageSource FontFamily="FontIconSolid" Color="DimGray" Glyph="" Size="30"></FontImageSource>
-                    </Image.Source>
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=TakePhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
-                    </Image.GestureRecognizers>
-                </Image>
-            </StackLayout>
+            
         </VerticalStackLayout>
     </StackLayout>
 </Controls:CustomControl>

@@ -248,6 +248,13 @@ namespace TripBliss.Constants
         public static string PostTravelDocApi = "TravelAgencyCompany/";
         // End Get Tavel Doce Api   
         #endregion
+
+        #region Get User Api
+
+        // Get User Api
+        public static string GetUserApi = "api/ApplicationUser/TravelAgencyCompany/";
+        // End Get User Api 
+        #endregion
     }
 }
 
