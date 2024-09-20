@@ -23,7 +23,9 @@ namespace TripBliss.Models
         public int? ResponseWithDistributorAirFlightId { get; set; }
         public string ImgName { get; set; } = string.Empty;
         public string UrlImgName { get; set; } = string.Empty;
-        public string? Notes { get; set; }
+        public int UserCategory { get; set; }
+        public string? TravelAgencyCompanyName { get; set; } = string.Empty;
+        public string? DistributorCompanyName { get; set; } = string.Empty;
 
         ImageSource? _ImageFile;
         public ImageSource? ImageFile

@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Syncfusion.Maui.ProgressBar;
 using System.Collections.ObjectModel;
 using TripBliss.Helpers;
 
@@ -9,8 +8,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
 {
     public partial class Tr_DocumentsViewModel : BaseViewModel
     {
-        [ObservableProperty]
-        ObservableCollection<StepProgressBarItem> stepProgressItem = new ObservableCollection<StepProgressBarItem>();
 
         #region Servises
         IGenericRepository Rep;
@@ -23,7 +20,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         {
             Rep = generic;
             _service = service;
-            AddSteps();
         }
         #endregion
 
@@ -35,11 +31,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         } 
         #endregion
 
-        void AddSteps()
-        {
-            StepProgressItem.Add(new StepProgressBarItem() { PrimaryText = "Tax card" });
-            StepProgressItem.Add(new StepProgressBarItem() { PrimaryText = "Commercial license" });
-            StepProgressItem.Add(new StepProgressBarItem() { PrimaryText = "commercial register" });
-        }
+
     }
 }
