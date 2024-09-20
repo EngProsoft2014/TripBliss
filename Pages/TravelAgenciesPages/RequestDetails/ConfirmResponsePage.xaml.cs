@@ -4,9 +4,9 @@ using TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest;
 using TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails;
 namespace TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 
-public partial class NewRequestPage : Controls.CustomControl
+public partial class ConfirmResponsePage : Controls.CustomControl
 {
-	public NewRequestPage(Tr_D_NewRequestViewModel model , IGenericRepository generic)
+	public ConfirmResponsePage(Tr_D_ConfirmResponsePageViewModel model , IGenericRepository generic)
 	{
 		InitializeComponent();
         BindingContext = model;

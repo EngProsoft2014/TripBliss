@@ -16,13 +16,20 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
 {
     partial class Tr_MoreViewModel : BaseViewModel
     {
+        #region Servises
         IGenericRepository Rep;
         readonly Services.Data.ServicesService _service;
+        #endregion
+
+        #region Cons
         public Tr_MoreViewModel(IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
         }
+        #endregion
+
+        #region RelayCommand
 
         [RelayCommand]
         async Task SelectLanguage()
@@ -34,7 +41,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         [Obsolete]
         Task SelectExit()
         {
-            Action action = async() =>
+            Action action = async () =>
             {
                 Preferences.Default.Clear();
                 await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service)));
@@ -42,16 +49,16 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             Controls.StaticMember.ShowSnackBar("Do you want to Logout?", Controls.StaticMember.SnackBarColor, Controls.StaticMember.SnackBarTextColor, action);
             return Task.CompletedTask;
         }
+        [RelayCommand]
+        async Task DocumentClick()
+        {
+            var vm = new Tr_DocumentsViewModel(Rep,_service);
+            var page = new Tr_DocumentsPage(vm);
+            page.BindingContext = vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
+        }
+        #endregion
 
 
-        //[RelayCommand]
-        //async Task GuestClick()
-        //{
-        //    var vm = new GuestsViewModel(Rep,_service);
-            
-        //    var page = new Tr_G_GuestsPage();
-        //    page.BindingContext = vm;
-        //    await App.Current!.MainPage!.Navigation.PushAsync(page);
-        //}
     }
 }

@@ -610,10 +610,14 @@
                                     <HorizontalStackLayout Spacing="8">
                                         <Image WidthRequest="20" HeightRequest="20">
                                             <Image.Source>
-                                                <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
+                                                <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
                                             </Image.Source>
+                                            
                                         </Image>
-                                        <Label Text="{ex:Translate Name=lblFavorites-More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                        <Label Text="{ex:Translate Name=lblDocuments-MorePage}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                        <HorizontalStackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding DocumentClickCommand}"></TapGestureRecognizer>
+                                        </HorizontalStackLayout.GestureRecognizers>
                                     </HorizontalStackLayout>
                                 </VerticalStackLayout>
                                 <!--Settings-->

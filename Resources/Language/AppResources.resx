@@ -471,4 +471,7 @@
   <data name="btnDeleteAll-AttatchmentPage" xml:space="preserve">
     <value>Delete All</value>
   </data>
+  <data name="lblDocuments-MorePage" xml:space="preserve">
+    <value>Documents</value>
+  </data>
 </root>

@@ -79,7 +79,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                     if (!string.IsNullOrEmpty(UserToken))
                     {
                         UserDialogs.Instance.ShowLoading();
-                        var json = await Rep.GetAsync<ObservableCollection<ResponseWithDistributorVisaDetailsResponse>>($"{ApiConstants.GetOrPostVisaImageApi}{Model.ResponseWithDistributorId}/{Model.Id}", UserToken);
+                        var json = await Rep.GetAsync<ObservableCollection<ResponseWithDistributorVisaDetailsResponse>>($"{ApiConstants.GetVisaImageApi}{Model.ResponseWithDistributorId}/{Model.Id}", UserToken);
                         UserDialogs.Instance.HideHud();
 
                         if (json != null)
@@ -138,31 +138,6 @@ namespace TripBliss.ViewModels.ActivateViewModels
         }
 
 
-
-        public async Task GetAllAirFlight(int DisId, int Id)
-        {
-            IsBusy = false;
-
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            {
-                string id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
-                string UserToken = await _service.UserToken();
-                if (!string.IsNullOrEmpty(UserToken))
-                {
-                    UserDialogs.Instance.ShowLoading();
-                    var json = await Rep.GetAsync<ResponseWithDistributorVisaDetailsResponse>(ApiConstants.AirFlightActive + $"{DisId}/{Id}", UserToken);
-                    UserDialogs.Instance.HideHud();
-                    if (json != null)
-                    {
-                        ActiveVisa = json;
-                    }
-                }
-
-            }
-
-            IsBusy = true;
-        }
-
         [RelayCommand]
         async Task DoneUploadPictures()
         {
@@ -185,7 +160,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                 }
 
                 string UserToken = await _service.UserToken();
-                string Postjson = await Rep.PostMultiPicAsync($"{ApiConstants.GetOrPostVisaImageApi}{Model.ResponseWithDistributorId}/{Model.Id}", LstVisaRequest, UserToken);
+                string Postjson = await Rep.PostMultiPicAsync($"{ApiConstants.PostVisaImageApi}{Model.ResponseWithDistributorId}/{Model.Id}", LstVisaRequest, UserToken);
 
                 UserDialogs.Instance.HideHud();
             }
@@ -214,7 +189,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                         IsBusy = false;
                         UserDialogs.Instance.ShowLoading();
                         string UserToken = await _service.UserToken();
-                        var json = await Rep.PostAsync<string>(string.Format($"{ApiConstants.DeleteVisaAttachmentsApi}{Model.Id}/{model.Id}"), null, UserToken);
+                        var json = await Rep.PostAsync<string>(string.Format($"{ApiConstants.DeleteVisaImageApi}{Model.Id}/{model.Id}"), null, UserToken);
                         UserDialogs.Instance.HideHud();
                         if (json == null)
                         {
@@ -254,7 +229,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                             {
                                 UserDialogs.Instance.ShowLoading();
                                 string UserToken = await _service.UserToken();
-                                var json = await Rep.PostAsync<string>(string.Format($"{ApiConstants.DeleteVisaAttachmentsApi}{Model.Id}"), null, UserToken);
+                                var json = await Rep.PostAsync<string>(string.Format($"{ApiConstants.DeleteMultiVisaImageApi}{Model.Id}"), null, UserToken);
                                 UserDialogs.Instance.HideHud();
                                 if (json == null)
                                 {

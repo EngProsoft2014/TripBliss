@@ -171,8 +171,8 @@
 	  <Compile Update="Pages\TravelAgenciesPages\RequestDetails\HotelServicePage.xaml.cs">
 	    <DependentUpon>HotelServicePage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\TravelAgenciesPages\RequestDetails\NewRequestPage.xaml.cs">
-	    <DependentUpon>%(Filename)</DependentUpon>
+	  <Compile Update="Pages\TravelAgenciesPages\RequestDetails\ConfirmResponsePage.xaml.cs">
+	    <DependentUpon>ConfirmResponsePage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\TravelAgenciesPages\RequestDetails\RequestDetailsPage.xaml.cs">
 	    <DependentUpon>RequestDetailsPage.xaml</DependentUpon>
@@ -294,7 +294,7 @@
 	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\HotelServiceModelsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\NewRequestPage.xaml">
+	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\ConfirmResponsePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\PaymentPage.xaml">
@@ -310,6 +310,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\VisaServicePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\TravelAgenciesPages\Tr_DocumentsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

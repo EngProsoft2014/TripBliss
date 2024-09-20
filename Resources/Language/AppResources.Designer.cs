@@ -565,6 +565,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Documents.
+        /// </summary>
+        internal static string lblDocuments_MorePage {
+            get {
+                return ResourceManager.GetString("lblDocuments-MorePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ETA.
         /// </summary>
         internal static string lblETA_AirService {

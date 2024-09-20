@@ -84,7 +84,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                     if (!string.IsNullOrEmpty(UserToken))
                     {
                         UserDialogs.Instance.ShowLoading();
-                        var json = await Rep.GetAsync<ObservableCollection<ResponseWithDistributorAirFlightDetailsResponse>>($"{ApiConstants.AirFlightImageApi}{Model.ResponseWithDistributorId}/{Model.Id}", UserToken);
+                        var json = await Rep.GetAsync<ObservableCollection<ResponseWithDistributorAirFlightDetailsResponse>>($"{ApiConstants.GetAirFlightImageApi}{Model.ResponseWithDistributorId}/{Model.Id}", UserToken);
                         UserDialogs.Instance.HideHud();
 
                         if (json != null)
@@ -144,30 +144,6 @@ namespace TripBliss.ViewModels.ActivateViewModels
 
 
 
-        public async Task GetAllAirFlight(int DisId, int Id)
-        {
-            IsBusy = false;
-
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            {
-                string id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
-                string UserToken = await _service.UserToken();
-                if (!string.IsNullOrEmpty(UserToken))
-                {
-                    UserDialogs.Instance.ShowLoading();
-                    var json = await Rep.GetAsync<ResponseWithDistributorAirFlightDetailsResponse>(ApiConstants.AirFlightActive + $"{DisId}/{Id}", UserToken);
-                    UserDialogs.Instance.HideHud();
-                    if (json != null)
-                    {
-                        ActiveAirFlight = json;
-                    }
-                }
-
-            }
-
-            IsBusy = true;
-        }
-
         [RelayCommand]
         async Task DoneUploadPictures()
         {
@@ -190,7 +166,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                 }
 
                 string UserToken = await _service.UserToken();
-                string Postjson = await Rep.PostMultiPicAsync($"{ApiConstants.AirFlightImageApi}{Model.ResponseWithDistributorId}/{Model.Id}", LstAirFltRequest, UserToken);
+                string Postjson = await Rep.PostMultiPicAsync($"{ApiConstants.PostAirFlightImageApi}{Model.ResponseWithDistributorId}/{Model.Id}", LstAirFltRequest, UserToken);
 
                 UserDialogs.Instance.HideHud();
             }
@@ -219,7 +195,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                         IsBusy = false;          
                         UserDialogs.Instance.ShowLoading();
                         string UserToken = await _service.UserToken();
-                        var json = await Rep.PostAsync<string>(string.Format($"{ApiConstants.AirFlightAttachmentsApi}{Model.Id}/{model.Id}"),null, UserToken);
+                        var json = await Rep.PostAsync<string>(string.Format($"{ApiConstants.DeleteAirFlightImageApi}{Model.Id}/{model.Id}"),null, UserToken);
                         UserDialogs.Instance.HideHud();
                         if (json == null)
                         {
@@ -259,7 +235,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                             {
                                 UserDialogs.Instance.ShowLoading();
                                 string UserToken = await _service.UserToken();
-                                var json = await Rep.PostAsync<string>(string.Format($"{ApiConstants.AirFlightAttachmentsApi}{Model.Id}"), null, UserToken);
+                                var json = await Rep.PostAsync<string>(string.Format($"{ApiConstants.DeleteAllAirFlightImageApi}{Model.Id}"), null, UserToken);
                                 UserDialogs.Instance.HideHud();
                                 if (json == null)
                                 {

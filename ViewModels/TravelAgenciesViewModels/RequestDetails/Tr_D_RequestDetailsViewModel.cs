@@ -307,7 +307,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         async Task Selection(ResponseWithDistributorResponse model)
         {
-            await App.Current!.MainPage!.Navigation.PushAsync(new NewRequestPage(new Tr_D_NewRequestViewModel(model,Rep,_service),Rep));
+            await App.Current!.MainPage!.Navigation.PushAsync(new ConfirmResponsePage(new Tr_D_ConfirmResponsePageViewModel(model,Rep,_service),Rep));
         }
         [RelayCommand]
         async Task BackButton()

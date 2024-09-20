@@ -189,27 +189,51 @@ namespace TripBliss.Constants
         // End Get All Guests Details Api   
         #endregion
 
-        #region AirFlight Attachments
-        // AirFlight Attachments Api
-        public static string AirFlightAttachmentsApi = "api/ResponseWithDistributorAirFlightDetails/ResponseWithDistributorAirFlight/";
-        // End AirFlight Attachments Api   
+        #region Delete  AirFlight Image
+        // Delete  AirFlight Image Api
+        public static string DeleteAirFlightImageApi = "api/ResponseWithDistributorAirFlightDetails/ResponseWithDistributorAirFlight/";
+        // End Delete  AirFlight Image Api   
+        #endregion
+
+        #region Delete All AirFlight Image
+        // Delete All AirFlight Image Api
+        public static string DeleteAllAirFlightImageApi = "api/ResponseWithDistributorAirFlightDetails/ResponseWithDistributorAirFlight/";
+        // End Delete All AirFlight Image Api   
         #endregion
 
         #region Get AirFlight Image
         // AirFlight Attachments Api
-        public static string AirFlightImageApi = "api/ResponseWithDistributorAirFlightDetails/ResponseWithDistributor/";
+        public static string GetAirFlightImageApi = "api/ResponseWithDistributorAirFlightDetails/ResponseWithDistributor/";
         // End Get AirFlight Image Api   
         #endregion
 
-        #region Visa Attachments
-        // Visa Attachments Api
-        public static string DeleteVisaAttachmentsApi = "api/ResponseWithDistributorVisaDetails/ResponseWithDistributorVisa/";
-        // End Visa Attachments Api   
+        #region Post AirFlight Image
+        // Post AirFlight Image Api
+        public static string PostAirFlightImageApi = "api/ResponseWithDistributorAirFlightDetails/ResponseWithDistributor/";
+        // End Post AirFlight Image Api   
         #endregion
 
-        #region Get or Post Visa Image
+        #region Delete Visa Image
+        //Delete Visa Image Api
+        public static string DeleteVisaImageApi = "api/ResponseWithDistributorVisaDetails/ResponseWithDistributorVisa/";
+        // End Delete Visa Image Api   
+        #endregion
+
+        #region Delete All Visa Image
+        // Delete All Visa Image Api
+        public static string DeleteMultiVisaImageApi = "api/ResponseWithDistributorVisaDetails/ResponseWithDistributorVisa/";
+        // End Delete All Visa Image Api   
+        #endregion
+
+        #region Get  Visa Image
         // Visa Attachments Api
-        public static string GetOrPostVisaImageApi = "api/ResponseWithDistributorVisaDetails/ResponseWithDistributor/";
+        public static string GetVisaImageApi = "api/ResponseWithDistributorVisaDetails/ResponseWithDistributor/";
+        // End Get Visa Image Api   
+        #endregion
+
+        #region Post Visa Image
+        // Visa Attachments Api
+        public static string PostVisaImageApi = "api/ResponseWithDistributorVisaDetails/ResponseWithDistributor/";
         // End Get Visa Image Api   
         #endregion
     }

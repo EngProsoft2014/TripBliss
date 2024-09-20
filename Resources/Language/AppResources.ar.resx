@@ -468,7 +468,10 @@
   <data name="hdrAddPhoto-attachmentPopup" xml:space="preserve">
     <value>أضف صورة</value>
   </data>
-  <data name="btnDelete All-AttatchmentPage" xml:space="preserve">
+  <data name="btnDeleteAll-AttatchmentPage" xml:space="preserve">
     <value>حذف الكل</value>
+  </data>
+  <data name="lblDocuments-MorePage" xml:space="preserve">
+    <value>وثائق</value>
   </data>
 </root>

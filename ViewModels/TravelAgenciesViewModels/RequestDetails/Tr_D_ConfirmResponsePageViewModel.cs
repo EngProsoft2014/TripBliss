@@ -19,7 +19,7 @@ using TripBliss.Pages.TravelAgenciesPages;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {
-    public partial class Tr_D_NewRequestViewModel : BaseViewModel
+    public partial class Tr_D_ConfirmResponsePageViewModel : BaseViewModel
     {
 
 
@@ -35,7 +35,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         #endregion
 
         #region Cons
-        public Tr_D_NewRequestViewModel(ResponseWithDistributorResponse distributorResponse, IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_D_ConfirmResponsePageViewModel(ResponseWithDistributorResponse distributorResponse, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
