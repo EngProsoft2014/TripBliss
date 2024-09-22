@@ -63,18 +63,18 @@
                                                 <StackLayout Orientation="Horizontal">
                                                     <VerticalStackLayout Padding="10" Spacing="5">
                                                         <Label Text="{Binding RequestName}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
-                                                        <Label Text="{Binding ChoosenServices}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                                        <Label Text="{Binding ChoosenServices}" FontAutoScalingEnabled="False" FontSize="12" TextColor="#ff7700" Margin="0,3,0,0"></Label>
                                                         <Label Margin="0,3,0,0" FontAutoScalingEnabled="False">
                                                             <Label.FormattedText>
                                                                 <FormattedString>
                                                                     <Span Text="Date : " FontSize="12" TextColor="#333" ></Span>
-                                                                    <Span Text="{Binding CreateDate,StringFormat='{0:MM-dd-yyyy}'}" FontSize="11" TextColor="Blue" ></Span>
+                                                                    <Span Text="{Binding CreateDate,StringFormat='{0:MM-dd-yyyy}'}" FontSize="11" TextColor="#059ce3" ></Span>
                                                                 </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>
                                                     </VerticalStackLayout>
                                                     <VerticalStackLayout VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand"
-                                                                         Margin="0,0,10,20" Spacing="1">
+                                                                         Margin="10,0,10,10" Spacing="1">
                                                         <Label Text="{Binding ResponseWithDistributorCount , StringFormat='All Distributors {0}'}" 
                                                                FontSize="10" TextColor="Gray" FontAutoScalingEnabled="False"></Label>
                                                         <Label Text="{Binding TotalPriceDisAcceptCount , StringFormat='Active Distributors {0}'}" 
@@ -151,28 +151,31 @@
                                                                     <Border StrokeShape="RoundRectangle 20" Margin="0,10">
                                                                         <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
                                                                             <VerticalStackLayout Padding="10" Spacing="5">
-                                                                                <Label Text="{Binding CompanyName}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+                                                                                <HorizontalStackLayout Spacing="15">
+                                                                                    <Label Text="{Binding CompanyName}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+                                                                                    <HorizontalStackLayout Spacing="5">
+                                                                                        <Image VerticalOptions="Center" TranslationY="-2">
+                                                                                            <Image.Source>
+                                                                                                <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gold" Size="13"></FontImageSource>
+                                                                                            </Image.Source>
+                                                                                        </Image>
+                                                                                        <Label Text="{Binding Review}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"
+                                                                                                VerticalOptions="CenterAndExpand" VerticalTextAlignment="End"></Label>
+                                                                                    </HorizontalStackLayout>
+                                                                                </HorizontalStackLayout>
                                                                                 <Label Text="{Binding Phone}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Gray"></Label>
-                                                                                <Label Text="{Binding Services}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                                                                <Label Text="{Binding Services}" FontAutoScalingEnabled="False" FontSize="12" TextColor="#ff7700" Margin="0,3,0,0"></Label>
                                                                                 <Label Margin="0,3,0,0" FontAutoScalingEnabled="False">
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
-                                                                                            <Span Text="Address : " FontSize="12" TextColor="DeepSkyBlue" ></Span>
-                                                                                            <Span Text="{Binding Address}" FontSize="12" TextColor="DeepSkyBlue" ></Span>
+                                                                                            <Span Text="Address : " FontSize="12" TextColor="#059ce3" ></Span>
+                                                                                            <Span Text="{Binding Address}" FontSize="12" TextColor="#059ce3" ></Span>
                                                                                         </FormattedString>
                                                                                     </Label.FormattedText>
                                                                                 </Label>
                                                                             </VerticalStackLayout>
-                                                                            <VerticalStackLayout Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="15">
-                                                                                <HorizontalStackLayout Spacing="5">
-                                                                                    <Label Text="{Binding Review}" FontAutoScalingEnabled="False" FontSize="14" TextColor="Black" FontAttributes="Bold"
-                                                                                           VerticalOptions="StartAndExpand"></Label>
-                                                                                    <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
-                                                                                        <Image.Source>
-                                                                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gold"></FontImageSource>
-                                                                                        </Image.Source>
-                                                                                    </Image>
-                                                                                </HorizontalStackLayout>
+                                                                            <VerticalStackLayout Margin="20,10,20,0" HorizontalOptions="EndAndExpand" Spacing="15">
+                                                                                
                                                                                 <Image VerticalOptions="StartAndExpand">
                                                                                     <Image.Source>
                                                                                         <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray" Size="20"></FontImageSource>
@@ -228,28 +231,32 @@
                                                                     <Border StrokeShape="RoundRectangle 20" Margin="0,10">
                                                                         <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
                                                                             <VerticalStackLayout Padding="10" Spacing="5">
-                                                                                <Label Text="{Binding DistributorCompany.CompanyName}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+
+                                                                                <HorizontalStackLayout Spacing="15">
+                                                                                    <Label Text="{Binding DistributorCompany.CompanyName}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+                                                                                    <HorizontalStackLayout Spacing="5">
+                                                                                        <Image VerticalOptions="Center" TranslationY="-2">
+                                                                                            <Image.Source>
+                                                                                                <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gold" Size="13"></FontImageSource>
+                                                                                            </Image.Source>
+                                                                                        </Image>
+                                                                                        <Label Text="{Binding DistributorCompany.Review}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"
+                                                                                                 VerticalOptions="CenterAndExpand" VerticalTextAlignment="End"></Label>
+                                                                                    </HorizontalStackLayout>
+                                                                                </HorizontalStackLayout>
                                                                                 <Label Text="{Binding DistributorCompany.Phone}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Gray"></Label>
-                                                                                <Label Text="{Binding Services}" FontSize="12" FontAutoScalingEnabled="False" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                                                                <Label Text="{Binding Services}" FontSize="12" FontAutoScalingEnabled="False" TextColor="#ff7700" Margin="0,3,0,0"></Label>
                                                                                 <Label Margin="0,3,0,0" FontAutoScalingEnabled="False">
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
-                                                                                            <Span Text="Address : " FontSize="12" TextColor="DeepSkyBlue" ></Span>
-                                                                                            <Span Text="{Binding DistributorCompany.Address}" FontSize="12" TextColor="DeepSkyBlue" ></Span>
+                                                                                            <Span Text="Address : " FontSize="12" TextColor="#059ce3" ></Span>
+                                                                                            <Span Text="{Binding DistributorCompany.Address}" FontSize="12" TextColor="#059ce3" ></Span>
                                                                                         </FormattedString>
                                                                                     </Label.FormattedText>
                                                                                 </Label>
                                                                             </VerticalStackLayout>
-                                                                            <VerticalStackLayout Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="15">
-                                                                                <HorizontalStackLayout Spacing="5">
-                                                                                    <Label Text="{Binding DistributorCompany.Review}" FontAutoScalingEnabled="False" FontSize="14" TextColor="Black" FontAttributes="Bold"
-                                                                                             VerticalOptions="StartAndExpand"></Label>
-                                                                                    <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
-                                                                                        <Image.Source>
-                                                                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gold"></FontImageSource>
-                                                                                        </Image.Source>
-                                                                                    </Image>
-                                                                                </HorizontalStackLayout>
+                                                                            <VerticalStackLayout Margin="20,10,20,0" HorizontalOptions="EndAndExpand" Spacing="15">
+
                                                                                 <!--<ImageButton WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand" 
                                                                                              Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=HeartClickedCommand}" CommandParameter="{Binding}">
                                                                                     <ImageButton.Source>
