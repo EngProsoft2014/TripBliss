@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using Mopups.Services;
 using System.Collections.ObjectModel;
+using System.Text;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
@@ -26,7 +27,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         {
             Rep = generic;
             _service = service;
-            //Init();
+            Init();
         }
         #endregion
 
@@ -40,9 +41,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         [RelayCommand]
         async Task OpenFullScreenImage(TravelAgencyCompanyDocResponse model)
         {
+            ImageSource sou = ImageSource.FromUri(new Uri(model.UrlUploadFile!)); ;    
             IsBusy = false;
             UserDialogs.Instance.ShowLoading();
-            await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(model.UploadFile!));
+            await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(sou));
             UserDialogs.Instance.HideHud();
             IsBusy = true;
         }
@@ -68,9 +70,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                         {
                             // Get the file path to save it
                             var stream = await photo.OpenReadAsync();
-                            byte[] bytes = Convert.FromBase64String(Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream)));
-
-                            model.UploadFile = Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream));
+                            model.ImgFile = Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream));
+                            model.Extension = Path.GetExtension(photo.FullPath);
                             await DoneUploadDoc(model);
 
                         }
@@ -106,8 +107,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                     {
                         // Open a stream to read the photo
                         var stream = await photo.OpenReadAsync();
-                        byte[] bytes = Convert.FromBase64String(Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream)));
-                        model.UploadFile = Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream));
+                        model.ImgFile = Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream));
+                        model.Extension = Path.GetExtension(photo.FullPath);
                         await DoneUploadDoc(model);
                     }
                 }
@@ -118,9 +119,41 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             }
             
         }
+        [RelayCommand]
+        private async Task PickPdf(TravelAgencyCompanyDocResponse model)
+        {
+            if (string.IsNullOrEmpty(model.NameDoc))
+            {
+                var toast = Toast.Make("Please Complete This Field Required : File Name.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else
+            {
+                try
+                {
+                    var result = await FilePicker.Default.PickAsync(new PickOptions
+                    {
+                        PickerTitle = "Select a PDF file",
+                        FileTypes = FilePickerFileType.Pdf
+                    });
+
+                    if (result != null && result.FileName.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
+                    {
+                        var stream = await result.OpenReadAsync();
+                        model.ImgFile = Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream));
+                        await DoneUploadDoc(model);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    await App.Current!.MainPage!.DisplayAlert("Info", $"Error picking file: {ex.Message}", "OK");
+                }
+            }
+            
+        }
         #endregion
 
-
+        #region Methods
         async void Init()
         {
             await GetDocs();
@@ -134,7 +167,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                 string UserToken = await _service.UserToken();
                 if (!string.IsNullOrEmpty(UserToken))
                 {
-                    string Id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId,"");
+                    string Id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
                     UserDialogs.Instance.ShowLoading();
                     var json = await Rep.GetAsync<ObservableCollection<TravelAgencyCompanyDocResponse>>($"{ApiConstants.GetTravelDocApi}{Id}/TravelAgencyCompanyDoc", UserToken);
                     UserDialogs.Instance.HideHud();
@@ -149,12 +182,17 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                         }
                         else if (json.Count == 1)
                         {
+                            json[0].UrlUploadFile = $"{Helpers.Utility.ServerUrl}{json[0].UrlUploadFile}";
                             json.Add(new TravelAgencyCompanyDocResponse());
                             LstDoc = json;
                         }
                         else
                         {
                             LstDoc = json;
+                            foreach (var item in LstDoc)
+                            {
+                                item.UrlUploadFile = $"{Helpers.Utility.ServerUrl}{item.UrlUploadFile}";
+                            }
                         }
                     }
                 }
@@ -169,15 +207,19 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             {
                 UserDialogs.Instance.ShowLoading();
                 string Id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
-                
+
 
                 string UserToken = await _service.UserToken();
-                var Postjson = await Rep.PostAsync($"{ApiConstants.PostTravelDocApi}{Id}/TravelAgencyCompanyDoc", model!, UserToken);
-
+                TravelAgencyCompanyDocResponse Postjson = await Rep.PostAsync($"{ApiConstants.PostTravelDocApi}{Id}/TravelAgencyCompanyDoc", model!, UserToken);
+                if (Postjson!.Id != null || Postjson.Id != 0)
+                {
+                    await GetDocs();
+                }
                 UserDialogs.Instance.HideHud();
             }
 
             IsBusy = true;
-        }
+        } 
+        #endregion
     }
 }

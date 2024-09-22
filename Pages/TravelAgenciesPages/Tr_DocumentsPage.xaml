@@ -31,55 +31,74 @@
         <Label Text="Pleas Add commercial register or Tax card or Quality certificate" FontAutoScalingEnabled="False" FontSize="16"
                FontAttributes="Bold" HorizontalOptions="CenterAndExpand" TextColor="Red" Margin="0,30,0,0"></Label>
 
-        <VerticalStackLayout Spacing="5">
-            <Border StrokeShape="RoundRectangle 10">
-                <Entry Text="{Binding NameDoc}" FontSize="14" TextColor="Black" Keyboard="Text" Placeholder="File Name" PlaceholderColor="Gray"></Entry>
-            </Border>
-            <StackLayout Orientation="Horizontal" Margin="0,0,0,0" HorizontalOptions="FillAndExpand">
-                <!--Image-->
-                <StackLayout HorizontalOptions="Start">
-                    <Border BackgroundColor="White" Padding="0" VerticalOptions="FillAndExpand">
-                        <Image x:Name="PicSch" Source="{Binding ImageFile}" WidthRequest="130" HeightRequest="90" Aspect="Fill">
-
-                        </Image>
-                        <Border.StrokeShape>
-                            <RoundRectangle Stroke="LightGray" StrokeThickness="1" CornerRadius="10"></RoundRectangle>
-                        </Border.StrokeShape>
-                        <Border.Shadow>
-                            <Shadow Offset="1,2" Brush="Black" Radius="1" Opacity="1"></Shadow>
-                        </Border.Shadow>
-                    </Border>
-
-                </StackLayout>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Margin="5,0,0,0" Spacing="20">
-                    <Image>
-                        <Image.Source>
-                            <FontImageSource FontFamily="FontIcon" Color="DimGray" Glyph="" Size="30"></FontImageSource>
-                        </Image.Source>
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=PickPhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
-                        </Image.GestureRecognizers>
-                    </Image>
-                    <Image>
-                        <Image.Source>
-                            <FontImageSource FontFamily="FontIcon" Color="DimGray" Glyph="" Size="30"></FontImageSource>
-                        </Image.Source>
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=PickPhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
-                        </Image.GestureRecognizers>
-                    </Image>
-                    <Image>
-                        <Image.Source>
-                            <FontImageSource FontFamily="FontIconSolid" Color="DimGray" Glyph="" Size="30"></FontImageSource>
-                        </Image.Source>
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=TakePhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
-                        </Image.GestureRecognizers>
-                    </Image>
-                </StackLayout>
-            </StackLayout>
-            <!--Image Pdf-->
-            
-        </VerticalStackLayout>
+        <CollectionView ItemsSource="{Binding LstDoc}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="20"></GridItemsLayout>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Spacing="5">
+                        <Border StrokeShape="RoundRectangle 10">
+                            <Entry Text="{Binding NameDoc}" FontSize="14" TextColor="Black" Keyboard="Text" Placeholder="File Name" PlaceholderColor="Gray"></Entry>
+                        </Border>
+                        <StackLayout Orientation="Horizontal" Margin="0,0,0,0" HorizontalOptions="FillAndExpand">
+                            <!--Image-->
+                            <StackLayout HorizontalOptions="Start">
+                                <Border BackgroundColor="White" Padding="0" VerticalOptions="FillAndExpand">
+                                    <Image x:Name="PicSch" Source="{Binding UrlUploadFile}" WidthRequest="130" HeightRequest="90" Aspect="Fill">
+                                        <Image.Triggers>
+                                            <DataTrigger TargetType="Image" Binding="{Binding Extension}" Value=".pdf">
+                                                <Setter Property="Source">
+                                                    <Setter.Value>
+                                                        <FontImageSource Glyph="" FontFamily="FontIconSolid" Size="20"></FontImageSource>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+                                                <Setter Property="HorizontalOptions" Value="CenterAndExpand"></Setter>
+                                            </DataTrigger>
+                                        </Image.Triggers>
+                                    </Image>
+                                    <Border.StrokeShape>
+                                        <RoundRectangle Stroke="LightGray" StrokeThickness="1" CornerRadius="10"></RoundRectangle>
+                                    </Border.StrokeShape>
+                                    <Border.Shadow>
+                                        <Shadow Offset="1,2" Brush="Black" Radius="1" Opacity="1"></Shadow>
+                                    </Border.Shadow>
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=OpenFullScreenImageCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                    </Border.GestureRecognizers>
+                                </Border>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Margin="5,0,0,0" Spacing="20">
+                                <Image>
+                                    <Image.Source>
+                                        <FontImageSource FontFamily="FontIcon" Color="DimGray" Glyph="" Size="30"></FontImageSource>
+                                    </Image.Source>
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=PickPdfCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image>
+                                    <Image.Source>
+                                        <FontImageSource FontFamily="FontIcon" Color="DimGray" Glyph="" Size="30"></FontImageSource>
+                                    </Image.Source>
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=PickPhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image>
+                                    <Image.Source>
+                                        <FontImageSource FontFamily="FontIconSolid" Color="DimGray" Glyph="" Size="30"></FontImageSource>
+                                    </Image.Source>
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=TakePhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+                        </StackLayout>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </StackLayout>
 </Controls:CustomControl>
