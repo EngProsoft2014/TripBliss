@@ -11,8 +11,10 @@
         //public string? Notes { get; set; }
         //public IFormFile FileDetails { get; set; } = default!;
 
+        public int Id { get; set; }
         public string? NameDoc { get; set; }
         public string? Notes { get; set; }
-        public byte[] FileDetails { get; set; } = default!;
+        public byte[]? ImgFile { get; set; } = default!;
+        public string? Extension { get; set; }
     }
 }
