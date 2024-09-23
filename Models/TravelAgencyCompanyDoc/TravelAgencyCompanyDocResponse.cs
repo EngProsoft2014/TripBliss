@@ -11,5 +11,6 @@
         public string? Extension { get; set; }
         public string? UploadFile { get; set; }
         public string UrlUploadFile { get; set; } = string.Empty;
+        public bool? UploadFileModify { get; set; }
     }
 }

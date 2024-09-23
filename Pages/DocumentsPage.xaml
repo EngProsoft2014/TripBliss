@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              xmlns:ex="clr-namespace:TripBliss.Extensions"
-             xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels"
-             x:Class="TripBliss.Pages.TravelAgenciesPages.Tr_DocumentsPage"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels"
+             x:Class="TripBliss.Pages.DocumentsPage"
              Title="Tr_DocumentsPage"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="White">
+             BackgroundColor="White"
+             IsEnabled="{Binding IsBusy}">
     <StackLayout Orientation="Vertical" Margin="20" Spacing="10">
         <StackLayout Orientation="Horizontal">
             <Image VerticalOptions="CenterAndExpand">
@@ -65,7 +66,7 @@
                                         <Shadow Offset="1,2" Brush="Black" Radius="1" Opacity="1"></Shadow>
                                     </Border.Shadow>
                                     <Border.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=OpenFullScreenImageCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:DocumentsViewModel}}, Path=OpenFullScreenImageCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                     </Border.GestureRecognizers>
                                 </Border>
                             </StackLayout>
@@ -75,7 +76,7 @@
                                         <FontImageSource FontFamily="FontIcon" Color="DimGray" Glyph="" Size="30"></FontImageSource>
                                     </Image.Source>
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=PickPdfCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:DocumentsViewModel}}, Path=PickPdfCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                     </Image.GestureRecognizers>
                                 </Image>
                                 <Image>
@@ -83,7 +84,7 @@
                                         <FontImageSource FontFamily="FontIcon" Color="DimGray" Glyph="" Size="30"></FontImageSource>
                                     </Image.Source>
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=PickPhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:DocumentsViewModel}}, Path=PickPhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                     </Image.GestureRecognizers>
                                 </Image>
                                 <Image>
@@ -91,7 +92,7 @@
                                         <FontImageSource FontFamily="FontIconSolid" Color="DimGray" Glyph="" Size="30"></FontImageSource>
                                     </Image.Source>
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_DocumentsViewModel}}, Path=TakePhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:DocumentsViewModel}}, Path=TakePhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                     </Image.GestureRecognizers>
                                 </Image>
                             </StackLayout>

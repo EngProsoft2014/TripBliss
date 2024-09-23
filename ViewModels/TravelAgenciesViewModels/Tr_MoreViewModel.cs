@@ -1,17 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TripBliss.Helpers;
 using TripBliss.Pages;
 using TripBliss.Pages.MainPopups;
-using TripBliss.Pages.TravelAgenciesPages;
-using TripBliss.Pages.TravelAgenciesPages.Guests;
 using TripBliss.Pages.TravelAgenciesPages.Users;
-using TripBliss.ViewModels.TravelAgenciesViewModels.Guests;
 using TripBliss.ViewModels.TravelAgenciesViewModels.Users;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels
@@ -54,8 +46,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         [RelayCommand]
         async Task DocumentClick()
         {
-            var vm = new Tr_DocumentsViewModel(Rep,_service);
-            var page = new Tr_DocumentsPage(vm);
+            var vm = new DocumentsViewModel(Rep,_service);
+            var page = new DocumentsPage(vm);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
         }

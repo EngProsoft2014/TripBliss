@@ -118,7 +118,10 @@
 		<PackageReference Include="Polly" Version="8.4.1" />
 		<PackageReference Include="Syncfusion.Maui.DataGrid" Version="26.2.8" />
 		<PackageReference Include="Syncfusion.Maui.Inputs" Version="26.2.8" />
+		<PackageReference Include="Syncfusion.Maui.PdfViewer" Version="24.2.9" />
 		<PackageReference Include="Syncfusion.Maui.TabView" Version="24.2.9" />
+		<PackageReference Include="Syncfusion.Pdf.NET" Version="27.1.48" />
+		<PackageReference Include="Vitvov.Maui.PDFView" Version="1.0.5" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -182,6 +185,9 @@
 	  </Compile>
 	  <Compile Update="Pages\TravelAgenciesPages\RequestDetails\VisaServicePage.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\DocumentsPage.xaml.cs">
+	    <DependentUpon>DocumentsPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Resources\Language\AppResources.Designer.cs">
 	    <DesignTime>True</DesignTime>
@@ -249,6 +255,9 @@
 	  <MauiXaml Update="Pages\MainPopups\LanguagePopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\PdfViewerPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\TravelAgenciesPages\CreateRequest\ChooseDistributorPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -312,7 +321,7 @@
 	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\VisaServicePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\TravelAgenciesPages\Tr_DocumentsPage.xaml">
+	  <MauiXaml Update="Pages\DocumentsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\TravelAgenciesPages\Users\Tr_AddUserPage.xaml">

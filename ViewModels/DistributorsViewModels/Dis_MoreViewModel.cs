@@ -26,6 +26,14 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         {
             await MopupService.Instance.PushAsync(new LanguagePopup(Rep, _service));
         }
+        [RelayCommand]
+        async Task DocumentClick()
+        {
+            var vm = new DocumentsViewModel(Rep, _service);
+            var page = new DocumentsPage(vm);
+            page.BindingContext = vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
+        }
 
         [RelayCommand]
         [Obsolete]

@@ -9,6 +9,7 @@ using Mopups.PreBaked.PopupPages.Login;
 using TripBliss.Pages;
 using TripBliss.ViewModels;
 using TripBliss.Services.Data;
+using Maui.PDFView;
 
 namespace TripBliss
 {
@@ -24,6 +25,7 @@ namespace TripBliss
                 .UseUserDialogs()
                 .ConfigureMopups()
                 .ConfigureSyncfusionCore()
+                .UseMauiPdfView()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

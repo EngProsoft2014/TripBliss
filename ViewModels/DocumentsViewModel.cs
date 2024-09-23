@@ -3,19 +3,25 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using Mopups.Services;
+using Syncfusion.Pdf;
 using System.Collections.ObjectModel;
 using System.Text;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Pages;
 
 
-namespace TripBliss.ViewModels.TravelAgenciesViewModels
+namespace TripBliss.ViewModels
 {
-    public partial class Tr_DocumentsViewModel : BaseViewModel
+    public partial class DocumentsViewModel : BaseViewModel
     {
         [ObservableProperty]
         ObservableCollection<TravelAgencyCompanyDocResponse> lstDoc = new ObservableCollection<TravelAgencyCompanyDocResponse>();
+        [ObservableProperty]
+        private PdfDocument document;
+        [ObservableProperty]
+        Stream streamContentFile;
         #region Servises
         IGenericRepository Rep;
 
@@ -23,7 +29,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         #endregion
 
         #region Cons
-        public Tr_DocumentsViewModel(IGenericRepository generic, Services.Data.ServicesService service)
+        public DocumentsViewModel(IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
@@ -41,12 +47,31 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         [RelayCommand]
         async Task OpenFullScreenImage(TravelAgencyCompanyDocResponse model)
         {
-            ImageSource sou = ImageSource.FromUri(new Uri(model.UrlUploadFile!)); ;    
-            IsBusy = false;
-            UserDialogs.Instance.ShowLoading();
-            await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(sou));
-            UserDialogs.Instance.HideHud();
-            IsBusy = true;
+            if (model!.UrlUploadFile!.Contains(".pdf"))
+            {
+                await SetPdfDocumentStream(model.UrlUploadFile);
+                document.Save(StreamContentFile);
+                //Close the PDF document
+                document.Close(true);
+                StreamContentFile.Position = 0;
+                //Saves the memory stream as file.
+                SaveService saveService = new();
+                saveService.SaveAndView("Result.pdf", "application/pdf", ms);
+                //var vm = new PdfViewerViewModel(model.UrlUploadFile);
+                //var page = new PdfViewerPage();
+                //page.BindingContext = vm;
+                //await App.Current!.MainPage!.Navigation.PushAsync(page);
+            }
+            else
+            {
+                ImageSource sou = ImageSource.FromUri(new Uri(model.UrlUploadFile!)); ;
+                IsBusy = false;
+                UserDialogs.Instance.ShowLoading();
+                await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(sou));
+                UserDialogs.Instance.HideHud();
+                IsBusy = true;
+            }
+            
         }
         [RelayCommand]
         async Task TakePhoto(TravelAgencyCompanyDocResponse model)
@@ -141,6 +166,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                     {
                         var stream = await result.OpenReadAsync();
                         model.ImgFile = Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream));
+                        model.Extension = ".pdf";
                         await DoneUploadDoc(model);
                     }
                 }
@@ -167,9 +193,15 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                 string UserToken = await _service.UserToken();
                 if (!string.IsNullOrEmpty(UserToken))
                 {
-                    string Id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
+                    string Id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "") ;
+                    string uri = $"{ApiConstants.GetTravelDocApi}{Id}/TravelAgencyCompanyDoc";
+                    if (Id == "")
+                    {
+                        Id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
+                        uri = $"{ApiConstants.GetDistDocApi}{Id}/DistributorCompanyDoc";
+                    }
                     UserDialogs.Instance.ShowLoading();
-                    var json = await Rep.GetAsync<ObservableCollection<TravelAgencyCompanyDocResponse>>($"{ApiConstants.GetTravelDocApi}{Id}/TravelAgencyCompanyDoc", UserToken);
+                    var json = await Rep.GetAsync<ObservableCollection<TravelAgencyCompanyDocResponse>>(uri, UserToken);
                     UserDialogs.Instance.HideHud();
 
                     if (json != null)
@@ -183,6 +215,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                         else if (json.Count == 1)
                         {
                             json[0].UrlUploadFile = $"{Helpers.Utility.ServerUrl}{json[0].UrlUploadFile}";
+                            if (json[0].UrlUploadFile.EndsWith(".pdf"))
+                            {
+                                json[0].Extension = ".pdf";
+                            }
                             json.Add(new TravelAgencyCompanyDocResponse());
                             LstDoc = json;
                         }
@@ -192,6 +228,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                             foreach (var item in LstDoc)
                             {
                                 item.UrlUploadFile = $"{Helpers.Utility.ServerUrl}{item.UrlUploadFile}";
+                                if (item.UrlUploadFile.EndsWith(".pdf"))
+                                {
+                                    item.Extension = ".pdf";
+                                } 
                             }
                         }
                     }
@@ -207,10 +247,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             {
                 UserDialogs.Instance.ShowLoading();
                 string Id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
-
-
+                string uri = $"{ApiConstants.GetTravelDocApi}{Id}/TravelAgencyCompanyDoc";
+                if (Id == "")
+                {
+                    Id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
+                    uri = $"{ApiConstants.GetDistDocApi}{Id}/DistributorCompanyDoc";
+                }
                 string UserToken = await _service.UserToken();
-                TravelAgencyCompanyDocResponse Postjson = await Rep.PostAsync($"{ApiConstants.PostTravelDocApi}{Id}/TravelAgencyCompanyDoc", model!, UserToken);
+                var Postjson = await Rep.PostAsync(uri, model!, UserToken);
                 if (Postjson!.Id != null || Postjson.Id != 0)
                 {
                     await GetDocs();
@@ -219,7 +263,16 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             }
 
             IsBusy = true;
-        } 
+        }
+
+        private async Task SetPdfDocumentStream(string url)
+        {
+            HttpClient httpClient = new HttpClient();
+            HttpResponseMessage response = await httpClient.GetAsync(url);
+
+            StreamContentFile = await response!.Content.ReadAsStreamAsync();
+
+        }
         #endregion
     }
 }
