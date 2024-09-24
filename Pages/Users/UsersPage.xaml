@@ -7,7 +7,7 @@
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="White">
     <StackLayout Orientation="Vertical" Margin="20">
-        <StackLayout Orientation="Horizontal">
+        <StackLayout Orientation="Horizontal" Margin="0,0,0,30">
             <Image VerticalOptions="CenterAndExpand">
                 <Image.Source>
                     <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
@@ -26,7 +26,7 @@
 
             <Image Margin="0,0,0,0" HorizontalOptions="End">
                 <Image.Source>
-                    <FontImageSource FontFamily="FontIconSolid" Color="#2fa562" Glyph="" Size="30"></FontImageSource>
+                    <FontImageSource FontFamily="FontIconSolid" Color="#059ce3" Glyph="" Size="30"></FontImageSource>
                 </Image.Source>
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding AddUserClickCommand}"></TapGestureRecognizer>
@@ -36,9 +36,11 @@
         <CollectionView ItemsSource="{Binding LstUsers}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <VerticalStackLayout Margin="0,30,0,0" Spacing="10">
-                        <Label Text="{Binding UserName}" FontSize="14" TextColor="Black" VerticalTextAlignment="Center"></Label>
-                        <BoxView HeightRequest="1.5" BackgroundColor="Gray"></BoxView>
+                    <VerticalStackLayout Margin="0,20,0,0">
+                        <Border StrokeShape="RoundRectangle 10" BackgroundColor="#2fa562">
+                            <Label Text="{Binding UserName}" Margin="10,7,10,7" FontSize="15" TextColor="White" VerticalTextAlignment="Center"></Label>
+                        </Border>
+                        <!--<BoxView HeightRequest="1" BackgroundColor="Gray"></BoxView>-->
                     </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

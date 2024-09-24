@@ -176,7 +176,7 @@ namespace TripBliss.ViewModels
 
         }
 
-        async Task GetDocs()
+        async Task GetDocs() // TravelAgencyCompanyDocResponse used for Distributors and Travel Agency
         {
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -220,7 +220,7 @@ namespace TripBliss.ViewModels
                                 item.UrlUploadFile = $"{Helpers.Utility.ServerUrl}{item.UrlUploadFile}";
                                 if (item.UrlUploadFile.EndsWith(".pdf"))
                                 {
-                                    item.Extension = ".pdf";
+                                    item.Extension = "pdf";
                                 } 
                             }
                         }

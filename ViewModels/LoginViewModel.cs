@@ -22,6 +22,7 @@ using TripBliss.Constants;
 using Mopups.PreBaked.Interfaces;
 using TripBliss.Services.Data;
 using System.Reactive.Linq;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace TripBliss.ViewModels
@@ -30,6 +31,7 @@ namespace TripBliss.ViewModels
     {
         new class VerfyEmail
         {
+            [EmailAddress(ErrorMessage = "Please enter a valid email address.")]
             public string? Email { get; set; }
         }
         [ObservableProperty]
@@ -158,7 +160,7 @@ namespace TripBliss.ViewModels
                         {
                             IsNotVerfy = true;
                         }
-                        var toast = Toast.Make($"Warning, {json.Item2}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make($"Warning, {json.Item2.errors.FirstOrDefault().Key}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                     }
 
@@ -178,13 +180,21 @@ namespace TripBliss.ViewModels
                 UserDialogs.Instance.ShowLoading();
                 string email = await App.Current!.MainPage!.DisplayPromptAsync("Info", "Please enter your Email", "Ok");
                 VerfyEmail model = new VerfyEmail { Email = email };
-                string UserToken = await _service.UserToken();
-                var Postjson = await Rep.PostAsync($"{ApiConstants.PostVerifyApi}", model!, UserToken);
-                if (Postjson != null)
+                if (model.Email != null) 
                 {
-                    
+                    string UserToken = await _service.UserToken();
+                    var Postjson = await Rep.PostAsync($"{ApiConstants.PostVerifyApi}", model!, UserToken);
+                    if (Postjson != null)
+                    {
+
+                    }
+                    UserDialogs.Instance.HideHud();
                 }
-                UserDialogs.Instance.HideHud();
+                else
+                {
+                    var toast = Toast.Make("Please enter your E-mail", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
             }
 
             IsBusy = true;

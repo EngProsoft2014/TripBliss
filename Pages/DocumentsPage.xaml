@@ -29,8 +29,8 @@
             <Label Text="In Review" FontAutoScalingEnabled="False" FontSize="14" HorizontalOptions="End"
                    TextColor="Red" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
-        <Label Text="Pleas Add commercial register or Tax card or Quality certificate" FontAutoScalingEnabled="False" FontSize="16"
-               FontAttributes="Bold" HorizontalOptions="CenterAndExpand" TextColor="Red" Margin="0,30,0,0"></Label>
+        <Label Text="Please Add commercial register or Tax card or Quality certificate" FontAutoScalingEnabled="False" FontSize="14"
+               FontAttributes="Bold" HorizontalOptions="CenterAndExpand" TextColor="#333" Margin="0,30,0,30"></Label>
 
         <CollectionView ItemsSource="{Binding LstDoc}">
             <CollectionView.ItemsLayout>
@@ -45,13 +45,13 @@
                         <StackLayout Orientation="Horizontal" Margin="0,0,0,0" HorizontalOptions="FillAndExpand">
                             <!--Image-->
                             <StackLayout HorizontalOptions="Start">
-                                <Border BackgroundColor="White" Padding="0" VerticalOptions="FillAndExpand">
-                                    <Image x:Name="PicSch" Source="{Binding UrlUploadFile}" WidthRequest="130" HeightRequest="90" Aspect="Fill">
+                                <Border BackgroundColor="#2fa562" Padding="0" VerticalOptions="FillAndExpand" WidthRequest="130" HeightRequest="90">
+                                    <Image x:Name="PicSch" Source="{Binding UrlUploadFile}" Aspect="Fill">
                                         <Image.Triggers>
-                                            <DataTrigger TargetType="Image" Binding="{Binding Extension}" Value=".pdf">
+                                            <DataTrigger TargetType="Image" Binding="{Binding Extension}" Value="pdf">
                                                 <Setter Property="Source">
                                                     <Setter.Value>
-                                                        <FontImageSource Glyph="" FontFamily="FontIconSolid" Size="20"></FontImageSource>
+                                                        <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="White" Size="40"></FontImageSource>
                                                     </Setter.Value>
                                                 </Setter>
                                                 <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
@@ -63,7 +63,7 @@
                                         <RoundRectangle Stroke="LightGray" StrokeThickness="1" CornerRadius="10"></RoundRectangle>
                                     </Border.StrokeShape>
                                     <Border.Shadow>
-                                        <Shadow Offset="1,2" Brush="Black" Radius="1" Opacity="1"></Shadow>
+                                        <Shadow Offset="1,2" Brush="{OnPlatform Android=Gray,iOS=LightGray}" Radius="5"></Shadow>
                                     </Border.Shadow>
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:DocumentsViewModel}}, Path=OpenFullScreenImageCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>

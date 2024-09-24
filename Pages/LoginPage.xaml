@@ -54,12 +54,24 @@
                                 </Image>
                             </StackLayout>
                         </Border>
+                        <Label IsVisible="{Binding IsNotVerfy}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Send verfication E-mail click" TextColor="Gray" FontSize="12"></Span>
+                                    <Span Text="  here" TextColor="#059ce3" FontSize="13" FontAttributes="Bold">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding VerfivationClickCommand}"></TapGestureRecognizer>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
                         <Button Text="{ex:Translate Name=btnLogIn-Login}" FontAutoScalingEnabled="False" FontAttributes="Bold" TextColor="White" WidthRequest="140" FontSize="14" CornerRadius="25" Margin="0,30,0,0"
                                 Command="{Binding ClickLoginCommand}" CommandParameter="{Binding LoginRequest}" BackgroundColor="#2fb569">
                         </Button>
-                        <Button Text="Send Verfication Email" FontAutoScalingEnabled="False" FontAttributes="Bold" TextColor="White" HorizontalOptions="FillAndExpand" FontSize="14" CornerRadius="25" Margin="0,0,0,0"
-                                BackgroundColor="#2fb569" IsVisible="{Binding IsNotVerfy}" Command="{Binding VerfivationClickCommand}">
-                        </Button>
+                        <!--<Button Text="Send Verfication Email" FontAutoScalingEnabled="False" FontAttributes="Bold" TextColor="White" HorizontalOptions="FillAndExpand" FontSize="14" CornerRadius="25" Margin="0,0,0,0"
+                                BackgroundColor="#ff7700" IsVisible="{Binding IsNotVerfy}" Command="{Binding VerfivationClickCommand}">
+                        </Button>-->
                     </StackLayout>
                 </Border>
                 <Label Text="{ex:Translate Name=lblForgotPassword-Login}" TextColor="#0471DF" FontSize="13" BackgroundColor="Transparent"
@@ -73,7 +85,7 @@
                         <FormattedString>
                             <Span Text="{ex:Translate Name=lblDHAccount-Login}" FontSize="13" TextColor="Gray" FontFamily="Almarai-Regular"></Span>
                             <Span Text=" " FontSize="13" TextColor="Gray" FontFamily="Almarai-Regular"></Span>
-                            <Span Text="{ex:Translate Name=lblSignUp-Login}" TextColor="Orange" FontSize="13" FontFamily="Almarai-Regular"
+                            <Span Text="{ex:Translate Name=lblSignUp-Login}" TextColor="#ff7700" FontSize="13" FontFamily="Almarai-Regular"
                                   FontAttributes="Bold">
                                 <Span.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding GoSignUpPageCommand}"></TapGestureRecognizer>
