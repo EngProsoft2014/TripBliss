@@ -10,24 +10,32 @@ using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
-using TripBliss.Pages.TravelAgenciesPages.Users;
+using TripBliss.Pages.Users;
 
-namespace TripBliss.ViewModels.TravelAgenciesViewModels.Users
+namespace TripBliss.ViewModels.Users
 {
-    public partial class Tr_UsersViewModel : BaseViewModel
+    public partial class UsersViewModel : BaseViewModel
     {
+        #region Prop
         [ObservableProperty]
-        ObservableCollection<ApplicationUserRequest> applicationUsers = new ObservableCollection<ApplicationUserRequest>();
+        ObservableCollection<ApplicationUserResponse> lstUsers = new ObservableCollection<ApplicationUserResponse>(); 
+        #endregion
+
         #region Services
         readonly Services.Data.ServicesService _service;
         IGenericRepository Rep;
         #endregion
-        public Tr_UsersViewModel(IGenericRepository generic, Services.Data.ServicesService service)
+
+        #region Cons
+        public UsersViewModel(IGenericRepository generic, Services.Data.ServicesService service)
         {
             _service = service;
             Rep = generic;
-        }
+            Init();
+        } 
+        #endregion
 
+        #region RelayCommand
         [RelayCommand]
         async Task BackPressed()
         {
@@ -36,13 +44,25 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.Users
         [RelayCommand]
         async Task AddUserClick()
         {
-            var vm = new Tr_AddUserViewModel(Rep,_service);
-            var page = new Tr_AddUserPage(vm);
+            var vm = new AddUserViewModel(Rep, _service);
+            vm.AddUserClose += async () =>
+            {
+                await GetUsers();
+            };
+            var page = new AddUserPage(vm);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
         }
+        #endregion
 
-        async Task GetDocs()
+        #region Methods
+        async void Init()
+        {
+            await GetUsers();
+
+        }
+
+        async Task GetUsers()
         {
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -50,17 +70,24 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.Users
                 if (!string.IsNullOrEmpty(UserToken))
                 {
                     string Id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
+                    string uri = $"{ApiConstants.GetTravelUserApi}{Id}";
+                    if (Id == "")
+                    {
+                        Id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
+                        uri = $"{ApiConstants.GetDistUserApi}{Id}";
+                    }
                     UserDialogs.Instance.ShowLoading();
-                    var json = await Rep.GetAsync<ObservableCollection<ApplicationUserRequest>>($"{ApiConstants.GetUserApi}{Id}", UserToken);
+                    var json = await Rep.GetAsync<ObservableCollection<ApplicationUserResponse>>(uri, UserToken);
                     UserDialogs.Instance.HideHud();
 
                     if (json != null)
                     {
-                        ApplicationUsers = json;
+                        LstUsers = json;
                     }
                 }
             }
-        }
+        } 
+        #endregion
     }
 
     

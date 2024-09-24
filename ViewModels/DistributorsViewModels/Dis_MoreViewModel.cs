@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using TripBliss.Helpers;
 using TripBliss.Pages;
 using TripBliss.Pages.MainPopups;
+using TripBliss.Pages.Users;
+using TripBliss.ViewModels.Users;
 
 namespace TripBliss.ViewModels.DistributorsViewModels
 {
@@ -31,6 +33,14 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         {
             var vm = new DocumentsViewModel(Rep, _service);
             var page = new DocumentsPage(vm);
+            page.BindingContext = vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
+        }
+        [RelayCommand]
+        async Task UsersClick()
+        {
+            var vm = new UsersViewModel(Rep, _service);
+            var page = new UsersPage(vm);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
         }

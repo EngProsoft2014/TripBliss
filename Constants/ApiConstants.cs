@@ -251,10 +251,17 @@ namespace TripBliss.Constants
         // End Get Tavel Doce Api   
         #endregion
 
-        #region Get User Api
+        #region Get Travel User Api
 
         // Get User Api
-        public static string GetUserApi = "api/ApplicationUser/TravelAgencyCompany/";
+        public static string GetTravelUserApi = "api/ApplicationUser/TravelAgencyCompany/";
+        // End Get User Api 
+        #endregion
+
+        #region Get Dist User Api
+
+        // Get User Api
+        public static string GetDistUserApi = "api/ApplicationUser/DistributorCompany/";
         // End Get User Api 
         #endregion
 
@@ -268,6 +275,12 @@ namespace TripBliss.Constants
         // Get Tavel Doc Api
         public static string PostDistDocApi = "DistributorCompany/";
         // End Get Tavel Doce Api   
+        #endregion
+
+        #region Post Verify Email
+        // post Verify Email
+        public static string PostVerifyApi = "api/ApplicationUser/resend-confirm-email";
+        // End post Verify Email
         #endregion
     }
 }

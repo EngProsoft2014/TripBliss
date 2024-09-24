@@ -190,6 +190,12 @@
 	  <Compile Update="Pages\DocumentsPage.xaml.cs">
 	    <DependentUpon>DocumentsPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\Users\AddUserPage.xaml.cs">
+	    <DependentUpon>AddUserPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Users\UsersPage.xaml.cs">
+	    <DependentUpon>UsersPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Resources\Language\AppResources.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
@@ -325,10 +331,10 @@
 	  <MauiXaml Update="Pages\DocumentsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\TravelAgenciesPages\Users\Tr_AddUserPage.xaml">
+	  <MauiXaml Update="Pages\Users\AddUserPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\TravelAgenciesPages\Users\Tr_UsersPage.xaml">
+	  <MauiXaml Update="Pages\Users\UsersPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

@@ -11,23 +11,31 @@ using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
 
-namespace TripBliss.ViewModels.TravelAgenciesViewModels.Users
+namespace TripBliss.ViewModels.Users
 {
-    public partial class Tr_AddUserViewModel : BaseViewModel
+    public partial class AddUserViewModel : BaseViewModel
     {
+        #region Prop
         [ObservableProperty]
-        ApplicationUserRequest addModel = new ApplicationUserRequest();
+        ApplicationUserRequest addModel = new ApplicationUserRequest(); 
+        #endregion
 
         #region Services
         readonly Services.Data.ServicesService _service;
         IGenericRepository Rep;
+        public delegate void AddUserDelegte();
+        public event AddUserDelegte AddUserClose;
         #endregion
-        public Tr_AddUserViewModel(IGenericRepository generic, Services.Data.ServicesService service)
+
+        #region Cons
+        public AddUserViewModel(IGenericRepository generic, Services.Data.ServicesService service)
         {
             _service = service;
             Rep = generic;
-        }
+        } 
+        #endregion
 
+        #region RelayCommand
         [RelayCommand]
         async Task BackPressed()
         {
@@ -43,7 +51,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.Users
                 {
                     var toast = Toast.Make("Please Complete This Field Required : Email.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
-                } 
+                }
                 else if (string.IsNullOrEmpty(AddModel.Password))
                 {
                     var toast = Toast.Make("Please Complete This Field Required : Password.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
@@ -54,34 +62,35 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.Users
                     IsBusy = true;
                     UserDialogs.Instance.ShowLoading();
                     model.UserPermision = 2;
-                    model.UserCategory = Preferences.Default.Get(ApiConstants.userCategory,0);
+                    model.UserCategory = Preferences.Default.Get(ApiConstants.userCategory, 0);
+                    if (model.UserCategory == 3)
+                    {
+                        model.DistributorCompanyId = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
+                    }
+                    else
+                    {
+                        model.TravelAgencyCompanyId = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
+                    }
                     var json = await Rep.PostTRAsync<ApplicationUserRequest, ApplicationUserResponse>(Constants.ApiConstants.RegisterApi, model);
 
                     if (json.Item1 != null && json.Item2 == null)
                     {
-                        
+                        AddModel = new ApplicationUserRequest();
+                        var toast = Toast.Make("Successfully for create user.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
+                        AddUserClose.Invoke();
                     }
                     else
                     {
-                        if (json.Item2 != null)
-                        {
-                            if (json.Item2.errors != null)
-                            {
-                                StringBuilder builder = new StringBuilder();
-                                foreach (var str in json.Item2!.errors!)
-                                {
-                                    builder.Append(str.Key + " " + str.Value);
-                                }
-                                var toast = Toast.Make($"Warning, {builder.ToString()}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                                await toast.Show();
-                            }
-                        }
+                        var toast = Toast.Make($"{json.Item2!.errors!.Values}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
                     }
 
                     UserDialogs.Instance.HideHud();
                     IsBusy = false;
                 }
             }
-        }
+        } 
+        #endregion
     }
 }

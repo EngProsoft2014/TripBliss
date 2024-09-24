@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Controls="clr-namespace:TripBliss.Controls" 
              xmlns:ex="clr-namespace:TripBliss.Extensions"
-             x:Class="TripBliss.Pages.TravelAgenciesPages.Users.Tr_AddUserPage"
+             x:Class="TripBliss.Pages.Users.AddUserPage"
              Title="Tr_AddUserPage"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="White">
@@ -26,9 +26,14 @@
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
 
         </StackLayout>
+        
         <VerticalStackLayout VerticalOptions="CenterAndExpand" Spacing="15">
             <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                <Entry x:Name="entryEmail" Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcEmail-SignUpPage}"
+                <Entry x:Name="entryEmail" Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcUserName-Login}"
+                       HorizontalTextAlignment="Center" Margin="10,2"   Text="{Binding AddModel.UserName}"></Entry>
+            </Border>
+            <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
+                <Entry x:Name="entryUser" Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcEmail-SignUpPage}"
                        HorizontalTextAlignment="Center" Margin="10,2"   Text="{Binding AddModel.Email}"></Entry>
             </Border>
             <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">

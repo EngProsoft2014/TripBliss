@@ -1,11 +1,11 @@
 using Syncfusion.Maui.Core.Carousel;
-using TripBliss.ViewModels.TravelAgenciesViewModels.Users;
+using TripBliss.ViewModels.Users;
 
-namespace TripBliss.Pages.TravelAgenciesPages.Users;
+namespace TripBliss.Pages.Users;
 
-public partial class Tr_AddUserPage : Controls.CustomControl
+public partial class AddUserPage : Controls.CustomControl
 {
-	public Tr_AddUserPage(Tr_AddUserViewModel model)
+	public AddUserPage(AddUserViewModel model)
 	{
 		InitializeComponent();
 		this.BindingContext = model;

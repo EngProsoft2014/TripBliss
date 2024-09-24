@@ -25,9 +25,16 @@ using System.Reactive.Linq;
 
 
 namespace TripBliss.ViewModels
-{
+{ 
     public partial class LoginViewModel : BaseViewModel
     {
+        new class VerfyEmail
+        {
+            public string? Email { get; set; }
+        }
+        [ObservableProperty]
+        bool isNotVerfy = false;
+        
         readonly IGenericRepository Rep;
         readonly Services.Data.ServicesService _service;
         public LoginViewModel(IGenericRepository GenericRep, Services.Data.ServicesService service)
@@ -147,6 +154,10 @@ namespace TripBliss.ViewModels
                     }
                     else
                     {
+                        if (json!.Item2!.errors!.Keys.Contains("Invalid Confirm Email"))
+                        {
+                            IsNotVerfy = true;
+                        }
                         var toast = Toast.Make($"Warning, {json.Item2}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                     }
@@ -155,6 +166,28 @@ namespace TripBliss.ViewModels
                     IsBusy = false;
                 }
             }
+        }
+
+        [RelayCommand]
+        async Task VerfivationClick()
+        {
+            IsBusy = false;
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                UserDialogs.Instance.ShowLoading();
+                string email = await App.Current!.MainPage!.DisplayPromptAsync("Info", "Please enter your Email", "Ok");
+                VerfyEmail model = new VerfyEmail { Email = email };
+                string UserToken = await _service.UserToken();
+                var Postjson = await Rep.PostAsync($"{ApiConstants.PostVerifyApi}", model!, UserToken);
+                if (Postjson != null)
+                {
+                    
+                }
+                UserDialogs.Instance.HideHud();
+            }
+
+            IsBusy = true;
         }
 
         #endregion

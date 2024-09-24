@@ -57,6 +57,9 @@
                         <Button Text="{ex:Translate Name=btnLogIn-Login}" FontAutoScalingEnabled="False" FontAttributes="Bold" TextColor="White" WidthRequest="140" FontSize="14" CornerRadius="25" Margin="0,30,0,0"
                                 Command="{Binding ClickLoginCommand}" CommandParameter="{Binding LoginRequest}" BackgroundColor="#2fb569">
                         </Button>
+                        <Button Text="Send Verfication Email" FontAutoScalingEnabled="False" FontAttributes="Bold" TextColor="White" HorizontalOptions="FillAndExpand" FontSize="14" CornerRadius="25" Margin="0,0,0,0"
+                                BackgroundColor="#2fb569" IsVisible="{Binding IsNotVerfy}" Command="{Binding VerfivationClickCommand}">
+                        </Button>
                     </StackLayout>
                 </Border>
                 <Label Text="{ex:Translate Name=lblForgotPassword-Login}" TextColor="#0471DF" FontSize="13" BackgroundColor="Transparent"

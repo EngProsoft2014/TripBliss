@@ -20,8 +20,6 @@ namespace TripBliss.ViewModels
         [ObservableProperty]
         ObservableCollection<TravelAgencyCompanyDocResponse> lstDoc = new ObservableCollection<TravelAgencyCompanyDocResponse>();
 
-        [ObservableProperty]
-        Stream streamContentFile;
         #region Servises
         IGenericRepository Rep;
 
@@ -44,47 +42,15 @@ namespace TripBliss.ViewModels
             App.Current!.MainPage!.Navigation.PopAsync();
         }
 
-        public MemoryStream ConvertStreamToMemoryStream(Stream inputStream)
-        {
-            // Ensure the input stream is not null
-            if (inputStream == null)
-                throw new ArgumentNullException(nameof(inputStream));
-
-            // Create a MemoryStream to hold the data
-            MemoryStream memoryStream = new MemoryStream();
-
-            // Copy the input stream to the memory stream
-            inputStream.CopyTo(memoryStream);
-
-            // Reset the position of the memory stream to the beginning
-            memoryStream.Position = 0;
-
-            return memoryStream;
-        }
-
         [RelayCommand]
         async Task OpenFullScreenImage(TravelAgencyCompanyDocResponse model)
         {
             if (model!.UrlUploadFile!.Contains(".pdf"))
             {
-                await SetPdfDocumentStream(model.UrlUploadFile);
-
-                MemoryStream ms = ConvertStreamToMemoryStream(StreamContentFile);
-                //Create a new PDF document.
-                PdfDocument document = new();
-                //Add a page to the document.
-                PdfPage page = document.Pages.Add();
-                document.Save(ms);
-                //Close the PDF document
-                document.Close(true);
-                ms.Position = 0;
-                //Saves the memory stream as file.
-                SaveService saveService = new();
-                saveService.SaveAndView("Result.pdf", "application/pdf", ms);
-                //var vm = new PdfViewerViewModel(model.UrlUploadFile);
-                //var page = new PdfViewerPage();
-                //page.BindingContext = vm;
-                //await App.Current!.MainPage!.Navigation.PushAsync(page);
+                var vm = new PdfViewerViewModel(model.UrlUploadFile);
+                var page = new PdfViewerPage();
+                page.BindingContext = vm;
+                await App.Current!.MainPage!.Navigation.PushAsync(page);
             }
             else
             {
@@ -287,15 +253,6 @@ namespace TripBliss.ViewModels
             }
 
             IsBusy = true;
-        }
-
-        private async Task SetPdfDocumentStream(string url)
-        {
-            HttpClient httpClient = new HttpClient();
-            HttpResponseMessage response = await httpClient.GetAsync(url);
-
-            StreamContentFile = await response!.Content.ReadAsStreamAsync();
-
         }
         #endregion
     }

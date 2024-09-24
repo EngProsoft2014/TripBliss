@@ -3,8 +3,8 @@ using Mopups.Services;
 using TripBliss.Helpers;
 using TripBliss.Pages;
 using TripBliss.Pages.MainPopups;
-using TripBliss.Pages.TravelAgenciesPages.Users;
-using TripBliss.ViewModels.TravelAgenciesViewModels.Users;
+using TripBliss.Pages.Users;
+using TripBliss.ViewModels.Users;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels
 {
@@ -55,8 +55,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         [RelayCommand]
         async Task UsersClick()
         {
-            var vm = new Tr_UsersViewModel(Rep, _service);
-            var page = new Tr_UsersPage(vm);
+            var vm = new UsersViewModel(Rep, _service);
+            var page = new UsersPage(vm);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
         }
