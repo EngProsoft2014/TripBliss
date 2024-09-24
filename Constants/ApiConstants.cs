@@ -7,9 +7,11 @@ namespace TripBliss.Constants
 {
     public class ApiConstants
     {
-        public static string BaseApiUrl; 
+        public static string BaseApiUrl;
 
-        public const string syncFusionLicence = "Ngo9BigBOggjHTQxAR8/V1NCaF1cWWhIfkxwWmFZfVpgfF9GZ1ZUTGYuP1ZhSXxXdkxjX39WcHNQT2NfVUI="; //Version= 24.x.x
+        //public const string syncFusionLicence = "Ngo9BigBOggjHTQxAR8/V1NCaF1cWWhIfkxwWmFZfVpgfF9GZ1ZUTGYuP1ZhSXxXdkxhWn5Xc3BQRmVbUUE="; //Version= 24.x.x
+        public const string syncFusionLicence = "Ngo9BigBOggjHTQxAR8/V1NDaF5cWWtCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWXZcc3VcRWldUkN0V0Y="; //Version= 27.x.x
+
 
         #region Preferences Keys
         // Preferences Key

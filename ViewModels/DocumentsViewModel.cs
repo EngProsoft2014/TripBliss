@@ -10,6 +10,7 @@ using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages;
+using TripBliss.Services;
 
 
 namespace TripBliss.ViewModels
@@ -18,8 +19,7 @@ namespace TripBliss.ViewModels
     {
         [ObservableProperty]
         ObservableCollection<TravelAgencyCompanyDocResponse> lstDoc = new ObservableCollection<TravelAgencyCompanyDocResponse>();
-        [ObservableProperty]
-        private PdfDocument document;
+
         [ObservableProperty]
         Stream streamContentFile;
         #region Servises
@@ -44,16 +44,40 @@ namespace TripBliss.ViewModels
             App.Current!.MainPage!.Navigation.PopAsync();
         }
 
+        public MemoryStream ConvertStreamToMemoryStream(Stream inputStream)
+        {
+            // Ensure the input stream is not null
+            if (inputStream == null)
+                throw new ArgumentNullException(nameof(inputStream));
+
+            // Create a MemoryStream to hold the data
+            MemoryStream memoryStream = new MemoryStream();
+
+            // Copy the input stream to the memory stream
+            inputStream.CopyTo(memoryStream);
+
+            // Reset the position of the memory stream to the beginning
+            memoryStream.Position = 0;
+
+            return memoryStream;
+        }
+
         [RelayCommand]
         async Task OpenFullScreenImage(TravelAgencyCompanyDocResponse model)
         {
             if (model!.UrlUploadFile!.Contains(".pdf"))
             {
                 await SetPdfDocumentStream(model.UrlUploadFile);
-                document.Save(StreamContentFile);
+
+                MemoryStream ms = ConvertStreamToMemoryStream(StreamContentFile);
+                //Create a new PDF document.
+                PdfDocument document = new();
+                //Add a page to the document.
+                PdfPage page = document.Pages.Add();
+                document.Save(ms);
                 //Close the PDF document
                 document.Close(true);
-                StreamContentFile.Position = 0;
+                ms.Position = 0;
                 //Saves the memory stream as file.
                 SaveService saveService = new();
                 saveService.SaveAndView("Result.pdf", "application/pdf", ms);

@@ -1,11 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-	<application android:allowBackup="true" android:icon="@mipmap/logo" android:roundIcon="@mipmap/logo" android:supportsRtl="true" android:usesCleartextTraffic="true"></application>
+	<application android:allowBackup="true" 
+				 android:icon="@mipmap/logo"
+				 android:roundIcon="@mipmap/logo" 
+				 android:supportsRtl="true" 
+				 android:usesCleartextTraffic="true">
+		<provider android:name="androidx.core.content.FileProvider"
+				  android:authorities="com.companyname.tripbliss.provider"
+				  android:exported="false"
+				  android:grantUriPermissions="true">
+			<meta-data android:name="android.support.FILE_PROVIDER_PATHS"
+					   android:resource="@xml/provider_paths" />
+		</provider>
+
+	</application>
+
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.CAMERA" />
-	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
 	<!-- Required only if your app needs to access images or photos that other apps created -->
 	<uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 	<queries>

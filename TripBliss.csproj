@@ -82,6 +82,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Platforms\Android\Resources\xml\provider_paths.xml" />
 	  <None Remove="Resources\AppIcon\logo.svg" />
 	  <None Remove="Resources\Fonts\Almarai-Light.ttf" />
 	  <None Remove="Resources\Fonts\Almarai-Regular.ttf" />
