@@ -4,6 +4,7 @@
              xmlns:vm="clr-namespace:TripBliss.ViewModels"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              xmlns:ex="clr-namespace:TripBliss.Extensions"
+             xmlns:res="clr-namespace:TripBliss.Resources.Language"
              x:Class="TripBliss.Pages.LoginPage"
              xmlns:local="clr-namespace:TripBliss"
              Title="LoginPage"
@@ -24,6 +25,7 @@
                             <Image.Source>
                                 <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
                             </Image.Source>
+
                         </Image>
                         <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                             <Entry x:Name="entryEmail" Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcEmail-SignUpPage}"
@@ -54,18 +56,33 @@
                                 </Image>
                             </StackLayout>
                         </Border>
-                        <Label IsVisible="{Binding IsNotVerfy}">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="Send verfication E-mail click" TextColor="Gray" FontSize="12"></Span>
-                                    <Span Text="  here" TextColor="#059ce3" FontSize="13" FontAttributes="Bold">
-                                        <Span.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding VerfivationClickCommand}"></TapGestureRecognizer>
-                                        </Span.GestureRecognizers>
-                                    </Span>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
+                        <HorizontalStackLayout Spacing="15">
+                            <Label IsVisible="{Binding IsNotVerfy}" IsEnabled="False">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Send verfication E-mail click" TextColor="Gray" FontSize="12"></Span>
+                                        <Span Text="  here" TextColor="#059ce3" FontSize="13" FontAttributes="Bold">
+                                            <Span.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding VerfivationClickCommand}"></TapGestureRecognizer>
+                                            </Span.GestureRecognizers>
+                                        </Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding TimeRemaining}" Value="0">
+                                        <Setter Property="IsEnabled" Value="True"></Setter>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                            <Label Text="{Binding TimeRemaining,StringFormat='Please wait for {0}.'}" FontSize="13" TextColor="Black">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding TimeRemaining}" Value="0">
+                                        <Setter Property="IsVisible" Value="False"></Setter>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </HorizontalStackLayout>
+
                         <Button Text="{ex:Translate Name=btnLogIn-Login}" FontAutoScalingEnabled="False" FontAttributes="Bold" TextColor="White" WidthRequest="140" FontSize="14" CornerRadius="25" Margin="0,30,0,0"
                                 Command="{Binding ClickLoginCommand}" CommandParameter="{Binding LoginRequest}" BackgroundColor="#2fb569">
                         </Button>
@@ -74,7 +91,7 @@
                         </Button>-->
                     </StackLayout>
                 </Border>
-                <Label Text="{ex:Translate Name=lblForgotPassword-Login}" TextColor="#0471DF" FontSize="13" BackgroundColor="Transparent"
+                <Label Text="{x:Static res:AppResources.lblForgotPassword-Login}" TextColor="#0471DF" FontSize="13" BackgroundColor="Transparent"
                        HorizontalOptions="StartAndExpand" Margin="0,20,0,0" FontAttributes="Bold">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoRestPageCommand}"></TapGestureRecognizer>
@@ -83,9 +100,9 @@
                 <Label Margin="0,15,0,0">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="{ex:Translate Name=lblDHAccount-Login}" FontSize="13" TextColor="Gray" FontFamily="Almarai-Regular"></Span>
+                            <Span Text="{x:Static res:AppResources.lblDHAccount-Login}" FontSize="13" TextColor="Gray" FontFamily="Almarai-Regular"></Span>
                             <Span Text=" " FontSize="13" TextColor="Gray" FontFamily="Almarai-Regular"></Span>
-                            <Span Text="{ex:Translate Name=lblSignUp-Login}" TextColor="#ff7700" FontSize="13" FontFamily="Almarai-Regular"
+                            <Span Text="{x:Static res:AppResources.lblSignUp-Login}" TextColor="#ff7700" FontSize="13" FontFamily="Almarai-Regular"
                                   FontAttributes="Bold">
                                 <Span.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding GoSignUpPageCommand}"></TapGestureRecognizer>
@@ -97,7 +114,7 @@
             </StackLayout>
         </ScrollView>
     </StackLayout>
-
+    
 
 
 </Controls:CustomControl>

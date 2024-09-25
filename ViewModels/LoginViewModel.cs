@@ -34,17 +34,6 @@ namespace TripBliss.ViewModels
             [EmailAddress(ErrorMessage = "Please enter a valid email address.")]
             public string? Email { get; set; }
         }
-        [ObservableProperty]
-        bool isNotVerfy = false;
-        
-        readonly IGenericRepository Rep;
-        readonly Services.Data.ServicesService _service;
-        public LoginViewModel(IGenericRepository GenericRep, Services.Data.ServicesService service)
-        {
-            Rep = GenericRep;
-            _service = service;
-        }
-
 
         #region Property
 
@@ -52,6 +41,23 @@ namespace TripBliss.ViewModels
         ApplicationUserResponse userModel = new ApplicationUserResponse();
         [ObservableProperty]
         ApplicationUserLoginRequest loginRequest = new ApplicationUserLoginRequest();
+        [ObservableProperty]
+        bool isNotVerfy = false;
+        [ObservableProperty]
+        int timeRemaining = 0;
+        #endregion
+
+        #region Service
+        readonly IGenericRepository Rep;
+        readonly Services.Data.ServicesService _service;
+        #endregion
+
+        #region Cons
+        public LoginViewModel(IGenericRepository GenericRep, Services.Data.ServicesService service)
+        {
+            Rep = GenericRep;
+            _service = service;
+        } 
         #endregion
 
         #region RelayCommand
@@ -127,27 +133,10 @@ namespace TripBliss.ViewModels
                                 page.BindingContext = vm;
                                 await App.Current!.MainPage!.Navigation.PushAsync(page);
                             }
-
-                            //if (UserModel?.UserCategory != null && UserModel?.UserCategory != 0)
-                            //{
-                            //    if (UserModel?.UserCategory == 2)
-                            //    {
-                            //        var vm = new TravelAgenciesViewModels.Tr_HomeViewModel(Rep, _service);
-                            //        var page = new Pages.TravelAgenciesPages.HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service);
-                            //        page.BindingContext = vm;
-                            //        await App.Current!.MainPage!.Navigation.PushAsync(page);
-                            //    }
-                            //    if (UserModel?.UserCategory == 3)
-                            //    {
-                            //        var vm = new DistributorsViewModels.Dis_HomeViewModel(Rep);
-                            //        var page = new Pages.DistributorsPages.HomeDistributorsPage(vm, Rep, _service);
-                            //        page.BindingContext = vm;
-                            //        await App.Current!.MainPage!.Navigation.PushAsync(page);
-                            //    }
-                            //}
                         }
                         else
                         {
+                            
                             var toast = Toast.Make("Warning, Your user name is not registered !!", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
                             await App.Current!.MainPage!.Navigation.PushAsync(new Pages.LoginPage(new LoginViewModel(Rep,_service)));
@@ -184,11 +173,17 @@ namespace TripBliss.ViewModels
                 {
                     string UserToken = await _service.UserToken();
                     var Postjson = await Rep.PostAsync($"{ApiConstants.PostVerifyApi}", model!, UserToken);
-                    if (Postjson != null)
+                    if (Postjson == null)
                     {
-
+                        UserDialogs.Instance.HideHud();
+                        TimeRemaining = 60;
+                        while (TimeRemaining > 0)
+                        {
+                            TimeRemaining--;
+                            await Task.Delay(1000); // Wait for 1 second
+                        }
                     }
-                    UserDialogs.Instance.HideHud();
+                    
                 }
                 else
                 {
