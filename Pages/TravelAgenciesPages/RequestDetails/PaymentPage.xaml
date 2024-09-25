@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ex="clr-namespace:TripBliss.Extensions"
+             xmlns:res="clr-namespace:TripBliss.Resources.Language"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              x:Class="TripBliss.Pages.TravelAgenciesPages.RequestDetails.PaymentPage"
              Title="PaymentPage"
@@ -22,7 +22,7 @@
                     <TapGestureRecognizer Command="{Binding BackButtonClickedCommand}"></TapGestureRecognizer>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="{ex:Translate Name=btnPayNow-NewRequest}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="{Static res:AppResources.btnPayNow_NewRequest}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
         <Border StrokeShape="RoundRectangle 20" HeightRequest="200" BackgroundColor="#33a7f5" StrokeThickness="0">
@@ -31,12 +31,12 @@
                     <Label Text="{Binding OutStandingprice}" FontSize="32"></Label>
                     <Label Text="SAR" FontSize="16" VerticalTextAlignment="Center" TranslationY="-7"></Label>
                 </HorizontalStackLayout>
-                <Label Text="{ex:Translate Name=OSBlance-payment}" FontSize="18" HorizontalOptions="CenterAndExpand"></Label>
+                <Label Text="{Static res:AppResources.OSBlance_payment}" FontSize="18" HorizontalOptions="CenterAndExpand"></Label>
             </StackLayout>
         </Border>
         <HorizontalStackLayout>
             <CheckBox x:Name="FBCheck" Color="#33a7f5" CheckedChanged="FBCheck_CheckedChanged_1"  IsChecked="True"></CheckBox>
-            <Label Text="{ex:Translate Name=FullPayment-payment}" TextColor="Black" VerticalTextAlignment="Center" FontSize="14" FontAttributes="Bold"
+            <Label Text="{Static res:AppResources.FullPayment_payment}" TextColor="Black" VerticalTextAlignment="Center" FontSize="14" FontAttributes="Bold"
                    ></Label>
             <Entry x:Name="AmmountEntry" Text="{Binding CustomPrice}" Keyboard="Numeric" FontSize="14" TextColor="Black" HorizontalOptions="FillAndExpand"
                    Placeholder="Pleas Enter ammount" Margin="15,0,0,0" TextChanged="AmmountEntry_TextChanged">
@@ -68,7 +68,7 @@
                     <GridItemsLayout VerticalItemSpacing="10" Orientation="Vertical"></GridItemsLayout>
                 </CollectionView.ItemsLayout>
             </CollectionView>
-            <Button Text="{ex:Translate Name=btnConfirm-NewRequest}" BackgroundColor="#33a7f5" FontSize="14" TextColor="White" FontAttributes="Bold"
+            <Button Text="{Static res:AppResources.btnConfirm_NewRequest}" BackgroundColor="#33a7f5" FontSize="14" TextColor="White" FontAttributes="Bold"
                     Command="{Binding AddPaymentCommand}" VerticalOptions="End"></Button>
         </Grid>
     </StackLayout>

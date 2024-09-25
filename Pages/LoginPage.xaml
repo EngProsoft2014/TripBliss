@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:TripBliss.ViewModels"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
-             xmlns:ex="clr-namespace:TripBliss.Extensions"
              xmlns:res="clr-namespace:TripBliss.Resources.Language"
              x:Class="TripBliss.Pages.LoginPage"
              xmlns:local="clr-namespace:TripBliss"
@@ -60,8 +59,8 @@
                             <Label IsVisible="{Binding IsNotVerfy}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Resend verfication to " TextColor="Gray" FontSize="12"></Span>
-                                        <Span Text="E-mail" TextColor="#2fb569" FontSize="12"></Span>
+                                        <Span Text="Resend verify to " TextColor="Gray" FontSize="12"></Span>
+                                        <Span Text="{Binding ResendEmail,StringFormat='( {0} )'}" TextColor="#2fb569" FontSize="12"></Span>
                                         <Span Text=" click" TextColor="Gray" FontSize="12"></Span>
                                         <Span Text=" here" TextColor="#059ce3" FontSize="13" FontAttributes="Bold">
                                             <Span.GestureRecognizers>

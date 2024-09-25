@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ex="clr-namespace:TripBliss.Extensions"
+             xmlns:res="clr-namespace:TripBliss.Resources.Language"
              x:Class="TripBliss.Pages.TravelAgenciesPages.Guests.Tr_AddGuestPage"
              Title="Tr_AddGuestPage"
              BackgroundColor="White"
@@ -21,7 +21,7 @@
                     <TapGestureRecognizer Command="{Binding BackPressedCommand}"></TapGestureRecognizer>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="{ex:Translate Name=hdAddGuest}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="{Static res:AppResources.hdAddGuest}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand" Padding="0,0,0,20" VerticalScrollBarVisibility="Never">
@@ -67,7 +67,7 @@
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
                             <VerticalStackLayout>
-                                <Label Text="{ex:Translate Name=lblAdult-AirService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" HorizontalTextAlignment="Center"></Label>
+                                <Label Text="{Static res:AppResources.lblAdult_AirService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" HorizontalTextAlignment="Center"></Label>
                                 <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="10" >
                                     <Image>
                                         <Image.Source>
@@ -92,7 +92,7 @@
                                 </StackLayout>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="CenterAndExpand">
-                                <Label Text="{ex:Translate Name=lblChild-AirService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" HorizontalTextAlignment="Center"></Label>
+                                <Label Text="{Static res:AppResources.lblChild_AirService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" HorizontalTextAlignment="Center"></Label>
 
                                 <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="10" >
 
@@ -119,7 +119,7 @@
                                 </StackLayout>
                             </VerticalStackLayout>
                             <VerticalStackLayout>
-                                <Label Text="{ex:Translate Name=lblInfant-AirService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" HorizontalTextAlignment="Center"></Label>
+                                <Label Text="{Static res:AppResources.lblInfant_AirService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" HorizontalTextAlignment="Center"></Label>
                                 <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="10" >
 
                                     <Image>
@@ -150,7 +150,7 @@
                         <Shadow Brush="LightGray" Offset="8,8" Opacity="0.8"></Shadow>
                     </Border.Shadow>
                 </Border>
-                <Button VerticalOptions="EndAndExpand" FontAutoScalingEnabled="False" Text="{ex:Translate Name=btnApply-Forgot}" FontSize="16" FontAttributes="Bold" 
+                <Button VerticalOptions="EndAndExpand" FontAutoScalingEnabled="False" Text="{Static res:AppResources.btnApply_Forgot}" FontSize="16" FontAttributes="Bold" 
                     BackgroundColor="#2fa562" TextColor="White" Margin="20,0" Command="{Binding ApplyClickedCommand}" 
                     CommandParameter="{Binding Response}"></Button>
             </StackLayout>

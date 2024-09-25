@@ -4,7 +4,7 @@
              x:Class="TripBliss.Pages.TravelAgenciesPages.CreateRequest.NewRequestPage"
              xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
-             xmlns:ex="clr-namespace:TripBliss.Extensions"
+             xmlns:res="clr-namespace:TripBliss.Resources.Language"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="NewRequestPage">
@@ -45,14 +45,14 @@
                     <TapGestureRecognizer Command="{Binding BackButtonClickedCommand}"></TapGestureRecognizer>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="{ex:Translate Name=hdrNewRequest}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="{Static res:AppResources.hdrNewRequest}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
             <StackLayout Spacing="10">
                 <!--Hotels-->
                 <StackLayout Orientation="Horizontal" Margin="0,15,0,0">
-                    <Label Text="{ex:Translate Name=lblHotelServices}" HorizontalOptions="StartAndExpand" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" VerticalTextAlignment="Center"></Label>
+                    <Label Text="{Static res:AppResources.lblHotelServices}" HorizontalOptions="StartAndExpand" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" VerticalTextAlignment="Center"></Label>
                     <Image HorizontalOptions="End">
                         <Image.Source>
                             <FontImageSource Glyph="" FontFamily="FontIcon" Color="#2fa562" Size="25"></FontImageSource>
@@ -108,7 +108,7 @@
 
                 <!--Transportations-->
                 <StackLayout Orientation="Horizontal" Margin="0,0">
-                    <Label Text="{ex:Translate Name=lblTransportationServices}" HorizontalOptions="StartAndExpand" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Label Text="{Static res:AppResources.lblTransportationServices}" HorizontalOptions="StartAndExpand" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
                     <Image HorizontalOptions="End">
                         <Image.Source>
                             <FontImageSource Glyph="" FontFamily="FontIcon" Color="#2fa562" Size="25"></FontImageSource>
@@ -163,7 +163,7 @@
 
                 <!--AirFlights-->
                 <StackLayout Orientation="Horizontal" Margin="0,0">
-                    <Label Text="{ex:Translate Name=lblAirFlightServices}" HorizontalOptions="StartAndExpand" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Label Text="{Static res:AppResources.lblAirFlightServices}" HorizontalOptions="StartAndExpand" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
                     <Image HorizontalOptions="End">
                         <Image.Source>
                             <FontImageSource Glyph="" FontFamily="FontIcon" Color="#2fa562" Size="25"></FontImageSource>
@@ -224,7 +224,7 @@
 
                 <!--Visas-->
                 <StackLayout Orientation="Horizontal" Margin="0,0">
-                    <Label Text="{ex:Translate Name=lblVisaServices}" HorizontalOptions="StartAndExpand" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Label Text="{Static res:AppResources.lblVisaServices}" HorizontalOptions="StartAndExpand" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
                     <Image HorizontalOptions="End">
                         <Image.Source>
                             <FontImageSource Glyph="" FontFamily="FontIcon" Color="#2fa562" Size="25"></FontImageSource>
@@ -285,7 +285,7 @@
             </StackLayout>
         </ScrollView>
 
-        <Button VerticalOptions="End" Text="{ex:Translate Name=btnConfirm-NewRequest}" FontAutoScalingEnabled="False" FontSize="16" FontAttributes="Bold" BackgroundColor="#2fa562"
+        <Button VerticalOptions="End" Text="{Static res:AppResources.btnConfirm_NewRequest}" FontAutoScalingEnabled="False" FontSize="16" FontAttributes="Bold" BackgroundColor="#2fa562"
                 TextColor="White" Margin="20,0" Command="{Binding AddToRequestCommand}" CommandParameter="{Binding RequestTravelAgency}"></Button>
     </StackLayout>
 

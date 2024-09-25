@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels"
              xmlns:dvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest"
              xmlns:Tvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.Offer"
-             xmlns:ex="clr-namespace:TripBliss.Extensions"
+             xmlns:res="clr-namespace:TripBliss.Resources.Language"
              xmlns:model="clr-namespace:TripBliss.Models"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              x:Class="TripBliss.Pages.TravelAgenciesPages.HomeAgencyPage"
@@ -20,7 +20,7 @@
                            VerticalOptions="FillAndExpand" SelectionChanged="tabMain_SelectionChanged">
             <tabView:SfTabView.Items>
                 <!--Home-->
-                <tabView:SfTabItem Header="{ex:Translate btnHome}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2" 
+                <tabView:SfTabItem Header="{Static res:AppResources.btnHome}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2" 
                                    FontFamily="Almarai-Regular">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
@@ -50,7 +50,7 @@
                                 </Style>
                             </ContentView.Resources>
                             <StackLayout Orientation="Vertical" VerticalOptions="{OnPlatform Android=FillAndExpand, iOS=StartAndExpand}" Spacing="10">
-                                <Label Text="{ex:Translate Name=hdrMyRequests}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                                <Label Text="{Static res:AppResources.hdrMyRequests}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
                                    TextColor="Black" VerticalOptions="Start" Margin="{OnPlatform Android='20,20,20,5', iOS='20,0,20,5'}"></Label>
                                 <CollectionView ItemsSource="{Binding Requests}" VerticalScrollBarVisibility="Never"
                                             VerticalOptions="FillAndExpand" SelectionMode="Single" >
@@ -115,7 +115,7 @@
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
                 <!--Distributors-->
-                <tabView:SfTabItem Header="{ex:Translate Name=hdrDistributors}" TextColor="Black" FontSize="14" ImagePosition="Top" 
+                <tabView:SfTabItem Header="{Static res:AppResources.hdrDistributors}" TextColor="Black" FontSize="14" ImagePosition="Top" 
                                    BackgroundColor="#f6fcf2" FontFamily="Almarai-Regular" >
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
@@ -127,9 +127,9 @@
                             </ContentView.BindingContext>-->
                             <StackLayout Orientation="Vertical">
                                 <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android=20, iOS='20,0,20,0'}">
-                                    <Label Text="{ex:Translate Name=hdrDistributors}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="End"
+                                    <Label Text="{Static res:AppResources.hdrDistributors}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="End"
                                            TextColor="Black"></Label>
-                                    <Button Text="{ex:Translate Name=btnAddRequest}" FontAutoScalingEnabled="False" WidthRequest="95" Padding="0,5,0,5" HeightRequest="35" FontSize="12"
+                                    <Button Text="{Static res:AppResources.btnAddRequest}" FontAutoScalingEnabled="False" WidthRequest="95" Padding="0,5,0,5" HeightRequest="35" FontSize="12"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=AddRequestCommand}"
                                         BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" Margin="0,0,0,0" FontAttributes="Bold">
                                     </Button>
@@ -137,7 +137,7 @@
                                 <tabView:SfTabView IndicatorBackground="#1c874b" VerticalOptions="FillAndExpand" FlowDirection="LeftToRight" SelectedIndex="{Binding IndexTap}">
                                     <tabView:SfTabView.Items>
                                         <!--Distributors-->
-                                        <tabView:SfTabItem Header='{ex:Translate Name=btnDistributors}' TextColor="Black" FontSize="14" 
+                                        <tabView:SfTabItem Header='{Static res:AppResources.btnDistributors}' TextColor="Black" FontSize="14" 
                                                            FontFamily="Almarai-Regular" BackgroundColor="#f6fcf2">
                                             <tabView:SfTabItem.Content>
                                                 <ContentView x:Name="conviewDist">
@@ -217,7 +217,7 @@
                                             </tabView:SfTabItem.Content>
                                         </tabView:SfTabItem>
                                         <!--Favourites-->
-                                        <tabView:SfTabItem Header='{ex:Translate Name=btnFavourites}' TextColor="Black" FontSize="14" 
+                                        <tabView:SfTabItem Header='{Static res:AppResources.btnFavourites}' TextColor="Black" FontSize="14" 
                                                            FontFamily="Almarai-Regular" BackgroundColor="#f6fcf2">
                                             <tabView:SfTabItem.Content>
                                                 <ContentView x:Name="conviewFevourites">
@@ -310,7 +310,7 @@
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
                 <!--Offers-->
-                <tabView:SfTabItem Header="{ex:Translate Name=hdrOffers}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2"
+                <tabView:SfTabItem Header="{Static res:AppResources.hdrOffers}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2"
                                    FontFamily="Almarai-Regular">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
@@ -345,12 +345,12 @@
 
                             <StackLayout Orientation="Vertical" Margin="{OnPlatform Android=20, iOS='20,0,20,0'}">
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="{ex:Translate Name=hdrOffers}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                                    <Label Text="{Static res:AppResources.hdrOffers}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                 </StackLayout>
                                 <Border StrokeShape="RoundRectangle 25" HeightRequest="40" Stroke="Gray" Margin="0,20,0,10" BackgroundColor="White">
                                     <Grid>
-                                        <SearchBar BackgroundColor="White" FontAutoScalingEnabled="False" Placeholder="{ex:Translate Name=plcSearch}" HeightRequest="40" FontSize="15" TextColor="Black"></SearchBar>
+                                        <SearchBar BackgroundColor="White" FontAutoScalingEnabled="False" Placeholder="{Static res:AppResources.plcSearch}" HeightRequest="40" FontSize="15" TextColor="Black"></SearchBar>
                                         <!--<Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
                                             <Image WidthRequest="20" HeightRequest="20">
                                                 <Image.Source>
@@ -430,7 +430,7 @@
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
                 <!--History-->
-                <tabView:SfTabItem Header="{ex:Translate Name=hdrHistory}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2"
+                <tabView:SfTabItem Header="{Static res:AppResources.hdrHistory}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2"
                                    FontFamily="Almarai-Regular">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
@@ -463,12 +463,12 @@
                                 </Style>
                             </ContentView.Resources>
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="10">
-                                <Label Text="{ex:Translate Name=hdrHistory}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                                <Label Text="{Static res:AppResources.hdrHistory}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                        TextColor="Black" Margin="{OnPlatform Android='0,20,0,10', iOS='20,0,20,0'}"></Label>
                                 <Border StrokeShape="RoundRectangle 25" Stroke="Gray" HeightRequest="40" Margin="20,0" BackgroundColor="White">
                                     <Grid>
                                         <SearchBar BackgroundColor="White" 
-                                                   Placeholder="{ex:Translate Name=plcSearch}" 
+                                                   Placeholder="{Static res:AppResources.plcSearch}" 
                                                    HeightRequest="40" FontAutoScalingEnabled="False"
                                                    FontSize="15" 
                                                    TextColor="Black">
@@ -569,7 +569,7 @@
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
                 <!--More-->
-                <tabView:SfTabItem Header="{ex:Translate Name=hdrMore}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2"
+                <tabView:SfTabItem Header="{Static res:AppResources.hdrMore}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2"
                                    FontFamily="Almarai-Regular">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
@@ -577,7 +577,7 @@
                     <tabView:SfTabItem.Content>
                         <ContentView x:Name="conviewMore">
                             <StackLayout Orientation="Vertical" Spacing="50">
-                                <Label Text="{ex:Translate Name=hdrMore}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                                <Label Text="{Static res:AppResources.hdrMore}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                        TextColor="Black" Margin="{OnPlatform Android='0,20,0,10',iOS='0,0,0,10'}"></Label>
                                 <!--User-->
                                 <VerticalStackLayout Margin="20,0" Spacing="20">
@@ -587,7 +587,7 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="{ex:Translate Name=lblAccount-More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                        <Label Text="{Static res:AppResources.lblAccount_More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="8">
                                         <Image WidthRequest="20" HeightRequest="20">
@@ -595,7 +595,7 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="{ex:Translate Name=lblUsers-More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                        <Label Text="{Static res:AppResources.lblUsers_More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                         <HorizontalStackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding UsersClickCommand}"></TapGestureRecognizer>
                                         </HorizontalStackLayout.GestureRecognizers>
@@ -606,7 +606,7 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="{ex:Translate Name=lblDocuments-MorePage}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                        <Label Text="{Static res:AppResources.lblDocuments_MorePage}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                         <HorizontalStackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding DocumentClickCommand}"></TapGestureRecognizer>
                                         </HorizontalStackLayout.GestureRecognizers>
@@ -620,7 +620,7 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="{ex:Translate Name=lblPrivacyPolicy-More}" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                        <Label Text="{Static res:AppResources.lblPrivacyPolicy_More}" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="8">
                                         <Image WidthRequest="20" HeightRequest="20">
@@ -628,7 +628,7 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="{ex:Translate Name=lblTermesConditions-More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" 
+                                        <Label Text="{Static res:AppResources.lblTermesConditions_More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" 
                                                VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="8">
@@ -637,7 +637,7 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="{ex:Translate Name=lblSupport-More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                        <Label Text="{Static res:AppResources.lblSupport_More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Spacing="8">
@@ -646,7 +646,7 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="{ex:Translate Name=lblLanguage-More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                        <Label Text="{Static res:AppResources.lblLanguage_More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                         <HorizontalStackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding SelectLanguageCommand}"></TapGestureRecognizer>
@@ -659,7 +659,7 @@
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                         </Image.Source>
                                     </Image>
-                                    <Label Text="{ex:Translate Name=lblExit-More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                    <Label Text="{Static res:AppResources.lblExit_More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                     <HorizontalStackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding SelectExitCommand}"></TapGestureRecognizer>
                                     </HorizontalStackLayout.GestureRecognizers>

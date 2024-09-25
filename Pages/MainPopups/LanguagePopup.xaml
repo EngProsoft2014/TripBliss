@@ -3,7 +3,7 @@
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
                   xmlns:mopupsanim="clr-namespace:Mopups.Animations;assembly=Mopups"
-                  xmlns:ex="clr-namespace:TripBliss.Extensions"
+                  xmlns:res="clr-namespace:TripBliss.Resources.Language"
                   x:Class="TripBliss.Pages.MainPopups.LanguagePopup"
                   CloseWhenBackgroundIsClicked="True"
                   NavigationPage.HasNavigationBar="False" 
@@ -28,7 +28,7 @@
             <StackLayout HorizontalOptions="FillAndExpand" Spacing="10">
                 <Border Padding="0,10,0,10" BackgroundColor="#FFFFFF" VerticalOptions="Center" >
                     <StackLayout  BackgroundColor="#FFFFFF">
-                        <Label Text="{ex:Translate Name=hdrSelectLan-PopupLan}" FontAutoScalingEnabled="False"
+                        <Label Text="{Static res:AppResources.hdrSelectLan_PopupLan}" FontAutoScalingEnabled="False"
                            TextColor="#333333"
                            FontSize="13"
                            FontFamily="AlmaraiRegular"
@@ -98,7 +98,7 @@
                 </Border>
                 <Border Padding="10" BackgroundColor="#FFFFFF" VerticalOptions="Center">
 
-                    <Label Text="{ex:Translate Name=btnCancle-PopupLan}" FontAutoScalingEnabled="False"
+                    <Label Text="{Static res:AppResources.btnCancle_PopupLan}" FontAutoScalingEnabled="False"
                            TextColor="Gray"
                            FontSize="14"
                            FontFamily="AlmaraiBold"

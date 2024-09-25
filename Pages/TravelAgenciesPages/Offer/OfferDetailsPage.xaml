@@ -4,7 +4,7 @@
              x:Class="TripBliss.Pages.TravelAgenciesPages.Offer.OfferDetailsPage"
              xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.Offer"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
-             xmlns:ex="clr-namespace:TripBliss.Extensions"
+             xmlns:res="clr-namespace:TripBliss.Resources.Language"
              Title="OfferDeteliesPage"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False">
@@ -37,13 +37,13 @@
         <ScrollView>
             <VerticalStackLayout Spacing="20">
                 <Image Source="offer.jpg"></Image>
-                <Label Text="{ex:Translate Name=lblDiscription-OfferDetails}" FontAutoScalingEnabled="False" FontSize="14" TextColor="Black"></Label>
+                <Label Text="{Static res:AppResources.lblDiscription_OfferDetails}" FontAutoScalingEnabled="False" FontSize="14" TextColor="Black"></Label>
                 <Label Text="{Binding SelectedItem.Description}" FontSize="12" FontAutoScalingEnabled="False" TextColor="Gray"></Label>
             </VerticalStackLayout>
         </ScrollView>
 
 
-        <Button Text="{ex:Translate Name=btnAddRequest}" WidthRequest="95" FontAutoScalingEnabled="False" HeightRequest="40" FontSize="12" Command="{Binding AddRequestCommand}"
+        <Button Text="{Static res:AppResources.btnAddRequest}" WidthRequest="95" FontAutoScalingEnabled="False" HeightRequest="40" FontSize="12" Command="{Binding AddRequestCommand}"
                     BackgroundColor="#2fa562"
                     CornerRadius="20"
                     TextColor="White" 

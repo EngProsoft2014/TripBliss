@@ -4,7 +4,7 @@
              x:Class="TripBliss.Pages.DistributorsPages.Offer.CreateOfferPage"
              xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModels.Offer"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
-             xmlns:ex="clr-namespace:TripBliss.Extensions"
+             xmlns:res="clr-namespace:TripBliss.Resources.Language"
              Title="CreateOfferPage"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False">
@@ -28,7 +28,7 @@
                     <TapGestureRecognizer Command="{Binding BackPressedCommand}"></TapGestureRecognizer>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="{ex:Translate Name=hdrCreateOffer-CreateOffer}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="{Static res:AppResources.hdrCreateOffer_CreateOffer}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand" Padding="0,0,0,20" VerticalScrollBarVisibility="Never">
@@ -36,14 +36,14 @@
 
                 <Border StrokeShape="RoundRectangle 15" Margin="0,25,0,40" BackgroundColor="White">
                     <StackLayout Orientation="Vertical" Padding="15">
-                        <Label Text="{ex:Translate Name=lblTitel-CreateOffer}" TextColor="#2fa562" FontSize="14" Margin="0,5,0,0"></Label>
+                        <Label Text="{Static res:AppResources.lblTitel_CreateOffer}" TextColor="#2fa562" FontSize="14" Margin="0,5,0,0"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10" HeightRequest="40">
                             <Entry Keyboard="Text" TextColor="Black" FontSize="14" FontFamily="OpenSansRegular"
                                Text="{Binding Offer.OfferTitel}"></Entry>
                         </Border>
                         <StackLayout Orientation="Horizontal">
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
-                                <Label Text="{ex:Translate Name=lblOfferPlan-CreateOffer}" TextColor="#2fa562" FontSize="14" Margin="0,5,0,0"></Label>
+                                <Label Text="{Static res:AppResources.lblOfferPlan_CreateOffer}" TextColor="#2fa562" FontSize="14" Margin="0,5,0,0"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10" HeightRequest="40">
                                     <Picker FontSize="13" TextColor="Black" ItemsSource="{Binding Offer.OfferTitel}"></Picker>
                                 </Border>
@@ -59,7 +59,7 @@
                         </StackLayout>
 
                         <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="{ex:Translate Name=lblOfferUrl-CreateOffer}" TextColor="#2fa562" FontSize="14" Margin="0,5,0,0"></Label>
+                            <Label Text="{Static res:AppResources.lblOfferUrl_CreateOffer}" TextColor="#2fa562" FontSize="14" Margin="0,5,0,0"></Label>
                             <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10" HeightRequest="40">
                                 <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular"
                                        Text="{Binding Offer.From}"></Entry>
@@ -67,7 +67,7 @@
                         </StackLayout>
 
                         <StackLayout HorizontalOptions="FillAndExpand">
-                            <Label Text="{ex:Translate Name=lblVideoUrl-CreateOffer}" TextColor="#2fa562" FontSize="14" Margin="0,5,0,0"></Label>
+                            <Label Text="{Static res:AppResources.lblVideoUrl_CreateOffer}" TextColor="#2fa562" FontSize="14" Margin="0,5,0,0"></Label>
                             <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10" HeightRequest="40">
                                 <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular"
                                        Text="{Binding Offer.From}"></Entry>
@@ -75,7 +75,7 @@
                         </StackLayout>
 
                         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                            <Label Text="{ex:Translate Name=lblImage-CreateOffer}" TextColor="#2fa562" FontSize="14" Margin="0,5,0,0"></Label>
+                            <Label Text="{Static res:AppResources.lblImage_CreateOffer}" TextColor="#2fa562" FontSize="14" Margin="0,5,0,0"></Label>
                             <StackLayout Orientation="Horizontal">
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10">
                                     <Image WidthRequest="170" HeightRequest="120"></Image>
@@ -97,7 +97,7 @@
 
                         </StackLayout>
 
-                        <Label Text="{ex:Translate Name=lblDiscription-OfferDetails}" TextColor="#2fa562" FontSize="14" Margin="0,5,0,0"></Label>
+                        <Label Text="{Static res:AppResources.lblDiscription_OfferDetails}" TextColor="#2fa562" FontSize="14" Margin="0,5,0,0"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10" HeightRequest="120">
                             <Editor Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" 
                                Text="{Binding Offer.Description}"></Editor>
@@ -107,7 +107,7 @@
                         <Shadow Brush="LightGray" Offset="8,8" Opacity="0.8"></Shadow>
                     </Border.Shadow>
                 </Border>
-                <Button VerticalOptions="EndAndExpand" Text="{ex:Translate Name=btnApply-Forgot}" FontSize="15" FontAttributes="Bold" BackgroundColor="#2fa562" 
+                <Button VerticalOptions="EndAndExpand" Text="{Static res:AppResources.btnApply_Forgot}" FontSize="15" FontAttributes="Bold" BackgroundColor="#2fa562" 
                         TextColor="White" Margin="20,0" Command="{Binding AplyClickedCommand}"></Button>
             </StackLayout>
         </ScrollView>

@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest"
              x:Class="TripBliss.Pages.TravelAgenciesPages.CreateRequest.ChooseDistributorPage"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
-             xmlns:ex="clr-namespace:TripBliss.Extensions"
+             xmlns:res="clr-namespace:TripBliss.Resources.Language"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="Choose Distributor">
@@ -48,12 +48,12 @@
                     <TapGestureRecognizer Command="{Binding BackPressedCommand}"></TapGestureRecognizer>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="{ex:Translate Name=hdrChooseDistributor}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="{Static res:AppResources.hdrChooseDistributor}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
         <Border StrokeShape="RoundRectangle 25" Stroke="Gray" HeightRequest="40" Margin="0,20,0,0" BackgroundColor="White">
             <Grid>
-                <SearchBar x:Name="searchBar" BackgroundColor="White" FontAutoScalingEnabled="False" Placeholder="{ex:Translate Name=plcSearch}" HeightRequest="40" FontSize="15"
+                <SearchBar x:Name="searchBar" BackgroundColor="White" FontAutoScalingEnabled="False" Placeholder="{Static res:AppResources.plcSearch}" HeightRequest="40" FontSize="15"
                            TextColor="Black" TextChanged="searchBar_TextChanged"></SearchBar>
                 <!--<Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
                     <Image WidthRequest="20" HeightRequest="20">
@@ -69,7 +69,7 @@
         </Border>
         <HorizontalStackLayout>
             <CheckBox x:Name="chkBoxSelectAll" Color="#2fa562" VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged"></CheckBox>
-            <Label Text="{ex:Translate Name=lblSelectAll-ActiveDistributors}" FontAutoScalingEnabled="False" FontSize="14" TextColor="Black" VerticalTextAlignment="Center"></Label>
+            <Label Text="{Static res:AppResources.lblSelectAll_ActiveDistributors}" FontAutoScalingEnabled="False" FontSize="14" TextColor="Black" VerticalTextAlignment="Center"></Label>
         </HorizontalStackLayout>
         <CollectionView x:Name="ItemsCollectionView" ItemsSource="{Binding DistributorCompanys}" VerticalOptions="FillAndExpand" SelectionMode="Multiple">
             <CollectionView.ItemsLayout>
@@ -156,7 +156,7 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button  Text="{ex:Translate Name=btnApply-Forgot}" FontAutoScalingEnabled="False" BackgroundColor="#2fa562" TextColor="White" Margin="0,5,0,0" FontSize="16" 
+        <Button  Text="{Static res:AppResources.btnApply_Forgot}" FontAutoScalingEnabled="False" BackgroundColor="#2fa562" TextColor="White" Margin="0,5,0,0" FontSize="16" 
                  FontAttributes="Bold" Command="{Binding ApplyCommand}"></Button>
     </StackLayout>
 </Controls:CustomControl>

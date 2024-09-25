@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:TripBliss.ViewModels"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
-             xmlns:ex="clr-namespace:TripBliss.Extensions"
+             xmlns:res="clr-namespace:TripBliss.Resources.Language"
              x:Class="TripBliss.Pages.ResetPage"
              Title="ResetPage"
              BackgroundColor="White"
@@ -21,10 +21,10 @@
                     </Image.Source>
                 </Image>
                 <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                    <Entry Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="16" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcEmail-Login}" HorizontalTextAlignment="Center"
+                    <Entry Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="16" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcEmail_SignUpPage}" HorizontalTextAlignment="Center"
                    Margin="10,2" Text="{Binding Email}"></Entry>
                 </Border>
-                <Button Text="{ex:Translate Name=btnApply-Forgot}" FontAutoScalingEnabled="False" BackgroundColor="#2FA562" TextColor="White" WidthRequest="140" CornerRadius="20" Margin="0,30,0,0"
+                <Button Text="{Static res:AppResources.btnApply_Forgot}" FontAutoScalingEnabled="False" BackgroundColor="#2FA562" TextColor="White" WidthRequest="140" CornerRadius="20" Margin="0,30,0,0"
                         Command="{Binding ApplyCommand}"></Button>
             </VerticalStackLayout>
         </Border>

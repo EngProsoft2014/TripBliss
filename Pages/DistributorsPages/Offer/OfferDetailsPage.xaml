@@ -4,7 +4,7 @@
                          x:Class="TripBliss.Pages.DistributorsPages.Offer.OfferDetailsPage"
                          xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModels.Offer"
                          xmlns:Controls="clr-namespace:TripBliss.Controls"
-                         xmlns:ex="clr-namespace:TripBliss.Extensions"
+                         xmlns:res="clr-namespace:TripBliss.Resources.Language"
                          Title="OfferDetailsPage"
                          BackgroundColor="White"
                          NavigationPage.HasNavigationBar="False">
@@ -40,7 +40,7 @@
         <ScrollView>
             <VerticalStackLayout Spacing="20">
                 <Image Source="offer.jpg"></Image>
-                <Label Text="{ex:Translate Name=lblDiscription-OfferDetails}" FontSize="14" TextColor="Black"></Label>
+                <Label Text="{Static res:AppResources.lblDiscription_OfferDetails}" FontSize="14" TextColor="Black"></Label>
                 <Label Text="{Binding SelectedItem.Description}" FontSize="12" TextColor="Gray" ></Label>
             </VerticalStackLayout>
         </ScrollView>

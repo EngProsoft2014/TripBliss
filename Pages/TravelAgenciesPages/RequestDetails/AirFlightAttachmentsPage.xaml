@@ -4,7 +4,7 @@
                         xmlns:vm="clr-namespace:TripBliss.ViewModels.ActivateViewModels"
                         xmlns:Controls="clr-namespace:TripBliss.Controls"          
                         x:Class="TripBliss.Pages.TravelAgenciesPages.RequestDetails.AirFlightAttachmentsPage"
-                        xmlns:ex="clr-namespace:TripBliss.Extensions"
+                        xmlns:res="clr-namespace:TripBliss.Resources.Language"
                         Title="AirFlightAttachmentsPage"
                         IsEnabled="{Binding IsBusy}"
                         NavigationPage.HasNavigationBar="False"
@@ -56,7 +56,7 @@
                     <TapGestureRecognizer Command="{Binding BackPressedCommand}"></TapGestureRecognizer>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="{ex:Translate Name=hdrAirFlightAttachment}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="{Static res:AppResources.hdrAirFlightAttachment}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
 
             <Image Margin="0,0,0,0" HorizontalOptions="End">
@@ -71,7 +71,7 @@
 
         <StackLayout Margin="0,20,0,10">
 
-            <Button Text="{ex:Translate Name=btnDeleteAll-AttatchmentPage}" 
+            <Button Text="{Static res:AppResources.btnDeleteAll_AttatchmentPage}" 
                     Style="{x:StaticResource WithVsmButton}" 
                     TextColor="#2fa562" 
                     BackgroundColor="White"
@@ -156,7 +156,7 @@
         </StackLayout>
         <Button x:Name="btnDone" HeightRequest="50"
                 VerticalOptions="End"
-                Text="{ex:Translate Name=btnConfirm-NewRequest}" 
+                Text="{Static res:AppResources.btnConfirm_NewRequest}" 
                 FontSize="16"
                 FontAttributes="Bold"
                 BackgroundColor="#2fa562" 

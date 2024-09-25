@@ -4,7 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
             xmlns:mopupsanim="clr-namespace:Mopups.Animations;assembly=Mopups"
-            xmlns:ex="clr-namespace:TripBliss.Extensions"
+            xmlns:res="clr-namespace:TripBliss.Resources.Language"
             xmlns:local="clr-namespace:TripBliss"
              x:Class="TripBliss.Pages.MainPopups.FullScreenImagePopup"
              NavigationPage.HasNavigationBar="False" 

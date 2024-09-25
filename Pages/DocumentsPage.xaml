@@ -2,7 +2,7 @@
 <Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
-             xmlns:ex="clr-namespace:TripBliss.Extensions"
+             xmlns:res="clr-namespace:TripBliss.Resources.Language"
              xmlns:vm="clr-namespace:TripBliss.ViewModels"
              x:Class="TripBliss.Pages.DocumentsPage"
              Title="Tr_DocumentsPage"
@@ -24,7 +24,7 @@
                     <TapGestureRecognizer Command="{Binding BackPressedCommand}"></TapGestureRecognizer>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="{ex:Translate Name=lblDocuments-MorePage}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="{Static res:AppResources.lblDocuments_MorePage}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
             <Label Text="In Review" FontAutoScalingEnabled="False" FontSize="14" HorizontalOptions="End"
                    TextColor="Red" VerticalOptions="CenterAndExpand" ></Label>

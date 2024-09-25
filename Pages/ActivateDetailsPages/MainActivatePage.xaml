@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ex="clr-namespace:TripBliss.Extensions"
+             xmlns:res="clr-namespace:TripBliss.Resources.Language"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              xmlns:vm="clr-namespace:TripBliss.ViewModels.ActivateViewModels"
              x:Class="TripBliss.Pages.ActivateDetailsPages.MainActivatePage"
@@ -41,14 +41,14 @@
                     <TapGestureRecognizer Command="{Binding BackButtonCommand}"></TapGestureRecognizer>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="{ex:Translate Name=ActiveDetails - HotelServices}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="{Static res:AppResources.ActiveDetails___HotelServices}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Padding="0,10">
             <StackLayout Spacing="10">
                 <!--Hotel-->
                 <StackLayout Orientation="Vertical" Margin="0,15,0,0">
-                    <Label Text="{ex:Translate Name=lblHotelServices}" FontSize="16" TextColor="DarkOrange" VerticalTextAlignment="Center"></Label>
+                    <Label Text="{Static res:AppResources.lblHotelServices}" FontSize="16" TextColor="DarkOrange" VerticalTextAlignment="Center"></Label>
                     <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
                         <CollectionView ItemsSource="{Binding ActiveHotels}" VerticalOptions="FillAndExpand">
                             <CollectionView.ItemTemplate>
@@ -59,7 +59,7 @@
                                                 <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{ex:Translate Name=GuestId-HotelActive}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
+                                                            <Span Text="{Static res:AppResources.GuestId_HotelActive}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
                                                             <Span Text="{Binding GuestName , StringFormat='  : {0}'}" TextColor="Gray" FontSize="12" ></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
@@ -67,7 +67,7 @@
                                                 <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{ex:Translate Name=RoomRef-HotelActive}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
+                                                            <Span Text="{Static res:AppResources.RoomRef_HotelActive}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
                                                             <Span Text="{Binding RoomRef, StringFormat='  : {0}'}" TextColor="Gray" FontSize="12"></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
@@ -91,7 +91,7 @@
                 </StackLayout>
                 <!--Transportaion-->
                 <StackLayout Orientation="Vertical" Margin="0,0">
-                    <Label Text="{ex:Translate Name=lblTransportationServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Label Text="{Static res:AppResources.lblTransportationServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
                     <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
                         <CollectionView ItemsSource="{Binding ActiveTransport}" VerticalOptions="FillAndExpand" SelectionMode="Single">
                             <CollectionView.ItemTemplate>
@@ -102,7 +102,7 @@
                                                 <Label FontAutoScalingEnabled="False" VerticalTextAlignment="Center">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{ex:Translate Name=GuestId-HotelActive}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
+                                                            <Span Text="{Static res:AppResources.GuestId_HotelActive}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
                                                             <Span Text="{Binding LeaderName , StringFormat='  : {0}'}" TextColor="Gray" FontSize="12" ></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
@@ -110,7 +110,7 @@
                                                 <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{ex:Translate Name=PlateNumber-TransportActive}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
+                                                            <Span Text="{Static res:AppResources.PlateNumber_TransportActive}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
                                                             <Span Text="{Binding PlateNumber,StringFormat='  : {0}'}" TextColor="Gray" FontSize="12"></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
@@ -135,7 +135,7 @@
                 </StackLayout>
                 <!--Air Flight-->
                 <StackLayout Orientation="Vertical" Margin="0,0">
-                    <Label Text="{ex:Translate Name=lblAirFlightServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Label Text="{Static res:AppResources.lblAirFlightServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
                     <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
                         <CollectionView ItemsSource="{Binding ActiveAirFlight}" VerticalOptions="FillAndExpand"  SelectionMode="Single">
                             <CollectionView.ItemTemplate>
@@ -146,7 +146,7 @@
                                                 <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{ex:Translate Name=GuestId-HotelActive}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
+                                                            <Span Text="{Static res:AppResources.GuestId_HotelActive}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
                                                             <Span Text="{Binding TravelAgencyGuestName , StringFormat='  : {0}'}" TextColor="Gray" FontSize="12" FontAttributes="Bold"></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
@@ -171,7 +171,7 @@
                 </StackLayout>
                 <!--Visa-->
                 <StackLayout Orientation="Vertical" Margin="0,0" Spacing="5">
-                    <Label Text="{ex:Translate Name=lblVisaServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
+                    <Label Text="{Static res:AppResources.lblVisaServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
                     <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
                         <CollectionView ItemsSource="{Binding ActiveVisa}" VerticalOptions="FillAndExpand" SelectionMode="Single">
                             <CollectionView.ItemTemplate>
@@ -182,7 +182,7 @@
                                                 <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{ex:Translate Name=GuestId-HotelActive}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
+                                                            <Span Text="{Static res:AppResources.GuestId_HotelActive}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
                                                             <Span Text="{Binding TravelAgencyGuestName , StringFormat='  : {0}'}" TextColor="Gray" FontSize="12"></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
@@ -205,7 +205,7 @@
                 </StackLayout>
             </StackLayout>
         </ScrollView>
-        <Button VerticalOptions="End" Text="{ex:Translate btnApply-Forgot}" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="20,0,20,20"
+        <Button VerticalOptions="End" Text="{Static res:AppResources.btnApply_Forgot}" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="20,0,20,20"
             Command="{Binding AddToRequestCommand}"></Button>
     </StackLayout>
 </Controls:CustomControl>

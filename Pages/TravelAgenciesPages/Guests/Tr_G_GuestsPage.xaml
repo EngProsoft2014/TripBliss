@@ -2,7 +2,7 @@
 <Custom:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Custom="clr-namespace:TripBliss.Controls"
-             xmlns:ex="clr-namespace:TripBliss.Extensions"
+             xmlns:res="clr-namespace:TripBliss.Resources.Language"
              x:Class="TripBliss.Pages.TravelAgenciesPages.Guests.Tr_G_GuestsPage"
              Title="Tr_GuestsPage"
              BackgroundColor="White"
@@ -29,7 +29,7 @@
             <Border StrokeShape="RoundRectangle 25" Stroke="Gray" HeightRequest="40" Margin="20,0" BackgroundColor="White">
                 <Grid>
                     <SearchBar BackgroundColor="White" 
-                               Placeholder="{ex:Translate Name=plcSearch}" 
+                               Placeholder="{Static res:AppResources.plcSearch}" 
                                HeightRequest="40" FontAutoScalingEnabled="False"
                                FontSize="15" 
                                TextChanged="SearchBar_TextChanged"

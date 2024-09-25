@@ -4,7 +4,7 @@
              x:Class="TripBliss.Pages.DistributorsPages.Offer.OfferViewersPage"
              xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModels.Offer"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
-             xmlns:ex="clr-namespace:TripBliss.Extensions"
+             xmlns:res="clr-namespace:TripBliss.Resources.Language"
              Title="OfferViewersPage"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False">
@@ -28,12 +28,12 @@
                     <TapGestureRecognizer Command="{Binding BackClickedCommand}"></TapGestureRecognizer>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="{ex:Translate Name=hdrViewers-OfferViewers}" FontSize="18" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
+            <Label Text="{Static res:AppResources.hdrViewers_OfferViewers}" FontSize="18" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
         </StackLayout>
 
         <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="0,20,0,0" BackgroundColor="White">
             <Grid>
-                <SearchBar BackgroundColor="White" Placeholder="{ex:Translate Name=plcSearch}" HeightRequest="40" FontSize="15"
+                <SearchBar BackgroundColor="White" Placeholder="{Static res:AppResources.plcSearch}" HeightRequest="40" FontSize="15"
                    TextColor="Black"></SearchBar>
                 <!--<Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
             <Image WidthRequest="20" HeightRequest="20">
