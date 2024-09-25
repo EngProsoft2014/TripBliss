@@ -23,6 +23,7 @@ using Mopups.PreBaked.Interfaces;
 using TripBliss.Services.Data;
 using System.Reactive.Linq;
 using System.ComponentModel.DataAnnotations;
+using static TripBliss.Helpers.ErrorsResult;
 
 
 namespace TripBliss.ViewModels
@@ -166,22 +167,31 @@ namespace TripBliss.ViewModels
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                UserDialogs.Instance.ShowLoading();
                 string email = await App.Current!.MainPage!.DisplayPromptAsync("Info", "Please enter your Email", "Ok");
                 VerfyEmail model = new VerfyEmail { Email = email };
                 if (model.Email != null) 
                 {
                     string UserToken = await _service.UserToken();
-                    var Postjson = await Rep.PostAsync($"{ApiConstants.PostVerifyApi}", model!, UserToken);
-                    if (Postjson == null)
+                    UserDialogs.Instance.ShowLoading();
+                    var Postjson = await Rep.PostTRAsync<VerfyEmail, ErrorResult>($"{ApiConstants.PostVerifyApi}", model!, UserToken);
+                    UserDialogs.Instance.HideHud();
+                    if (Postjson.Item2 == null)
                     {
-                        UserDialogs.Instance.HideHud();
+                        
                         TimeRemaining = 60;
                         while (TimeRemaining > 0)
                         {
+                            IsNotVerfy = false;
                             TimeRemaining--;
                             await Task.Delay(1000); // Wait for 1 second
                         }
+
+                        IsNotVerfy = true;
+                    }
+                    else
+                    {
+                        var toast = Toast.Make("Please enter vaild E-mail", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
                     }
                     
                 }

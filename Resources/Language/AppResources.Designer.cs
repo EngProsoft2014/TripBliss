@@ -162,7 +162,7 @@ namespace TripBliss.Resources.Language {
         /// <summary>
         ///   Looks up a localized string similar to LOG IN.
         /// </summary>
-        internal static string btnLogIn_Login {
+        public static string btnLogIn_Login {
             get {
                 return ResourceManager.GetString("btnLogIn-Login", resourceCulture);
             }

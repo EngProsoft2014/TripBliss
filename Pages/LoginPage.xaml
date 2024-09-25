@@ -28,12 +28,12 @@
 
                         </Image>
                         <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                            <Entry x:Name="entryEmail" Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcEmail-SignUpPage}"
+                            <Entry x:Name="entryEmail" Placeholder="{Static res:AppResources.plcEmail_SignUpPage}" Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" 
                                    HorizontalTextAlignment="Center" Margin="10,2"   Text="{Binding LoginRequest.UserName}"></Entry>
                         </Border>
                         <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,2">
-                                <Entry x:Name="entryPassword" FontAutoScalingEnabled="False" Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{ex:Translate Name=plcPassword-Login}"
+                                <Entry x:Name="entryPassword" Placeholder="{Static res:AppResources.plcPassword_Login}" FontAutoScalingEnabled="False" Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" 
                                    HorizontalTextAlignment="Center" Text="{Binding LoginRequest.Password}" IsPassword="True" HorizontalOptions="CenterAndExpand">
                                 </Entry>
 
@@ -56,34 +56,43 @@
                                 </Image>
                             </StackLayout>
                         </Border>
-                        <HorizontalStackLayout Spacing="15">
-                            <Label IsVisible="{Binding IsNotVerfy}" IsEnabled="False">
+                        <HorizontalStackLayout Spacing="15" HorizontalOptions="FillAndExpand">
+                            <Label IsVisible="{Binding IsNotVerfy}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Send verfication E-mail click" TextColor="Gray" FontSize="12"></Span>
-                                        <Span Text="  here" TextColor="#059ce3" FontSize="13" FontAttributes="Bold">
+                                        <Span Text="Resend verfication to " TextColor="Gray" FontSize="12"></Span>
+                                        <Span Text="E-mail" TextColor="#2fb569" FontSize="12"></Span>
+                                        <Span Text=" click" TextColor="Gray" FontSize="12"></Span>
+                                        <Span Text=" here" TextColor="#059ce3" FontSize="13" FontAttributes="Bold">
                                             <Span.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding VerfivationClickCommand}"></TapGestureRecognizer>
                                             </Span.GestureRecognizers>
                                         </Span>
                                     </FormattedString>
                                 </Label.FormattedText>
-                                <Label.Triggers>
+                                <!--<Label.Triggers>
                                     <DataTrigger TargetType="Label" Binding="{Binding TimeRemaining}" Value="0">
                                         <Setter Property="IsEnabled" Value="True"></Setter>
                                     </DataTrigger>
-                                </Label.Triggers>
+                                </Label.Triggers>-->
                             </Label>
-                            <Label Text="{Binding TimeRemaining,StringFormat='Please wait for {0}.'}" FontSize="13" TextColor="Black">
-                                <Label.Triggers>
-                                    <DataTrigger TargetType="Label" Binding="{Binding TimeRemaining}" Value="0">
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Label Text="Waiting time to resend" FontSize="14" TextColor="#333" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center">
+
+                                </Label>
+                                <Label Text="{Binding TimeRemaining}" FontSize="15" FontAttributes="Bold" TextColor="#2fb569" VerticalTextAlignment="Center">
+                                    
+                                </Label>
+                                <StackLayout.Triggers>
+                                    <DataTrigger TargetType="StackLayout" Binding="{Binding TimeRemaining}" Value="0">
                                         <Setter Property="IsVisible" Value="False"></Setter>
                                     </DataTrigger>
-                                </Label.Triggers>
-                            </Label>
+                                </StackLayout.Triggers>
+                            </StackLayout>
+
                         </HorizontalStackLayout>
 
-                        <Button Text="{ex:Translate Name=btnLogIn-Login}" FontAutoScalingEnabled="False" FontAttributes="Bold" TextColor="White" WidthRequest="140" FontSize="14" CornerRadius="25" Margin="0,30,0,0"
+                        <Button Text="{Static res:AppResources.btnLogIn_Login}" FontAutoScalingEnabled="False" FontAttributes="Bold" TextColor="White" WidthRequest="140" FontSize="14" CornerRadius="25" Margin="0,30,0,0"
                                 Command="{Binding ClickLoginCommand}" CommandParameter="{Binding LoginRequest}" BackgroundColor="#2fb569">
                         </Button>
                         <!--<Button Text="Send Verfication Email" FontAutoScalingEnabled="False" FontAttributes="Bold" TextColor="White" HorizontalOptions="FillAndExpand" FontSize="14" CornerRadius="25" Margin="0,0,0,0"
@@ -91,7 +100,7 @@
                         </Button>-->
                     </StackLayout>
                 </Border>
-                <Label Text="{x:Static res:AppResources.lblForgotPassword-Login}" TextColor="#0471DF" FontSize="13" BackgroundColor="Transparent"
+                <Label Text="{Static res:AppResources.lblForgotPassword_Login}" TextColor="#0471DF" FontSize="13" BackgroundColor="Transparent"
                        HorizontalOptions="StartAndExpand" Margin="0,20,0,0" FontAttributes="Bold">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoRestPageCommand}"></TapGestureRecognizer>
@@ -100,9 +109,9 @@
                 <Label Margin="0,15,0,0">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="{x:Static res:AppResources.lblDHAccount-Login}" FontSize="13" TextColor="Gray" FontFamily="Almarai-Regular"></Span>
+                            <Span Text="{Static res:AppResources.lblDHAccount_Login}" FontSize="13" TextColor="Gray" FontFamily="Almarai-Regular"></Span>
                             <Span Text=" " FontSize="13" TextColor="Gray" FontFamily="Almarai-Regular"></Span>
-                            <Span Text="{x:Static res:AppResources.lblSignUp-Login}" TextColor="#ff7700" FontSize="13" FontFamily="Almarai-Regular"
+                            <Span Text="{Static res:AppResources.lblSignUp_Login}" TextColor="#ff7700" FontSize="13" FontFamily="Almarai-Regular"
                                   FontAttributes="Bold">
                                 <Span.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding GoSignUpPageCommand}"></TapGestureRecognizer>
