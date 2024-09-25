@@ -158,7 +158,7 @@
                                 </CollectionView>
 
                                 <!--No Data-->
-                                <StackLayout x:Name="stkNoData" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <StackLayout x:Name="stkNoData" IsVisible="False" Margin="{OnPlatform iOS='0,100,0,0'}" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                     <Image Source="noresult.png"></Image>
                                     <StackLayout.Triggers>
                                         <DataTrigger TargetType="StackLayout" Binding="{Binding Requests.Count}" Value="0">
@@ -202,7 +202,7 @@
                                         </Border>-->
                                     </Grid>
                                     <Border.Shadow>
-                                        <Shadow  Brush="{OnPlatform Android=DarkGray,iOS=LightGray}" Opacity="1"></Shadow>
+                                        <Shadow Brush="{OnPlatform Android=Gray,iOS=LightGray}" Radius="{OnPlatform Android=5,iOS=2}" Opacity="1"></Shadow>
                                     </Border.Shadow>
                                 </Border>
                                 <CollectionView ItemsSource="{Binding TravelAgencies}" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" SelectionMode="None">

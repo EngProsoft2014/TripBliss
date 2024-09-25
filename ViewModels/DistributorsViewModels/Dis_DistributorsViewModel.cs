@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages;
 using TripBliss.Pages.DistributorsPages.ResponseDetailes;
+using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
+using TripBliss.ViewModels.ActivateViewModels;
 using TripBliss.ViewModels.DistributorsViewModels.ResponseDetails;
 
 
@@ -117,6 +120,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
         //{
         //    await App.Current.MainPage.Navigation.PushAsync(new NewRequestPage());
         //}
+
 
     }
 }

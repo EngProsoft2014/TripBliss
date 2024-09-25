@@ -28,9 +28,10 @@
             </Image>
             <Label Text="{Static res:AppResources.lblAirFlightServices}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
-            <Button Text="{Static res:AppResources.ActiveDetails___HotelServices}" Padding="3" HeightRequest="35" FontSize="{OnPlatform Android=12,iOS=14}"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_AirFlightServicesViewModel}}, Path=ActiveClickedCommand}"
+            <Button Text="{Static res:AppResources.btnattachment_VisaDetails}" Padding="3" HeightRequest="35" FontSize="{OnPlatform Android=12,iOS=14}"
+                    Command="{Binding ActiveClickedCommand}"
                     BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" WidthRequest="90" Margin="0" FontAttributes="Bold"></Button>
+
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout >

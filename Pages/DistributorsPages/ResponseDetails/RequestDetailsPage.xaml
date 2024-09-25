@@ -839,7 +839,7 @@
                                 <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Padding="0,10">
                                     <StackLayout>
                                         <!--Hotel-->
-                                        <StackLayout Orientation="Horizontal" Margin="0,15,0,5">
+                                        <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android='0,15,0,5', iOS='0,5,0,5'}">
                                             <Label Text="{Static res:AppResources.lblHotelServices}" FontSize="16" TextColor="DarkOrange" VerticalTextAlignment="Center"></Label>
                                         </StackLayout>
                                         <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="0,0,0,15">
@@ -849,7 +849,7 @@
                                                         <Border>
                                                             <Grid HorizontalOptions="FillAndExpand">
                                                                 <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand" HorizontalScrollBarVisibility="Never" Padding="3,0,33,0">
-                                                                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" HorizontalOptions="FillAndExpand">
+                                                                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
                                                                         <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -907,7 +907,7 @@
                                                         <Border>
                                                             <Grid HorizontalOptions="FillAndExpand">
                                                                 <ScrollView Orientation="Horizontal" Padding="3,0,33,0" HorizontalScrollBarVisibility="Never">
-                                                                    <StackLayout Orientation="Horizontal" Spacing="10" Padding="3" Margin="0,5">
+                                                                    <StackLayout Orientation="Horizontal" Spacing="10" Padding="3" Margin="0,5" VerticalOptions="Center">
                                                                         <Label Text="{Binding RequestTravelAgencyTransport.TypeName}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="12" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
                                                                         <Label TextColor="Gray" FontAutoScalingEnabled="False" FontSize="12" VerticalTextAlignment="Center">
                                                                             <Label.Text>
@@ -965,7 +965,7 @@
                                                         <Border>
                                                             <Grid HorizontalOptions="FillAndExpand">
                                                                 <ScrollView Orientation="Horizontal" Padding="3,0,33,0" HorizontalScrollBarVisibility="Never">
-                                                                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" HorizontalOptions="FillAndExpand">
+                                                                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
                                                                         <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1028,7 +1028,7 @@
                                                         <Border>
                                                             <Grid HorizontalOptions="FillAndExpand">
                                                                 <ScrollView  Orientation="Horizontal" Padding="3,0,33,0" HorizontalScrollBarVisibility="Never">
-                                                                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" HorizontalOptions="FillAndExpand">
+                                                                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
                                                                         <Label FontAutoScalingEnabled="False">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1078,7 +1078,7 @@
                                         </Border>
                                     </StackLayout>
                                 </ScrollView>
-                                <Button VerticalOptions="End" Text="{Static res:AppResources.btnApply_Forgot}" FontSize="14" BackgroundColor="#2fa562" TextColor="White" Margin="20,0,20,20"
+                                <Button VerticalOptions="End" Text="{Static res:AppResources.btnApply_Forgot}" FontSize="16" FontAttributes="Bold" BackgroundColor="#2fa562" TextColor="White" Margin="20,0,20,20"
                                         Command="{Binding AddToRequestCommand}"></Button>
                             </StackLayout>
                             <ContentView.Triggers>

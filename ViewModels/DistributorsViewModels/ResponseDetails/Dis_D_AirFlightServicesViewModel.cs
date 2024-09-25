@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages.ActivateDetailsPages;
+using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 using TripBliss.ViewModels.ActivateViewModels;
 
 namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
@@ -59,19 +60,20 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task ActiveClicked()
         {
+
             if (TotalPayment == 0)
             {
-                var toast = Toast.Make("The Agency must pay part of the amount due.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make("Please make sure to pay part of the amount due.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else
             {
-                var vm = new MainActivateViewModel(Moddel, Rep, _service);
-                var page = new MainActivatePage(vm);
+                var vm = new AirFlightActivateViewModel(Moddel, Rep, _service);
+                var page = new AirFlightAttachmentsPage(vm);
                 page.BindingContext = vm;
                 await App.Current!.MainPage!.Navigation.PushAsync(page);
             }
-                
+
         }
         #endregion
     }
