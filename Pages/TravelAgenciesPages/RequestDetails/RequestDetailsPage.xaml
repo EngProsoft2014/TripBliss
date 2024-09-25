@@ -688,10 +688,10 @@
                                     </Border>-->
                                 </Grid>
                                 <Border.Shadow>
-                                    <Shadow  Brush="DarkGray" Opacity="1" Radius="{OnPlatform Android=5 , iOS=3}"></Shadow>
+                                    <Shadow  Brush="{OnPlatform Android=Gray, iOS=LightGray}" Opacity="1" Radius="{OnPlatform Android=5 , iOS=3}"></Shadow>
                                 </Border.Shadow>
                             </Border>
-                            <CollectionView ItemsSource="{Binding RequestDetailes.ResponseWithDistributor}" VerticalOptions="FillAndExpand" Margin="0,10,0,0">
+                            <CollectionView ItemsSource="{Binding RequestDetailes.ResponseWithDistributor}" VerticalOptions="FillAndExpand" Margin="0,20,0,0">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate  x:Name="Data">
                                         <Border x:Name="BorderOfItem" StrokeShape="RoundRectangle 20" Margin="0,10">
@@ -708,10 +708,9 @@
                                                                      VerticalOptions="StartAndExpand">
                                                         <Label Text="{Binding DistributorCompanyReview}" FontAutoScalingEnabled="False" FontSize="14" TextColor="Black" FontAttributes="Bold"
                                                                     VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"></Label>
-                                                        <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand">
+                                                        <Image VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand">
                                                             <Image.Source>
-                                                                <FontImageSource Glyph="" FontFamily="FontIconSolid"
-                                                                                     Color="Gold"></FontImageSource>
+                                                                <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gold" Size="15"></FontImageSource>
                                                             </Image.Source>
                                                         </Image>
                                                     </StackLayout>

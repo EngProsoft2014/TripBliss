@@ -68,7 +68,7 @@
                             <DataTemplate>
                                 <Grid HorizontalOptions="FillAndExpand">
                                     <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand" HorizontalScrollBarVisibility="Never" Padding="3,0,33,0">
-                                        <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" HorizontalOptions="FillAndExpand">
+                                        <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
                                             <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
@@ -94,7 +94,7 @@
                                         </StackLayout>
                                     </ScrollView>
 
-                                    <ImageButton Grid.Column="1" BackgroundColor="White" WidthRequest="30"  HeightRequest="20" HorizontalOptions="EndAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path= DeletHotelCommand}" CommandParameter="{Binding}">
+                                    <ImageButton Grid.Column="1" BackgroundColor="White" Padding="{OnPlatform iOS=10}" WidthRequest="30"  HeightRequest="20" HorizontalOptions="EndAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path= DeletHotelCommand}" CommandParameter="{Binding}">
                                         <ImageButton.Source>
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                         </ImageButton.Source>
@@ -124,7 +124,7 @@
                             <DataTemplate>
                                 <Grid HorizontalOptions="FillAndExpand">
                                     <ScrollView Orientation="Horizontal" Padding="3,0,5,0" HorizontalScrollBarVisibility="Never">
-                                        <StackLayout Orientation="Horizontal" Spacing="10" Padding="3" Margin="0,5">
+                                        <StackLayout Orientation="Horizontal" Spacing="10" Padding="3" Margin="0,5" VerticalOptions="Center">
                                             <Label Text="{Binding TypeName}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="12" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
                                             <Label TextColor="Gray" FontAutoScalingEnabled="False" FontSize="12" VerticalTextAlignment="Center">
                                                 <Label.Text>
@@ -148,7 +148,7 @@
                                         </StackLayout>
                                     </ScrollView>
 
-                                    <ImageButton Grid.Column="1" BackgroundColor="White" WidthRequest="30" HeightRequest="20" HorizontalOptions="EndAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path= DeletTransPortationCommand}" CommandParameter="{Binding}">
+                                    <ImageButton Grid.Column="1" BackgroundColor="White" Padding="{OnPlatform iOS=10}" WidthRequest="30" HeightRequest="20" HorizontalOptions="EndAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path= DeletTransPortationCommand}" CommandParameter="{Binding}">
                                         <ImageButton.Source>
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                         </ImageButton.Source>
@@ -179,7 +179,7 @@
                             <DataTemplate>
                                 <Grid HorizontalOptions="FillAndExpand">
                                     <ScrollView Orientation="Horizontal" Padding="3,0,33,0" HorizontalScrollBarVisibility="Never">
-                                        <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" HorizontalOptions="FillAndExpand">
+                                        <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
                                             <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
@@ -211,7 +211,7 @@
                                         </StackLayout>
                                     </ScrollView>
 
-                                    <ImageButton Grid.Column="1" BackgroundColor="White" WidthRequest="30" HeightRequest="20" HorizontalOptions="EndAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path= DeletAirFlightCommand}" CommandParameter="{Binding}">
+                                    <ImageButton Grid.Column="1" BackgroundColor="White" Padding="{OnPlatform iOS=10}" WidthRequest="30" HeightRequest="20" HorizontalOptions="EndAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path= DeletAirFlightCommand}" CommandParameter="{Binding}">
                                         <ImageButton.Source>
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                         </ImageButton.Source>
@@ -241,7 +241,7 @@
 
                                 <Grid HorizontalOptions="FillAndExpand">
                                     <ScrollView  Orientation="Horizontal" Padding="3,0,33,0" HorizontalScrollBarVisibility="Never">
-                                        <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" HorizontalOptions="FillAndExpand">
+                                        <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" VerticalOptions="Center" Margin="0,5" HorizontalOptions="FillAndExpand">
                                             <Label FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
@@ -271,7 +271,7 @@
                                         </StackLayout>
                                     </ScrollView>
 
-                                    <ImageButton Grid.Column="1" BackgroundColor="White" WidthRequest="30" HeightRequest="20" HorizontalOptions="EndAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path= DeletVisaCommand}" CommandParameter="{Binding}">
+                                    <ImageButton Grid.Column="1" BackgroundColor="White" Padding="{OnPlatform iOS=10}" WidthRequest="30" HeightRequest="20" HorizontalOptions="EndAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path= DeletVisaCommand}" CommandParameter="{Binding}">
                                         <ImageButton.Source>
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                         </ImageButton.Source>

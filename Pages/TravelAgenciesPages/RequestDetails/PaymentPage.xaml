@@ -68,7 +68,7 @@
                     <GridItemsLayout VerticalItemSpacing="10" Orientation="Vertical"></GridItemsLayout>
                 </CollectionView.ItemsLayout>
             </CollectionView>
-            <Button Text="{Static res:AppResources.btnConfirm_NewRequest}" BackgroundColor="#33a7f5" FontSize="14" TextColor="White" FontAttributes="Bold"
+            <Button Text="{Static res:AppResources.btnConfirm_NewRequest}" BackgroundColor="#33a7f5" FontSize="16" TextColor="White" FontAttributes="Bold"
                     Command="{Binding AddPaymentCommand}" VerticalOptions="End"></Button>
         </Grid>
     </StackLayout>

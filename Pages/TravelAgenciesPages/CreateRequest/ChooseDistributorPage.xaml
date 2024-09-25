@@ -96,9 +96,9 @@
                                 <HorizontalStackLayout Spacing="5">
                                     <Label Text="{Binding Review}" FontAutoScalingEnabled="False" FontSize="14" TextColor="Black" FontAttributes="Bold"
                                    VerticalOptions="StartAndExpand"></Label>
-                                    <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
+                                    <Image VerticalOptions="StartAndExpand">
                                         <Image.Source>
-                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gold"></FontImageSource>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gold" Size="15"></FontImageSource>
                                         </Image.Source>
                                     </Image>
                                 </HorizontalStackLayout>

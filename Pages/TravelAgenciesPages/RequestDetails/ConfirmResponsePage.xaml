@@ -56,18 +56,18 @@
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout>
                 <!--Hotel-->
-                <StackLayout Orientation="Horizontal" Margin="0,15,0,5">
+                <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android='0,15,0,5', iOS='0,5,0,0'}">
                     <Label Text="{Static res:AppResources.lblHotelServices}" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" 
                            VerticalTextAlignment="Center"></Label>
                 </StackLayout>
-                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="0,0,0,15">
+                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="{OnPlatform Android='0,0,0,15', iOS='0,0,0,10'}">
                     <CollectionView ItemsSource="{Binding Response.ResponseWithDistributorHotel}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Border>
                                     <Grid HorizontalOptions="FillAndExpand">
                                         <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand" HorizontalScrollBarVisibility="Never" Padding="3,0,35,0">
-                                            <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" HorizontalOptions="FillAndExpand">
+                                            <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
                                                 <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                     <Label.FormattedText>
                                                         <FormattedString>
@@ -126,18 +126,18 @@
                 </Border>
                 
                 <!--Transportaion-->
-                <StackLayout Orientation="Horizontal" Margin="0,0,0,5">
+                <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android='0,15,0,5', iOS='0,5,0,0'}">
                     <Label Text="{Static res:AppResources.lblTransportationServices}" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" 
                            VerticalTextAlignment="Center"></Label>
                 </StackLayout>
-                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="0,0,0,15">
+                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="{OnPlatform Android='0,0,0,15', iOS='0,0,0,10'}">
                     <CollectionView ItemsSource="{Binding Response.ResponseWithDistributorTransport}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Border>
                                     <Grid HorizontalOptions="FillAndExpand">
                                         <ScrollView Orientation="Horizontal" Padding="3,0,35,0" HorizontalScrollBarVisibility="Never">
-                                            <StackLayout Orientation="Horizontal" Spacing="10" Padding="3" Margin="0,5">
+                                            <StackLayout Orientation="Horizontal" Spacing="10" VerticalOptions="Center" Padding="3" Margin="0,5">
                                                 <Label Text="{Binding RequestTravelAgencyTransport.TypeName}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="12" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
                                                 <Label TextColor="Gray" FontAutoScalingEnabled="False" FontSize="12" VerticalTextAlignment="Center">
                                                     <Label.Text>
@@ -200,18 +200,18 @@
                 </Border>
                 
                 <!--Air Flight-->
-                <StackLayout Orientation="Horizontal" Margin="0,0,0,5">
+                <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android='0,15,0,5', iOS='0,5,0,0'}">
                     <Label Text="{Static res:AppResources.lblAirFlightServices}" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None"
                            VerticalTextAlignment="Center"></Label>
                 </StackLayout>
-                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="0,0,0,15">
+                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="{OnPlatform Android='0,0,0,15', iOS='0,0,0,10'}">
                     <CollectionView ItemsSource="{Binding Response.ResponseWithDistributorAirFlight}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Border>
                                     <Grid HorizontalOptions="FillAndExpand">
                                         <ScrollView Orientation="Horizontal" Padding="3,0,35,0" HorizontalScrollBarVisibility="Never">
-                                            <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" HorizontalOptions="FillAndExpand">
+                                            <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
                                                 <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                     <Label.FormattedText>
                                                         <FormattedString>
@@ -276,18 +276,18 @@
                 </Border>
                 
                 <!--Visa-->
-                <StackLayout Orientation="Horizontal" Margin="0,0,0,5">
+                <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android='0,15,0,5', iOS='0,5,0,0'}">
                     <Label Text="{Static res:AppResources.lblVisaServices}" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None"
                            VerticalTextAlignment="Center"></Label>
                 </StackLayout>
-                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="0,0,0,15">
+                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="{OnPlatform Android='0,0,0,15', iOS='0,0,0,10'}">
                     <CollectionView ItemsSource="{Binding Response.ResponseWithDistributorVisa}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Border>
                                     <Grid HorizontalOptions="FillAndExpand">
                                         <ScrollView  Orientation="Horizontal" Padding="3,0,35,0" HorizontalScrollBarVisibility="Never">
-                                            <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" HorizontalOptions="FillAndExpand">
+                                            <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
                                                 <Label FontAutoScalingEnabled="False">
                                                     <Label.FormattedText>
                                                         <FormattedString>
@@ -351,8 +351,8 @@
                 </Border>
             </StackLayout>
         </ScrollView>
-        <Button VerticalOptions="End" Text="{Static res:AppResources.btnConfirm_NewRequest}" FontAutoScalingEnabled="False" FontSize="14" BackgroundColor="#2fa562"
-                TextColor="White" Margin="20,0" Command="{Binding ApplyCommand}"></Button>
+        <Button VerticalOptions="End" Text="{Static res:AppResources.btnConfirm_NewRequest}" FontAutoScalingEnabled="False" FontSize="16" BackgroundColor="#2fa562"
+                TextColor="White" Margin="20,0" FontAttributes="Bold" Command="{Binding ApplyCommand}"></Button>
 
     </StackLayout>
 

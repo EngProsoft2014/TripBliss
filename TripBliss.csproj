@@ -78,10 +78,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiImage Remove="Resources\Images\logosmall.svg" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <None Remove="Platforms\Android\Resources\xml\provider_paths.xml" />
 	  <None Remove="Resources\AppIcon\logo.svg" />
 	  <None Remove="Resources\Fonts\Almarai-Light.ttf" />
@@ -98,10 +94,6 @@
 	  <None Remove="Resources\Images\offer.jpg" />
 	  <None Remove="Resources\Splash\logo.svg" />
 	  <None Remove="Resources\Splash\logosmall.svg" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiIcon Include="Resources\Images\logosmall.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
