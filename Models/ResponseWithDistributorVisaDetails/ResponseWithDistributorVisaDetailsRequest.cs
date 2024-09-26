@@ -2,8 +2,9 @@
 {
     public record ResponseWithDistributorVisaDetailsRequest
     {
-        public int Id { get; set; }
-        public int ResponseWithDistributorVisaId { get; set; }
+        //public int Id { get; set; }
+        //public int ResponseWithDistributorVisaId { get; set; }
         public byte[] ImgFile { get; set; } = default!;
+        public string? Extension { get; set; }
     }
 }

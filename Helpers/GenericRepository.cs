@@ -632,6 +632,11 @@ namespace TripBliss.Helpers
                 HttpClient httpClient = CreateHttpClient(Utility.ServerUrl + uri);
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
 
+                string cc = JsonConvert.SerializeObject(data, Formatting.None,
+                        new JsonSerializerSettings()
+                        {
+                            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                        });
 
                 var content = new StringContent(JsonConvert.SerializeObject(data, Formatting.None,
                         new JsonSerializerSettings()
