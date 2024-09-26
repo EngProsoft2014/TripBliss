@@ -60,7 +60,7 @@
                     <Label Text="{Static res:AppResources.lblHotelServices}" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" 
                            VerticalTextAlignment="Center"></Label>
                 </StackLayout>
-                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="{OnPlatform Android='0,0,0,15', iOS='0,0,0,10'}">
+                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="{OnPlatform Android='0,0,0,5', iOS='0,0,0,10'}">
                     <CollectionView ItemsSource="{Binding Response.ResponseWithDistributorHotel}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
@@ -130,7 +130,7 @@
                     <Label Text="{Static res:AppResources.lblTransportationServices}" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None" 
                            VerticalTextAlignment="Center"></Label>
                 </StackLayout>
-                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="{OnPlatform Android='0,0,0,15', iOS='0,0,0,10'}">
+                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="{OnPlatform Android='0,0,0,5', iOS='0,0,0,10'}">
                     <CollectionView ItemsSource="{Binding Response.ResponseWithDistributorTransport}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
@@ -204,7 +204,7 @@
                     <Label Text="{Static res:AppResources.lblAirFlightServices}" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None"
                            VerticalTextAlignment="Center"></Label>
                 </StackLayout>
-                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="{OnPlatform Android='0,0,0,15', iOS='0,0,0,10'}">
+                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="{OnPlatform Android='0,0,0,5', iOS='0,0,0,10'}">
                     <CollectionView ItemsSource="{Binding Response.ResponseWithDistributorAirFlight}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
@@ -280,7 +280,7 @@
                     <Label Text="{Static res:AppResources.lblVisaServices}" FontAutoScalingEnabled="False" FontSize="16" TextColor="DarkOrange" FontAttributes="None"
                            VerticalTextAlignment="Center"></Label>
                 </StackLayout>
-                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="{OnPlatform Android='0,0,0,15', iOS='0,0,0,10'}">
+                <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="{OnPlatform Android='0,0,0,5', iOS='0,0,0,10'}">
                     <CollectionView ItemsSource="{Binding Response.ResponseWithDistributorVisa}" VerticalOptions="FillAndExpand">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
