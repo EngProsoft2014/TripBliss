@@ -24,12 +24,25 @@ namespace TripBliss.ViewModels.ActivateViewModels
         [ObservableProperty]
         ObservableCollection<ResponseWithDistributorVisaDetailsResponse> lstVisaDetails = new ObservableCollection<ResponseWithDistributorVisaDetailsResponse>();
         [ObservableProperty]
+        ObservableCollection<ResponseWithDistributorVisaDetailsResponse> lstTrVisaDetails = new ObservableCollection<ResponseWithDistributorVisaDetailsResponse>();
+        [ObservableProperty]
+        ObservableCollection<ResponseWithDistributorVisaDetailsResponse> lstDisVisaDetails = new ObservableCollection<ResponseWithDistributorVisaDetailsResponse>();
+        [ObservableProperty]
         ObservableCollection<TravelAgencyGuestResponse> guests = new ObservableCollection<TravelAgencyGuestResponse>();
         [ObservableProperty]
         TravelAgencyGuestResponse selectedGuest = new TravelAgencyGuestResponse();
 
         [ObservableProperty]
         ImageSource imageFile;
+
+        [ObservableProperty]
+        int isTROrDS;
+
+        [ObservableProperty]
+        bool isCheckedTR;
+
+        [ObservableProperty]
+        bool isCheckedDS;
         #endregion
 
         #region Services
@@ -47,25 +60,19 @@ namespace TripBliss.ViewModels.ActivateViewModels
         }
         #endregion
 
-        #region RelayCommand
-        [RelayCommand]
-        async Task Apply()
-        {
-            // Model.TravelAgencyGuestId = selectedGuest?.Id ?? 0;
-            await App.Current!.MainPage!.Navigation.PopAsync();
-        }
-
-        [RelayCommand]
-        async Task BackPressed()
-        {
-            await App.Current!.MainPage!.Navigation.PopAsync();
-        }
-        #endregion
-
-        #region Methods
+        #region Methods 
         async void Init()
         {
             await GetImage();
+
+            if (TOD == "T")
+            {
+                await GetTRVisaAttachment();
+            }
+            else
+            {
+                await GetDSVisaAttachment();
+            }
         }
 
         async Task GetImage()
@@ -95,8 +102,39 @@ namespace TripBliss.ViewModels.ActivateViewModels
                 }
             }
         }
+        #endregion
 
-        
+        #region RelayCommand
+        [RelayCommand]
+        async Task GetTRVisaAttachment()
+        {
+            IsCheckedTR = true;
+            IsCheckedDS = false;
+            LstTrVisaDetails = new ObservableCollection<ResponseWithDistributorVisaDetailsResponse>(LstVisaDetails.Where(a => !string.IsNullOrEmpty(a.TravelAgencyCompanyName) && string.IsNullOrEmpty(a.DistributorCompanyName)).ToList());
+            IsTROrDS = 1;
+        }
+
+        [RelayCommand]
+        async Task GetDSVisaAttachment()
+        {
+            IsCheckedDS = true;
+            IsCheckedTR = false;
+            LstDisVisaDetails = new ObservableCollection<ResponseWithDistributorVisaDetailsResponse>(LstVisaDetails.Where(a => !string.IsNullOrEmpty(a.DistributorCompanyName) && string.IsNullOrEmpty(a.TravelAgencyCompanyName)).ToList());
+            IsTROrDS = 2;
+        }
+
+        [RelayCommand]
+        async Task Apply()
+        {
+            // Model.TravelAgencyGuestId = selectedGuest?.Id ?? 0;
+            await App.Current!.MainPage!.Navigation.PopAsync();
+        }
+
+        [RelayCommand]
+        async Task BackPressed()
+        {
+            await App.Current!.MainPage!.Navigation.PopAsync();
+        }
 
         [RelayCommand]
         async Task OpenFullScreenImage(ResponseWithDistributorVisaDetailsResponse model)
@@ -127,6 +165,30 @@ namespace TripBliss.ViewModels.ActivateViewModels
                         ImgName = img,
                         ImageFile = ImageSource.FromStream(() => new MemoryStream(bytes)),
                     });
+                    if (IsCheckedTR == true && IsCheckedDS == false)
+                    {
+                        LstVisaDetails.Add(new ResponseWithDistributorVisaDetailsResponse
+                        {
+                            Id = ActiveVisa.Id,
+                            ResponseWithDistributorVisaId = ActiveVisa.ResponseWithDistributorVisaId,
+                            ImgName = img,
+                            ImageFile = ImageSource.FromStream(() => new MemoryStream(bytes)),
+                            TravelAgencyCompanyName = "T"
+                        });
+                        await GetTRVisaAttachment();
+                    }
+                    else if(IsCheckedTR == false && IsCheckedDS == true)
+                    {
+                        LstVisaDetails.Add(new ResponseWithDistributorVisaDetailsResponse
+                        {
+                            Id = ActiveVisa.Id,
+                            ResponseWithDistributorVisaId = ActiveVisa.ResponseWithDistributorVisaId,
+                            ImgName = img,
+                            ImageFile = ImageSource.FromStream(() => new MemoryStream(bytes)),
+                            DistributorCompanyName = "D"
+                        });
+                        await GetDSVisaAttachment();
+                    }
                     await MopupService.Instance.PopAsync();
 
                 }
@@ -194,6 +256,14 @@ namespace TripBliss.ViewModels.ActivateViewModels
                         if (json == null)
                         {
                             LstVisaDetails.Remove(model);
+                            if (IsCheckedTR == true && IsCheckedDS == false)
+                            {  
+                                await GetTRVisaAttachment();
+                            }
+                            else if (IsCheckedTR == false && IsCheckedDS == true)
+                            {
+                                await GetDSVisaAttachment();
+                            }
                         }
                         IsBusy = true;
                     }
