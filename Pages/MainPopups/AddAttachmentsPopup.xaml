@@ -11,6 +11,14 @@
                  BackgroundColor="#90000000">
 
 
+    <mopups:PopupPage.Animation>
+        <mopupsanim:MoveAnimation
+               DurationIn="700"
+               EasingIn="BounceOut"
+               PositionIn="Bottom"
+               PositionOut="Center" />
+    </mopups:PopupPage.Animation>
+
     <StackLayout VerticalOptions="EndAndExpand">
 
         <Border Padding="10" Margin="20" BackgroundColor="Transparent" StrokeThickness="0">

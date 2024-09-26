@@ -64,21 +64,24 @@
                                                     <VerticalStackLayout Padding="10" Spacing="5">
                                                         <Label Text="{Binding RequestName}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
                                                         <Label Text="{Binding ChoosenServices}" FontAutoScalingEnabled="False" FontSize="12" TextColor="#ff7700" Margin="0,3,0,0"></Label>
-                                                        <Label Margin="0,3,0,0" FontAutoScalingEnabled="False">
-                                                            <Label.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Text="Date : " FontSize="12" TextColor="#333" ></Span>
-                                                                    <Span Text="{Binding CreateDate,StringFormat='{0:MM-dd-yyyy}'}" FontSize="11" TextColor="#059ce3" ></Span>
-                                                                </FormattedString>
-                                                            </Label.FormattedText>
-                                                        </Label>
+                                                        <HorizontalStackLayout Margin="0,3,0,0" Spacing="2">
+                                                            <Label Text="{Static res:AppResources.lblDate_TranService}" FontSize="12" TextColor="Blue"></Label>
+                                                            <Label Text=":" FontSize="12" TextColor="Blue"></Label>
+                                                            <Label Text="{Binding CreateDate,StringFormat='{0:MM-dd-yyyy}'}" FontSize="11" TextColor="#059ce3" ></Label>
+                                                        </HorizontalStackLayout>
                                                     </VerticalStackLayout>
                                                     <VerticalStackLayout VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand"
                                                                          Margin="10,0,10,10" Spacing="1">
-                                                        <Label Text="{Binding ResponseWithDistributorCount , StringFormat='All Distributors {0}'}" 
-                                                               FontSize="10" TextColor="Gray" FontAutoScalingEnabled="False"></Label>
-                                                        <Label Text="{Binding TotalPriceDisAcceptCount , StringFormat='Active Distributors {0}'}" 
-                                                               FontSize="10" TextColor="Gray" FontAutoScalingEnabled="False"></Label>
+                                                        <HorizontalStackLayout Spacing="2">
+                                                            <Label Text="{Static res:AppResources.lblAllDistributor_HomeTR}" FontSize="10" TextColor="Gray"></Label>
+                                                            <Label Text=":" FontSize="10" TextColor="Gray"></Label>
+                                                            <Label Text="{Binding ResponseWithDistributorCount}" FontSize="10" TextColor="Gray"></Label>
+                                                        </HorizontalStackLayout>
+                                                        <HorizontalStackLayout Spacing="2">
+                                                            <Label Text="{Static res:AppResources.lblActiveDistributors_HomeTR}" FontSize="10" TextColor="Gray"></Label>
+                                                            <Label Text=":" FontSize="10" TextColor="Gray"></Label>
+                                                            <Label Text="{Binding TotalPriceDisAcceptCount}" FontSize="10" TextColor="Gray"></Label>
+                                                        </HorizontalStackLayout>
                                                     </VerticalStackLayout>
                                                 </StackLayout>
                                                 <Border.GestureRecognizers>
@@ -534,10 +537,11 @@
                                                         </Border>
                                                         <VerticalStackLayout VerticalOptions="EndAndExpand" Margin="0,0,10,20"
                                                                              HorizontalOptions="EndAndExpand">
+                                                            
                                                             <Label FontAutoScalingEnabled="False">
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Text="All Distributors :" FontSize="10" TextColor="Gray"></Span>
+                                                                        <Span Text="{Static res:AppResources.lblAllDistributor_HomeTR}" FontSize="10" TextColor="Gray"></Span>
                                                                         <Span Text="5" FontSize="10" TextColor="Gray"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
@@ -545,7 +549,7 @@
                                                             <Label FontAutoScalingEnabled="False">
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Text="Active Distributors :" FontSize="10" TextColor="Gray"></Span>
+                                                                        <Span Text="{Static res:AppResources.lblActiveDistributors_HomeTR}" FontSize="10" TextColor="Gray"></Span>
                                                                         <Span Text="2" FontSize="10" TextColor="Gray"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>

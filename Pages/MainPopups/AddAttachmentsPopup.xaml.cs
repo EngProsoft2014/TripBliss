@@ -7,7 +7,7 @@ namespace TripBliss.Pages.MainPopups;
 
 public partial class AddAttachmentsPopup : Mopups.Pages.PopupPage
 {
-    public delegate void imageDelegte(string img);
+    public delegate void imageDelegte(string img,string imagePath);
     public event imageDelegte ImageClose;
 
     public AddAttachmentsPopup()
@@ -36,7 +36,7 @@ public partial class AddAttachmentsPopup : Mopups.Pages.PopupPage
                     var stream = await photo.OpenReadAsync();
 
                     // Display the image
-                    ImageClose.Invoke(Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream)));
+                    ImageClose.Invoke(Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream)),photo.FullPath);
                 }
             }
             else
@@ -63,7 +63,7 @@ public partial class AddAttachmentsPopup : Mopups.Pages.PopupPage
                 var stream = await photo.OpenReadAsync();
 
                 // Display the selected photo in the Image control
-                ImageClose.Invoke(Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream)));
+                ImageClose.Invoke(Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream)), photo.FullPath);
             }
         }
         catch (Exception ex)

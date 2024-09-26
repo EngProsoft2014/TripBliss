@@ -49,6 +49,9 @@ namespace TripBliss.ViewModels.ActivateViewModels
 
         [ObservableProperty]
         bool isCheckedDS;
+
+        [ObservableProperty]
+        bool isAllowEdit;
         #endregion
 
         #region Services
@@ -131,19 +134,37 @@ namespace TripBliss.ViewModels.ActivateViewModels
         [RelayCommand]
         async Task GetTRAirflightAttachment()
         {
+            
             IsCheckedTR = true;
             IsCheckedDS = false;
             LstTRAirFlightDetails = new ObservableCollection<ResponseWithDistributorAirFlightDetailsResponse>(LstAirFlightDetails.Where(a => !string.IsNullOrEmpty(a.TravelAgencyCompanyName) && string.IsNullOrEmpty(a.DistributorCompanyName)).ToList());
             IsTROrDS = 1;
+            if ((IsCheckedTR == true && TOD == "T") || (IsCheckedDS == true && TOD == "D"))
+            {
+                IsAllowEdit = true;
+            }
+            else
+            {
+                IsAllowEdit = false;
+            }
         }
 
         [RelayCommand]
         async Task GetDSAirflightAttachment()
         {
+            
             IsCheckedDS = true;
             IsCheckedTR = false;
             LstDSAirFlightDetails = new ObservableCollection<ResponseWithDistributorAirFlightDetailsResponse>(LstAirFlightDetails.Where(a => !string.IsNullOrEmpty(a.DistributorCompanyName) && string.IsNullOrEmpty(a.TravelAgencyCompanyName)).ToList());
             IsTROrDS = 2;
+            if ((IsCheckedTR == true && TOD == "T") || (IsCheckedDS == true && TOD == "D"))
+            {
+                IsAllowEdit = true;
+            }
+            else
+            {
+                IsAllowEdit = false;
+            }
         }
 
         [RelayCommand]
@@ -162,7 +183,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
             IsBusy = false;
 
             var page = new Pages.MainPopups.AddAttachmentsPopup();
-            page.ImageClose += async (img) =>
+            page.ImageClose += async (img,imgPath) =>
             {
                 if (!string.IsNullOrEmpty(img))
                 {
@@ -176,7 +197,8 @@ namespace TripBliss.ViewModels.ActivateViewModels
                             ResponseWithDistributorAirFlightId = ActiveAirFlight.ResponseWithDistributorAirFlightId,
                             ImgName = img,
                             ImageFile = ImageSource.FromStream(() => new MemoryStream(bytes)),
-                            TravelAgencyCompanyName = "T"
+                            TravelAgencyCompanyName = "T",
+                            UrlImgName = imgPath,
                         });
                         await GetTRAirflightAttachment();
                     }
@@ -189,6 +211,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                             ImgName = img,
                             ImageFile = ImageSource.FromStream(() => new MemoryStream(bytes)),
                             DistributorCompanyName = "D",
+                            UrlImgName = imgPath,
                         });
                         await GetDSAirflightAttachment();
                     }
@@ -218,6 +241,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                         LstAirFltRequest.Add(new ResponseWithDistributorAirFlightDetailsRequest
                         {
                             ImgFile = Convert.FromBase64String(item.ImgName),
+                            Extension = Path.GetExtension(item.UrlImgName),
                         });
                     }
                 }
@@ -246,6 +270,14 @@ namespace TripBliss.ViewModels.ActivateViewModels
                     if (model.Id == 0 || model.Id == null) //Id = 0 (Photo New)
                     {
                         LstAirFlightDetails.Remove(model);
+                        if (IsCheckedTR == true && IsCheckedDS == false)
+                        {
+                            await GetTRAirflightAttachment();
+                        }
+                        else if (IsCheckedTR == false && IsCheckedDS == true)
+                        {
+                            await GetDSAirflightAttachment();
+                        }
                     }
                     else //Id != 0 (already Photo save)
                     {      

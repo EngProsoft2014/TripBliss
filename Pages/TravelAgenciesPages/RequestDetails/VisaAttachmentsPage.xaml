@@ -57,7 +57,7 @@
             <Label Text="{Static res:AppResources.hdrVisaAttachment}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
 
-            <Image Margin="0,0,0,0" HorizontalOptions="End">
+            <Image Margin="0,0,0,0" HorizontalOptions="End" IsVisible="{Binding IsAllowEdit}">
                 <Image.Source>
                     <FontImageSource FontFamily="FontIconSolid" Color="#2fa562" Glyph="" Size="30"></FontImageSource>
                 </Image.Source>
@@ -104,7 +104,8 @@
                 BorderColor="#2fa562" 
                 BorderWidth="2"
                 HorizontalOptions="StartAndExpand"
-                Command="{Binding DeleteAllPhotosCommand}">
+                Command="{Binding DeleteAllPhotosCommand}"
+                IsVisible="{Binding IsAllowEdit}">
             </Button>
             <StackLayout.Triggers>
                 <DataTrigger TargetType="StackLayout" Binding="{Binding LstVisaDetails.Count}" Value="0">
@@ -145,7 +146,7 @@
                                         </StackLayout>
 
                                         <!--Image Delete-->
-                                        <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                                        <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsAllowEdit}">
                                             <Image>
                                                 <Image.Source>
                                                     <FontImageSource FontFamily="FontIconSolid" Color="DimGray" Glyph="" Size="30"></FontImageSource>
@@ -214,8 +215,8 @@
                                         </StackLayout>
 
                                         <!--Image Delete-->
-                                        <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
-                                            <Image>
+                                        <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsAllowEdit}">
+                                            <Image >
                                                 <Image.Source>
                                                     <FontImageSource FontFamily="FontIconSolid" Color="DimGray" Glyph="" Size="30"></FontImageSource>
                                                 </Image.Source>
@@ -235,14 +236,14 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 <ListView.Triggers>
-                    <DataTrigger TargetType="ListView" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
+                    <DataTrigger TargetType="ListView" Binding="{Binding LstVisaDetails.Count}" Value="0">
                         <Setter Property="IsVisible" Value="False"></Setter>
                         <Setter Property="HeightRequest" Value="0"></Setter>
                     </DataTrigger>
                 </ListView.Triggers>
             </ListView>
             <StackLayout.Triggers>
-                <DataTrigger TargetType="StackLayout" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
+                <DataTrigger TargetType="StackLayout" Binding="{Binding LstVisaDetails.Count}" Value="0">
                     <Setter Property="IsVisible" Value="False"></Setter>
                     <Setter Property="HeightRequest" Value="0"></Setter>
                 </DataTrigger>
@@ -262,7 +263,8 @@
             Command="{Binding DoneUploadPicturesCommand}"
             Margin="{OnPlatform Android='50,20,50,20',iOS='50,20,50,50'}"
             Padding="0" 
-            CornerRadius="20">
+            CornerRadius="20"
+            IsVisible="{Binding IsAllowEdit}">
             <Button.Triggers>
                 <DataTrigger TargetType="Button" Binding="{Binding LstVisaDetails.Count}" Value="0">
                     <Setter Property="IsVisible" Value="False"></Setter>
@@ -275,7 +277,7 @@
 
         <!--NoData-->
         <StackLayout x:Name="stkNoData" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Image Source="noresult.png" Aspect="AspectFill" VerticalOptions="FillAndExpand"></Image>
+            <Image Source="noresult.png" Aspect="AspectFill" VerticalOptions="CenterAndExpand"></Image>
             <StackLayout.Triggers>
                 <DataTrigger TargetType="StackLayout" Binding="{Binding LstVisaDetails.Count}" Value="0">
                     <Setter Property="IsVisible" Value="True"></Setter>

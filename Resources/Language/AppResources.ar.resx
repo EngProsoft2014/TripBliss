@@ -481,7 +481,7 @@
     <value>موزع</value>
   </data>
   <data name="hdrMyUser-users" xml:space="preserve">
-    <value>المستخدم الخاص بي</value>
+    <value>مستخدمي</value>
   </data>
   <data name="hdrAddUser-AddUserPage" xml:space="preserve">
     <value>إضافة مستخدم</value>
@@ -491,5 +491,11 @@
   </data>
   <data name="hdrMyDocuments-DocumentsPage" xml:space="preserve">
     <value>مستنداتي</value>
+  </data>
+  <data name="lblAllDistributor-HomeTR" xml:space="preserve">
+    <value>جميع الموزعين</value>
+  </data>
+  <data name="lblActiveDistributors-HomeTR" xml:space="preserve">
+    <value>الموزعون النشطون</value>
   </data>
 </root>

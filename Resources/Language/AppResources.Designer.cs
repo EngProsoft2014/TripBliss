@@ -376,7 +376,7 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My User.
+        ///   Looks up a localized string similar to My Users.
         /// </summary>
         internal static string hdrMyUser_users {
             get {
@@ -475,6 +475,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Active Distributors.
+        /// </summary>
+        internal static string lblActiveDistributors_HomeTR {
+            get {
+                return ResourceManager.GetString("lblActiveDistributors-HomeTR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adult.
         /// </summary>
         internal static string lblAdult_AirService {
@@ -498,6 +507,15 @@ namespace TripBliss.Resources.Language {
         internal static string lblAll_HomeDist {
             get {
                 return ResourceManager.GetString("lblAll-HomeDist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All Distributor.
+        /// </summary>
+        internal static string lblAllDistributor_HomeTR {
+            get {
+                return ResourceManager.GetString("lblAllDistributor-HomeTR", resourceCulture);
             }
         }
         

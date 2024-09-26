@@ -43,6 +43,9 @@ namespace TripBliss.ViewModels.ActivateViewModels
 
         [ObservableProperty]
         bool isCheckedDS;
+
+        [ObservableProperty]
+        bool isAllowEdit;
         #endregion
 
         #region Services
@@ -112,6 +115,14 @@ namespace TripBliss.ViewModels.ActivateViewModels
             IsCheckedDS = false;
             LstTrVisaDetails = new ObservableCollection<ResponseWithDistributorVisaDetailsResponse>(LstVisaDetails.Where(a => !string.IsNullOrEmpty(a.TravelAgencyCompanyName) && string.IsNullOrEmpty(a.DistributorCompanyName)).ToList());
             IsTROrDS = 1;
+            if ((IsCheckedTR == true && TOD == "T") && (IsCheckedDS == true && TOD == "D"))
+            {
+                IsAllowEdit = true;
+            }
+            else
+            {
+                IsAllowEdit = false;
+            }
         }
 
         [RelayCommand]
@@ -121,6 +132,14 @@ namespace TripBliss.ViewModels.ActivateViewModels
             IsCheckedTR = false;
             LstDisVisaDetails = new ObservableCollection<ResponseWithDistributorVisaDetailsResponse>(LstVisaDetails.Where(a => !string.IsNullOrEmpty(a.DistributorCompanyName) && string.IsNullOrEmpty(a.TravelAgencyCompanyName)).ToList());
             IsTROrDS = 2;
+            if ((IsCheckedTR == true && TOD == "T") || (IsCheckedDS == true && TOD == "D"))
+            {
+                IsAllowEdit = true;
+            }
+            else
+            {
+                IsAllowEdit = false;
+            }
         }
 
         [RelayCommand]
@@ -152,19 +171,12 @@ namespace TripBliss.ViewModels.ActivateViewModels
             IsBusy = false;
 
             var page = new Pages.MainPopups.AddAttachmentsPopup();
-            page.ImageClose += async (img) =>
+            page.ImageClose += async (img,imgPath) =>
             {
                 if (!string.IsNullOrEmpty(img))
                 {
                     byte[] bytes = Convert.FromBase64String(img);
 
-                    LstVisaDetails.Add(new ResponseWithDistributorVisaDetailsResponse
-                    {
-                        Id = ActiveVisa.Id,
-                        ResponseWithDistributorVisaId = ActiveVisa.ResponseWithDistributorVisaId,
-                        ImgName = img,
-                        ImageFile = ImageSource.FromStream(() => new MemoryStream(bytes)),
-                    });
                     if (IsCheckedTR == true && IsCheckedDS == false)
                     {
                         LstVisaDetails.Add(new ResponseWithDistributorVisaDetailsResponse
@@ -173,7 +185,8 @@ namespace TripBliss.ViewModels.ActivateViewModels
                             ResponseWithDistributorVisaId = ActiveVisa.ResponseWithDistributorVisaId,
                             ImgName = img,
                             ImageFile = ImageSource.FromStream(() => new MemoryStream(bytes)),
-                            TravelAgencyCompanyName = "T"
+                            TravelAgencyCompanyName = "T",
+                            UrlImgName = imgPath,
                         });
                         await GetTRVisaAttachment();
                     }
@@ -185,7 +198,8 @@ namespace TripBliss.ViewModels.ActivateViewModels
                             ResponseWithDistributorVisaId = ActiveVisa.ResponseWithDistributorVisaId,
                             ImgName = img,
                             ImageFile = ImageSource.FromStream(() => new MemoryStream(bytes)),
-                            DistributorCompanyName = "D"
+                            DistributorCompanyName = "D",
+                            UrlImgName = imgPath,
                         });
                         await GetDSVisaAttachment();
                     }
@@ -217,6 +231,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                         LstVisaRequest.Add(new ResponseWithDistributorVisaDetailsRequest
                         {
                             ImgFile = Convert.FromBase64String(item.ImgName),
+                            Extension = Path.GetExtension(item.UrlImgName),
                         });
                     }
                 }
@@ -245,6 +260,14 @@ namespace TripBliss.ViewModels.ActivateViewModels
                     if (model.Id == 0 || model.Id == null) //Id = 0 (Photo New)
                     {
                         LstVisaDetails.Remove(model);
+                        if (IsCheckedTR == true && IsCheckedDS == false)
+                        {
+                            await GetTRVisaAttachment();
+                        }
+                        else if (IsCheckedTR == false && IsCheckedDS == true)
+                        {
+                            await GetDSVisaAttachment();
+                        }
                     }
                     else //Id != 0 (already Photo save)
                     {

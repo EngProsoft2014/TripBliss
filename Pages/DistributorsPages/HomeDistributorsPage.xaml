@@ -102,14 +102,12 @@
                                                         <Label Text="{Binding RequestName}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
                                                         <Label Text="{Binding TravelAgencyCompanyName}" FontSize="12" TextColor="Gray"></Label>
                                                         <Label Text="{Binding ChoosenServices}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
-                                                        <Label Margin="0,3,0,0">
-                                                            <Label.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Text="Date : " FontSize="12" TextColor="Blue" ></Span>
-                                                                    <Span Text="{Binding CreateDate,StringFormat='{0:MM-dd-yyyy}'}" FontSize="12" TextColor="Blue" ></Span>
-                                                                </FormattedString>
-                                                            </Label.FormattedText>
-                                                        </Label>
+                                                        <HorizontalStackLayout Margin="0,3,0,0" Spacing="2">
+                                                            <Label Text="{Static res:AppResources.lblDate_TranService}" FontSize="12" TextColor="Blue"></Label>
+                                                            <Label Text=":" FontSize="12" TextColor="Blue"></Label>
+                                                            <Label Text="{Binding CreateDate,StringFormat='{0:MM-dd-yyyy}'}" FontSize="11" TextColor="#059ce3" ></Label>
+                                                        </HorizontalStackLayout>
+                                                        
                                                     </VerticalStackLayout>
                                                     <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand" Spacing="1">
                                                         <Border  HorizontalOptions="EndAndExpand"

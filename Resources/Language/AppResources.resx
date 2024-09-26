@@ -481,7 +481,7 @@
     <value>Distributor</value>
   </data>
   <data name="hdrMyUser-users" xml:space="preserve">
-    <value>My User</value>
+    <value>My Users</value>
   </data>
   <data name="hdrAddUser-AddUserPage" xml:space="preserve">
     <value>Add User</value>
@@ -491,5 +491,11 @@
   </data>
   <data name="hdrMyDocuments-DocumentsPage" xml:space="preserve">
     <value>My Documents</value>
+  </data>
+  <data name="lblAllDistributor-HomeTR" xml:space="preserve">
+    <value>All Distributor</value>
+  </data>
+  <data name="lblActiveDistributors-HomeTR" xml:space="preserve">
+    <value>Active Distributors</value>
   </data>
 </root>
