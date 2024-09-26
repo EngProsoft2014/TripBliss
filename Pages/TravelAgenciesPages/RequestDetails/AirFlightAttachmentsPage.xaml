@@ -69,6 +69,32 @@
             </Image>
         </StackLayout>
 
+        <StackLayout Orientation="Horizontal" Margin="20,0">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="20,0">
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox x:Name="chkTarvelAgency" Color="Gray">
+                        <CheckBox.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TarvelAgency_Tapped"></TapGestureRecognizer>
+                        </CheckBox.GestureRecognizers>
+                    </CheckBox>
+
+                    <Label Text="{Static res:AppResources.lblTravelAgency_attatchmentPage}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="#1e9e44" FontSize="14" HorizontalOptions="StartAndExpand" FontAttributes="Bold"></Label>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <CheckBox x:Name="chkDist" Color="Gray">
+                        <CheckBox.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Dist_Tapped"></TapGestureRecognizer>
+                        </CheckBox.GestureRecognizers>
+                    </CheckBox>
+
+                    <Label Text="{Static res:AppResources.lblDistributor_attatchment}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="#1e9e44" FontSize="14" HorizontalOptions="StartAndExpand" FontAttributes="Bold"></Label>
+                </StackLayout>
+            </StackLayout>
+
+
+        </StackLayout>
+
         <StackLayout Margin="0,20,0,10">
 
             <Button Text="{Static res:AppResources.btnDeleteAll_AttatchmentPage}" 

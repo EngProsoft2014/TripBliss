@@ -474,4 +474,22 @@
   <data name="lblDocuments-MorePage" xml:space="preserve">
     <value>Documents</value>
   </data>
+  <data name="lblTravelAgency-attatchmentPage" xml:space="preserve">
+    <value>Travel Agency</value>
+  </data>
+  <data name="lblDistributor-attatchment" xml:space="preserve">
+    <value>Distributor</value>
+  </data>
+  <data name="hdrMyUser-users" xml:space="preserve">
+    <value>My User</value>
+  </data>
+  <data name="hdrAddUser-AddUserPage" xml:space="preserve">
+    <value>Add User</value>
+  </data>
+  <data name="lblCoOrTaOrQu" xml:space="preserve">
+    <value>Please Add commercial register or Tax card or Quality certificate</value>
+  </data>
+  <data name="hdrMyDocuments-DocumentsPage" xml:space="preserve">
+    <value>My Documents</value>
+  </data>
 </root>

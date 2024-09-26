@@ -24,12 +24,12 @@
                     <TapGestureRecognizer Command="{Binding BackPressedCommand}"></TapGestureRecognizer>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="{Static res:AppResources.lblDocuments_MorePage}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="{Static res:AppResources.hdrMyDocuments_DocumentsPage}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
             <Label Text="In Review" FontAutoScalingEnabled="False" FontSize="14" HorizontalOptions="End"
                    TextColor="Red" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
-        <Label Text="Please Add commercial register or Tax card or Quality certificate" FontAutoScalingEnabled="False" FontSize="14"
+        <Label Text="{Static res:AppResources.lblCoOrTaOrQu}" FontAutoScalingEnabled="False" FontSize="14"
                FontAttributes="Bold" HorizontalOptions="CenterAndExpand" TextColor="#333" Margin="0,30,0,30"></Label>
 
         <CollectionView ItemsSource="{Binding LstDoc}">

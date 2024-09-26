@@ -474,4 +474,22 @@
   <data name="lblDocuments-MorePage" xml:space="preserve">
     <value>وثائق</value>
   </data>
+  <data name="lblTravelAgency-attatchmentPage" xml:space="preserve">
+    <value>وكالة سفر</value>
+  </data>
+  <data name="lblDistributor-attatchment" xml:space="preserve">
+    <value>موزع</value>
+  </data>
+  <data name="hdrMyUser-users" xml:space="preserve">
+    <value>المستخدم الخاص بي</value>
+  </data>
+  <data name="hdrAddUser-AddUserPage" xml:space="preserve">
+    <value>إضافة مستخدم</value>
+  </data>
+  <data name="lblCoOrTaOrQu" xml:space="preserve">
+    <value>الرجاء إضافة السجل التجاري أو البطاقة الضريبية أو شهادة الجودة</value>
+  </data>
+  <data name="hdrMyDocuments-DocumentsPage" xml:space="preserve">
+    <value>مستنداتي</value>
+  </data>
 </root>

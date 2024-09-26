@@ -7,6 +7,7 @@ using TripBliss.Helpers;
 using TripBliss.Pages.TravelAgenciesPages;
 using Akavache;
 using TripBliss.ViewModels.TravelAgenciesViewModels;
+using Microsoft.Maui.Platform;
 
 namespace TripBliss
 {
@@ -58,10 +59,12 @@ namespace TripBliss
             if (Lan == "ar")
             {
                 CultureInfo.CurrentCulture = new CultureInfo("ar");
+                CultureInfo.CurrentUICulture = new CultureInfo("ar");
             }
             else
             {
                 CultureInfo.CurrentCulture = new CultureInfo("en");
+                CultureInfo.CurrentUICulture = new CultureInfo("en");
             }
         }
 

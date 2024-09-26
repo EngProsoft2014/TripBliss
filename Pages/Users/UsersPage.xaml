@@ -2,6 +2,7 @@
 <Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
+             xmlns:res="clr-namespace:TripBliss.Resources.Language"
              x:Class="TripBliss.Pages.Users.UsersPage"
              Title="Tr_UsersPage"
              NavigationPage.HasNavigationBar="False"
@@ -21,7 +22,7 @@
                     <TapGestureRecognizer Command="{Binding BackPressedCommand}"></TapGestureRecognizer>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="Users" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="{Static res:AppResources.hdrMyUser_users}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
 
             <Image Margin="0,0,0,0" HorizontalOptions="End">
