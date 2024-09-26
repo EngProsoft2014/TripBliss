@@ -29,8 +29,8 @@
             <Label Text="{Static res:AppResources.lblAirFlightServices}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
             <Button Text="{Static res:AppResources.btnattachment_VisaDetails}" Padding="3" HeightRequest="35" FontSize="{OnPlatform Android=12,iOS=14}"
-                    Command="{Binding ActiveClickedCommand}"
-                    BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" WidthRequest="90" Margin="0" FontAttributes="Bold"></Button>
+                    Command="{Binding ActiveClickedCommand}" BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" WidthRequest="90"
+                    Margin="0" FontAttributes="Bold"></Button>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand" Padding="0,0,0,20" VerticalScrollBarVisibility="Never">
             <StackLayout >

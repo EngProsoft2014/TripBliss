@@ -70,6 +70,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                 page.BindingContext = vm;
                 await App.Current!.MainPage!.Navigation.PushAsync(page);
             }
+
         }
         #endregion
     }
