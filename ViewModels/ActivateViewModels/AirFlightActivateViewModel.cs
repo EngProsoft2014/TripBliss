@@ -8,6 +8,7 @@ using System.IO;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 using static SQLite.SQLite3;
 
 
@@ -25,6 +26,13 @@ namespace TripBliss.ViewModels.ActivateViewModels
 
         [ObservableProperty]
         ObservableCollection<ResponseWithDistributorAirFlightDetailsResponse> lstAirFlightDetails = new ObservableCollection<ResponseWithDistributorAirFlightDetailsResponse>();
+
+        [ObservableProperty]
+        ObservableCollection<ResponseWithDistributorAirFlightDetailsResponse> lstTRAirFlightDetails = new ObservableCollection<ResponseWithDistributorAirFlightDetailsResponse>();
+
+        [ObservableProperty]
+        ObservableCollection<ResponseWithDistributorAirFlightDetailsResponse> lstDSAirFlightDetails = new ObservableCollection<ResponseWithDistributorAirFlightDetailsResponse>();
+
         [ObservableProperty]
         ObservableCollection<TravelAgencyGuestResponse> guests = new ObservableCollection<TravelAgencyGuestResponse>();
         [ObservableProperty]
@@ -32,6 +40,15 @@ namespace TripBliss.ViewModels.ActivateViewModels
 
         [ObservableProperty]
         ImageSource imageFile;
+
+        [ObservableProperty]
+        int isTROrDS;
+
+        [ObservableProperty]
+        bool isCheckedTR;
+
+        [ObservableProperty]
+        bool isCheckedDS;
         #endregion
 
         #region Services
@@ -48,6 +65,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
             //GetAllAirFlight(Response.ResponseWithDistributorId, Response.Id);
             Init();
         }
+
 
         #endregion
 
@@ -67,13 +85,22 @@ namespace TripBliss.ViewModels.ActivateViewModels
         #endregion
 
         #region Methods
+
         async void Init()
         {
             await GetImage();
 
+            if (TOD == "T")
+            {
+               await GetTRAirflightAttachment();
+            }
+            else
+            {
+                await GetDSAirflightAttachment();
+            }
         }
 
-        async Task GetImage()
+        public async Task GetImage()
         {
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -101,7 +128,24 @@ namespace TripBliss.ViewModels.ActivateViewModels
             }
         }
 
-       
+
+        [RelayCommand]
+        async Task GetTRAirflightAttachment()
+        {
+            IsCheckedTR = true;
+            IsCheckedDS = false;
+            LstTRAirFlightDetails = new ObservableCollection<ResponseWithDistributorAirFlightDetailsResponse>(LstAirFlightDetails.Where(a => !string.IsNullOrEmpty(a.TravelAgencyCompanyName) && string.IsNullOrEmpty(a.DistributorCompanyName) || a.Id == null).ToList());
+            IsTROrDS = 1;
+        }
+
+        [RelayCommand]
+        async Task GetDSAirflightAttachment()
+        {
+            IsCheckedDS = true;
+            IsCheckedTR = false;
+            LstDSAirFlightDetails = new ObservableCollection<ResponseWithDistributorAirFlightDetailsResponse>(LstAirFlightDetails.Where(a => !string.IsNullOrEmpty(a.DistributorCompanyName) && string.IsNullOrEmpty(a.TravelAgencyCompanyName) || a.Id == null).ToList());
+            IsTROrDS = 2;
+        }
 
         [RelayCommand]
         async Task OpenFullScreenImage(ResponseWithDistributorAirFlightDetailsResponse model)
@@ -132,8 +176,16 @@ namespace TripBliss.ViewModels.ActivateViewModels
                         ImgName = img,
                         ImageFile = ImageSource.FromStream(() => new MemoryStream(bytes)),
                     });
-                    await MopupService.Instance.PopAsync();
 
+                    if(IsCheckedTR ==true && IsCheckedDS == false)
+                    {
+                        await GetTRAirflightAttachment();
+                    }
+                    else if (IsCheckedTR == false && IsCheckedDS == true)
+                    {
+                        await GetDSAirflightAttachment();
+                    }
+                    await MopupService.Instance.PopAsync();
                 }
             };
 
@@ -200,6 +252,15 @@ namespace TripBliss.ViewModels.ActivateViewModels
                         if (json == null)
                         {
                             LstAirFlightDetails.Remove(model);
+
+                            if (IsCheckedTR == true && IsCheckedDS == false)
+                            {
+                                await GetTRAirflightAttachment();
+                            }
+                            else if (IsCheckedTR == false && IsCheckedDS == true)
+                            {
+                                await GetDSAirflightAttachment();
+                            }
                         }
                         IsBusy = true;
                     }

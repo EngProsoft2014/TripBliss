@@ -72,9 +72,9 @@
         <StackLayout Orientation="Horizontal" Margin="20,0">
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="20,0">
                 <StackLayout Orientation="Horizontal">
-                    <CheckBox x:Name="chkTarvelAgency" Color="Gray">
+                    <CheckBox x:Name="chkTarvelAgency" Color="Gray" IsChecked="{Binding IsCheckedTR}">
                         <CheckBox.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TarvelAgency_Tapped"></TapGestureRecognizer>
+                            <TapGestureRecognizer Command="{Binding GetTRAirflightAttachmentCommand}"></TapGestureRecognizer>
                         </CheckBox.GestureRecognizers>
                     </CheckBox>
 
@@ -82,9 +82,9 @@
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                    <CheckBox x:Name="chkDist" Color="Gray">
+                    <CheckBox x:Name="chkDist" Color="Gray" IsChecked="{Binding IsCheckedDS}">
                         <CheckBox.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Dist_Tapped"></TapGestureRecognizer>
+                            <TapGestureRecognizer Command="{Binding GetDSAirflightAttachmentCommand}"></TapGestureRecognizer>
                         </CheckBox.GestureRecognizers>
                     </CheckBox>
 
@@ -115,10 +115,10 @@
             </StackLayout.Triggers>
         </StackLayout>
 
-        <StackLayout VerticalOptions="FillAndExpand" Margin="0,0,0,30">
+        <StackLayout VerticalOptions="FillAndExpand" Margin="0,0,0,30" IsVisible="False">
 
-            <ListView x:Name="lstPictures" SelectionMode="None"
-                          ItemsSource="{Binding LstAirFlightDetails}" 
+            <ListView x:Name="lstPictures1" SelectionMode="None"
+                          ItemsSource="{Binding LstTRAirFlightDetails}" 
                           HasUnevenRows="True" 
                           SeparatorVisibility="None"
                           VerticalScrollBarVisibility="Never">
@@ -131,7 +131,7 @@
                                         <!--Image-->
                                         <StackLayout HorizontalOptions="Start">
                                             <Border BackgroundColor="White" Padding="0" VerticalOptions="FillAndExpand">
-                                                <Image x:Name="PicSch" Source="{Binding ImageFile}" WidthRequest="130" HeightRequest="90" Aspect="Fill">
+                                                <Image x:Name="PicSch1" Source="{Binding ImageFile}" WidthRequest="130" HeightRequest="90" Aspect="Fill">
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirFlightActivateViewModel}}, Path=OpenFullScreenImageCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                     </Image.GestureRecognizers>
@@ -178,8 +178,83 @@
                     <Setter Property="IsVisible" Value="False"></Setter>
                     <Setter Property="HeightRequest" Value="0"></Setter>
                 </DataTrigger>
+
+                <DataTrigger TargetType="StackLayout" Binding="{Binding IsTROrDS}" Value="1">
+                    <Setter Property="IsVisible" Value="True"></Setter>
+                </DataTrigger>
             </StackLayout.Triggers>
         </StackLayout>
+
+        <StackLayout VerticalOptions="FillAndExpand" Margin="0,0,0,30" IsVisible="False">
+
+            <ListView x:Name="lstPictures2" SelectionMode="None"
+                          ItemsSource="{Binding LstDSAirFlightDetails}" 
+                          HasUnevenRows="True" 
+                          SeparatorVisibility="None"
+                          VerticalScrollBarVisibility="Never">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <StackLayout Margin="0,20,0,0">
+                                    <StackLayout Orientation="Horizontal" Padding="20,0,20,0" HorizontalOptions="FillAndExpand">
+                                        <!--Image-->
+                                        <StackLayout HorizontalOptions="Start">
+                                            <Border BackgroundColor="White" Padding="0" VerticalOptions="FillAndExpand">
+                                                <Image x:Name="PicSch2" Source="{Binding ImageFile}" WidthRequest="130" HeightRequest="90" Aspect="Fill">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirFlightActivateViewModel}}, Path=OpenFullScreenImageCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                                <Border.StrokeShape>
+                                                    <RoundRectangle Stroke="LightGray" StrokeThickness="1" CornerRadius="10"></RoundRectangle>
+                                                </Border.StrokeShape>
+                                                <Border.Shadow>
+                                                    <Shadow Offset="1,2" Brush="Black" Radius="1" Opacity="1"></Shadow>
+                                                </Border.Shadow>
+                                            </Border>
+                                        </StackLayout>
+
+                                        <!--Image Delete-->
+                                        <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                                            <Image>
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="FontIconSolid" Color="DimGray" Glyph="" Size="30"></FontImageSource>
+                                                </Image.Source>
+                                            </Image>
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirFlightActivateViewModel}}, Path=DeletePhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                            </StackLayout.GestureRecognizers>
+                                        </StackLayout>
+
+                                    </StackLayout>
+                                    <Line  X1="400" HorizontalOptions="CenterAndExpand" BackgroundColor="LightGray" Margin="0,10,0,10"></Line>
+
+                                </StackLayout>
+                            </StackLayout>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Triggers>
+                    <DataTrigger TargetType="ListView" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
+                        <Setter Property="IsVisible" Value="False"></Setter>
+                        <Setter Property="HeightRequest" Value="0"></Setter>
+                    </DataTrigger>
+                </ListView.Triggers>
+            </ListView>
+            <StackLayout.Triggers>
+                <DataTrigger TargetType="StackLayout" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
+                    <Setter Property="IsVisible" Value="False"></Setter>
+                    <Setter Property="HeightRequest" Value="0"></Setter>
+                </DataTrigger>
+                <DataTrigger TargetType="StackLayout" Binding="{Binding IsTROrDS}" Value="2">
+                    <Setter Property="IsVisible" Value="True"></Setter>
+                </DataTrigger>
+            </StackLayout.Triggers>
+        </StackLayout>
+
+
         <Button x:Name="btnDone" HeightRequest="50"
                 VerticalOptions="End"
                 Text="{Static res:AppResources.btnConfirm_NewRequest}" 
