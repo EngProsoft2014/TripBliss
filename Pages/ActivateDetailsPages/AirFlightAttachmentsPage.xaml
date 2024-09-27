@@ -110,9 +110,23 @@
                     IsVisible="{Binding IsAllowEdit}">
             </Button>
             <StackLayout.Triggers>
-                <DataTrigger TargetType="StackLayout" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
+                <!--<DataTrigger TargetType="StackLayout" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
                     <Setter Property="IsVisible" Value="False"></Setter>
-                </DataTrigger>
+                </DataTrigger>-->
+                <MultiTrigger TargetType="StackLayout">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition Binding="{Binding Source={x:Reference chkTarvelAgency}, Path=IsChecked}" Value="True" />
+                        <BindingCondition Binding="{Binding LstTRAirFlightDetails.Count}" Value="0" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsVisible" Value="False" />
+                </MultiTrigger>
+                <MultiTrigger TargetType="StackLayout">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition Binding="{Binding Source={x:Reference chkDist}, Path=IsChecked}" Value="True" />
+                        <BindingCondition Binding="{Binding LstDSAirFlightDetails.Count}" Value="0" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsVisible" Value="False" />
+                </MultiTrigger>
             </StackLayout.Triggers>
         </StackLayout>
 
@@ -131,8 +145,8 @@
                                     <StackLayout Orientation="Horizontal" Padding="20,0,20,0" HorizontalOptions="FillAndExpand">
                                         <!--Image-->
                                         <StackLayout HorizontalOptions="Start">
-                                            <Border BackgroundColor="White" Padding="0" VerticalOptions="FillAndExpand">
-                                                <Image x:Name="PicSch1" Source="{Binding ImageFile}" WidthRequest="130" HeightRequest="90" Aspect="Fill">
+                                            <Border BackgroundColor="#2fa562" Padding="0" VerticalOptions="FillAndExpand" WidthRequest="130" HeightRequest="90">
+                                                <Image x:Name="PicSch1" Source="{Binding ImageFile}" Aspect="Fill">
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirFlightActivateViewModel}}, Path=OpenFullScreenImageCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                     </Image.GestureRecognizers>
@@ -179,14 +193,14 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 <ListView.Triggers>
-                    <DataTrigger TargetType="ListView" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
+                    <DataTrigger TargetType="ListView" Binding="{Binding LstTRAirFlightDetails.Count}" Value="0">
                         <Setter Property="IsVisible" Value="False"></Setter>
                         <Setter Property="HeightRequest" Value="0"></Setter>
                     </DataTrigger>
                 </ListView.Triggers>
             </ListView>
             <StackLayout.Triggers>
-                <DataTrigger TargetType="StackLayout" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
+                <DataTrigger TargetType="StackLayout" Binding="{Binding LstTRAirFlightDetails.Count}" Value="0">
                     <Setter Property="IsVisible" Value="False"></Setter>
                     <Setter Property="HeightRequest" Value="0"></Setter>
                 </DataTrigger>
@@ -212,8 +226,8 @@
                                     <StackLayout Orientation="Horizontal" Padding="20,0,20,0" HorizontalOptions="FillAndExpand">
                                         <!--Image-->
                                         <StackLayout HorizontalOptions="Start">
-                                            <Border BackgroundColor="White" Padding="0" VerticalOptions="FillAndExpand">
-                                                <Image x:Name="PicSch2" Source="{Binding ImageFile}" WidthRequest="130" HeightRequest="90" Aspect="Fill">
+                                            <Border BackgroundColor="#2fa562" Padding="0" VerticalOptions="FillAndExpand" WidthRequest="130" HeightRequest="90" >
+                                                <Image x:Name="PicSch2" Source="{Binding ImageFile}" Aspect="Fill">
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirFlightActivateViewModel}}, Path=OpenFullScreenImageCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                     </Image.GestureRecognizers>
@@ -260,14 +274,14 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 <ListView.Triggers>
-                    <DataTrigger TargetType="ListView" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
+                    <DataTrigger TargetType="ListView" Binding="{Binding LstDSAirFlightDetails.Count}" Value="0">
                         <Setter Property="IsVisible" Value="False"></Setter>
                         <Setter Property="HeightRequest" Value="0"></Setter>
                     </DataTrigger>
                 </ListView.Triggers>
             </ListView>
             <StackLayout.Triggers>
-                <DataTrigger TargetType="StackLayout" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
+                <DataTrigger TargetType="StackLayout" Binding="{Binding LstDSAirFlightDetails.Count}" Value="0">
                     <Setter Property="IsVisible" Value="False"></Setter>
                     <Setter Property="HeightRequest" Value="0"></Setter>
                 </DataTrigger>
@@ -291,22 +305,47 @@
                 CornerRadius="20"
                 IsVisible="{Binding IsAllowEdit}">
             <Button.Triggers>
-                <DataTrigger TargetType="Button" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
+                <!--<DataTrigger TargetType="StackLayout" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
                     <Setter Property="IsVisible" Value="False"></Setter>
-                </DataTrigger>
-                <DataTrigger TargetType="Button" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
-                    <Setter Property="IsVisible" Value="False"></Setter>
-                </DataTrigger>
+                </DataTrigger>-->
+                <MultiTrigger TargetType="Button">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition Binding="{Binding Source={x:Reference chkTarvelAgency}, Path=IsChecked}" Value="True" />
+                        <BindingCondition Binding="{Binding LstTRAirFlightDetails.Count}" Value="0" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsVisible" Value="False" />
+                </MultiTrigger>
+                <MultiTrigger TargetType="Button">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition Binding="{Binding Source={x:Reference chkDist}, Path=IsChecked}" Value="True" />
+                        <BindingCondition Binding="{Binding LstDSAirFlightDetails.Count}" Value="0" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsVisible" Value="False" />
+                </MultiTrigger>
             </Button.Triggers>
         </Button>
 
         <!--NoData-->
-        <StackLayout x:Name="stkNoData" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout x:Name="stkNoData" IsVisible="False" HeightRequest="250" TranslationY="-150" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
             <Image Source="noresult.png" Aspect="AspectFill" VerticalOptions="FillAndExpand"></Image>
             <StackLayout.Triggers>
-                <DataTrigger TargetType="StackLayout" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
-                    <Setter Property="IsVisible" Value="True"></Setter>
-                </DataTrigger>
+                <!--<DataTrigger TargetType="StackLayout" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
+                    <Setter Property="IsVisible" Value="False"></Setter>
+                </DataTrigger>-->
+                <MultiTrigger TargetType="StackLayout">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition Binding="{Binding Source={x:Reference chkTarvelAgency}, Path=IsChecked}" Value="True" />
+                        <BindingCondition Binding="{Binding LstTRAirFlightDetails.Count}" Value="0" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsVisible" Value="True" />
+                </MultiTrigger>
+                <MultiTrigger TargetType="StackLayout">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition Binding="{Binding Source={x:Reference chkDist}, Path=IsChecked}" Value="True" />
+                        <BindingCondition Binding="{Binding LstDSAirFlightDetails.Count}" Value="0" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsVisible" Value="True" />
+                </MultiTrigger>
             </StackLayout.Triggers>
         </StackLayout>
 

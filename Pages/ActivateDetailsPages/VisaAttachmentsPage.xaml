@@ -108,9 +108,23 @@
                 IsVisible="{Binding IsAllowEdit}">
             </Button>
             <StackLayout.Triggers>
-                <DataTrigger TargetType="StackLayout" Binding="{Binding LstVisaDetails.Count}" Value="0">
+                <!--<DataTrigger TargetType="StackLayout" Binding="{Binding LstVisaDetails.Count}" Value="0">
                     <Setter Property="IsVisible" Value="False"></Setter>
-                </DataTrigger>
+                </DataTrigger>-->
+                <MultiTrigger TargetType="StackLayout">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition Binding="{Binding Source={x:Reference chkTarvelAgency}, Path=IsChecked}" Value="True" />
+                        <BindingCondition Binding="{Binding LstTrVisaDetails.Count}" Value="0" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsVisible" Value="False" />
+                </MultiTrigger>
+                <MultiTrigger TargetType="StackLayout">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition Binding="{Binding Source={x:Reference chkDist}, Path=IsChecked}" Value="True" />
+                        <BindingCondition Binding="{Binding LstDisVisaDetails.Count}" Value="0" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsVisible" Value="False" />
+                </MultiTrigger>
             </StackLayout.Triggers>
         </StackLayout>
 
@@ -288,22 +302,47 @@
             CornerRadius="20"
             IsVisible="{Binding IsAllowEdit}">
             <Button.Triggers>
-                <DataTrigger TargetType="Button" Binding="{Binding LstVisaDetails.Count}" Value="0">
+                <!--<DataTrigger TargetType="Button" Binding="{Binding LstVisaDetails.Count}" Value="0">
                     <Setter Property="IsVisible" Value="False"></Setter>
-                </DataTrigger>
-                <DataTrigger TargetType="Button" Binding="{Binding LstVisaDetails.Count}" Value="0">
-                    <Setter Property="IsVisible" Value="False"></Setter>
-                </DataTrigger>
+                </DataTrigger>-->
+                <MultiTrigger TargetType="Button">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition Binding="{Binding Source={x:Reference chkTarvelAgency}, Path=IsChecked}" Value="True" />
+                        <BindingCondition Binding="{Binding LstTrVisaDetails.Count}" Value="0" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsVisible" Value="False" />
+                </MultiTrigger>
+                <MultiTrigger TargetType="Button">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition Binding="{Binding Source={x:Reference chkDist}, Path=IsChecked}" Value="True" />
+                        <BindingCondition Binding="{Binding LstDisVisaDetails.Count}" Value="0" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsVisible" Value="False" />
+                </MultiTrigger>
             </Button.Triggers>
         </Button>
 
         <!--NoData-->
-        <StackLayout x:Name="stkNoData" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout x:Name="stkNoData" IsVisible="False" HeightRequest="250" TranslationY="-150" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
             <Image Source="noresult.png" Aspect="AspectFill" VerticalOptions="CenterAndExpand"></Image>
             <StackLayout.Triggers>
-                <DataTrigger TargetType="StackLayout" Binding="{Binding LstVisaDetails.Count}" Value="0">
-                    <Setter Property="IsVisible" Value="True"></Setter>
-                </DataTrigger>
+                <!--<DataTrigger TargetType="StackLayout" Binding="{Binding LstVisaDetails.Count}" Value="0">
+                        <Setter Property="IsVisible" Value="False"></Setter>
+                    </DataTrigger>-->
+                <MultiTrigger TargetType="StackLayout">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition Binding="{Binding Source={x:Reference chkTarvelAgency}, Path=IsChecked}" Value="True" />
+                        <BindingCondition Binding="{Binding LstTrVisaDetails.Count}" Value="0" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsVisible" Value="True" />
+                </MultiTrigger>
+                <MultiTrigger TargetType="StackLayout">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition Binding="{Binding Source={x:Reference chkDist}, Path=IsChecked}" Value="True" />
+                        <BindingCondition Binding="{Binding LstDisVisaDetails.Count}" Value="0" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsVisible" Value="True" />
+                </MultiTrigger>
             </StackLayout.Triggers>
         </StackLayout>
 

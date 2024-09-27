@@ -23,6 +23,7 @@ namespace TripBliss.Constants
         public static string userCategory = "userCategory"; //1 = system , 2 = Travel Agency , 3 = Distributor
         public static string travelAgencyCompanyId = "travelAgencyCompanyId";
         public static string distributorCompanyId = "distributorCompanyId";
+        public static string review = "review";
         //End Preferences Key 
         #endregion
 

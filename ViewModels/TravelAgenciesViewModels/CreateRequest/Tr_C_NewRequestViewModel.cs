@@ -316,8 +316,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     RequestTravelAgency.RequestTravelAgencyAirFlight = LstTravelAgencyAirFlightRequest.ToList();
                     RequestTravelAgency.RequestTravelAgencyVisa = LstTravelAgencyVisaRequest.ToList();
 
-                    DistributorCompanies.ForEach(s => DistributorRequests.Add(new ResponseWithDistributorRequest { DistributorCompanyId = s.Id }));
-                    RequestTravelAgency.ResponseWithDistributor = DistributorRequests.ToList();
+                    RequestTravelAgency.ResponseWithDistributor = DistributorCompanies.Select(k => new ResponseWithDistributorRequest { DistributorCompanyId = k.Id }).ToList();
 
                     IsBusy = false;
 

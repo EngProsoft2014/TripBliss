@@ -121,7 +121,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
             IsCheckedDS = false;
             LstTrVisaDetails = new ObservableCollection<ResponseWithDistributorVisaDetailsResponse>(LstVisaDetails.Where(a => !string.IsNullOrEmpty(a.TravelAgencyCompanyName) && string.IsNullOrEmpty(a.DistributorCompanyName)).ToList());
             IsTROrDS = 1;
-            if ((IsCheckedTR == true && TOD == "T") && (IsCheckedDS == true && TOD == "D"))
+            if ((IsCheckedTR == true && TOD == "T") || (IsCheckedDS == true && TOD == "D"))
             {
                 IsAllowEdit = true;
             }

@@ -26,6 +26,7 @@ using System.ComponentModel.DataAnnotations;
 using static TripBliss.Helpers.ErrorsResult;
 
 
+
 namespace TripBliss.ViewModels
 { 
     public partial class LoginViewModel : BaseViewModel
@@ -48,6 +49,7 @@ namespace TripBliss.ViewModels
         int timeRemaining = 0;
         [ObservableProperty]
         string resendEmail;
+
         #endregion
 
         #region Service
@@ -122,8 +124,23 @@ namespace TripBliss.ViewModels
 
                             await BlobCache.LocalMachine.InsertObject(ServicesService.UserTokenServiceKey, UserModel?.Token, DateTimeOffset.Now.AddMinutes(43200));
 
+                            
+
                             if (!string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
                             {
+                                if (UserModel?.TravelAgencyCompany?.Review == 0)
+                                {
+                                    Preferences.Default.Set(ApiConstants.review, "In Review");
+                                }
+                                else if(UserModel?.TravelAgencyCompany?.Review == 1)
+                                {
+                                    Preferences.Default.Set(ApiConstants.review, "Accepted");
+                                }
+                                else if (UserModel?.TravelAgencyCompany?.Review == 2)
+                                {
+                                    Preferences.Default.Set(ApiConstants.review, "Denied");
+                                }
+
                                 var vm = new TravelAgenciesViewModels.Tr_HomeViewModel(Rep, _service);
                                 var page = new Pages.TravelAgenciesPages.HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service);
                                 page.BindingContext = vm;
@@ -131,6 +148,19 @@ namespace TripBliss.ViewModels
                             }
                             if (string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && !string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
                             {
+                                if (UserModel?.DistributorCompany?.Review == 0)
+                                {
+                                    Preferences.Default.Set(ApiConstants.review, "In Review");
+                                }
+                                else if (UserModel?.DistributorCompany?.Review == 1)
+                                {
+                                    Preferences.Default.Set(ApiConstants.review, "Accepted");
+                                }
+                                else if (UserModel?.DistributorCompany?.Review == 2)
+                                {
+                                    Preferences.Default.Set(ApiConstants.review, "Denied");
+                                }
+
                                 var vm = new DistributorsViewModels.Dis_HomeViewModel(Rep,_service);
                                 var page = new Pages.DistributorsPages.HomeDistributorsPage(vm, Rep, _service);
                                 page.BindingContext = vm;

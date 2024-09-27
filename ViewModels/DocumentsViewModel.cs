@@ -19,6 +19,8 @@ namespace TripBliss.ViewModels
     {
         [ObservableProperty]
         ObservableCollection<TravelAgencyCompanyDocResponse> lstDoc = new ObservableCollection<TravelAgencyCompanyDocResponse>();
+        [ObservableProperty]
+        string reviewVM;
 
         #region Servises
         IGenericRepository Rep;
@@ -172,6 +174,7 @@ namespace TripBliss.ViewModels
         #region Methods
         async void Init()
         {
+            ReviewVM = Preferences.Default.Get(ApiConstants.review, "");
             await GetDocs();
 
         }
