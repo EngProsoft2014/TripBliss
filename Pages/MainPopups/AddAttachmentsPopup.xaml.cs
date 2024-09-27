@@ -1,7 +1,7 @@
 using CommunityToolkit.Maui.Views;
 using Mopups.Services;
 using System.IO;
-using TripBliss.Models;
+
 
 namespace TripBliss.Pages.MainPopups;
 
@@ -36,7 +36,7 @@ public partial class AddAttachmentsPopup : Mopups.Pages.PopupPage
                     var stream = await photo.OpenReadAsync();
 
                     // Display the image
-                    ImageClose.Invoke(Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream)),photo.FullPath);
+                    ImageClose.Invoke(Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream)), photo.FullPath);
                 }
             }
             else
@@ -69,6 +69,31 @@ public partial class AddAttachmentsPopup : Mopups.Pages.PopupPage
         catch (Exception ex)
         {
             await DisplayAlert("Error", ex.Message, "OK");
+        }
+    }
+
+    private async void TapGestureRecognizer_Tapped_Pic_pdf(object sender, TappedEventArgs e)
+    {
+        try
+        {
+            var result = await FilePicker.Default.PickAsync(new PickOptions
+            {
+                PickerTitle = "Select a PDF file",
+                FileTypes = FilePickerFileType.Pdf
+            });
+
+            if (result != null && result.FileName.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
+            {
+                // Get the file path to save it
+                var stream = await result.OpenReadAsync();
+
+                // Display the image
+                ImageClose.Invoke(Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream)), result.FullPath);
+            }
+        }
+        catch (Exception ex)
+        {
+            await App.Current!.MainPage!.DisplayAlert("Info", $"Error picking file: {ex.Message}", "OK");
         }
     }
 }

@@ -259,7 +259,7 @@
     <value>عدد الغرف</value>
   </data>
   <data name="lblNos-TranService" xml:space="preserve">
-    <value>رقم السيارة</value>
+    <value>عدد السيارات</value>
   </data>
   <data name="lblNotes-HotelService" xml:space="preserve">
     <value>ملحوظات</value>
@@ -497,5 +497,8 @@
   </data>
   <data name="lblActiveDistributors-HomeTR" xml:space="preserve">
     <value>الموزعون النشطون</value>
+  </data>
+  <data name="lblPickPdfFile-attatchment" xml:space="preserve">
+    <value>اختر ملف pdf</value>
   </data>
 </root>

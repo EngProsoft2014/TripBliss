@@ -151,11 +151,12 @@ namespace TripBliss.ViewModels
                         if (json!.Item2!.errors!.Keys.Contains("Invalid Confirm Email"))
                         {
                             IsNotVerfy = true;
+                            string Result = json.Item2.errors.FirstOrDefault().Value.ToString()!;
+                            List<string> LstResult = Result.Split('_').ToList();
+                            ResendEmail = LstResult[1].Trim();
                         }
 
-                        string Result = json.Item2.errors.FirstOrDefault().Value.ToString()!;
-                        List<string> LstResult = Result.Split('_').ToList();
-                        ResendEmail = LstResult[1].Trim();
+                        
 
                         var toast = Toast.Make($"Warning, {json.Item2.errors.FirstOrDefault().Key}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();

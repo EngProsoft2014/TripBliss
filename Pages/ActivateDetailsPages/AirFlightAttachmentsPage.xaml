@@ -3,7 +3,7 @@
                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                         xmlns:vm="clr-namespace:TripBliss.ViewModels.ActivateViewModels"
                         xmlns:Controls="clr-namespace:TripBliss.Controls"          
-                        x:Class="TripBliss.Pages.TravelAgenciesPages.RequestDetails.AirFlightAttachmentsPage"
+                        x:Class="TripBliss.Pages.TravelAgenciesPages.ActivateDetailsPages.AirFlightAttachmentsPage"
                         xmlns:res="clr-namespace:TripBliss.Resources.Language"
                         Title="AirFlightAttachmentsPage"
                         IsEnabled="{Binding IsBusy}"
@@ -136,6 +136,17 @@
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirFlightActivateViewModel}}, Path=OpenFullScreenImageCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                     </Image.GestureRecognizers>
+                                                    <Image.Triggers>
+                                                        <DataTrigger TargetType="Image" Binding="{Binding Extension}" Value=".pdf">
+                                                            <Setter Property="Source">
+                                                                <Setter.Value>
+                                                                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="White" Size="40"></FontImageSource>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                            <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+                                                            <Setter Property="HorizontalOptions" Value="CenterAndExpand"></Setter>
+                                                        </DataTrigger>
+                                                    </Image.Triggers>
                                                 </Image>
                                                 <Border.StrokeShape>
                                                     <RoundRectangle Stroke="LightGray" StrokeThickness="1" CornerRadius="10"></RoundRectangle>
@@ -206,6 +217,17 @@
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirFlightActivateViewModel}}, Path=OpenFullScreenImageCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                     </Image.GestureRecognizers>
+                                                    <Image.Triggers>
+                                                        <DataTrigger TargetType="Image" Binding="{Binding Extension}" Value=".pdf">
+                                                            <Setter Property="Source">
+                                                                <Setter.Value>
+                                                                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="White" Size="40"></FontImageSource>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                            <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+                                                            <Setter Property="HorizontalOptions" Value="CenterAndExpand"></Setter>
+                                                        </DataTrigger>
+                                                    </Image.Triggers>
                                                 </Image>
                                                 <Border.StrokeShape>
                                                     <RoundRectangle Stroke="LightGray" StrokeThickness="1" CornerRadius="10"></RoundRectangle>

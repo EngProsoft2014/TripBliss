@@ -293,7 +293,7 @@
 	  <MauiXaml Update="Pages\TravelAgenciesPages\Offer\OfferDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\AirFlightAttachmentsPage.xaml">
+	  <MauiXaml Update="Pages\ActivateDetailsPages\AirFlightAttachmentsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\AirFlightServicePage.xaml">
@@ -314,7 +314,7 @@
 	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\TransportaionServicePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\VisaAttachmentsPage.xaml">
+	  <MauiXaml Update="Pages\ActivateDetailsPages\VisaAttachmentsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\VisaServicePage.xaml">

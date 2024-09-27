@@ -8,6 +8,7 @@ using System.IO;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Pages;
 using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 using static SQLite.SQLite3;
 
@@ -108,6 +109,11 @@ namespace TripBliss.ViewModels.ActivateViewModels
                             foreach (var item in LstAirFlightDetails)
                             {
                                 item.ImageFile = ImageSource.FromUri(new Uri($"{Helpers.Utility.ServerUrl}{item.UrlImgName}"));
+                                item.UrlImgName = $"{Helpers.Utility.ServerUrl}{item.UrlImgName}";
+                                if (item.UrlImgName.EndsWith(".pdf"))
+                                {
+                                    item.Extension = ".pdf";
+                                }
                             }
                         }
                     }
@@ -170,11 +176,21 @@ namespace TripBliss.ViewModels.ActivateViewModels
         [RelayCommand]
         async Task OpenFullScreenImage(ResponseWithDistributorAirFlightDetailsResponse model)
         {
-            IsBusy = false;
-            UserDialogs.Instance.ShowLoading();
-            await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(model.ImageFile!));
-            UserDialogs.Instance.HideHud();
-            IsBusy = true;
+            if (model.UrlImgName.EndsWith(".pdf") || model.Extension == ".pdf")
+            {
+                var vm = new PdfViewerViewModel(model.UrlImgName);
+                var page = new PdfViewerPage();
+                page.BindingContext = vm;
+                await App.Current!.MainPage!.Navigation.PushAsync(page);
+            }
+            else
+            {
+                IsBusy = false;
+                UserDialogs.Instance.ShowLoading();
+                await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(model.ImageFile!));
+                UserDialogs.Instance.HideHud();
+                IsBusy = true;
+            }
         }
 
         [RelayCommand]
@@ -198,7 +214,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                             ImgName = img,
                             ImageFile = ImageSource.FromStream(() => new MemoryStream(bytes)),
                             TravelAgencyCompanyName = "T",
-                            UrlImgName = imgPath,
+                            Extension = Path.GetExtension(imgPath),
                         });
                         await GetTRAirflightAttachment();
                     }
@@ -211,7 +227,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                             ImgName = img,
                             ImageFile = ImageSource.FromStream(() => new MemoryStream(bytes)),
                             DistributorCompanyName = "D",
-                            UrlImgName = imgPath,
+                            Extension = Path.GetExtension(imgPath),
                         });
                         await GetDSAirflightAttachment();
                     }
@@ -241,7 +257,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                         LstAirFltRequest.Add(new ResponseWithDistributorAirFlightDetailsRequest
                         {
                             ImgFile = Convert.FromBase64String(item.ImgName),
-                            Extension = Path.GetExtension(item.UrlImgName),
+                            Extension = item.Extension,
                         });
                     }
                 }

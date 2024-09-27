@@ -44,6 +44,23 @@ namespace TripBliss.Models.ResponseWithDistributorVisaDetails
             }
         }
 
+        string? _Extension;
+        public string? Extension
+        {
+            get
+            {
+                return _Extension;
+            }
+            set
+            {
+                _Extension = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Extension"));
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

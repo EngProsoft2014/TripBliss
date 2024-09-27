@@ -826,7 +826,7 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No .s.
+        ///   Looks up a localized string similar to Number of Cars.
         /// </summary>
         internal static string lblNos_TranService {
             get {
@@ -894,6 +894,15 @@ namespace TripBliss.Resources.Language {
         internal static string lblPassNo_VisaService {
             get {
                 return ResourceManager.GetString("lblPassNo-VisaService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick pdf file.
+        /// </summary>
+        internal static string lblPickPdfFile_attatchment {
+            get {
+                return ResourceManager.GetString("lblPickPdfFile-attatchment", resourceCulture);
             }
         }
         

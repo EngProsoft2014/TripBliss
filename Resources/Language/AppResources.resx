@@ -259,7 +259,7 @@
     <value>No. Of Room</value>
   </data>
   <data name="lblNos-TranService" xml:space="preserve">
-    <value>No .s</value>
+    <value>Number of Cars</value>
   </data>
   <data name="lblNotes-HotelService" xml:space="preserve">
     <value>Notes</value>
@@ -497,5 +497,8 @@
   </data>
   <data name="lblActiveDistributors-HomeTR" xml:space="preserve">
     <value>Active Distributors</value>
+  </data>
+  <data name="lblPickPdfFile-attatchment" xml:space="preserve">
+    <value>Pick pdf file</value>
   </data>
 </root>

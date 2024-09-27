@@ -9,6 +9,7 @@ using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Models.ResponseWithDistributorVisaDetails;
+using TripBliss.Pages;
 
 namespace TripBliss.ViewModels.ActivateViewModels
 {
@@ -99,6 +100,11 @@ namespace TripBliss.ViewModels.ActivateViewModels
                             foreach (var item in LstVisaDetails)
                             {
                                 item.ImageFile = ImageSource.FromUri(new Uri($"{Helpers.Utility.ServerUrl}{item.UrlImgName}"));
+                                item.Extension = $"{Helpers.Utility.ServerUrl}{item.UrlImgName}";
+                                if (item.UrlImgName.EndsWith(".pdf"))
+                                {
+                                    item.Extension = ".pdf";
+                                }
                             }
                         }
                     }
@@ -158,11 +164,22 @@ namespace TripBliss.ViewModels.ActivateViewModels
         [RelayCommand]
         async Task OpenFullScreenImage(ResponseWithDistributorVisaDetailsResponse model)
         {
-            IsBusy = false;
-            UserDialogs.Instance.ShowLoading();
-            await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(model.ImageFile!));
-            UserDialogs.Instance.HideHud();
-            IsBusy = true;
+            if (model.UrlImgName.EndsWith(".pdf"))
+            {
+                var vm = new PdfViewerViewModel(model.UrlImgName);
+                var page = new PdfViewerPage();
+                page.BindingContext = vm;
+                await App.Current!.MainPage!.Navigation.PushAsync(page);
+            }
+            else
+            {
+                IsBusy = false;
+                UserDialogs.Instance.ShowLoading();
+                await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(model.ImageFile!));
+                UserDialogs.Instance.HideHud();
+                IsBusy = true;
+            }
+            
         }
 
         [RelayCommand]
@@ -171,7 +188,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
             IsBusy = false;
 
             var page = new Pages.MainPopups.AddAttachmentsPopup();
-            page.ImageClose += async (img,imgPath) =>
+            page.ImageClose += async (img, imgPath) =>
             {
                 if (!string.IsNullOrEmpty(img))
                 {
@@ -186,7 +203,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                             ImgName = img,
                             ImageFile = ImageSource.FromStream(() => new MemoryStream(bytes)),
                             TravelAgencyCompanyName = "T",
-                            UrlImgName = imgPath,
+                            Extension = Path.GetExtension(imgPath),
                         });
                         await GetTRVisaAttachment();
                     }
@@ -199,7 +216,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                             ImgName = img,
                             ImageFile = ImageSource.FromStream(() => new MemoryStream(bytes)),
                             DistributorCompanyName = "D",
-                            UrlImgName = imgPath,
+                            Extension = Path.GetExtension(imgPath),
                         });
                         await GetDSVisaAttachment();
                     }
@@ -231,7 +248,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                         LstVisaRequest.Add(new ResponseWithDistributorVisaDetailsRequest
                         {
                             ImgFile = Convert.FromBase64String(item.ImgName),
-                            Extension = Path.GetExtension(item.UrlImgName),
+                            Extension = item.Extension,
                         });
                     }
                 }

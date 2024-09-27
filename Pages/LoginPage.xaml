@@ -69,11 +69,6 @@
                                         </Span>
                                     </FormattedString>
                                 </Label.FormattedText>
-                                <!--<Label.Triggers>
-                                    <DataTrigger TargetType="Label" Binding="{Binding TimeRemaining}" Value="0">
-                                        <Setter Property="IsEnabled" Value="True"></Setter>
-                                    </DataTrigger>
-                                </Label.Triggers>-->
                             </Label>
                             <StackLayout Orientation="Horizontal" Spacing="10">
                                 <Label Text="Waiting time to resend" FontSize="14" TextColor="#333" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center">
@@ -94,9 +89,6 @@
                         <Button Text="{Static res:AppResources.btnLogIn_Login}" FontAutoScalingEnabled="False" FontAttributes="Bold" TextColor="White" WidthRequest="140" FontSize="14" CornerRadius="25" Margin="0,30,0,0"
                                 Command="{Binding ClickLoginCommand}" CommandParameter="{Binding LoginRequest}" BackgroundColor="#2fb569">
                         </Button>
-                        <!--<Button Text="Send Verfication Email" FontAutoScalingEnabled="False" FontAttributes="Bold" TextColor="White" HorizontalOptions="FillAndExpand" FontSize="14" CornerRadius="25" Margin="0,0,0,0"
-                                BackgroundColor="#ff7700" IsVisible="{Binding IsNotVerfy}" Command="{Binding VerfivationClickCommand}">
-                        </Button>-->
                     </StackLayout>
                 </Border>
                 <Label Text="{Static res:AppResources.lblForgotPassword_Login}" TextColor="#0471DF" FontSize="13" BackgroundColor="Transparent"

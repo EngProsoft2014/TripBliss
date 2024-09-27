@@ -1,7 +1,7 @@
 using TripBliss.Models;
 using TripBliss.ViewModels.ActivateViewModels;
 
-namespace TripBliss.Pages.TravelAgenciesPages.RequestDetails;
+namespace TripBliss.Pages.TravelAgenciesPages.ActivateDetailsPages;
 
 public partial class VisaAttachmentsPage : Controls.CustomControl
 {

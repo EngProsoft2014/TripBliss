@@ -1,6 +1,6 @@
 using TripBliss.ViewModels.ActivateViewModels;
 
-namespace TripBliss.Pages.TravelAgenciesPages.RequestDetails;
+namespace TripBliss.Pages.TravelAgenciesPages.ActivateDetailsPages;
 
 public partial class AirFlightAttachmentsPage : Controls.CustomControl
 {

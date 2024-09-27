@@ -74,6 +74,25 @@
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
 
+                        <Line X1="150"  HorizontalOptions="FillAndExpand" BackgroundColor="#212121"></Line>
+
+                        <StackLayout Orientation="Horizontal" Spacing="0" Padding="20,0,20,0">
+                            <Label 
+                               Text="{Static res:AppResources.lblPickPdfFile_attatchment}"
+                               TextColor="Green"
+                               FontSize="16"
+                               FontFamily="AlmaraiBold"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               HorizontalOptions="CenterAndExpand"
+                               Padding="8">
+
+                            </Label>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Pic_pdf"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
 
                     </StackLayout>
                     <Border.StrokeShape>

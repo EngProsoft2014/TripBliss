@@ -207,7 +207,7 @@ namespace TripBliss.ViewModels
                             json[0].UrlUploadFile = $"{Helpers.Utility.ServerUrl}{json[0].UrlUploadFile}";
                             if (json[0].UrlUploadFile.EndsWith(".pdf"))
                             {
-                                json[0].Extension = ".pdf";
+                                json[0].Extension = "pdf";
                             }
                             json.Add(new TravelAgencyCompanyDocResponse());
                             LstDoc = json;
