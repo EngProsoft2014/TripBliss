@@ -50,7 +50,7 @@
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,2">
                             <Entry x:Name="entryPassword" FontAutoScalingEnabled="False" Keyboard="Text" IsPassword="True" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcPassword_Login}"
-                           HorizontalTextAlignment="Center" Text="{Binding LoginRequest.Password}" HorizontalOptions="CenterAndExpand"></Entry>
+                                   HorizontalTextAlignment="Center" Text="{Binding LoginRequest.Password}" HorizontalOptions="CenterAndExpand"></Entry>
 
                             <Image x:Name="imgEyePass" Margin="0,0,10,0" HorizontalOptions="End">
                                 <Image.Source>

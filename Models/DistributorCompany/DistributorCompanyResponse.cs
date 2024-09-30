@@ -5,7 +5,7 @@ namespace TripBliss.Models
     public record DistributorCompanyResponse : INotifyPropertyChanged
     {
 
-        public string? Id { get; set; }
+        public string Id { get; set; }
         public string? CompanyName { get; set; }
         public string? Address { get; set; }
         public string? Website { get; set; }
@@ -13,12 +13,32 @@ namespace TripBliss.Models
         public string? Email { get; set; }
         public string? Policy { get; set; }
         public string? Logo { get; set; }
-        public DateTime? ExpireDateAcc { get; set; }
-        public bool SendWithAllBulk { get; set; }
+        public string? UrlLogo { get; set; }
+        public DateOnly? ExpireDateAcc { get; set; }
+        public bool? SendWithAllBulk { get; set; }
         public string? StripeUsername { get; set; }
         public string? StripePassword { get; set; }
         public string? StripeSecretKey { get; set; }
-        public int Review { get; set; }
+        public int? Review { get; set; }
+        public byte[]? ImgFile { get; set; }
+        public string? Extension { get; set; } = string.Empty;
+
+        ImageSource? _ImageFile;
+        public ImageSource? ImageFile
+        {
+            get
+            {
+                return _ImageFile;
+            }
+            set
+            {
+                _ImageFile = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("ImageFile"));
+                }
+            }
+        }
 
         bool? _Favourite;
         public bool? Favourite

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:TripBliss.Resources.Language"
+             x:Class="TripBliss.Pages.TravelAgenciesPages.Tr_AccountPage"
+             Title="Tr_AccountPage"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout Orientation="Vertical" Margin="20" Spacing="30">
+        <StackLayout Orientation="Horizontal">
+            <Image VerticalOptions="CenterAndExpand">
+                <Image.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                </Image.Source>
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                        <Setter Property="Rotation" Value="180"></Setter>
+                    </DataTrigger>
+                </Image.Triggers>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackClickedCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="{Static res:AppResources.lblAccount_More}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+
+        </StackLayout>
+        <ScrollView VerticalOptions="FillAndExpand">
+            <Grid VerticalOptions="FillAndExpand">
+                <VerticalStackLayout Spacing="10" Grid.Row="1" VerticalOptions="FillAndExpand">
+                    <Grid WidthRequest="150" HeightRequest="150">
+                        <Border  StrokeShape="RoundRectangle 70" StrokeThickness="1" Stroke="Green" WidthRequest="150" HeightRequest="150" Margin="0,10">
+                            <Image Source="{Binding CompanyResponse.ImageFile}" Aspect="AspectFill"></Image>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenFullScreenImageCommand}"></TapGestureRecognizer>
+                            </Border.GestureRecognizers>
+                        </Border>
+                        <Image HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand">
+                            <Image.Source>
+                                <FontImageSource Glyph="" Size="25" Color="Green" FontFamily="FontIcon"></FontImageSource>
+                            </Image.Source>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenAddImagesPopupCommand}"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                    <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
+                        <Entry Keyboard="Text" TextColor="Black" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcCompanyName_SignUp}" HorizontalTextAlignment="Center"
+            Margin="10,2" Text="{Binding CompanyResponse.CompanyName}" HorizontalOptions="CenterAndExpand"></Entry>
+                    </Border>
+                    <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
+                        <Entry Keyboard="Numeric" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcCompanyPhone_SignUp}"
+            HorizontalTextAlignment="Center" Margin="10,2" Text="{Binding CompanyResponse.Phone }"></Entry>
+                    </Border>
+                    <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
+                        <Entry Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcEmail_SignUpPage}" HorizontalTextAlignment="Center"
+            Margin="10,2" Text="{Binding CompanyResponse.Email}"></Entry>
+                    </Border>
+                    <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
+                        <Entry Placeholder="{Static res:AppResources.plcWebSite_AccountPage}" Keyboard="Text" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center"
+            Margin="10,2" Text="{Binding CompanyResponse.Website }"></Entry>
+                    </Border>
+                    <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,2">
+                            <Entry Placeholder="{Static res:AppResources.plcAddress_AccountPage}" FontAutoScalingEnabled="False" Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" 
+                HorizontalTextAlignment="Center" Text="{Binding CompanyResponse.Address }" HorizontalOptions="CenterAndExpand"></Entry>
+                        </StackLayout>
+                    </Border>
+                    
+                </VerticalStackLayout>
+                <Button VerticalOptions="EndAndExpand" Text="{Static res:AppResources.btnApply_Forgot}" FontSize="16" FontAttributes="Bold" BackgroundColor="#2fa562" TextColor="White"
+                     Command="{Binding ConfirmeDataCommand}"></Button>
+            </Grid>
+        </ScrollView>
+
+    </StackLayout>
+</ContentPage>

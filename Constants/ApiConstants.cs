@@ -283,6 +283,30 @@ namespace TripBliss.Constants
         public static string PostVerifyApi = "api/ApplicationUser/resend-confirm-email";
         // End post Verify Email
         #endregion
+
+        #region Get Dist Company Details
+        // Get Dist Company Details
+        public static string GetDistCompanyDetailsApi = "api/DistributorCompany/";
+        // End Get Dist Company Details 
+        #endregion
+
+        #region put Dist Company Details
+        // put Dist Company Details
+        public static string PutDistCompanyDetailsApi = "api/DistributorCompany/";
+        // End put Dist Company Details 
+        #endregion
+
+        #region Get Travel Company Details
+        // Get Travel Company Details
+        public static string GetTravelCompanyDetailsApi = "api/TravelAgencyCompany/";
+        // End Get Travel Company Details 
+        #endregion
+
+        #region put Travel Company Details
+        // put Travel Company Details
+        public static string PutTravelCompanyDetailsApi = "api/TravelAgencyCompany/";
+        // End put Travel Company Details 
+        #endregion
     }
 }
 

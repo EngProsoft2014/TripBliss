@@ -10,10 +10,13 @@
         public string? Policy { get; set; }
         public string? Logo { get; set; }
         public DateOnly? ExpireDateAcc { get; set; }
-        public bool? SendWithAllBulk { get; set; }
         public string? StripeUsername { get; set; }
         public string? StripePassword { get; set; }
         public string? StripeSecretKey { get; set; }
-        public int? Review { get; set; }
+        public byte[]? ImgFile { get; set; }
+        public string? Extension { get; set; } = string.Empty;
+        public int? Review { get; set; } = 0;
+        public bool? SendWithAllBulk { get; set; } = true;
+
     }
 }

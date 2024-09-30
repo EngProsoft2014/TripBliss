@@ -152,6 +152,9 @@
 	  <Compile Update="Pages\DistributorsPages\ResponseDetails\VisaServicePage.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\DistributorsPages\Dis_AccountPage.xaml.cs">
+	    <DependentUpon>Dis_AccountPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\TravelAgenciesPages\CreateRequest\ChooseDistributorPage.xaml.cs">
 	    <DependentUpon>ChooseDistributorPage.xaml</DependentUpon>
 	  </Compile>
@@ -245,6 +248,9 @@
 	  <MauiXaml Update="Pages\DistributorsPages\ResponseDetails\VisaServicePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\DistributorsPages\Dis_AccountPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\MainPopups\AddAttachmentsPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -321,6 +327,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\DocumentsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\TravelAgenciesPages\Tr_AccountPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Users\AddUserPage.xaml">

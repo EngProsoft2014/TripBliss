@@ -501,4 +501,19 @@
   <data name="lblPickPdfFile-attatchment" xml:space="preserve">
     <value>Pick pdf file</value>
   </data>
+  <data name="plcWebSite-AccountPage" xml:space="preserve">
+    <value>WebSite</value>
+  </data>
+  <data name="plcAddress-AccountPage" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="plcStripeUserName-AccountPage" xml:space="preserve">
+    <value>Stripe User Name</value>
+  </data>
+  <data name="plcStripePassword-Accountpage" xml:space="preserve">
+    <value>Stripe Password</value>
+  </data>
+  <data name="plcStripeSecretKey-AccountPage" xml:space="preserve">
+    <value>Stripe Secret Key</value>
+  </data>
 </root>

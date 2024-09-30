@@ -1141,6 +1141,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        internal static string plcAddress_AccountPage {
+            get {
+                return ResourceManager.GetString("plcAddress-AccountPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Company Email.
         /// </summary>
         internal static string plcCompanyEmail_SignUpPage {
@@ -1195,11 +1204,47 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stripe Password.
+        /// </summary>
+        internal static string plcStripePassword_Accountpage {
+            get {
+                return ResourceManager.GetString("plcStripePassword-Accountpage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stripe Secret Key.
+        /// </summary>
+        internal static string plcStripeSecretKey_AccountPage {
+            get {
+                return ResourceManager.GetString("plcStripeSecretKey-AccountPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stripe User Name.
+        /// </summary>
+        internal static string plcStripeUserName_AccountPage {
+            get {
+                return ResourceManager.GetString("plcStripeUserName-AccountPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User Name.
         /// </summary>
         internal static string plcUserName_Login {
             get {
                 return ResourceManager.GetString("plcUserName-Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WebSite.
+        /// </summary>
+        internal static string plcWebSite_AccountPage {
+            get {
+                return ResourceManager.GetString("plcWebSite-AccountPage", resourceCulture);
             }
         }
         
