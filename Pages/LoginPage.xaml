@@ -27,7 +27,7 @@
 
                         </Image>
                         <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                            <Entry x:Name="entryEmail" Placeholder="{Static res:AppResources.plcEmail_SignUpPage}" Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" 
+                            <Entry x:Name="entryEmail" Placeholder="{Static res:AppResources.plcUserName_Login}" Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" 
                                    HorizontalTextAlignment="Center" Margin="10,2"   Text="{Binding LoginRequest.UserName}"></Entry>
                         </Border>
                         <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
