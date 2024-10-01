@@ -17,7 +17,7 @@
     <StackLayout Orientation="Vertical">
         <Label Text="Your company not active until now" TextColor="White" FontAttributes="Bold" Padding="10,1" BackgroundColor="Red" HorizontalOptions="FillAndExpand" HeightRequest="25" IsVisible="True">
             <Label.Triggers>
-                <DataTrigger TargetType="Label" Binding="{Binding Review}" Value="Accepted">
+                <DataTrigger TargetType="Label" Binding="{Binding Review}" Value="1">
                     <Setter Property="IsVisible" Value="False"></Setter>
                 </DataTrigger>
             </Label.Triggers>

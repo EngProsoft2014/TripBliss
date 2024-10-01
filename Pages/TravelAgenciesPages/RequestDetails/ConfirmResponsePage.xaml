@@ -170,7 +170,7 @@
                                         </ScrollView>
                                         <StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="EndAndExpand">
                                             <Label Text="{Binding Price,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" VerticalOptions="CenterAndExpand"
-           FontSize="11">
+                                                   FontSize="11">
                                                 <Label.Triggers>
                                                     <DataTrigger TargetType="Label" Binding="{Binding Price}" Value="0">
                                                         <Setter Property="IsVisible" Value="False"></Setter>
@@ -178,7 +178,7 @@
                                                 </Label.Triggers>
                                             </Label>
                                             <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0"
-      IsChecked="{Binding AcceptAgen}">
+                                                      IsChecked="{Binding AcceptAgen}">
                                                 <CheckBox.Triggers>
                                                     <DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="true">
                                                         <Setter Property="IsEnabled" Value="False"></Setter>
@@ -252,7 +252,7 @@
                                         </ScrollView>
                                         <StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="EndAndExpand">
                                             <Label Text="{Binding Price,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" VerticalOptions="CenterAndExpand"
-           FontSize="11">
+                                                   FontSize="11">
                                                 <Label.Triggers>
                                                     <DataTrigger TargetType="Label" Binding="{Binding Price}" Value="0">
                                                         <Setter Property="IsVisible" Value="False"></Setter>
@@ -260,7 +260,7 @@
                                                 </Label.Triggers>
                                             </Label>
                                             <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0"
-      IsChecked="{Binding AcceptAgen}">
+                                                        IsChecked="{Binding AcceptAgen}">
                                                 <CheckBox.Triggers>
                                                     <DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="true">
                                                         <Setter Property="IsEnabled" Value="False"></Setter>
@@ -329,7 +329,7 @@
                                         </ScrollView>
                                         <StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="EndAndExpand">
                                             <Label Text="{Binding Price,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" VerticalOptions="CenterAndExpand"
-           FontSize="11">
+                                                   FontSize="11">
                                                 <Label.Triggers>
                                                     <DataTrigger TargetType="Label" Binding="{Binding Price}" Value="0">
                                                         <Setter Property="IsVisible" Value="False"></Setter>
@@ -337,7 +337,7 @@
                                                 </Label.Triggers>
                                             </Label>
                                             <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0"
-      IsChecked="{Binding AcceptAgen}">
+                                                      IsChecked="{Binding AcceptAgen}">
                                                 <CheckBox.Triggers>
                                                     <DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="true">
                                                         <Setter Property="IsEnabled" Value="False"></Setter>

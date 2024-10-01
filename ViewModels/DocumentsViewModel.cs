@@ -20,7 +20,7 @@ namespace TripBliss.ViewModels
         [ObservableProperty]
         ObservableCollection<TravelAgencyCompanyDocResponse> lstDoc = new ObservableCollection<TravelAgencyCompanyDocResponse>();
         [ObservableProperty]
-        string reviewVM;
+        int reviewVM;
 
         #region Servises
         IGenericRepository Rep;
@@ -63,7 +63,7 @@ namespace TripBliss.ViewModels
                 }
                 else
                 {
-                    ImageSource sou = ImageSource.FromUri(new Uri(model.UrlUploadFile!)); ;
+                    ImageSource sou = ImageSource.FromUri(new Uri(model.UrlUploadFile!)); 
                     IsBusy = false;
                     UserDialogs.Instance.ShowLoading();
                     await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(sou));
@@ -183,7 +183,7 @@ namespace TripBliss.ViewModels
         #region Methods
         async void Init()
         {
-            ReviewVM = Preferences.Default.Get(ApiConstants.review, "");
+            ReviewVM = Preferences.Default.Get(ApiConstants.review, int.Parse("0"));
             await GetDocs();
 
         }

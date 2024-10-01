@@ -127,18 +127,9 @@ namespace TripBliss.ViewModels
 
                             if (!string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
                             {
-                                if (UserModel?.TravelAgencyCompany?.Review == 0)
-                                {
-                                    Preferences.Default.Set(ApiConstants.review, "In Review");
-                                }
-                                else if (UserModel?.TravelAgencyCompany?.Review == 1)
-                                {
-                                    Preferences.Default.Set(ApiConstants.review, "Accepted");
-                                }
-                                else if (UserModel?.TravelAgencyCompany?.Review == 2)
-                                {
-                                    Preferences.Default.Set(ApiConstants.review, "Denied");
-                                }
+
+                                Preferences.Default.Set(ApiConstants.review, UserModel!.TravelAgencyCompany!.Review!.Value);
+
 
                                 var vm = new TravelAgenciesViewModels.Tr_HomeViewModel(Rep, _service);
                                 var page = new Pages.TravelAgenciesPages.HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service);
@@ -147,18 +138,7 @@ namespace TripBliss.ViewModels
                             }
                             if (string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && !string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
                             {
-                                if (UserModel?.DistributorCompany?.Review == 0)
-                                {
-                                    Preferences.Default.Set(ApiConstants.review, "In Review");
-                                }
-                                else if (UserModel?.DistributorCompany?.Review == 1)
-                                {
-                                    Preferences.Default.Set(ApiConstants.review, "Accepted");
-                                }
-                                else if (UserModel?.DistributorCompany?.Review == 2)
-                                {
-                                    Preferences.Default.Set(ApiConstants.review, "Denied");
-                                }
+                                Preferences.Default.Set(ApiConstants.review, UserModel?.DistributorCompany?.Review!.Value!);
 
                                 var vm = new DistributorsViewModels.Dis_HomeViewModel(Rep, _service);
                                 var page = new Pages.DistributorsPages.HomeDistributorsPage(vm, Rep, _service);
@@ -184,8 +164,6 @@ namespace TripBliss.ViewModels
                             List<string> LstResult = Result.Split('_').ToList();
                             ResendEmail = LstResult[1].Trim();
                         }
-
-
 
                         var toast = Toast.Make($"Warning, {json.Item2.errors.FirstOrDefault().Key}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();

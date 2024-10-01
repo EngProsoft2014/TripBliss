@@ -18,7 +18,7 @@
 
         <Label Text="Your company not active until now" TextColor="White" FontAttributes="Bold" Padding="10,1" BackgroundColor="Red" HorizontalOptions="FillAndExpand" HeightRequest="25" IsVisible="True">
             <Label.Triggers>
-                <DataTrigger TargetType="Label" Binding="{Binding Review}" Value="Accepted">
+                <DataTrigger TargetType="Label" Binding="{Binding Review}" Value="1">
                     <Setter Property="IsVisible" Value="False"></Setter>
                 </DataTrigger>
             </Label.Triggers>
@@ -137,11 +137,12 @@
                                     <Label Text="{Static res:AppResources.hdrDistributors}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="End"
                                            TextColor="Black"></Label>
                                     <Button Text="{Static res:AppResources.btnAddRequest}" FontAutoScalingEnabled="False" WidthRequest="95" Padding="0,5,0,5" HeightRequest="35" FontSize="12"
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=AddRequestCommand}" IsEnabled="False"
-                                        BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" Margin="0,0,0,0" FontAttributes="Bold">
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=AddRequestCommand}" IsEnabled="False" Opacity=".6"
+                                            BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" Margin="0,0,0,0" FontAttributes="Bold">
                                         <Button.Triggers>
-                                            <DataTrigger TargetType="Button" Binding="{Binding Review}" Value="Accepted">
+                                            <DataTrigger TargetType="Button" Binding="{Binding Review}" Value="1">
                                                 <Setter Property="IsEnabled" Value="True"></Setter>
+                                                <Setter Property="Opacity" Value="1"></Setter>
                                             </DataTrigger>
                                         </Button.Triggers>
                                     </Button>
@@ -203,10 +204,10 @@
                                                                                                 </Setter.Value>
                                                                                             </Setter>
                                                                                         </DataTrigger>
-                                                                                        <DataTrigger TargetType="Image" Binding="{Binding Review}" Value="In Review">
+                                                                                        <DataTrigger TargetType="Image" Binding="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=Review}" Value="0">
                                                                                             <Setter Property="IsVisible" Value="False"></Setter>
                                                                                         </DataTrigger>
-                                                                                        <DataTrigger TargetType="Image" Binding="{Binding Review}" Value="Denied">
+                                                                                        <DataTrigger TargetType="Image" Binding="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=Review}" Value="2">
                                                                                             <Setter Property="IsVisible" Value="False"></Setter>
                                                                                         </DataTrigger>
                                                                                     </Image.Triggers>
@@ -295,6 +296,12 @@
                                                                                                     <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray" Size="20"></FontImageSource>
                                                                                                 </Setter.Value>
                                                                                             </Setter>
+                                                                                        </DataTrigger>
+                                                                                        <DataTrigger TargetType="Image" Binding="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=Review}" Value="0">
+                                                                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                                                                        </DataTrigger>
+                                                                                        <DataTrigger TargetType="Image" Binding="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=Review}" Value="2">
+                                                                                            <Setter Property="IsVisible" Value="False"></Setter>
                                                                                         </DataTrigger>
                                                                                     </Image.Triggers>
                                                                                 </Image>

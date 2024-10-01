@@ -26,16 +26,19 @@
             </Image>
             <Label Text="{Static res:AppResources.hdrMyDocuments_DocumentsPage}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
-            <Label Text="{Binding ReviewVM}" FontAutoScalingEnabled="False" FontSize="14" HorizontalOptions="End"
+            <Label  FontAutoScalingEnabled="False" FontSize="14" HorizontalOptions="End"
                    VerticalOptions="CenterAndExpand" FontAttributes="Bold">
                 <Label.Triggers>
-                    <DataTrigger TargetType="Label" Binding="{Binding ReviewVM}" Value="In Review">
+                    <DataTrigger TargetType="Label" Binding="{Binding ReviewVM}" Value="0">
+                        <Setter Property="Text" Value="In Review"></Setter>
                         <Setter Property="TextColor" Value="#1c92c9"></Setter>
                     </DataTrigger>
-                    <DataTrigger TargetType="Label" Binding="{Binding ReviewVM}" Value="Accepted">
+                    <DataTrigger TargetType="Label" Binding="{Binding ReviewVM}" Value="1">
+                        <Setter Property="Text" Value="Accepted"></Setter>
                         <Setter Property="TextColor" Value="Green"></Setter>
                     </DataTrigger>
-                    <DataTrigger TargetType="Label" Binding="{Binding ReviewVM}" Value="Denied">
+                    <DataTrigger TargetType="Label" Binding="{Binding ReviewVM}" Value="2">
+                        <Setter Property="Text" Value="Denied"></Setter>
                         <Setter Property="TextColor" Value="Red"></Setter>
                     </DataTrigger>
                 </Label.Triggers>
