@@ -198,6 +198,8 @@ namespace TripBliss.ViewModels.ActivateViewModels
         {
             IsBusy = false;
 
+            Controls.StaticMember.WayOfPhotosPopup = 0; // show all select photos or pdf file 
+
             var page = new Pages.MainPopups.AddAttachmentsPopup();
             page.ImageClose += async (img,imgPath) =>
             {

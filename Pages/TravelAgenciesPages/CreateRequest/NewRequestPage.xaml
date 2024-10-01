@@ -48,7 +48,7 @@
             <Label Text="{Static res:AppResources.hdrNewRequest}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
-        <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
+        <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Padding="10,0">
             <StackLayout Spacing="10">
                 <!--Hotels-->
                 <StackLayout Orientation="Horizontal" Margin="0,15,0,0">

@@ -26,6 +26,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         #region prop
         [ObservableProperty]
         ResponseWithDistributorDetailsResponse response = new ResponseWithDistributorDetailsResponse();
+        [ObservableProperty]
+        bool isShowPaymentBtn;
 
         #endregion
 
@@ -52,39 +54,61 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         async Task PaymentClicked()
         {
-            var vm = new Tr_D_PaymentViewModel(Response.Id, Response.TotalPriceAgentAccept, Response.TotalPayment, Rep, _service);
-            var page = new PaymentPage(vm);
-            page.BindingContext = vm;
-            await App.Current!.MainPage!.Navigation.PushAsync(page);
+            bool result = CheckChooseServices();
+            if(result)
+            {
+                var vm = new Tr_D_PaymentViewModel(Response.Id, Response.TotalPriceAgentAccept, Response.TotalPayment, Rep, _service);
+                var page = new PaymentPage(vm);
+                page.BindingContext = vm;
+                await App.Current!.MainPage!.Navigation.PushAsync(page);
+            }
+            else
+            {
+                var toast = Toast.Make("Warning, Please Check to one service or more", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+
         }
         [RelayCommand]
         async Task Apply()
         {
-            bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Are You Accept This Finall Price?", "Yes", "No");
-
             IsBusy = false;
 
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet && answer)
+            bool result = CheckChooseServices();
+
+            if (result)
             {
+                bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Are You Accept This Finall Price?", "Yes", "No");
 
-                string UserToken = await _service.UserToken();
-
-
-                var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorResponse>(ApiConstants.ResponseDetailsDistApi + $"{Response.DistributorCompanyId}/ResponseWithDistributor/{Response.Id}", Response, UserToken);
-
-                if (json.Item1 != null)
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet && answer)
                 {
-                    var toast = Toast.Make("Successfully for Add Response", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                    await toast.Show();
 
-                    Controls.StaticMember.WayOfTab = 0;
-                    await App.Current!.MainPage!.Navigation.PushAsync(new HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service));
+                    string UserToken = await _service.UserToken();
+
+                    UserDialogs.Instance.ShowLoading();
+                    var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorResponse>(ApiConstants.ResponseDetailsDistApi + $"{Response.DistributorCompanyId}/ResponseWithDistributor/{Response.Id}", Response, UserToken);
+                    UserDialogs.Instance.HideHud();
+
+                    if (json.Item1 != null)
+                    {
+                        var toast = Toast.Make("Successfully for Add Response", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
+
+                        IsShowPaymentBtn = true;
+                        //Controls.StaticMember.WayOfTab = 0;
+                        //await App.Current!.MainPage!.Navigation.PushAsync(new HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service));
+                    }
+                    else
+                    {
+                        var toast = Toast.Make($"Warning, {json.Item2}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
+                    }
                 }
-                else
-                {
-                    var toast = Toast.Make($"Warning, {json.Item2}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                    await toast.Show();
-                }
+            }
+            else
+            {
+                var toast = Toast.Make("Warning, Please Check to one service or more", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
             }
 
             IsBusy = true;
@@ -157,12 +181,37 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 if (json != null)
                 {
                     Response = json;
+                    bool result = CheckChooseServices();
+                    if(result)
+                    {
+                        IsShowPaymentBtn = true;
+                    }
+                    else
+                    {
+                        IsShowPaymentBtn = false;
+                    }
                 }
             }
 
             IsBusy = true;
         }
 
+        bool CheckChooseServices()
+        {
+            var ResponseAirFlt = Response?.ResponseWithDistributorAirFlight?.Where(x => x.AcceptAgen == true).FirstOrDefault();
+            var ResponseHotel = Response?.ResponseWithDistributorHotel?.Where(x => x.AcceptAgen == true).FirstOrDefault();
+            var ResponseTrans = Response?.ResponseWithDistributorTransport?.Where(x => x.AcceptAgen == true).FirstOrDefault();
+            var ResponseVisa = Response?.ResponseWithDistributorVisa?.Where(x => x.AcceptAgen == true).FirstOrDefault();
+
+            if (ResponseAirFlt != null || ResponseHotel != null || ResponseTrans != null || ResponseVisa != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         #endregion
 
 

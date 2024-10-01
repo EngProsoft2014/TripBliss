@@ -35,7 +35,7 @@
             </StackLayout>
         </Border>
         <HorizontalStackLayout>
-            <CheckBox x:Name="FBCheck" Color="#33a7f5" CheckedChanged="FBCheck_CheckedChanged_1"  IsChecked="True"></CheckBox>
+            <CheckBox x:Name="FBCheck" Color="#33a7f5" CheckedChanged="FBCheck_CheckedChanged_1" IsChecked="{Binding IsAllPyment}"></CheckBox>
             <Label Text="{Static res:AppResources.FullPayment_payment}" TextColor="Black" VerticalTextAlignment="Center" FontSize="14" FontAttributes="Bold"
                    ></Label>
             <Entry x:Name="AmmountEntry" Text="{Binding CustomPrice}" Keyboard="Numeric" FontSize="14" TextColor="Black" HorizontalOptions="FillAndExpand"
@@ -69,7 +69,13 @@
                 </CollectionView.ItemsLayout>
             </CollectionView>
             <Button Text="{Static res:AppResources.btnConfirm_NewRequest}" BackgroundColor="#33a7f5" FontSize="16" TextColor="White" FontAttributes="Bold"
-                    Command="{Binding AddPaymentCommand}" VerticalOptions="End"></Button>
+                    Command="{Binding AddPaymentCommand}" VerticalOptions="End">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding OutStandingprice}" Value="0">
+                        <Setter Property="IsEnabled" Value="False"></Setter>
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
         </Grid>
     </StackLayout>
 </Controls:CustomControl>

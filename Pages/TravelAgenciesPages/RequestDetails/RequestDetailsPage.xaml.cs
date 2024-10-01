@@ -4,9 +4,16 @@ namespace TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 
 public partial class RequestDetailsPage : Controls.CustomControl
 {
-	public RequestDetailsPage(Tr_D_RequestDetailsViewModel model)
+    Tr_D_RequestDetailsViewModel Model;
+    public RequestDetailsPage(Tr_D_RequestDetailsViewModel model)
 	{
 		InitializeComponent();
-		this.BindingContext = model;
+		this.BindingContext = Model = model;
 	}
+
+    private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        ItemsCollectionView.ItemsSource = Model?.RequestDetailes?.ResponseWithDistributor?.Where(x => (x.DistributorCompanyName!).ToLower().Contains(e.NewTextValue.ToLower()));
+
+    }
 }

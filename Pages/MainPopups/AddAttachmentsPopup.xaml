@@ -76,7 +76,7 @@
 
                         <Line X1="150"  HorizontalOptions="FillAndExpand" BackgroundColor="#212121"></Line>
 
-                        <StackLayout Orientation="Horizontal" Spacing="0" Padding="20,0,20,0">
+                        <StackLayout x:Name="stkpdf" Orientation="Horizontal" Spacing="0" Padding="20,0,20,0">
                             <Label 
                                Text="{Static res:AppResources.lblPickPdfFile_attatchment}"
                                TextColor="Green"

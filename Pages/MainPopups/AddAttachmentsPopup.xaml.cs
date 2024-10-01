@@ -13,6 +13,10 @@ public partial class AddAttachmentsPopup : Mopups.Pages.PopupPage
     public AddAttachmentsPopup()
 	{
 		InitializeComponent();
+        if(Controls.StaticMember.WayOfPhotosPopup == 1)
+        {
+            stkpdf.IsVisible = false;
+        }
 	}
 
     private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)

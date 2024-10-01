@@ -3,11 +3,14 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using Microsoft.AspNet.SignalR.Client.Http;
+using Syncfusion.Maui.Data;
 using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages.TravelAgenciesPages;
+
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {
@@ -20,6 +23,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         int Totalpayment;
         [ObservableProperty]
         int outStandingprice;
+        [ObservableProperty]
+        bool isAllPyment;
         [ObservableProperty]
         ObservableCollection<ResponseWithDistributorPaymentResponse> payments;
         #endregion
@@ -38,6 +43,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             Totalpayment = totalPayment;
             OutStandingprice = totalPrice - totalPayment;
             Totalprice = totalPrice;
+            IsAllPyment = true;
             Init();
         }
         #endregion
@@ -55,11 +61,11 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 string UserToken = await _service.UserToken();
                 ResponseWithDistributorPaymentRequest paymentRequest = new ResponseWithDistributorPaymentRequest
                 {
-                    AmountPayment = Totalprice - Totalpayment - OutStandingprice,
+                    AmountPayment = IsAllPyment == true ? OutStandingprice : (Totalprice - Totalpayment - OutStandingprice),
                     PaymentMethod = 1,
                     dbcr = 1,
                     Notes ="",
-                    Refnumber = "stetrr",
+                    Refnumber = "stetrrcc",
                 };
 
                 var json = await Rep.PostTRAsync<ResponseWithDistributorPaymentRequest, ResponseWithDistributorPaymentResponse>(ApiConstants.AllPaymentApi + $"{ReqId}/ResponseWithDistributorPayment", paymentRequest, UserToken);
@@ -69,7 +75,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     var toast = Toast.Make("Successfully for Paying Ammount", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                     Totalpayment = (int)(Totalpayment + paymentRequest.AmountPayment);
-                    await GetPayDetailes();
+                    OutStandingprice = IsAllPyment == true ? 0 : OutStandingprice - paymentRequest.AmountPayment.Value;
+                    await GetPayDetailes();     
                 }
                 else
                 {
@@ -100,11 +107,11 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             {
                 string UserToken = await _service.UserToken();
 
-                var json = await Rep.GetAsync<ObservableCollection<ResponseWithDistributorPaymentResponse>>(ApiConstants.AllPaymentApi + $"{ReqId}/ResponseWithDistributorPayment", UserToken);
+                var json1 = await Rep.GetAsync<ObservableCollection<ResponseWithDistributorPaymentResponse>>(ApiConstants.AllPaymentApi + $"{ReqId}/ResponseWithDistributorPayment", UserToken);
 
-                if (json != null)
+                if (json1 != null)
                 {
-                    Payments = json;
+                    Payments = json1;
                 }
             }
             IsBusy = true;
@@ -120,10 +127,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             else if (CustomPrice !=0)
             {
                 OutStandingprice = Totalprice - Totalpayment - CustomPrice;
+                IsAllPyment = false;
             }
             else
             {
-                OutStandingprice = Totalprice - Totalpayment;
+                OutStandingprice = Totalprice == Totalpayment ? 0 : Totalprice - Totalpayment;
+                IsAllPyment = true;
             }
         }
         #endregion

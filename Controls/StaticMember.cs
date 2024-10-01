@@ -20,6 +20,7 @@ namespace TripBliss.Controls
         public static string SnackBarColor = "#187ad6";
         public static string SnackBarTextColor = "#FFFFFF";
         public static int WayOfTab { get; set; } = 0;
+        public static int WayOfPhotosPopup { get; set; } = 0;
         #endregion
 
         #region Lists

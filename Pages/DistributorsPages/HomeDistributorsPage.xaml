@@ -124,7 +124,7 @@
                                                                 <RoundRectangle CornerRadius="0,20,20,0"></RoundRectangle>
                                                             </Border.StrokeShape>
                                                             <Border.Triggers>
-                                                                <DataTrigger TargetType="Border" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_HistoryViewModel}}, Path=Lang}" Value="ar">
+                                                                <DataTrigger TargetType="Border" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_HomeViewModel}}, Path=Lang}" Value="ar">
                                                                     <Setter Property="StrokeShape">
                                                                         <Setter.Value>
                                                                             <RoundRectangle Stroke="Gray" CornerRadius="0,0,5,20"></RoundRectangle>

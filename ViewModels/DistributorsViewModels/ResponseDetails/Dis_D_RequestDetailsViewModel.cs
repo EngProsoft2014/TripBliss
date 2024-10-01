@@ -147,33 +147,50 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         [Obsolete]
         async Task AddToRequest()
-        {
-            
-            
+        {        
             IsBusy = false;
 
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            var ResponseAirFlt = Response?.ResponseWithDistributorAirFlight?.Where(x => x.AcceptPriceDis == true).FirstOrDefault();
+            var ResponseHotel = Response?.ResponseWithDistributorHotel?.Where(x => x.AcceptPriceDis == true).FirstOrDefault();
+            var ResponseTrans = Response?.ResponseWithDistributorTransport?.Where(x => x.AcceptPriceDis == true).FirstOrDefault();
+            var ResponseVisa = Response?.ResponseWithDistributorVisa?.Where(x => x.AcceptPriceDis == true).FirstOrDefault();
+
+            if (ResponseAirFlt != null || ResponseHotel != null || ResponseTrans != null || ResponseVisa != null)
             {
+                bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Are You Accept This Finall Price?", "Yes", "No");
 
-                string UserToken = await _service.UserToken();
-
-                string id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
-                var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorResponse>(ApiConstants.ResponseDetailsDistApi + $"{id}/ResponseWithDistributor/{Response.Id}", Response, UserToken);
-
-                if (json.Item1 != null)
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet && answer)
                 {
-                    var toast = Toast.Make("Successfully for Add Response", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                    await toast.Show();
 
-                    Controls.StaticMember.WayOfTab = 0;
-                    await App.Current!.MainPage!.Navigation.PushAsync(new HomeDistributorsPage(new Dis_HomeViewModel(Rep, _service), Rep, _service));
-                }
-                else
-                {
-                    var toast = Toast.Make($"Warning, {json.Item2}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                    await toast.Show();
+                    string UserToken = await _service.UserToken();
+
+                    string id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
+
+                    UserDialogs.Instance.ShowLoading();
+                    var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorResponse>(ApiConstants.ResponseDetailsDistApi + $"{id}/ResponseWithDistributor/{Response.Id}", Response, UserToken);
+                    UserDialogs.Instance.HideHud();
+
+                    if (json.Item1 != null)
+                    {
+                        var toast = Toast.Make("Successfully for Add Response", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
+
+                        //Controls.StaticMember.WayOfTab = 0;
+                        //await App.Current!.MainPage!.Navigation.PushAsync(new HomeDistributorsPage(new Dis_HomeViewModel(Rep, _service), Rep, _service));
+                    }
+                    else
+                    {
+                        var toast = Toast.Make($"Warning, {json.Item2}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
+                    }
                 }
             }
+            else
+            {
+                var toast = Toast.Make("Warning, Please put price to one service or more", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+                
 
             IsBusy = true;
         } 

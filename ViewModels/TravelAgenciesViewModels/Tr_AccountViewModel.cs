@@ -129,6 +129,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         {
             IsBusy = false;
 
+            Controls.StaticMember.WayOfPhotosPopup = 1; //Only Account page Remove select pdf 
+
             var page = new Pages.MainPopups.AddAttachmentsPopup();
             page.ImageClose += async (img, imgPath) =>
             {
