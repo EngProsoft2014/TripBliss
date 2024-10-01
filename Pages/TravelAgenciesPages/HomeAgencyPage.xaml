@@ -16,6 +16,7 @@
 
     <StackLayout Orientation="Vertical">
 
+        <Label Text="Your company not active until now" TextColor="White" FontAttributes="Bold" Padding="10,1" BackgroundColor="Red" HorizontalOptions="FillAndExpand" HeightRequest="25"></Label>
         <tabView:SfTabView x:Name="tabMain" TabBarHeight="60" TabBarPlacement="Bottom" IndicatorPlacement="Top" IndicatorBackground="#1c874b" FlowDirection="LeftToRight"
                            VerticalOptions="FillAndExpand" SelectionChanged="tabMain_SelectionChanged">
             <tabView:SfTabView.Items>

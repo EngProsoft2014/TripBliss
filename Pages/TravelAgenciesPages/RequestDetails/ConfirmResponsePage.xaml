@@ -66,7 +66,7 @@
                             <DataTemplate>
                                 <Border>
                                     <Grid HorizontalOptions="FillAndExpand">
-                                        <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand" HorizontalScrollBarVisibility="Never" Padding="3,0,35,0">
+                                        <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand" HorizontalScrollBarVisibility="Never" Padding="3,0,100,0">
                                             <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
                                                 <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                     <Label.FormattedText>
@@ -86,21 +86,22 @@
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
-                                                <Label Text="{Binding Price,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" 
-                                                   VerticalOptions="EndAndExpand" FontSize="11">
-                                                    <Label.Triggers>
-                                                        <DataTrigger TargetType="Label" Binding="{Binding Price}" Value="0">
-                                                            <Setter Property="IsVisible" Value="False"></Setter>
-                                                        </DataTrigger>
-                                                    </Label.Triggers>
-                                                </Label>
+                                               
                                                 <StackLayout.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=SelectHotelCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                 </StackLayout.GestureRecognizers>
                                             </StackLayout>
                                         </ScrollView>
 
-                                        <StackLayout BackgroundColor="White" HorizontalOptions="EndAndExpand">
+                                        <StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="EndAndExpand">
+                                            <Label Text="{Binding Price,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" VerticalOptions="CenterAndExpand"
+                                                   FontSize="11">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Price}" Value="0">
+                                                        <Setter Property="IsVisible" Value="False"></Setter>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
                                             <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0"
                                               IsChecked="{Binding AcceptAgen}">
                                                 <CheckBox.Triggers>
