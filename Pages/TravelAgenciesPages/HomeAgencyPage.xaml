@@ -16,7 +16,13 @@
 
     <StackLayout Orientation="Vertical">
 
-        <Label Text="Your company not active until now" TextColor="White" FontAttributes="Bold" Padding="10,1" BackgroundColor="Red" HorizontalOptions="FillAndExpand" HeightRequest="25"></Label>
+        <Label Text="Your company not active until now" TextColor="White" FontAttributes="Bold" Padding="10,1" BackgroundColor="Red" HorizontalOptions="FillAndExpand" HeightRequest="25" IsVisible="True">
+            <Label.Triggers>
+                <DataTrigger TargetType="Label" Binding="{Binding Review}" Value="Accepted">
+                    <Setter Property="IsVisible" Value="False"></Setter>
+                </DataTrigger>
+            </Label.Triggers>
+        </Label>
         <tabView:SfTabView x:Name="tabMain" TabBarHeight="60" TabBarPlacement="Bottom" IndicatorPlacement="Top" IndicatorBackground="#1c874b" FlowDirection="LeftToRight"
                            VerticalOptions="FillAndExpand" SelectionChanged="tabMain_SelectionChanged">
             <tabView:SfTabView.Items>
@@ -126,16 +132,18 @@
                     </tabView:SfTabItem.ImageSource>
                     <tabView:SfTabItem.Content>
                         <ContentView x:Name="DisConView">
-                            <!--<ContentView.BindingContext>
-                                <dvm:TravelAgencyViewModel></dvm:TravelAgencyViewModel>
-                            </ContentView.BindingContext>-->
                             <StackLayout Orientation="Vertical">
                                 <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android=20, iOS='20,0,20,0'}">
                                     <Label Text="{Static res:AppResources.hdrDistributors}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="End"
                                            TextColor="Black"></Label>
                                     <Button Text="{Static res:AppResources.btnAddRequest}" FontAutoScalingEnabled="False" WidthRequest="95" Padding="0,5,0,5" HeightRequest="35" FontSize="12"
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=AddRequestCommand}"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=AddRequestCommand}" IsEnabled="False"
                                         BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" Margin="0,0,0,0" FontAttributes="Bold">
+                                        <Button.Triggers>
+                                            <DataTrigger TargetType="Button" Binding="{Binding Review}" Value="Accepted">
+                                                <Setter Property="IsEnabled" Value="True"></Setter>
+                                            </DataTrigger>
+                                        </Button.Triggers>
                                     </Button>
                                 </StackLayout>
                                 <tabView:SfTabView IndicatorBackground="#1c874b" VerticalOptions="FillAndExpand" FlowDirection="LeftToRight" SelectedIndex="{Binding IndexTap}">
@@ -180,7 +188,7 @@
                                                                             </VerticalStackLayout>
                                                                             <VerticalStackLayout Margin="20,10,20,0" HorizontalOptions="EndAndExpand" Spacing="15">
                                                                                 
-                                                                                <Image VerticalOptions="StartAndExpand">
+                                                                                <Image VerticalOptions="StartAndExpand" >
                                                                                     <Image.Source>
                                                                                         <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray" Size="20"></FontImageSource>
                                                                                     </Image.Source>
@@ -194,6 +202,12 @@
                                                                                                     <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Red" Size="20"></FontImageSource>
                                                                                                 </Setter.Value>
                                                                                             </Setter>
+                                                                                        </DataTrigger>
+                                                                                        <DataTrigger TargetType="Image" Binding="{Binding Review}" Value="In Review">
+                                                                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                                                                        </DataTrigger>
+                                                                                        <DataTrigger TargetType="Image" Binding="{Binding Review}" Value="Denied">
+                                                                                            <Setter Property="IsVisible" Value="False"></Setter>
                                                                                         </DataTrigger>
                                                                                     </Image.Triggers>
                                                                                 </Image>

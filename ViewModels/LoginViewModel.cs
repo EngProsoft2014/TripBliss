@@ -28,7 +28,7 @@ using static TripBliss.Helpers.ErrorsResult;
 
 
 namespace TripBliss.ViewModels
-{ 
+{
     public partial class LoginViewModel : BaseViewModel
     {
         new class VerfyEmail
@@ -62,7 +62,7 @@ namespace TripBliss.ViewModels
         {
             Rep = GenericRep;
             _service = service;
-        } 
+        }
         #endregion
 
         #region RelayCommand
@@ -90,7 +90,7 @@ namespace TripBliss.ViewModels
                     var toast = Toast.Make("Please Complete This Field Required : User Name.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
-                else if(string.IsNullOrEmpty(model?.Password))
+                else if (string.IsNullOrEmpty(model?.Password))
                 {
                     var toast = Toast.Make("Please Complete This Field Required : Password.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
@@ -121,10 +121,9 @@ namespace TripBliss.ViewModels
                             Preferences.Default.Set(ApiConstants.userCategory, UserModel.UserCategory);
                             Preferences.Default.Set(ApiConstants.travelAgencyCompanyId, UserModel.TravelAgencyCompanyId);
                             Preferences.Default.Set(ApiConstants.distributorCompanyId, UserModel.DistributorCompanyId);
-
                             await BlobCache.LocalMachine.InsertObject(ServicesService.UserTokenServiceKey, UserModel?.Token, DateTimeOffset.Now.AddMinutes(43200));
 
-                            
+
 
                             if (!string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
                             {
@@ -132,7 +131,7 @@ namespace TripBliss.ViewModels
                                 {
                                     Preferences.Default.Set(ApiConstants.review, "In Review");
                                 }
-                                else if(UserModel?.TravelAgencyCompany?.Review == 1)
+                                else if (UserModel?.TravelAgencyCompany?.Review == 1)
                                 {
                                     Preferences.Default.Set(ApiConstants.review, "Accepted");
                                 }
@@ -161,7 +160,7 @@ namespace TripBliss.ViewModels
                                     Preferences.Default.Set(ApiConstants.review, "Denied");
                                 }
 
-                                var vm = new DistributorsViewModels.Dis_HomeViewModel(Rep,_service);
+                                var vm = new DistributorsViewModels.Dis_HomeViewModel(Rep, _service);
                                 var page = new Pages.DistributorsPages.HomeDistributorsPage(vm, Rep, _service);
                                 page.BindingContext = vm;
                                 await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -169,10 +168,10 @@ namespace TripBliss.ViewModels
                         }
                         else
                         {
-                            
+
                             var toast = Toast.Make("Warning, Your user name is not registered !!", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
-                            await App.Current!.MainPage!.Navigation.PushAsync(new Pages.LoginPage(new LoginViewModel(Rep,_service)));
+                            await App.Current!.MainPage!.Navigation.PushAsync(new Pages.LoginPage(new LoginViewModel(Rep, _service)));
                             App.Current.MainPage.Navigation.RemovePage(App.Current.MainPage.Navigation.NavigationStack[App.Current.MainPage.Navigation.NavigationStack.Count - 2]);
                         }
                     }
@@ -186,7 +185,7 @@ namespace TripBliss.ViewModels
                             ResendEmail = LstResult[1].Trim();
                         }
 
-                        
+
 
                         var toast = Toast.Make($"Warning, {json.Item2.errors.FirstOrDefault().Key}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
@@ -207,7 +206,7 @@ namespace TripBliss.ViewModels
             {
                 string email = await App.Current!.MainPage!.DisplayPromptAsync("Info", "Please enter your Email", "Ok");
                 VerfyEmail model = new VerfyEmail { Email = email };
-                if (model.Email != null) 
+                if (model.Email != null)
                 {
                     string UserToken = await _service.UserToken();
                     UserDialogs.Instance.ShowLoading();
@@ -215,7 +214,7 @@ namespace TripBliss.ViewModels
                     UserDialogs.Instance.HideHud();
                     if (Postjson.Item2 == null)
                     {
-                        
+
                         TimeRemaining = 60;
                         while (TimeRemaining > 0)
                         {
@@ -231,7 +230,7 @@ namespace TripBliss.ViewModels
                         var toast = Toast.Make("Please enter vaild E-mail", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                     }
-                    
+
                 }
                 else
                 {

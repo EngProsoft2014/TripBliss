@@ -24,12 +24,9 @@
                                FontFamily="Almarai-Regular">
                 <tabView:SfTabItem.Content>
                     <ContentView x:Name="DetailsContView" Margin="{OnPlatform Android=20, iOS='20,0,20,0'}">
-                        <!--<ContentView.BindingContext>
-                            <vm:RequestDetailsViewModel></vm:RequestDetailsViewModel>
-                        </ContentView.BindingContext>-->
                         <StackLayout Orientation="Vertical" Spacing="10">
                             <StackLayout Orientation="Horizontal">
-                                
+
                                 <Image VerticalOptions="CenterAndExpand">
                                     <Image.Source>
                                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
@@ -48,31 +45,100 @@
                             </StackLayout>
                             <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
                                 <StackLayout Spacing="{OnPlatform Android=20, iOS=0}">
+                                    <!--Hotel-->
                                     <StackLayout Spacing="0">
-                                    <CarouselView ItemsSource="{Binding RequestDetailes.RequestTravelAgencyHotel}" IndicatorView="indicatorView" HorizontalOptions="FillAndExpand" Loop="False" WidthRequest="{OnPlatform iOS=350}" HeightRequest="{OnPlatform iOS=300}">
-                                        <CarouselView.ItemTemplate>
-                                            <DataTemplate>
+                                        <CarouselView ItemsSource="{Binding RequestDetailes.RequestTravelAgencyHotel}" IndicatorView="indicatorView" HorizontalOptions="FillAndExpand" Loop="False" WidthRequest="{OnPlatform iOS=350}" HeightRequest="{OnPlatform iOS=300}">
+                                            <CarouselView.ItemTemplate>
+                                                <DataTemplate>
 
-                                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,10">
-                                                    <Label Text="{Static res:AppResources.lblHotelServices}" FontAutoScalingEnabled="False" TextColor="DarkOrange" Margin="0,0,0,10" FontAttributes="Bold" FontSize="16">
+                                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,10">
+                                                        <Label Text="{Static res:AppResources.lblHotelServices}" FontAutoScalingEnabled="False" TextColor="DarkOrange" Margin="0,0,0,10" FontAttributes="Bold" FontSize="16">
 
-                                                    </Label>
-                                                    <!--<StackLayout Orientation="Horizontal" Margin="0,10" Spacing="5">
-                                                        <Label Text="{Static res:AppResources.lblAdult-AirService}" TextColor="Black" FontSize="14" 
-                                                              FontAttributes="Bold"></Label>
-                                                        <Label Text=":" TextColor="Black" FontSize="14" FontAttributes="Bold"></Label>
-                                                        <Label Text="2" TextColor="Gray" FontAttributes="Bold" FontSize="14"></Label>
-                                                        <Label Text=" - " TextColor="Black" FontAttributes="Bold" FontSize="14"></Label>
-                                                        <Label Text="{Static res:AppResources.lblChild-AirService}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Label>
-                                                        <Label Text=":" TextColor="Black" FontSize="14" FontAttributes="Bold"></Label>
-                                                        <Label Text="2" TextColor="Gray" FontAttributes="Bold" FontSize="14"></Label>
-                                                        <Label Text="{Static res:AppResources.lblDate-TranService}" TextColor="Black" FontSize="14" FontAttributes="Bold"
-                                                               HorizontalOptions="EndAndExpand" FontFamily="Almarai-Regular"></Label>
-                                                        <Label Text=":" TextColor="Black" FontSize="14" FontAttributes="Bold"></Label>
-                                                        <Label Text="{Binding CheckIn,StringFormat='{0:d}'}" TextColor="Gray" FontAttributes="Bold" FontSize="14"></Label>
-                                                    </StackLayout>-->
-                                                    <StackLayout Spacing="10" HorizontalOptions="FillAndExpand">
-                                                        
+                                                        </Label>
+                                                        <StackLayout Spacing="10" HorizontalOptions="FillAndExpand">
+
+                                                            <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="0,0,0,10"
+                                                                HorizontalOptions="FillAndExpand">
+                                                                <StackLayout Orientation="Vertical" >
+                                                                    <StackLayout Orientation="Horizontal">
+                                                                        <Label VerticalTextAlignment="Center" Padding="5" FontAutoScalingEnabled="False">
+                                                                            <Label.FormattedText>
+                                                                                <FormattedString>
+                                                                                    <Span Text="{Binding LocationName}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                                                                    <Span Text=" - " TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                                                                    <Span Text="{Binding HotelName}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                                                                </FormattedString>
+                                                                            </Label.FormattedText>
+                                                                        </Label>
+                                                                        <Line StrokeThickness="1" Y1="0" Y2="40" Stroke="Gray" HorizontalOptions="EndAndExpand"></Line>
+                                                                        <VerticalStackLayout Margin="10,0" VerticalOptions="CenterAndExpand">
+                                                                            <Label Text="{Binding NumberOfNights}" FontAutoScalingEnabled="False" FontSize="11" TextColor="#387955" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+                                                                            <Label Text="{Static res:AppResources.lblNights_RequestDetails}" FontAutoScalingEnabled="False" FontSize="11" TextColor="#387955"
+                                                                               FontAttributes="Bold"></Label>
+                                                                        </VerticalStackLayout>
+                                                                    </StackLayout>
+                                                                    <BoxView HorizontalOptions="FillAndExpand" Color="Gray" HeightRequest=".5"></BoxView>
+                                                                    <VerticalStackLayout>
+                                                                        <StackLayout Orientation="Horizontal" Padding="5">
+                                                                            <Label Text="{Static res:AppResources.lblCheckIn_HotelService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="13"
+                                                               FontFamily="Almarai-Regular"></Label>
+                                                                            <Label Text=": " TextColor="Black" FontSize="13" FontAutoScalingEnabled="False"></Label>
+                                                                            <Label Text="{Binding CheckIn , StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="End"></Label>
+                                                                            <Label Text="{Static res:AppResources.lblCheckOut_HotelService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="13"
+                                                               FontFamily="Almarai-Regular" HorizontalOptions="EndAndExpand"></Label>
+                                                                            <Label Text=": " TextColor="Black" FontSize="13" FontAutoScalingEnabled="False"></Label>
+                                                                            <Label Text="{Binding CheckOut ,StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="End"></Label>
+                                                                        </StackLayout>
+                                                                        <Label Text="{Static res:AppResources.lblRoomDetails_RequestDetails}" FontAutoScalingEnabled="False" TextColor="#387955" FontSize="14"
+                                                           FontAttributes="Bold" Margin="0,5" Padding="5"></Label>
+                                                                        <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="7" Margin="10,0">
+                                                                            <VerticalStackLayout Spacing="3">
+                                                                                <StackLayout Orientation="Horizontal">
+
+                                                                                    <Label Text="{Static res:AppResources.lblRoomType_HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                       FontAttributes="Bold"></Label>
+                                                                                    <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                    <Label Text="{Binding RoomTypeName}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
+
+                                                                                    <Label Text="{Static res:AppResources.lblView_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                       FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
+                                                                                    <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                    <Label Text="{Binding RoomViewName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                </StackLayout>
+                                                                                <StackLayout Orientation="Horizontal">
+                                                                                    <Label Text="{Static res:AppResources.lblNoOfRoom_HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                       FontAttributes="Bold"></Label>
+                                                                                    <Label Text=": " TextColor="Gray" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                    <Label Text="{Binding RoomCount}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                    <Label Text="{Static res:AppResources.lblMeals_HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                       HorizontalOptions="EndAndExpand" FontAttributes="Bold"></Label>
+                                                                                    <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                    <Label Text="{Binding MealName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                </StackLayout>
+                                                                            </VerticalStackLayout>
+                                                                        </Border>
+                                                                    </VerticalStackLayout>
+                                                                </StackLayout>
+                                                            </Border>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </DataTemplate>
+                                            </CarouselView.ItemTemplate>
+
+                                        </CarouselView>
+                                        <IndicatorView x:Name="indicatorView"
+                                                  IndicatorColor="LightGray"
+                                                  SelectedIndicatorColor="#2fb569"
+                                                  HorizontalOptions="Center" 
+                                                  />
+                                    </StackLayout>
+                                    <!--Transportation-->
+                                    <StackLayout Spacing="10">
+                                        <CarouselView ItemsSource="{Binding RequestDetailes.RequestTravelAgencyTransport}" IndicatorView="TransportIndicatorView" HorizontalOptions="FillAndExpand" Loop="False" WidthRequest="{OnPlatform iOS=350}" HeightRequest="{OnPlatform iOS=300}">
+                                            <CarouselView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,10">
+                                                        <Label Text="{Static res:AppResources.lblTransportationServices}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"></Label>
                                                         <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="0,0,0,10"
                                                                 HorizontalOptions="FillAndExpand">
                                                             <StackLayout Orientation="Vertical" >
@@ -80,550 +146,201 @@
                                                                     <Label VerticalTextAlignment="Center" Padding="5" FontAutoScalingEnabled="False">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding LocationName}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                                                                <Span Text="{Binding FromLocation}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
                                                                                 <Span Text=" - " TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
-                                                                                <Span Text="{Binding HotelName}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                                                                <Span Text="{Binding ToLocation}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
                                                                     <Line StrokeThickness="1" Y1="0" Y2="40" Stroke="Gray" HorizontalOptions="EndAndExpand"></Line>
                                                                     <VerticalStackLayout Margin="10,0" VerticalOptions="CenterAndExpand">
-                                                                        <Label Text="{Binding NumberOfNights}" FontAutoScalingEnabled="False" FontSize="11" TextColor="#387955" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
-                                                                        <Label Text="{Static res:AppResources.lblNights_RequestDetails}" FontAutoScalingEnabled="False" FontSize="11" TextColor="#387955"
-                                                                               FontAttributes="Bold"></Label>
+                                                                        <Label Text="{Binding TransportCount}" FontAutoScalingEnabled="False" FontSize="11" TextColor="#387955" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+                                                                        <Label Text="{Static res:AppResources.lblcars_RequestDetails}" FontAutoScalingEnabled="False" FontSize="11" TextColor="#387955"
+                                                               FontAttributes="Bold"></Label>
                                                                     </VerticalStackLayout>
                                                                 </StackLayout>
                                                                 <BoxView HorizontalOptions="FillAndExpand" Color="Gray" HeightRequest=".5"></BoxView>
                                                                 <VerticalStackLayout>
                                                                     <StackLayout Orientation="Horizontal" Padding="5">
-                                                                        <Label Text="{Static res:AppResources.lblCheckIn_HotelService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="13"
-                                                               FontFamily="Almarai-Regular"></Label>
+                                                                        <Label Text="{Static res:AppResources.lblDate_TranService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="13"
+                                                                FontFamily="Almarai-Regular"></Label>
                                                                         <Label Text=": " TextColor="Black" FontSize="13" FontAutoScalingEnabled="False"></Label>
-                                                                        <Label Text="{Binding CheckIn , StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="End"></Label>
-                                                                        <Label Text="{Static res:AppResources.lblCheckOut_HotelService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="13"
-                                                               FontFamily="Almarai-Regular" HorizontalOptions="EndAndExpand"></Label>
+                                                                        <Label Text="{Binding Date , StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="End"></Label>
+                                                                        <Label Text="{Static res:AppResources.lblTime_TranService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="13"
+                                                                FontFamily="Almarai-Regular" HorizontalOptions="EndAndExpand"></Label>
                                                                         <Label Text=": " TextColor="Black" FontSize="13" FontAutoScalingEnabled="False"></Label>
-                                                                        <Label Text="{Binding CheckOut ,StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="End"></Label>
+                                                                        <Label Text="{Binding Time , StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="End"></Label>
                                                                     </StackLayout>
-                                                                    <Label Text="{Static res:AppResources.lblRoomDetails_RequestDetails}" FontAutoScalingEnabled="False" TextColor="#387955" FontSize="14"
-                                                           FontAttributes="Bold" Margin="0,5" Padding="5"></Label>
+                                                                    <Label Text="{Static res:AppResources.lblTransportDetails_RequestDetails}" FontAutoScalingEnabled="False" TextColor="#387955" FontSize="14"
+                                                            FontAttributes="Bold" Margin="0,5" Padding="5"></Label>
                                                                     <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="7" Margin="10,0">
                                                                         <VerticalStackLayout Spacing="3">
                                                                             <StackLayout Orientation="Horizontal">
 
-                                                                                <Label Text="{Static res:AppResources.lblRoomType_HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                <Label Text="Brand" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                        FontAttributes="Bold"></Label>
                                                                                 <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding RoomTypeName}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding BrandName}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
 
-                                                                                <Label Text="{Static res:AppResources.lblView_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                <Label Text="{Static res:AppResources.lblTypeName_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                        FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
                                                                                 <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding RoomViewName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding TypeName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
                                                                             </StackLayout>
                                                                             <StackLayout Orientation="Horizontal">
-                                                                                <Label Text="{Static res:AppResources.lblNoOfRoom_HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
-                                                                       FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Static res:AppResources.lblModel_TranService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                        FontAttributes="Bold"></Label>
                                                                                 <Label Text=": " TextColor="Gray" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding RoomCount}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Static res:AppResources.lblMeals_HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
-                                                                       HorizontalOptions="EndAndExpand" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding ModelName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Static res:AppResources.lblIsDriver_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                        HorizontalOptions="EndAndExpand" FontAttributes="Bold"></Label>
                                                                                 <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding MealName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding IsDriver}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
                                                                             </StackLayout>
-                                                                            <!--<StackLayout Orientation="Horizontal">
-                                                                                <Label Text="{Static res:AppResources.lblRatePR_RequestDetails_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
-                                                                       FontAttributes="Bold"></Label>
-                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="70" TextColor="DarkOrange" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="$" TextColor="DarkOrange" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Static res:AppResources.lblRateBasis_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
-                                                                       HorizontalOptions="EndAndExpand" FontAttributes="Bold"></Label>
-                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="2B/S" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
-                                                                            </StackLayout>
-                                                                            <StackLayout Orientation="Horizontal">
-                                                                                <Label Text="{Static res:AppResources.lblMRPD_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray"
-                                                                       FontSize="14" FontAttributes="Bold"></Label>
-                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="10" TextColor="DarkOrange" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                            </StackLayout>-->
                                                                         </VerticalStackLayout>
                                                                     </Border>
                                                                 </VerticalStackLayout>
                                                             </StackLayout>
                                                         </Border>
                                                     </StackLayout>
-                                                </StackLayout>
-                                            </DataTemplate>
-                                        </CarouselView.ItemTemplate>
-
-                                    </CarouselView>
-
-                                    <IndicatorView x:Name="indicatorView"
-                                                  IndicatorColor="LightGray"
-                                                  SelectedIndicatorColor="#2fb569"
-                                                  HorizontalOptions="Center" 
-                                                  />
+                                                </DataTemplate>
+                                            </CarouselView.ItemTemplate>
+                                        </CarouselView>
+                                        <IndicatorView x:Name="TransportIndicatorView"
+                                                       IndicatorColor="LightGray"
+                                                       SelectedIndicatorColor="#2fb569"
+                                                       HorizontalOptions="Center" 
+                                                       />
+                                        
                                     </StackLayout>
-                                    <StackLayout Spacing="10">
-                                        <Label Text="{Static res:AppResources.lblTransportationServices}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
-                                            ></Label>
-                                        <syncfusion:SfDataGrid ItemsSource="{Binding RequestDetailes.RequestTravelAgencyTransport}" ColumnWidthMode="FitByCell"
-                                                                   GridLinesVisibility="Both" HeaderGridLinesVisibility="Both"
-                                                                   VerticalOptions="FillAndExpand">
-                                            <syncfusion:SfDataGrid.Columns>
-                                                <syncfusion:DataGridTextColumn MappingName="Date" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblDate_TranService}" FontAutoScalingEnabled="False" TextColor="Black" 
-                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                       HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="FromLocation" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblFrom_TranService}" FontAutoScalingEnabled="False" TextColor="Black" 
-                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                       HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="ToLocation" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblTo_TranService}" FontAutoScalingEnabled="False" TextColor="Black" 
-                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                       HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="BrandName" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.hdrvehicle_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Black" 
-                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                       HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="TransportCount" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblNo_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Black" 
-                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                       HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="IsDriver" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblIsDriver_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Black" 
-                                                                   FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                   HorizontalOptions="CenterAndExpand"></Label>
-                                                            </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="TypeName" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblTypeName_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Black" 
-                                                                   FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                   HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="ModelName" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblModelName_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Black" 
-                                                                   FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                   HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                        
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="Notes" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblNotes_HotelService}" FontAutoScalingEnabled="False" TextColor="Black" 
-                                                                   FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                   HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="BrandName" HeaderTextAlignment="Center" Visible="False">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="BrandName" TextColor="Black" FontAutoScalingEnabled="False" 
-                                                                   FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                   HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="CarModelId" HeaderTextAlignment="Center" Visible="False">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="CarModelId" TextColor="Black" FontAutoScalingEnabled="False"
-                                                                   FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                   HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="CarBrandId" HeaderTextAlignment="Center" Visible="False">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="CarBrandId" TextColor="Black" FontAutoScalingEnabled="False" 
-                                                                   FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                   HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="CarTypeId" HeaderTextAlignment="Center" Visible="False">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="CarTypeId" TextColor="Black" FontAutoScalingEnabled="False" 
-                                                                   FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                   HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyId" HeaderTextAlignment="Center" Visible="False">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="RequestTravelAgencyId" TextColor="Black" FontAutoScalingEnabled="False" 
-                                                                   FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                   HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="Id" HeaderTextAlignment="Center" Visible="False">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="Id" TextColor="Black" FontAutoScalingEnabled="False" 
-                                                                   FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                   HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                            </syncfusion:SfDataGrid.Columns>
-                                            <syncfusion:SfDataGrid.Triggers>
-                                                <DataTrigger TargetType="syncfusion:SfDataGrid" Binding="{Binding Lang}" Value="en">
-                                                    <Setter Property="FlowDirection" Value="LeftToRight"></Setter>
-                                                </DataTrigger>
-                                                <DataTrigger TargetType="syncfusion:SfDataGrid" Binding="{Binding Lang}" Value="ar">
-                                                    <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
-                                                </DataTrigger>
-                                            </syncfusion:SfDataGrid.Triggers>
-                                        </syncfusion:SfDataGrid>
-                                        <StackLayout.Triggers>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyTransport.Count}" Value="0">
-                                                <Setter Property="IsVisible" Value="False"></Setter>
-                                                <Setter Property="HeightRequest" Value="0"></Setter>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyTransport.Count}" Value="1">
-                                                <Setter Property="HeightRequest" Value="150"></Setter>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyTransport.Count}" Value="2">
-                                                <Setter Property="HeightRequest" Value="190"></Setter>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyTransport.Count}" Value="3">
-                                                <Setter Property="HeightRequest" Value="240"></Setter>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyTransport.Count}" Value="4">
-                                                <Setter Property="HeightRequest" Value="290"></Setter>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyTransport.Count}" Value="5">
-                                                <Setter Property="HeightRequest" Value="340"></Setter>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyTransport.Count}" Value="6">
-                                                <Setter Property="HeightRequest" Value="390"></Setter>
-                                            </DataTrigger>
-                                        </StackLayout.Triggers>
-                                    </StackLayout>
+                                    <!--AirFlight-->
                                     <StackLayout Spacing="10" HeightRequest="250">
-                                        <Label Text="{Static res:AppResources.lblAirFlightServices}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontAttributes="Bold" FontSize="16"
-                                                   ></Label>
-                                        <syncfusion:SfDataGrid ItemsSource="{Binding RequestDetailes.RequestTravelAgencyAirFlight}" ColumnWidthMode="FitByCell" 
-                                                                   GridLinesVisibility="Both" HeaderGridLinesVisibility="Both" 
-                                                                   VerticalOptions="FillAndExpand">
-                                            <syncfusion:SfDataGrid.Columns>
-                                                <syncfusion:DataGridTextColumn MappingName="Date" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblDate_TranService}" TextColor="Black" FontAutoScalingEnabled="False"
-                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                       HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="AirLine" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblCarrier_AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
-                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                       HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="ClassName" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblClass_AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
-                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                       HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="AirportFrom" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblFrom_TranService}" TextColor="Black" FontAutoScalingEnabled="False" 
-                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                       HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="AirportTo" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblTo_TranService}" TextColor="Black" FontAutoScalingEnabled="False" 
-                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                       HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="ETD" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblETD_AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
-                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                       HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="ETA" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblETA_AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
-                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                       HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="InfoAdultCount" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblAdult_AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
-                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                       HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="InfoChildCount" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblChild_AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
-                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                       HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="InfoInfantCount" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblInfant_AirService}" TextColor="Black" FontAutoScalingEnabled="False" 
-                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                       HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="Notes" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblNotes_HotelService}" TextColor="Black" FontAutoScalingEnabled="False" 
-                                                                       FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                       HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="TotalPerson" HeaderTextAlignment="Center" Visible="False">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="TotalPerson" TextColor="Black" FontAutoScalingEnabled="False" 
-                                                                   FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                   HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="ClassAirFlightId" HeaderTextAlignment="Center" Visible="False">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="ClassAirFlightId" TextColor="Black" FontAutoScalingEnabled="False" 
-                                                                   FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                   HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="AirFlightId" HeaderTextAlignment="Center" Visible="False">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="AirFlightId" TextColor="Black" FontAutoScalingEnabled="False" 
-                                                                   FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                   HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyId" HeaderTextAlignment="Center" Visible="False">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="RequestTravelAgencyId" TextColor="Black" FontAutoScalingEnabled="False" 
-                                                                    FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                    HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="Id" HeaderTextAlignment="Center" Visible="False">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="Id" TextColor="Black" FontAutoScalingEnabled="False" 
-                                                                    FontAttributes="Bold" VerticalTextAlignment="Center"
-                                                                    HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                            </syncfusion:SfDataGrid.Columns>
-                                            <syncfusion:SfDataGrid.Triggers>
-                                                <DataTrigger TargetType="syncfusion:SfDataGrid" Binding="{Binding Lang}" Value="en">
-                                                    <Setter Property="FlowDirection" Value="LeftToRight"></Setter>
-                                                </DataTrigger>
-                                                <DataTrigger TargetType="syncfusion:SfDataGrid" Binding="{Binding Lang}" Value="ar">
-                                                    <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
-                                                </DataTrigger>
-                                            </syncfusion:SfDataGrid.Triggers>
-                                        </syncfusion:SfDataGrid>
-                                        <StackLayout.Triggers>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyAirFlight.Count}" Value="0">
-                                                <Setter Property="IsVisible" Value="False"></Setter>
-                                                <Setter Property="HeightRequest" Value="0"></Setter>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyAirFlight.Count}" Value="1">
-                                                <Setter Property="HeightRequest" Value="150"></Setter>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyAirFlight.Count}" Value="2">
-                                                <Setter Property="HeightRequest" Value="190"></Setter>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyAirFlight.Count}" Value="3">
-                                                <Setter Property="HeightRequest" Value="240"></Setter>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyAirFlight.Count}" Value="4">
-                                                <Setter Property="HeightRequest" Value="290"></Setter>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyAirFlight.Count}" Value="5">
-                                                <Setter Property="HeightRequest" Value="250"></Setter>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyAirFlight.Count}" Value="6">
-                                                <Setter Property="HeightRequest" Value="390"></Setter>
-                                            </DataTrigger>
-                                        </StackLayout.Triggers>
+                                        <CarouselView ItemsSource="{Binding RequestDetailes.RequestTravelAgencyAirFlight}" IndicatorView="AirFlightIndicatorView" HorizontalOptions="FillAndExpand" Loop="False" WidthRequest="{OnPlatform iOS=350}" HeightRequest="{OnPlatform iOS=300}">
+                                            <CarouselView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,10">
+                                                        <Label Text="{Static res:AppResources.lblAirFlightServices}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontAttributes="Bold" FontSize="16"></Label>
+                                                        <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="0,0,0,10"
+                                                                HorizontalOptions="FillAndExpand">
+                                                            <StackLayout Orientation="Vertical" >
+                                                                <StackLayout Orientation="Horizontal">
+                                                                    <Label VerticalTextAlignment="Center" Padding="5" FontAutoScalingEnabled="False">
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{Binding AirportFrom}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                                                                <Span Text=" - " TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                                                                <Span Text="{Binding AirportTo}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </Label>
+                                                                    <Line StrokeThickness="1" Y1="0" Y2="40" Stroke="Gray" HorizontalOptions="EndAndExpand"></Line>
+                                                                    <VerticalStackLayout Margin="10,0" VerticalOptions="CenterAndExpand">
+                                                                        <Label Text="{Binding TotalPerson}" FontAutoScalingEnabled="False" FontSize="11" TextColor="#387955" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+                                                                        <Label Text="{Static res:AppResources.lblpersons_RequestDetails}" FontAutoScalingEnabled="False" FontSize="11" TextColor="#387955"
+                                                                               FontAttributes="Bold"></Label>
+                                                                    </VerticalStackLayout>
+                                                                </StackLayout>
+                                                                <BoxView HorizontalOptions="FillAndExpand" Color="Gray" HeightRequest=".5"></BoxView>
+                                                                <VerticalStackLayout>
+                                                                    <StackLayout Orientation="Horizontal" Padding="5">
+                                                                        <Label Text="{Static res:AppResources.lblDate_TranService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="13"
+                                                                               FontFamily="Almarai-Regular"></Label>
+                                                                        <Label Text=": " TextColor="Black" FontSize="13" FontAutoScalingEnabled="False"></Label>
+                                                                        <Label Text="{Binding Date , StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="End"></Label>
+                                                                    </StackLayout>
+                                                                    <Label Text="{Static res:AppResources.lblAirFlightDetails_RequestDetails}" FontAutoScalingEnabled="False" TextColor="#387955" FontSize="14"
+                                                                           FontAttributes="Bold" Margin="0,5" Padding="5"></Label>
+                                                                    <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="7" Margin="10,0">
+                                                                        <VerticalStackLayout Spacing="3">
+                                                                            <StackLayout Orientation="Horizontal">
+
+                                                                                <Label Text="{Static res:AppResources.lblCarrier_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                       FontAttributes="Bold"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding AirLine}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
+
+                                                                                <Label Text="{Static res:AppResources.lblClass_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                       FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding ClassName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                            </StackLayout>
+                                                                            <StackLayout Orientation="Horizontal">
+                                                                                <Label Text="ETD" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                       FontAttributes="Bold"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding ETD,StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text="ETA" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                       HorizontalOptions="EndAndExpand" FontAttributes="Bold"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding ETA,StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                            </StackLayout>
+                                                                            <StackLayout Orientation="Horizontal">
+
+                                                                                <Label Text="{Static res:AppResources.lblAdult_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                       FontAttributes="Bold"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding InfoAdultCount}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
+
+                                                                                <Label Text="{Static res:AppResources.lblChild_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                       FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding InfoChildCount}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                            </StackLayout>
+                                                                            <StackLayout Orientation="Horizontal">
+
+                                                                                <Label Text="{Static res:AppResources.lblInfant_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                       FontAttributes="Bold"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding InfoInfantCount}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
+                                                                            </StackLayout>
+                                                                        </VerticalStackLayout>
+                                                                    </Border>
+                                                                </VerticalStackLayout>
+                                                            </StackLayout>
+                                                        </Border>
+                                                    </StackLayout>
+                                                </DataTemplate>
+                                            </CarouselView.ItemTemplate>
+                                        </CarouselView>
+                                        <IndicatorView x:Name="AirFlightIndicatorView"
+                                                       IndicatorColor="LightGray"
+                                                       SelectedIndicatorColor="#2fb569"
+                                                       HorizontalOptions="Center" 
+                                                       />
                                     </StackLayout>
+                                    <!--Visa-->
                                     <StackLayout Spacing="10">
-                                        <Label Text="{Static res:AppResources.lblVisaServices}" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"
-                                                    ></Label>
-                                        <syncfusion:SfDataGrid ItemsSource="{Binding RequestDetailes.RequestTravelAgencyVisa}" ColumnWidthMode="Fill"
-                                                           GridLinesVisibility="Both" HeaderGridLinesVisibility="Both">
-                                            <syncfusion:SfDataGrid.Columns>
-                                                <syncfusion:DataGridTextColumn MappingName="VisaName" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblVisaType_VisaService}" TextColor="Black" 
-                                                                 FontAttributes="Bold" VerticalTextAlignment="Center" FontAutoScalingEnabled="False"
-                                                                       HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="PersonCount" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblPassNo_VisaService}" TextColor="Black" 
-                                                                        FontAttributes="Bold" VerticalTextAlignment="Center" FontAutoScalingEnabled="False"
-                                                                        HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="Notes" HeaderTextAlignment="Center">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="{Static res:AppResources.lblNotes_HotelService}" TextColor="Black" 
-                                                                       FontAttributes="Bold" VerticalTextAlignment="Center" FontAutoScalingEnabled="False"
-                                                                       HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="VisaId" HeaderTextAlignment="Center" Visible="False">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="VisaId" TextColor="Black" 
-                                                                   FontAttributes="Bold" VerticalTextAlignment="Center" FontAutoScalingEnabled="False"
-                                                                   HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="RequestTravelAgencyId" HeaderTextAlignment="Center" Visible="False">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="RequestTravelAgencyId" TextColor="Black" 
-                                                                   FontAttributes="Bold" VerticalTextAlignment="Center" FontAutoScalingEnabled="False"
-                                                                   HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                                <syncfusion:DataGridTextColumn MappingName="Id" HeaderTextAlignment="Center" Visible="False">
-                                                    <syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                        <DataTemplate>
-                                                            <Label FontSize="14" Text="Id" TextColor="Black" 
-                                                                   FontAttributes="Bold" VerticalTextAlignment="Center" FontAutoScalingEnabled="False"
-                                                                   HorizontalOptions="CenterAndExpand"></Label>
-                                                        </DataTemplate>
-                                                    </syncfusion:DataGridTextColumn.HeaderTemplate>
-                                                </syncfusion:DataGridTextColumn>
-                                            </syncfusion:SfDataGrid.Columns>
-                                            <syncfusion:SfDataGrid.Triggers>
-                                                <DataTrigger TargetType="syncfusion:SfDataGrid" Binding="{Binding Lang}" Value="en">
-                                                    <Setter Property="FlowDirection" Value="LeftToRight"></Setter>
-                                                </DataTrigger>
-                                                <DataTrigger TargetType="syncfusion:SfDataGrid" Binding="{Binding Lang}" Value="ar">
-                                                    <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
-                                                </DataTrigger>
-                                            </syncfusion:SfDataGrid.Triggers>
-                                        </syncfusion:SfDataGrid>
-                                        <StackLayout.Triggers>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyVisa.Count}" Value="0">
-                                                <Setter Property="IsVisible" Value="False"></Setter>
-                                                <Setter Property="HeightRequest" Value="0"></Setter>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyVisa.Count}" Value="1">
-                                                <Setter Property="HeightRequest" Value="150"></Setter>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyVisa.Count}" Value="2">
-                                                <Setter Property="HeightRequest" Value="190"></Setter>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyVisa.Count}" Value="3">
-                                                <Setter Property="HeightRequest" Value="240"></Setter>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyVisa.Count}" Value="4">
-                                                <Setter Property="HeightRequest" Value="290"></Setter>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyVisa.Count}" Value="5">
-                                                <Setter Property="HeightRequest" Value="340"></Setter>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyVisa.Count}" Value="6">
-                                                <Setter Property="HeightRequest" Value="390"></Setter>
-                                            </DataTrigger>
-                                        </StackLayout.Triggers>
+                                        <CarouselView ItemsSource="{Binding RequestDetailes.RequestTravelAgencyVisa}" IndicatorView="VisaIndicatorView" HorizontalOptions="FillAndExpand" Loop="False" WidthRequest="{OnPlatform iOS=350}" HeightRequest="{OnPlatform iOS=300}">
+                                            <CarouselView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,10">
+                                                        <Label Text="{Static res:AppResources.lblVisaServices}" TextColor="DarkOrange" FontAttributes="Bold" FontSize="16"></Label>
+                                                        <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="0,0,0,10"
+                                                                HorizontalOptions="FillAndExpand">
+                                                            <StackLayout Orientation="Vertical" Margin="10,0" VerticalOptions="CenterAndExpand">
+                                                                <StackLayout Orientation="Horizontal">
+                                                                    <Label Text="{Static res:AppResources.lblVisaType_VisaService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                           FontFamily="Almarai-Regular"></Label>
+                                                                    <Label Text=": " TextColor="Black" FontSize="13" FontAutoScalingEnabled="False"></Label>
+                                                                    <Label Text="{Binding VisaName}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center"></Label>
+                                                                    <Line StrokeThickness="1" Y1="0" Y2="40" Stroke="Gray" HorizontalOptions="EndAndExpand"></Line>
+                                                                    <VerticalStackLayout Margin="10,0" VerticalOptions="CenterAndExpand">
+                                                                        <Label Text="{Binding PersonCount}" FontAutoScalingEnabled="False" FontSize="11" TextColor="#387955" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+                                                                        <Label Text="{Static res:AppResources.lblpersons_RequestDetails}" FontAutoScalingEnabled="False" FontSize="11" TextColor="#387955"
+                                                                               FontAttributes="Bold"></Label>
+                                                                    </VerticalStackLayout>
+                                                                </StackLayout>
+                                                            </StackLayout>
+                                                        </Border>
+                                                    </StackLayout>
+                                                </DataTemplate>
+                                            </CarouselView.ItemTemplate>
+                                        </CarouselView>
+                                        <IndicatorView x:Name="VisaIndicatorView"
+                                                       IndicatorColor="LightGray"
+                                                       SelectedIndicatorColor="#2fb569"
+                                                       HorizontalOptions="Center" 
+                                                       />
                                     </StackLayout>
                                 </StackLayout>
                             </ScrollView>

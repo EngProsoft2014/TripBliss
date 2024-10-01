@@ -516,4 +516,19 @@
   <data name="plcStripeSecretKey-AccountPage" xml:space="preserve">
     <value>Stripe Secret Key</value>
   </data>
+  <data name="lblcars-RequestDetails" xml:space="preserve">
+    <value>cars</value>
+  </data>
+  <data name="lblpersons-RequestDetails" xml:space="preserve">
+    <value>persons</value>
+  </data>
+  <data name="lblTransportDetails-RequestDetails" xml:space="preserve">
+    <value>Transport Details</value>
+  </data>
+  <data name="lblAirFlightDetails-RequestDetails" xml:space="preserve">
+    <value>Air Flight Details</value>
+  </data>
+  <data name="lblVisaDetails-RequestDetails" xml:space="preserve">
+    <value>Visa Details</value>
+  </data>
 </root>

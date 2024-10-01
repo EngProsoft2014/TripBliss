@@ -516,4 +516,19 @@
   <data name="plcStripeSecretKey-AccountPage" xml:space="preserve">
     <value>مفتاح سري stripe</value>
   </data>
+  <data name="lblcars-RequestDetails" xml:space="preserve">
+    <value>سيارات</value>
+  </data>
+  <data name="lblpersons-RequestDetails" xml:space="preserve">
+    <value>أشخاص</value>
+  </data>
+  <data name="lblTransportDetails-RequestDetails" xml:space="preserve">
+    <value>تفاصيل النقل</value>
+  </data>
+  <data name="lblAirFlightDetails-RequestDetails" xml:space="preserve">
+    <value>تفاصيل الرحلة الجوية</value>
+  </data>
+  <data name="lblVisaDetails-RequestDetails" xml:space="preserve">
+    <value>تفاصيل التأشيرة</value>
+  </data>
 </root>

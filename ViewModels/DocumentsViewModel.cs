@@ -56,12 +56,21 @@ namespace TripBliss.ViewModels
             }
             else
             {
-                ImageSource sou = ImageSource.FromUri(new Uri(model.UrlUploadFile!)); ;
-                IsBusy = false;
-                UserDialogs.Instance.ShowLoading();
-                await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(sou));
-                UserDialogs.Instance.HideHud();
-                IsBusy = true;
+                if (string.IsNullOrEmpty(model.UrlUploadFile))
+                {
+                    var toast = Toast.Make("No image here.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
+                else
+                {
+                    ImageSource sou = ImageSource.FromUri(new Uri(model.UrlUploadFile!)); ;
+                    IsBusy = false;
+                    UserDialogs.Instance.ShowLoading();
+                    await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(sou));
+                    UserDialogs.Instance.HideHud();
+                    IsBusy = true;
+                }
+                
             }
             
         }

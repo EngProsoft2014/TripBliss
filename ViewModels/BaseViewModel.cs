@@ -8,6 +8,7 @@ namespace TripBliss.ViewModels
         public BaseViewModel()
         {
             Lang = Preferences.Default.Get("Lan", "en");
+            Review = Preferences.Default.Get(ApiConstants.review, "In Review");
             IsBusy = true;
             checkTOD();
         }
@@ -19,11 +20,14 @@ namespace TripBliss.ViewModels
         public string lang;
         [ObservableProperty]
         string tOD;
+        [ObservableProperty]
+        string review;
 
         void checkTOD()
         {
             string TId = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
             string DId = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
+            
             if (!string.IsNullOrEmpty(TId))
             {
                 TOD = "T";

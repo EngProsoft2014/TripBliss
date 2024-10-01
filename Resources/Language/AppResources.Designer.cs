@@ -493,6 +493,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Air Flight Details.
+        /// </summary>
+        internal static string lblAirFlightDetails_RequestDetails {
+            get {
+                return ResourceManager.GetString("lblAirFlightDetails-RequestDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Air Flight Services.
         /// </summary>
         internal static string lblAirFlightServices {
@@ -534,6 +543,15 @@ namespace TripBliss.Resources.Language {
         internal static string lblCarrier_AirService {
             get {
                 return ResourceManager.GetString("lblCarrier-AirService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cars.
+        /// </summary>
+        internal static string lblcars_RequestDetails {
+            get {
+                return ResourceManager.GetString("lblcars-RequestDetails", resourceCulture);
             }
         }
         
@@ -898,6 +916,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to persons.
+        /// </summary>
+        internal static string lblpersons_RequestDetails {
+            get {
+                return ResourceManager.GetString("lblpersons-RequestDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pick pdf file.
         /// </summary>
         internal static string lblPickPdfFile_attatchment {
@@ -1051,6 +1078,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Transport Details.
+        /// </summary>
+        internal static string lblTransportDetails_RequestDetails {
+            get {
+                return ResourceManager.GetString("lblTransportDetails-RequestDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Travel Agency.
         /// </summary>
         internal static string lblTravelAgency_attatchmentPage {
@@ -1092,6 +1128,15 @@ namespace TripBliss.Resources.Language {
         internal static string lblView_RequestDetails {
             get {
                 return ResourceManager.GetString("lblView-RequestDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visa Details.
+        /// </summary>
+        internal static string lblVisaDetails_RequestDetails {
+            get {
+                return ResourceManager.GetString("lblVisaDetails-RequestDetails", resourceCulture);
             }
         }
         

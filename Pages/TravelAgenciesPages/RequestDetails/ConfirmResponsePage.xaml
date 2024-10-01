@@ -161,23 +161,24 @@
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
-                                                <Label Text="{Binding Price,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue"
-                                                        VerticalOptions="EndAndExpand" FontSize="11">
-                                                    <Label.Triggers>
-                                                        <DataTrigger TargetType="Label" Binding="{Binding Price}" Value="0">
-                                                            <Setter Property="IsVisible" Value="False"></Setter>
-                                                        </DataTrigger>
-                                                    </Label.Triggers>
-                                                </Label>
+                                                
 
                                                 <StackLayout.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=SelectTransportaionCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                 </StackLayout.GestureRecognizers>
                                             </StackLayout>
                                         </ScrollView>
-                                        <StackLayout BackgroundColor="White" HorizontalOptions="EndAndExpand">
-                                            <CheckBox Color="Green" WidthRequest="20" HeightRequest="20" VerticalOptions="CenterAndExpand" Margin="5,0"
-                                                    IsChecked="{Binding AcceptAgen}">
+                                        <StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="EndAndExpand">
+                                            <Label Text="{Binding Price,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" VerticalOptions="CenterAndExpand"
+           FontSize="11">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Price}" Value="0">
+                                                        <Setter Property="IsVisible" Value="False"></Setter>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
+                                            <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0"
+      IsChecked="{Binding AcceptAgen}">
                                                 <CheckBox.Triggers>
                                                     <DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="true">
                                                         <Setter Property="IsEnabled" Value="False"></Setter>
@@ -243,22 +244,23 @@
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
-                                                <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue"
-                                                        VerticalOptions="EndAndExpand" FontSize="11">
-                                                    <Label.Triggers>
-                                                        <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
-                                                            <Setter Property="IsVisible" Value="False"></Setter>
-                                                        </DataTrigger>
-                                                    </Label.Triggers>
-                                                </Label>
+                                                
                                                 <StackLayout.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=SelectAirFlightCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                 </StackLayout.GestureRecognizers>
                                             </StackLayout>
                                         </ScrollView>
-                                        <StackLayout BackgroundColor="White" HorizontalOptions="EndAndExpand">
+                                        <StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="EndAndExpand">
+                                            <Label Text="{Binding Price,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" VerticalOptions="CenterAndExpand"
+           FontSize="11">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Price}" Value="0">
+                                                        <Setter Property="IsVisible" Value="False"></Setter>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
                                             <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0"
-                                                    IsChecked="{Binding AcceptAgen}">
+      IsChecked="{Binding AcceptAgen}">
                                                 <CheckBox.Triggers>
                                                     <DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="true">
                                                         <Setter Property="IsEnabled" Value="False"></Setter>
@@ -319,22 +321,23 @@
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
-                                                <Label Text="{Binding Price,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue"
-                                                         VerticalOptions="EndAndExpand" FontSize="11">
-                                                    <Label.Triggers>
-                                                        <DataTrigger TargetType="Label" Binding="{Binding Price}" Value="0">
-                                                            <Setter Property="IsVisible" Value="False"></Setter>
-                                                        </DataTrigger>
-                                                    </Label.Triggers>
-                                                </Label>
+                                                
                                                 <StackLayout.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=SelectVisaCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                 </StackLayout.GestureRecognizers>
                                             </StackLayout>
                                         </ScrollView>
-                                        <StackLayout BackgroundColor="White" HorizontalOptions="EndAndExpand">
+                                        <StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="EndAndExpand">
+                                            <Label Text="{Binding Price,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" VerticalOptions="CenterAndExpand"
+           FontSize="11">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Price}" Value="0">
+                                                        <Setter Property="IsVisible" Value="False"></Setter>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
                                             <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0"
-                                                    IsChecked="{Binding AcceptAgen}">
+      IsChecked="{Binding AcceptAgen}">
                                                 <CheckBox.Triggers>
                                                     <DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="true">
                                                         <Setter Property="IsEnabled" Value="False"></Setter>

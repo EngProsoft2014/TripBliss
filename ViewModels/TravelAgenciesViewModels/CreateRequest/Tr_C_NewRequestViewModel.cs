@@ -132,7 +132,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void DeletHotel(ResponseWithDistributorHotel model)
         {
+            int index = LstTravelAgencyHotelResponse.IndexOf(model);
             LstTravelAgencyHotelResponse.Remove(model);
+            LstTravelAgencyHotelRequest.RemoveAt(index);
         }
         #endregion
 
@@ -178,7 +180,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void DeletTransPortation(RequestTravelAgencyTransportResponse model)
         {
+            int index = LstTravelAgencyTransportResponse.IndexOf(model);
             LstTravelAgencyTransportResponse.Remove(model);
+            LstTravelAgencyTransportRequest.RemoveAt(index);
         }
 
         #endregion
@@ -228,7 +232,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void DeletAirFlight(RequestTravelAgencyAirFlightResponse model)
         {
+            int index = LstTravelAgencyAirFlightResponse.IndexOf(model);
             LstTravelAgencyAirFlightResponse.Remove(model);
+            LstTravelAgencyAirFlightRequest.RemoveAt(index);
 
             //LstTravelAgencyAirFlightRequest.Remove(LstTravelAgencyAirFlightRequest.Where(s => s.Id == model.Id).FirstOrDefault()!);
         }
@@ -280,7 +286,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         void DeletVisa(RequestTravelAgencyVisaResponse model)
         {
+            int index = LstTravelAgencyVisaResponse.IndexOf(model);
             LstTravelAgencyVisaResponse.Remove(model);
+            LstTravelAgencyVisaRequest.RemoveAt(index);
         }
         #endregion
 
@@ -351,9 +359,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
 
         #endregion
-
-
-
-        
+     
     }
 }
