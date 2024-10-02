@@ -169,7 +169,7 @@
     <value>Vehicle</value>
   </data>
   <data name="lblAccount-More" xml:space="preserve">
-    <value>Account</value>
+    <value>Company Account</value>
   </data>
   <data name="lblAdult-AirService" xml:space="preserve">
     <value>Adult</value>
@@ -530,5 +530,23 @@
   </data>
   <data name="lblVisaDetails-RequestDetails" xml:space="preserve">
     <value>Visa Details</value>
+  </data>
+  <data name="lblMyProfile-More" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+  <data name="lblChangepassword-Change passwordPopup" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="lblOldPassword-ChangePasswordPopup" xml:space="preserve">
+    <value>Old Password</value>
+  </data>
+  <data name="lblNewPassword-ChangePasswordPopup" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="plcUserCategory-Profile" xml:space="preserve">
+    <value>User Category</value>
+  </data>
+  <data name="plcUserPermission-Profile" xml:space="preserve">
+    <value>User Permission</value>
   </data>
 </root>

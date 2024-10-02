@@ -613,6 +613,17 @@
                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
+                                        <Label Text="{Static res:AppResources.lblMyProfile_More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
+                                        <HorizontalStackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding MyProfileClickCommand}"></TapGestureRecognizer>
+                                        </HorizontalStackLayout.GestureRecognizers>
+                                    </HorizontalStackLayout>
+                                    <HorizontalStackLayout Spacing="8">
+                                        <Image WidthRequest="20" HeightRequest="20">
+                                            <Image.Source>
+                                                <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                            </Image.Source>
+                                        </Image>
                                         <Label Text="{Static res:AppResources.lblAccount_More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>
                                         <HorizontalStackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding AccountClickCommand}"></TapGestureRecognizer>

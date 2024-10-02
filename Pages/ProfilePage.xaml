@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:TripBliss.Resources.Language"
+             xmlns:controls="clr-namespace:TripBliss.Controls"
+             x:Class="TripBliss.Pages.ProfilePage"
+             Title="ProfilePage"
+             IsEnabled="{Binding IsBusy}"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout Orientation="Vertical" Margin="20" Spacing="30">
+        <StackLayout Orientation="Horizontal">
+            <Image VerticalOptions="CenterAndExpand">
+                <Image.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                </Image.Source>
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                        <Setter Property="Rotation" Value="180"></Setter>
+                    </DataTrigger>
+                </Image.Triggers>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackClickedCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="{Static res:AppResources.lblMyProfile_More}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                   TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+        </StackLayout>
+        <ScrollView>
+            <StackLayout Spacing="20">
+                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray">
+                    <Entry Text="{Binding Account.email}" Keyboard="Text" TextColor="Black" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcEmail_SignUpPage}" HorizontalTextAlignment="Center"
+                           Margin="10,2" HorizontalOptions="CenterAndExpand" IsReadOnly="True"></Entry>
+                </Border>
+                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray">
+                    <Entry Text="{Binding Account.userName}" Keyboard="Numeric" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcUserName_Login}"
+                           HorizontalTextAlignment="Center" Margin="10,2" IsReadOnly="True"></Entry>
+                </Border>
+                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray">
+                    <Entry Text="{Binding Account.userCategory}" Placeholder="{Static res:AppResources.plcUserCategory_Profile}" Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                           Margin="10,2" IsReadOnly="True"></Entry>
+                </Border>
+                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray">
+                    <Entry Text="{Binding Account.userPermision}" Placeholder="{Static res:AppResources.plcUserPermission_Profile}" Keyboard="Text" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                           Margin="10,2" IsReadOnly="True"></Entry>
+                </Border>
+                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,2">
+                        <Entry Text="{Binding Account.companyName}" Placeholder="{Static res:AppResources.plcCompanyName_SignUp}" FontAutoScalingEnabled="False" Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" 
+                                HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" IsReadOnly="True"></Entry>
+                    </StackLayout>
+                </Border>
+                <Button Text="{Static res:AppResources.lblChangepassword_Change_passwordPopup}" FontAutoScalingEnabled="False" WidthRequest="115" Padding="0,5,0,5" HeightRequest="35" FontSize="13"
+                        BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="StartAndExpand"
+                        Command="{Binding ChangePassClickCommand}"></Button>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</controls:CustomControl>

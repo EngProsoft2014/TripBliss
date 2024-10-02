@@ -307,6 +307,24 @@ namespace TripBliss.Constants
         public static string PutTravelCompanyDetailsApi = "api/TravelAgencyCompany/";
         // End put Travel Company Details 
         #endregion
+
+        #region Post Reset Password
+        // post Reset Password
+        public static string PosResetApi = "api/ApplicationUser/forget-Password";
+        // End post Reset Password
+        #endregion
+
+        #region put Change Password
+        // put Change Password
+        public static string PutChangePassApi = "Account";
+        // End put Change Password
+        #endregion
+
+        #region Get User Account
+        // Get User Account
+        public static string GetUserAccountApi = "Account";
+        // Get User Account
+        #endregion
     }
 }
 

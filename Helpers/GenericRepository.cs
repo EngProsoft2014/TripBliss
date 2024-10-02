@@ -734,12 +734,12 @@ namespace TripBliss.Helpers
                 {
                     jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
                     var json = JsonConvert.DeserializeObject<T>(jsonResult);
-                    return json;
+                    return data;
                 }
 
                 if (responseMessage.StatusCode == HttpStatusCode.Forbidden)
                 {
-                    await App.Current.MainPage.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
+                    await App.Current!.MainPage!.DisplayAlert("Warning", "Equivalent to HTTP status 403. System.Net.HttpStatusCode.Forbidden indicates\r\nthat the server refuses to fulfill the request.", "OK");
                 }
 
                 if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)

@@ -67,5 +67,14 @@ namespace TripBliss.ViewModels.DistributorsViewModels
             Controls.StaticMember.ShowSnackBar("Do you want to Logout?", Controls.StaticMember.SnackBarColor, Controls.StaticMember.SnackBarTextColor, action);
             return Task.CompletedTask;
         }
+
+        [RelayCommand]
+        async Task MyProfileClick()
+        {
+            var vm = new ProfileViewModel(Rep, _service);
+            var page = new ProfilePage();
+            page.BindingContext = vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
+        }
     }
 }

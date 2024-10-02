@@ -8,7 +8,7 @@ namespace TripBliss.ViewModels
         public BaseViewModel()
         {
             Lang = Preferences.Default.Get("Lan", "en");
-            Review = Preferences.Default.Get(ApiConstants.review, int.Parse("0"));
+            Review = Preferences.Default.Get(ApiConstants.review, 0);
             IsBusy = true;
             checkTOD();
         }

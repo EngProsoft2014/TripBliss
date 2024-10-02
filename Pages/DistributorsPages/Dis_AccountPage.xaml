@@ -5,8 +5,7 @@
              x:Class="TripBliss.Pages.DistributorsPages.Dis_AccountPage"
              Title="Tr_AccountPage"
              BackgroundColor="White"
-             NavigationPage.HasNavigationBar="False"
-             >
+             NavigationPage.HasNavigationBar="False">
     <StackLayout Orientation="Vertical" Margin="20" Spacing="30" VerticalOptions="FillAndExpand">
         <StackLayout Orientation="Horizontal">
             <Image VerticalOptions="CenterAndExpand">
@@ -22,7 +21,7 @@
                     <TapGestureRecognizer Command="{Binding BackClickedCommand}"></TapGestureRecognizer>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="My Account" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="{Static res:AppResources.lblAccount_More}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
        TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
 
         </StackLayout>

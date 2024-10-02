@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Pages.MainPopups;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels
 {
@@ -44,7 +45,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
 
         async Task GetCompanyDetiles()
         {
-            IsBusy = true;
+            IsBusy = false;
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -65,7 +66,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
 
             }
 
-            IsBusy = false;
+            IsBusy = true;
         }
 
         #endregion
@@ -148,6 +149,11 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             await MopupService.Instance.PushAsync(page);
 
             IsBusy = true;
+        }
+        [RelayCommand]
+        async Task ChangePassClick()
+        {
+            await MopupService.Instance.PushAsync(new ChangePasswordPopup(Rep,_service));
         }
         #endregion
     }

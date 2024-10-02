@@ -169,7 +169,7 @@
     <value>عربة</value>
   </data>
   <data name="lblAccount-More" xml:space="preserve">
-    <value>الحساب الشخصي</value>
+    <value>حساب الشركة</value>
   </data>
   <data name="lblAdult-AirService" xml:space="preserve">
     <value>الكبار</value>
@@ -530,5 +530,23 @@
   </data>
   <data name="lblVisaDetails-RequestDetails" xml:space="preserve">
     <value>تفاصيل التأشيرة</value>
+  </data>
+  <data name="lblMyProfile-More" xml:space="preserve">
+    <value>الملف الشخصي الخاص بي</value>
+  </data>
+  <data name="lblChangepassword-Change passwordPopup" xml:space="preserve">
+    <value>تغيير كلمة المرور</value>
+  </data>
+  <data name="lblOldPassword-ChangePasswordPopup" xml:space="preserve">
+    <value>كلمة المرور القديمة</value>
+  </data>
+  <data name="lblNewPassword-ChangePasswordPopup" xml:space="preserve">
+    <value>كلمة المرور الجديدة</value>
+  </data>
+  <data name="plcUserCategory-Profile" xml:space="preserve">
+    <value>فئة المستخدم</value>
+  </data>
+  <data name="plcUserPermission-Profile" xml:space="preserve">
+    <value>تصريح المستخدم</value>
   </data>
 </root>

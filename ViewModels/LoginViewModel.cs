@@ -76,7 +76,10 @@ namespace TripBliss.ViewModels
         [RelayCommand]
         public async Task GoRestPage()
         {
-            await App.Current!.MainPage!.Navigation.PushAsync(new ResetPage());
+            var vm = new ResetViewModel(Rep,_service);
+            var page = new ResetPage(vm);
+            page.BindingContext = vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
         }
 
         [RelayCommand]
@@ -138,7 +141,7 @@ namespace TripBliss.ViewModels
                             }
                             if (string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && !string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
                             {
-                                Preferences.Default.Set(ApiConstants.review, UserModel?.DistributorCompany?.Review!.Value!);
+                                Preferences.Default.Set(ApiConstants.review, UserModel?.DistributorCompany?.Review!.Value);
 
                                 var vm = new DistributorsViewModels.Dis_HomeViewModel(Rep, _service);
                                 var page = new Pages.DistributorsPages.HomeDistributorsPage(vm, Rep, _service);

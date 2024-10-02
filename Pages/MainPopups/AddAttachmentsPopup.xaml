@@ -6,7 +6,7 @@
                  xmlns:res="clr-namespace:TripBliss.Resources.Language"
                  x:Class="TripBliss.Pages.MainPopups.AddAttachmentsPopup"
                  Title="AddAttachmentsPopup"
-                  CloseWhenBackgroundIsClicked="True"
+                 CloseWhenBackgroundIsClicked="True"
                  NavigationPage.HasNavigationBar="False" 
                  BackgroundColor="#90000000">
 

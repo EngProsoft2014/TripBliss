@@ -6,11 +6,9 @@
              xmlns:res="clr-namespace:TripBliss.Resources.Language"
              x:Class="TripBliss.Pages.ResetPage"
              Title="ResetPage"
+             IsEnabled="{Binding IsBusy}"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False">
-    <Controls:CustomControl.BindingContext>
-        <vm:ResetViewModel></vm:ResetViewModel>
-    </Controls:CustomControl.BindingContext>
     <VerticalStackLayout Margin="30">
         <Image Source="logosmall" WidthRequest="300" Margin="20"></Image>
         <Border StrokeShape="RoundRectangle 20" StrokeThickness="1" Stroke="Gray" VerticalOptions="Center" Margin="0,40,0,0">

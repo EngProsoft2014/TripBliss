@@ -70,6 +70,15 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
         }
+
+        [RelayCommand]
+        async Task MyProfileClick()
+        {
+            var vm = new ProfileViewModel(Rep, _service);
+            var page = new ProfilePage();
+            page.BindingContext = vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
+        }
         #endregion
 
 

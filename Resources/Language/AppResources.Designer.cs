@@ -457,7 +457,7 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Account.
+        ///   Looks up a localized string similar to Company Account.
         /// </summary>
         internal static string lblAccount_More {
             get {
@@ -561,6 +561,15 @@ namespace TripBliss.Resources.Language {
         internal static string lblCarType_TranService {
             get {
                 return ResourceManager.GetString("lblCarType-TranService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change password.
+        /// </summary>
+        internal static string lblChangepassword_Change_passwordPopup {
+            get {
+                return ResourceManager.GetString("lblChangepassword-Change passwordPopup", resourceCulture);
             }
         }
         
@@ -817,6 +826,24 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Profile.
+        /// </summary>
+        internal static string lblMyProfile_More {
+            get {
+                return ResourceManager.GetString("lblMyProfile-More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Password.
+        /// </summary>
+        internal static string lblNewPassword_ChangePasswordPopup {
+            get {
+                return ResourceManager.GetString("lblNewPassword-ChangePasswordPopup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nights.
         /// </summary>
         internal static string lblNights_RequestDetails {
@@ -903,6 +930,15 @@ namespace TripBliss.Resources.Language {
         internal static string lblOfferUrl_CreateOffer {
             get {
                 return ResourceManager.GetString("lblOfferUrl-CreateOffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old Password.
+        /// </summary>
+        internal static string lblOldPassword_ChangePasswordPopup {
+            get {
+                return ResourceManager.GetString("lblOldPassword-ChangePasswordPopup", resourceCulture);
             }
         }
         
@@ -1276,11 +1312,29 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User Category.
+        /// </summary>
+        internal static string plcUserCategory_Profile {
+            get {
+                return ResourceManager.GetString("plcUserCategory-Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User Name.
         /// </summary>
         internal static string plcUserName_Login {
             get {
                 return ResourceManager.GetString("plcUserName-Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Permission.
+        /// </summary>
+        internal static string plcUserPermission_Profile {
+            get {
+                return ResourceManager.GetString("plcUserPermission-Profile", resourceCulture);
             }
         }
         
