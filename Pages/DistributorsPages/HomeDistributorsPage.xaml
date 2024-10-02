@@ -532,7 +532,7 @@
                                 <HorizontalStackLayout Spacing="8">
                                     <Image WidthRequest="20" HeightRequest="20">
                                         <Image.Source>
-                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                            <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
                                         </Image.Source>
                                     </Image>
                                     <Label Text="{Static res:AppResources.lblAccount_More}" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>

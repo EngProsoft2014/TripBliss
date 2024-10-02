@@ -605,7 +605,7 @@
                             <StackLayout Orientation="Vertical" Spacing="50">
                                 <Label Text="{Static res:AppResources.hdrMore}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                        TextColor="Black" Margin="{OnPlatform Android='0,20,0,10',iOS='0,0,0,10'}"></Label>
-                                <!--User-->
+                                
                                 <VerticalStackLayout Margin="20,0" Spacing="20">
                                     <HorizontalStackLayout Spacing="8">
                                         <Image WidthRequest="20" HeightRequest="20">
@@ -621,7 +621,7 @@
                                     <HorizontalStackLayout Spacing="8">
                                         <Image WidthRequest="20" HeightRequest="20">
                                             <Image.Source>
-                                                <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                                <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray"></FontImageSource>
                                             </Image.Source>
                                         </Image>
                                         <Label Text="{Static res:AppResources.lblAccount_More}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start" FontAttributes="Bold"></Label>

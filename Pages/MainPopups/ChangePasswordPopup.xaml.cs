@@ -3,6 +3,7 @@ using CommunityToolkit.Maui.Alerts;
 using Mopups.Services;
 using TripBliss.Constants;
 using TripBliss.Helpers;
+using TripBliss.ViewModels;
 namespace TripBliss.Pages.MainPopups;
 
 public partial class ChangePasswordPopup : Mopups.Pages.PopupPage
@@ -66,6 +67,9 @@ public partial class ChangePasswordPopup : Mopups.Pages.PopupPage
                     await MopupService.Instance.PopAsync();
                     var toast = Toast.Make("Password changed successfully.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
+
+                    Preferences.Default.Clear();
+                    await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service)));
                 }
                 else
                 {

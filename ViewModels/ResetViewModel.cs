@@ -43,6 +43,13 @@ namespace TripBliss.ViewModels
         #endregion
 
         #region RelayCommand
+
+        [RelayCommand]
+        async Task BackClicked()
+        {
+            await App.Current!.MainPage!.Navigation.PopAsync();
+        }
+
         [RelayCommand]
         async Task OnApply()
         {

@@ -10,7 +10,29 @@
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False">
     <VerticalStackLayout Margin="30">
-        <Image Source="logosmall" WidthRequest="300" Margin="20"></Image>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+
+            <Image VerticalOptions="Start" HorizontalOptions="Start">
+                <Image.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                </Image.Source>
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                        <Setter Property="Rotation" Value="180"></Setter>
+                    </DataTrigger>
+                </Image.Triggers>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackClickedCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+            
+            <Label Text="Rest Password" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                   TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+        </StackLayout>
+
+
+        <Image Source="logosmall" WidthRequest="300" Margin="20,40,20,20"></Image>
         <Border StrokeShape="RoundRectangle 20" StrokeThickness="1" Stroke="Gray" VerticalOptions="Center" Margin="0,40,0,0">
             <VerticalStackLayout Margin="20" Spacing="20">
                 <Image>
