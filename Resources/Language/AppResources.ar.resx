@@ -532,7 +532,7 @@
     <value>تفاصيل التأشيرة</value>
   </data>
   <data name="lblMyProfile-More" xml:space="preserve">
-    <value>الملف الشخصي الخاص بي</value>
+    <value>الملف الشخصي</value>
   </data>
   <data name="lblChangepassword-Change passwordPopup" xml:space="preserve">
     <value>تغيير كلمة المرور</value>
