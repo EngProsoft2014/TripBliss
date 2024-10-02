@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models.Account;
+using TripBliss.Pages;
 using TripBliss.Pages.MainPopups;
 
 namespace TripBliss.ViewModels
@@ -42,7 +43,10 @@ namespace TripBliss.ViewModels
         [RelayCommand]
         async Task ChangePassClick()
         {
-            await MopupService.Instance.PushAsync(new ChangePasswordPopup(Rep, _service));
+            var vm = new ChangePassViewModel(Rep,_service);
+            var page = new ChangePassPage();
+            page.BindingContext = vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
         }
         #endregion
 
