@@ -552,4 +552,7 @@
   <data name="lblAccountNotActive" xml:space="preserve">
     <value>Your company not active until now.</value>
   </data>
+  <data name="hdrRestPassword-ResetPage" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
 </root>

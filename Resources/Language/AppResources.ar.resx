@@ -552,4 +552,7 @@
   <data name="lblAccountNotActive" xml:space="preserve">
     <value>شركتك ليست نشطة حتى الآن</value>
   </data>
+  <data name="hdrRestPassword-ResetPage" xml:space="preserve">
+    <value>إعادة تعيين كلمة المرور</value>
+  </data>
 </root>

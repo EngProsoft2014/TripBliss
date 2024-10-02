@@ -403,6 +403,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reset Password.
+        /// </summary>
+        internal static string hdrRestPassword_ResetPage {
+            get {
+                return ResourceManager.GetString("hdrRestPassword-ResetPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select Language.
         /// </summary>
         internal static string hdrSelectLan_PopupLan {
