@@ -549,4 +549,7 @@
   <data name="plcUserPermission-Profile" xml:space="preserve">
     <value>User Permission</value>
   </data>
+  <data name="lblAccountNotActive" xml:space="preserve">
+    <value>Your company not active until now.</value>
+  </data>
 </root>

@@ -549,4 +549,7 @@
   <data name="plcUserPermission-Profile" xml:space="preserve">
     <value>تصريح المستخدم</value>
   </data>
+  <data name="lblAccountNotActive" xml:space="preserve">
+    <value>شركتك ليست نشطة حتى الآن</value>
+  </data>
 </root>

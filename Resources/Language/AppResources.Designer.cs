@@ -466,6 +466,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your company not active until now..
+        /// </summary>
+        internal static string lblAccountNotActive {
+            get {
+                return ResourceManager.GetString("lblAccountNotActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Active.
         /// </summary>
         internal static string lblActive_HomeDist {
