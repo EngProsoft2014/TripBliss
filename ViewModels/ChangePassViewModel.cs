@@ -77,7 +77,13 @@ namespace TripBliss.ViewModels
                 }
 
             }
-        } 
+        }
+
+        [RelayCommand]
+        void OnBackPressed()
+        {
+            App.Current!.MainPage!.Navigation.PopAsync();
+        }
         #endregion
     }
 }

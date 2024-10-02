@@ -150,11 +150,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
 
             IsBusy = true;
         }
-        [RelayCommand]
-        async Task ChangePassClick()
-        {
-            await MopupService.Instance.PushAsync(new ChangePasswordPopup(Rep,_service));
-        }
         #endregion
     }
 }
