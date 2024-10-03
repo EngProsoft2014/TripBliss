@@ -3,6 +3,7 @@ using Mopups.Services;
 using TripBliss.Helpers;
 using TripBliss.Pages;
 using TripBliss.Pages.MainPopups;
+using TripBliss.Pages.Shared;
 using TripBliss.Pages.TravelAgenciesPages;
 using TripBliss.Pages.Users;
 using TripBliss.ViewModels.Users;

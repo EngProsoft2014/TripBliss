@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Pages;
+using TripBliss.Pages.Shared;
 
 namespace TripBliss.ViewModels
 {

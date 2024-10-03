@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:res="clr-namespace:TripBliss.Resources.Language"
              xmlns:controls="clr-namespace:TripBliss.Controls"
-             x:Class="TripBliss.Pages.ChangePassPage"
+             x:Class="TripBliss.Pages.Shared.ChangePassPage"
              Title="ChangePassPage"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False">

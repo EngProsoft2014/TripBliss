@@ -1,13 +1,10 @@
-﻿using TripBliss.Pages;
-using TripBliss.Constants;
+﻿using TripBliss.Constants;
 using TripBliss.Pages.DistributorsPages;
 using System.Globalization;
-using Mopups.PreBaked.PopupPages.Login;
 using TripBliss.Helpers;
 using TripBliss.Pages.TravelAgenciesPages;
 using Akavache;
-using TripBliss.ViewModels.TravelAgenciesViewModels;
-using Microsoft.Maui.Platform;
+using TripBliss.Pages.Shared;
 
 namespace TripBliss
 {

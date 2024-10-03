@@ -9,6 +9,7 @@ using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages;
+using TripBliss.Pages.Shared;
 using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 using static SQLite.SQLite3;
 

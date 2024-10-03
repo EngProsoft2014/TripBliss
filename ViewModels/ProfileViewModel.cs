@@ -13,6 +13,7 @@ using TripBliss.Helpers;
 using TripBliss.Models.Account;
 using TripBliss.Pages;
 using TripBliss.Pages.MainPopups;
+using TripBliss.Pages.Shared;
 
 namespace TripBliss.ViewModels
 {

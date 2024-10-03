@@ -4,7 +4,7 @@
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              xmlns:res="clr-namespace:TripBliss.Resources.Language"
              xmlns:vm="clr-namespace:TripBliss.ViewModels"
-             x:Class="TripBliss.Pages.DocumentsPage"
+             x:Class="TripBliss.Pages.Shared.DocumentsPage"
              Title="Tr_DocumentsPage"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="White"

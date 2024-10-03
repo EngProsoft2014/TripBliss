@@ -10,6 +10,7 @@ using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Models.ResponseWithDistributorVisaDetails;
 using TripBliss.Pages;
+using TripBliss.Pages.Shared;
 
 namespace TripBliss.ViewModels.ActivateViewModels
 {

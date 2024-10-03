@@ -182,7 +182,7 @@
 	  <Compile Update="Pages\TravelAgenciesPages\RequestDetails\VisaServicePage.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\DocumentsPage.xaml.cs">
+	  <Compile Update="Pages\Shared\DocumentsPage.xaml.cs">
 	    <DependentUpon>DocumentsPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\Users\AddUserPage.xaml.cs">
@@ -221,7 +221,7 @@
 	  <MauiXaml Update="Pages\ActivateDetailsPages\VisaServicesActivateDetails.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\ChangePassPage.xaml">
+	  <MauiXaml Update="Pages\Shared\ChangePassPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\DistributorsPages\HomeDistributorsPage.xaml">
@@ -263,10 +263,10 @@
 	  <MauiXaml Update="Pages\MainPopups\LanguagePopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\PdfViewerPage.xaml">
+	  <MauiXaml Update="Pages\Shared\PdfViewerPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\ProfilePage.xaml">
+	  <MauiXaml Update="Pages\Shared\ProfilePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\TravelAgenciesPages\CreateRequest\ChooseDistributorPage.xaml">
@@ -293,13 +293,13 @@
 	  <MauiXaml Update="Pages\TravelAgenciesPages\HomeAgencyPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\LoginPage.xaml">
+	  <MauiXaml Update="Pages\Shared\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\ResetPage.xaml">
+	  <MauiXaml Update="Pages\Shared\ResetPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\SignUpPage.xaml">
+	  <MauiXaml Update="Pages\Shared\SignUpPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\TravelAgenciesPages\Offer\OfferDetailsPage.xaml">
@@ -332,7 +332,7 @@
 	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\VisaServicePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\DocumentsPage.xaml">
+	  <MauiXaml Update="Pages\Shared\DocumentsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\TravelAgenciesPages\Tr_AccountPage.xaml">

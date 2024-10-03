@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:TripBliss.ViewModels"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              xmlns:res="clr-namespace:TripBliss.Resources.Language"
-             x:Class="TripBliss.Pages.ResetPage"
+             x:Class="TripBliss.Pages.Shared.ResetPage"
              Title="ResetPage"
              IsEnabled="{Binding IsBusy}"
              BackgroundColor="White"

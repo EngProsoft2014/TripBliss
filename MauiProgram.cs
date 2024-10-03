@@ -10,6 +10,7 @@ using TripBliss.Pages;
 using TripBliss.ViewModels;
 using TripBliss.Services.Data;
 using Maui.PDFView;
+using TripBliss.Pages.Shared;
 
 namespace TripBliss
 {

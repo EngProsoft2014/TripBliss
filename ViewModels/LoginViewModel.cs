@@ -24,6 +24,7 @@ using TripBliss.Services.Data;
 using System.Reactive.Linq;
 using System.ComponentModel.DataAnnotations;
 using static TripBliss.Helpers.ErrorsResult;
+using TripBliss.Pages.Shared;
 
 
 
@@ -154,7 +155,7 @@ namespace TripBliss.ViewModels
 
                             var toast = Toast.Make("Warning, Your user name is not registered !!", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
-                            await App.Current!.MainPage!.Navigation.PushAsync(new Pages.LoginPage(new LoginViewModel(Rep, _service)));
+                            await App.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service)));
                             App.Current.MainPage.Navigation.RemovePage(App.Current.MainPage.Navigation.NavigationStack[App.Current.MainPage.Navigation.NavigationStack.Count - 2]);
                         }
                     }

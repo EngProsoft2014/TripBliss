@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:TripBliss.ViewModels"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              xmlns:res="clr-namespace:TripBliss.Resources.Language"
-             x:Class="TripBliss.Pages.LoginPage"
+             x:Class="TripBliss.Pages.Shared.LoginPage"
              xmlns:local="clr-namespace:TripBliss"
              Title="LoginPage"
              NavigationPage.HasNavigationBar="False"

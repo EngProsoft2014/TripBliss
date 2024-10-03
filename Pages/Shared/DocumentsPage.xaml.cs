@@ -1,6 +1,6 @@
 using TripBliss.ViewModels;
 
-namespace TripBliss.Pages;
+namespace TripBliss.Pages.Shared;
 
 public partial class DocumentsPage : Controls.CustomControl
 {

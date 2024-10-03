@@ -2,7 +2,7 @@ using TripBliss.Helpers;
 using TripBliss.ViewModels;
 using TripBliss.ViewModels.TravelAgenciesViewModels;
 
-namespace TripBliss.Pages;
+namespace TripBliss.Pages.Shared;
 
 public partial class LoginPage : Controls.CustomControl
 {
