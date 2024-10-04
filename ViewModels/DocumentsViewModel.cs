@@ -191,9 +191,11 @@ namespace TripBliss.ViewModels
 
         async Task GetDocs() // TravelAgencyCompanyDocResponse used for Distributors and Travel Agency
         {
+            
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 string UserToken = await _service.UserToken();
+                UserDialogs.Instance.ShowLoading();
                 if (!string.IsNullOrEmpty(UserToken))
                 {
                     string Id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "") ;
@@ -239,16 +241,17 @@ namespace TripBliss.ViewModels
                         }
                     }
                 }
+                UserDialogs.Instance.HideHud();
             }
         }
 
         async Task DoneUploadDoc(TravelAgencyCompanyDocResponse model)
         {
             IsBusy = false;
-
+            UserDialogs.Instance.ShowLoading();
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                UserDialogs.Instance.ShowLoading();
+                
                 string Id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
                 string uri = $"{ApiConstants.GetTravelDocApi}{Id}/TravelAgencyCompanyDoc";
                 if (Id == "")
@@ -262,9 +265,9 @@ namespace TripBliss.ViewModels
                 {
                     await GetDocs();
                 }
-                UserDialogs.Instance.HideHud();
+                
             }
-
+            UserDialogs.Instance.HideHud();
             IsBusy = true;
         }
         #endregion
