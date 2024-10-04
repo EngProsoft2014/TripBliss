@@ -10,7 +10,9 @@ using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Pages.Shared;
 using TripBliss.Pages.Users;
+using TripBliss.ViewModels.Shared;
 
 namespace TripBliss.ViewModels.Users
 {
@@ -50,6 +52,14 @@ namespace TripBliss.ViewModels.Users
                 await GetUsers();
             };
             var page = new AddUserPage(vm);
+            page.BindingContext = vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
+        }
+        [RelayCommand]
+        async Task UserClick()
+        {
+            var vm = new UserPermissionViewModel(Rep,_service);
+            var page = new UserPermissionPage();
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
         }

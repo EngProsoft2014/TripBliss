@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Controls="clr-namespace:TripBliss.Controls"
+             xmlns:res="clr-namespace:TripBliss.Resources.Language"
+             x:Class="TripBliss.Pages.Shared.UserPermissionPage"
+             Title="UserPermissionPage"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout Orientation="Vertical" Margin="20">
+        <StackLayout Orientation="Horizontal" Margin="0,0,0,30">
+            <Image VerticalOptions="CenterAndExpand">
+                <Image.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                </Image.Source>
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                        <Setter Property="Rotation" Value="180"></Setter>
+                    </DataTrigger>
+                </Image.Triggers>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackPressedCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="User Premission" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                   TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+        </StackLayout>
+        <VerticalStackLayout Spacing="3">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Send Requestes" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
+            </StackLayout>
+            <BoxView HeightRequest="0.5" BackgroundColor="Gray"></BoxView>
+        </VerticalStackLayout>
+        <VerticalStackLayout Spacing="3">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Accept Response" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
+            </StackLayout>
+            <BoxView HeightRequest="0.5" BackgroundColor="Gray"></BoxView>
+        </VerticalStackLayout>
+        <VerticalStackLayout Spacing="3">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Edit Company Info" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
+            </StackLayout>
+            <BoxView HeightRequest="0.5" BackgroundColor="Gray"></BoxView>
+        </VerticalStackLayout>
+    </StackLayout>
+</Controls:CustomControl>
