@@ -42,7 +42,7 @@
                 </Image>
                 <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                     <Entry Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="16" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcEmail_SignUpPage}" HorizontalTextAlignment="Center"
-                   Margin="10,2" Text="{Binding Email}"></Entry>
+                   Margin="10,2" Text="{Binding Email}" HorizontalOptions="FillAndExpand"></Entry>
                 </Border>
                 <Button Text="{Static res:AppResources.btnApply_Forgot}" FontAutoScalingEnabled="False" BackgroundColor="#2FA562" TextColor="White" WidthRequest="140" CornerRadius="20" Margin="0,30,0,0"
                         Command="{Binding ApplyCommand}"></Button>

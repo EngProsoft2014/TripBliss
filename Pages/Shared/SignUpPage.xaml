@@ -29,7 +29,7 @@
                     </Border>
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                         <Entry Keyboard="Text" TextColor="Black" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcCompanyName_SignUp}" HorizontalTextAlignment="Center"
-                           Margin="10,2" Text="{Binding CompanyName}" HorizontalOptions="CenterAndExpand"></Entry>
+                           Margin="10,2" Text="{Binding CompanyName}" HorizontalOptions="FillAndExpand"></Entry>
                     </Border>
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                         <Entry Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcCompanyEmail_SignUpPage}" HorizontalTextAlignment="Center"
@@ -37,20 +37,20 @@
                     </Border>
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                         <Entry Keyboard="Numeric" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcCompanyPhone_SignUp}"
-                           HorizontalTextAlignment="Center" Margin="10,2" Text="{Binding CompanyPhone}"></Entry>
+                           HorizontalTextAlignment="Center" Margin="10,2" Text="{Binding CompanyPhone}" HorizontalOptions="FillAndExpand"></Entry>
                     </Border>
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                         <Entry Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcEmail_SignUpPage}" HorizontalTextAlignment="Center"
-                           Margin="10,2" Text="{Binding LoginRequest.Email}"></Entry>
+                           Margin="10,2" Text="{Binding LoginRequest.Email}" HorizontalOptions="FillAndExpand"></Entry>
                     </Border>
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                         <Entry Keyboard="Text" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcUserName_Login}" HorizontalTextAlignment="Center"
-                           Margin="10,2" Text="{Binding LoginRequest.UserName}"></Entry>
+                           Margin="10,2" Text="{Binding LoginRequest.UserName}" HorizontalOptions="FillAndExpand"></Entry>
                     </Border>
                     <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,2">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,2" Spacing="20">
                             <Entry x:Name="entryPassword" FontAutoScalingEnabled="False" Keyboard="Text" IsPassword="True" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcPassword_Login}"
-                                   HorizontalTextAlignment="Center" Text="{Binding LoginRequest.Password}" HorizontalOptions="CenterAndExpand"></Entry>
+                                   HorizontalTextAlignment="Center" Text="{Binding LoginRequest.Password}" HorizontalOptions="FillAndExpand"></Entry>
 
                             <Image x:Name="imgEyePass" Margin="0,0,10,0" HorizontalOptions="End">
                                 <Image.Source>

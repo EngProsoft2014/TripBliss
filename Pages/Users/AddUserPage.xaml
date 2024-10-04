@@ -30,16 +30,16 @@
         <VerticalStackLayout VerticalOptions="CenterAndExpand" Spacing="15">
             <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                 <Entry x:Name="entryEmail" Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcUserName_Login}"
-                       HorizontalTextAlignment="Center" Margin="10,2"   Text="{Binding AddModel.UserName}"></Entry>
+                       HorizontalTextAlignment="Center" Margin="10,2" HorizontalOptions="FillAndExpand" Text="{Binding AddModel.UserName}"></Entry>
             </Border>
             <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                 <Entry x:Name="entryUser" Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcEmail_SignUpPage}"
-                       HorizontalTextAlignment="Center" Margin="10,2"   Text="{Binding AddModel.Email}"></Entry>
+                       HorizontalTextAlignment="Center" Margin="10,2" HorizontalOptions="FillAndExpand" Text="{Binding AddModel.Email}"></Entry>
             </Border>
             <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,2">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,2" Spacing="20">
                     <Entry x:Name="entryPassword" FontAutoScalingEnabled="False" Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcPassword_Login}"
-                           HorizontalTextAlignment="Center" Text="{Binding AddModel.Password}" IsPassword="True" HorizontalOptions="CenterAndExpand">
+                           HorizontalTextAlignment="Center" Text="{Binding AddModel.Password}" HorizontalOptions="FillAndExpand" IsPassword="True">
                     </Entry>
 
                     <Image x:Name="imgEyePass" Margin="0,0,10,0" HorizontalOptions="End">

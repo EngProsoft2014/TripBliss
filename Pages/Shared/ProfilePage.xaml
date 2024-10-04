@@ -8,7 +8,7 @@
              IsEnabled="{Binding IsBusy}"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False">
-    <StackLayout Orientation="Vertical" Margin="20" Spacing="30">
+    <StackLayout Orientation="Vertical" Margin="20" Spacing="30" VerticalOptions="FillAndExpand">
         <StackLayout Orientation="Horizontal">
             <Image VerticalOptions="CenterAndExpand">
                 <Image.Source>
@@ -26,7 +26,7 @@
             <Label Text="{Static res:AppResources.lblMyProfile_More}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
-        <ScrollView>
+        <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout Spacing="20">
 
 

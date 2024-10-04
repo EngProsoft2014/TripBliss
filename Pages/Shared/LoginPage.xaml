@@ -28,12 +28,12 @@
                         </Image>
                         <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
                             <Entry x:Name="entryEmail" Placeholder="{Static res:AppResources.plcUserName_Login}" Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" 
-                                   HorizontalTextAlignment="Center" Margin="10,2"   Text="{Binding LoginRequest.UserName}"></Entry>
+                                   HorizontalTextAlignment="Center" Margin="10,2" HorizontalOptions="FillAndExpand" Text="{Binding LoginRequest.UserName}"></Entry>
                         </Border>
                         <Border StrokeShape="RoundRectangle 30" StrokeThickness="1" Stroke="Gray">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,2">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,2" Spacing="20">
                                 <Entry x:Name="entryPassword" Placeholder="{Static res:AppResources.plcPassword_Login}" FontAutoScalingEnabled="False" Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" 
-                                   HorizontalTextAlignment="Center" Text="{Binding LoginRequest.Password}" IsPassword="True" HorizontalOptions="CenterAndExpand">
+                                   HorizontalTextAlignment="Center" Text="{Binding LoginRequest.Password}" IsPassword="True" HorizontalOptions="FillAndExpand">
                                 </Entry>
 
                                 <Image x:Name="imgEyePass" Margin="0,0,10,0" HorizontalOptions="End">

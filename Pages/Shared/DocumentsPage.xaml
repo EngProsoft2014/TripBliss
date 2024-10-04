@@ -71,6 +71,7 @@
                                                 </Setter>
                                                 <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
                                                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"></Setter>
+                                                <Setter Property="Margin" Value="{OnPlatform iOS='30,10'}"></Setter>
                                             </DataTrigger>
                                         </Image.Triggers>
                                     </Image>

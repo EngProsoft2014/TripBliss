@@ -46,25 +46,25 @@
                     </Grid>
                     <StackLayout Spacing="20">
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray">
-                            <Entry Keyboard="Text" TextColor="Black" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcCompanyName_SignUp}" HorizontalTextAlignment="Center"
-                                    Margin="10,2" Text="{Binding CompanyResponse.CompanyName}" HorizontalOptions="CenterAndExpand"></Entry>
+                            <Entry Keyboard="Text" TextColor="Black" HorizontalOptions="FillAndExpand" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcCompanyName_SignUp}" HorizontalTextAlignment="Center"
+                                    Margin="10,2" Text="{Binding CompanyResponse.CompanyName}"></Entry>
                         </Border>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray">
                             <Entry Keyboard="Numeric" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcCompanyPhone_SignUp}"
-                                    HorizontalTextAlignment="Center" Margin="10,2" Text="{Binding CompanyResponse.Phone }"></Entry>
+                                    HorizontalTextAlignment="Center" Margin="10,2" Text="{Binding CompanyResponse.Phone}" HorizontalOptions="FillAndExpand"></Entry>
                         </Border>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray">
                             <Entry Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcEmail_SignUpPage}" HorizontalTextAlignment="Center"
-                                    Margin="10,2" Text="{Binding CompanyResponse.Email}"></Entry>
+                                    Margin="10,2" Text="{Binding CompanyResponse.Email}" HorizontalOptions="FillAndExpand"></Entry>
                         </Border>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray">
                             <Entry Placeholder="{Static res:AppResources.plcWebSite_AccountPage}" Keyboard="Text" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center"
-                                    Margin="10,2" Text="{Binding CompanyResponse.Website }"></Entry>
+                                    Margin="10,2" Text="{Binding CompanyResponse.Website}" HorizontalOptions="FillAndExpand"></Entry>
                         </Border>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray">
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,2">
                                 <Entry Placeholder="{Static res:AppResources.plcAddress_AccountPage}" FontAutoScalingEnabled="False" Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" 
-                                        HorizontalTextAlignment="Center" Text="{Binding CompanyResponse.Address }" HorizontalOptions="CenterAndExpand"></Entry>
+                                        HorizontalTextAlignment="Center" Text="{Binding CompanyResponse.Address}" HorizontalOptions="FillAndExpand"></Entry>
                             </StackLayout>
                         </Border>
                     </StackLayout>
