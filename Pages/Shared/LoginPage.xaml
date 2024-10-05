@@ -13,12 +13,19 @@
         <vm:LoginViewModel></vm:LoginViewModel>
     </Controls:CustomControl.BindingContext>-->
 
-    <StackLayout Orientation="Vertical" Margin="30">
-        <!--<Image Source="https://iconape.com/wp-content/png_logo_vector/bntu.png" WidthRequest="140" ></Image>-->
-        <Image Source="logosmall" WidthRequest="300" Margin="20"></Image>
-        <ScrollView VerticalOptions="FillAndExpand">
-            <StackLayout >
-                <Border StrokeShape="RoundRectangle 20" StrokeThickness="1" Stroke="Gray" VerticalOptions="Center" Margin="0,40,0,0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Image x:Name="imgTopBar" Source="topbartr.png" IsAnimationPlaying="True" VerticalOptions="Start" HorizontalOptions="FillAndExpand"></Image>
+        <Image x:Name="imglogosmall" Source="logosmall" IsAnimationPlaying="True" Grid.Row="1" WidthRequest="300" Margin="20,0,20,0"></Image>
+        <ScrollView Grid.Row="2" VerticalOptions="FillAndExpand" Margin="30,0,30,30">
+            <StackLayout>
+                <Border x:Name="brdlogin" StrokeShape="RoundRectangle 20" StrokeThickness="1" Stroke="Gray" VerticalOptions="Center" Margin="0,40,0,0">
                     <StackLayout Margin="20" Spacing="20">
                         <Image>
                             <Image.Source>
@@ -91,13 +98,13 @@
                         </Button>
                     </StackLayout>
                 </Border>
-                <Label Text="{Static res:AppResources.lblForgotPassword_Login}" TextColor="#0471DF" FontSize="13" BackgroundColor="Transparent"
+                <Label x:Name="lblForgetPass" Text="{Static res:AppResources.lblForgotPassword_Login}" TextColor="#0471DF" FontSize="13" BackgroundColor="Transparent"
                        HorizontalOptions="StartAndExpand" Margin="0,20,0,0" FontAttributes="Bold">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoRestPageCommand}"></TapGestureRecognizer>
                     </Label.GestureRecognizers>
                 </Label>
-                <Label Margin="0,15,0,0">
+                <Label x:Name="lblSignup" Margin="0,15,0,0">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="{Static res:AppResources.lblDHAccount_Login}" FontSize="13" TextColor="Gray" FontFamily="Almarai-Regular"></Span>
@@ -113,7 +120,7 @@
                 </Label>
             </StackLayout>
         </ScrollView>
-    </StackLayout>
+    </Grid>
     
 
 

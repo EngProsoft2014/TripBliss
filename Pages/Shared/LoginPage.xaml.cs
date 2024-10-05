@@ -11,7 +11,7 @@ public partial class LoginPage : Controls.CustomControl
     public LoginPage(LoginViewModel vm)
 	{
         InitializeComponent();
-
+        
         BindingContext = vm;
 
         entryEmail.Completed += (object sender, EventArgs e) =>
@@ -22,6 +22,11 @@ public partial class LoginPage : Controls.CustomControl
         {
             ViewModel.ClickLoginCommand.Execute(ViewModel.LoginRequest);
         };
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
     }
 
     [Obsolete]
