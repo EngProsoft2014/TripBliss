@@ -26,226 +26,99 @@
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical" Spacing="15">
 
-            <StackLayout Orientation="Horizontal">
-                <StackLayout HorizontalOptions="StartAndExpand">
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Send Requestes" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Accept Response" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Edit Company Info" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Send Requestes" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Accept Response" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Edit Company Info" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Send Requestes" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Accept Response" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Edit Company Info" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Send Requestes" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Accept Response" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Edit Company Info" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Send Requestes" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Accept Response" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Edit Company Info" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand" Spacing="10">
+                    <StackLayout Orientation="Horizontal" Spacing="20">
+                        <Label Text="User Premission" FontSize="14" TextColor="Black">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference UserPremision},Path=IsVisible}" Value="True">
+                                    <Setter Property="TextColor" Value="Green"></Setter>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource FontFamily="FontIconSolid" Color="Black" Glyph="" Size="15"></FontImageSource>
+                            </Image.Source>
+
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference UserPremision},Path=IsVisible}" Value="True">
+                                    <Setter Property="Source">
+                                        <Setter.Value>
+                                            <FontImageSource FontFamily="FontIconSolid" Color="Green" Glyph="" Size="15"></FontImageSource>
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_UserPremision"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <CollectionView x:Name="UserPremision" ItemsSource="{Binding UserPermissions}" IsVisible="False">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <VerticalStackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="{Binding Name}" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                        <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding Statues}" Color="Green"></CheckBox>
+
+                                    </StackLayout>
+                                    <BoxView Color="Gray" HeightRequest="0.5" HorizontalOptions="FillAndExpand"></BoxView>
+                                </VerticalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </StackLayout>
 
-                <StackLayout HorizontalOptions="End">
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Send Requestes" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Accept Response" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Edit Company Info" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Send Requestes" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Accept Response" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Edit Company Info" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Send Requestes" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Accept Response" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Edit Company Info" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Send Requestes" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Accept Response" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Edit Company Info" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Send Requestes" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Accept Response" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Spacing="3">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Edit Company Info" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <CheckBox HorizontalOptions="EndAndExpand" Color="Green"></CheckBox>
-                        </StackLayout>
-                        
-                    </VerticalStackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand" Spacing="10">
+                    <StackLayout Orientation="Horizontal" Spacing="20">
+                        <Label Text="Request Premission" FontSize="14" TextColor="Black">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference ColcRequestPremision},Path=IsVisible}" Value="True">
+                                    <Setter Property="TextColor" Value="Green"></Setter>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource FontFamily="FontIconSolid" Color="Black" Glyph="" Size="15"></FontImageSource>
+                            </Image.Source>
+
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference ColcRequestPremision},Path=IsVisible}" Value="True">
+                                    <Setter Property="Source">
+                                        <Setter.Value>
+                                            <FontImageSource FontFamily="FontIconSolid" Color="Green" Glyph="" Size="15"></FontImageSource>
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_RequestPremision"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <CollectionView x:Name="ColcRequestPremision" ItemsSource="{Binding RequestPermissions}" IsVisible="False">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <VerticalStackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="{Binding Name}" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                        <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding Statues}" Color="Green"></CheckBox>
+
+                                    </StackLayout>
+                                    <BoxView Color="Gray" HeightRequest="0.5" HorizontalOptions="FillAndExpand"></BoxView>
+                                </VerticalStackLayout>
+                                
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </StackLayout>
             </StackLayout>
+            
         </ScrollView>
-
         <Button Text="Apply" FontAutoScalingEnabled="False" FontAttributes="Bold" TextColor="White" FontSize="14" CornerRadius="10" Margin="20,10,20,0"
                 BackgroundColor="#2fb569">
         </Button>
