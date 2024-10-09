@@ -84,31 +84,39 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 {
 
                     string UserToken = await _service.UserToken();
-
-                    UserDialogs.Instance.ShowLoading();
-                    var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorResponse>(ApiConstants.ResponseDetailsDistApi + $"{Response.DistributorCompanyId}/ResponseWithDistributor/{Response.Id}", Response, UserToken);
-                    UserDialogs.Instance.HideHud();
-
-                    if (json.Item1 != null)
+                    if (Response.TotalPayment > 0)
                     {
-                        // this will delete after Apple aproved                      
-                        if(Response.TotalPayment == 0)
-                        {
-                            await AddPayment();
-                            Response.TotalPayment += 50;
-                        }
-                        var toast = Toast.Make("Successfully for Add Response", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make($"Warning, This order has already been paid for and cannot be modified.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
-
-                        IsShowPaymentBtn = true;
-                        //Controls.StaticMember.WayOfTab = 0;
-                        //await App.Current!.MainPage!.Navigation.PushAsync(new HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service));
                     }
                     else
                     {
-                        var toast = Toast.Make($"Warning, {json.Item2}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                        await toast.Show();
+                        UserDialogs.Instance.ShowLoading();
+                        var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorResponse>(ApiConstants.ResponseDetailsDistApi + $"{Response.DistributorCompanyId}/ResponseWithDistributor/{Response.Id}", Response, UserToken);
+                        UserDialogs.Instance.HideHud();
+
+                        if (json.Item1 != null)
+                        {
+                            // this will delete after Apple aproved                      
+                            if (Response.TotalPayment == 0)
+                            {
+                                await AddPayment();
+                                Response.TotalPayment += 50;
+                            }
+                            var toast = Toast.Make("Successfully for Add Response", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            await toast.Show();
+
+                            IsShowPaymentBtn = true;
+                            //Controls.StaticMember.WayOfTab = 0;
+                            //await App.Current!.MainPage!.Navigation.PushAsync(new HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service));
+                        }
+                        else
+                        {
+                            var toast = Toast.Make($"Warning, {json.Item2}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            await toast.Show();
+                        }
                     }
+                    
                 }
             }
             else
