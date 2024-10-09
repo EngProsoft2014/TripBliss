@@ -91,6 +91,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
                     if (json.Item1 != null)
                     {
+                        // this will delete after Apple aproved
+                        await AddPayment();
+                        Response.TotalPayment = 50;
                         var toast = Toast.Make("Successfully for Add Response", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
 
@@ -211,6 +214,41 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             {
                 return false;
             }
+        }
+
+        // this will delete after Apple aproved
+        async Task AddPayment()
+        {
+            
+            IsBusy = false;
+
+            UserDialogs.Instance.ShowLoading();
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+
+                string UserToken = await _service.UserToken();
+                ResponseWithDistributorPaymentRequest paymentRequest = new ResponseWithDistributorPaymentRequest
+                {
+                    AmountPayment = 50,
+                    PaymentMethod = 1,
+                    dbcr = 1,
+                    Notes = "",
+                    Refnumber = "stetrrcc",
+                };
+
+                var json = await Rep.PostTRAsync<ResponseWithDistributorPaymentRequest, ResponseWithDistributorPaymentResponse>(ApiConstants.AllPaymentApi + $"{Response.Id}/ResponseWithDistributorPayment", paymentRequest, UserToken);
+
+                if (json.Item1 != null)
+                {
+                    
+                }
+                else
+                {
+                    
+                }
+            }
+            UserDialogs.Instance.HideHud();
+            IsBusy = true;
         }
         #endregion
 
