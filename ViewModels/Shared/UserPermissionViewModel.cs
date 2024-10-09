@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Helpers;
 using TripBliss.Models;
-using static AndroidX.Activity.Result.Contract.ActivityResultContracts;
+
 
 namespace TripBliss.ViewModels.Shared
 {

@@ -56,20 +56,29 @@
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_UserPremision"></TapGestureRecognizer>
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
-                    <CollectionView x:Name="UserPremision" ItemsSource="{Binding UserPermissions}" IsVisible="False">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <VerticalStackLayout>
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                        <Label Text="{Binding Name}" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
-                                        <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding Statues}" Color="Green"></CheckBox>
+                    <Border x:Name="UserPremision" Padding="10,0" IsVisible="False">
+                        <CollectionView ItemsSource="{Binding UserPermissions}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <VerticalStackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="{Binding Name}" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding Statues}" Color="Green"></CheckBox>
 
-                                    </StackLayout>
-                                    <BoxView Color="Gray" HeightRequest="0.5" HorizontalOptions="FillAndExpand"></BoxView>
-                                </VerticalStackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                                        </StackLayout>
+                                        <BoxView Color="LightGray" HeightRequest="0.2" HorizontalOptions="FillAndExpand"></BoxView>
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5" StrokeThickness="1"></RoundRectangle>
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="LightGray" Opacity="1"></Shadow>
+                        </Border.Shadow>
+                    </Border>
+                   
                 </StackLayout>
 
                 <StackLayout HorizontalOptions="FillAndExpand" Spacing="10">

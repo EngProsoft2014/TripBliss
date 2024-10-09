@@ -44,7 +44,7 @@
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                             </StackLayout>
                             <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Padding="0,0,0,20">
-                                <StackLayout Spacing="{OnPlatform Android=20, iOS=0}">
+                                <StackLayout Spacing="{OnPlatform Android=0, iOS=0}">
                                     <!--Hotel-->
                                     <StackLayout Spacing="0">
                                         <CarouselView ItemsSource="{Binding RequestDetailes.RequestTravelAgencyHotel}" Margin="5,0" HorizontalScrollBarVisibility="Never" IndicatorView="indicatorView" HorizontalOptions="FillAndExpand" Loop="False" WidthRequest="{OnPlatform iOS=350}" HeightRequest="{OnPlatform iOS=235}">
@@ -131,6 +131,13 @@
                                                   SelectedIndicatorColor="#2fb569"
                                                   HorizontalOptions="Center"
                                                   />
+
+                                        <StackLayout.Triggers>
+                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyHotel.Count}" Value="0">
+                                                <Setter Property="IsVisible" Value="False"></Setter>
+                                                <Setter Property="HeightRequest" Value="0"></Setter>
+                                            </DataTrigger>
+                                        </StackLayout.Triggers>
                                     </StackLayout>
                                     <!--Transportation-->
                                     <StackLayout Spacing="0">
@@ -209,9 +216,14 @@
                                         <IndicatorView x:Name="TransportIndicatorView"
                                                        IndicatorColor="LightGray"
                                                        SelectedIndicatorColor="#2fb569"
-                                                       HorizontalOptions="Center" 
-                                                       />
-                                        
+                                                       HorizontalOptions="Center">
+                                        </IndicatorView>
+                                        <StackLayout.Triggers>
+                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyTransport.Count}" Value="0">
+                                                <Setter Property="IsVisible" Value="False"></Setter>
+                                                <Setter Property="HeightRequest" Value="0"></Setter>
+                                            </DataTrigger>
+                                        </StackLayout.Triggers>
                                     </StackLayout>
                                     <!--AirFlight-->
                                     <StackLayout Spacing="0">
@@ -307,6 +319,12 @@
                                                        SelectedIndicatorColor="#2fb569"
                                                        HorizontalOptions="Center" 
                                                        />
+                                        <StackLayout.Triggers>
+                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyAirFlight.Count}" Value="0">
+                                                <Setter Property="IsVisible" Value="False"></Setter>
+                                                <Setter Property="HeightRequest" Value="0"></Setter>
+                                            </DataTrigger>
+                                        </StackLayout.Triggers>
                                     </StackLayout>
                                     <!--Visa-->
                                     <StackLayout Spacing="0">
@@ -341,6 +359,12 @@
                                                        SelectedIndicatorColor="#2fb569"
                                                        HorizontalOptions="Center" 
                                                        />
+                                        <StackLayout.Triggers>
+                                            <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.RequestTravelAgencyVisa.Count}" Value="0">
+                                                <Setter Property="IsVisible" Value="False"></Setter>
+                                                <Setter Property="HeightRequest" Value="0"></Setter>
+                                            </DataTrigger>
+                                        </StackLayout.Triggers>
                                     </StackLayout>
                                 </StackLayout>
                             </ScrollView>
