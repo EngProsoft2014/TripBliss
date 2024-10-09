@@ -39,13 +39,6 @@ namespace TripBliss
                     fonts.AddFont("ElMessiri-Bold.ttf", "Almarai-Bold");
                 });
 
-            Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping(nameof(SearchBar), (handler, view) =>
-            {
-#if IOS
-            handler.PlatformView.BackgroundColor = UIKit.UIColor.White; 
-#endif
-            });
-
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
