@@ -55,7 +55,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         async Task PaymentClicked()
         {
             bool result = CheckChooseServices();
-            if(result)
+            if (result)
             {
                 var vm = new Tr_D_PaymentViewModel(Response.Id, Response.TotalPriceAgentAccept, Response.TotalPayment, Rep, _service);
                 var page = new PaymentPage(vm);
@@ -78,19 +78,21 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
             if (result)
             {
-                bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Are You Accept This Finall Price?", "Yes", "No");
-
-                if (Connectivity.NetworkAccess == NetworkAccess.Internet && answer)
+                if (Response.TotalPayment > 0)
                 {
+                    await Init(Response.DistributorCompanyId, Response.Id);
+                    var toast = Toast.Make($"Warning, This order has already been paid for and cannot be modified.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
+                else
+                {
+                    bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Are You Accept This Finall Price?", "Yes", "No");
 
-                    string UserToken = await _service.UserToken();
-                    if (Response.TotalPayment > 0)
+                    if (Connectivity.NetworkAccess == NetworkAccess.Internet && answer)
                     {
-                        var toast = Toast.Make($"Warning, This order has already been paid for and cannot be modified.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                        await toast.Show();
-                    }
-                    else
-                    {
+
+                        string UserToken = await _service.UserToken();
+
                         UserDialogs.Instance.ShowLoading();
                         var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorResponse>(ApiConstants.ResponseDetailsDistApi + $"{Response.DistributorCompanyId}/ResponseWithDistributor/{Response.Id}", Response, UserToken);
                         UserDialogs.Instance.HideHud();
@@ -101,7 +103,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                             if (Response.TotalPayment == 0)
                             {
                                 await AddPayment();
-                                Response.TotalPayment += 50;
+                                Response.TotalPayment = 1;
                             }
                             var toast = Toast.Make("Successfully for Add Response", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
@@ -116,7 +118,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                             await toast.Show();
                         }
                     }
-                    
                 }
             }
             else
@@ -196,7 +197,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 {
                     Response = json;
                     bool result = CheckChooseServices();
-                    if(result)
+                    if (result)
                     {
                         IsShowPaymentBtn = true;
                     }
@@ -230,7 +231,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         // this will delete after Apple aproved
         async Task AddPayment()
         {
-            
+
             IsBusy = false;
 
             UserDialogs.Instance.ShowLoading();
@@ -240,7 +241,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 string UserToken = await _service.UserToken();
                 ResponseWithDistributorPaymentRequest paymentRequest = new ResponseWithDistributorPaymentRequest
                 {
-                    AmountPayment = 50,
+                    AmountPayment = 1,
                     PaymentMethod = 1,
                     dbcr = 1,
                     Notes = "",
@@ -251,11 +252,11 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
                 if (json.Item1 != null)
                 {
-                    
+
                 }
                 else
                 {
-                    
+
                 }
             }
             UserDialogs.Instance.HideHud();

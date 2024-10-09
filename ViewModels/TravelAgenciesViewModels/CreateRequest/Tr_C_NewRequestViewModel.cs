@@ -97,11 +97,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 {
                     LstTravelAgencyHotelRequest.Add(HoteltRequest);
                     LstTravelAgencyHotelResponse.Add(HotelResponse);
-                } catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
 
                 }
-                
+
             };
             var page = new HotelServicePage(vm, Rep);
 
@@ -122,7 +123,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     LstTravelAgencyHotelRequest.Add(HoteltRequest);
                     LstTravelAgencyHotelResponse.Add(HotelResponse);
                 }
-                
+
             };
             var page = new HotelServicePage(vm, Rep);
             page.BindingContext = vm;
@@ -172,7 +173,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     LstTravelAgencyTransportRequest.Add(TransportRequest);
                     LstTravelAgencyTransportResponse.Add(TransportResponse);
                 }
-                
+
             };
             var page = new TransportaionServicePage(vm, Rep);
             App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -203,7 +204,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 {
 
                 }
-                
+
 
             };
 
@@ -224,7 +225,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     LstTravelAgencyAirFlightResponse.Add(AirFlightResponse);
                     LstTravelAgencyAirFlightRequest.Add(AirFlightRequest);
                 }
-                
+
             };
             var page = new AirFlightServicePage(vm);
             App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -252,11 +253,11 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     LstTravelAgencyVisaRequest.Add(VisaRequest);
                     LstTravelAgencyVisaResponse.Add(VisaResponse);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
 
                 }
-                
+
             };
 
             App.Current!.MainPage!.Navigation.PushAsync(new VisaServicePage(vm, Rep));
@@ -359,6 +360,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
 
         #endregion
-     
+
     }
 }

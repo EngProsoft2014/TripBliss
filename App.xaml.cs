@@ -50,7 +50,7 @@ namespace TripBliss
         }
 
 
-        void LoadSetting()
+        async void LoadSetting()
         {
             string Lan = Preferences.Default.Get("Lan", "en");
             if (Lan == "ar")
@@ -63,6 +63,10 @@ namespace TripBliss
                 CultureInfo.CurrentCulture = new CultureInfo("en");
                 CultureInfo.CurrentUICulture = new CultureInfo("en");
             }
+
+            string UserToken = await _service.UserToken();
+
+            Constants.Permissions.DecodeJwtToClass(UserToken);
         }
 
         protected override void OnStart()

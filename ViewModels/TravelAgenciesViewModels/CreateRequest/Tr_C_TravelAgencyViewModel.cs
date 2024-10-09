@@ -147,22 +147,31 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         async Task AddRequest()
         {
-            if(IndexTap == 0)
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.TR_Add_Request))
             {
-                await App.Current!.MainPage!.Navigation.PushAsync(new ChooseDistributorPage(new Tr_C_ChooseDistributorViewModel(Rep, _service, DistributorCompanys), Rep));
+                if (IndexTap == 0)
+                {
+                    await App.Current!.MainPage!.Navigation.PushAsync(new ChooseDistributorPage(new Tr_C_ChooseDistributorViewModel(Rep, _service, DistributorCompanys), Rep));
+                }
+                else
+                {
+                    ObservableCollection<DistributorCompanyResponse> LstDisModel = new ObservableCollection<DistributorCompanyResponse>();
+                    FavouriteDistributorCompanys.ForEach(f =>
+                    {
+                        if (f.DistributorCompany != null)
+                        {
+                            LstDisModel.Add(f.DistributorCompany!);
+                        }
+                    });
+                    await App.Current!.MainPage!.Navigation.PushAsync(new ChooseDistributorPage(new Tr_C_ChooseDistributorViewModel(Rep, _service, LstDisModel), Rep));
+                }
             }
             else
             {
-                ObservableCollection<DistributorCompanyResponse> LstDisModel = new ObservableCollection<DistributorCompanyResponse>();
-                FavouriteDistributorCompanys.ForEach(f =>
-                {
-                    if(f.DistributorCompany != null)
-                    {
-                        LstDisModel.Add(f.DistributorCompany!);
-                    } 
-                });
-                await App.Current!.MainPage!.Navigation.PushAsync(new ChooseDistributorPage(new Tr_C_ChooseDistributorViewModel(Rep, _service, LstDisModel), Rep));
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
             }
+
         }
 
         [RelayCommand]

@@ -1,5 +1,7 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using Akavache;
+using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
+using System.Reactive.Linq;
 using TripBliss.Helpers;
 using TripBliss.Pages;
 using TripBliss.Pages.MainPopups;
@@ -40,6 +42,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             Action action = async () =>
             {
                 Preferences.Default.Clear();
+                await BlobCache.LocalMachine.InvalidateAll();
+                await BlobCache.LocalMachine.Vacuum();
                 await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service)));
             };
             Controls.StaticMember.ShowSnackBar("Do you want to Logout?", Controls.StaticMember.SnackBarColor, Controls.StaticMember.SnackBarTextColor, action);
