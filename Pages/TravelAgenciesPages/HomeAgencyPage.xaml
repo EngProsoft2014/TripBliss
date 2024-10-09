@@ -133,10 +133,10 @@
                     <tabView:SfTabItem.Content>
                         <ContentView x:Name="DisConView">
                             <StackLayout Orientation="Vertical">
-                                <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android=20, iOS='20,0,20,0'}">
+                                <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android=20, iOS='20,0,20,10'}">
                                     <Label Text="{Static res:AppResources.hdrDistributors}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="End"
                                            TextColor="Black"></Label>
-                                    <Button Text="{Static res:AppResources.btnAddRequest}" FontAutoScalingEnabled="False" WidthRequest="95" Padding="0,5,0,5" HeightRequest="35" FontSize="12"
+                                    <Button Text="{Static res:AppResources.btnAddRequest}" FontAutoScalingEnabled="False" WidthRequest="95" Padding="0,0,0,0" HeightRequest="30" FontSize="14"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=AddRequestCommand}" IsEnabled="False" Opacity=".6"
                                             BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" Margin="0,0,0,0" FontAttributes="Bold">
                                         <Button.Triggers>

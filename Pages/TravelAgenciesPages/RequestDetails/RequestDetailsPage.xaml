@@ -47,7 +47,7 @@
                                 <StackLayout Spacing="{OnPlatform Android=0, iOS=0}">
                                     <!--Hotel-->
                                     <StackLayout Spacing="0">
-                                        <CarouselView ItemsSource="{Binding RequestDetailes.RequestTravelAgencyHotel}" Margin="5,0" HorizontalScrollBarVisibility="Never" IndicatorView="indicatorView" HorizontalOptions="FillAndExpand" Loop="False" WidthRequest="{OnPlatform iOS=350}" HeightRequest="{OnPlatform iOS=235}">
+                                        <CarouselView ItemsSource="{Binding RequestDetailes.RequestTravelAgencyHotel}" Margin="5,0" HorizontalScrollBarVisibility="Never" IndicatorView="indicatorView" HorizontalOptions="FillAndExpand" Loop="False" HeightRequest="{OnPlatform iOS=235}">
                                             <CarouselView.ItemTemplate>
                                                 <DataTemplate>
 
@@ -141,7 +141,7 @@
                                     </StackLayout>
                                     <!--Transportation-->
                                     <StackLayout Spacing="0">
-                                        <CarouselView ItemsSource="{Binding RequestDetailes.RequestTravelAgencyTransport}" Margin="5,0" IndicatorView="TransportIndicatorView" HorizontalScrollBarVisibility="Never" HorizontalOptions="FillAndExpand" Loop="False" WidthRequest="{OnPlatform iOS=350}" HeightRequest="{OnPlatform iOS=235}">
+                                        <CarouselView ItemsSource="{Binding RequestDetailes.RequestTravelAgencyTransport}" Margin="5,0" IndicatorView="TransportIndicatorView" HorizontalScrollBarVisibility="Never" HorizontalOptions="FillAndExpand" Loop="False" HeightRequest="{OnPlatform iOS=235}">
                                             <CarouselView.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,10">
@@ -227,7 +227,7 @@
                                     </StackLayout>
                                     <!--AirFlight-->
                                     <StackLayout Spacing="0">
-                                        <CarouselView ItemsSource="{Binding RequestDetailes.RequestTravelAgencyAirFlight}" Margin="5,0" IndicatorView="AirFlightIndicatorView" HorizontalScrollBarVisibility="Never" HorizontalOptions="FillAndExpand" Loop="False" WidthRequest="{OnPlatform iOS=350}" HeightRequest="{OnPlatform iOS=290}">
+                                        <CarouselView ItemsSource="{Binding RequestDetailes.RequestTravelAgencyAirFlight}" Margin="5,0" IndicatorView="AirFlightIndicatorView" HorizontalScrollBarVisibility="Never" HorizontalOptions="FillAndExpand" Loop="False" HeightRequest="{OnPlatform iOS=290}">
                                             <CarouselView.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,10">
@@ -328,7 +328,7 @@
                                     </StackLayout>
                                     <!--Visa-->
                                     <StackLayout Spacing="0">
-                                        <CarouselView ItemsSource="{Binding RequestDetailes.RequestTravelAgencyVisa}" Margin="5,0" IndicatorView="VisaIndicatorView" HorizontalScrollBarVisibility="Never" HorizontalOptions="FillAndExpand" Loop="False" WidthRequest="{OnPlatform iOS=350}" HeightRequest="{OnPlatform iOS=90}">
+                                        <CarouselView ItemsSource="{Binding RequestDetailes.RequestTravelAgencyVisa}" Margin="5,0" IndicatorView="VisaIndicatorView" HorizontalScrollBarVisibility="Never" HorizontalOptions="FillAndExpand" Loop="False" HeightRequest="{OnPlatform iOS=90}">
                                             <CarouselView.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,10">

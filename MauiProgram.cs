@@ -11,6 +11,7 @@ using TripBliss.ViewModels;
 using TripBliss.Services.Data;
 using Maui.PDFView;
 using TripBliss.Pages.Shared;
+using Microsoft.Maui.Handlers;
 
 namespace TripBliss
 {
@@ -38,8 +39,15 @@ namespace TripBliss
                     fonts.AddFont("ElMessiri-Bold.ttf", "Almarai-Bold");
                 });
 
+            Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping(nameof(SearchBar), (handler, view) =>
+            {
+#if IOS
+            handler.PlatformView.BackgroundColor = UIKit.UIColor.White; 
+#endif
+            });
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
             Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(Entry), (handler, view) =>
             {
@@ -48,7 +56,7 @@ namespace TripBliss
 #endif
             });
             builder.Services.AddSingleton<ServicesService>();
-            builder.Services.AddScoped<IGenericRepository,GenericRepository>();
+            builder.Services.AddScoped<IGenericRepository, GenericRepository>();
             //builder.Services.AddScoped<IServicesService,ServicesService>();
 
             builder.Services.AddTransient<SignUpViewModel>();
