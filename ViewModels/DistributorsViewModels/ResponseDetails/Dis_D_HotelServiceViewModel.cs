@@ -22,6 +22,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         ResponseWithDistributorHotelResponse? hotelService = new ResponseWithDistributorHotelResponse();
         [ObservableProperty]
         int totalPayment = 0;
+        int Oldprice;
 
         public delegate void HotelDelegte(ResponseWithDistributorHotelResponse HotelResponse);
         public event HotelDelegte HotelClose;
@@ -43,12 +44,14 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             TotalPayment = payment;
             Lang = Preferences.Default.Get("Lan", "en");
             HotelService = model;
+            Oldprice = model.Price;
         }
 
         #region RelayCommand
         [RelayCommand]
         async Task BackClicked()
         {
+            HotelService!.Price = Oldprice;
             await App.Current!.MainPage!.Navigation.PopAsync();
         }
 
@@ -56,9 +59,25 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task ApplyHotelClicked(ResponseWithDistributorHotelResponse HotelResponseModel)
         {
-            bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Are You Accept This Price?", "Yes", "No");
-            HotelService!.AcceptPriceDis = answer;
-            await App.Current!.MainPage!.Navigation.PopAsync();
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Accept_Price))
+            {
+                bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Are You Accept This Price?", "Yes", "No");
+                if (answer)
+                {
+                    HotelService!.AcceptPriceDis = answer;
+                    await App.Current!.MainPage!.Navigation.PopAsync();
+                }
+                else
+                {
+                    HotelService!.Price = Oldprice;
+                    await App.Current!.MainPage!.Navigation.PopAsync();
+                } 
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
         }
         [RelayCommand]
         async Task ActiveClicked()

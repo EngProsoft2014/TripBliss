@@ -47,6 +47,7 @@ namespace TripBliss
             {
                 h.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
             });
+            
         }
 
         protected override void AttachBaseContext(Context? @base)

@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.Offer
         #endregion
 
         IGenericRepository Rep;
+
         #region Cons
         public Dis_O_OfferDetailsViewModel(IGenericRepository generic)
         {
@@ -47,9 +49,17 @@ namespace TripBliss.ViewModels.DistributorsViewModels.Offer
         }
 
         [RelayCommand]
-        async void GoToViewers()
+        async Task GoToViewers()
         {
-            await App.Current.MainPage.Navigation.PushAsync(new OfferViewersPage(new Dis_O_OfferViewersViewModel(Rep)));
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.DS_Show_Offer_Viewers))
+            {
+                await App.Current!.MainPage!.Navigation.PushAsync(new OfferViewersPage(new Dis_O_OfferViewersViewModel(Rep)));
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
         }
         #endregion
     }

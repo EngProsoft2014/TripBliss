@@ -295,9 +295,6 @@
 	  <MauiXaml Update="Pages\TravelAgenciesPages\CreateRequest\VisaServicePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\TravelAgenciesPages\Guests\Tr_AddGuestPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Pages\TravelAgenciesPages\HomeAgencyPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

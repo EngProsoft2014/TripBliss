@@ -58,17 +58,25 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task ActiveClicked()
         {
-            if (TotalPayment == 0)
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_Attachments))
             {
-                var toast = Toast.Make("Please make sure to pay part of the amount due.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                await toast.Show();
+                if (TotalPayment == 0)
+                {
+                    var toast = Toast.Make("Please make sure to pay part of the amount due.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
+                else
+                {
+                    var vm = new VisaActivateViewModel(Moddel, Rep, _service);
+                    var page = new VisaAttachmentsPage(vm);
+                    page.BindingContext = vm;
+                    await App.Current!.MainPage!.Navigation.PushAsync(page);
+                }
             }
             else
             {
-                var vm = new VisaActivateViewModel(Moddel, Rep, _service);
-                var page = new VisaAttachmentsPage(vm);
-                page.BindingContext = vm;
-                await App.Current!.MainPage!.Navigation.PushAsync(page);
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
             }
 
         }

@@ -88,41 +88,48 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         async Task ConfirmeData()
         {
 
-
-            IsBusy = false;
-
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.UpdateDistributorCompanyAccount))
             {
-                CompanyRequest = new DistributorCompanyRequest
-                {
-                    CompanyName = CompanyResponse.CompanyName,
-                    Extension = CompanyResponse.Extension,
-                    Logo = CompanyResponse.Logo,
-                    Address = CompanyResponse.Address,
-                    Email = CompanyResponse.Email,
-                    ExpireDateAcc = CompanyResponse.ExpireDateAcc,
-                    Phone = CompanyResponse.Phone,
-                    Policy = CompanyResponse.Policy,
-                    Review = CompanyResponse.Review,
-                    SendWithAllBulk = CompanyResponse.SendWithAllBulk,
-                    ImgFile = CompanyResponse.ImgFile,
-                    StripePassword = CompanyResponse.StripePassword,
-                    StripeSecretKey = CompanyResponse.StripeSecretKey,
-                    StripeUsername = CompanyResponse.StripeUsername,
-                    Website = CompanyResponse.Website   
-                };
-                string UserToken = await _service.UserToken();
+                IsBusy = false;
 
-                string id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
-                var json = await Rep.PutAsync<DistributorCompanyRequest>(ApiConstants.PutDistCompanyDetailsApi + id, CompanyRequest, UserToken);
-
-                if (json != null)
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
-                    await GetCompanyDetiles();
+                    CompanyRequest = new DistributorCompanyRequest
+                    {
+                        CompanyName = CompanyResponse.CompanyName,
+                        Extension = CompanyResponse.Extension,
+                        Logo = CompanyResponse.Logo,
+                        Address = CompanyResponse.Address,
+                        Email = CompanyResponse.Email,
+                        ExpireDateAcc = CompanyResponse.ExpireDateAcc,
+                        Phone = CompanyResponse.Phone,
+                        Policy = CompanyResponse.Policy,
+                        Review = CompanyResponse.Review,
+                        SendWithAllBulk = CompanyResponse.SendWithAllBulk,
+                        ImgFile = CompanyResponse.ImgFile,
+                        StripePassword = CompanyResponse.StripePassword,
+                        StripeSecretKey = CompanyResponse.StripeSecretKey,
+                        StripeUsername = CompanyResponse.StripeUsername,
+                        Website = CompanyResponse.Website
+                    };
+                    string UserToken = await _service.UserToken();
+
+                    string id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
+                    var json = await Rep.PutAsync<DistributorCompanyRequest>(ApiConstants.PutDistCompanyDetailsApi + id, CompanyRequest, UserToken);
+
+                    if (json != null)
+                    {
+                        await GetCompanyDetiles();
+                    }
                 }
-            }
 
-            IsBusy = true;
+                IsBusy = true;
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
         }
         [RelayCommand]
         async Task BackClicked()

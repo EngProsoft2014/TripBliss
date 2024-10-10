@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
 using System;
 using System.Collections.Generic;
@@ -33,27 +34,53 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         [RelayCommand]
         async Task DocumentClick()
         {
-            var vm = new DocumentsViewModel(Rep, _service);
-            var page = new DocumentsPage(vm);
-            page.BindingContext = vm;
-            await App.Current!.MainPage!.Navigation.PushAsync(page);
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_Documents))
+            {
+                var vm = new DocumentsViewModel(Rep, _service);
+                var page = new DocumentsPage(vm);
+                page.BindingContext = vm;
+                await App.Current!.MainPage!.Navigation.PushAsync(page);
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
         }
         [RelayCommand]
         async Task UsersClick()
         {
-            var vm = new UsersViewModel(Rep, _service);
-            var page = new UsersPage(vm);
-            page.BindingContext = vm;
-            await App.Current!.MainPage!.Navigation.PushAsync(page);
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_Users))
+            {
+                var vm = new UsersViewModel(Rep, _service);
+                var page = new UsersPage(vm);
+                page.BindingContext = vm;
+                await App.Current!.MainPage!.Navigation.PushAsync(page);
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+                
         }
 
         [RelayCommand]
         async Task AccountClick()
         {
-            var vm = new Dis_AccountViewModel(Rep, _service);
-            var page = new Dis_AccountPage();
-            page.BindingContext = vm;
-            await App.Current!.MainPage!.Navigation.PushAsync(page);
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.ShowDistributorCompanyAccount))
+            {
+                var vm = new Dis_AccountViewModel(Rep, _service);
+                var page = new Dis_AccountPage();
+                page.BindingContext = vm;
+                await App.Current!.MainPage!.Navigation.PushAsync(page);
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+                
         }
 
         [RelayCommand]

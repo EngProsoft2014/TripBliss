@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using System;
@@ -38,7 +39,16 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         #region Methods
         async void Init()
         {
-            await GetRequestes();
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_Home_Requests))
+            {
+                await GetRequestes();
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+                
         }
 
         async Task GetRequestes()
@@ -73,7 +83,15 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         [RelayCommand]
         async Task Selection(ResponseWithDistributorResponse model)
         {
-            await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new Dis_D_RequestDetailsViewModel(model.Id, Rep, _service)));
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_Response))
+            {
+                await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new Dis_D_RequestDetailsViewModel(model.Id, Rep, _service)));
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
         }
         #endregion
     }

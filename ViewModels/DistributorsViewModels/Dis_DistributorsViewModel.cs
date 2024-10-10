@@ -31,11 +31,22 @@ namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
         {
             Rep = generic;
             TravelAgencies = new ObservableCollection<TravelAgenciesModel>();
-            LoadData();
+            Init();
             _service = service;
         }
 
-
+        async void Init()
+        {
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.DS_Show_Agencies))
+            {
+                LoadData();
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+        }
         void LoadData()
         {
             TravelAgencies.Add(new TravelAgenciesModel
@@ -115,11 +126,6 @@ namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
         {
            await App.Current.MainPage.Navigation.PopAsync();
         }
-        //[RelayCommand]
-        //async void OnSelection()
-        //{
-        //    await App.Current.MainPage.Navigation.PushAsync(new NewRequestPage());
-        //}
 
 
     }

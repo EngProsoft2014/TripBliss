@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -28,9 +29,21 @@ namespace TripBliss.ViewModels.DistributorsViewModels.Offer
             Rep = generic;
             //SelectedItem = new OfferModel();
             Offers = new ObservableCollection<OfferModel>();
-            LoadData();
+            Init();
         }
 
+        async void Init()
+        {
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_Offers))
+            {
+                LoadData();
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+        }
         void LoadData()
         {
             Offers.Add(new OfferModel()
@@ -85,6 +98,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.Offer
         [RelayCommand]
         async Task SelectionOffer(OfferModel model)
         {
+
             var Vm = new Dis_O_OfferDetailsViewModel(model,Rep);
             var page = new OfferDetailsPage(Vm);
             page.BindingContext = Vm;   
@@ -94,7 +108,15 @@ namespace TripBliss.ViewModels.DistributorsViewModels.Offer
         [RelayCommand]
         async Task CreateOffer()
         {
-            await App.Current!.MainPage!.Navigation.PushAsync(new CreateOfferPage(new Dis_O_CreateOfferViewModel(Rep) ));
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.DS_Add_Offer))
+            {
+                await App.Current!.MainPage!.Navigation.PushAsync(new CreateOfferPage(new Dis_O_CreateOfferViewModel(Rep)));
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
         }
 
     }

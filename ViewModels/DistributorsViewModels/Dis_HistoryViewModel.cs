@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,12 +23,26 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         {
             Rep = generic;
             Requests = new ObservableCollection<RequestClassModel>();
-            LoadData();
+            Init();
+
         }
 
 
 
         #region Methods
+
+        async void Init()
+        {
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_History))
+            {
+                LoadData();
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+        }
         void LoadData()
         {
             Requests.Add(new RequestClassModel()
