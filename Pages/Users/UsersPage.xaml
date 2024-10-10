@@ -42,7 +42,8 @@
                         <Border StrokeShape="RoundRectangle 10" BackgroundColor="#2fa562">
                             <Label Text="{Binding UserName}" Margin="10,7,10,7" FontSize="15" TextColor="White" VerticalTextAlignment="Center"></Label>
                             <Border.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:UsersViewModel}}, Path=UserClickCommand}"></TapGestureRecognizer>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:UsersViewModel}}, Path=UserClickCommand}"
+                                                      CommandParameter="{Binding}"></TapGestureRecognizer>
                             </Border.GestureRecognizers>
                         </Border>
                         

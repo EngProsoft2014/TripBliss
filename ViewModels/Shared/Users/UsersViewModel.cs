@@ -65,15 +65,17 @@ namespace TripBliss.ViewModels.Users
             }
         }
         [RelayCommand]
-        async Task UserClick()
+        async Task UserClick(ApplicationUserResponse model)
         {
 
             if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_User_Details))
             {
-                var vm = new UserPermissionViewModel(Rep, _service);
+                var vm = new UserPermissionViewModel(Rep, _service,model.Id);
                 var page = new UserPermissionPage();
                 page.BindingContext = vm;
                 await App.Current!.MainPage!.Navigation.PushAsync(page);
+                
+             
             }
             else
             {

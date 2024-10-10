@@ -9,25 +9,87 @@ public partial class UserPermissionPage : Controls.CustomControl
 
     private void TapGestureRecognizer_UserPremision(object sender, TappedEventArgs e)
     {
-        if (UserPremision.IsVisible == false)
+        if (DetailsRequest.IsVisible == false)
         {
-            UserPremision.IsVisible = true;
+            DetailsRequest.IsVisible = true;
         }
         else
         {
-            UserPremision.IsVisible = false;
+            DetailsRequest.IsVisible = false;
         }
     }
 
-    private void TapGestureRecognizer_RequestPremision(object sender, TappedEventArgs e)
+    private void TapGestureRecognizer_RequestTravelAgency(object sender, TappedEventArgs e)
     {
-        if (ColcRequestPremision.IsVisible == false)
+        if (RequestTravelAgency.IsVisible == false)
         {
-            ColcRequestPremision.IsVisible = true;
+            RequestTravelAgency.IsVisible = true;
         }
         else
         {
-            ColcRequestPremision.IsVisible = false;
+            RequestTravelAgency.IsVisible = false;
         }
     }
+
+    private void TapGestureRecognizer_Offer(object sender, TappedEventArgs e)
+    {
+        if (Offer.IsVisible == false)
+        {
+            Offer.IsVisible = true;
+        }
+        else
+        {
+            Offer.IsVisible = false;
+        }
+    }
+
+    private void TapGestureRecognizer_UsersColc(object sender, TappedEventArgs e)
+    {
+        if (UsersColc.IsVisible == false)
+        {
+            UsersColc.IsVisible = true;
+        }
+        else
+        {
+            UsersColc.IsVisible = false;
+        }
+    }
+
+    private void TapGestureRecognizer_Documents(object sender, TappedEventArgs e)
+    {
+        if (Documents.IsVisible == false)
+        {
+            Documents.IsVisible = true;
+        }
+        else
+        {
+            Documents.IsVisible = false;
+        }
+    }
+
+    private void TapGestureRecognizer_History(object sender, TappedEventArgs e)
+    {
+        if (History.IsVisible == false)
+        {
+            History.IsVisible = true;
+        }
+        else
+        {
+            History.IsVisible = false;
+        }
+    }
+
+    private void TapGestureRecognizer_TravelAgencyCompany(object sender, TappedEventArgs e)
+    {
+        if (TravelAgencyCompany.IsVisible == false)
+        {
+            TravelAgencyCompany.IsVisible = true;
+        }
+        else
+        {
+            TravelAgencyCompany.IsVisible = false;
+        }
+    }
+
+    
 }

@@ -30,9 +30,9 @@
 
                 <StackLayout HorizontalOptions="FillAndExpand" Spacing="10">
                     <StackLayout Orientation="Horizontal" Spacing="20">
-                        <Label Text="User Premission" FontSize="14" TextColor="Black">
+                        <Label Text="Details Request" FontSize="14" TextColor="Black">
                             <Label.Triggers>
-                                <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference UserPremision},Path=IsVisible}" Value="True">
+                                <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference DetailsRequest},Path=IsVisible}" Value="True">
                                     <Setter Property="TextColor" Value="Green"></Setter>
                                 </DataTrigger>
                             </Label.Triggers>
@@ -43,7 +43,7 @@
                             </Image.Source>
 
                             <Image.Triggers>
-                                <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference UserPremision},Path=IsVisible}" Value="True">
+                                <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference DetailsRequest},Path=IsVisible}" Value="True">
                                     <Setter Property="Source">
                                         <Setter.Value>
                                             <FontImageSource FontFamily="FontIconSolid" Color="Green" Glyph="" Size="15"></FontImageSource>
@@ -56,14 +56,14 @@
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_UserPremision"></TapGestureRecognizer>
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
-                    <Border x:Name="UserPremision" Padding="10,0" IsVisible="False">
-                        <CollectionView ItemsSource="{Binding UserPermissions}">
+                    <Border x:Name="DetailsRequest" Padding="10,0" IsVisible="False">
+                        <CollectionView ItemsSource="{Binding DetailsRequest}">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <VerticalStackLayout>
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                            <Label Text="{Binding Name}" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
-                                            <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding Statues}" Color="Green"></CheckBox>
+                                            <Label Text="{Binding claimTitle}" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
 
                                         </StackLayout>
                                         <BoxView Color="LightGray" HeightRequest="0.2" HorizontalOptions="FillAndExpand"></BoxView>
@@ -83,9 +83,9 @@
 
                 <StackLayout HorizontalOptions="FillAndExpand" Spacing="10">
                     <StackLayout Orientation="Horizontal" Spacing="20">
-                        <Label Text="Request Premission" FontSize="14" TextColor="Black">
+                        <Label Text="Request Travel Agency" FontSize="14" TextColor="Black">
                             <Label.Triggers>
-                                <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference ColcRequestPremision},Path=IsVisible}" Value="True">
+                                <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference RequestTravelAgency},Path=IsVisible}" Value="True">
                                     <Setter Property="TextColor" Value="Green"></Setter>
                                 </DataTrigger>
                             </Label.Triggers>
@@ -96,7 +96,7 @@
                             </Image.Source>
 
                             <Image.Triggers>
-                                <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference ColcRequestPremision},Path=IsVisible}" Value="True">
+                                <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference RequestTravelAgency},Path=IsVisible}" Value="True">
                                     <Setter Property="Source">
                                         <Setter.Value>
                                             <FontImageSource FontFamily="FontIconSolid" Color="Green" Glyph="" Size="15"></FontImageSource>
@@ -106,30 +106,307 @@
                             </Image.Triggers>
                         </Image>
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TapGestureRecognizer_RequestPremision"></TapGestureRecognizer>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_RequestTravelAgency"></TapGestureRecognizer>
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
-                    <CollectionView x:Name="ColcRequestPremision" ItemsSource="{Binding RequestPermissions}" IsVisible="False">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <VerticalStackLayout>
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                        <Label Text="{Binding Name}" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
-                                        <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding Statues}" Color="Green"></CheckBox>
+                    <Border x:Name="RequestTravelAgency" Padding="10,0" IsVisible="False">
+                        <CollectionView ItemsSource="{Binding RequestTravelAgency}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <VerticalStackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="{Binding claimTitle}" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
 
-                                    </StackLayout>
-                                    <BoxView Color="Gray" HeightRequest="0.5" HorizontalOptions="FillAndExpand"></BoxView>
-                                </VerticalStackLayout>
-                                
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                                        </StackLayout>
+                                        <BoxView Color="LightGray" HeightRequest="0.2" HorizontalOptions="FillAndExpand"></BoxView>
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5" StrokeThickness="1"></RoundRectangle>
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="LightGray" Opacity="1"></Shadow>
+                        </Border.Shadow>
+                    </Border>
+                    <StackLayout.Triggers>
+                        <DataTrigger TargetType="StackLayout" Binding="{Binding TOD}" Value="D">
+                            <Setter Property="IsVisible" Value="False"></Setter>
+                        </DataTrigger>
+                    </StackLayout.Triggers>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="FillAndExpand" Spacing="10">
+                    <StackLayout Orientation="Horizontal" Spacing="20">
+                        <Label Text="Offer" FontSize="14" TextColor="Black">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Offer},Path=IsVisible}" Value="True">
+                                    <Setter Property="TextColor" Value="Green"></Setter>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource FontFamily="FontIconSolid" Color="Black" Glyph="" Size="15"></FontImageSource>
+                            </Image.Source>
+
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference Offer},Path=IsVisible}" Value="True">
+                                    <Setter Property="Source">
+                                        <Setter.Value>
+                                            <FontImageSource FontFamily="FontIconSolid" Color="Green" Glyph="" Size="15"></FontImageSource>
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Offer"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <Border x:Name="Offer" Padding="10,0" IsVisible="False">
+                        <CollectionView ItemsSource="{Binding Offer}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <VerticalStackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="{Binding claimTitle}" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
+
+                                        </StackLayout>
+                                        <BoxView Color="LightGray" HeightRequest="0.2" HorizontalOptions="FillAndExpand"></BoxView>
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5" StrokeThickness="1"></RoundRectangle>
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="LightGray" Opacity="1"></Shadow>
+                        </Border.Shadow>
+                    </Border>
+
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="FillAndExpand" Spacing="10">
+                    <StackLayout Orientation="Horizontal" Spacing="20">
+                        <Label Text="Users" FontSize="14" TextColor="Black">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference UsersColc},Path=IsVisible}" Value="True">
+                                    <Setter Property="TextColor" Value="Green"></Setter>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource FontFamily="FontIconSolid" Color="Black" Glyph="" Size="15"></FontImageSource>
+                            </Image.Source>
+
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference UsersColc},Path=IsVisible}" Value="True">
+                                    <Setter Property="Source">
+                                        <Setter.Value>
+                                            <FontImageSource FontFamily="FontIconSolid" Color="Green" Glyph="" Size="15"></FontImageSource>
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_UsersColc"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <Border x:Name="UsersColc" Padding="10,0" IsVisible="False">
+                        <CollectionView ItemsSource="{Binding Users}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <VerticalStackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="{Binding claimTitle}" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
+
+                                        </StackLayout>
+                                        <BoxView Color="LightGray" HeightRequest="0.2" HorizontalOptions="FillAndExpand"></BoxView>
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5" StrokeThickness="1"></RoundRectangle>
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="LightGray" Opacity="1"></Shadow>
+                        </Border.Shadow>
+                    </Border>
+
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="FillAndExpand" Spacing="10">
+                    <StackLayout Orientation="Horizontal" Spacing="20">
+                        <Label Text="Documents" FontSize="14" TextColor="Black">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Documents},Path=IsVisible}" Value="True">
+                                    <Setter Property="TextColor" Value="Green"></Setter>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource FontFamily="FontIconSolid" Color="Black" Glyph="" Size="15"></FontImageSource>
+                            </Image.Source>
+
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference Documents},Path=IsVisible}" Value="True">
+                                    <Setter Property="Source">
+                                        <Setter.Value>
+                                            <FontImageSource FontFamily="FontIconSolid" Color="Green" Glyph="" Size="15"></FontImageSource>
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Documents"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <Border x:Name="Documents" Padding="10,0" IsVisible="False">
+                        <CollectionView ItemsSource="{Binding Documents}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <VerticalStackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="{Binding claimTitle}" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
+
+                                        </StackLayout>
+                                        <BoxView Color="LightGray" HeightRequest="0.2" HorizontalOptions="FillAndExpand"></BoxView>
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5" StrokeThickness="1"></RoundRectangle>
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="LightGray" Opacity="1"></Shadow>
+                        </Border.Shadow>
+                    </Border>
+
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="FillAndExpand" Spacing="10">
+                    <StackLayout Orientation="Horizontal" Spacing="20">
+                        <Label Text="History" FontSize="14" TextColor="Black">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference History},Path=IsVisible}" Value="True">
+                                    <Setter Property="TextColor" Value="Green"></Setter>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource FontFamily="FontIconSolid" Color="Black" Glyph="" Size="15"></FontImageSource>
+                            </Image.Source>
+
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference History},Path=IsVisible}" Value="True">
+                                    <Setter Property="Source">
+                                        <Setter.Value>
+                                            <FontImageSource FontFamily="FontIconSolid" Color="Green" Glyph="" Size="15"></FontImageSource>
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_History"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <Border x:Name="History" Padding="10,0" IsVisible="False">
+                        <CollectionView ItemsSource="{Binding History}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <VerticalStackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="{Binding claimTitle}" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
+
+                                        </StackLayout>
+                                        <BoxView Color="LightGray" HeightRequest="0.2" HorizontalOptions="FillAndExpand"></BoxView>
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5" StrokeThickness="1"></RoundRectangle>
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="LightGray" Opacity="1"></Shadow>
+                        </Border.Shadow>
+                    </Border>
+
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="FillAndExpand" Spacing="10">
+                    <StackLayout Orientation="Horizontal" Spacing="20">
+                        <Label Text="Company Account" FontSize="14" TextColor="Black">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference TravelAgencyCompany},Path=IsVisible}" Value="True">
+                                    <Setter Property="TextColor" Value="Green"></Setter>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource FontFamily="FontIconSolid" Color="Black" Glyph="" Size="15"></FontImageSource>
+                            </Image.Source>
+
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference TravelAgencyCompany},Path=IsVisible}" Value="True">
+                                    <Setter Property="Source">
+                                        <Setter.Value>
+                                            <FontImageSource FontFamily="FontIconSolid" Color="Green" Glyph="" Size="15"></FontImageSource>
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_TravelAgencyCompany"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <Border x:Name="TravelAgencyCompany" Padding="10,0" IsVisible="False">
+                        <CollectionView ItemsSource="{Binding CompanyAccount}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <VerticalStackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Label Text="{Binding claimTitle}" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
+
+                                        </StackLayout>
+                                        <BoxView Color="LightGray" HeightRequest="0.2" HorizontalOptions="FillAndExpand"></BoxView>
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5" StrokeThickness="1"></RoundRectangle>
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="LightGray" Opacity="1"></Shadow>
+                        </Border.Shadow>
+                    </Border>
+
                 </StackLayout>
             </StackLayout>
             
         </ScrollView>
         <Button Text="Apply" FontAutoScalingEnabled="False" FontAttributes="Bold" TextColor="White" FontSize="14" CornerRadius="10" Margin="20,10,20,0"
-                BackgroundColor="#2fb569">
+                BackgroundColor="#2fb569" Command="{Binding ApplyClickCommand}">
         </Button>
     </StackLayout>
 </Controls:CustomControl>
