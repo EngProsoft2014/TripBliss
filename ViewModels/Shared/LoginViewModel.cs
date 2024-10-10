@@ -125,6 +125,7 @@ namespace TripBliss.ViewModels
                             Preferences.Default.Set(ApiConstants.userCategory, UserModel.UserCategory);
                             Preferences.Default.Set(ApiConstants.travelAgencyCompanyId, UserModel.TravelAgencyCompanyId);
                             Preferences.Default.Set(ApiConstants.distributorCompanyId, UserModel.DistributorCompanyId);
+ 
                             await BlobCache.LocalMachine.InsertObject(ServicesService.UserTokenServiceKey, UserModel?.Token, DateTimeOffset.Now.AddMinutes(43200));
 
                             Constants.Permissions.DecodeJwtToClass(UserModel?.Token!);

@@ -14,6 +14,7 @@ public partial class HomeAgencyPage : Controls.CustomControl
     public HomeAgencyPage(Tr_HomeViewModel viewModel,IGenericRepository generic, Services.Data.ServicesService service)
     {
         InitializeComponent();
+
         this.BindingContext = viewModel;
         Rep = generic;
         _service = service;

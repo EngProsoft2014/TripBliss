@@ -15,7 +15,7 @@ namespace TripBliss
         readonly Services.Data.ServicesService _service;
         #endregion
 
-        [Obsolete]
+
         public App(IGenericRepository generic, Services.Data.ServicesService service)
         {
             _service = service;
@@ -64,6 +64,11 @@ namespace TripBliss
                 CultureInfo.CurrentCulture = new CultureInfo("en");
                 CultureInfo.CurrentUICulture = new CultureInfo("en");
             }
+        }
+
+        protected async override void OnStart()
+        {
+            base.OnStart();
 
             string UserToken = await _service.UserToken();
 
@@ -71,12 +76,6 @@ namespace TripBliss
             {
                 Constants.Permissions.DecodeJwtToClass(UserToken);
             }
-
-        }
-
-        protected override void OnStart()
-        {
-            base.OnStart();
         }
     }
 }
