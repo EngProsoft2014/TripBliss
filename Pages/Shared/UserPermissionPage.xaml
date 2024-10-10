@@ -88,6 +88,9 @@
                                 <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference RequestTravelAgency},Path=IsVisible}" Value="True">
                                     <Setter Property="TextColor" Value="Green"></Setter>
                                 </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding TOD}" Value="D">
+                                    <Setter Property="Text" Value="Show Agencies"></Setter>
+                                </DataTrigger>
                             </Label.Triggers>
                         </Label>
                         <Image>
@@ -131,11 +134,6 @@
                             <Shadow Brush="LightGray" Opacity="1"></Shadow>
                         </Border.Shadow>
                     </Border>
-                    <StackLayout.Triggers>
-                        <DataTrigger TargetType="StackLayout" Binding="{Binding TOD}" Value="D">
-                            <Setter Property="IsVisible" Value="False"></Setter>
-                        </DataTrigger>
-                    </StackLayout.Triggers>
                 </StackLayout>
 
                 <StackLayout HorizontalOptions="FillAndExpand" Spacing="10">

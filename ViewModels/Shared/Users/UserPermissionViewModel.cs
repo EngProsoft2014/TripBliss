@@ -20,6 +20,7 @@ using TripBliss.Models.Premission;
 
 namespace TripBliss.ViewModels.Shared
 {
+
     public partial class UserPermissionViewModel : BaseViewModel
     {
         [ObservableProperty]
@@ -47,13 +48,13 @@ namespace TripBliss.ViewModels.Shared
         #endregion
 
         #region Cons
-        public UserPermissionViewModel(IGenericRepository generic, Services.Data.ServicesService service,string userId)
+        public UserPermissionViewModel(IGenericRepository generic, Services.Data.ServicesService service, string userId)
         {
             _service = service;
             Rep = generic;
             UserId = userId;
             Init();
-        } 
+        }
         #endregion
 
         #region RelayCommand
@@ -77,6 +78,8 @@ namespace TripBliss.ViewModels.Shared
                 if (json.Item1 != null)
                 {
                     OrganizeLists(json.Item1);
+                    var toast = Toast.Make("Successfully, permissions updated", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
                 }
                 else
                 {
@@ -105,13 +108,10 @@ namespace TripBliss.ViewModels.Shared
                     string Id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
                     string uri = $"{ApiConstants.GetPremissionListApi}{UserId}";
 
-                    
                     var json = await Rep.GetAsync<ObservableCollection<PremissionResponse>>(uri, UserToken);
-                    
 
                     if (json != null)
                     {
-                        
                         OrganizeLists(json);
                     }
                 }
@@ -149,7 +149,7 @@ namespace TripBliss.ViewModels.Shared
                 {
                     History.Add(premm);
                 }
-                else if (premm.categoryPermissions == "TravelAgencyCompany")
+                else if (premm.categoryPermissions == "TravelAgencyCompany" || premm.categoryPermissions == "DistributorCompany")
                 {
                     CompanyAccount.Add(premm);
                 }
