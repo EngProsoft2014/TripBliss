@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using Mopups.Services;
@@ -85,36 +86,52 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         [RelayCommand]
         async Task ConfirmeData()
         {
-
-
             IsBusy = false;
 
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            string Result = "";
+            if (TOD == "T")
             {
-                CompanyRequest = new TravelAgencyCompanyRequest
-                {
-                    CompanyName = CompanyResponse.CompanyName,
-                    Extension = CompanyResponse.Extension,
-                    Logo = CompanyResponse.Logo,
-                    Address = CompanyResponse.Address,
-                    Email = CompanyResponse.Email,
-                    ExpireDateAcc = CompanyResponse.ExpireDateAcc,
-                    Phone = CompanyResponse.Phone,
-                    Review = CompanyResponse.Review,
-                    ImgFile = CompanyResponse.ImgFile,
-                    ShowAllDistributors = CompanyResponse.ShowAllDistributors,
-                    Website = CompanyResponse.Website,
-                    
-                };
-                string UserToken = await _service.UserToken();
+                Result = Constants.Permissions.UpdateTravelAgencyCompanyAccount;
+            }
+            else
+            {
+                Result = Constants.Permissions.UpdateDistributorCompanyAccount;
+            }
 
-                string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
-                var json = await Rep.PutAsync<TravelAgencyCompanyRequest>(ApiConstants.PutTravelCompanyDetailsApi + id, CompanyRequest, UserToken);
-
-                if (json != null)
+            if (Constants.Permissions.CheckPermission(Result))
+            {
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
-                    await GetCompanyDetiles();
+                    CompanyRequest = new TravelAgencyCompanyRequest
+                    {
+                        CompanyName = CompanyResponse.CompanyName,
+                        Extension = CompanyResponse.Extension,
+                        Logo = CompanyResponse.Logo,
+                        Address = CompanyResponse.Address,
+                        Email = CompanyResponse.Email,
+                        ExpireDateAcc = CompanyResponse.ExpireDateAcc,
+                        Phone = CompanyResponse.Phone,
+                        Review = CompanyResponse.Review,
+                        ImgFile = CompanyResponse.ImgFile,
+                        ShowAllDistributors = CompanyResponse.ShowAllDistributors,
+                        Website = CompanyResponse.Website,
+
+                    };
+                    string UserToken = await _service.UserToken();
+
+                    string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
+                    var json = await Rep.PutAsync<TravelAgencyCompanyRequest>(ApiConstants.PutTravelCompanyDetailsApi + id, CompanyRequest, UserToken);
+
+                    if (json != null)
+                    {
+                        await GetCompanyDetiles();
+                    }
                 }
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
             }
 
             IsBusy = true;

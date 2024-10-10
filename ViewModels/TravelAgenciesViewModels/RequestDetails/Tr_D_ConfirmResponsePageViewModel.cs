@@ -54,20 +54,27 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         async Task PaymentClicked()
         {
-            bool result = CheckChooseServices();
-            if (result)
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Payment))
             {
-                var vm = new Tr_D_PaymentViewModel(Response.Id, Response.TotalPriceAgentAccept, Response.TotalPayment, Rep, _service);
-                var page = new PaymentPage(vm);
-                page.BindingContext = vm;
-                await App.Current!.MainPage!.Navigation.PushAsync(page);
+                bool result = CheckChooseServices();
+                if (result)
+                {
+                    var vm = new Tr_D_PaymentViewModel(Response.Id, Response.TotalPriceAgentAccept, Response.TotalPayment, Rep, _service);
+                    var page = new PaymentPage(vm);
+                    page.BindingContext = vm;
+                    await App.Current!.MainPage!.Navigation.PushAsync(page);
+                }
+                else
+                {
+                    var toast = Toast.Make("Warning, Please Check to one service or more", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
             }
             else
             {
-                var toast = Toast.Make("Warning, Please Check to one service or more", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
-
         }
         [RelayCommand]
         async Task Apply()

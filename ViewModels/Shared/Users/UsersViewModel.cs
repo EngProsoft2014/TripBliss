@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using System;
@@ -46,22 +47,39 @@ namespace TripBliss.ViewModels.Users
         [RelayCommand]
         async Task AddUserClick()
         {
-            var vm = new AddUserViewModel(Rep, _service);
-            vm.AddUserClose += async () =>
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Add_User))
             {
-                await GetUsers();
-            };
-            var page = new AddUserPage(vm);
-            page.BindingContext = vm;
-            await App.Current!.MainPage!.Navigation.PushAsync(page);
+                var vm = new AddUserViewModel(Rep, _service);
+                vm.AddUserClose += async () =>
+                {
+                    await GetUsers();
+                };
+                var page = new AddUserPage(vm);
+                page.BindingContext = vm;
+                await App.Current!.MainPage!.Navigation.PushAsync(page);
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
         }
         [RelayCommand]
         async Task UserClick()
         {
-            var vm = new UserPermissionViewModel(Rep,_service);
-            var page = new UserPermissionPage();
-            page.BindingContext = vm;
-            await App.Current!.MainPage!.Navigation.PushAsync(page);
+
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_User_Details))
+            {
+                var vm = new UserPermissionViewModel(Rep, _service);
+                var page = new UserPermissionPage();
+                page.BindingContext = vm;
+                await App.Current!.MainPage!.Navigation.PushAsync(page);
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
         }
         #endregion
 

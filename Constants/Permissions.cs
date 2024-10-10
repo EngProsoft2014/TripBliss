@@ -143,13 +143,14 @@ namespace TripBliss.Constants
                         LstPermissions.Add(ObjPermission);
                     }
                 }
+                LstPermissions = LstPermissions.Take(5).ToList();
             }
         }
 
         public static bool CheckPermission(string Name)
         {
-            var Rlt = LstPermissions.Where(x=> x.ClaimValue == Name).FirstOrDefault();
-            if(Rlt == null)
+            var Result = LstPermissions.Where(x=> x.ClaimValue == Name).FirstOrDefault();
+            if(Result == null)
             {
                 return false;
             }

@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using Mopups.Services;
@@ -199,46 +200,54 @@ namespace TripBliss.ViewModels.ActivateViewModels
         {
             IsBusy = false;
 
-            Controls.StaticMember.WayOfPhotosPopup = 0; // show all select photos or pdf file 
-
-            var page = new Pages.MainPopups.AddAttachmentsPopup();
-            page.ImageClose += async (img,imgPath) =>
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Add_Attachment))
             {
-                if (!string.IsNullOrEmpty(img))
+                Controls.StaticMember.WayOfPhotosPopup = 0; // show all select photos or pdf file 
+
+                var page = new Pages.MainPopups.AddAttachmentsPopup();
+                page.ImageClose += async (img, imgPath) =>
                 {
-                    byte[] bytes = Convert.FromBase64String(img);
-
-                    if(IsCheckedTR ==true && IsCheckedDS == false)
+                    if (!string.IsNullOrEmpty(img))
                     {
-                        LstAirFlightDetails.Add(new ResponseWithDistributorAirFlightDetailsResponse
-                        {
-                            Id = ActiveAirFlight.Id,
-                            ResponseWithDistributorAirFlightId = ActiveAirFlight.ResponseWithDistributorAirFlightId,
-                            ImgName = img,
-                            ImageFile = ImageSource.FromStream(() => new MemoryStream(bytes)),
-                            TravelAgencyCompanyName = "T",
-                            Extension = Path.GetExtension(imgPath),
-                        });
-                        await GetTRAirflightAttachment();
-                    }
-                    else if (IsCheckedTR == false && IsCheckedDS == true)
-                    {
-                        LstAirFlightDetails.Add(new ResponseWithDistributorAirFlightDetailsResponse
-                        {
-                            Id = ActiveAirFlight.Id,
-                            ResponseWithDistributorAirFlightId = ActiveAirFlight.ResponseWithDistributorAirFlightId,
-                            ImgName = img,
-                            ImageFile = ImageSource.FromStream(() => new MemoryStream(bytes)),
-                            DistributorCompanyName = "D",
-                            Extension = Path.GetExtension(imgPath),
-                        });
-                        await GetDSAirflightAttachment();
-                    }
-                    await MopupService.Instance.PopAsync();
-                }
-            };
+                        byte[] bytes = Convert.FromBase64String(img);
 
-            await MopupService.Instance.PushAsync(page);
+                        if (IsCheckedTR == true && IsCheckedDS == false)
+                        {
+                            LstAirFlightDetails.Add(new ResponseWithDistributorAirFlightDetailsResponse
+                            {
+                                Id = ActiveAirFlight.Id,
+                                ResponseWithDistributorAirFlightId = ActiveAirFlight.ResponseWithDistributorAirFlightId,
+                                ImgName = img,
+                                ImageFile = ImageSource.FromStream(() => new MemoryStream(bytes)),
+                                TravelAgencyCompanyName = "T",
+                                Extension = Path.GetExtension(imgPath),
+                            });
+                            await GetTRAirflightAttachment();
+                        }
+                        else if (IsCheckedTR == false && IsCheckedDS == true)
+                        {
+                            LstAirFlightDetails.Add(new ResponseWithDistributorAirFlightDetailsResponse
+                            {
+                                Id = ActiveAirFlight.Id,
+                                ResponseWithDistributorAirFlightId = ActiveAirFlight.ResponseWithDistributorAirFlightId,
+                                ImgName = img,
+                                ImageFile = ImageSource.FromStream(() => new MemoryStream(bytes)),
+                                DistributorCompanyName = "D",
+                                Extension = Path.GetExtension(imgPath),
+                            });
+                            await GetDSAirflightAttachment();
+                        }
+                        await MopupService.Instance.PopAsync();
+                    }
+                };
+
+                await MopupService.Instance.PushAsync(page);
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
 
             IsBusy = true;
         }
@@ -248,27 +257,35 @@ namespace TripBliss.ViewModels.ActivateViewModels
         {
             IsBusy = false;
 
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Edit_Attachment))
             {
-                UserDialogs.Instance.ShowLoading();
-
-                List<ResponseWithDistributorAirFlightDetailsRequest> LstAirFltRequest = new List<ResponseWithDistributorAirFlightDetailsRequest>();
-                foreach (var item in LstAirFlightDetails)
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
-                    if(item.Id == 0 || item.Id == null)
+                    UserDialogs.Instance.ShowLoading();
+
+                    List<ResponseWithDistributorAirFlightDetailsRequest> LstAirFltRequest = new List<ResponseWithDistributorAirFlightDetailsRequest>();
+                    foreach (var item in LstAirFlightDetails)
                     {
-                        LstAirFltRequest.Add(new ResponseWithDistributorAirFlightDetailsRequest
+                        if (item.Id == 0 || item.Id == null)
                         {
-                            ImgFile = Convert.FromBase64String(item.ImgName),
-                            Extension = item.Extension,
-                        });
+                            LstAirFltRequest.Add(new ResponseWithDistributorAirFlightDetailsRequest
+                            {
+                                ImgFile = Convert.FromBase64String(item.ImgName),
+                                Extension = item.Extension,
+                            });
+                        }
                     }
+
+                    string UserToken = await _service.UserToken();
+                    string Postjson = await Rep.PostMultiPicAsync($"{ApiConstants.PostAirFlightImageApi}{Model.ResponseWithDistributorId}/{Model.Id}", LstAirFltRequest, UserToken);
+
+                    UserDialogs.Instance.HideHud();
                 }
-
-                string UserToken = await _service.UserToken();
-                string Postjson = await Rep.PostMultiPicAsync($"{ApiConstants.PostAirFlightImageApi}{Model.ResponseWithDistributorId}/{Model.Id}", LstAirFltRequest, UserToken);
-
-                UserDialogs.Instance.HideHud();
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
             }
 
             IsBusy = true;
@@ -277,38 +294,20 @@ namespace TripBliss.ViewModels.ActivateViewModels
         [RelayCommand]
         async Task DeletePhoto(ResponseWithDistributorAirFlightDetailsResponse model)
         {
-            try
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Delete_Attachment))
             {
-                if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+                try
                 {
-                    await App.Current!.MainPage!.DisplayAlert("Error", "No Internet connection!", "OK");
-                    return;
-                }
-                else
-                {
-                    if (model.Id == 0 || model.Id == null) //Id = 0 (Photo New)
+                    if (Connectivity.NetworkAccess != NetworkAccess.Internet)
                     {
-                        LstAirFlightDetails.Remove(model);
-                        if (IsCheckedTR == true && IsCheckedDS == false)
-                        {
-                            await GetTRAirflightAttachment();
-                        }
-                        else if (IsCheckedTR == false && IsCheckedDS == true)
-                        {
-                            await GetDSAirflightAttachment();
-                        }
+                        await App.Current!.MainPage!.DisplayAlert("Error", "No Internet connection!", "OK");
+                        return;
                     }
-                    else //Id != 0 (already Photo save)
-                    {      
-                        IsBusy = false;          
-                        UserDialogs.Instance.ShowLoading();
-                        string UserToken = await _service.UserToken();
-                        var json = await Rep.PostAsync<string>(string.Format($"{ApiConstants.DeleteAirFlightImageApi}{Model.Id}/{model.Id}"),null, UserToken);
-                        UserDialogs.Instance.HideHud();
-                        if (json == null)
+                    else
+                    {
+                        if (model.Id == 0 || model.Id == null) //Id = 0 (Photo New)
                         {
                             LstAirFlightDetails.Remove(model);
-
                             if (IsCheckedTR == true && IsCheckedDS == false)
                             {
                                 await GetTRAirflightAttachment();
@@ -318,13 +317,39 @@ namespace TripBliss.ViewModels.ActivateViewModels
                                 await GetDSAirflightAttachment();
                             }
                         }
-                        IsBusy = true;
+                        else //Id != 0 (already Photo save)
+                        {
+                            IsBusy = false;
+                            UserDialogs.Instance.ShowLoading();
+                            string UserToken = await _service.UserToken();
+                            var json = await Rep.PostAsync<string>(string.Format($"{ApiConstants.DeleteAirFlightImageApi}{Model.Id}/{model.Id}"), null, UserToken);
+                            UserDialogs.Instance.HideHud();
+                            if (json == null)
+                            {
+                                LstAirFlightDetails.Remove(model);
+
+                                if (IsCheckedTR == true && IsCheckedDS == false)
+                                {
+                                    await GetTRAirflightAttachment();
+                                }
+                                else if (IsCheckedTR == false && IsCheckedDS == true)
+                                {
+                                    await GetDSAirflightAttachment();
+                                }
+                            }
+                            IsBusy = true;
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    await App.Current!.MainPage!.DisplayAlert("Error", ex.Message, "OK");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                await App.Current!.MainPage!.DisplayAlert("Error", ex.Message, "OK");
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
             }
         }
 
@@ -332,46 +357,54 @@ namespace TripBliss.ViewModels.ActivateViewModels
         [RelayCommand]
         async Task DeleteAllPhotos()
         {
-            try
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Delete_Attachment))
             {
-                if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+                try
                 {
-                    await App.Current!.MainPage!.DisplayAlert("Error", "No Internet connection!", "OK");
-                    return;
-                }
-                else
-                {
-                    if (LstAirFlightDetails.Count > 0) //Id = 0 (Photo New)
+                    if (Connectivity.NetworkAccess != NetworkAccess.Internet)
                     {
-                        IsBusy = false;
-                        bool ans = await App.Current!.MainPage!.DisplayAlert("Info", "Do you agree to delete all photos?", "OK", "Cancel");
-                        var obj = LstAirFlightDetails.Where(x => x.Id != null && x.Id != 0).FirstOrDefault();
-                        if (ans)
+                        await App.Current!.MainPage!.DisplayAlert("Error", "No Internet connection!", "OK");
+                        return;
+                    }
+                    else
+                    {
+                        if (LstAirFlightDetails.Count > 0) //Id = 0 (Photo New)
                         {
-                            if (obj != null)
+                            IsBusy = false;
+                            bool ans = await App.Current!.MainPage!.DisplayAlert("Info", "Do you agree to delete all photos?", "OK", "Cancel");
+                            var obj = LstAirFlightDetails.Where(x => x.Id != null && x.Id != 0).FirstOrDefault();
+                            if (ans)
                             {
-                                UserDialogs.Instance.ShowLoading();
-                                string UserToken = await _service.UserToken();
-                                var json = await Rep.PostAsync<string>(string.Format($"{ApiConstants.DeleteAllAirFlightImageApi}{Model.Id}"), null, UserToken);
-                                UserDialogs.Instance.HideHud();
-                                if (json == null)
+                                if (obj != null)
+                                {
+                                    UserDialogs.Instance.ShowLoading();
+                                    string UserToken = await _service.UserToken();
+                                    var json = await Rep.PostAsync<string>(string.Format($"{ApiConstants.DeleteAllAirFlightImageApi}{Model.Id}"), null, UserToken);
+                                    UserDialogs.Instance.HideHud();
+                                    if (json == null)
+                                    {
+                                        LstAirFlightDetails.Clear();
+                                    }
+                                }
+                                else
                                 {
                                     LstAirFlightDetails.Clear();
                                 }
                             }
-                            else
-                            {
-                                LstAirFlightDetails.Clear();
-                            }
-                        }
 
-                        IsBusy = true;
+                            IsBusy = true;
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    await App.Current!.MainPage!.DisplayAlert("Error", ex.Message, "OK");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                await App.Current!.MainPage!.DisplayAlert("Error", ex.Message, "OK");
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
             }
         }
 

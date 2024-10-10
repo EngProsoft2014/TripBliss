@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using System;
@@ -31,11 +32,19 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.Offer
 
             if (Controls.StaticMember.WayOfTab == 2)
             {
-                UserDialogs.Instance.ShowLoading();
-                LoadData();
-                UserDialogs.Instance.HideHud();
+                if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_Offers))
+                {
+                    UserDialogs.Instance.ShowLoading();
+                    LoadData();
+                    UserDialogs.Instance.HideHud();
+                }
+                else
+                {
+                    var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    toast.Show();
+                }
             }
-
+           
         }
 
         void LoadData()

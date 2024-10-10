@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using System;
@@ -43,8 +44,16 @@ namespace TripBliss.ViewModels.ActivateViewModels
         [RelayCommand]
         async Task Apply()
         {
-            //Model.TravelAgencyGuestId = selectedGuest?.Id ?? 0;
-            await App.Current!.MainPage!.Navigation.PopAsync();
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Edit_Service))
+            {
+                //Model.TravelAgencyGuestId = selectedGuest?.Id ?? 0;
+                await App.Current!.MainPage!.Navigation.PopAsync();
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
         }
 
         [RelayCommand]

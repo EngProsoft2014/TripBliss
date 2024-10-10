@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -35,9 +36,17 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.Offer
             await App.Current.MainPage.Navigation.PopAsync();
         }
         [RelayCommand]
-        void AddRequest()
+        async void AddRequest()
         {
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.TR_Add_Request_from_offer))
+            {
 
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
         }
     }
 }

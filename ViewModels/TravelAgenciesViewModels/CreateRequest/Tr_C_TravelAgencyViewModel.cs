@@ -48,10 +48,18 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         async Task Inti()
         {
-            UserDialogs.Instance.ShowLoading();
-            await GetDistributors();
-            await GetFavouiterDistributors();
-            UserDialogs.Instance.HideHud();
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.TR_Show_Distributors))
+            {
+                UserDialogs.Instance.ShowLoading();
+                await GetDistributors();
+                await GetFavouiterDistributors();
+                UserDialogs.Instance.HideHud();
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
         }
         async Task GetDistributors()
         {

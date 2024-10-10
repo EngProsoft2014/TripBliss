@@ -75,109 +75,134 @@ namespace TripBliss.ViewModels
             }
             
         }
+
         [RelayCommand]
         async Task TakePhoto(TravelAgencyCompanyDocResponse model)
         {
-            if (string.IsNullOrEmpty(model.NameDoc))
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Edit_Documents))
             {
-                var toast = Toast.Make("Please Complete This Field Required : File Name.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                await toast.Show();
+                if (string.IsNullOrEmpty(model.NameDoc))
+                {
+                    var toast = Toast.Make("Please Complete This Field Required : File Name.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
+                else
+                {
+                    try
+                    {
+                        // Check if the camera is available
+                        if (MediaPicker.Default.IsCaptureSupported)
+                        {
+                            // Capture the photo
+                            var photo = await MediaPicker.Default.CapturePhotoAsync();
+
+                            if (photo != null)
+                            {
+                                // Get the file path to save it
+                                var stream = await photo.OpenReadAsync();
+                                model.ImgFile = Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream));
+                                model.Extension = Path.GetExtension(photo.FullPath);
+                                await DoneUploadDoc(model);
+
+                            }
+                        }
+                        else
+                        {
+                            await App.Current!.MainPage!.DisplayAlert("Error", "Camera not supported on this device.", "OK");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        await App.Current!.MainPage!.DisplayAlert("Error", ex.Message, "OK");
+                    }
+                }
             }
             else
             {
-                try
-                {
-                    // Check if the camera is available
-                    if (MediaPicker.Default.IsCaptureSupported)
-                    {
-                        // Capture the photo
-                        var photo = await MediaPicker.Default.CapturePhotoAsync();
-
-                        if (photo != null)
-                        {
-                            // Get the file path to save it
-                            var stream = await photo.OpenReadAsync();
-                            model.ImgFile = Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream));
-                            model.Extension = Path.GetExtension(photo.FullPath);
-                            await DoneUploadDoc(model);
-
-                        }
-                    }
-                    else
-                    {
-                        await App.Current!.MainPage!.DisplayAlert("Error", "Camera not supported on this device.", "OK");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    await App.Current!.MainPage!.DisplayAlert("Error", ex.Message, "OK");
-                }
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
             }
-            
+
         }
         [RelayCommand]
         async Task PickPhoto(TravelAgencyCompanyDocResponse model)
         {
-            if (string.IsNullOrEmpty(model.NameDoc))
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Edit_Documents))
             {
-                var toast = Toast.Make("Please Complete This Field Required : File Name.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                await toast.Show();
+                if (string.IsNullOrEmpty(model.NameDoc))
+                {
+                    var toast = Toast.Make("Please Complete This Field Required : File Name.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
+                else
+                {
+                    try
+                    {
+                        // Open the photo gallery
+                        var photo = await MediaPicker.Default.PickPhotoAsync();
+
+                        if (photo != null)
+                        {
+                            // Open a stream to read the photo
+                            var stream = await photo.OpenReadAsync();
+                            model.ImgFile = Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream));
+                            model.Extension = Path.GetExtension(photo.FullPath);
+                            await DoneUploadDoc(model);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                }
             }
             else
             {
-                try
-                {
-                    // Open the photo gallery
-                    var photo = await MediaPicker.Default.PickPhotoAsync();
-
-                    if (photo != null)
-                    {
-                        // Open a stream to read the photo
-                        var stream = await photo.OpenReadAsync();
-                        model.ImgFile = Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream));
-                        model.Extension = Path.GetExtension(photo.FullPath);
-                        await DoneUploadDoc(model);
-                    }
-                }
-                catch (Exception ex)
-                {
-
-                }
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
             }
-            
+
         }
         [RelayCommand]
         private async Task PickPdf(TravelAgencyCompanyDocResponse model)
         {
-            if (string.IsNullOrEmpty(model.NameDoc))
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Edit_Documents))
             {
-                var toast = Toast.Make("Please Complete This Field Required : File Name.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                await toast.Show();
+                if (string.IsNullOrEmpty(model.NameDoc))
+                {
+                    var toast = Toast.Make("Please Complete This Field Required : File Name.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
+                else
+                {
+                    try
+                    {
+                        var result = await FilePicker.Default.PickAsync(new PickOptions
+                        {
+                            PickerTitle = "Select a PDF file",
+                            FileTypes = FilePickerFileType.Pdf
+                        });
+
+                        if (result != null && result.FileName.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
+                        {
+                            var stream = await result.OpenReadAsync();
+                            model.ImgFile = Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream));
+                            model.Extension = ".pdf";
+                            await DoneUploadDoc(model);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        await App.Current!.MainPage!.DisplayAlert("Info", $"Error picking file: {ex.Message}", "OK");
+                    }
+                }
             }
             else
             {
-                try
-                {
-                    var result = await FilePicker.Default.PickAsync(new PickOptions
-                    {
-                        PickerTitle = "Select a PDF file",
-                        FileTypes = FilePickerFileType.Pdf
-                    });
-
-                    if (result != null && result.FileName.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
-                    {
-                        var stream = await result.OpenReadAsync();
-                        model.ImgFile = Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream));
-                        model.Extension = ".pdf";
-                        await DoneUploadDoc(model);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    await App.Current!.MainPage!.DisplayAlert("Info", $"Error picking file: {ex.Message}", "OK");
-                }
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
             }
-            
+
         }
         #endregion
 

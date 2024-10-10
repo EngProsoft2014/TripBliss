@@ -15,6 +15,7 @@ namespace TripBliss
         readonly Services.Data.ServicesService _service;
         #endregion
 
+        [Obsolete]
         public App(IGenericRepository generic, Services.Data.ServicesService service)
         {
             _service = service;
@@ -66,7 +67,11 @@ namespace TripBliss
 
             string UserToken = await _service.UserToken();
 
-            Constants.Permissions.DecodeJwtToClass(UserToken);
+            if (!string.IsNullOrEmpty(UserToken))
+            {
+                Constants.Permissions.DecodeJwtToClass(UserToken);
+            }
+
         }
 
         protected override void OnStart()

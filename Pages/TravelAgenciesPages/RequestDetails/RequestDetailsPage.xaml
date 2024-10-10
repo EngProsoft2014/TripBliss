@@ -17,7 +17,7 @@
     </Controls:CustomControl.Resources>
 
     <tabView:SfTabView TabBarPlacement="Bottom" VerticalOptions="FillAndExpand" IndicatorBackground="#1c874b" FlowDirection="LeftToRight"
-                               IndicatorPlacement="Top" TabBarHeight="55" >
+                               IndicatorPlacement="Top" TabBarHeight="55" SelectionChanged="SfTabView_SelectionChanged">
         <tabView:SfTabView.Items>
             <!--Request Details-->
             <tabView:SfTabItem Header="{Static res:AppResources.btnRequestDetails_RequestDetails}" FontSize="14" BackgroundColor="#f6fcf2" 

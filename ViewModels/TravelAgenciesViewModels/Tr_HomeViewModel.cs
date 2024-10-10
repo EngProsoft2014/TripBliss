@@ -49,22 +49,31 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         {
             IsBusy = true;
 
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_Home_Requests))
             {
-                string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
-                string UserToken = await _service.UserToken();
-                if (!string.IsNullOrEmpty(UserToken))
+
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
-                    UserDialogs.Instance.ShowLoading();
-                    var json = await Rep.GetAsync<ObservableCollection<RequestTravelAgencyResponse>>(ApiConstants.AllRequestApi + $"{id}/RequestTravelAgency", UserToken);
-                    UserDialogs.Instance.HideHud();
-                    if (json != null)
+                    string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
+                    string UserToken = await _service.UserToken();
+                    if (!string.IsNullOrEmpty(UserToken))
                     {
-                        Requests!.Clear();
-                        Requests = json;
-                    } 
+                        UserDialogs.Instance.ShowLoading();
+                        var json = await Rep.GetAsync<ObservableCollection<RequestTravelAgencyResponse>>(ApiConstants.AllRequestApi + $"{id}/RequestTravelAgency", UserToken);
+                        UserDialogs.Instance.HideHud();
+                        if (json != null)
+                        {
+                            Requests!.Clear();
+                            Requests = json;
+                        }
+                    }
+
                 }
-                
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
             }
 
             IsBusy = false;

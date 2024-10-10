@@ -117,14 +117,22 @@ namespace TripBliss.ViewModels.ActivateViewModels
         [RelayCommand]
         public async Task AddToRequest()
         {
-            if (ActiveHotels.Count > 0)
-                await AddHotelData();
-            else if (ActiveTransport.Count > 0)
-                await AddTransportData();
-            else if (ActiveAirFlight.Count > 0)
-                await AddAirFlightData();
-            else if (ActiveVisa.Count > 0)
-                await AddVisaData();
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Edit_Service))
+            {
+                if (ActiveHotels.Count > 0)
+                    await AddHotelData();
+                else if (ActiveTransport.Count > 0)
+                    await AddTransportData();
+                else if (ActiveAirFlight.Count > 0)
+                    await AddAirFlightData();
+                else if (ActiveVisa.Count > 0)
+                    await AddVisaData();
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
         }
         #endregion
 
