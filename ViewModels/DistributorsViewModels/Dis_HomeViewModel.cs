@@ -39,38 +39,52 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         #region Methods
         async void Init()
         {
-            if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_Home_Requests))
+            if (Constants.Permissions.LstPermissions.Count == 0)
             {
-                await GetRequestes();
+                await LoadPermissions(_service);
             }
-            else
+ 
+            await GetRequestes();     
+        }
+
+        async Task LoadPermissions(Services.Data.ServicesService service)
+        {
+            string UserToken = await service.UserToken();
+
+            if (!string.IsNullOrEmpty(UserToken))
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                await toast.Show();
+                Constants.Permissions.DecodeJwtToClass(UserToken);
             }
-                
         }
 
         async Task GetRequestes()
         {
             IsBusy = true;
 
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_Home_Requests))
             {
-                string id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
-                string UserToken = await _service.UserToken();
-                if (!string.IsNullOrEmpty(UserToken))
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
-                    UserDialogs.Instance.ShowLoading();
-                    var json = await Rep.GetAsync<ObservableCollection<ResponseWithDistributorResponse>>(ApiConstants.AllResponseDistApi + $"{id}/ResponseWithDistributor", UserToken);
-                    UserDialogs.Instance.HideHud();
-                    if (json != null)
+                    string id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
+                    string UserToken = await _service.UserToken();
+                    if (!string.IsNullOrEmpty(UserToken))
                     {
-                        Requests!.Clear();
-                        Requests = json;
+                        UserDialogs.Instance.ShowLoading();
+                        var json = await Rep.GetAsync<ObservableCollection<ResponseWithDistributorResponse>>(ApiConstants.AllResponseDistApi + $"{id}/ResponseWithDistributor", UserToken);
+                        UserDialogs.Instance.HideHud();
+                        if (json != null)
+                        {
+                            Requests!.Clear();
+                            Requests = json;
+                        }
                     }
-                }
 
+                }
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
             }
 
             IsBusy = false;

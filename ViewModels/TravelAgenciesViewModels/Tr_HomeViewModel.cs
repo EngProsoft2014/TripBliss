@@ -39,13 +39,27 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         #endregion
 
 
-        async void Init()
-        {           
-            await GetRequestes();
+        public async void Init()
+        {
+            if(Constants.Permissions.LstPermissions.Count == 0)
+            {
+                await LoadPermissions(_service);
+            }
+            await GetRequestes();     
+        }
+
+        async Task LoadPermissions(Services.Data.ServicesService service)
+        {
+            string UserToken = await service.UserToken();
+
+            if (!string.IsNullOrEmpty(UserToken))
+            {
+                Constants.Permissions.DecodeJwtToClass(UserToken);
+            }
         }
 
         #region Methods
-        async Task GetRequestes()
+        public async Task GetRequestes()
         {
             IsBusy = true;
 
@@ -89,5 +103,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new RequestDetails.Tr_D_RequestDetailsViewModel(model.Id,Rep,_service)));
         } 
         #endregion
+
     }
 }

@@ -1,4 +1,7 @@
 
+using CommunityToolkit.Maui.Alerts;
+using Microsoft.AspNet.SignalR.Client.Http;
+using Syncfusion.Maui.Core.Carousel;
 using System.Globalization;
 using TripBliss.Helpers;
 using TripBliss.ViewModels.TravelAgenciesViewModels;
@@ -11,20 +14,34 @@ public partial class HomeAgencyPage : Controls.CustomControl
 {
     IGenericRepository Rep;
     readonly Services.Data.ServicesService _service;
+    Tr_HomeViewModel ViewModel;
     public HomeAgencyPage(Tr_HomeViewModel viewModel,IGenericRepository generic, Services.Data.ServicesService service)
     {
         InitializeComponent();
 
-        this.BindingContext = viewModel;
+        this.BindingContext = ViewModel = viewModel;
         Rep = generic;
         _service = service;
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
         tabMain.SelectedIndex = Controls.StaticMember.WayOfTab;
+
     }
+
+
+    //protected async override void OnNavigatedTo(NavigatedToEventArgs args)
+    //{
+    //    base.OnNavigatedTo(args);
+
+    //    if (!Constants.Permissions.CheckPermission(Constants.Permissions.Show_Home_Requests))
+    //    {
+    //        var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+    //        await toast.Show();
+    //    }
+    //}
 
     [Obsolete]
     protected override bool OnBackButtonPressed()

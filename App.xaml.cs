@@ -29,6 +29,7 @@ namespace TripBliss
 
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(ApiConstants.syncFusionLicence);
 
+
             if (!string.IsNullOrEmpty(Preferences.Default.Get(ApiConstants.username, "")))
             {
                 int CatUser = Preferences.Default.Get(ApiConstants.userCategory, 0);
@@ -46,8 +47,6 @@ namespace TripBliss
             {
                 MainPage = new NavigationPage(new LoginPage(new ViewModels.LoginViewModel(Rep, _service)));
             }
-
-
         }
 
 
@@ -68,14 +67,7 @@ namespace TripBliss
 
         protected async override void OnStart()
         {
-            base.OnStart();
-
-            string UserToken = await _service.UserToken();
-
-            if (!string.IsNullOrEmpty(UserToken))
-            {
-                Constants.Permissions.DecodeJwtToClass(UserToken);
-            }
+            base.OnStart();   
         }
     }
 }

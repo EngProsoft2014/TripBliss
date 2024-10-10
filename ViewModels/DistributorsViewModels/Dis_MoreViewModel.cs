@@ -1,9 +1,11 @@
-﻿using CommunityToolkit.Maui.Alerts;
+﻿using Akavache;
+using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Helpers;
@@ -90,6 +92,9 @@ namespace TripBliss.ViewModels.DistributorsViewModels
             Action action = async () =>
             {
                 Preferences.Default.Clear();
+                await BlobCache.LocalMachine.InvalidateAll();
+                await BlobCache.LocalMachine.Vacuum();
+                Constants.Permissions.LstPermissions.Clear();
                 await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service)));
             };
             Controls.StaticMember.ShowSnackBar("Do you want to Logout?", Controls.StaticMember.SnackBarColor, Controls.StaticMember.SnackBarTextColor, action);

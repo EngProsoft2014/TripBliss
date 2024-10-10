@@ -143,7 +143,7 @@ namespace TripBliss.ViewModels
                             }
                             if (string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && !string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
                             {
-                                Preferences.Default.Set(ApiConstants.review, UserModel?.DistributorCompany?.Review!.Value);
+                                Preferences.Default.Set(ApiConstants.review, UserModel!.DistributorCompany!.Review!.Value);
 
                                 var vm = new DistributorsViewModels.Dis_HomeViewModel(Rep, _service);
                                 var page = new Pages.DistributorsPages.HomeDistributorsPage(vm, Rep, _service);

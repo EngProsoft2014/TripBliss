@@ -21,10 +21,6 @@ public partial class HomeDistributorsPage : Controls.CustomControl
         _service = service; 
         BindingContext = model;  
         Model = model;
-        AgencyView.BindingContext = new Dis_DistributorsViewModel(Rep,_service);
-        OffersView.BindingContext = new Dis_O_ChooseOfferViewModel(Rep);
-        HistoryView.BindingContext = new Dis_HistoryViewModel(Rep);
-        MoreView.BindingContext = new Dis_MoreViewModel(Rep,_service);
 
         chkAll.IsChecked = true;
         chkAll.Color = Color.FromHex("#46b356");

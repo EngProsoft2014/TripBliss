@@ -143,7 +143,7 @@ namespace TripBliss.Constants
                         LstPermissions.Add(ObjPermission);
                     }
                 }
-                LstPermissions = LstPermissions.Take(5).ToList();
+                LstPermissions = LstPermissions.Skip(3).Take(5).ToList();
             }
         }
 

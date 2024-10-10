@@ -45,6 +45,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                 Preferences.Default.Clear();
                 await BlobCache.LocalMachine.InvalidateAll();
                 await BlobCache.LocalMachine.Vacuum();
+                Constants.Permissions.LstPermissions.Clear();
                 await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service)));
             };
             Controls.StaticMember.ShowSnackBar("Do you want to Logout?", Controls.StaticMember.SnackBarColor, Controls.StaticMember.SnackBarTextColor, action);

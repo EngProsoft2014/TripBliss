@@ -255,14 +255,14 @@ namespace TripBliss.Constants
         #region Get Travel User Api
 
         // Get User Api
-        public static string GetTravelUserApi = "api/ApplicationUser/TravelAgencyCompany/";
+        public static string GetTravelUserApi = "UserPermissions/TravelAgencyCompany/";
         // End Get User Api 
         #endregion
 
         #region Get Dist User Api
 
         // Get User Api
-        public static string GetDistUserApi = "api/ApplicationUser/DistributorCompany/";
+        public static string GetDistUserApi = "UserPermissions/DistributorCompany/";
         // End Get User Api 
         #endregion
 
@@ -324,6 +324,14 @@ namespace TripBliss.Constants
         // Get User Account
         public static string GetUserAccountApi = "Account";
         // Get User Account
+        #endregion
+
+        #region Premission List
+        public static string GetPremissionListApi = "UserPermissions/User/";
+        #endregion
+
+        #region Update Premission List
+        public static string UpdatePremissionListApi = "UserPermissions/";
         #endregion
     }
 }
