@@ -59,12 +59,15 @@ namespace TripBliss.ViewModels
             if (answer) 
             {
                 IsBusy = false;
-                UserDialogs.Instance.ShowLoading();
-
+                
                 string UserToken = await _service.UserToken();
 
                 string UserId = Preferences.Default.Get(ApiConstants.userid, "");
+
+                UserDialogs.Instance.ShowLoading();
                 var json = await Rep.PutAsync<string>(ApiConstants.PutUserAccountEnableOrDisable + UserId, null, UserToken);
+                UserDialogs.Instance.HideHud();
+                
 
                 if (string.IsNullOrEmpty(json))
                 {
@@ -83,7 +86,6 @@ namespace TripBliss.ViewModels
                     await toast.Show();
                 }
 
-                UserDialogs.Instance.ShowLoading();
                 IsBusy = true;
             }
 
