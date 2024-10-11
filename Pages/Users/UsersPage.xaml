@@ -36,9 +36,12 @@
             </Image>
         </StackLayout>
         <CollectionView ItemsSource="{Binding LstUsers}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="20"></LinearItemsLayout>
+            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20" Margin="0,20,0,0">
+                    <StackLayout Orientation="Horizontal" HeightRequest="30" HorizontalOptions="FillAndExpand" Spacing="20" Margin="0,0,0,0">
                         
                         <Border StrokeShape="RoundRectangle 10" BackgroundColor="#2fa562" HorizontalOptions="FillAndExpand">
                             <Label Text="{Binding UserName}" Margin="10,7,10,7" FontSize="15" TextColor="White" VerticalTextAlignment="Center"></Label>
