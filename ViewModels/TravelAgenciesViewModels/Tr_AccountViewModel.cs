@@ -201,7 +201,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                     await toast.Show();
                 }
 
-                UserDialogs.Instance.ShowLoading();
+                UserDialogs.Instance.HideHud();
                 IsBusy = true;
             }
 

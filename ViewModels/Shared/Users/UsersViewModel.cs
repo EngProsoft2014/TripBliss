@@ -106,7 +106,7 @@ namespace TripBliss.ViewModels.Users
                     
                     var json = await Rep.PutAsync<string>(ApiConstants.PutUserAccountEnableOrDisable + model.Id, null, UserToken);
 
-                    UserDialogs.Instance.ShowLoading();
+                    UserDialogs.Instance.HideHud();
                     IsBusy = true;
 
                     if (string.IsNullOrEmpty(json))

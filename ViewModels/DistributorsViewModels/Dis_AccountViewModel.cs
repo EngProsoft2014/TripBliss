@@ -194,7 +194,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels
                     await toast.Show();
                 }
 
-                UserDialogs.Instance.ShowLoading();
+                UserDialogs.Instance.HideHud();
                 IsBusy = true;
             }
         }
