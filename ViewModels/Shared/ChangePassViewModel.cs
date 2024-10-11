@@ -1,10 +1,12 @@
-﻿using CommunityToolkit.Maui.Alerts;
+﻿using Akavache;
+using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Constants;
@@ -68,6 +70,9 @@ namespace TripBliss.ViewModels
                         await toast.Show();
 
                         Preferences.Default.Clear();
+                        await BlobCache.LocalMachine.InvalidateAll();
+                        await BlobCache.LocalMachine.Vacuum();
+                        Constants.Permissions.LstPermissions.Clear();
                         await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service)));
                     }
                     else

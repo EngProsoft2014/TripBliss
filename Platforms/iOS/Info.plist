@@ -26,14 +26,14 @@
 			<string>UIInterfaceOrientationLandscapeLeft</string>
 			<string>UIInterfaceOrientationLandscapeRight</string>
 		</array>
+		<key>NSCameraUsageDescription</key>
+		<string>We require access to your camera to allow you to capture photos for your profile or share them with customers within the app. For example, you can take a picture to upload as your profile image or take photos of the documents required for your order to be processed.</string>
+		<key>NSPhotoLibraryAddUsageDescription</key>
+		<string>We require access to your gallery to allow you to use photos for your profile or share them with customers within the app. For example, you can use a picture to upload as your profile image or use pictures of the documents required for your order to be processed.</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>We require access to your gallery to allow you to use photos for your profile or share them with customers within the app. For example, you can use a picture to upload as your profile image or use pictures of the documents required for your order to be processed.</string>
 		<key>XSAppIconAssets</key>
 		<string>Assets.xcassets/logo.appiconset</string>
 	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>This app uses barcode scanning to...</string>
-	<key>CFBundleLocalizations</key>
-	<array>
-		<string>en</string>
-		<string>ar</string>
-	</array>
+	
 </plist>

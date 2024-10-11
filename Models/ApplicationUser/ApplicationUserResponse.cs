@@ -1,4 +1,6 @@
-﻿namespace TripBliss.Models;
+﻿using TripBliss.Constants;
+
+namespace TripBliss.Models;
 
 public record ApplicationUserResponse
 {
@@ -10,6 +12,8 @@ public record ApplicationUserResponse
     public int UserPermision { get; set; }
     public string? Token { get; set; }
     public int ExpiresIn { get; set; }
+    public bool IsDisabled { get; set; }
+    public List<PermissionsValues> Permissions { get; set; } = [];
     public string TravelAgencyCompanyId { get; set; }
     public TravelAgencyCompanyResponse TravelAgencyCompany { get; set; }
     public string? DistributorCompanyId { get; set; }

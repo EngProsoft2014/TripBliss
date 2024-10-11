@@ -115,8 +115,6 @@ namespace TripBliss.ViewModels
 
                         if (!string.IsNullOrEmpty(UserModel?.Id))
                         {
-                            var toast = Toast.Make("Successfully for your Login", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                            await toast.Show();
 
                             Preferences.Default.Set(ApiConstants.userid, UserModel.Id);
                             Preferences.Default.Set(ApiConstants.email, UserModel.Email);
@@ -125,16 +123,19 @@ namespace TripBliss.ViewModels
                             Preferences.Default.Set(ApiConstants.userCategory, UserModel.UserCategory);
                             Preferences.Default.Set(ApiConstants.travelAgencyCompanyId, UserModel.TravelAgencyCompanyId);
                             Preferences.Default.Set(ApiConstants.distributorCompanyId, UserModel.DistributorCompanyId);
- 
+                            Preferences.Default.Set(ApiConstants.permissions, JsonConvert.SerializeObject(UserModel.Permissions));
+
                             await BlobCache.LocalMachine.InsertObject(ServicesService.UserTokenServiceKey, UserModel?.Token, DateTimeOffset.Now.AddMinutes(43200));
 
-                            Constants.Permissions.DecodeJwtToClass(UserModel?.Token!);
+                            Constants.Permissions.LstPermissions = UserModel?.Permissions!;
+                            //Constants.Permissions.DecodeJwtToClass(UserModel?.Token!);
 
                             if (!string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
                             {
+                                var toast = Toast.Make("Successfully for your Login", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                                await toast.Show();
 
                                 Preferences.Default.Set(ApiConstants.review, UserModel!.TravelAgencyCompany!.Review!.Value);
-
 
                                 var vm = new TravelAgenciesViewModels.Tr_HomeViewModel(Rep, _service);
                                 var page = new Pages.TravelAgenciesPages.HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service);
@@ -143,12 +144,20 @@ namespace TripBliss.ViewModels
                             }
                             if (string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && !string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
                             {
+                                var toast = Toast.Make("Successfully for your Login", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                                await toast.Show();
+
                                 Preferences.Default.Set(ApiConstants.review, UserModel!.DistributorCompany!.Review!.Value);
 
                                 var vm = new DistributorsViewModels.Dis_HomeViewModel(Rep, _service);
                                 var page = new Pages.DistributorsPages.HomeDistributorsPage(vm, Rep, _service);
                                 page.BindingContext = vm;
                                 await App.Current!.MainPage!.Navigation.PushAsync(page);
+                            }
+                            if (string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
+                            {
+                                var toast1 = Toast.Make("This account is an admin and is not allowed to access the application", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                                await toast1.Show();
                             }
                         }
                         else
@@ -170,7 +179,7 @@ namespace TripBliss.ViewModels
                             ResendEmail = LstResult[1].Trim();
                         }
 
-                        var toast = Toast.Make($"Warning, {json.Item2.errors.FirstOrDefault().Key}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make($"Warning, {json.Item2.errors.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                     }
 

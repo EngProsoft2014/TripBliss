@@ -9,6 +9,7 @@ namespace TripBliss.ViewModels
         {
             Lang = Preferences.Default.Get("Lan", "en");
             Review = Preferences.Default.Get(ApiConstants.review, 0);
+            UserPermission = Preferences.Default.Get(ApiConstants.userPermision, 0);  
             IsBusy = true;
             checkTOD();
         }
@@ -22,6 +23,8 @@ namespace TripBliss.ViewModels
         string tOD;
         [ObservableProperty]
         int review;
+        [ObservableProperty]
+        int userPermission;
 
         void checkTOD()
         {

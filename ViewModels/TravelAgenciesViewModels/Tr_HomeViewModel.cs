@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -41,22 +42,31 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
 
         public async void Init()
         {
-            if(Constants.Permissions.LstPermissions.Count == 0)
+            if (Constants.Permissions.LstPermissions.Count == 0)
             {
-                await LoadPermissions(_service);
+                await LoadPermissions();
             }
             await GetRequestes();     
         }
 
-        async Task LoadPermissions(Services.Data.ServicesService service)
+        async Task LoadPermissions()
         {
-            string UserToken = await service.UserToken();
-
-            if (!string.IsNullOrEmpty(UserToken))
+            string List = Preferences.Default.Get(ApiConstants.permissions, "");
+            if (!string.IsNullOrEmpty(List))
             {
-                Constants.Permissions.DecodeJwtToClass(UserToken);
+                Constants.Permissions.LstPermissions = JsonConvert.DeserializeObject<List<PermissionsValues>>(List)!;
             }
         }
+
+        //async Task LoadPermissions(Services.Data.ServicesService service)
+        //{
+        //    string UserToken = await service.UserToken();
+
+        //    if (!string.IsNullOrEmpty(UserToken))
+        //    {
+        //        Constants.Permissions.DecodeJwtToClass(UserToken);
+        //    }
+        //}
 
         #region Methods
         public async Task GetRequestes()

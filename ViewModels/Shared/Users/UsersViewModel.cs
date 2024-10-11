@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Maui.Alerts;
+﻿using Akavache;
+using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
@@ -74,14 +75,60 @@ namespace TripBliss.ViewModels.Users
                 var page = new UserPermissionPage();
                 page.BindingContext = vm;
                 await App.Current!.MainPage!.Navigation.PushAsync(page);
-                
-             
             }
             else
             {
                 var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
+        }
+
+        [RelayCommand]
+        async Task EnableOrDisableUser(ApplicationUserResponse model)
+        {
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Delete_User))
+            {
+                bool answer;
+                if(model.IsDisabled == false)
+                {
+                    answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Do you Want to Disable User Account?", "Yes", "No");
+                }
+                else
+                {
+                    answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Do you Want to Enable User Account?", "Yes", "No");
+                }
+
+                if (answer)
+                {
+                    IsBusy = false;
+                    UserDialogs.Instance.ShowLoading();
+                    string UserToken = await _service.UserToken();
+                    
+                    var json = await Rep.PutAsync<string>(ApiConstants.PutUserAccountEnableOrDisable + model.Id, null, UserToken);
+
+                    UserDialogs.Instance.ShowLoading();
+                    IsBusy = true;
+
+                    if (string.IsNullOrEmpty(json))
+                    {
+                        var toast = Toast.Make("Successfully, action completed.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
+
+                        await GetUsers();
+                    }
+                    else
+                    {
+                        var toast = Toast.Make("Error Please Try again.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
+                    }  
+                }
+            }
+            else
+            {
+                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+
         }
         #endregion
 
@@ -117,6 +164,7 @@ namespace TripBliss.ViewModels.Users
                 }
             }
         } 
+
         #endregion
     }
 

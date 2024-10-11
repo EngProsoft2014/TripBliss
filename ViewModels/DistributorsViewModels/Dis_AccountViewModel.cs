@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Maui.Alerts;
+﻿using Akavache;
+using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
@@ -8,11 +9,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Pages.Shared;
 
 namespace TripBliss.ViewModels.DistributorsViewModels
 {
@@ -159,6 +162,41 @@ namespace TripBliss.ViewModels.DistributorsViewModels
             await MopupService.Instance.PushAsync(page);
 
             IsBusy = true;
+        }
+
+        [RelayCommand]
+        async Task DeleteCompany()
+        {
+            bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Do you Want to Delete Company Account?", "Yes", "No");
+            if (answer)
+            {
+                IsBusy = false;
+                UserDialogs.Instance.ShowLoading();
+
+                string UserToken = await _service.UserToken();
+
+                var json = await Rep.PutAsync<string>(ApiConstants.PutDSCompanyAccountDelete + CompanyResponse.Id + "/ToggleActive", null, UserToken);
+
+                if (string.IsNullOrEmpty(json))
+                {
+                    var toast = Toast.Make("Successfully, for company deleted.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+
+                    Preferences.Default.Clear();
+                    await BlobCache.LocalMachine.InvalidateAll();
+                    await BlobCache.LocalMachine.Vacuum();
+                    Constants.Permissions.LstPermissions.Clear();
+                    await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service)));
+                }
+                else
+                {
+                    var toast = Toast.Make("Error Please Try again.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
+
+                UserDialogs.Instance.ShowLoading();
+                IsBusy = true;
+            }
         }
         #endregion
     }

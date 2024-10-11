@@ -25,7 +25,6 @@ namespace TripBliss.Constants
     public static class Permissions
     {
         public static List<PermissionsValues> LstPermissions { get; set; } = new List<PermissionsValues>();
-        public static PermissionsValues ObjPermission { get; set; } = new PermissionsValues();
 
         // == Details Request ==
         public const string? CategoryPermissionsDetailsRequest = "Details Request";
@@ -79,11 +78,13 @@ namespace TripBliss.Constants
         public const string Add_User = "Users: Add_User";
         public const string Show_User_Details = "Users: Show_User_Details";
         public const string Edit_User_Permission = "Users: Edit_User_Permission";
+        public const string Delete_User = "Users: Delete_User";
         //== Title
         public const string Show_UsersTitle = "Show_Users";
         public const string Add_UserTitle = "Add_User";
         public const string Show_User_DetailsTitle = "Show_User_Details";
         public const string Edit_User_PermissionTitle = "Edit_User_Permission";
+        public const string Delete_UserTitle = "Users: Delete User";
 
         // == Documents ==
         public const string? CategoryPermissionsDocuments = "Documents";
@@ -122,30 +123,29 @@ namespace TripBliss.Constants
         public const string UpdateDistributorCompanyAccountTitle = "Update Company Account";
 
 
-        public static void DecodeJwtToClass(string token)
-        {
-            var handler = new JwtSecurityTokenHandler();
+        //public static void DecodeJwtToClass(string token)
+        //{
+        //    var handler = new JwtSecurityTokenHandler();
 
-            // Read the token without validation (or you can validate as per your requirements)
-            var jwtToken = handler.ReadJwtToken(token);
+        //    // Read the token without validation (or you can validate as per your requirements)
+        //    var jwtToken = handler.ReadJwtToken(token);
 
-            // Extract the claims
-            var claims = jwtToken.Claims;
+        //    // Extract the claims
+        //    var claims = jwtToken.Claims;
 
-            if (claims != null)
-            {
-                LstPermissions.Clear();
-                foreach (var claim in claims )
-                {
-                    if(claim.Type == "permissions")
-                    {
-                        ObjPermission = JsonConvert.DeserializeObject<PermissionsValues>(claim.Value)!;
-                        LstPermissions.Add(ObjPermission);
-                    }
-                }
-                //LstPermissions = LstPermissions.Skip(3).Take(5).ToList();
-            }
-        }
+        //    if (claims != null)
+        //    {
+        //        LstPermissions.Clear();
+        //        foreach (var claim in claims )
+        //        {
+        //            if(claim.Type == "permissions")
+        //            {
+        //                ObjPermission = JsonConvert.DeserializeObject<PermissionsValues>(claim.Value)!;
+        //                LstPermissions.Add(ObjPermission);
+        //            }
+        //        }
+        //    }
+        //}
 
         public static bool CheckPermission(string Name)
         {

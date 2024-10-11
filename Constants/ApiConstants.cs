@@ -23,6 +23,7 @@ namespace TripBliss.Constants
         public static string userCategory = "userCategory"; //1 = system , 2 = Travel Agency , 3 = Distributor
         public static string travelAgencyCompanyId = "travelAgencyCompanyId";
         public static string distributorCompanyId = "distributorCompanyId";
+        public static string permissions = "permissions";
         public static string review = "review";
         //End Preferences Key 
         #endregion
@@ -294,6 +295,10 @@ namespace TripBliss.Constants
         // put Dist Company Details
         public static string PutDistCompanyDetailsApi = "api/DistributorCompany/";
         // End put Dist Company Details 
+
+        // Put Delete Company Account
+        public static string PutDSCompanyAccountDelete = "api/DistributorCompany/";
+        // Put Delete Company Account
         #endregion
 
         #region Get Travel Company Details
@@ -306,6 +311,10 @@ namespace TripBliss.Constants
         // put Travel Company Details
         public static string PutTravelCompanyDetailsApi = "api/TravelAgencyCompany/";
         // End put Travel Company Details 
+
+        // Put Delete Company Account
+        public static string PutTRCompanyAccountDelete = "api/TravelAgencyCompany/";
+        // Put Delete Company Account
         #endregion
 
         #region Post Reset Password
@@ -323,7 +332,12 @@ namespace TripBliss.Constants
         #region Get User Account
         // Get User Account
         public static string GetUserAccountApi = "Account";
-        // Get User Account
+        // Get User Account   
+        
+        // Put Disable User Account
+        public static string PutUserAccountEnableOrDisable = "UserPermissions/UserDisabled/";
+        // Put Disable User Account
+
         #endregion
 
         #region Premission List

@@ -88,8 +88,21 @@
 
             </Grid>
         </ScrollView>
-        <Button VerticalOptions="End" Text="{Static res:AppResources.btnApply_Forgot}" FontSize="16" FontAttributes="Bold" BackgroundColor="#2fa562" TextColor="White"
+        <StackLayout Orientation="Horizontal" Spacing="20">
+            <Button VerticalOptions="End" Text="{Static res:AppResources.btnApply_Forgot}" HorizontalOptions="FillAndExpand" FontSize="16" FontAttributes="Bold" BackgroundColor="#2fa562" TextColor="White"
                         Command="{Binding ConfirmeDataCommand}"></Button>
+            
+            <Button Text="Delete Company Account" FontAutoScalingEnabled="False" Padding="5" FontSize="12" 
+                    BackgroundColor="White" CornerRadius="5" TextColor="Red" BorderColor="Red" BorderWidth="1" HeightRequest="42" FontAttributes="Bold" HorizontalOptions="End"
+                    Command="{Binding DeleteCompanyCommand}">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding UserPermission}" Value="2">
+                        <Setter Property="IsVisible" Value="False"></Setter>
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+        </StackLayout>
+
 
     </StackLayout>
 </Controls:CustomControl>

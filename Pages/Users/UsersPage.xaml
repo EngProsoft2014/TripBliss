@@ -23,7 +23,7 @@
                     <TapGestureRecognizer Command="{Binding BackPressedCommand}"></TapGestureRecognizer>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="{Static res:AppResources.hdrMyUser_users}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="{Static res:AppResources.lblUsers_More}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
 
             <Image Margin="0,0,0,0" HorizontalOptions="End">
@@ -38,16 +38,37 @@
         <CollectionView ItemsSource="{Binding LstUsers}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <VerticalStackLayout Margin="0,20,0,0">
-                        <Border StrokeShape="RoundRectangle 10" BackgroundColor="#2fa562">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20" Margin="0,20,0,0">
+                        
+                        <Border StrokeShape="RoundRectangle 10" BackgroundColor="#2fa562" HorizontalOptions="FillAndExpand">
                             <Label Text="{Binding UserName}" Margin="10,7,10,7" FontSize="15" TextColor="White" VerticalTextAlignment="Center"></Label>
                             <Border.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:UsersViewModel}}, Path=UserClickCommand}"
                                                       CommandParameter="{Binding}"></TapGestureRecognizer>
                             </Border.GestureRecognizers>
                         </Border>
-                        
-                    </VerticalStackLayout>
+                        <!--<Image HorizontalOptions="End">
+                            <Image.Source>
+                                <FontImageSource FontFamily="FontIconSolid" Color="#ff7700" Glyph="" Size="30"></FontImageSource>
+                            </Image.Source>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:UsersViewModel}}, Path=EnableOrDisableUserCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>-->
+
+                        <Label Text="Disable" FontSize="14" TextColor="Red" HorizontalOptions="End" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:UsersViewModel}}, Path=EnableOrDisableUserCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsDisabled}" Value="True">
+                                    <Setter Property="Text" Value="Enable"></Setter>
+                                    <Setter Property="TextColor" Value="#059ce3"></Setter>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+
+                    </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

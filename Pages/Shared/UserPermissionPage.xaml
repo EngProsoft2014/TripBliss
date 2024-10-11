@@ -62,7 +62,7 @@
                                 <DataTemplate>
                                     <VerticalStackLayout>
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                            <Label Text="{Binding claimTitle}" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <Label Text="{Binding claimTitle}" TextColor="#333" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
                                             <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
 
                                         </StackLayout>
@@ -118,7 +118,7 @@
                                 <DataTemplate>
                                     <VerticalStackLayout>
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                            <Label Text="{Binding claimTitle}" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <Label Text="{Binding claimTitle}" FontSize="13" TextColor="#333" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
                                             <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
 
                                         </StackLayout>
@@ -170,7 +170,7 @@
                                 <DataTemplate>
                                     <VerticalStackLayout>
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                            <Label Text="{Binding claimTitle}" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <Label Text="{Binding claimTitle}" FontSize="13" TextColor="#333" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
                                             <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
 
                                         </StackLayout>
@@ -223,7 +223,7 @@
                                 <DataTemplate>
                                     <VerticalStackLayout>
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                            <Label Text="{Binding claimTitle}" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <Label Text="{Binding claimTitle}" FontSize="13" TextColor="#333" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
                                             <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
 
                                         </StackLayout>
@@ -276,7 +276,7 @@
                                 <DataTemplate>
                                     <VerticalStackLayout>
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                            <Label Text="{Binding claimTitle}" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <Label Text="{Binding claimTitle}" FontSize="13" TextColor="#333" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
                                             <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
 
                                         </StackLayout>
@@ -329,7 +329,7 @@
                                 <DataTemplate>
                                     <VerticalStackLayout>
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                            <Label Text="{Binding claimTitle}" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <Label Text="{Binding claimTitle}" FontSize="13" TextColor="#333" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
                                             <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
 
                                         </StackLayout>
@@ -382,7 +382,7 @@
                                 <DataTemplate>
                                     <VerticalStackLayout>
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                            <Label Text="{Binding claimTitle}" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <Label Text="{Binding claimTitle}" FontSize="13" TextColor="#333" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
                                             <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
 
                                         </StackLayout>
