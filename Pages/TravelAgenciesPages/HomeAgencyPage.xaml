@@ -462,9 +462,6 @@
                     </tabView:SfTabItem.ImageSource>
                     <tabView:SfTabItem.Content>
                         <ContentView x:Name="conviewHistory">
-                            <!--<ContentView.BindingContext>
-                                <vm:HistoryViewModel></vm:HistoryViewModel>
-                            </ContentView.BindingContext>-->
                             <ContentView.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="VisualStateManager.VisualStateGroups">

@@ -88,6 +88,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        internal static string btnAddUser_AddUser {
+            get {
+                return ResourceManager.GetString("btnAddUser-AddUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply.
         /// </summary>
         internal static string btnApply_Forgot {
@@ -120,6 +129,33 @@ namespace TripBliss.Resources.Language {
         internal static string btnConfirm_NewRequest {
             get {
                 return ResourceManager.GetString("btnConfirm-NewRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Company Account.
+        /// </summary>
+        internal static string btnDCA_AccountPage {
+            get {
+                return ResourceManager.GetString("btnDCA-AccountPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deactivate.
+        /// </summary>
+        internal static string btnDeactivate_UsersPage {
+            get {
+                return ResourceManager.GetString("btnDeactivate-UsersPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Account.
+        /// </summary>
+        internal static string btnDeleteAccount_ProfilePage {
+            get {
+                return ResourceManager.GetString("btnDeleteAccount-ProfilePage", resourceCulture);
             }
         }
         

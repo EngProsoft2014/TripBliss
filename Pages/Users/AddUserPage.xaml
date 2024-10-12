@@ -61,7 +61,7 @@
                     </Image>
                 </StackLayout>
             </Border>
-            <Button Text="Add" FontAutoScalingEnabled="False" FontAttributes="Bold" TextColor="White" WidthRequest="140" FontSize="14" CornerRadius="25" Margin="0,30,0,0"
+            <Button Text="{Static res:AppResources.btnAddUser_AddUser}" FontAutoScalingEnabled="False" FontAttributes="Bold" TextColor="White" WidthRequest="140" FontSize="14" CornerRadius="25" Margin="0,30,0,0"
                     Command="{Binding ClickRegisterCommand}" CommandParameter="{Binding LoginRequest}" BackgroundColor="#2fb569">
             </Button>
         </VerticalStackLayout>

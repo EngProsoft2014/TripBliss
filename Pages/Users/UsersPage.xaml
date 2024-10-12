@@ -59,7 +59,7 @@
                             </Image.GestureRecognizers>
                         </Image>-->
 
-                        <Label Text="Disable" FontSize="14" TextColor="Red" HorizontalOptions="End" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                        <Label Text="{Static res:AppResources.btnDeactivate_UsersPage}" FontSize="14" TextColor="Red" HorizontalOptions="End" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:UsersViewModel}}, Path=EnableOrDisableUserCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                             </Label.GestureRecognizers>

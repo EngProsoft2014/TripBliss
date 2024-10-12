@@ -73,7 +73,7 @@
                     <Button Text="{Static res:AppResources.btnApply_Forgot}" HorizontalOptions="FillAndExpand" FontSize="16" FontAttributes="Bold" BackgroundColor="#2fa562" TextColor="White"
                         Command="{Binding ConfirmeDataCommand}"></Button>
 
-                    <Button Text="Delete Company Account" FontAutoScalingEnabled="False" Padding="5" FontSize="12" 
+                    <Button Text="{Static res:AppResources.btnDCA_AccountPage}" FontAutoScalingEnabled="False" Padding="5" FontSize="12" 
                             BackgroundColor="White" CornerRadius="5" TextColor="Red" BorderColor="Red" BorderWidth="1" HeightRequest="42" FontAttributes="Bold" HorizontalOptions="End"
                             Command="{Binding DeleteCompanyCommand}">
                         <Button.Triggers>

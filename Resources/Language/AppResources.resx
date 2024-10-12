@@ -555,4 +555,16 @@
   <data name="hdrRestPassword-ResetPage" xml:space="preserve">
     <value>Reset Password</value>
   </data>
+  <data name="btnAddUser-AddUser" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="btnDCA-AccountPage" xml:space="preserve">
+    <value>Delete Company Account</value>
+  </data>
+  <data name="btnDeactivate-UsersPage" xml:space="preserve">
+    <value>Deactivate</value>
+  </data>
+  <data name="btnDeleteAccount-ProfilePage" xml:space="preserve">
+    <value>Delete Account</value>
+  </data>
 </root>

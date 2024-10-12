@@ -555,4 +555,16 @@
   <data name="hdrRestPassword-ResetPage" xml:space="preserve">
     <value>إعادة تعيين كلمة المرور</value>
   </data>
+  <data name="btnAddUser-AddUser" xml:space="preserve">
+    <value>إضافة</value>
+  </data>
+  <data name="btnDCA-AccountPage" xml:space="preserve">
+    <value>حذف حساب الشركة</value>
+  </data>
+  <data name="btnDeactivate-UsersPage" xml:space="preserve">
+    <value>إلغاء التنشيط</value>
+  </data>
+  <data name="btnDeleteAccount-ProfilePage" xml:space="preserve">
+    <value>حذف الحساب</value>
+  </data>
 </root>
