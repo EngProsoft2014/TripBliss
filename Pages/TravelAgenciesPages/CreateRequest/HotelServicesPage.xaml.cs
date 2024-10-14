@@ -1,3 +1,4 @@
+using Syncfusion.Maui.Core.Carousel;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest;
@@ -15,8 +16,15 @@ public partial class HotelServicePage : Controls.CustomControl
 
     private void LocationPicker(object sender, EventArgs e)
     {
-        var cc = LocPick.SelectedItem as LocationResponse;
-        HotelPick.ItemsSource = Model.Hoteles.Where(a=>a.LocationId == cc!.Id).ToList();
+        //var cc = LocPick.SelectedItem as LocationResponse;
+        //HotelPick.ItemsSource = Model.Hoteles.Where(a=>a.LocationId == cc!.Id).ToList();
+
+        var selectedOption = (sender as Picker).SelectedItem;
+        if (selectedOption != null)
+        {
+            LocationResponse cc = selectedOption as LocationResponse;
+            HotelPick.ItemsSource = Model.Hoteles.Where(a => a.LocationId == cc!.Id).ToList();
+        }
     }
 
 
