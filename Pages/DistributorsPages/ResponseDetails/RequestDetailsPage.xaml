@@ -127,10 +127,16 @@
 
                                             </CarouselView>
                                             <IndicatorView x:Name="indicatorView"
-              IndicatorColor="LightGray"
-              SelectedIndicatorColor="#2fb569"
-              HorizontalOptions="Center" 
-              />
+                                                          IndicatorColor="LightGray"
+                                                          SelectedIndicatorColor="#2fb569"
+                                                          HorizontalOptions="Center" 
+                                                          />
+                                            <StackLayout.Triggers>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding Response.ResponseWithDistributorHotel.Count}" Value="0">
+                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                    <Setter Property="HeightRequest" Value="0"></Setter>
+                                                </DataTrigger>
+                                            </StackLayout.Triggers>
                                         </StackLayout>
                                         <!--Transportation-->
                                         <StackLayout Spacing="10">
@@ -211,6 +217,13 @@
                    SelectedIndicatorColor="#2fb569"
                    HorizontalOptions="Center" 
                    />
+
+                                            <StackLayout.Triggers>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding Response.ResponseWithDistributorTransport.Count}" Value="0">
+                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                    <Setter Property="HeightRequest" Value="0"></Setter>
+                                                </DataTrigger>
+                                            </StackLayout.Triggers>
 
                                         </StackLayout>
                                         <!--AirFlight-->
@@ -307,6 +320,12 @@
                    SelectedIndicatorColor="#2fb569"
                    HorizontalOptions="Center" 
                    />
+                                            <StackLayout.Triggers>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding Response.ResponseWithDistributorAirFlight.Count}" Value="0">
+                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                    <Setter Property="HeightRequest" Value="0"></Setter>
+                                                </DataTrigger>
+                                            </StackLayout.Triggers>
                                         </StackLayout>
                                         <!--Visa-->
                                         <StackLayout Spacing="10">
@@ -341,6 +360,12 @@
                    SelectedIndicatorColor="#2fb569"
                    HorizontalOptions="Center" 
                    />
+                                            <StackLayout.Triggers>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding Response.ResponseWithDistributorVisa.Count}" Value="0">
+                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                    <Setter Property="HeightRequest" Value="0"></Setter>
+                                                </DataTrigger>
+                                            </StackLayout.Triggers>
                                         </StackLayout>
                                     </StackLayout>
                                 </ScrollView>
@@ -395,6 +420,11 @@
                                     </Image>
                                     <Label Text="{Binding Response.RequestName}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+
+                                    <Button Text="Review"  FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" FontSize="{OnPlatform Android=12,iOS=14}"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=ReviewClickedCommand}"
+                                            BackgroundColor="#ff7700" CornerRadius="5" TextColor="White" WidthRequest="70" Margin="0,0,0,0" FontAttributes="Bold">
+                                    </Button>
 
                                 </StackLayout>
                                 <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Padding="0,10">

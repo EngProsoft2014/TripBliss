@@ -242,6 +242,7 @@ namespace TripBliss.Helpers
             var httpLient = new HttpClient();
             httpLient.DefaultRequestHeaders.Accept.Clear();
             //httpLient.DefaultRequestHeaders.Add("authorization", "Basic " + TokenGest);
+            httpLient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", TokenGest);
             httpLient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             try

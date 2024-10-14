@@ -50,7 +50,7 @@ namespace TripBliss
         }
 
 
-        async void LoadSetting()
+        void LoadSetting()
         {
             string Lan = Preferences.Default.Get("Lan", "en");
             if (Lan == "ar")

@@ -2,9 +2,11 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
+using Mopups.Services;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Models.ResponseWithDistributor;
 using TripBliss.Pages.DistributorsPages;
 using TripBliss.Pages.DistributorsPages.ResponseDetailes;
 
@@ -24,7 +26,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         public List<ResponseWithDistributorAirFlightResponse>? airFlights = new List<ResponseWithDistributorAirFlightResponse>();
         [ObservableProperty]
         public List<ResponseWithDistributorVisaResponse>? visas = new List<ResponseWithDistributorVisaResponse>();
-
+        [ObservableProperty]
+        bool isShowReviewBtn;
 
         #endregion
 
@@ -136,6 +139,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                 if (json != null)
                 {
                     Response = json;
+
+                    CheckShowReview();
                 }
             }
         }
@@ -180,7 +185,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                     }
                     else
                     {
-                        var toast = Toast.Make($"Warning, {json.Item2}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make($"Warning, {json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                     }
                 }
@@ -189,11 +194,63 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             {
                 var toast = Toast.Make("Warning, Please put price to one service or more", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
-            }
-                
+            }             
 
             IsBusy = true;
-        } 
+        }
+
+
+        [RelayCommand]
+        [Obsolete]
+        async Task ReviewClicked()
+        {
+            IsBusy = false;
+
+            bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Do you want to make a review, finish the request and move it to the History?", "Yes", "No");
+            if (answer)
+            {
+                var vieModel = new Dis_ReviewViewModel(Rep, _service);
+                var page = new Pages.DistributorsPages.ResponseDetailes.Ds_ReviewPopup(vieModel);
+                vieModel.ReviewClose += async (model) =>
+                {
+                    if (model != null)
+                    {
+                        UserDialogs.Instance.ShowLoading();
+                        string UserToken = await _service.UserToken();
+                        var json = await Rep.PostTRAsync<ResponseWithDistributorReviewDistributorRequest, string>(string.Format($"/Distributor/{Response.DistributorCompanyId}/ResponseWithDistributor/{Response.Id}/ReviewToTravelAgency"), model, UserToken);
+                        UserDialogs.Instance.HideHud();
+                        if (json.Item1 == null && json.Item2 == null)
+                        {
+                            await App.Current!.MainPage!.Navigation.PushAsync(new HomeDistributorsPage(new Dis_HomeViewModel(Rep, _service), Rep, _service));
+                            var toast = Toast.Make("Succesfully, for Review", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            await toast.Show();
+                        }
+                        else
+                        {
+                            var toast = Toast.Make($"Warning, {json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            await toast.Show();
+                        }
+                    }
+                    await MopupService.Instance.PopAsync();
+                };
+
+                await MopupService.Instance.PushAsync(page);
+            }
+
+            IsBusy = true;
+        }
+
+        void CheckShowReview()
+        {
+            if (Response?.TotalPriceAgentAccept > 0 && Response?.TotalPriceAgentAccept == Response?.TotalPayment)
+            {
+                IsShowReviewBtn = true;
+            }
+            else
+            {
+                IsShowReviewBtn = false;
+            }
+        }
         #endregion
     }
 }

@@ -43,6 +43,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             await GetRequestDetailes(ReqId);
             UserDialogs.Instance.HideHud();
         }
+
         async Task GetRequestDetailes(int ReqId)
         {
 

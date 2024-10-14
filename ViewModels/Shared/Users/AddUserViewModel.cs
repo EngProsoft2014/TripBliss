@@ -82,7 +82,7 @@ namespace TripBliss.ViewModels.Users
                     }
                     else
                     {
-                        var toast = Toast.Make($"{json.Item2!.errors!.Values}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                     }
 
