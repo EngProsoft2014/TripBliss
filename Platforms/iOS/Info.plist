@@ -34,6 +34,14 @@
 		<string>We require access to your gallery to allow you to use photos for your profile or share them with customers within the app. For example, you can use a picture to upload as your profile image or use pictures of the documents required for your order to be processed.</string>
 		<key>XSAppIconAssets</key>
 		<string>Assets.xcassets/logo.appiconset</string>
+
+		<key>CFBundleDevelopmentRegion</key>
+		<string>en</string>
+		<key>CFBundleLocalizations</key>
+		<array>
+			<string>en</string>
+			<string>ar</string>
+		</array>
 	</dict>
 	
 </plist>
