@@ -172,7 +172,7 @@
                                                                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gold" Size="13"></FontImageSource>
                                                                                             </Image.Source>
                                                                                         </Image>
-                                                                                        <Label Text="{Binding Review}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"
+                                                                                        <Label Text="{Binding CountReviewToDistributor}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"
                                                                                                 VerticalOptions="CenterAndExpand" VerticalTextAlignment="End"></Label>
                                                                                     </HorizontalStackLayout>
                                                                                 </HorizontalStackLayout>
@@ -259,7 +259,7 @@
                                                                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gold" Size="13"></FontImageSource>
                                                                                             </Image.Source>
                                                                                         </Image>
-                                                                                        <Label Text="{Binding DistributorCompany.Review}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"
+                                                                                        <Label Text="{Binding DistributorCompany.CountReviewToDistributor}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"
                                                                                                  VerticalOptions="CenterAndExpand" VerticalTextAlignment="End"></Label>
                                                                                     </HorizontalStackLayout>
                                                                                 </HorizontalStackLayout>

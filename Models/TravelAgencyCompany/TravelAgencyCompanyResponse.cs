@@ -15,6 +15,8 @@ namespace TripBliss.Models
         public DateOnly? ExpireDateAcc { get; set; }
         public bool? ShowAllDistributors { get; set; }
         public int? Review { get; set; }
+        public int CountReviewToTravelAgency { get; set; }
+        public double ReviewToTravelAgency { get; set; }
 
         public byte[]? ImgFile { get; set; }
         public string? Extension { get; set; } = string.Empty;

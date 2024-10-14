@@ -229,7 +229,7 @@
                                                         </Label>
                                                     </VerticalStackLayout>
                                                     <HorizontalStackLayout Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="5">
-                                                        <Label Text="{Binding Rate}" FontSize="14" TextColor="Black" FontAttributes="Bold"
+                                                        <Label Text="{Binding CountReviewToTravelAgency}" FontSize="14" TextColor="Black" FontAttributes="Bold"
                                                                VerticalOptions="StartAndExpand"></Label>
                                                         <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
                                                             <Image.Source>

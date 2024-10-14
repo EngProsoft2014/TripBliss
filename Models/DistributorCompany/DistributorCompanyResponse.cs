@@ -22,6 +22,8 @@ namespace TripBliss.Models
         public int? Review { get; set; }
         public byte[]? ImgFile { get; set; }
         public string? Extension { get; set; } = string.Empty;
+        public int CountReviewToDistributor { get; set; }
+        public double ReviewToDistributor { get; set; }
 
         ImageSource? _ImageFile;
         public ImageSource? ImageFile
