@@ -13,8 +13,11 @@ using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Pages.DistributorsPages;
 using TripBliss.Pages.MainPopups;
 using TripBliss.Pages.Shared;
+using TripBliss.Pages.TravelAgenciesPages;
+using TripBliss.ViewModels.DistributorsViewModels;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels
 {
@@ -205,6 +208,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                 IsBusy = true;
             }
 
+        }
+        [RelayCommand]
+        async Task MoreDetails()
+        {
+            var vm = new Dis_ProviderDetailsViewModel(CompanyResponse!.Id!,Rep,_service);
+            var page = new Dis_ProviderDetailsPage();
+            page.BindingContext = vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
         }
         #endregion
     }

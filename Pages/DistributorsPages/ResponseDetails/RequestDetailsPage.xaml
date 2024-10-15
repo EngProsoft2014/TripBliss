@@ -339,8 +339,8 @@
                                                                 <StackLayout Orientation="Vertical" Margin="10,0" VerticalOptions="CenterAndExpand">
                                                                     <StackLayout Orientation="Horizontal">
                                                                         <Label Text="{Static res:AppResources.lblVisaType_VisaService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" VerticalTextAlignment="Center"
-                                       FontFamily="Almarai-Regular"></Label>
-                                                                        <Label Text=": " TextColor="Black" FontSize="13" FontAutoScalingEnabled="False"></Label>
+                                                                               FontFamily="Almarai-Regular"></Label>
+                                                                        <Label Text=": " TextColor="Black" FontSize="13" FontAutoScalingEnabled="False" VerticalOptions="Center"></Label>
                                                                         <Label Text="{Binding RequestTravelAgencyVisa.VisaName}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center"></Label>
                                                                         <Line StrokeThickness="1" Y1="0" Y2="40" Stroke="Gray" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></Line>
                                                                         <VerticalStackLayout Margin="10,0" VerticalOptions="CenterAndExpand">

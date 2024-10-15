@@ -13,6 +13,7 @@ using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages;
+using TripBliss.Pages.DistributorsPages;
 using TripBliss.Pages.DistributorsPages.ResponseDetailes;
 using TripBliss.Pages.Shared;
 using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
@@ -84,10 +85,10 @@ namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
             await App.Current!.MainPage!.Navigation.PopAsync();
         }
         [RelayCommand]
-        async Task Selection()
+        async Task Selection(TravelAgencyCompanyResponse model)
         {
-            var vm = new ProviderDetailsViewModel();
-            var page = new ProviderDetailsPage();
+            var vm = new Dis_ProviderDetailsViewModel(model!.Id!,Rep,_service);
+            var page = new Dis_ProviderDetailsPage();
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
         }

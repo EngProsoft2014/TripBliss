@@ -82,6 +82,11 @@
                                         HorizontalTextAlignment="Center" Text="{Binding CompanyResponse.StripeSecretKey }" HorizontalOptions="CenterAndExpand"></Entry>
                             </StackLayout>
                         </Border>
+                        <Label Text="More Details >>" FontSize="14" TextColor="#2fa562" TextDecorations="Underline">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding MoreDetailsCommand}"></TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
                     </StackLayout>
                     
                 </VerticalStackLayout>

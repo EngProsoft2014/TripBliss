@@ -14,6 +14,7 @@ using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Models.DistributorCompany;
 using TripBliss.Pages;
+using TripBliss.Pages.TravelAgenciesPages;
 using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
 
 
@@ -231,6 +232,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     DistributorCompanys.Where(x => x.Id == model.DistributorCompanyId).FirstOrDefault()!.Favourite = false;
                 }
             }
+        }
+        [RelayCommand]
+        async Task Selection(DistributorCompanyResponse model)
+        {
+            var vm = new Tr_ProviderDetailsViewModel(model.Id,Rep,_service);
+            var page = new Tr_ProviderDetailsPage();
+            page.BindingContext = vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
         }
         #endregion
 

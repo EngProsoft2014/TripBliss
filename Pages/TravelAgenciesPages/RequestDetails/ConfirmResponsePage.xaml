@@ -49,10 +49,10 @@
             <Label Text="{Static res:AppResources.hdConfirmResponse}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
             <!--This will Uncomment after Apple Aproved-->
-            <!--<Button Text="{Static res:AppResources.btnPayNow_NewRequest}" IsVisible="{Binding IsShowPaymentBtn}" FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" FontSize="{OnPlatform Android=12,iOS=14}"
+            <Button Text="{Static res:AppResources.btnPayNow_NewRequest}" IsVisible="{Binding IsShowPaymentBtn}" FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" FontSize="{OnPlatform Android=12,iOS=14}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=PaymentClickedCommand}"
                     BackgroundColor="#33a7f5" CornerRadius="5" TextColor="White" WidthRequest="70" Margin="0,0,0,0" FontAttributes="Bold">
-            </Button>-->
+            </Button>
 
             <Button Text="Review"  FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" FontSize="{OnPlatform Android=12,iOS=14}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=ReviewClickedCommand}"

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              xmlns:rating="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
-             x:Class="TripBliss.Pages.Shared.ProviderDetailsPage"
+             x:Class="TripBliss.Pages.TravelAgenciesPages.Tr_ProviderDetailsPage"
              Title="ProviderDetailsPage"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="White">
@@ -39,7 +39,7 @@
             </Image>
             <HorizontalStackLayout Spacing="5" Margin="0,10,0,0" HorizontalOptions="CenterAndExpand">
                 <Label Text="{Binding DistributorModel.CompanyName}" TextColor="Black" FontSize="14" VerticalTextAlignment="Center"></Label>
-                <Label Text="{Binding DistributorModel.ReviewToTravelAgency}" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start"></Label>
+                <Label Text="{Binding DistributorModel.ReviewToDistributor}" TextColor="Gray" FontSize="14" VerticalTextAlignment="Start"></Label>
                 <Image VerticalOptions="StartAndExpand" TranslationY="2">
                     <Image.Source>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gold" Size="13"></FontImageSource>
@@ -51,24 +51,24 @@
             <Label Text="{Binding DistributorModel.Address}" TextColor="CornflowerBlue" FontSize="12" HorizontalTextAlignment="Center" MaxLines="1"></Label>
         </StackLayout>
         <Label Text="Reviews" TextColor="#333" FontSize="20" FontAttributes="Bold" Margin="0,20,0,0"></Label>
-        <CollectionView ItemsSource="{Binding DistributorModel.responseWithDistributorReviewDistributorResponses}">
+        <CollectionView ItemsSource="{Binding DistributorModel.responseWithDistributorReviewTravelAgentResponses}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <VerticalStackLayout Spacing="3" Margin="0,10,0,0">
                         <HorizontalStackLayout>
                             <Label Text="{Binding RequestName}" TextColor="Black" FontSize="14.5" FontAttributes="Bold"></Label>
-                            <Label Text="{Binding ReviewDistributorDateTime}" TextColor="Gray" FontSize="12" FontAttributes="Italic"></Label>
+                            <Label Text="{Binding ReviewTravelAgentDateTime}" TextColor="Gray" FontSize="12" FontAttributes="Italic"></Label>
                         </HorizontalStackLayout>
-                        <rating:SfRating ItemSpacing="5" ItemSize="13" Value="{Binding ReviewToTravelAgency}" HorizontalOptions="StartAndExpand" IsReadOnly="True">
+                        <rating:SfRating ItemSpacing="5" ItemSize="13" Value="{Binding ReviewToDistributor}" HorizontalOptions="StartAndExpand" IsReadOnly="True">
                             <rating:SfRating.RatingSettings>
                                 <rating:RatingSettings RatedFill="#00e363" UnratedFill="White" RatedStroke="LightGray" UnratedStroke="LightGray"/>
                             </rating:SfRating.RatingSettings>
                         </rating:SfRating>
                         <HorizontalStackLayout>
                             <Label Text="By " TextColor="Gray" FontSize="14" FontAttributes="Italic"></Label>
-                            <Label Text="{Binding ReviewUserDistributorName}" TextColor="Gray" FontSize="14" FontAttributes="Italic"></Label>
+                            <Label Text="{Binding ReviewUserTravelAgentName}" TextColor="Gray" FontSize="14" FontAttributes="Italic"></Label>
                         </HorizontalStackLayout>
-                        <Label Text="{Binding ReviewDistributorNote}" TextColor="Black" FontSize="14"></Label>
+                        <Label Text="{Binding ReviewTravelAgentNote}" TextColor="Black" FontSize="14"></Label>
                     </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

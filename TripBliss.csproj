@@ -139,6 +139,9 @@
 	  <Compile Update="Pages\DistributorsPages\Offer\OfferDetailsPage.xaml.cs">
 	    <DependentUpon>OfferDetailsPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\DistributorsPages\Dis_ProviderDetailsPage.xaml.cs">
+	    <DependentUpon>Dis_ProviderDetailsPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\DistributorsPages\ResponseDetails\AirFlightServicePage.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
@@ -168,6 +171,9 @@
 	  </Compile>
 	  <Compile Update="Pages\TravelAgenciesPages\Offer\OfferDetailsPage.xaml.cs">
 	    <DependentUpon>OfferDetailsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\TravelAgenciesPages\Tr_ProviderDetailsPage.xaml.cs">
+	    <DependentUpon>Tr_ProviderDetailsPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\TravelAgenciesPages\RequestDetails\AirFlightServicePage.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
@@ -227,6 +233,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ActivateDetailsPages\VisaServicesActivateDetails.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\DistributorsPages\Dis_ProviderDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\DistributorsPages\ResponseDetails\Ds_ReviewPopup.xaml">
@@ -320,6 +329,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ActivateDetailsPages\AirFlightAttachmentsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\TravelAgenciesPages\Tr_ProviderDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\AirFlightServicePage.xaml">

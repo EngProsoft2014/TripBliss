@@ -229,7 +229,8 @@
                                                     </HorizontalStackLayout>
                                                 </StackLayout>
                                                 <Border.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Dis_DistributorsViewModel}}, Path=SelectionCommand}"></TapGestureRecognizer>
+                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Dis_DistributorsViewModel}}, Path=SelectionCommand}"
+                                                                          CommandParameter="{Binding}"></TapGestureRecognizer>
                                                 </Border.GestureRecognizers>
                                             </Border>
                                         </DataTemplate>

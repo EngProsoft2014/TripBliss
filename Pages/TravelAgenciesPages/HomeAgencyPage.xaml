@@ -222,6 +222,10 @@
                                                                                
                                                                             </VerticalStackLayout>
                                                                         </StackLayout>
+                                                                        <Border.GestureRecognizers>
+                                                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=SelectionCommand}"
+                                                                                                  CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                                        </Border.GestureRecognizers>
                                                                     </Border>
                                                                 </DataTemplate>
                                                             </CollectionView.ItemTemplate>
@@ -307,6 +311,10 @@
                                                                                 </Image>
                                                                             </VerticalStackLayout>
                                                                         </StackLayout>
+                                                                        <Border.GestureRecognizers>
+                                                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=SelectionCommand}"
+                                                                                                  CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                                        </Border.GestureRecognizers>
                                                                     </Border>
                                                                 </DataTemplate>
                                                             </CollectionView.ItemTemplate>

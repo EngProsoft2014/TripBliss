@@ -111,12 +111,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
                         if (json.Item1 != null)
                         {
-                            // this will delete after Apple aproved                      
-                            if (Response.TotalPayment == 0)
-                            {
-                                await AddPayment();
-                                Response.TotalPayment = 1;
-                            }
                             var toast = Toast.Make("Successfully for Add Response", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
 
