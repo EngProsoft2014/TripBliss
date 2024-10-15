@@ -307,6 +307,12 @@ namespace TripBliss.Constants
         // End Get Travel Company Details 
         #endregion
 
+        #region Get Travel Companys
+        // Get Travel Companys
+        public static string GetTravelCompanysApi = "api/TravelAgencyCompany/current";
+        // End Get Travel Companys 
+        #endregion
+
         #region put Travel Company Details
         // put Travel Company Details
         public static string PutTravelCompanyDetailsApi = "api/TravelAgencyCompany/";

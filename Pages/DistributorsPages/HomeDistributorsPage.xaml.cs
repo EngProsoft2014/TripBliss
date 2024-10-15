@@ -12,6 +12,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
     IGenericRepository Rep;
     readonly Services.Data.ServicesService _service;
     Dis_HomeViewModel Model;
+    Dis_DistributorsViewModel distributorsViewModel;
 
     [Obsolete]
     public HomeDistributorsPage(Dis_HomeViewModel model,IGenericRepository generic, Services.Data.ServicesService service)
@@ -173,7 +174,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
         }
         if ((int)e.NewIndex == 1)
         {
-            AgencyView.BindingContext = new Dis_DistributorsViewModel(Rep, _service);
+            AgencyView.BindingContext = distributorsViewModel = new Dis_DistributorsViewModel(Rep, _service);
         }
         if ((int)e.NewIndex == 2)
         {
@@ -187,5 +188,10 @@ public partial class HomeDistributorsPage : Controls.CustomControl
         {
             MoreView.BindingContext = new Dis_MoreViewModel(Rep, _service);
         }
+    }
+
+    private void SearchBar_Tr(object sender, TextChangedEventArgs e)
+    {
+        TrColc.ItemsSource = distributorsViewModel.CompanyResponses!.Where(x => (x.CompanyName!).ToLower().Contains(e.NewTextValue.ToLower()));
     }
 }

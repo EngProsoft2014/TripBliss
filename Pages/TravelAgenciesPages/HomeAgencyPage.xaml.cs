@@ -32,17 +32,6 @@ public partial class HomeAgencyPage : Controls.CustomControl
     }
 
 
-    //protected async override void OnNavigatedTo(NavigatedToEventArgs args)
-    //{
-    //    base.OnNavigatedTo(args);
-
-    //    if (!Constants.Permissions.CheckPermission(Constants.Permissions.Show_Home_Requests))
-    //    {
-    //        var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-    //        await toast.Show();
-    //    }
-    //}
-
     [Obsolete]
     protected override bool OnBackButtonPressed()
     {

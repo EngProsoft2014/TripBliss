@@ -188,28 +188,18 @@
                     </tabView:SfTabItem.ImageSource>
                     <tabView:SfTabItem.Content>
                         <ContentView x:Name="AgencyView">
-                            <!--<ContentView.BindingContext>
-                                <dvm:DistributorsViewModel></dvm:DistributorsViewModel>
-                            </ContentView.BindingContext>-->
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="{OnPlatform Android=20, iOS='20,0,20,0'}" Spacing="10">
                                 <Label Text="{Static res:AppResources.hdrAgency}" FontSize="18" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
                                 <Border StrokeShape="RoundRectangle 25" HeightRequest="40" Stroke="Gray" Margin="{OnPlatform Android='0,20,0,10',iOS='0,10,0,10'}" BackgroundColor="White">
                                     <Grid>
                                         <SearchBar BackgroundColor="White" Placeholder="{Static res:AppResources.plcSearch}" HeightRequest="40" FontSize="15"
-                                                   TextColor="Black"></SearchBar>
-                                        <!--<Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
-                                            <Image WidthRequest="20" HeightRequest="20">
-                                                <Image.Source>
-                                                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="White"></FontImageSource>
-                                                </Image.Source>
-                                            </Image>
-                                        </Border>-->
+                                                   TextColor="Black" TextChanged="SearchBar_Tr"></SearchBar>
                                     </Grid>
                                     <Border.Shadow>
                                         <Shadow Brush="{OnPlatform Android=Gray,iOS=LightGray}" Radius="{OnPlatform Android=5,iOS=2}" Opacity="1"></Shadow>
                                     </Border.Shadow>
                                 </Border>
-                                <CollectionView ItemsSource="{Binding TravelAgencies}" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" SelectionMode="None">
+                                <CollectionView x:Name="TrColc" ItemsSource="{Binding CompanyResponses}" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" SelectionMode="None">
                                     <CollectionView.ItemsLayout>
                                         <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
                                     </CollectionView.ItemsLayout>
@@ -218,20 +208,17 @@
                                             <Border StrokeShape="RoundRectangle 20" Margin="0,10">
                                                 <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
                                                     <VerticalStackLayout Padding="10" Spacing="5">
-                                                        <Label Text="{Binding Name}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+                                                        <Label Text="{Binding CompanyName}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
                                                         <Label Text="{Binding Phone}" FontSize="12" TextColor="Gray"></Label>
-                                                        <Label Text="{Binding Services}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
-                                                        <Label Margin="0,3,0,0">
-                                                            <Label.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Text="Address : " FontSize="12" TextColor="DeepSkyBlue" ></Span>
-                                                                    <Span Text="{Binding Address}" FontSize="12" TextColor="DeepSkyBlue" ></Span>
-                                                                </FormattedString>
-                                                            </Label.FormattedText>
-                                                        </Label>
+                                                        <Label Text="{Binding Email}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                                        <HorizontalStackLayout>
+                                                            <Label Text="{Static res:AppResources.plcAddress_AccountPage}" FontSize="12" TextColor="DeepSkyBlue" ></Label>
+                                                            <Label Text=" :" FontSize="12" TextColor="DeepSkyBlue" ></Label>
+                                                            <Label Text="{Binding Address}" FontSize="12" TextColor="DeepSkyBlue" ></Label>
+                                                        </HorizontalStackLayout>
                                                     </VerticalStackLayout>
                                                     <HorizontalStackLayout Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="5">
-                                                        <Label Text="{Binding CountReviewToTravelAgency}" FontSize="14" TextColor="Black" FontAttributes="Bold"
+                                                        <Label Text="{Binding ReviewToTravelAgency}" FontSize="14" TextColor="Black" FontAttributes="Bold"
                                                                VerticalOptions="StartAndExpand"></Label>
                                                         <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
                                                             <Image.Source>
