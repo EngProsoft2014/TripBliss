@@ -38,6 +38,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         async Task ApplyReview(ResponseWithDistributorReviewTravelAgentRequest model)
         {
+            IsBusy = false;
             ReviewClose.Invoke(model);
         }
 

@@ -37,6 +37,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task ApplyReview(ResponseWithDistributorReviewDistributorRequest model)
         {
+            IsBusy = false;
             ReviewClose.Invoke(model);
         }
 

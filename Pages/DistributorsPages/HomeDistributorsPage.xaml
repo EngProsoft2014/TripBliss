@@ -62,7 +62,6 @@
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="20,0">
                                         <StackLayout Orientation="Horizontal">
                                             <CheckBox x:Name="chkActive" Color="Gray">
-
                                                 <CheckBox.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_chkActive"></TapGestureRecognizer>
                                                 </CheckBox.GestureRecognizers>
@@ -137,6 +136,9 @@
                                                                 </DataTrigger>
                                                                 <DataTrigger TargetType="Border" Binding="{Binding Source={x:Reference lblAct},Path=Text}" Value="Active">
                                                                     <Setter Property="BackgroundColor" Value="#2FA562"></Setter>
+                                                                </DataTrigger>
+                                                                <DataTrigger TargetType="Border" Binding="{Binding Source={x:Reference lblAct},Path=Text}" Value="Not Active">
+                                                                    <Setter Property="BackgroundColor" Value="Transparent"></Setter>
                                                                 </DataTrigger>
                                                             </Border.Triggers>
                                                         </Border>

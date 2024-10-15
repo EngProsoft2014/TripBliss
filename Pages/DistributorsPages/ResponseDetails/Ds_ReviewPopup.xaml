@@ -8,7 +8,8 @@
                   Title="Tr_ReviewPopup"
                   CloseWhenBackgroundIsClicked="True"
                   NavigationPage.HasNavigationBar="False" 
-                  BackgroundColor="#90000000">
+                  BackgroundColor="#90000000"
+                  IsEnabled="{Binding IsBusy}">
 
 
     <mopups:PopupPage.Animation>
