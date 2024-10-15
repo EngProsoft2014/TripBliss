@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using TripBliss.Models.ResponseWithDistributor;
 
 namespace TripBliss.Models
 {
@@ -24,6 +25,7 @@ namespace TripBliss.Models
         public string? Extension { get; set; } = string.Empty;
         public int CountReviewToDistributor { get; set; }
         public double ReviewToDistributor { get; set; }
+        public IList<ResponseWithDistributorReviewTravelAgentResponse> responseWithDistributorReviewTravelAgentResponses { get; set; } = [];
 
         ImageSource? _ImageFile;
         public ImageSource? ImageFile

@@ -25,10 +25,15 @@
         public int ReviewToDistributor { get; set; }
         public string? ReviewTravelAgentNote { set; get; }
         public string? ReviewUserTravelAgentName { set; get; }
+        public DateTime? ReviewTravelAgentDateTime { get; set; }
+        public bool ReviewTravelAgentShow { get; set; }
 
         public int ReviewToTravelAgency { get; set; } = 0;
         public string? ReviewDistributorNote { get; set; }
         public string? ReviewUserDistributorName { get; set; }
+        public DateTime? ReviewDistributorDateTime { get; set; }
+        public bool ReviewDistributorShow { get; set; }
+
         public string ChoosenServices { get; set; } = string.Empty;
         public DateTime? CreateDate { get; set; }
 
