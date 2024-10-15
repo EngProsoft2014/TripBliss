@@ -14,17 +14,21 @@ using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages;
 using TripBliss.Pages.DistributorsPages.ResponseDetailes;
+using TripBliss.Pages.Shared;
 using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 using TripBliss.ViewModels.ActivateViewModels;
 using TripBliss.ViewModels.DistributorsViewModels.ResponseDetails;
+using TripBliss.ViewModels.Shared;
 
 
 namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
 {
     partial class Dis_DistributorsViewModel : BaseViewModel
     {
+        #region Prop
         [ObservableProperty]
-        ObservableCollection<TravelAgencyCompanyResponse> companyResponses = new ObservableCollection<TravelAgencyCompanyResponse>();
+        ObservableCollection<TravelAgencyCompanyResponse> companyResponses = new ObservableCollection<TravelAgencyCompanyResponse>(); 
+        #endregion
 
         #region Services
         readonly Services.Data.ServicesService _service;
@@ -37,9 +41,10 @@ namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
             Rep = generic;
             _service = service;
             Init();
-        } 
+        }
         #endregion
 
+        #region Methods
         async void Init()
         {
             if (Constants.Permissions.CheckPermission(Constants.Permissions.DS_Show_Agencies))
@@ -69,14 +74,23 @@ namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
                     }
                 }
             }
-        }
+        } 
+        #endregion
 
         #region RelayCommand
         [RelayCommand]
         async Task OnBackPressed()
         {
             await App.Current!.MainPage!.Navigation.PopAsync();
-        } 
+        }
+        [RelayCommand]
+        async Task Selection()
+        {
+            var vm = new ProviderDetailsViewModel();
+            var page = new ProviderDetailsPage();
+            page.BindingContext = vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
+        }
         #endregion
 
 

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Controls="clr-namespace:TripBliss.Controls"
+             xmlns:rating="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             x:Class="TripBliss.Pages.Shared.ProviderDetailsPage"
+             Title="ProviderDetailsPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+    <StackLayout Margin="20">
+        <StackLayout Orientation="Horizontal">
+            <Image VerticalOptions="CenterAndExpand">
+                <Image.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                </Image.Source>
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                        <Setter Property="Rotation" Value="180"></Setter>
+                    </DataTrigger>
+                </Image.Triggers>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackClickedCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+            <Button Text="Send offer" FontAutoScalingEnabled="False" WidthRequest="95" Padding="0" HeightRequest="30" FontSize="14"
+                    BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" Margin="0" FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Button>
+        </StackLayout>
+        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0" Spacing="0">
+            <Image HorizontalOptions="CenterAndExpand">
+                <Image.Source>
+                    <FontImageSource Glyph="" Size="100" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                </Image.Source>
+            </Image>
+            <HorizontalStackLayout Spacing="5" Margin="0,10,0,0" HorizontalOptions="CenterAndExpand">
+                <Label Text="Company Name" TextColor="Black" FontSize="14"></Label>
+                <Label Text="4.5" TextColor="Gray" FontSize="14"></Label>
+                <Image VerticalOptions="StartAndExpand">
+                    <Image.Source>
+                        <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gold" Size="14"></FontImageSource>
+                    </Image.Source>
+                </Image>
+            </HorizontalStackLayout>
+            <Label Text="+201551541190" TextColor="Goldenrod" FontSize="14" HorizontalTextAlignment="Center"></Label>
+            <Label Text="boodyakl12@gmail.com" TextColor="#40ce82" FontSize="14" HorizontalTextAlignment="Center"></Label>
+            <Label Text="Assuit - Egypt" TextColor="CornflowerBlue" FontSize="12" HorizontalTextAlignment="Center" MaxLines="1"></Label>
+        </StackLayout>
+        <Label Text="Reviews" TextColor="Black" FontSize="20" FontAttributes="Bold" Margin="0,20,0,0"></Label>
+        <VerticalStackLayout Spacing="3" Margin="0,10,0,0">
+            <Label Text="Good Product,good item " TextColor="Black" FontSize="14.5" FontAttributes="Bold"></Label>
+            <rating:SfRating ItemSpacing="5" ItemSize="13" Value="4" HorizontalOptions="StartAndExpand">
+                <rating:SfRating.RatingSettings>
+                    <rating:RatingSettings RatedFill="LightGreen" UnratedFill="White"/>
+                </rating:SfRating.RatingSettings>
+            </rating:SfRating>
+            <HorizontalStackLayout>
+                <Label Text="By " TextColor="Gray" FontSize="14" FontAttributes="Italic"></Label>
+                <Label Text="Abdullah Akl" TextColor="Gray" FontSize="14" FontAttributes="Italic"></Label>
+            </HorizontalStackLayout>
+            <Label Text="No – one gets an iron – clad guarantee of success. Certainly, factors like opportunity, luck and timing are important. But the backbone of success is usually found in old – fashioned, basic concepts like hard work, determination, good planning and perseverance." TextColor="Black" FontSize="14"></Label>
+        </VerticalStackLayout>
+    </StackLayout>
+</Controls:CustomControl>
