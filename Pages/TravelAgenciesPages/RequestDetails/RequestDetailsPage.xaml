@@ -454,7 +454,7 @@
                                                 <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand">
                                                     <StackLayout Orientation="Horizontal" Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="10"
                                                                      VerticalOptions="StartAndExpand">
-                                                        <Label Text="{Binding DistributorCompanyReview}" FontAutoScalingEnabled="False" FontSize="14" TextColor="Black" FontAttributes="Bold"
+                                                        <Label Text="{Binding ReviewToDistributor}" FontAutoScalingEnabled="False" FontSize="14" TextColor="Black" FontAttributes="Bold"
                                                                     VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"></Label>
                                                         <Image VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand">
                                                             <Image.Source>
