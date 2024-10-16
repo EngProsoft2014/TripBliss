@@ -39,5 +39,6 @@
 
         public DateTime? EndRequest { get; set; }
         public bool IsShowExpiredTemplete { get { return EndRequest != null && EndRequest > DateTime.Now.AddDays(3) ? true : false; } }
+        public string ToolTip { get { return IsShowExpiredTemplete == true ? "Please make feedback to finish request" : ""; } }
     }
 }

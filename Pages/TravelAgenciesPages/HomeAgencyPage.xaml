@@ -59,7 +59,7 @@
                             <StackLayout Orientation="Vertical" VerticalOptions="{OnPlatform Android=FillAndExpand, iOS=StartAndExpand}" Spacing="10">
                                 <Label Text="{Static res:AppResources.hdrMyRequests}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
                                    TextColor="Black" VerticalOptions="Start" Margin="{OnPlatform Android='20,20,20,5', iOS='20,0,20,5'}"></Label>
-                                <CollectionView ItemsSource="{Binding Requests}" VerticalScrollBarVisibility="Never"
+                                <CollectionView ItemsSource="{Binding Requests}" VerticalScrollBarVisibility="Never" 
                                             VerticalOptions="FillAndExpand" SelectionMode="Single">
                                     <CollectionView.ItemsLayout>
                                         <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
@@ -67,7 +67,7 @@
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
                                             <Border StrokeShape="RoundRectangle 20" Margin="20,10">
-                                                <StackLayout Orientation="Horizontal">
+                                                <StackLayout Orientation="Horizontal" ToolTipProperties.Text="{Binding ToolTip}">
                                                     <VerticalStackLayout Padding="10" Spacing="5">
                                                         <Label Text="{Binding RequestName}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
                                                         <Label Text="{Binding ChoosenServices}" FontAutoScalingEnabled="False" FontSize="12" TextColor="#ff7700" Margin="0,3,0,0"></Label>

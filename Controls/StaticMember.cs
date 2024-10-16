@@ -17,7 +17,7 @@ namespace TripBliss.Controls
     static class StaticMember
     {
         #region Const Variables
-        public static string SnackBarColor = "#187ad6";
+        public static string SnackBarColor = "#2fa562";
         public static string SnackBarTextColor = "#FFFFFF";
         public static int WayOfTab { get; set; } = 0;
         public static int WayOfPhotosPopup { get; set; } = 0;

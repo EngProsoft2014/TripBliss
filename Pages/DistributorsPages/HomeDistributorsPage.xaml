@@ -57,7 +57,7 @@
                             </ContentView.Resources>
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="10">
                                 <Label Text="{Static res:AppResources.hdrMyRequests}" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
-                                   TextColor="Black" Margin="{OnPlatform Android='20,20,20,10', iOS='20,0,20,0'}"></Label>
+                                   TextColor="Black" Margin="{OnPlatform Android='20,20,20,0', iOS='20,0,20,0'}"></Label>
                                 <StackLayout Orientation="Horizontal" Margin="20,0">
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="20,0">
                                         <StackLayout Orientation="Horizontal">
@@ -100,7 +100,7 @@
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
                                             <Border StrokeShape="RoundRectangle 20" Margin="20,10">
-                                                <StackLayout Orientation="Horizontal">
+                                                <StackLayout Orientation="Horizontal" ToolTipProperties.Text="{Binding ToolTip}">
                                                     <VerticalStackLayout Padding="10" Spacing="5">
                                                         <Label Text="{Binding RequestName}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
                                                         <Label Text="{Binding TravelAgencyCompanyName}" FontSize="12" TextColor="Gray"></Label>
