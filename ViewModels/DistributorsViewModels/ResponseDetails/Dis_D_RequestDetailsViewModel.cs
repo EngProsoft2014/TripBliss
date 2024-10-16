@@ -244,7 +244,14 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         {
             if (Response?.TotalPriceAgentAccept > 0 && Response?.TotalPriceAgentAccept == Response?.TotalPayment)
             {
-                IsShowReviewBtn = true;
+                if (string.IsNullOrEmpty(Response?.ReviewUserDistributorName))
+                {
+                    IsShowReviewBtn = true;
+                }
+                else
+                {
+                    IsShowReviewBtn = false;
+                }
             }
             else
             {

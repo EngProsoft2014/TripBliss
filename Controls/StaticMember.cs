@@ -21,6 +21,8 @@ namespace TripBliss.Controls
         public static string SnackBarTextColor = "#FFFFFF";
         public static int WayOfTab { get; set; } = 0;
         public static int WayOfPhotosPopup { get; set; } = 0;
+        public static bool ShowSendOfferBtn { get; set; } = false;
+        public static DateTime? EndRequestStatic { get; set; }
         #endregion
 
         #region Lists

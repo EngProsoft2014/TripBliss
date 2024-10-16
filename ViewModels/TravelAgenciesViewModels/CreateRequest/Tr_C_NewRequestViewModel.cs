@@ -320,6 +320,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     RequestTravelAgency = new RequestTravelAgencyRequest();
 
                     RequestTravelAgency.RequestName = RequestName;
+                    RequestTravelAgency.EndRequest = Controls.StaticMember.EndRequestStatic;
                     RequestTravelAgency.RequestTravelAgencyHotel = LstTravelAgencyHotelRequest.ToList();
                     RequestTravelAgency.RequestTravelAgencyTransport = LstTravelAgencyTransportRequest.ToList();
                     RequestTravelAgency.RequestTravelAgencyAirFlight = LstTravelAgencyAirFlightRequest.ToList();

@@ -140,36 +140,32 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         {
             IsBusy = false;
 
-            bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Do you want to make a review, finish the request and move it to the History?", "Yes", "No");
-            if (answer)
+            var vieModel = new Tr_D_ReviewViewModel(Rep, _service);
+            var page = new Pages.TravelAgenciesPages.RequestDetails.Tr_ReviewPopup(vieModel);
+            vieModel.ReviewClose += async (model) =>
             {
-                var vieModel = new Tr_D_ReviewViewModel(Rep, _service);
-                var page = new Pages.TravelAgenciesPages.RequestDetails.Tr_ReviewPopup(vieModel);
-                vieModel.ReviewClose += async (model) =>
+                if (model != null)
                 {
-                    if (model != null)
+                    UserDialogs.Instance.ShowLoading();
+                    string UserToken = await _service.UserToken();
+                    var json = await Rep.PostTRAsync<ResponseWithDistributorReviewTravelAgentRequest, string>(string.Format($"Distributor/{Response.DistributorCompanyId}/ResponseWithDistributor/{Response.Id}/ReviewToDistributor"), model, UserToken);
+                    UserDialogs.Instance.HideHud();
+                    if (json.Item1 == null && json.Item2 == null)
                     {
-                        UserDialogs.Instance.ShowLoading();
-                        string UserToken = await _service.UserToken();
-                        var json = await Rep.PostTRAsync<ResponseWithDistributorReviewTravelAgentRequest, string>(string.Format($"Distributor/{Response.DistributorCompanyId}/ResponseWithDistributor/{Response.Id}/ReviewToDistributor"), model, UserToken);
-                        UserDialogs.Instance.HideHud();
-                        if (json.Item1 == null && json.Item2 == null)
-                        {
-                            await App.Current!.MainPage!.Navigation.PushAsync(new HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service));
-                            var toast = Toast.Make("Succesfully, for Review", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                            await toast.Show();
-                        }
-                        else
-                        {
-                            var toast = Toast.Make($"Warning, {json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                            await toast.Show();
-                        }
+                        await App.Current!.MainPage!.Navigation.PushAsync(new HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service));
+                        var toast = Toast.Make("Succesfully, for Review", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
                     }
-                    await MopupService.Instance.PopAsync();
-                };
+                    else
+                    {
+                        var toast = Toast.Make($"Warning, {json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
+                    }
+                }
+                await MopupService.Instance.PopAsync();
+            };
 
-                await MopupService.Instance.PushAsync(page);
-            } 
+            await MopupService.Instance.PushAsync(page);
 
             IsBusy = true;
         }
@@ -279,11 +275,21 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         {
             if (Response?.TotalPriceAgentAccept > 0 && Response?.TotalPriceAgentAccept == Response?.TotalPayment)
             {
-                IsShowReviewBtn = true;
+                if(string.IsNullOrEmpty(Response?.ReviewUserTravelAgentName))
+                {
+                    IsShowReviewBtn = true;
+                    IsShowPaymentBtn = false;
+                }
+                else
+                {
+                    IsShowReviewBtn = false;
+                    IsShowPaymentBtn = false;
+                }
             }
             else
             {
                 IsShowReviewBtn = false;
+                IsShowPaymentBtn = true;
             }
         }
 

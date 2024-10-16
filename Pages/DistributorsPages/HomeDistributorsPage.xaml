@@ -142,14 +142,19 @@
                                                                 </DataTrigger>
                                                             </Border.Triggers>
                                                         </Border>
-
-
                                                     </StackLayout>
                                                 </StackLayout>
                                                 <Border.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_HomeViewModel}}, Path=SelectionCommand}"
                                                                           CommandParameter="{Binding}"></TapGestureRecognizer>
                                                 </Border.GestureRecognizers>
+                                                <Border.Triggers>
+                                                    <DataTrigger TargetType="Border" Binding="{Binding IsShowExpiredTemplete}" Value="True">
+                                                        <Setter Property="Stroke" Value="Red"></Setter>
+                                                        <Setter Property="StrokeThickness" Value="3"></Setter>
+                                                        <Setter Property="BackgroundColor" Value="LightYellow"></Setter>
+                                                    </DataTrigger>
+                                                </Border.Triggers>
                                             </Border>
                                         </DataTemplate>
                                     </CollectionView.ItemTemplate>

@@ -284,6 +284,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 AirFlightResponseModel.TotalPerson = Request.TotalPerson;
                 AirFlightResponseModel.TotalPerson = Request.TotalPerson = Request.InfoChildCount + Request.InfoAdultCount + Request.InfoInfantCount;
 
+                Controls.StaticMember.EndRequestStatic = (Controls.StaticMember.EndRequestStatic != null && Request.Date > Controls.StaticMember.EndRequestStatic) ? Request.Date : Controls.StaticMember.EndRequestStatic;
+
                 AirFlightClose.Invoke(Request, AirFlightResponseModel);
 
                 await App.Current!.MainPage!.Navigation.PopAsync();

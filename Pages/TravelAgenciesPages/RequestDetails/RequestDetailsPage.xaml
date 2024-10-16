@@ -474,7 +474,33 @@
                                 <CollectionView.ItemsLayout>
                                     <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="10"></GridItemsLayout>
                                 </CollectionView.ItemsLayout>
+                                <CollectionView.Triggers>
+                                    <DataTrigger TargetType="CollectionView" Binding="{Binding RequestDetailes.ResponseWithDistributor.Count}" Value="0">
+                                        <Setter Property="IsVisible" Value="False"></Setter>
+                                        <Setter Property="HeightRequest" Value="0"></Setter>
+                                    </DataTrigger>
+                                </CollectionView.Triggers>
                             </CollectionView>
+
+                            <!--No Data-->
+                            <StackLayout x:Name="stkNoData" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                <Image Source="noresult.png"></Image>
+                                <StackLayout.Triggers>
+                                    <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.ResponseWithDistributor.Count}" Value="0">
+                                        <Setter Property="IsVisible" Value="True"></Setter>
+                                    </DataTrigger>
+                                </StackLayout.Triggers>
+                            </StackLayout>
+
+                            <StackLayout VerticalOptions="EndAndExpand">
+                                <Label Text="If you want to finish the request and move it to the History, you should be reviewed for all distributors in this request." 
+                                       TextColor="Gray" FontSize="14" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                                <StackLayout.Triggers>
+                                    <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.ResponseWithDistributor.Count}" Value="0">
+                                        <Setter Property="IsVisible" Value="False"></Setter>
+                                    </DataTrigger>
+                                </StackLayout.Triggers>
+                            </StackLayout>
                         </StackLayout>
                         <ContentView.Triggers>
                             <DataTrigger TargetType="ContentView" Binding="{Binding Lang}" Value="ar">

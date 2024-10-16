@@ -37,6 +37,7 @@
         public string ChoosenServices { get; set; } = string.Empty;
         public DateTime? CreateDate { get; set; }
 
-
+        public DateTime? EndRequest { get; set; }
+        public bool IsShowExpiredTemplete { get { return EndRequest != null && EndRequest > DateTime.Now.AddDays(3) ? true : false; } }
     }
 }

@@ -175,6 +175,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
         if ((int)e.NewIndex == 1)
         {
             AgencyView.BindingContext = distributorsViewModel = new Dis_DistributorsViewModel(Rep, _service);
+            Controls.StaticMember.ShowSendOfferBtn = true;
         }
         if ((int)e.NewIndex == 2)
         {

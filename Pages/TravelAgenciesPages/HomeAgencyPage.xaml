@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
-             xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels"
-             xmlns:dvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest"
-             xmlns:Tvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.Offer"
-             xmlns:res="clr-namespace:TripBliss.Resources.Language"
-             xmlns:model="clr-namespace:TripBliss.Models"
-             xmlns:Controls="clr-namespace:TripBliss.Controls"
-             x:Class="TripBliss.Pages.TravelAgenciesPages.HomeAgencyPage"
-             Title="HomeAgencyPage"
-             NavigationPage.HasNavigationBar="False"
-             BackgroundColor="White">
-
+                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                         xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
+                         xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels"
+                         xmlns:dvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest"
+                         xmlns:Tvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.Offer"
+                         xmlns:res="clr-namespace:TripBliss.Resources.Language"
+                         xmlns:model="clr-namespace:TripBliss.Models"
+                         xmlns:Helpers="clr-namespace:TripBliss.Helpers"
+                         xmlns:Controls="clr-namespace:TripBliss.Controls"
+                         x:Class="TripBliss.Pages.TravelAgenciesPages.HomeAgencyPage"
+                         Title="HomeAgencyPage"
+                         NavigationPage.HasNavigationBar="False"
+                         BackgroundColor="White">
 
     <StackLayout Orientation="Vertical">
 
@@ -60,7 +60,7 @@
                                 <Label Text="{Static res:AppResources.hdrMyRequests}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
                                    TextColor="Black" VerticalOptions="Start" Margin="{OnPlatform Android='20,20,20,5', iOS='20,0,20,5'}"></Label>
                                 <CollectionView ItemsSource="{Binding Requests}" VerticalScrollBarVisibility="Never"
-                                            VerticalOptions="FillAndExpand" SelectionMode="Single" >
+                                            VerticalOptions="FillAndExpand" SelectionMode="Single">
                                     <CollectionView.ItemsLayout>
                                         <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
                                     </CollectionView.ItemsLayout>
@@ -78,7 +78,7 @@
                                                         </HorizontalStackLayout>
                                                     </VerticalStackLayout>
                                                     <VerticalStackLayout VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand"
-                                                                         Margin="10,0,10,10" Spacing="1">
+                                                        Margin="10,0,10,10" Spacing="1">
                                                         <HorizontalStackLayout Spacing="2">
                                                             <Label Text="{Static res:AppResources.lblAllDistributor_HomeTR}" FontSize="10" TextColor="Gray"></Label>
                                                             <Label Text=":" FontSize="10" TextColor="Gray"></Label>
@@ -93,8 +93,15 @@
                                                 </StackLayout>
                                                 <Border.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_HomeViewModel}}, Path=SelectionCommand}"
-                                                                          CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                     CommandParameter="{Binding}"></TapGestureRecognizer>
                                                 </Border.GestureRecognizers>
+                                                <Border.Triggers>
+                                                    <DataTrigger TargetType="Border" Binding="{Binding IsShowExpiredTemplete}" Value="True">
+                                                        <Setter Property="Stroke" Value="Red"></Setter>
+                                                        <Setter Property="StrokeThickness" Value="3"></Setter>
+                                                        <Setter Property="BackgroundColor" Value="LightYellow"></Setter>
+                                                    </DataTrigger>
+                                                </Border.Triggers>
                                             </Border>
                                         </DataTemplate>
                                     </CollectionView.ItemTemplate>
@@ -107,7 +114,7 @@
                                 </CollectionView>
 
                                 <!--No Data-->
-                                <StackLayout x:Name="stkNoData" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <StackLayout x:Name="stkNoData" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                     <Image Source="noresult.png"></Image>
                                     <StackLayout.Triggers>
                                         <DataTrigger TargetType="StackLayout" Binding="{Binding Requests.Count}" Value="0">
@@ -188,7 +195,7 @@
                                                                                 </Label>
                                                                             </VerticalStackLayout>
                                                                             <VerticalStackLayout Margin="20,10,20,0" HorizontalOptions="EndAndExpand" Spacing="15">
-                                                                                
+
                                                                                 <Image VerticalOptions="StartAndExpand" >
                                                                                     <Image.Source>
                                                                                         <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray" Size="20"></FontImageSource>
@@ -219,7 +226,7 @@
                                                                                     </ImageButton.Source>
                                                                                     
                                                                                 </ImageButton>-->
-                                                                               
+
                                                                             </VerticalStackLayout>
                                                                         </StackLayout>
                                                                         <Border.GestureRecognizers>
@@ -564,7 +571,7 @@
                                                         </Border>
                                                         <VerticalStackLayout VerticalOptions="EndAndExpand" Margin="0,0,10,20"
                                                                              HorizontalOptions="EndAndExpand">
-                                                            
+
                                                             <Label FontAutoScalingEnabled="False">
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
@@ -610,7 +617,7 @@
                             <StackLayout Orientation="Vertical" Spacing="50">
                                 <Label Text="{Static res:AppResources.hdrMore}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                        TextColor="Black" Margin="{OnPlatform Android='0,20,0,10',iOS='0,0,0,10'}"></Label>
-                                
+
                                 <VerticalStackLayout Margin="20,0" Spacing="20">
                                     <HorizontalStackLayout Spacing="8">
                                         <Image WidthRequest="20" HeightRequest="20">

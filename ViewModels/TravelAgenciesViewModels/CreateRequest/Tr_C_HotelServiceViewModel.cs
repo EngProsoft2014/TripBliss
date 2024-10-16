@@ -11,6 +11,7 @@ using TripBliss.Helpers;
 using TripBliss.Constants;
 using CommunityToolkit.Maui.Alerts;
 using Controls.UserDialogs.Maui;
+using Microsoft.AspNet.SignalR.Client.Http;
 
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
@@ -294,8 +295,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 HotelResponseModel!.RoomViewName = SelectedRoomView!.RoomViewName;
                 HotelResponseModel!.LocationName = SelectedLocation!.LocationName;
                 HotelResponseModel!.RoomCount = request.RoomCount;
-
-
+                Controls.StaticMember.EndRequestStatic = (Controls.StaticMember.EndRequestStatic != null && request.CheckOut > Controls.StaticMember.EndRequestStatic) ? request.CheckOut : Controls.StaticMember.EndRequestStatic;
                 HotelClose.Invoke(request, HotelResponseModel);
                 await App.Current!.MainPage!.Navigation.PopAsync();
 

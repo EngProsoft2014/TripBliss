@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using Microsoft.AspNet.SignalR.Client;
+using Microsoft.AspNet.SignalR.Client.Http;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -200,6 +201,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 TransportResponseModel.TypeName = SelectrdType.TypeName;
                 TransportResponseModel.Notes = request.Notes;
 
+                Controls.StaticMember.EndRequestStatic = (Controls.StaticMember.EndRequestStatic != null && Convert.ToDateTime(request.Date) > Controls.StaticMember.EndRequestStatic) ? Convert.ToDateTime(request.Date) : Controls.StaticMember.EndRequestStatic;
+                
                 TransportClose.Invoke(request, TransportResponseModel);
                 await App.Current!.MainPage!.Navigation.PopAsync();
 
