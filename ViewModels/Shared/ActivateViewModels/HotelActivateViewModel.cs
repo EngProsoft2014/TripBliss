@@ -23,6 +23,8 @@ namespace TripBliss.ViewModels.ActivateViewModels
         ObservableCollection<TravelAgencyGuestResponse> guests = new ObservableCollection<TravelAgencyGuestResponse>();
         [ObservableProperty]
         TravelAgencyGuestResponse selectedGuest = new TravelAgencyGuestResponse();
+        [ObservableProperty]
+        bool isRequestHistory;
         #endregion
         //GuestName
         #region Services
@@ -31,11 +33,12 @@ namespace TripBliss.ViewModels.ActivateViewModels
         #endregion
 
         #region Cons
-        public HotelActivateViewModel(ResponseWithDistributorHotelDetailsResponse model, IGenericRepository generic, Services.Data.ServicesService service)
+        public HotelActivateViewModel(bool _IsRequestHistoryTR, bool _IsRequestHistoryDS, ResponseWithDistributorHotelDetailsResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             _service = service;
             Rep = generic;
             DetailsResponse = model;
+            IsRequestHistory = TOD == "T" ? _IsRequestHistoryTR : _IsRequestHistoryDS;
             //Init();
         } 
         #endregion

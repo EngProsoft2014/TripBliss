@@ -68,13 +68,24 @@
                             <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontAutoScalingEnabled="False" FontFamily="OpenSansRegular" 
                                    Text="{Binding Model.Notes}"></Entry>
                         </Border>
+                        <StackLayout.Triggers>
+                            <DataTrigger TargetType="StackLayout" Binding="{Binding IsRequestHistory}" Value="True">
+                                <Setter Property="IsEnabled" Value="False"></Setter>
+                            </DataTrigger>
+                        </StackLayout.Triggers>
                     </StackLayout>
                     <Border.Shadow>
                         <Shadow Brush="LightGray" Offset="8,8" Opacity="0.8"></Shadow>
                     </Border.Shadow>
                 </Border>
                 <Button VerticalOptions="EndAndExpand" Text="{Static res:AppResources.btnApply_Forgot}"  BackgroundColor="#2fa562" TextColor="White" Margin="20,0,20,20"
-                        Command="{Binding ApplyCommand}" FontSize="16" FontAttributes="Bold" ></Button>
+                        Command="{Binding ApplyCommand}" FontSize="16" FontAttributes="Bold" >
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsRequestHistory}" Value="True">
+                            <Setter Property="IsVisible" Value="False"></Setter>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
             </StackLayout>
         </ScrollView>
     </StackLayout>

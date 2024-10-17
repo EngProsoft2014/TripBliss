@@ -34,6 +34,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         ObservableCollection<VisaResponse> visas = new ObservableCollection<VisaResponse>();
         [ObservableProperty]
         public int totalPayment = 0;
+        [ObservableProperty]
+        bool isRequestHistory;
         #endregion
 
         #region Services
@@ -47,12 +49,13 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             Rep = generic;
             _service = service;
         }
-        public Tr_D_VisaServiceViewModel(int payment,ResponseWithDistributorVisaResponse model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_D_VisaServiceViewModel(bool _IsRequestHistory, int payment,ResponseWithDistributorVisaResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             Moddel = model;
             _service = service;
             TotalPayment = payment;
+            IsRequestHistory = _IsRequestHistory;
             if (model.AcceptAgen)
             {
                 Init();
@@ -147,7 +150,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 }
                 else
                 {
-                    var vm = new VisaActivateViewModel(Moddel, Rep, _service);
+                    var vm = new VisaActivateViewModel(IsRequestHistory, false, Moddel, Rep, _service);
                     var page = new VisaAttachmentsPage(vm);
                     page.BindingContext = vm;
                     await App.Current!.MainPage!.Navigation.PushAsync(page);

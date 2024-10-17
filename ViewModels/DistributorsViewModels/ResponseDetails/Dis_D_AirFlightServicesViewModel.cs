@@ -24,6 +24,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         ResponseWithDistributorAirFlightResponse moddel = new ResponseWithDistributorAirFlightResponse();
         [ObservableProperty]
         int totalPayment = 0;
+        [ObservableProperty]
+        bool isRequestHistory;
 
 
         #endregion
@@ -37,11 +39,12 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             Rep = generic;
 
         }
-        public Dis_D_AirFlightServicesViewModel(int payment,ResponseWithDistributorAirFlightResponse model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Dis_D_AirFlightServicesViewModel(bool _IsRequestHistory, int payment,ResponseWithDistributorAirFlightResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             Moddel = model;
             _service = service;
+            IsRequestHistory = _IsRequestHistory;
             TotalPayment = payment;
         }
 
@@ -70,7 +73,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                 }
                 else
                 {
-                    var vm = new AirFlightActivateViewModel(Moddel, Rep, _service);
+                    var vm = new AirFlightActivateViewModel(false, IsRequestHistory, Moddel, Rep, _service);
                     var page = new AirFlightAttachmentsPage(vm);
                     page.BindingContext = vm;
                     await App.Current!.MainPage!.Navigation.PushAsync(page);

@@ -64,6 +64,11 @@
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding OpenAddImagesPopupCommand}"></TapGestureRecognizer>
                 </Image.GestureRecognizers>
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding IsRequestHistory}" Value="True">
+                        <Setter Property="IsVisible" Value="False"></Setter>
+                    </DataTrigger>
+                </Image.Triggers>
             </Image>
         </StackLayout>
 
@@ -125,6 +130,11 @@
                     </MultiTrigger.Conditions>
                     <Setter Property="IsVisible" Value="False" />
                 </MultiTrigger>
+
+                <DataTrigger TargetType="StackLayout" Binding="{Binding IsRequestHistory}" Value="True">
+                    <Setter Property="IsVisible" Value="False"></Setter>
+                </DataTrigger>
+
             </StackLayout.Triggers>
         </StackLayout>
 
@@ -180,6 +190,11 @@
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:VisaActivateViewModel}}, Path=DeletePhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                             </StackLayout.GestureRecognizers>
+                                            <StackLayout.Triggers>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding IsRequestHistory}" Value="True">
+                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                </DataTrigger>
+                                            </StackLayout.Triggers>
                                         </StackLayout>
 
                                     </StackLayout>
@@ -260,6 +275,11 @@
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirFlightActivateViewModel}}, Path=DeletePhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                             </StackLayout.GestureRecognizers>
+                                            <StackLayout.Triggers>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding IsRequestHistory}" Value="True">
+                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                </DataTrigger>
+                                            </StackLayout.Triggers>
                                         </StackLayout>
 
                                     </StackLayout>
@@ -319,6 +339,11 @@
                     </MultiTrigger.Conditions>
                     <Setter Property="IsVisible" Value="False" />
                 </MultiTrigger>
+
+                <DataTrigger TargetType="Button" Binding="{Binding IsRequestHistory}" Value="True">
+                    <Setter Property="IsVisible" Value="False"></Setter>
+                </DataTrigger>
+
             </Button.Triggers>
         </Button>
 

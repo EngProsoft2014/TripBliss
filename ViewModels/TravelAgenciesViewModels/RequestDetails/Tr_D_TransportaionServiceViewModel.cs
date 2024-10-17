@@ -34,6 +34,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         CarTypeResponse selectrdType = new CarTypeResponse();
         [ObservableProperty]
         public int totalPayment = 0;
+        [ObservableProperty]
+        bool isRequestHistory;
         #endregion
 
         #region Services
@@ -46,12 +48,13 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         {
             Rep = generic;
         }
-        public Tr_D_TransportaionServiceViewModel(int payment,ResponseWithDistributorTransportResponse model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_D_TransportaionServiceViewModel(bool _IsRequestHistory, int payment,ResponseWithDistributorTransportResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             ServiceModdel = model;
             Lang = Preferences.Default.Get("Lan", "en");
             _service = service;
+            IsRequestHistory = _IsRequestHistory;
             TotalPayment = payment;
             if (model.AcceptAgen)
             {
@@ -208,7 +211,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             }
             else
             {
-                var vm = new MainActivateViewModel(ServiceModdel, Rep, _service);
+                var vm = new MainActivateViewModel(IsRequestHistory, false, ServiceModdel, Rep, _service);
                 var page = new MainActivatePage(vm);
                 page.BindingContext = vm;
                 await App.Current!.MainPage!.Navigation.PushAsync(page);

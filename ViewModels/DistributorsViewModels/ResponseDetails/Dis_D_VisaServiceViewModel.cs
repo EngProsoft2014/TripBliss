@@ -22,6 +22,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         ResponseWithDistributorVisaResponse moddel = new ResponseWithDistributorVisaResponse();
         [ObservableProperty]
         int totalPayment = 0;
+        [ObservableProperty]
+        bool isRequestHistory;
         #endregion
 
         #region Services
@@ -33,11 +35,12 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             Rep = generic;
 
         }
-        public Dis_D_VisaServiceViewModel(int payment,ResponseWithDistributorVisaResponse model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Dis_D_VisaServiceViewModel(bool _IsRequestHistory, int payment,ResponseWithDistributorVisaResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             Moddel = model;
             TotalPayment = payment;
+            IsRequestHistory = _IsRequestHistory;
             Lang = Preferences.Default.Get("Lan", "en");
             _service = service;
         }
@@ -67,7 +70,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                 }
                 else
                 {
-                    var vm = new VisaActivateViewModel(Moddel, Rep, _service);
+                    var vm = new VisaActivateViewModel(false, IsRequestHistory, Moddel, Rep, _service);
                     var page = new VisaAttachmentsPage(vm);
                     page.BindingContext = vm;
                     await App.Current!.MainPage!.Navigation.PushAsync(page);

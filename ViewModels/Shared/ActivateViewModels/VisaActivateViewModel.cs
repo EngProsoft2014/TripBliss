@@ -49,6 +49,9 @@ namespace TripBliss.ViewModels.ActivateViewModels
 
         [ObservableProperty]
         bool isAllowEdit;
+
+        [ObservableProperty]
+        bool isRequestHistory;
         #endregion
 
         #region Services
@@ -57,11 +60,12 @@ namespace TripBliss.ViewModels.ActivateViewModels
         #endregion
 
         #region Con
-        public VisaActivateViewModel(ResponseWithDistributorVisaResponse detailsResponse, IGenericRepository generic, Services.Data.ServicesService service)
+        public VisaActivateViewModel(bool _IsRequestHistoryTR, bool _IsRequestHistoryDS, ResponseWithDistributorVisaResponse detailsResponse, IGenericRepository generic, Services.Data.ServicesService service)
         {
             _service = service;
             Rep = generic;
             Model = detailsResponse;
+            IsRequestHistory = TOD == "T" ? _IsRequestHistoryTR : _IsRequestHistoryDS;
             Init();
         }
         #endregion

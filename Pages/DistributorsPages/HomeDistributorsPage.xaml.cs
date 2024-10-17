@@ -183,7 +183,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
         }
         if ((int)e.NewIndex == 3)
         {
-            HistoryView.BindingContext = new Dis_HistoryViewModel(Rep);
+            HistoryView.BindingContext = new Dis_HistoryViewModel(Rep, _service);
         }
         if ((int)e.NewIndex == 4)
         {

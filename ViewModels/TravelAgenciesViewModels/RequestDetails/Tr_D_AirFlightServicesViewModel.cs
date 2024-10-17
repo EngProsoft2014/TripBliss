@@ -40,6 +40,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         ClassAirFlightResponse classSelected;
         [ObservableProperty]
         public int totalPayment = 0;
+        [ObservableProperty]
+        bool isRequestHistory;
         //Test
         [ObservableProperty]
         ObservableCollection<AirLines> lstAirLines = new ObservableCollection<AirLines>();
@@ -57,11 +59,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             Rep = generic;
 
         }
-        public Tr_D_AirFlightServicesViewModel(int payment,ResponseWithDistributorAirFlightResponse model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_D_AirFlightServicesViewModel(bool _IsRequestHistory, int payment,ResponseWithDistributorAirFlightResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             Moddel = model;
             _service = service;
+            IsRequestHistory = _IsRequestHistory;
             TotalPayment = payment;
             if (model.AcceptAgen == false)
             {
@@ -297,7 +300,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 }
                 else
                 {
-                    var vm = new AirFlightActivateViewModel(Moddel, Rep, _service);
+                    var vm = new AirFlightActivateViewModel(IsRequestHistory, false, Moddel, Rep, _service);
                     var page = new AirFlightAttachmentsPage(vm);
                     page.BindingContext = vm;
                     await App.Current!.MainPage!.Navigation.PushAsync(page);

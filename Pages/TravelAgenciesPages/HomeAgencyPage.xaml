@@ -96,7 +96,7 @@
                                                      CommandParameter="{Binding}"></TapGestureRecognizer>
                                                 </Border.GestureRecognizers>
                                                 <Border.Triggers>
-                                                    <DataTrigger TargetType="Border" Binding="{Binding IsShowExpiredTemplete}" Value="True">
+                                                    <DataTrigger TargetType="Border" Binding="{Binding IsAlertReview}" Value="True">
                                                         <Setter Property="Stroke" Value="Red"></Setter>
                                                         <Setter Property="StrokeThickness" Value="3"></Setter>
                                                         <Setter Property="BackgroundColor" Value="LightYellow"></Setter>
@@ -521,8 +521,13 @@
                                     <Border.Shadow>
                                         <Shadow  Brush="{OnPlatform Android=DarkGray,iOS=LightGray}" Opacity="1"></Shadow>
                                     </Border.Shadow>
+                                    <Border.Triggers>
+                                        <DataTrigger TargetType="Border" Binding="{Binding Requests.Count}" Value="0">
+                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                        </DataTrigger>
+                                    </Border.Triggers>
                                 </Border>
-                                <CollectionView ItemsSource="{Binding Requests}" Margin="{OnPlatform Android='20,0,20,0',iOS=20}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
+                                <!--<CollectionView ItemsSource="{Binding Requests}" Margin="{OnPlatform Android='20,0,20,0',iOS=20}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
                                     <CollectionView.ItemsLayout>
                                         <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
                                     </CollectionView.ItemsLayout>
@@ -532,13 +537,13 @@
                                                 <StackLayout Orientation="Horizontal">
                                                     <VerticalStackLayout Padding="10" Spacing="5">
                                                         <Label Text="{Binding RugestName}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
-                                                        <Label Text="{Binding DistName}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Gray"></Label>
-                                                        <Label Text="{Binding Services}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                                        <Label Text="{Binding ChoosenServices}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Gray"></Label>
+                                                        <Label Text="{Binding ChoosenServices}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
                                                         <Label Margin="0,3,0,0" FontAutoScalingEnabled="False">
                                                             <Label.FormattedText>
                                                                 <FormattedString>
                                                                     <Span Text="Date : " FontSize="12" TextColor="Blue" ></Span>
-                                                                    <Span Text="{Binding Date}" FontSize="12" TextColor="Blue" ></Span>
+                                                                    <Span Text="{Binding CreateDate,StringFormat='{0:MM-dd-yyyy}'}" FontSize="12" TextColor="Blue" ></Span>
                                                                 </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>
@@ -595,7 +600,71 @@
                                             </Border>
                                         </DataTemplate>
                                     </CollectionView.ItemTemplate>
+                                </CollectionView>-->
+
+                                <CollectionView ItemsSource="{Binding Requests}" VerticalScrollBarVisibility="Never" 
+                                                VerticalOptions="FillAndExpand" SelectionMode="Single">
+                                    <CollectionView.ItemsLayout>
+                                        <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
+                                    </CollectionView.ItemsLayout>
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border StrokeShape="RoundRectangle 20" Margin="20,10">
+                                                <StackLayout Orientation="Horizontal" ToolTipProperties.Text="{Binding ToolTip}">
+                                                    <VerticalStackLayout Padding="10" Spacing="5">
+                                                        <Label Text="{Binding RequestName}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+                                                        <Label Text="{Binding ChoosenServices}" FontAutoScalingEnabled="False" FontSize="12" TextColor="#ff7700" Margin="0,3,0,0"></Label>
+                                                        <HorizontalStackLayout Margin="0,3,0,0" Spacing="2">
+                                                            <Label Text="{Static res:AppResources.lblDate_TranService}" FontSize="12" TextColor="Blue"></Label>
+                                                            <Label Text=":" FontSize="12" TextColor="Blue"></Label>
+                                                            <Label Text="{Binding CreateDate,StringFormat='{0:MM-dd-yyyy}'}" FontSize="11" TextColor="#059ce3" ></Label>
+                                                        </HorizontalStackLayout>
+                                                    </VerticalStackLayout>
+                                                    <VerticalStackLayout VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand"
+                                                                            Margin="10,0,10,10" Spacing="1">
+                                                        <HorizontalStackLayout Spacing="2">
+                                                            <Label Text="{Static res:AppResources.lblAllDistributor_HomeTR}" FontSize="10" TextColor="Gray"></Label>
+                                                            <Label Text=":" FontSize="10" TextColor="Gray"></Label>
+                                                            <Label Text="{Binding ResponseWithDistributorCount}" FontSize="10" TextColor="Gray"></Label>
+                                                        </HorizontalStackLayout>
+                                                        <HorizontalStackLayout Spacing="2">
+                                                            <Label Text="{Static res:AppResources.lblActiveDistributors_HomeTR}" FontSize="10" TextColor="Gray"></Label>
+                                                            <Label Text=":" FontSize="10" TextColor="Gray"></Label>
+                                                            <Label Text="{Binding TotalPriceDisAcceptCount}" FontSize="10" TextColor="Gray"></Label>
+                                                        </HorizontalStackLayout>
+                                                    </VerticalStackLayout>
+                                                </StackLayout>
+                                                <Border.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_HistoryViewModel}}, Path=SelectionCommand}"
+                                                                            CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                </Border.GestureRecognizers>
+                                                <Border.Triggers>
+                                                    <DataTrigger TargetType="Border" Binding="{Binding IsAlertReview}" Value="True">
+                                                        <Setter Property="Stroke" Value="Red"></Setter>
+                                                        <Setter Property="StrokeThickness" Value="3"></Setter>
+                                                        <Setter Property="BackgroundColor" Value="LightYellow"></Setter>
+                                                    </DataTrigger>
+                                                </Border.Triggers>
+                                            </Border>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+
+                                    <CollectionView.Triggers>
+                                        <DataTrigger TargetType="CollectionView" Binding="{Binding Requests.Count}" Value="0">
+                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                        </DataTrigger>
+                                    </CollectionView.Triggers>
                                 </CollectionView>
+
+                                <!--No Data-->
+                                <StackLayout x:Name="stkNoData2" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Image Source="noresult.png"></Image>
+                                    <StackLayout.Triggers>
+                                        <DataTrigger TargetType="StackLayout" Binding="{Binding Requests.Count}" Value="0">
+                                            <Setter Property="IsVisible" Value="True"></Setter>
+                                        </DataTrigger>
+                                    </StackLayout.Triggers>
+                                </StackLayout>
                             </StackLayout>
 
                             <ContentView.Triggers>

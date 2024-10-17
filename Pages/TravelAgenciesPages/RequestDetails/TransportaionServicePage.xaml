@@ -156,12 +156,20 @@
                     <Border.Shadow>
                         <Shadow Brush="LightGray" Offset="8,8" Opacity="0.8"></Shadow>
                     </Border.Shadow>
+                    <Border.Triggers>
+                        <DataTrigger TargetType="Border" Binding="{Binding IsRequestHistory}" Value="True">
+                            <Setter Property="IsEnabled" Value="False"></Setter>
+                        </DataTrigger>
+                    </Border.Triggers>
                 </Border>
                 <Button VerticalOptions="EndAndExpand" Text="{Static res:AppResources.btnApply_Forgot}" FontAutoScalingEnabled="False" BackgroundColor="#2fa562" TextColor="White"
                     Margin="20,0,20,20" Command="{Binding ApplyCommand}" CommandParameter="{Binding TransportRequestModel}"
                     FontSize="16" FontAttributes="Bold">
                     <Button.Triggers>
                         <DataTrigger TargetType="Button" Binding="{Binding ServiceModdel.AcceptAgen}" Value="True">
+                            <Setter Property="IsVisible" Value="False"></Setter>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsRequestHistory}" Value="True">
                             <Setter Property="IsVisible" Value="False"></Setter>
                         </DataTrigger>
                     </Button.Triggers>

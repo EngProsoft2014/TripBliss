@@ -65,7 +65,7 @@ public partial class HomeAgencyPage : Controls.CustomControl
         }
         if ((int)e.NewIndex == 3)
         {
-            conviewHistory.BindingContext = new Tr_HistoryViewModel(Rep);
+            conviewHistory.BindingContext = new Tr_HistoryViewModel(Rep, _service);
         }
         if ((int)e.NewIndex == 4)
         {

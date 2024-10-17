@@ -424,6 +424,11 @@
                                     <Button Text="Review" IsVisible="{Binding IsShowReviewBtn}" FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" FontSize="{OnPlatform Android=12,iOS=14}"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=ReviewClickedCommand}"
                                             BackgroundColor="#ff7700" CornerRadius="5" TextColor="White" WidthRequest="70" Margin="0,0,0,0" FontAttributes="Bold">
+                                        <Button.Triggers>
+                                            <DataTrigger TargetType="Button" Binding="{Binding IsRequestHistory}" Value="True">
+                                                <Setter Property="IsVisible" Value="False"></Setter>
+                                            </DataTrigger>
+                                        </Button.Triggers>
                                     </Button>
 
                                 </StackLayout>
@@ -670,7 +675,13 @@
                                     </StackLayout>
                                 </ScrollView>
                                 <Button VerticalOptions="End" Text="{Static res:AppResources.btnApply_Forgot}" FontSize="16" FontAttributes="Bold" BackgroundColor="#2fa562" TextColor="White" Margin="20,0,20,20"
-                                        Command="{Binding AddToRequestCommand}"></Button>
+                                        Command="{Binding AddToRequestCommand}">
+                                    <Button.Triggers>
+                                        <DataTrigger TargetType="Button" Binding="{Binding IsRequestHistory}" Value="True">
+                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                        </DataTrigger>
+                                    </Button.Triggers>
+                                </Button>
                             </StackLayout>
                             <ContentView.Triggers>
                                 <DataTrigger TargetType="ContentView" Binding="{Binding Lang}" Value="ar">

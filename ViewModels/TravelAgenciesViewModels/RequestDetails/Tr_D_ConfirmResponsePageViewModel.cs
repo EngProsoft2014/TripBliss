@@ -24,8 +24,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {
     public partial class Tr_D_ConfirmResponsePageViewModel : BaseViewModel
     {
-
-
         #region prop
         [ObservableProperty]
         ResponseWithDistributorDetailsResponse response = new ResponseWithDistributorDetailsResponse();
@@ -33,7 +31,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         bool isShowPaymentBtn;
         [ObservableProperty]
         bool isShowReviewBtn;
-
+        [ObservableProperty]
+        bool isRequestHistory;
         #endregion
 
         #region Services
@@ -176,7 +175,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         void SelectHotel(ResponseWithDistributorHotelResponse model)
         {
 
-            var vm = new Tr_D_HotelServiceViewModel(Response.TotalPayment, model, Rep, _service);
+            var vm = new Tr_D_HotelServiceViewModel(IsRequestHistory, Response.TotalPayment, model, Rep, _service);
             var page = new HotelServicePage(vm, Rep);
             page.BindingContext = vm;
             App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -188,7 +187,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         async Task SelectTransportaion(ResponseWithDistributorTransportResponse model)
         {
-            var vm = new Tr_D_TransportaionServiceViewModel(Response.TotalPayment, model, Rep, _service);
+            var vm = new Tr_D_TransportaionServiceViewModel(IsRequestHistory, Response.TotalPayment, model, Rep, _service);
             var page = new TransportaionServicePage(vm, Rep);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -199,7 +198,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         void SelectAirFlight(ResponseWithDistributorAirFlightResponse model)
         {
-            var vm = new Tr_D_AirFlightServicesViewModel(Response.TotalPayment, model, Rep, _service);
+            var vm = new Tr_D_AirFlightServicesViewModel(IsRequestHistory, Response.TotalPayment, model, Rep, _service);
             var page = new AirFlightServicePage(vm, Rep);
             page.BindingContext = vm;
             App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -210,7 +209,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         async Task SelectVisa(ResponseWithDistributorVisaResponse model)
         {
-            var vm = new Tr_D_VisaServiceViewModel(Response.TotalPayment, model, Rep, _service);
+            var vm = new Tr_D_VisaServiceViewModel(IsRequestHistory, Response.TotalPayment, model, Rep, _service);
             var page = new VisaServicePage(vm, Rep);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -237,17 +236,27 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 if (json != null)
                 {
                     Response = json;
-                    bool result = CheckChooseServices();
-                    if (result)
+                    
+                    if (!string.IsNullOrEmpty(Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "")) && !string.IsNullOrEmpty(Response.ReviewUserTravelAgentName))
                     {
-                        IsShowPaymentBtn = true;
+                        IsRequestHistory = true;
                     }
                     else
                     {
-                        IsShowPaymentBtn = false;
+                        IsRequestHistory = false;
+
+                        bool result = CheckChooseServices();
+                        if (result)
+                        {
+                            IsShowPaymentBtn = true;
+                        }
+                        else
+                        {
+                            IsShowPaymentBtn = false;
+                        }
+                        CheckShowReview();
                     }
 
-                    CheckShowReview();
                 }
             }
 

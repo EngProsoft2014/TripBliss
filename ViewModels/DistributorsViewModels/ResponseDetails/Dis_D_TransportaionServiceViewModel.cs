@@ -22,7 +22,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         ResponseWithDistributorTransportResponse serviceModdel = new ResponseWithDistributorTransportResponse();
         [ObservableProperty]
         int totalPayment = 0;
-
+        [ObservableProperty]
+        bool isRequestHistory;
         #endregion
 
         #region Services
@@ -35,12 +36,13 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         {
             Rep = generic;
         }
-        public Dis_D_TransportaionServiceViewModel(int payment, ResponseWithDistributorTransportResponse model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Dis_D_TransportaionServiceViewModel(bool _IsRequestHistory, int payment, ResponseWithDistributorTransportResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
             ServiceModdel = model;
             TotalPayment = payment;
+            IsRequestHistory = _IsRequestHistory;
             Lang = Preferences.Default.Get("Lan", "en");
         } 
         #endregion
@@ -73,7 +75,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             }
             else
             {
-                var vm = new MainActivateViewModel(ServiceModdel, Rep, _service);
+                var vm = new MainActivateViewModel(false, IsRequestHistory, ServiceModdel, Rep, _service);
                 var page = new MainActivatePage(vm);
                 page.BindingContext = vm;
                 await App.Current!.MainPage!.Navigation.PushAsync(page);

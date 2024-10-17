@@ -21,6 +21,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [ObservableProperty]
         ResponseWithDistributorHotelResponse? hotelService = new ResponseWithDistributorHotelResponse();
         [ObservableProperty]
+        bool isRequestHistory;
+        [ObservableProperty]
         int totalPayment = 0;
         int Oldprice;
 
@@ -37,10 +39,11 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             Rep = generic;
             
         }
-        public Dis_D_HotelServiceViewModel(int payment, ResponseWithDistributorHotelResponse model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Dis_D_HotelServiceViewModel(bool _IsRequestHistory,int payment, ResponseWithDistributorHotelResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
+            IsRequestHistory = _IsRequestHistory;
             TotalPayment = payment;
             Lang = Preferences.Default.Get("Lan", "en");
             HotelService = model;
@@ -89,7 +92,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             }
             else
             {
-                var vm = new MainActivateViewModel(HotelService!, Rep, _service);
+                var vm = new MainActivateViewModel(false, IsRequestHistory, HotelService!, Rep, _service);
                 var page = new MainActivatePage(vm);
                 page.BindingContext = vm;
                 await App.Current!.MainPage!.Navigation.PushAsync(page);

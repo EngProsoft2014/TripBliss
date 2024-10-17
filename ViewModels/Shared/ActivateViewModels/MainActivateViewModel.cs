@@ -24,29 +24,43 @@ namespace TripBliss.ViewModels.ActivateViewModels
         [ObservableProperty]
         ObservableCollection<ResponseWithDistributorTransportDetailsResponse> activeTransport = new ObservableCollection<ResponseWithDistributorTransportDetailsResponse>();
 
+        [ObservableProperty]
+        bool isRequestHistoryTR;
+        [ObservableProperty]
+        bool isRequestHistoryDS;
+
+        [ObservableProperty]
+        bool isRequestHistory;
+
         #region Services
         IGenericRepository Rep;
         readonly Services.Data.ServicesService _service;
         #endregion
 
         #region Cons
-        public MainActivateViewModel(ResponseWithDistributorHotelResponse model, IGenericRepository generic, Services.Data.ServicesService service)
+        public MainActivateViewModel(bool _IsRequestHistoryTR, bool _IsRequestHistoryDS, ResponseWithDistributorHotelResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
             Id = model.Id;
             DisId = model.ResponseWithDistributorId;
+            IsRequestHistoryTR = _IsRequestHistoryTR;
+            IsRequestHistoryDS = _IsRequestHistoryDS;
+            CheckRequestHistory(_IsRequestHistoryTR, _IsRequestHistoryDS);
             UserDialogs.Instance.ShowLoading();
             GetAllRooms(model.ResponseWithDistributorId, model.Id);
             UserDialogs.Instance.HideHud();
         }
 
-        public MainActivateViewModel(ResponseWithDistributorTransportResponse model, IGenericRepository generic, Services.Data.ServicesService service)
+        public MainActivateViewModel(bool _IsRequestHistoryTR, bool _IsRequestHistoryDS, ResponseWithDistributorTransportResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
             Id = model.Id;
             DisId = model.ResponseWithDistributorId;
+            IsRequestHistoryTR = _IsRequestHistoryTR;
+            IsRequestHistoryDS = _IsRequestHistoryDS;
+            CheckRequestHistory(_IsRequestHistoryTR, _IsRequestHistoryDS);
             UserDialogs.Instance.ShowLoading();
             GetAllTransport(model.ResponseWithDistributorId, model.Id);
             UserDialogs.Instance.HideHud();
@@ -85,7 +99,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
         [RelayCommand]
         public async Task SelectHotel(ResponseWithDistributorHotelDetailsResponse model)
         {
-            var vm = new HotelActivateViewModel(model, Rep, _service);
+            var vm = new HotelActivateViewModel(IsRequestHistoryTR, IsRequestHistoryDS,model, Rep, _service);
             var page = new HotelServicesActivateDetails();
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -93,7 +107,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
         [RelayCommand]
         public async Task SelectTransportaion(ResponseWithDistributorTransportDetailsResponse model)
         {
-            var vm = new TransportActivateViewModel(model, Rep, _service);
+            var vm = new TransportActivateViewModel(IsRequestHistoryTR, IsRequestHistoryDS, model, Rep, _service);
             var page = new TransportServicesActivateDetails();
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -347,6 +361,25 @@ namespace TripBliss.ViewModels.ActivateViewModels
             }
 
             IsBusy = true;
+        }
+
+        void CheckRequestHistory(bool _IsRequestHistoryTR, bool _IsRequestHistoryDS)
+        {
+            string Tr_Id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
+            string Ds_Id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
+
+            if(_IsRequestHistoryTR == true && _IsRequestHistoryDS == false && !string.IsNullOrEmpty(Tr_Id))
+            {
+                IsRequestHistory = true;
+            }
+            else if(_IsRequestHistoryDS == true && _IsRequestHistoryTR == false && !string.IsNullOrEmpty(Ds_Id))
+            {
+                IsRequestHistory = true;
+            }
+            else
+            {
+                IsRequestHistory = false;
+            }
         }
     }
 }

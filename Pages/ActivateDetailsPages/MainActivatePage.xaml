@@ -206,6 +206,12 @@
             </StackLayout>
         </ScrollView>
         <Button VerticalOptions="End" Text="{Static res:AppResources.btnApply_Forgot}" FontSize="16" FontAttributes="Bold" BackgroundColor="#2fa562" TextColor="White" Margin="20,0,20,20"
-            Command="{Binding AddToRequestCommand}"></Button>
+            Command="{Binding AddToRequestCommand}">
+            <Button.Triggers>
+                <DataTrigger TargetType="Button" Binding="{Binding IsRequestHistory}" Value="True">
+                    <Setter Property="IsVisible" Value="False"></Setter>
+                </DataTrigger>
+            </Button.Triggers>
+        </Button>
     </StackLayout>
 </Controls:CustomControl>

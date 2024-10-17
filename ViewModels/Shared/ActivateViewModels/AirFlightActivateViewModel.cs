@@ -55,6 +55,9 @@ namespace TripBliss.ViewModels.ActivateViewModels
 
         [ObservableProperty]
         bool isAllowEdit;
+
+        [ObservableProperty]
+        bool isRequestHistory;
         #endregion
 
         #region Services
@@ -63,11 +66,12 @@ namespace TripBliss.ViewModels.ActivateViewModels
         #endregion
 
         #region Cons
-        public AirFlightActivateViewModel(ResponseWithDistributorAirFlightResponse Response, IGenericRepository generic, Services.Data.ServicesService service)
+        public AirFlightActivateViewModel(bool _IsRequestHistoryTR, bool _IsRequestHistoryDS, ResponseWithDistributorAirFlightResponse Response, IGenericRepository generic, Services.Data.ServicesService service)
         {
             _service = service;
             Rep = generic;
             Model = Response;
+            IsRequestHistory = TOD == "T" ? _IsRequestHistoryTR : _IsRequestHistoryDS;
             //GetAllAirFlight(Response.ResponseWithDistributorId, Response.Id);
             Init();
         }

@@ -23,9 +23,10 @@ namespace TripBliss.Models
         public int CountVisa { get; set; }
         public string ChoosenServices { get; set; } = string.Empty;
         public DateTime? CreateDate { get; set; }
-        public DateTime? EndRequest { get; set; } 
-        public bool IsShowExpiredTemplete { get { return EndRequest != null && EndRequest > DateTime.Now.AddDays(3) ? true : false; } }
-        public string ToolTip { get{ return IsShowExpiredTemplete == true ? "Please make feedback to finish request" : ""; } }
+        public DateTime? EndRequest { get; set; }
+        public bool? IsAlertReview { get; set; }
+        //public bool IsShowExpiredTemplete { get { return EndRequest != null && EndRequest > DateTime.Now.AddDays(3) ? true : false; } }
+        public string ToolTip { get{ return IsAlertReview == true ? "Please make feedback to finish request" : ""; } }
         public List<ResponseWithDistributorResponse>? ResponseWithDistributor { get; set; }
 
     }

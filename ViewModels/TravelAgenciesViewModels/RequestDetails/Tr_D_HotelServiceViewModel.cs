@@ -43,6 +43,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         RoomViewResponse? selectedRoomView = new RoomViewResponse();
         [ObservableProperty]
         public int totalPayment = 0;
+        [ObservableProperty]
+        bool isRequestHistory;
 
         public delegate void HotelDelegte(ResponseWithDistributorHotelResponse HotelResponse);
         public event HotelDelegte HotelClose;
@@ -57,13 +59,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             Rep = generic;
             Init();
         }
-        public Tr_D_HotelServiceViewModel(int payment,ResponseWithDistributorHotelResponse model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_D_HotelServiceViewModel(bool _IsRequestHistory, int payment,ResponseWithDistributorHotelResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             Lang = Preferences.Default.Get("Lan", "en");
             HotelService = model;
             _service = service;
             TotalPayment = payment;
+            IsRequestHistory = _IsRequestHistory;
             if (model.AcceptAgen == false)
             {
                 Init(model);
@@ -296,7 +299,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             }
             else
             {
-                var vm = new MainActivateViewModel(HotelService!, Rep, _service);
+                var vm = new MainActivateViewModel(IsRequestHistory, false, HotelService!, Rep, _service);
                 var page = new MainActivatePage(vm);
                 page.BindingContext = vm;
                 await App.Current!.MainPage!.Navigation.PushAsync(page);
