@@ -264,45 +264,45 @@
                                                                     <VerticalStackLayout>
                                                                         <StackLayout Orientation="Horizontal" Padding="5">
                                                                             <Label Text="{Static res:AppResources.lblDate_TranService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="13"
-                                           FontFamily="Almarai-Regular"></Label>
+                                                                                   FontFamily="Almarai-Regular"></Label>
                                                                             <Label Text=": " TextColor="Black" FontSize="13" FontAutoScalingEnabled="False"></Label>
                                                                             <Label Text="{Binding RequestTravelAgencyAirFlight.Date , StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="End"></Label>
                                                                         </StackLayout>
                                                                         <Label Text="{Static res:AppResources.lblAirFlightDetails_RequestDetails}" FontAutoScalingEnabled="False" TextColor="#387955" FontSize="14"
-                                       FontAttributes="Bold" Margin="0,5" Padding="5"></Label>
+                                                                                FontAttributes="Bold" Margin="0,5" Padding="5"></Label>
                                                                         <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="7" Margin="10,0">
                                                                             <VerticalStackLayout Spacing="3">
                                                                                 <StackLayout Orientation="Horizontal">
 
                                                                                     <Label Text="{Static res:AppResources.lblCarrier_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
-                                                   FontAttributes="Bold"></Label>
+                                                                                           FontAttributes="Bold"></Label>
                                                                                     <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
                                                                                     <Label Text="{Binding RequestTravelAgencyAirFlight.AirLine}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
 
                                                                                     <Label Text="{Static res:AppResources.lblClass_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
-                                                   FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
+                                                                                            FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
                                                                                     <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
                                                                                     <Label Text="{Binding RequestTravelAgencyAirFlight.ClassName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
                                                                                 </StackLayout>
                                                                                 <StackLayout Orientation="Horizontal">
-                                                                                    <Label Text="{Static res:AppResources.lblETD_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
-                                                   FontAttributes="Bold"></Label>
+                                                                                    <Label Text="ETD" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                            FontAttributes="Bold"></Label>
                                                                                     <Label Text=": " TextColor="Gray" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
                                                                                     <Label Text="{Binding RequestTravelAgencyAirFlight.ETD,StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                    <Label Text="{Static res:AppResources.lblETA_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
-                                                   HorizontalOptions="EndAndExpand" FontAttributes="Bold"></Label>
+                                                                                    <Label Text="ETA" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                            HorizontalOptions="EndAndExpand" FontAttributes="Bold"></Label>
                                                                                     <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
                                                                                     <Label Text="{Binding RequestTravelAgencyAirFlight.ETA,StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
                                                                                 </StackLayout>
                                                                                 <StackLayout Orientation="Horizontal">
 
                                                                                     <Label Text="{Static res:AppResources.lblAdult_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
-                                                   FontAttributes="Bold"></Label>
+                                                                                            FontAttributes="Bold"></Label>
                                                                                     <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
                                                                                     <Label Text="{Binding RequestTravelAgencyAirFlight.InfoAdultCount}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
 
                                                                                     <Label Text="{Static res:AppResources.lblChild_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
-                                                   FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
+                                                                                            FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
                                                                                     <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
                                                                                     <Label Text="{Binding RequestTravelAgencyAirFlight.InfoChildCount}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
                                                                                 </StackLayout>
