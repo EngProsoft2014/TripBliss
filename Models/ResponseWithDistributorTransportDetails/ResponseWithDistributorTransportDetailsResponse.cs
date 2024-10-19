@@ -4,8 +4,8 @@ namespace TripBliss.Models
 {
     public record ResponseWithDistributorTransportDetailsResponse : INotifyPropertyChanged
     {
-        int? _Id;
-        public int? Id
+        string? _Id;
+        public string? Id
         {
             get
             {
@@ -20,7 +20,7 @@ namespace TripBliss.Models
                 }
             }
         }
-        public int? ResponseWithDistributorTransportId { get; set; }
+        public string? ResponseWithDistributorTransportId { get; set; }
         public string? LeaderName { get; set; }
         string? _PlateNumber;
         public string? PlateNumber

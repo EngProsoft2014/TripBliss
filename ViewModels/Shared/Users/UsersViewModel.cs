@@ -61,7 +61,7 @@ namespace TripBliss.ViewModels.Users
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
         }
@@ -78,7 +78,7 @@ namespace TripBliss.ViewModels.Users
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
         }
@@ -91,11 +91,11 @@ namespace TripBliss.ViewModels.Users
                 bool answer;
                 if(model.IsDisabled == false)
                 {
-                    answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Do you Want to Disable User Account?", "Yes", "No");
+                    answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.Do_you_want_to_disable_user_account, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
                 }
                 else
                 {
-                    answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Do you Want to Enable User Account?", "Yes", "No");
+                    answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.Do_you_want_to_enable_user_account, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
                 }
 
                 if (answer)
@@ -111,21 +111,21 @@ namespace TripBliss.ViewModels.Users
 
                     if (string.IsNullOrEmpty(json))
                     {
-                        var toast = Toast.Make("Successfully, action completed.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Successfully_action_completed, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
 
                         await GetUsers();
                     }
                     else
                     {
-                        var toast = Toast.Make("Error Please Try again.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make(TripBliss.Resources.Language.AppResources.ErrorTryAgain, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                     }  
                 }
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
 

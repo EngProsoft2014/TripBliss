@@ -45,12 +45,12 @@ public partial class AddAttachmentsPopup : Mopups.Pages.PopupPage
             }
             else
             {
-                await DisplayAlert("Error", "Camera not supported on this device.", "OK");
+                await DisplayAlert(TripBliss.Resources.Language.AppResources.error, TripBliss.Resources.Language.AppResources.Camera_not_supported, TripBliss.Resources.Language.AppResources.OK);
             }
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Error", ex.Message, "OK");
+            await DisplayAlert(TripBliss.Resources.Language.AppResources.error, ex.Message, TripBliss.Resources.Language.AppResources.OK);
         }
     }
 
@@ -72,7 +72,7 @@ public partial class AddAttachmentsPopup : Mopups.Pages.PopupPage
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Error", ex.Message, "OK");
+            await DisplayAlert(TripBliss.Resources.Language.AppResources.error, ex.Message, TripBliss.Resources.Language.AppResources.OK);
         }
     }
 
@@ -97,7 +97,7 @@ public partial class AddAttachmentsPopup : Mopups.Pages.PopupPage
         }
         catch (Exception ex)
         {
-            await App.Current!.MainPage!.DisplayAlert("Info", $"Error picking file: {ex.Message}", "OK");
+            await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.error, $"{ex.Message}", TripBliss.Resources.Language.AppResources.OK);
         }
     }
 }

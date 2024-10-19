@@ -59,7 +59,7 @@ namespace TripBliss.ViewModels
             {
                 if (string.IsNullOrEmpty(model.UrlUploadFile))
                 {
-                    var toast = Toast.Make("No image here.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.No_image_here, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else
@@ -83,7 +83,7 @@ namespace TripBliss.ViewModels
             {
                 if (string.IsNullOrEmpty(model.NameDoc))
                 {
-                    var toast = Toast.Make("Please Complete This Field Required : File Name.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_FileName, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else
@@ -108,18 +108,18 @@ namespace TripBliss.ViewModels
                         }
                         else
                         {
-                            await App.Current!.MainPage!.DisplayAlert("Error", "Camera not supported on this device.", "OK");
+                            await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.error, TripBliss.Resources.Language.AppResources.Camera_not_supported, TripBliss.Resources.Language.AppResources.OK);
                         }
                     }
                     catch (Exception ex)
                     {
-                        await App.Current!.MainPage!.DisplayAlert("Error", ex.Message, "OK");
+                        await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.error, ex.Message, TripBliss.Resources.Language.AppResources.OK);
                     }
                 }
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
 
@@ -131,7 +131,7 @@ namespace TripBliss.ViewModels
             {
                 if (string.IsNullOrEmpty(model.NameDoc))
                 {
-                    var toast = Toast.Make("Please Complete This Field Required : File Name.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_FileName, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else
@@ -158,7 +158,7 @@ namespace TripBliss.ViewModels
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
 
@@ -170,7 +170,7 @@ namespace TripBliss.ViewModels
             {
                 if (string.IsNullOrEmpty(model.NameDoc))
                 {
-                    var toast = Toast.Make("Please Complete This Field Required : File Name.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_FileName, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else
@@ -193,13 +193,13 @@ namespace TripBliss.ViewModels
                     }
                     catch (Exception ex)
                     {
-                        await App.Current!.MainPage!.DisplayAlert("Info", $"Error picking file: {ex.Message}", "OK");
+                        await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.error, $"{ex.Message}", TripBliss.Resources.Language.AppResources.OK);
                     }
                 }
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
 

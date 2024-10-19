@@ -48,7 +48,7 @@ namespace TripBliss.Controls
                 ActionButtonFont = Microsoft.Maui.Font.SystemFontOfSize(14),
             };
             string text = Message;
-            string actionButtonText = "Ok";
+            string actionButtonText = TripBliss.Resources.Language.AppResources.OK;
             Action action = action1;
             TimeSpan duration = TimeSpan.FromSeconds(3);
 

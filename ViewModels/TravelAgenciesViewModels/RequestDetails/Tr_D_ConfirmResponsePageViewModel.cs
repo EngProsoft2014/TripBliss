@@ -70,13 +70,13 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 }
                 else
                 {
-                    var toast = Toast.Make("Warning, Please Check to one service or more", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Check_to_one_service_or_more, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
         }
@@ -92,12 +92,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 if (Response.TotalPayment > 0)
                 {
                     await Init(Response.DistributorCompanyId, Response.Id);
-                    var toast = Toast.Make($"Warning, This order has already been paid for and cannot be modified.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.already_paid_cannot_be_modified, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else
                 {
-                    bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Are You Accept This Finall Price?", "Yes", "No");
+                    bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.AreYouAcceptThisFinallPrice, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
 
                     if (Connectivity.NetworkAccess == NetworkAccess.Internet && answer)
                     {
@@ -110,7 +110,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
                         if (json.Item1 != null)
                         {
-                            var toast = Toast.Make("Successfully for Add Response", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Successfully_AddResponse, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
 
                             IsShowPaymentBtn = true;
@@ -119,7 +119,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                         }
                         else
                         {
-                            var toast = Toast.Make($"Warning, {json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
                         }
                     }
@@ -127,7 +127,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             }
             else
             {
-                var toast = Toast.Make("Warning, Please Check to one service or more", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Check_to_one_service_or_more, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
 
@@ -152,12 +152,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     if (json.Item1 == null && json.Item2 == null)
                     {
                         await App.Current!.MainPage!.Navigation.PushAsync(new HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service));
-                        var toast = Toast.Make("Succesfully, for Review", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make(TripBliss.Resources.Language.AppResources.ReviewSuccess, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                     }
                     else
                     {
-                        var toast = Toast.Make($"Warning, {json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                     }
                 }
@@ -217,13 +217,13 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         #endregion
 
         #region Methodes
-        async Task Init(string distId, int ReqId)
+        async Task Init(string distId, string ReqId)
         {
             UserDialogs.Instance.ShowLoading();
             await GetRequestDetailes(distId, ReqId);
             UserDialogs.Instance.HideHud();
         }
-        async Task GetRequestDetailes(string distId, int ReqId)
+        async Task GetRequestDetailes(string distId, string ReqId)
         {
             IsBusy = false;
 

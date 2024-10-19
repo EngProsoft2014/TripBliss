@@ -38,6 +38,8 @@ namespace TripBliss.Constants
         public const string Add_Attachment = "DetailsRequest: Add_Attachment";
         public const string Edit_Attachment = "DetailsRequest: Edit_Attachment";
         public const string Delete_Attachment = "DetailsRequest: Delete_Attachment";
+        public const string Delete_DetailsRequest = "DetailsRequest: Delete_DetailsRequest";
+        public const string Delete_ResponseWithDistributer = "DetailsRequest: Delete_ResponseWithDistributer";
         //== Title
         public const string Show_Home_RequestsTitle = "Show Home Requests";
         public const string Show_Active_Distributors_for_RequestTitle = "Show Active Distributors for Request";
@@ -49,6 +51,8 @@ namespace TripBliss.Constants
         public const string Add_AttachmentTitle = "Add Attachment";
         public const string Edit_AttachmentTitle = "Edit Attachment";
         public const string Delete_AttachmentTitle = "Delete Attachment";
+        public const string Delete_DetailsRequestTitle = "Delete Details Request";
+        public const string Delete_ResponseWithDistributerTitle = "Delete Response With Distributer";
 
         // == Request Travel Agency ==
         public const string? CategoryPermissionsRequestTravelAgency = "Request Travel Agency";
@@ -149,8 +153,8 @@ namespace TripBliss.Constants
 
         public static bool CheckPermission(string Name)
         {
-            var Result = LstPermissions.Where(x=> x.ClaimValue == Name).FirstOrDefault();
-            if(Result == null)
+            var Result = LstPermissions.Where(x => x.ClaimValue == Name).FirstOrDefault();
+            if (Result == null)
             {
                 return false;
             }

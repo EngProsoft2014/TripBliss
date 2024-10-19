@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:Controls="clr-namespace:TripBliss.Controls"
-             xmlns:rating="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
-             x:Class="TripBliss.Pages.TravelAgenciesPages.Tr_ProviderDetailsPage"
-             Title="ProviderDetailsPage"
-             NavigationPage.HasNavigationBar="False"
-             BackgroundColor="White">
+                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                         xmlns:Controls="clr-namespace:TripBliss.Controls"
+                         xmlns:rating="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+                         xmlns:res="clr-namespace:TripBliss.Resources.Language"
+                         x:Class="TripBliss.Pages.TravelAgenciesPages.Tr_ProviderDetailsPage"
+                         Title="ProviderDetailsPage"
+                         NavigationPage.HasNavigationBar="False"
+                         BackgroundColor="White">
     <StackLayout Margin="20">
         <StackLayout Orientation="Horizontal">
             <Image VerticalOptions="CenterAndExpand">
@@ -30,6 +31,7 @@
                     <Image.Triggers>
                         <DataTrigger TargetType="Image" Binding="{Binding DistributorModel.UrlLogo}" Value="">
                             <Setter Property="HeightRequest" Value="70"></Setter>
+                            <Setter Property="WidthRequest" Value="70"></Setter>
                             <Setter Property="Source">
                                 <Setter.Value>
                                     <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
@@ -55,7 +57,7 @@
             <Label Text="{Binding DistributorModel.Email}" TextColor="#40ce82" FontSize="14" HorizontalTextAlignment="Center"></Label>
             <Label Text="{Binding DistributorModel.Address}" TextColor="CornflowerBlue" FontSize="12" HorizontalTextAlignment="Center" MaxLines="1"></Label>
         </StackLayout>
-        <Label Text="Reviews" TextColor="#333" FontSize="20" FontAttributes="Bold" Margin="0,20,0,0"></Label>
+        <Label Text="{Static res:AppResources.lblReviews}" TextColor="#333" FontSize="20" FontAttributes="Bold" Margin="0,20,0,0"></Label>
         <CollectionView ItemsSource="{Binding DistributorModel.responseWithDistributorReviewTravelAgentResponses}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -70,8 +72,8 @@
                             </rating:SfRating.RatingSettings>
                         </rating:SfRating>
                         <HorizontalStackLayout>
-                            <Label Text="By " TextColor="Gray" FontSize="14" FontAttributes="Italic"></Label>
-                            <Label Text="{Binding ReviewUserTravelAgentName}" TextColor="Gray" FontSize="14" FontAttributes="Italic"></Label>
+                            <Label Text="{Static res:AppResources.lblBy}" TextColor="Gray" FontSize="14" FontAttributes="Italic"></Label>
+                            <Label Text="{Binding ReviewUserTravelAgentName,StringFormat=' {0}'}" TextColor="Gray" FontSize="14" FontAttributes="Italic"></Label>
                         </HorizontalStackLayout>
                         <Label Text="{Binding ReviewTravelAgentNote}" TextColor="Black" FontSize="14"></Label>
                     </VerticalStackLayout>
@@ -80,7 +82,7 @@
         </CollectionView>
 
         <StackLayout HorizontalOptions="CenterAndExpand" Margin="0,20" IsVisible="False">
-            <Label Text="There are no reviews for this company yet." TextColor="Gray" FontSize="14"></Label>
+            <Label Text="{Static res:AppResources.There_are_no_reviews}" TextColor="Gray" FontSize="14"></Label>
             <StackLayout.Triggers>
                 <DataTrigger TargetType="StackLayout" Binding="{Binding DistributorModel.responseWithDistributorReviewTravelAgentResponses.Count}" Value="0">
                     <Setter Property="IsVisible" Value="True"></Setter>

@@ -8,8 +8,8 @@ namespace TripBliss.Models
 {
     public record ResponseWithDistributorDetailsResponse
     {
-        public int Id { get; set; }
-        public int RequestTravelAgencyId { get; set; }
+        public string? Id { get; set; }
+        public string? RequestTravelAgencyId { get; set; }
         public string RequestName { get; set; } = string.Empty;
         public string DistributorCompanyId { get; set; } = string.Empty;
         public DateOnly ExpireDatePay { get; set; }

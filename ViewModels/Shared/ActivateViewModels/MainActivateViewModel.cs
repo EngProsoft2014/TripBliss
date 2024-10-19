@@ -13,8 +13,8 @@ namespace TripBliss.ViewModels.ActivateViewModels
 {
     public partial class MainActivateViewModel : BaseViewModel
     {
-        int Id;
-        int DisId;
+        string Id;
+        string DisId;
         [ObservableProperty]
         ObservableCollection<ResponseWithDistributorHotelDetailsResponse> activeHotels = new ObservableCollection<ResponseWithDistributorHotelDetailsResponse>();
         [ObservableProperty]
@@ -144,14 +144,14 @@ namespace TripBliss.ViewModels.ActivateViewModels
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
         }
         #endregion
 
 
-        public async Task GetAllRooms(int DisId, int Id)
+        public async Task GetAllRooms(string DisId, string Id)
         {
             IsBusy = false;
 
@@ -176,7 +176,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
             IsBusy = true;
         }
 
-        public async Task GetAllTransport( int DisId, int Id)
+        public async Task GetAllTransport(string DisId, string Id)
         {
             IsBusy = false;
 
@@ -201,7 +201,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
             IsBusy = true;
         }
 
-        public async Task GetAllAirFlight(int DisId, int Id)
+        public async Task GetAllAirFlight(string DisId, string Id)
         {
             IsBusy = false;
 
@@ -226,7 +226,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
             IsBusy = true;
         }
 
-        public async Task GetAllVisa(int DisId, int Id)
+        public async Task GetAllVisa(string DisId, string Id)
         {
             IsBusy = false;
 
@@ -265,13 +265,13 @@ namespace TripBliss.ViewModels.ActivateViewModels
 
                 if (json.Item1 != null)
                 {
-                    var toast = Toast.Make("Successfully for Add Response", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Successfully_AddResponse, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                     await GetAllRooms(DisId,Id);
                 }
                 else
                 {
-                    var toast = Toast.Make($"Warning, {json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
             }
@@ -293,13 +293,13 @@ namespace TripBliss.ViewModels.ActivateViewModels
 
                 if (json.Item1 != null)
                 {
-                    var toast = Toast.Make("Successfully for Add Response", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Successfully_AddResponse, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                     await GetAllTransport(DisId, Id);
                 }
                 else
                 {
-                    var toast = Toast.Make($"Warning, {json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
             }
@@ -321,13 +321,13 @@ namespace TripBliss.ViewModels.ActivateViewModels
 
                 if (json.Item1 != null)
                 {
-                    var toast = Toast.Make("Successfully for Add Response", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Successfully_AddResponse, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                     await GetAllAirFlight(DisId, Id);
                 }
                 else
                 {
-                    var toast = Toast.Make($"Warning, {json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
             }
@@ -349,13 +349,13 @@ namespace TripBliss.ViewModels.ActivateViewModels
 
                 if (json.Item1 != null)
                 {
-                    var toast = Toast.Make("Successfully for Add Response", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Successfully_AddResponse, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                     await GetAllVisa(DisId, Id);
                 }
                 else
                 {
-                    var toast = Toast.Make($"Warning, {json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
             }

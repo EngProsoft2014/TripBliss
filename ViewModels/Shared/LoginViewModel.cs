@@ -25,6 +25,7 @@ using System.Reactive.Linq;
 using System.ComponentModel.DataAnnotations;
 using static TripBliss.Helpers.ErrorsResult;
 using TripBliss.Pages.Shared;
+using Microsoft.Maui.ApplicationModel.Communication;
 
 
 
@@ -91,12 +92,12 @@ namespace TripBliss.ViewModels
             {
                 if (string.IsNullOrEmpty(model?.UserName))
                 {
-                    var toast = Toast.Make("Please Complete This Field Required : User Name.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_UserName, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else if (string.IsNullOrEmpty(model?.Password))
                 {
-                    var toast = Toast.Make("Please Complete This Field Required : Password.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_Password, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else
@@ -132,7 +133,7 @@ namespace TripBliss.ViewModels
 
                             if (!string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
                             {
-                                var toast = Toast.Make("Successfully for your Login", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.SuccessfullyLogin, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                                 await toast.Show();
 
                                 Preferences.Default.Set(ApiConstants.review, UserModel!.TravelAgencyCompany!.Review!.Value);
@@ -144,7 +145,7 @@ namespace TripBliss.ViewModels
                             }
                             if (string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && !string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
                             {
-                                var toast = Toast.Make("Successfully for your Login", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.SuccessfullyLogin, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                                 await toast.Show();
 
                                 Preferences.Default.Set(ApiConstants.review, UserModel!.DistributorCompany!.Review!.Value);
@@ -156,14 +157,14 @@ namespace TripBliss.ViewModels
                             }
                             if (string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
                             {
-                                var toast1 = Toast.Make("This account is an admin and is not allowed to access the application", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                                var toast1 = Toast.Make(TripBliss.Resources.Language.AppResources.This_account_is_an_admin, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                                 await toast1.Show();
                             }
                         }
                         else
                         {
 
-                            var toast = Toast.Make("Warning, Your user name is not registered !!", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            var toast = Toast.Make(TripBliss.Resources.Language.AppResources.user_name_is_not_registered, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
                             await App.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service)));
                             App.Current.MainPage.Navigation.RemovePage(App.Current.MainPage.Navigation.NavigationStack[App.Current.MainPage.Navigation.NavigationStack.Count - 2]);
@@ -179,7 +180,7 @@ namespace TripBliss.ViewModels
                             ResendEmail = LstResult[1].Trim();
                         }
 
-                        var toast = Toast.Make($"Warning, {json.Item2.errors.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make($"{json.Item2.errors.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                     }
 
@@ -219,14 +220,14 @@ namespace TripBliss.ViewModels
                     }
                     else
                     {
-                        var toast = Toast.Make("Please enter vaild E-mail", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make(TripBliss.Resources.Language.AppResources.enter_vaild_Email, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                     }
 
                 }
                 else
                 {
-                    var toast = Toast.Make("Please enter your E-mail", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.enter_your_Email, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
             }

@@ -50,12 +50,12 @@ namespace TripBliss.ViewModels
             {
                 if (string.IsNullOrEmpty(ChangeModel.currentPassword))
                 {
-                    var toast = Toast.Make("Please Enter a Required : Old Password.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Enter_Old_Password, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else if (string.IsNullOrEmpty(ChangeModel.newPassword))
                 {
-                    var toast = Toast.Make("Please Enter a Required : New Password.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Enter_New_Password, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else
@@ -66,18 +66,20 @@ namespace TripBliss.ViewModels
 
                     if (json.currentPassword != null && json.newPassword != null)
                     {
-                        var toast = Toast.Make("Password changed successfully.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Password_changed_successfully, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
 
+                        string LangValueToKeep = Preferences.Default.Get("Lan", "en");
                         Preferences.Default.Clear();
                         await BlobCache.LocalMachine.InvalidateAll();
                         await BlobCache.LocalMachine.Vacuum();
-                        Constants.Permissions.LstPermissions.Clear();
+                        Constants.Permissions.LstPermissions.Clear();                        
+                        Preferences.Default.Set("Lan", LangValueToKeep);
                         await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service)));
                     }
                     else
                     {
-                        var toast = Toast.Make("Error Please Check Data again.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Error_Please_Check_Data_again, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                     }
                 }

@@ -241,37 +241,37 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
             if (AirFlightSelected == null || AirFlightSelected?.Id == 0)
             {
-                var toast = Toast.Make("Please Complete This Field Required : Select Carrier.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_SelectCarrier, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (Request.Date.Date < DateTime.Now.Date)
             {
-                var toast = Toast.Make("The selected date is less than today's date.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.The_selected_date_is_less_than_today, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (ClassSelected == null || ClassSelected?.Id == 0)
             {
-                var toast = Toast.Make("Please Complete This Field Required : Select Class.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_SelectClass, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (string.IsNullOrEmpty(Request.AirportFrom))
             {
-                var toast = Toast.Make("Please Complete This Field Required : From Location.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_FromLocation, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (string.IsNullOrEmpty(Request.AirportTo))
             {
-                var toast = Toast.Make("Please Complete This Field Required : To Location.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_ToLocation, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (Request.ETD > Request.ETA)
             {
-                var toast = Toast.Make("The expected time of departure must be less than the expected time of arrival.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Arrival_date_must_be_less_than_departure_date, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (Request.InfoAdultCount == 0 & Request.InfoChildCount == 0 && Request.InfoInfantCount == 0)
             {
-                var toast = Toast.Make("Please Complete This Field Required : Passengers Count.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_PassengersCount, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else
@@ -295,7 +295,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             {
                 if (TotalPayment == 0)
                 {
-                    var toast = Toast.Make("Please make sure to pay part of the amount due.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Agency_must_pay_part_of_the_amount_due, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else
@@ -308,7 +308,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
 

@@ -61,11 +61,128 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Accepted.
+        /// </summary>
+        internal static string Accepted {
+            get {
+                return ResourceManager.GetString("Accepted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Active details.
         /// </summary>
         internal static string ActiveDetails___HotelServices {
             get {
                 return ResourceManager.GetString("ActiveDetails - HotelServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Active.
+        /// </summary>
+        internal static string ActiveStatus {
+            get {
+                return ResourceManager.GetString("ActiveStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please add at least one service..
+        /// </summary>
+        internal static string add_at_least_one_service {
+            get {
+                return ResourceManager.GetString("add_at_least_one_service", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Request Name, Please.
+        /// </summary>
+        internal static string Add_Request_Name {
+            get {
+                return ResourceManager.GetString("Add_Request_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Request name is required..
+        /// </summary>
+        internal static string Add_Request_name_is_required {
+            get {
+                return ResourceManager.GetString("Add_Request_name_is_required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully for Add Response.
+        /// </summary>
+        internal static string AddResponseSuccess {
+            get {
+                return ResourceManager.GetString("AddResponseSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Agency must pay part of the amount due..
+        /// </summary>
+        internal static string Agency_must_pay_part_of_the_amount_due {
+            get {
+                return ResourceManager.GetString("Agency_must_pay_part_of_the_amount_due", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This order has already been paid for and cannot be modified..
+        /// </summary>
+        internal static string already_paid_cannot_be_modified {
+            get {
+                return ResourceManager.GetString("already_paid_cannot_be_modified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are You Accept This Price?.
+        /// </summary>
+        internal static string Are_You_Accept_This_Price {
+            get {
+                return ResourceManager.GetString("Are_You_Accept_This_Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are You Accept To Pay?.
+        /// </summary>
+        internal static string Are_You_Accept_To_Pay {
+            get {
+                return ResourceManager.GetString("Are_You_Accept_To_Pay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are You Accept This Finall Price?.
+        /// </summary>
+        internal static string AreYouAcceptThisFinallPrice {
+            get {
+                return ResourceManager.GetString("AreYouAcceptThisFinallPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arrival date must be less than departure date..
+        /// </summary>
+        internal static string Arrival_date_must_be_less_than_departure_date {
+            get {
+                return ResourceManager.GetString("Arrival_date_must_be_less_than_departure_date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send offer.
+        /// </summary>
+        internal static string btn_Send_offer {
+            get {
+                return ResourceManager.GetString("btn_Send_offer", resourceCulture);
             }
         }
         
@@ -250,11 +367,263 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Camera not supported on this device..
+        /// </summary>
+        internal static string Camera_not_supported {
+            get {
+                return ResourceManager.GetString("Camera_not_supported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Check to one service or more.
+        /// </summary>
+        internal static string Check_to_one_service_or_more {
+            get {
+                return ResourceManager.GetString("Check_to_one_service_or_more", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select checkin date today or after that..
+        /// </summary>
+        internal static string checkin_date_today_or_after {
+            get {
+                return ResourceManager.GetString("checkin_date_today_or_after", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Complete info.
+        /// </summary>
+        internal static string Complete_info {
+            get {
+                return ResourceManager.GetString("Complete_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully, for company deleted..
+        /// </summary>
+        internal static string DeleteCompanySuccess {
+            get {
+                return ResourceManager.GetString("DeleteCompanySuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Denied.
+        /// </summary>
+        internal static string Denied {
+            get {
+                return ResourceManager.GetString("Denied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you agree to delete all photos?.
+        /// </summary>
+        internal static string Do_you_agree_to_delete_all_photos {
+            get {
+                return ResourceManager.GetString("Do_you_agree_to_delete_all_photos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want delete request?.
+        /// </summary>
+        internal static string Do_You_Want_Delete_Request {
+            get {
+                return ResourceManager.GetString("Do_You_Want_Delete_Request", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want delete response?.
+        /// </summary>
+        internal static string Do_You_Want_Delete_Response {
+            get {
+                return ResourceManager.GetString("Do_You_Want_Delete_Response", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you Want to Delete Company Account?.
+        /// </summary>
+        internal static string Do_you_Want_to_Delete_Company_Account {
+            get {
+                return ResourceManager.GetString("Do_you_Want_to_Delete_Company_Account", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to delete the account?.
+        /// </summary>
+        internal static string Do_you_Want_to_Delete_the_Account {
+            get {
+                return ResourceManager.GetString("Do_you_Want_to_Delete_the_Account", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you Want to Disable User Account?.
+        /// </summary>
+        internal static string Do_you_want_to_disable_user_account {
+            get {
+                return ResourceManager.GetString("Do_you_want_to_disable_user_account", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you Want to Enable User Account?.
+        /// </summary>
+        internal static string Do_you_want_to_enable_user_account {
+            get {
+                return ResourceManager.GetString("Do_you_want_to_enable_user_account", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to exit the program?.
+        /// </summary>
+        internal static string Do_you_want_to_exit_the_program {
+            get {
+                return ResourceManager.GetString("Do_you_want_to_exit_the_program", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to Logout?.
+        /// </summary>
+        internal static string Do_you_want_to_Logout {
+            get {
+                return ResourceManager.GetString("Do_you_want_to_Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Driver Number.
         /// </summary>
         internal static string DriverNumber_TransportActive {
             get {
                 return ResourceManager.GetString("DriverNumber-TransportActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Feedback.
+        /// </summary>
+        internal static string Enter_Feedback {
+            get {
+                return ResourceManager.GetString("Enter_Feedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Enter a Required : New Password..
+        /// </summary>
+        internal static string Enter_New_Password {
+            get {
+                return ResourceManager.GetString("Enter_New_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Enter a Required : Old Password..
+        /// </summary>
+        internal static string Enter_Old_Password {
+            get {
+                return ResourceManager.GetString("Enter_Old_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter vaild E-mail.
+        /// </summary>
+        internal static string enter_vaild_Email {
+            get {
+                return ResourceManager.GetString("enter_vaild_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter your E-mail.
+        /// </summary>
+        internal static string enter_your_Email {
+            get {
+                return ResourceManager.GetString("enter_your_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string error {
+            get {
+                return ResourceManager.GetString("error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error Please Check Data again..
+        /// </summary>
+        internal static string Error_Please_Check_Data_again {
+            get {
+                return ResourceManager.GetString("Error_Please_Check_Data_again", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error Please Try again..
+        /// </summary>
+        internal static string ErrorTryAgain {
+            get {
+                return ResourceManager.GetString("ErrorTryAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed favourite delete.
+        /// </summary>
+        internal static string Failed_favourite_delete {
+            get {
+                return ResourceManager.GetString("Failed_favourite_delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Feedback for Distributor.
+        /// </summary>
+        internal static string Feedback_for_Distributor {
+            get {
+                return ResourceManager.GetString("Feedback_for_Distributor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Feedback for Travel Agency.
+        /// </summary>
+        internal static string Feedback_for_TravelAgency {
+            get {
+                return ResourceManager.GetString("Feedback_for_TravelAgency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Found Problem Internal Server..
+        /// </summary>
+        internal static string Found_Problem_Internal_Server {
+            get {
+                return ResourceManager.GetString("Found_Problem_Internal_Server", resourceCulture);
             }
         }
         
@@ -502,6 +871,24 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to In Review.
+        /// </summary>
+        internal static string In_Review {
+            get {
+                return ResourceManager.GetString("In_Review", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Info.
+        /// </summary>
+        internal static string Info {
+            get {
+                return ResourceManager.GetString("Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Company Account.
         /// </summary>
         internal static string lblAccount_More {
@@ -587,7 +974,16 @@ namespace TripBliss.Resources.Language {
         /// </summary>
         internal static string lblBrand_TranServices {
             get {
-                return ResourceManager.GetString("lblBrand-TranServices", resourceCulture);
+                return ResourceManager.GetString("lblBrand_TranServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to By.
+        /// </summary>
+        internal static string lblBy {
+            get {
+                return ResourceManager.GetString("lblBy", resourceCulture);
             }
         }
         
@@ -664,6 +1060,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Company Account.
+        /// </summary>
+        internal static string lblCompany_Account {
+            get {
+                return ResourceManager.GetString("lblCompany_Account", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please Add commercial register or Tax card or Quality certificate.
         /// </summary>
         internal static string lblCoOrTaOrQu {
@@ -678,6 +1083,15 @@ namespace TripBliss.Resources.Language {
         internal static string lblDate_TranService {
             get {
                 return ResourceManager.GetString("lblDate-TranService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details Request.
+        /// </summary>
+        internal static string lblDetails_Request {
+            get {
+                return ResourceManager.GetString("lblDetails_Request", resourceCulture);
             }
         }
         
@@ -705,6 +1119,15 @@ namespace TripBliss.Resources.Language {
         internal static string lblDistributor_attatchment {
             get {
                 return ResourceManager.GetString("lblDistributor-attatchment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Documents.
+        /// </summary>
+        internal static string lblDocuments {
+            get {
+                return ResourceManager.GetString("lblDocuments", resourceCulture);
             }
         }
         
@@ -777,6 +1200,15 @@ namespace TripBliss.Resources.Language {
         internal static string lblHaveAccount_SignUp {
             get {
                 return ResourceManager.GetString("lblHaveAccount-SignUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to History.
+        /// </summary>
+        internal static string lblHistory {
+            get {
+                return ResourceManager.GetString("lblHistory", resourceCulture);
             }
         }
         
@@ -867,6 +1299,15 @@ namespace TripBliss.Resources.Language {
         internal static string lblModelName_RequestDetails {
             get {
                 return ResourceManager.GetString("lblModelName-RequestDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More Details.
+        /// </summary>
+        internal static string lblMore_Details {
+            get {
+                return ResourceManager.GetString("lblMore_Details", resourceCulture);
             }
         }
         
@@ -970,6 +1411,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Offer.
+        /// </summary>
+        internal static string lblOffer {
+            get {
+                return ResourceManager.GetString("lblOffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offer Plan.
         /// </summary>
         internal static string lblOfferPlan_CreateOffer {
@@ -1060,6 +1510,24 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show Distributors.
+        /// </summary>
+        internal static string lblRequest_Travel_Agency_Permission {
+            get {
+                return ResourceManager.GetString("lblRequest_Travel_Agency_Permission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reviews.
+        /// </summary>
+        internal static string lblReviews {
+            get {
+                return ResourceManager.GetString("lblReviews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Room Details.
         /// </summary>
         internal static string lblRoomDetails_RequestDetails {
@@ -1092,6 +1560,15 @@ namespace TripBliss.Resources.Language {
         internal static string lblSelectAll_ActiveDistributors {
             get {
                 return ResourceManager.GetString("lblSelectAll-ActiveDistributors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show Agencies.
+        /// </summary>
+        internal static string lblShow_Agencies {
+            get {
+                return ResourceManager.GetString("lblShow_Agencies", resourceCulture);
             }
         }
         
@@ -1195,6 +1672,24 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User Permission.
+        /// </summary>
+        internal static string lblUser_Permission {
+            get {
+                return ResourceManager.GetString("lblUser_Permission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Users.
+        /// </summary>
+        internal static string lblUsers {
+            get {
+                return ResourceManager.GetString("lblUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Users.
         /// </summary>
         internal static string lblUsers_More {
@@ -1249,11 +1744,92 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to make a review, finish the request and move it to the History?.
+        /// </summary>
+        internal static string MakeReviewAndFinishRequest {
+            get {
+                return ResourceManager.GetString("MakeReviewAndFinishRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        internal static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No image here..
+        /// </summary>
+        internal static string No_image_here {
+            get {
+                return ResourceManager.GetString("No_image_here", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Internet connection!.
+        /// </summary>
+        internal static string No_Internet_connection {
+            get {
+                return ResourceManager.GetString("No_Internet_connection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Active.
+        /// </summary>
+        internal static string NotActiveStatus {
+            get {
+                return ResourceManager.GetString("NotActiveStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string OK {
+            get {
+                return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OutStanding Balance.
         /// </summary>
         internal static string OSBlance_payment {
             get {
                 return ResourceManager.GetString("OSBlance-payment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password changed successfully..
+        /// </summary>
+        internal static string Password_changed_successfully {
+            get {
+                return ResourceManager.GetString("Password_changed_successfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your password is invalid.
+        /// </summary>
+        internal static string PasswordInvalid {
+            get {
+                return ResourceManager.GetString("PasswordInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permission not allowed for this action..
+        /// </summary>
+        internal static string PermissionAlert {
+            get {
+                return ResourceManager.GetString("PermissionAlert", resourceCulture);
             }
         }
         
@@ -1272,6 +1848,15 @@ namespace TripBliss.Resources.Language {
         internal static string PlateNumber_TransportActive {
             get {
                 return ResourceManager.GetString("PlateNumber-TransportActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File Name.
+        /// </summary>
+        internal static string plc_File_Name {
+            get {
+                return ResourceManager.GetString("plc_File_Name", resourceCulture);
             }
         }
         
@@ -1402,11 +1987,497 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please make feedback to finish request.
+        /// </summary>
+        internal static string Please_make_feedback_to_finish_request {
+            get {
+                return ResourceManager.GetString("Please_make_feedback_to_finish_request", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please put price to one service or more.
+        /// </summary>
+        internal static string PutPriceAlert {
+            get {
+                return ResourceManager.GetString("PutPriceAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Question?.
+        /// </summary>
+        internal static string Question {
+            get {
+                return ResourceManager.GetString("Question", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully for your Register.
+        /// </summary>
+        internal static string RegisterSuccessfully {
+            get {
+                return ResourceManager.GetString("RegisterSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The request name is required to count from 3 to 15 letters.
+        /// </summary>
+        internal static string Request_name_required_count {
+            get {
+                return ResourceManager.GetString("Request_name_required_count", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The request was rejected by all selected distributors..
+        /// </summary>
+        internal static string request_was_rejected_by_all_selected_distributors {
+            get {
+                return ResourceManager.GetString("request_was_rejected_by_all_selected_distributors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfuly, for request delete.
+        /// </summary>
+        internal static string RequestDeleteSuccess {
+            get {
+                return ResourceManager.GetString("RequestDeleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Company Email..
+        /// </summary>
+        internal static string Required_CompanyEmail {
+            get {
+                return ResourceManager.GetString("Required_CompanyEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Company Name..
+        /// </summary>
+        internal static string Required_CompanyName {
+            get {
+                return ResourceManager.GetString("Required_CompanyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Company Phone..
+        /// </summary>
+        internal static string Required_CompanyPhone {
+            get {
+                return ResourceManager.GetString("Required_CompanyPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Company Type..
+        /// </summary>
+        internal static string Required_CompanyType {
+            get {
+                return ResourceManager.GetString("Required_CompanyType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Date..
+        /// </summary>
+        internal static string Required_Date {
+            get {
+                return ResourceManager.GetString("Required_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : File Name..
+        /// </summary>
+        internal static string Required_FileName {
+            get {
+                return ResourceManager.GetString("Required_FileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : From Location..
+        /// </summary>
+        internal static string Required_FromLocation {
+            get {
+                return ResourceManager.GetString("Required_FromLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Passengers Count..
+        /// </summary>
+        internal static string Required_PassengersCount {
+            get {
+                return ResourceManager.GetString("Required_PassengersCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Password..
+        /// </summary>
+        internal static string Required_Password {
+            get {
+                return ResourceManager.GetString("Required_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Room Count..
+        /// </summary>
+        internal static string Required_RoomCount {
+            get {
+                return ResourceManager.GetString("Required_RoomCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Select Car Brand..
+        /// </summary>
+        internal static string Required_SelectCarBrand {
+            get {
+                return ResourceManager.GetString("Required_SelectCarBrand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Select Car Model..
+        /// </summary>
+        internal static string Required_SelectCarModel {
+            get {
+                return ResourceManager.GetString("Required_SelectCarModel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Select Carrier..
+        /// </summary>
+        internal static string Required_SelectCarrier {
+            get {
+                return ResourceManager.GetString("Required_SelectCarrier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Select Car Type..
+        /// </summary>
+        internal static string Required_SelectCarType {
+            get {
+                return ResourceManager.GetString("Required_SelectCarType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Select Class..
+        /// </summary>
+        internal static string Required_SelectClass {
+            get {
+                return ResourceManager.GetString("Required_SelectClass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Select Hotel..
+        /// </summary>
+        internal static string Required_SelectHotel {
+            get {
+                return ResourceManager.GetString("Required_SelectHotel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Select Location..
+        /// </summary>
+        internal static string Required_SelectLocation {
+            get {
+                return ResourceManager.GetString("Required_SelectLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Select Meal..
+        /// </summary>
+        internal static string Required_SelectMeal {
+            get {
+                return ResourceManager.GetString("Required_SelectMeal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Select Room Type..
+        /// </summary>
+        internal static string Required_SelectRoomType {
+            get {
+                return ResourceManager.GetString("Required_SelectRoomType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Select Room View..
+        /// </summary>
+        internal static string Required_SelectRoomView {
+            get {
+                return ResourceManager.GetString("Required_SelectRoomView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Select Type of Visa..
+        /// </summary>
+        internal static string Required_SelectTypeofVisa {
+            get {
+                return ResourceManager.GetString("Required_SelectTypeofVisa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : To Location..
+        /// </summary>
+        internal static string Required_ToLocation {
+            get {
+                return ResourceManager.GetString("Required_ToLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Transport Count..
+        /// </summary>
+        internal static string Required_TransportCount {
+            get {
+                return ResourceManager.GetString("Required_TransportCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : User Email..
+        /// </summary>
+        internal static string Required_UserEmail {
+            get {
+                return ResourceManager.GetString("Required_UserEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : User Name..
+        /// </summary>
+        internal static string Required_UserName {
+            get {
+                return ResourceManager.GetString("Required_UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfuly, for Response Delete.
+        /// </summary>
+        internal static string ResponseDeleteSuccess {
+            get {
+                return ResourceManager.GetString("ResponseDeleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to lblReview.
+        /// </summary>
+        internal static string Review {
+            get {
+                return ResourceManager.GetString("Review", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Succesfully, for Review.
+        /// </summary>
+        internal static string ReviewSuccess {
+            get {
+                return ResourceManager.GetString("ReviewSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Room Reference Number.
         /// </summary>
         internal static string RoomRef_HotelActive {
             get {
                 return ResourceManager.GetString("RoomRef-HotelActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select at least one distribuitor..
+        /// </summary>
+        internal static string select_at_least_one_distribuitor {
+            get {
+                return ResourceManager.GetString("select_at_least_one_distribuitor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry Don&apos;t have distribuitor..
+        /// </summary>
+        internal static string Sorry_Dont_have_distribuitor {
+            get {
+                return ResourceManager.GetString("Sorry_Dont_have_distribuitor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully, action completed..
+        /// </summary>
+        internal static string Successfully_action_completed {
+            get {
+                return ResourceManager.GetString("Successfully_action_completed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully for Add Request.
+        /// </summary>
+        internal static string Successfully_AddRequest {
+            get {
+                return ResourceManager.GetString("Successfully_AddRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully for Add Response.
+        /// </summary>
+        internal static string Successfully_AddResponse {
+            get {
+                return ResourceManager.GetString("Successfully_AddResponse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully, for company deleted..
+        /// </summary>
+        internal static string Successfully_company_deleted {
+            get {
+                return ResourceManager.GetString("Successfully_company_deleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully for create user..
+        /// </summary>
+        internal static string Successfully_createuser {
+            get {
+                return ResourceManager.GetString("Successfully_createuser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully for Paying.
+        /// </summary>
+        internal static string Successfully_for_Paying {
+            get {
+                return ResourceManager.GetString("Successfully_for_Paying", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully, permissions updated.
+        /// </summary>
+        internal static string Successfully_permissions_updated {
+            get {
+                return ResourceManager.GetString("Successfully_permissions_updated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully for your Login.
+        /// </summary>
+        internal static string SuccessfullyLogin {
+            get {
+                return ResourceManager.GetString("SuccessfullyLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The selected date is less than today&apos;s date..
+        /// </summary>
+        internal static string The_selected_date_is_less_than_today {
+            get {
+                return ResourceManager.GetString("The_selected_date_is_less_than_today", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no reviews for this company yet..
+        /// </summary>
+        internal static string There_are_no_reviews {
+            get {
+                return ResourceManager.GetString("There_are_no_reviews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This account is an admin and is not allowed to access the application.
+        /// </summary>
+        internal static string This_account_is_an_admin {
+            get {
+                return ResourceManager.GetString("This_account_is_an_admin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This value is greater than the total price..
+        /// </summary>
+        internal static string This_value_is_greater_than_the_total_price {
+            get {
+                return ResourceManager.GetString("This_value_is_greater_than_the_total_price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The expected time of departure must be less than the expected time of arrival..
+        /// </summary>
+        internal static string time_departure_less_than_time_arrival {
+            get {
+                return ResourceManager.GetString("time_departure_less_than_time_arrival", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your user name is not registered !!.
+        /// </summary>
+        internal static string user_name_is_not_registered {
+            get {
+                return ResourceManager.GetString("user_name_is_not_registered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully, for user deleted..
+        /// </summary>
+        internal static string UserDeleteSuccess {
+            get {
+                return ResourceManager.GetString("UserDeleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        internal static string Warning {
+            get {
+                return ResourceManager.GetString("Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        internal static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

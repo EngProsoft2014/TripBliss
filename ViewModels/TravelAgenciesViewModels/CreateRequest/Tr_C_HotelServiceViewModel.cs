@@ -22,7 +22,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [ObservableProperty]
         RequestTravelAgencyHotelRequest? hotelRequestModel = new RequestTravelAgencyHotelRequest();
         [ObservableProperty]
-        ResponseWithDistributorHotel? hotelResponseModel = new ResponseWithDistributorHotel();
+        RequestTravelAgencyHotelResponse? hotelResponseModel = new RequestTravelAgencyHotelResponse();
 
         [ObservableProperty]
         ObservableCollection<LocationResponse> locations = new ObservableCollection<LocationResponse>();
@@ -49,7 +49,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         #endregion
 
-        public delegate void HotelDelegte(RequestTravelAgencyHotelRequest HotelRequest, ResponseWithDistributorHotel HotelResponse);
+        public delegate void HotelDelegte(RequestTravelAgencyHotelRequest HotelRequest, RequestTravelAgencyHotelResponse HotelResponse);
         public event HotelDelegte HotelClose;
 
         #region Services
@@ -66,7 +66,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             HotelRequestModel!.CheckOut = DateTime.Now.AddDays(7);
             Init();
         }
-        public Tr_C_HotelServiceViewModel(ResponseWithDistributorHotel model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_C_HotelServiceViewModel(RequestTravelAgencyHotelResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
@@ -79,7 +79,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         #region Methods
 
-        async void Init(ResponseWithDistributorHotel model)
+        async void Init(RequestTravelAgencyHotelResponse model)
         {
             await RunManyMethods();
             HotelRequestModel = new RequestTravelAgencyHotelRequest
@@ -238,42 +238,42 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             if (SelectedLocation == null || SelectedLocation?.Id == 0)
             {
-                var toast = Toast.Make("Please Complete This Field Required : Select Location.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_SelectLocation, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (SelectedHotel == null || SelectedHotel?.Id == 0)
             {
-                var toast = Toast.Make("Please Complete This Field Required : Select Hotel.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_SelectHotel, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (SelectedRoomView == null || SelectedRoomView?.Id == 0)
             {
-                var toast = Toast.Make("Please Complete This Field Required : Select Room View.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_SelectRoomView, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (SelectedRoomType == null || SelectedRoomType?.Id == 0)
             {
-                var toast = Toast.Make("Please Complete This Field Required : Select Room Type.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_SelectRoomType, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (SelectedMeal == null || SelectedMeal?.Id == 0)
             {
-                var toast = Toast.Make("Please Complete This Field Required : Select Meal.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_SelectMeal, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (request.RoomCount == 0 )
             {
-                var toast = Toast.Make("Please Complete This Field Required : Room Count.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_RoomCount, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (request.CheckIn < DateTime.Now)
             {
-                var toast = Toast.Make("Please select checkin date today or after that.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.checkin_date_today_or_after, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (request.CheckIn.Date > request.CheckOut.Date)
             {
-                var toast = Toast.Make("Arrival date must be less than departure date.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Arrival_date_must_be_less_than_departure_date, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else

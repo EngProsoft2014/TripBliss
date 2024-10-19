@@ -78,12 +78,12 @@
                     </StackLayout>
                 </Border>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20" Margin="0,30,0,20">
-                    <Button Text="{Static res:AppResources.lblChangepassword_Change_passwordPopup}" FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" FontSize="13"
+                    <Button Text="{Static res:AppResources.lblChangepassword_Change_passwordPopup}" FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="40" FontSize="13"
                             BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
                             Command="{Binding ChangePassClickCommand}">
                     </Button>
 
-                    <Button Text="{Static res:AppResources.btnDeleteAccount_ProfilePage}" FontAutoScalingEnabled="False" WidthRequest="115" Padding="0,5,0,5" HeightRequest="35" FontSize="13"
+                    <Button Text="{Static res:AppResources.btnDeleteAccount_ProfilePage}" FontAutoScalingEnabled="False" WidthRequest="115" Padding="0,5,0,5" HeightRequest="40" FontSize="13"
                             BackgroundColor="White" CornerRadius="5" TextColor="Red" BorderColor="Red" BorderWidth="1" Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="End"
                             Command="{Binding DisableAccountCommand}">
                         <Button.Triggers>

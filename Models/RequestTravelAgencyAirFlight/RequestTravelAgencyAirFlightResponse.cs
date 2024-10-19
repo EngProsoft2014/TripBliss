@@ -2,8 +2,8 @@
 {
     public record RequestTravelAgencyAirFlightResponse
     {
-        public int Id { get; set; }
-        public int RequestTravelAgencyId { get; set; }
+        public string Id { get; set; } = string.Empty;
+        public string? RequestTravelAgencyId { get; set; }
         public int AirFlightId { get; set; }
         public string? AirLine { get; set; }
         public int ClassAirFlightId { get; set; }

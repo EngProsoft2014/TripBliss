@@ -49,12 +49,12 @@ namespace TripBliss.ViewModels.Users
             {
                 if (string.IsNullOrEmpty(AddModel.Email))
                 {
-                    var toast = Toast.Make("Please Complete This Field Required : Email.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_UserEmail, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else if (string.IsNullOrEmpty(AddModel.Password))
                 {
-                    var toast = Toast.Make("Please Complete This Field Required : Password.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_Password, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else
@@ -76,7 +76,7 @@ namespace TripBliss.ViewModels.Users
                     if (json.Item1 != null && json.Item2 == null)
                     {
                         AddModel = new ApplicationUserRequest();
-                        var toast = Toast.Make("Successfully for create user.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Successfully_createuser, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                         AddUserClose.Invoke();
                     }

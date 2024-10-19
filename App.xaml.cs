@@ -16,6 +16,7 @@ namespace TripBliss
         #endregion
 
 
+        [Obsolete]
         public App(IGenericRepository generic, Services.Data.ServicesService service)
         {
             _service = service;
@@ -28,7 +29,6 @@ namespace TripBliss
             InitializeComponent();
 
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(ApiConstants.syncFusionLicence);
-
 
             if (!string.IsNullOrEmpty(Preferences.Default.Get(ApiConstants.username, "")))
             {

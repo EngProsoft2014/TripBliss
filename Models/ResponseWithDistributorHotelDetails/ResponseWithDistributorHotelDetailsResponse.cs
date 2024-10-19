@@ -4,8 +4,8 @@ namespace TripBliss.Models
 {
     public record ResponseWithDistributorHotelDetailsResponse : INotifyPropertyChanged
     {
-        int? _Id;
-        public int? Id
+        string? _Id;
+        public string? Id
         {
             get
             {
@@ -20,7 +20,7 @@ namespace TripBliss.Models
                 }
             }
         }
-        public int? ResponseWithDistributorHotelId { get; set; }
+        public string? ResponseWithDistributorHotelId { get; set; }
         public string? GuestName { get; set; }
         string? _RoomRef;
         public string? RoomRef

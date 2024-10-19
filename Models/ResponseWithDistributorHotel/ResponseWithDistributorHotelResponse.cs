@@ -4,9 +4,9 @@ namespace TripBliss.Models
 {
     public record ResponseWithDistributorHotelResponse : INotifyPropertyChanged
     {
-        public int Id { get; set; }
-        public int ResponseWithDistributorId { get; set; }
-        public int RequestTravelAgencyHotelId { get; set; }
+        public string? Id { get; set; }
+        public string? ResponseWithDistributorId { get; set; }
+        public string? RequestTravelAgencyHotelId { get; set; }
         int _Price;
         public int Price
         {
@@ -27,7 +27,7 @@ namespace TripBliss.Models
         public string? Notes { get; set; }
         public bool AcceptPriceDis { get; set; }
         public bool AcceptAgen { get; set; }
-        public ResponseWithDistributorHotel RequestTravelAgencyHotel { get; set; } = default!;
+        public RequestTravelAgencyHotelResponse RequestTravelAgencyHotel { get; set; } = default!;
 
         public event PropertyChangedEventHandler? PropertyChanged;
     }

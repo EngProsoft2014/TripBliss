@@ -352,7 +352,13 @@
 
         <!--NoData-->
         <StackLayout x:Name="stkNoData" IsVisible="False" HeightRequest="250" TranslationY="-150" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
-            <Image Source="noresult.png" Aspect="AspectFill" VerticalOptions="FillAndExpand"></Image>
+            <Image Source="noresult.png" Aspect="AspectFill" VerticalOptions="FillAndExpand">
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                        <Setter Property="Source" Value="noresultar.png"></Setter>
+                    </DataTrigger>
+                </Image.Triggers>
+            </Image>
             <StackLayout.Triggers>
                 <!--<DataTrigger TargetType="StackLayout" Binding="{Binding LstAirFlightDetails.Count}" Value="0">
                     <Setter Property="IsVisible" Value="False"></Setter>

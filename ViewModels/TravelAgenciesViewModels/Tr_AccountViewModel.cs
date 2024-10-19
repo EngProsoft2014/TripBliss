@@ -136,7 +136,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
 
@@ -177,7 +177,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         async Task DeleteCompany()
         {
 
-            bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Do you Want to Delete Company Account?", "Yes", "No");
+            bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.Do_you_Want_to_Delete_Company_Account, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
             if (answer)
             {
                 IsBusy = false;
@@ -189,18 +189,20 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
 
                 if (string.IsNullOrEmpty(json))
                 {
-                    var toast = Toast.Make("Successfully, for company deleted.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Successfully_company_deleted, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
 
+                    string LangValueToKeep = Preferences.Default.Get("Lan", "en"); 
                     Preferences.Default.Clear();
                     await BlobCache.LocalMachine.InvalidateAll();
                     await BlobCache.LocalMachine.Vacuum();
                     Constants.Permissions.LstPermissions.Clear();
+                    Preferences.Default.Set("Lan", LangValueToKeep);
                     await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service)));
                 }
                 else
                 {
-                    var toast = Toast.Make("Error Please Try again.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.ErrorTryAgain, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
 

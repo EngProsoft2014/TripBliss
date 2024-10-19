@@ -67,7 +67,7 @@
                                         HorizontalTextAlignment="Center" Text="{Binding CompanyResponse.Address}" HorizontalOptions="FillAndExpand"></Entry>
                             </StackLayout>
                         </Border>
-                        <Label Text="More Details >>" FontSize="14" TextColor="#2fa562" TextDecorations="Underline">
+                        <Label Text="{Static res:AppResources.lblMore_Details}" FontSize="14" TextColor="#2fa562" TextDecorations="Underline">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding MoreDetailsCommand}"></TapGestureRecognizer>
                             </Label.GestureRecognizers>

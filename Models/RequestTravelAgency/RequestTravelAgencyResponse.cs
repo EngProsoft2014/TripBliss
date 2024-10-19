@@ -8,7 +8,7 @@ namespace TripBliss.Models
 {
     public record RequestTravelAgencyResponse
     {
-        public int Id { get; set; }
+        public string Id { get; set; } = string.Empty;
         public string TravelAgencyCompanyId { get; set; } = string.Empty;
         public string? TravelAgencyCompanyName { get; set; }
         public int? TravelAgencyCompanyReview { get; set; }
@@ -26,7 +26,8 @@ namespace TripBliss.Models
         public DateTime? EndRequest { get; set; }
         public bool? IsAlertReview { get; set; }
         //public bool IsShowExpiredTemplete { get { return EndRequest != null && EndRequest > DateTime.Now.AddDays(3) ? true : false; } }
-        public string ToolTip { get{ return IsAlertReview == true ? "Please make feedback to finish request" : ""; } }
+        public string ToolTip { get{ return IsAlertReview == true ? TripBliss.Resources.Language.AppResources.Please_make_feedback_to_finish_request : ""; } }
+        public string ToolTipDisAgree { get{ return ResponseWithDistributorCount == 0 ? TripBliss.Resources.Language.AppResources.request_was_rejected_by_all_selected_distributors : ""; } }
         public List<ResponseWithDistributorResponse>? ResponseWithDistributor { get; set; }
 
     }

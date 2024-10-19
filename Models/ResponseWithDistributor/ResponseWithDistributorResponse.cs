@@ -2,8 +2,8 @@
 {
     public record ResponseWithDistributorResponse
     {
-        public int Id { get; set; }
-        public int RequestTravelAgencyId { get; set; }
+        public string? Id { get; set; } 
+        public string? RequestTravelAgencyId { get; set; }
         public string? TravelAgencyCompanyName { get; set; }
         public int? TravelAgencyCompanyReview { get; set; }
         public string DistributorCompanyId { get; set; } = string.Empty;
@@ -38,7 +38,8 @@
         public DateTime? CreateDate { get; set; }
 
         public DateTime? EndRequest { get; set; }
-        public bool IsShowExpiredTemplete { get { return EndRequest != null && EndRequest > DateTime.Now.AddDays(3) ? true : false; } }
-        public string ToolTip { get { return IsShowExpiredTemplete == true ? "Please make feedback to finish request" : ""; } }
+        //public bool IsShowExpiredTemplete { get { return EndRequest != null && EndRequest > DateTime.Now.AddDays(3) ? true : false; } }
+        public bool? IsAlertReview { get; set; }
+        public string ToolTip { get { return IsAlertReview == true ? TripBliss.Resources.Language.AppResources.Please_make_feedback_to_finish_request : ""; } }
     }
 }

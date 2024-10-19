@@ -12,6 +12,7 @@ using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 using TripBliss.Helpers;
 using TripBliss.Constants;
 using Controls.UserDialogs.Maui;
+using CommunityToolkit.Maui.Alerts;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {
@@ -19,7 +20,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
     {
         [ObservableProperty]
         public RequestTravelAgencyDetailsResponse requestDetailes= new RequestTravelAgencyDetailsResponse();
-        
+        [ObservableProperty]
+        string requestId;
 
 
         #region Services
@@ -28,31 +30,32 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         #endregion
 
         #region Cons
-        public Tr_D_RequestDetailsViewModel(int ReqId,IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_D_RequestDetailsViewModel(string ReqId,IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
+            RequestId = ReqId;
             _service = service;
             Init(ReqId);
         }
         #endregion
 
         #region Methodes
-        async Task Init(int ReqId)
+        async Task Init(string ReqId)
         {
             UserDialogs.Instance.ShowLoading();
             await GetRequestDetailes(ReqId);
             UserDialogs.Instance.HideHud();
         }
 
-        async Task GetRequestDetailes(int ReqId)
+        async Task GetRequestDetailes(string ReqId)
         {
 
-            string DisId = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId , "");
+            string TravelId = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId , "");
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 string UserToken = await _service.UserToken();
 
-                var json = await Rep.GetAsync<RequestTravelAgencyDetailsResponse>(ApiConstants.RequestDetailesApi + $"{DisId}/RequestTravelAgency/{ReqId}", UserToken);
+                var json = await Rep.GetAsync<RequestTravelAgencyDetailsResponse>(ApiConstants.RequestDetailesApi + $"{TravelId}/RequestTravelAgency/{ReqId}", UserToken);
 
                 if (json != null)
                 {
@@ -314,6 +317,47 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         async Task BackButton()
         {
             await App.Current!.MainPage!.Navigation.PopAsync();
+        }       
+        
+        [RelayCommand]
+        async Task DeleteRequest()
+        {
+            IsBusy = false;
+
+            bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.Do_You_Want_Delete_Request, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
+            if (answer)
+            {
+                if (Constants.Permissions.CheckPermission(Constants.Permissions.Delete_DetailsRequest))
+                {
+                    string TravelId = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
+                    if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                    {
+                        string UserToken = await _service.UserToken();
+
+                        var json = await Rep.PostAsync<RequestTravelAgencyDetailsResponse>(ApiConstants.RequestDetailesApi + $"{TravelId}/RequestTravelAgency/{RequestId}/Delete", null, UserToken);
+
+                        if (json == null)
+                        {
+                            var toast = Toast.Make(TripBliss.Resources.Language.AppResources.RequestDeleteSuccess, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            await toast.Show();
+
+                            await App.Current!.MainPage!.Navigation.PushAsync(new Pages.TravelAgenciesPages.HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service));
+                        }
+                        else
+                        {
+                            var toast = Toast.Make(TripBliss.Resources.Language.AppResources.ErrorTryAgain, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            await toast.Show();
+                        }
+                    }
+                }
+                else
+                {
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
+            }
+                
+            IsBusy = true;
         } 
         #endregion
     }

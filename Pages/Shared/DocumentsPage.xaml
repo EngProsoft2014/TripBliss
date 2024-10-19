@@ -30,15 +30,15 @@
                    VerticalOptions="CenterAndExpand" FontAttributes="Bold">
                 <Label.Triggers>
                     <DataTrigger TargetType="Label" Binding="{Binding ReviewVM}" Value="0">
-                        <Setter Property="Text" Value="In Review"></Setter>
+                        <Setter Property="Text" Value="{Static res:AppResources.In_Review}"></Setter>
                         <Setter Property="TextColor" Value="#1c92c9"></Setter>
                     </DataTrigger>
                     <DataTrigger TargetType="Label" Binding="{Binding ReviewVM}" Value="1">
-                        <Setter Property="Text" Value="Accepted"></Setter>
+                        <Setter Property="Text" Value="{Static res:AppResources.Accepted}"></Setter>
                         <Setter Property="TextColor" Value="Green"></Setter>
                     </DataTrigger>
                     <DataTrigger TargetType="Label" Binding="{Binding ReviewVM}" Value="2">
-                        <Setter Property="Text" Value="Denied"></Setter>
+                        <Setter Property="Text" Value="{Static res:AppResources.Denied}"></Setter>
                         <Setter Property="TextColor" Value="Red"></Setter>
                     </DataTrigger>
                 </Label.Triggers>
@@ -55,7 +55,7 @@
                 <DataTemplate>
                     <VerticalStackLayout Spacing="5">
                         <Border StrokeShape="RoundRectangle 10">
-                            <Entry Text="{Binding NameDoc}" FontSize="14" TextColor="Black" Keyboard="Text" Placeholder="File Name" PlaceholderColor="Gray"></Entry>
+                            <Entry Text="{Binding NameDoc}" FontSize="14" TextColor="Black" Keyboard="Text" Placeholder="{Static res:AppResources.plc_File_Name}" PlaceholderColor="Gray"></Entry>
                         </Border>
                         <StackLayout Orientation="Horizontal" Margin="0,0,0,0" HorizontalOptions="FillAndExpand">
                             <!--Image-->

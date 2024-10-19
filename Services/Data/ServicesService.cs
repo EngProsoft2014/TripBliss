@@ -86,7 +86,7 @@ namespace TripBliss.Services.Data
                         }
                         else
                         {
-                            var toast = Toast.Make("Warning, Your password is invalid", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PasswordInvalid, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
                         }
                     }

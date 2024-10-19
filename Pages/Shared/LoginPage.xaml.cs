@@ -36,7 +36,7 @@ public partial class LoginPage : Controls.CustomControl
         Dispatcher.Dispatch(() =>
         {
             Action action = () => Application.Current!.Quit();
-            Controls.StaticMember.ShowSnackBar("Do you want to exit the program?", Controls.StaticMember.SnackBarColor, Controls.StaticMember.SnackBarTextColor, action);
+            Controls.StaticMember.ShowSnackBar(TripBliss.Resources.Language.AppResources.Do_you_want_to_exit_the_program, Controls.StaticMember.SnackBarColor, Controls.StaticMember.SnackBarTextColor, action);
         });
 
         // Return true to prevent the default behavior

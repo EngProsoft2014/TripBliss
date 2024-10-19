@@ -5,9 +5,9 @@ namespace TripBliss.Models
     public record ResponseWithDistributorVisaResponse : INotifyPropertyChanged
     {
 
-        public int Id { get; set; }
-        public int ResponseWithDistributorId { get; set; }
-        public int RequestTravelAgencyVisaId { get; set; }
+        public string? Id { get; set; }
+        public string? ResponseWithDistributorId { get; set; }
+        public string? RequestTravelAgencyVisaId { get; set; }
         int _Price;
         public int Price
         {

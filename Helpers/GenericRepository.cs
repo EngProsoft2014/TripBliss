@@ -409,7 +409,7 @@ namespace TripBliss.Helpers
             catch (Exception e)
             {
                 Debug.WriteLine($"{e.GetType().Name + " : " + e.Message}");
-                await App.Current!.MainPage!.DisplayAlert("Warning", "Found Problem Internal Server.", "OK");
+                await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Warning, TripBliss.Resources.Language.AppResources.Found_Problem_Internal_Server, TripBliss.Resources.Language.AppResources.OK);
                 var model = JsonConvert.DeserializeObject<TR>(""); 
                 return (model!, null); 
             }

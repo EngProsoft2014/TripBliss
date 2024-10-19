@@ -29,6 +29,11 @@ public partial class HomeAgencyPage : Controls.CustomControl
         base.OnAppearing();
         tabMain.SelectedIndex = Controls.StaticMember.WayOfTab;
 
+        if (tabMain.SelectedIndex == 0 && !Constants.Permissions.CheckPermission(Constants.Permissions.Show_Home_Requests))
+        {
+            var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+            await toast.Show();
+        }
     }
 
 
@@ -39,7 +44,7 @@ public partial class HomeAgencyPage : Controls.CustomControl
         Dispatcher.Dispatch(() =>
         {
             Action action = () => Application.Current!.Quit();
-            Controls.StaticMember.ShowSnackBar("Do you want to exit the program?", Controls.StaticMember.SnackBarColor, Controls.StaticMember.SnackBarTextColor, action);
+            Controls.StaticMember.ShowSnackBar(TripBliss.Resources.Language.AppResources.Do_you_want_to_exit_the_program, Controls.StaticMember.SnackBarColor, Controls.StaticMember.SnackBarTextColor, action);
         });
 
         // Return true to prevent the default behavior
@@ -52,6 +57,11 @@ public partial class HomeAgencyPage : Controls.CustomControl
         if ((int)e.NewIndex == 0)
         {
             conviewHome.BindingContext = new Tr_HomeViewModel(Rep, _service);
+            if (!Constants.Permissions.CheckPermission(Constants.Permissions.Show_Home_Requests))
+            {
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
         }
         if ((int)e.NewIndex == 1)
         {

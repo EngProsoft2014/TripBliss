@@ -349,7 +349,13 @@
 
         <!--NoData-->
         <StackLayout x:Name="stkNoData" IsVisible="False" HeightRequest="250" TranslationY="-150" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-            <Image Source="noresult.png" Aspect="AspectFill" VerticalOptions="CenterAndExpand"></Image>
+            <Image Source="noresult.png" Aspect="AspectFill" VerticalOptions="CenterAndExpand">
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                        <Setter Property="Source" Value="noresultar.png"></Setter>
+                    </DataTrigger>
+                </Image.Triggers>
+            </Image>
             <StackLayout.Triggers>
                 <!--<DataTrigger TargetType="StackLayout" Binding="{Binding LstVisaDetails.Count}" Value="0">
                         <Setter Property="IsVisible" Value="False"></Setter>

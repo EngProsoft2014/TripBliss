@@ -18,7 +18,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
     public partial class Tr_D_PaymentViewModel : BaseViewModel
     {
         #region Prop
-        int ReqId;
+        string ReqId;
         int Totalprice;
         int Totalpayment;
         [ObservableProperty]
@@ -35,7 +35,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         #endregion
 
         #region Cons
-        public Tr_D_PaymentViewModel(int id,int totalPrice,int totalPayment, IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_D_PaymentViewModel(string id,int totalPrice,int totalPayment, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
@@ -51,7 +51,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         async Task AddPayment()
         {
-            bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Are You Accept To Pay?", "Yes", "No");
+            bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.Are_You_Accept_To_Pay, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
             IsBusy = false;
 
             UserDialogs.Instance.ShowLoading();
@@ -72,7 +72,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
                 if (json.Item1 != null)
                 {
-                    var toast = Toast.Make("Successfully for Paying Ammount", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Successfully_for_Paying, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                     Totalpayment = (int)(Totalpayment + paymentRequest.AmountPayment);
                     OutStandingprice = IsAllPyment == true ? 0 : OutStandingprice - paymentRequest.AmountPayment.Value;
@@ -80,7 +80,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 }
                 else
                 {
-                    var toast = Toast.Make($"Warning, {json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
             }
@@ -94,7 +94,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         }
 
         #region Methods
-        async Task Init()
+        async void Init()
         {
             UserDialogs.Instance.ShowLoading();
             await GetPayDetailes();
@@ -121,7 +121,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         {
             if (CustomPrice > Totalprice)
             {
-                var toast = Toast.Make("This value is greater than the total price.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.This_value_is_greater_than_the_total_price, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (CustomPrice !=0)

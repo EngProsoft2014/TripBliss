@@ -41,7 +41,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [ObservableProperty]
         ObservableCollection<RequestTravelAgencyHotelRequest> lstTravelAgencyHotelRequest = new ObservableCollection<RequestTravelAgencyHotelRequest>();
         [ObservableProperty]
-        ObservableCollection<ResponseWithDistributorHotel> lstTravelAgencyHotelResponse = new ObservableCollection<ResponseWithDistributorHotel>();
+        ObservableCollection<RequestTravelAgencyHotelResponse> lstTravelAgencyHotelResponse = new ObservableCollection<RequestTravelAgencyHotelResponse>();
         [ObservableProperty]
         ObservableCollection<RequestTravelAgencyVisaRequest> lstTravelAgencyVisaRequest = new ObservableCollection<RequestTravelAgencyVisaRequest>();
         [ObservableProperty]
@@ -109,7 +109,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             App.Current!.MainPage!.Navigation.PushAsync(page);
         }
         [RelayCommand]
-        void SelectHotel(ResponseWithDistributorHotel model)
+        void SelectHotel(RequestTravelAgencyHotelResponse model)
         {
             var index = LstTravelAgencyHotelResponse.IndexOf(model);
             var vm = new Tr_C_HotelServiceViewModel(model, Rep, _service);
@@ -131,7 +131,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         }
 
         [RelayCommand]
-        void DeletHotel(ResponseWithDistributorHotel model)
+        void DeletHotel(RequestTravelAgencyHotelResponse model)
         {
             int index = LstTravelAgencyHotelResponse.IndexOf(model);
             LstTravelAgencyHotelResponse.Remove(model);
@@ -299,20 +299,20 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             if (LstTravelAgencyHotelRequest.Count == 0 & LstTravelAgencyTransportRequest.Count == 0 & LstTravelAgencyAirFlightRequest.Count == 0 & LstTravelAgencyVisaRequest.Count == 0)
             {
-                var toast = Toast.Make("Please add at least one service.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.add_at_least_one_service, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else
             {
-                string RequestName = await App.Current!.MainPage!.DisplayPromptAsync("Complete info", "Add Request Name, Please");
+                string RequestName = await App.Current!.MainPage!.DisplayPromptAsync(TripBliss.Resources.Language.AppResources.Complete_info, TripBliss.Resources.Language.AppResources.Add_Request_Name);
                 if (string.IsNullOrEmpty(RequestName))
                 {
-                    var toast = Toast.Make("Add Request name is required.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Add_Request_name_is_required, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else if (RequestName.Length < 2 || RequestName.Length > 16)
                 {
-                    var toast = Toast.Make("The request name is required to count from 3 to 15 letters", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Request_name_required_count, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else
@@ -340,7 +340,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
                         if (json.Item1 != null)
                         {
-                            var toast = Toast.Make("Successfully for Add Request", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Successfully_AddRequest, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
 
                             Controls.StaticMember.WayOfTab = 0;
@@ -348,7 +348,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                         }
                         else
                         {
-                            var toast = Toast.Make($"Warning, {json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
                         }
                     }

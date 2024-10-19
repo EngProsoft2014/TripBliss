@@ -4,9 +4,9 @@ namespace TripBliss.Models
 {
     public record ResponseWithDistributorAirFlightResponse : INotifyPropertyChanged
     {
-        public int Id { get; set; }
-        public int ResponseWithDistributorId { get; set; }
-        public int RequestTravelAgencyAirFlightId { get; set; }
+        public string? Id { get; set; }
+        public string? ResponseWithDistributorId { get; set; }
+        public string? RequestTravelAgencyAirFlightId { get; set; }
         public int PriceAdult { get; set; }
         public int PriceChild { get; set; }
         public int PriceInfant { get; set; }

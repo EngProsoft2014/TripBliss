@@ -31,7 +31,13 @@
                TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
             <Button Text="{Static res:AppResources.btnattachment_VisaDetails}" Padding="3" HeightRequest="35" FontSize="{OnPlatform Android=12,iOS=14}"
                     Command="{Binding ActiveClickedCommand}"
-                    BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" WidthRequest="90" Margin="0" FontAttributes="Bold"></Button>
+                    BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" WidthRequest="90" Margin="0" FontAttributes="Bold">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding Moddel.AcceptAgen}" Value="False">
+                        <Setter Property="IsVisible" Value="False"></Setter>
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
             <StackLayout >

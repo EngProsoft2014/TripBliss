@@ -30,6 +30,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         bool isShowReviewBtn;
         [ObservableProperty]
         bool isRequestHistory;
+        [ObservableProperty]
+        string requestId;
 
         #endregion
 
@@ -39,11 +41,12 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         #endregion
 
         #region Cons
-        public Dis_D_RequestDetailsViewModel(int ReqId, IGenericRepository generic, Services.Data.ServicesService service)
+        public Dis_D_RequestDetailsViewModel(string ReqId, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             Lang = Preferences.Default.Get("Lan", "en");
             _service = service;
+            RequestId = ReqId;
             Init(ReqId);
         }
         #endregion
@@ -108,7 +111,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         void AddVisa()
         {
-            App.Current.MainPage.Navigation.PushAsync(new VisaServicePage(new Dis_D_VisaServiceViewModel(Rep)));
+            App.Current!.MainPage!.Navigation.PushAsync(new VisaServicePage(new Dis_D_VisaServiceViewModel(Rep)));
         }
         [RelayCommand]
         async Task SelectVisa(ResponseWithDistributorVisaResponse model)
@@ -122,13 +125,14 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 
         #region Methodes
 
-        async Task Init(int ReqId)
+        async void Init(string ReqId)
         {
             UserDialogs.Instance.ShowLoading();
             await GetRequestDetailes(ReqId);
             UserDialogs.Instance.HideHud();
         }
-        async Task GetRequestDetailes(int ReqId)
+
+        async Task GetRequestDetailes(string ReqId)
         {
 
             string DisId = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
@@ -172,7 +176,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 
             if (ResponseAirFlt != null || ResponseHotel != null || ResponseTrans != null || ResponseVisa != null)
             {
-                bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Are You Accept This Finall Price?", "Yes", "No");
+                bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.AreYouAcceptThisFinallPrice, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
 
                 if (Connectivity.NetworkAccess == NetworkAccess.Internet && answer)
                 {
@@ -182,27 +186,31 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                     string id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
 
                     UserDialogs.Instance.ShowLoading();
-                    var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorResponse>(ApiConstants.ResponseDetailsDistApi + $"{id}/ResponseWithDistributor/{Response.Id}", Response, UserToken);
+                    //var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorResponse>(ApiConstants.ResponseDetailsDistApi + $"{id}/ResponseWithDistributor/{Response.Id}", Response, UserToken);
+                    var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorDetailsResponse>(ApiConstants.ResponseDetailsDistApi + $"{id}/ResponseWithDistributor/{Response.Id}", Response, UserToken);
                     UserDialogs.Instance.HideHud();
 
                     if (json.Item1 != null)
                     {
-                        var toast = Toast.Make("Successfully for Add Response", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make(TripBliss.Resources.Language.AppResources.AddResponseSuccess, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
+
+                        Response = new ResponseWithDistributorDetailsResponse();
+                        Response = json.Item1;
 
                         //Controls.StaticMember.WayOfTab = 0;
                         //await App.Current!.MainPage!.Navigation.PushAsync(new HomeDistributorsPage(new Dis_HomeViewModel(Rep, _service), Rep, _service));
                     }
                     else
                     {
-                        var toast = Toast.Make($"Warning, {json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                     }
                 }
             }
             else
             {
-                var toast = Toast.Make("Warning, Please put price to one service or more", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PutPriceAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }             
 
@@ -216,7 +224,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         {
             IsBusy = false;
 
-            bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Do you want to make a review, finish the request and move it to the History?", "Yes", "No");
+            bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.MakeReviewAndFinishRequest, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
             if (answer)
             {
                 var vieModel = new Dis_ReviewViewModel(Rep, _service);
@@ -232,12 +240,12 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                         if (json.Item1 == null && json.Item2 == null)
                         {
                             await App.Current!.MainPage!.Navigation.PushAsync(new HomeDistributorsPage(new Dis_HomeViewModel(Rep, _service), Rep, _service));
-                            var toast = Toast.Make("Succesfully, for Review", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            var toast = Toast.Make(TripBliss.Resources.Language.AppResources.ReviewSuccess, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
                         }
                         else
                         {
-                            var toast = Toast.Make($"Warning, {json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
                         }
                     }
@@ -245,6 +253,47 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                 };
 
                 await MopupService.Instance.PushAsync(page);
+            }
+
+            IsBusy = true;
+        }
+
+        [RelayCommand]
+        [Obsolete]
+        async Task DeleteRequest()
+        {
+            IsBusy = false;
+            bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.Do_You_Want_Delete_Response, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
+            if (answer)
+            {
+                if (Constants.Permissions.CheckPermission(Constants.Permissions.Delete_ResponseWithDistributer))
+                {
+                    string DisId = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
+                    if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                    {
+                        string UserToken = await _service.UserToken();
+
+                        var json = await Rep.PostAsync<ResponseWithDistributorDetailsResponse>(ApiConstants.ResponseDetailsDistApi + $"{DisId}/ResponseWithDistributor/{RequestId}/Delete", null, UserToken);
+
+                        if (json == null)
+                        {
+                            var toast = Toast.Make(TripBliss.Resources.Language.AppResources.ResponseDeleteSuccess, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            await toast.Show();
+
+                            await App.Current!.MainPage!.Navigation.PushAsync(new HomeDistributorsPage(new Dis_HomeViewModel(Rep, _service), Rep, _service));
+                        }
+                        else
+                        {
+                            var toast = Toast.Make(TripBliss.Resources.Language.AppResources.ErrorTryAgain, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            await toast.Show();
+                        }
+                    }
+                }
+                else
+                {
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
             }
 
             IsBusy = true;

@@ -244,37 +244,37 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         {
             if (SelectedLocation == null || SelectedLocation?.Id == 0)
             {
-                var toast = Toast.Make("Please Complete This Field Required : Select Location.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_SelectLocation, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (SelectedHotel == null || SelectedHotel?.Id == 0)
             {
-                var toast = Toast.Make("Please Complete This Field Required : Select Hotel.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_SelectHotel, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (SelectedRoomView == null || SelectedRoomView?.Id == 0)
             {
-                var toast = Toast.Make("Please Complete This Field Required : Select Room View.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_SelectRoomView, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (SelectedRoomType == null || SelectedRoomType?.Id == 0)
             {
-                var toast = Toast.Make("Please Complete This Field Required : Select Room Type.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_SelectRoomType, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (SelectedMeal == null || SelectedMeal?.Id == 0)
             {
-                var toast = Toast.Make("Please Complete This Field Required : Select Meal.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_SelectMeal, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (request.RoomCount == 0)
             {
-                var toast = Toast.Make("Please Complete This Field Required : Room Count.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_RoomCount, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (request.CheckIn.Date > request.CheckOut.Date)
             {
-                var toast = Toast.Make("Arrival date must be less than departure date.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Arrival_date_must_be_less_than_departure_date, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else
@@ -294,7 +294,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         {
             if(TotalPayment == 0)
             {
-                var toast = Toast.Make("Please make sure to pay part of the amount due.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Agency_must_pay_part_of_the_amount_due, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else

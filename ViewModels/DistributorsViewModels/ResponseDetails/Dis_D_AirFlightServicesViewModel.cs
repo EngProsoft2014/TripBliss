@@ -57,7 +57,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task AplyClicked()
         {
-            bool answer = await App.Current!.MainPage!.DisplayAlert("Question?", "Are You Accept This Price?", "Yes", "No");
+            bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.Are_You_Accept_This_Price, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
             Moddel!.AcceptPriceDis = answer;
             await App.Current!.MainPage!.Navigation.PopAsync();
         }
@@ -68,7 +68,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             {
                 if (TotalPayment == 0)
                 {
-                    var toast = Toast.Make("Please make sure to pay part of the amount due.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Agency_must_pay_part_of_the_amount_due, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else
@@ -81,7 +81,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
 

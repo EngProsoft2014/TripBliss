@@ -177,9 +177,6 @@
   <data name="lblAirFlightServices" xml:space="preserve">
     <value>Air Flight Services</value>
   </data>
-  <data name="lblBrand-TranServices" xml:space="preserve">
-    <value>Brand</value>
-  </data>
   <data name="lblCarrier-AirService" xml:space="preserve">
     <value>Carrier</value>
   </data>
@@ -566,5 +563,365 @@
   </data>
   <data name="btnDeleteAccount-ProfilePage" xml:space="preserve">
     <value>Delete Account</value>
+  </data>
+  <data name="PermissionAlert" xml:space="preserve">
+    <value>Permission not allowed for this action.</value>
+  </data>
+  <data name="PasswordInvalid" xml:space="preserve">
+    <value>Your password is invalid</value>
+  </data>
+  <data name="DeleteCompanySuccess" xml:space="preserve">
+    <value>Successfully, for company deleted.</value>
+  </data>
+  <data name="ErrorTryAgain" xml:space="preserve">
+    <value>Error Please Try again.</value>
+  </data>
+  <data name="AddResponseSuccess" xml:space="preserve">
+    <value>Successfully for Add Response</value>
+  </data>
+  <data name="PutPriceAlert" xml:space="preserve">
+    <value>Please put price to one service or more</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Question?</value>
+  </data>
+  <data name="AreYouAcceptThisFinallPrice" xml:space="preserve">
+    <value>Are You Accept This Finall Price?</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="MakeReviewAndFinishRequest" xml:space="preserve">
+    <value>Do you want to make a review, finish the request and move it to the History?</value>
+  </data>
+  <data name="ReviewSuccess" xml:space="preserve">
+    <value>Succesfully, for Review</value>
+  </data>
+  <data name="Agency_must_pay_part_of_the_amount_due" xml:space="preserve">
+    <value>The Agency must pay part of the amount due.</value>
+  </data>
+  <data name="This_account_is_an_admin" xml:space="preserve">
+    <value>This account is an admin and is not allowed to access the application</value>
+  </data>
+  <data name="user_name_is_not_registered" xml:space="preserve">
+    <value>Your user name is not registered !!</value>
+  </data>
+  <data name="UserDeleteSuccess" xml:space="preserve">
+    <value>Successfully, for user deleted.</value>
+  </data>
+  <data name="Do_you_Want_to_Delete_the_Account" xml:space="preserve">
+    <value>Do you want to delete the account?</value>
+  </data>
+  <data name="RegisterSuccessfully" xml:space="preserve">
+    <value>Successfully for your Register</value>
+  </data>
+  <data name="SuccessfullyLogin" xml:space="preserve">
+    <value>Successfully for your Login</value>
+  </data>
+  <data name="enter_vaild_Email" xml:space="preserve">
+    <value>Please enter vaild E-mail</value>
+  </data>
+  <data name="enter_your_Email" xml:space="preserve">
+    <value>Please enter your E-mail</value>
+  </data>
+  <data name="Enter_Old_Password" xml:space="preserve">
+    <value>Please Enter a Required : Old Password.</value>
+  </data>
+  <data name="Enter_New_Password" xml:space="preserve">
+    <value>Please Enter a Required : New Password.</value>
+  </data>
+  <data name="Password_changed_successfully" xml:space="preserve">
+    <value>Password changed successfully.</value>
+  </data>
+  <data name="Error_Please_Check_Data_again" xml:space="preserve">
+    <value>Error Please Check Data again.</value>
+  </data>
+  <data name="Required_UserName" xml:space="preserve">
+    <value>Please Complete This Field Required : User Name.</value>
+  </data>
+  <data name="Required_Password" xml:space="preserve">
+    <value>Please Complete This Field Required : Password.</value>
+  </data>
+  <data name="Required_CompanyType" xml:space="preserve">
+    <value>Please Complete This Field Required : Company Type.</value>
+  </data>
+  <data name="Required_CompanyName" xml:space="preserve">
+    <value>Please Complete This Field Required : Company Name.</value>
+  </data>
+  <data name="Required_CompanyEmail" xml:space="preserve">
+    <value>Please Complete This Field Required : Company Email.</value>
+  </data>
+  <data name="Required_CompanyPhone" xml:space="preserve">
+    <value>Please Complete This Field Required : Company Phone.</value>
+  </data>
+  <data name="Required_UserEmail" xml:space="preserve">
+    <value>Please Complete This Field Required : User Email.</value>
+  </data>
+  <data name="Required_FileName" xml:space="preserve">
+    <value>Please Complete This Field Required : File Name.</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Camera_not_supported" xml:space="preserve">
+    <value>Camera not supported on this device.</value>
+  </data>
+  <data name="No_image_here" xml:space="preserve">
+    <value>No image here.</value>
+  </data>
+  <data name="Successfully_AddResponse" xml:space="preserve">
+    <value>Successfully for Add Response</value>
+  </data>
+  <data name="Successfully_permissions_updated" xml:space="preserve">
+    <value>Successfully, permissions updated</value>
+  </data>
+  <data name="Successfully_action_completed" xml:space="preserve">
+    <value>Successfully, action completed.</value>
+  </data>
+  <data name="Successfully_createuser" xml:space="preserve">
+    <value>Successfully for create user.</value>
+  </data>
+  <data name="Successfully_company_deleted" xml:space="preserve">
+    <value>Successfully, for company deleted.</value>
+  </data>
+  <data name="Do_you_Want_to_Delete_Company_Account" xml:space="preserve">
+    <value>Do you Want to Delete Company Account?</value>
+  </data>
+  <data name="Required_SelectCarrier" xml:space="preserve">
+    <value>Please Complete This Field Required : Select Carrier.</value>
+  </data>
+  <data name="The_selected_date_is_less_than_today" xml:space="preserve">
+    <value>The selected date is less than today's date.</value>
+  </data>
+  <data name="Required_SelectClass" xml:space="preserve">
+    <value>Please Complete This Field Required : Select Class.</value>
+  </data>
+  <data name="Required_FromLocation" xml:space="preserve">
+    <value>Please Complete This Field Required : From Location.</value>
+  </data>
+  <data name="Required_ToLocation" xml:space="preserve">
+    <value>Please Complete This Field Required : To Location.</value>
+  </data>
+  <data name="time_departure_less_than_time_arrival" xml:space="preserve">
+    <value>The expected time of departure must be less than the expected time of arrival.</value>
+  </data>
+  <data name="Required_PassengersCount" xml:space="preserve">
+    <value>Please Complete This Field Required : Passengers Count.</value>
+  </data>
+  <data name="add_at_least_one_service" xml:space="preserve">
+    <value>Please add at least one service.</value>
+  </data>
+  <data name="Complete_info" xml:space="preserve">
+    <value>Complete info</value>
+  </data>
+  <data name="Add_Request_Name" xml:space="preserve">
+    <value>Add Request Name, Please</value>
+  </data>
+  <data name="Add_Request_name_is_required" xml:space="preserve">
+    <value>Add Request name is required.</value>
+  </data>
+  <data name="Request_name_required_count" xml:space="preserve">
+    <value>The request name is required to count from 3 to 15 letters</value>
+  </data>
+  <data name="Successfully_AddRequest" xml:space="preserve">
+    <value>Successfully for Add Request</value>
+  </data>
+  <data name="Sorry_Dont_have_distribuitor" xml:space="preserve">
+    <value>Sorry Don't have distribuitor.</value>
+  </data>
+  <data name="Required_SelectLocation" xml:space="preserve">
+    <value>Please Complete This Field Required : Select Location.</value>
+  </data>
+  <data name="Required_SelectHotel" xml:space="preserve">
+    <value>Please Complete This Field Required : Select Hotel.</value>
+  </data>
+  <data name="Required_SelectRoomView" xml:space="preserve">
+    <value>Please Complete This Field Required : Select Room View.</value>
+  </data>
+  <data name="Required_SelectRoomType" xml:space="preserve">
+    <value>Please Complete This Field Required : Select Room Type.</value>
+  </data>
+  <data name="Required_SelectMeal" xml:space="preserve">
+    <value>Please Complete This Field Required : Select Meal.</value>
+  </data>
+  <data name="Required_RoomCount" xml:space="preserve">
+    <value>Please Complete This Field Required : Room Count.</value>
+  </data>
+  <data name="checkin_date_today_or_after" xml:space="preserve">
+    <value>Please select checkin date today or after that.</value>
+  </data>
+  <data name="Arrival_date_must_be_less_than_departure_date" xml:space="preserve">
+    <value>Arrival date must be less than departure date.</value>
+  </data>
+  <data name="select_at_least_one_distribuitor" xml:space="preserve">
+    <value>Please select at least one distribuitor.</value>
+  </data>
+  <data name="Required_SelectCarType" xml:space="preserve">
+    <value>Please Complete This Field Required : Select Car Type.</value>
+  </data>
+  <data name="Required_SelectCarBrand" xml:space="preserve">
+    <value>Please Complete This Field Required : Select Car Brand.</value>
+  </data>
+  <data name="Required_SelectCarModel" xml:space="preserve">
+    <value>Please Complete This Field Required : Select Car Model.</value>
+  </data>
+  <data name="Required_TransportCount" xml:space="preserve">
+    <value>Please Complete This Field Required : Transport Count.</value>
+  </data>
+  <data name="Required_Date" xml:space="preserve">
+    <value>Please Complete This Field Required : Date.</value>
+  </data>
+  <data name="Required_SelectTypeofVisa" xml:space="preserve">
+    <value>Please Complete This Field Required : Select Type of Visa.</value>
+  </data>
+  <data name="Failed_favourite_delete" xml:space="preserve">
+    <value>Failed favourite delete</value>
+  </data>
+  <data name="Check_to_one_service_or_more" xml:space="preserve">
+    <value>Please Check to one service or more</value>
+  </data>
+  <data name="already_paid_cannot_be_modified" xml:space="preserve">
+    <value>This order has already been paid for and cannot be modified.</value>
+  </data>
+  <data name="This_value_is_greater_than_the_total_price" xml:space="preserve">
+    <value>This value is greater than the total price.</value>
+  </data>
+  <data name="Successfully_for_Paying" xml:space="preserve">
+    <value>Successfully for Paying</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Found_Problem_Internal_Server" xml:space="preserve">
+    <value>Found Problem Internal Server.</value>
+  </data>
+  <data name="Are_You_Accept_This_Price" xml:space="preserve">
+    <value>Are You Accept This Price?</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Do_you_agree_to_delete_all_photos" xml:space="preserve">
+    <value>Do you agree to delete all photos?</value>
+  </data>
+  <data name="No_Internet_connection" xml:space="preserve">
+    <value>No Internet connection!</value>
+  </data>
+  <data name="Do_you_want_to_disable_user_account" xml:space="preserve">
+    <value>Do you Want to Disable User Account?</value>
+  </data>
+  <data name="Do_you_want_to_enable_user_account" xml:space="preserve">
+    <value>Do you Want to Enable User Account?</value>
+  </data>
+  <data name="Are_You_Accept_To_Pay" xml:space="preserve">
+    <value>Are You Accept To Pay?</value>
+  </data>
+  <data name="Do_you_want_to_exit_the_program" xml:space="preserve">
+    <value>Do you want to exit the program?</value>
+  </data>
+  <data name="Do_you_want_to_Logout" xml:space="preserve">
+    <value>Do you want to Logout?</value>
+  </data>
+  <data name="Please_make_feedback_to_finish_request" xml:space="preserve">
+    <value>Please make feedback to finish request</value>
+  </data>
+  <data name="ActiveStatus" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="NotActiveStatus" xml:space="preserve">
+    <value>Not Active</value>
+  </data>
+  <data name="lblBrand_TranServices" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="lblReviews" xml:space="preserve">
+    <value>Reviews</value>
+  </data>
+  <data name="lblBy" xml:space="preserve">
+    <value>By</value>
+  </data>
+  <data name="There_are_no_reviews" xml:space="preserve">
+    <value>There are no reviews for this company yet.</value>
+  </data>
+  <data name="btn_Send_offer" xml:space="preserve">
+    <value>Send offer</value>
+  </data>
+  <data name="In_Review" xml:space="preserve">
+    <value>In Review</value>
+  </data>
+  <data name="Accepted" xml:space="preserve">
+    <value>Accepted</value>
+  </data>
+  <data name="Denied" xml:space="preserve">
+    <value>Denied</value>
+  </data>
+  <data name="plc_File_Name" xml:space="preserve">
+    <value>File Name</value>
+  </data>
+  <data name="lblUser_Permission" xml:space="preserve">
+    <value>User Permission</value>
+  </data>
+  <data name="lblDetails_Request" xml:space="preserve">
+    <value>Details Request</value>
+  </data>
+  <data name="lblRequest_Travel_Agency_Permission" xml:space="preserve">
+    <value>Show Distributors</value>
+  </data>
+  <data name="lblOffer" xml:space="preserve">
+    <value>Offer</value>
+  </data>
+  <data name="lblUsers" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="lblDocuments" xml:space="preserve">
+    <value>Documents</value>
+  </data>
+  <data name="lblHistory" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="lblCompany_Account" xml:space="preserve">
+    <value>Company Account</value>
+  </data>
+  <data name="lblShow_Agencies" xml:space="preserve">
+    <value>Show Agencies</value>
+  </data>
+  <data name="lblMore_Details" xml:space="preserve">
+    <value>More Details</value>
+  </data>
+  <data name="RequestDeleteSuccess" xml:space="preserve">
+    <value>Successfuly, for request delete</value>
+  </data>
+  <data name="ResponseDeleteSuccess" xml:space="preserve">
+    <value>Successfuly, for Response Delete</value>
+  </data>
+  <data name="Do_You_Want_Delete_Request" xml:space="preserve">
+    <value>Do you want delete request?</value>
+  </data>
+  <data name="Do_You_Want_Delete_Response" xml:space="preserve">
+    <value>Do you want delete response?</value>
+  </data>
+  <data name="Review" xml:space="preserve">
+    <value>lblReview</value>
+  </data>
+  <data name="Feedback_for_Distributor" xml:space="preserve">
+    <value>Feedback for Distributor</value>
+  </data>
+  <data name="Enter_Feedback" xml:space="preserve">
+    <value>Enter Feedback</value>
+  </data>
+  <data name="Feedback_for_TravelAgency" xml:space="preserve">
+    <value>Feedback for Travel Agency</value>
+  </data>
+  <data name="request_was_rejected_by_all_selected_distributors" xml:space="preserve">
+    <value>The request was rejected by all selected distributors.</value>
   </data>
 </root>

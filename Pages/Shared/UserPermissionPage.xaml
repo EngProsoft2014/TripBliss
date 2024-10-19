@@ -22,7 +22,7 @@
                     <TapGestureRecognizer Command="{Binding BackPressedCommand}"></TapGestureRecognizer>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="User Permission" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+            <Label Text="{Static res:AppResources.lblUser_Permission}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand">
@@ -30,7 +30,7 @@
 
                 <StackLayout HorizontalOptions="FillAndExpand" Spacing="10">
                     <StackLayout Orientation="Horizontal" Spacing="20">
-                        <Label Text="Details Request" FontSize="14" TextColor="Black">
+                        <Label Text="{Static res:AppResources.lblDetails_Request}" FontSize="14" TextColor="Black">
                             <Label.Triggers>
                                 <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference DetailsRequest},Path=IsVisible}" Value="True">
                                     <Setter Property="TextColor" Value="Green"></Setter>
@@ -49,6 +49,9 @@
                                             <FontImageSource FontFamily="FontIconSolid" Color="Green" Glyph="" Size="15"></FontImageSource>
                                         </Setter.Value>
                                     </Setter>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                                    <Setter Property="Rotation" Value="180"></Setter>
                                 </DataTrigger>
                             </Image.Triggers>
                         </Image>
@@ -83,13 +86,13 @@
 
                 <StackLayout HorizontalOptions="FillAndExpand" Spacing="10">
                     <StackLayout Orientation="Horizontal" Spacing="20">
-                        <Label Text="Request Travel Agency" FontSize="14" TextColor="Black">
+                        <Label Text="{Static res:AppResources.lblRequest_Travel_Agency_Permission}" FontSize="14" TextColor="Black">
                             <Label.Triggers>
                                 <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference RequestTravelAgency},Path=IsVisible}" Value="True">
                                     <Setter Property="TextColor" Value="Green"></Setter>
                                 </DataTrigger>
                                 <DataTrigger TargetType="Label" Binding="{Binding TOD}" Value="D">
-                                    <Setter Property="Text" Value="Show Agencies"></Setter>
+                                    <Setter Property="Text" Value="{Static res:AppResources.lblShow_Agencies}"></Setter>
                                 </DataTrigger>
                             </Label.Triggers>
                         </Label>
@@ -105,6 +108,9 @@
                                             <FontImageSource FontFamily="FontIconSolid" Color="Green" Glyph="" Size="15"></FontImageSource>
                                         </Setter.Value>
                                     </Setter>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                                    <Setter Property="Rotation" Value="180"></Setter>
                                 </DataTrigger>
                             </Image.Triggers>
                         </Image>
@@ -138,7 +144,7 @@
 
                 <StackLayout HorizontalOptions="FillAndExpand" Spacing="10">
                     <StackLayout Orientation="Horizontal" Spacing="20">
-                        <Label Text="Offer" FontSize="14" TextColor="Black">
+                        <Label Text="{Static res:AppResources.lblOffer}" FontSize="14" TextColor="Black">
                             <Label.Triggers>
                                 <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Offer},Path=IsVisible}" Value="True">
                                     <Setter Property="TextColor" Value="Green"></Setter>
@@ -157,6 +163,9 @@
                                             <FontImageSource FontFamily="FontIconSolid" Color="Green" Glyph="" Size="15"></FontImageSource>
                                         </Setter.Value>
                                     </Setter>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                                    <Setter Property="Rotation" Value="180"></Setter>
                                 </DataTrigger>
                             </Image.Triggers>
                         </Image>
@@ -191,7 +200,7 @@
 
                 <StackLayout HorizontalOptions="FillAndExpand" Spacing="10">
                     <StackLayout Orientation="Horizontal" Spacing="20">
-                        <Label Text="Users" FontSize="14" TextColor="Black">
+                        <Label Text="{Static res:AppResources.lblUsers}" FontSize="14" TextColor="Black">
                             <Label.Triggers>
                                 <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference UsersColc},Path=IsVisible}" Value="True">
                                     <Setter Property="TextColor" Value="Green"></Setter>
@@ -210,6 +219,9 @@
                                             <FontImageSource FontFamily="FontIconSolid" Color="Green" Glyph="" Size="15"></FontImageSource>
                                         </Setter.Value>
                                     </Setter>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                                    <Setter Property="Rotation" Value="180"></Setter>
                                 </DataTrigger>
                             </Image.Triggers>
                         </Image>
@@ -244,7 +256,7 @@
 
                 <StackLayout HorizontalOptions="FillAndExpand" Spacing="10">
                     <StackLayout Orientation="Horizontal" Spacing="20">
-                        <Label Text="Documents" FontSize="14" TextColor="Black">
+                        <Label Text="{Static res:AppResources.lblDocuments}" FontSize="14" TextColor="Black">
                             <Label.Triggers>
                                 <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Documents},Path=IsVisible}" Value="True">
                                     <Setter Property="TextColor" Value="Green"></Setter>
@@ -263,6 +275,9 @@
                                             <FontImageSource FontFamily="FontIconSolid" Color="Green" Glyph="" Size="15"></FontImageSource>
                                         </Setter.Value>
                                     </Setter>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                                    <Setter Property="Rotation" Value="180"></Setter>
                                 </DataTrigger>
                             </Image.Triggers>
                         </Image>
@@ -297,7 +312,7 @@
 
                 <StackLayout HorizontalOptions="FillAndExpand" Spacing="10">
                     <StackLayout Orientation="Horizontal" Spacing="20">
-                        <Label Text="History" FontSize="14" TextColor="Black">
+                        <Label Text="{Static res:AppResources.lblHistory}" FontSize="14" TextColor="Black">
                             <Label.Triggers>
                                 <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference History},Path=IsVisible}" Value="True">
                                     <Setter Property="TextColor" Value="Green"></Setter>
@@ -316,6 +331,9 @@
                                             <FontImageSource FontFamily="FontIconSolid" Color="Green" Glyph="" Size="15"></FontImageSource>
                                         </Setter.Value>
                                     </Setter>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                                    <Setter Property="Rotation" Value="180"></Setter>
                                 </DataTrigger>
                             </Image.Triggers>
                         </Image>
@@ -350,7 +368,7 @@
 
                 <StackLayout HorizontalOptions="FillAndExpand" Spacing="10">
                     <StackLayout Orientation="Horizontal" Spacing="20">
-                        <Label Text="Company Account" FontSize="14" TextColor="Black">
+                        <Label Text="{Static res:AppResources.lblCompany_Account}" FontSize="14" TextColor="Black">
                             <Label.Triggers>
                                 <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference TravelAgencyCompany},Path=IsVisible}" Value="True">
                                     <Setter Property="TextColor" Value="Green"></Setter>
@@ -369,6 +387,9 @@
                                             <FontImageSource FontFamily="FontIconSolid" Color="Green" Glyph="" Size="15"></FontImageSource>
                                         </Setter.Value>
                                     </Setter>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                                    <Setter Property="Rotation" Value="180"></Setter>
                                 </DataTrigger>
                             </Image.Triggers>
                         </Image>
@@ -403,7 +424,7 @@
             </StackLayout>
             
         </ScrollView>
-        <Button Text="Apply" FontAutoScalingEnabled="False" FontAttributes="Bold" TextColor="White" FontSize="14" CornerRadius="10" Margin="20,10,20,0"
+        <Button Text="{Static res:AppResources.btnApply_Forgot}" FontAutoScalingEnabled="False" FontAttributes="Bold" TextColor="White" FontSize="14" CornerRadius="10" Margin="20,10,20,0"
                 BackgroundColor="#2fb569" Command="{Binding ApplyClickCommand}">
         </Button>
     </StackLayout>

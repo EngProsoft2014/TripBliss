@@ -42,13 +42,16 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         {
             Action action = async () =>
             {
+                string LangValueToKeep = Preferences.Default.Get("Lan", "en");
                 Preferences.Default.Clear();
                 await BlobCache.LocalMachine.InvalidateAll();
                 await BlobCache.LocalMachine.Vacuum();
                 Constants.Permissions.LstPermissions.Clear();
+
+                Preferences.Default.Set("Lan", LangValueToKeep);
                 await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service)));
             };
-            Controls.StaticMember.ShowSnackBar("Do you want to Logout?", Controls.StaticMember.SnackBarColor, Controls.StaticMember.SnackBarTextColor, action);
+            Controls.StaticMember.ShowSnackBar(TripBliss.Resources.Language.AppResources.Do_you_want_to_Logout, Controls.StaticMember.SnackBarColor, Controls.StaticMember.SnackBarTextColor, action);
             return Task.CompletedTask;
         }
         [RelayCommand]
@@ -63,7 +66,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
         }
@@ -90,7 +93,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
         }
@@ -107,7 +110,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
 

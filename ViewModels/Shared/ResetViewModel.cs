@@ -72,19 +72,19 @@ namespace TripBliss.ViewModels
                         }
                         else
                         {
-                            var toast = Toast.Make($"Error : {Postjson.Item2!.errors!.Values.FirstOrDefault()}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            var toast = Toast.Make($"{Postjson.Item2!.errors!.Values.FirstOrDefault()}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
                         }
                     }
                     else
                     {
-                        var toast = Toast.Make("Please enter a valid email address.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make(TripBliss.Resources.Language.AppResources.enter_vaild_Email, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                     }
                 }
                 else
                 {
-                    var toast = Toast.Make("Please enter your E-mail", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.enter_your_Email, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
             }

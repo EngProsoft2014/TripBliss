@@ -2,8 +2,8 @@
 {
     public record ResponseWithDistributorPaymentResponse
     {
-        public int Id { get; set; }
-        public int ResponseWithDistributorId { get; set; }
+        public string? Id { get; set; }
+        public string? ResponseWithDistributorId { get; set; }
         public string? RequestName { get; set; }
         public string? DistributorCompanyName { get; set; }
         public string? TravelAgencyCompanyName { get; set; }

@@ -2,7 +2,8 @@
 {
     public record ResponseWithDistributorHotelRequest
     {
-        public int ResponseWithDistributorId { get; set; }
+        public string? Id { get; set; }
+        public string? ResponseWithDistributorId { get; set; }
         public int RequestTravelAgencyHotelId { get; set; }
         public int Price { get; set; }
         public int Total { get; set; }

@@ -42,6 +42,14 @@
                                 </Image>
                                 <Label Text="{Binding RequestDetailes.RequestName}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+                                <Image VerticalOptions="End">
+                                    <Image.Source>
+                                        <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                                    </Image.Source>
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding DeleteRequestCommand}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
                             </StackLayout>
                             <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Padding="0,0,0,20">
                                 <StackLayout Spacing="{OnPlatform Android=0, iOS=0}">
@@ -163,46 +171,46 @@
                                                                     <VerticalStackLayout Margin="10,0" VerticalOptions="CenterAndExpand">
                                                                         <Label Text="{Binding TransportCount}" FontAutoScalingEnabled="False" FontSize="11" TextColor="#387955" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
                                                                         <Label Text="{Static res:AppResources.lblcars_RequestDetails}" FontAutoScalingEnabled="False" FontSize="11" TextColor="#387955"
-                                                               FontAttributes="Bold"></Label>
+                                                                                FontAttributes="Bold"></Label>
                                                                     </VerticalStackLayout>
                                                                 </StackLayout>
                                                                 <BoxView HorizontalOptions="FillAndExpand" Color="Gray" HeightRequest=".5"></BoxView>
                                                                 <VerticalStackLayout>
                                                                     <StackLayout Orientation="Horizontal" Padding="5">
                                                                         <Label Text="{Static res:AppResources.lblDate_TranService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="13"
-                                                                FontFamily="Almarai-Regular"></Label>
+                                                                                FontFamily="Almarai-Regular"></Label>
                                                                         <Label Text=": " TextColor="Black" FontSize="13" FontAutoScalingEnabled="False"></Label>
                                                                         <Label Text="{Binding Date , StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="End"></Label>
                                                                         <Label Text="{Static res:AppResources.lblTime_TranService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="13"
-                                                                FontFamily="Almarai-Regular" HorizontalOptions="EndAndExpand"></Label>
+                                                                                FontFamily="Almarai-Regular" HorizontalOptions="EndAndExpand"></Label>
                                                                         <Label Text=": " TextColor="Black" FontSize="13" FontAutoScalingEnabled="False"></Label>
                                                                         <Label Text="{Binding Time , StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="End"></Label>
                                                                     </StackLayout>
                                                                     <Label Text="{Static res:AppResources.lblTransportDetails_RequestDetails}" FontAutoScalingEnabled="False" TextColor="#387955" FontSize="14"
-                                                            FontAttributes="Bold" Margin="0,5" Padding="5"></Label>
+                                                                            FontAttributes="Bold" Margin="0,5" Padding="5"></Label>
                                                                     <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="7" Margin="10,0">
                                                                         <VerticalStackLayout Spacing="3">
                                                                             <StackLayout Orientation="Horizontal">
 
-                                                                                <Label Text="Brand" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
-                                                                       FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Static res:AppResources.lblBrand_TranServices}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                        FontAttributes="Bold"></Label>
                                                                                 <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
                                                                                 <Label Text="{Binding BrandName}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
 
                                                                                 <Label Text="{Static res:AppResources.lblTypeName_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
-                                                                       FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
+                                                                                       FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
                                                                                 <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
                                                                                 <Label Text="{Binding TypeName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
                                                                             </StackLayout>
                                                                             <StackLayout Orientation="Horizontal">
                                                                                 <Label Text="{Static res:AppResources.lblModel_TranService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
-                                                                        FontAttributes="Bold"></Label>
+                                                                                       FontAttributes="Bold"></Label>
                                                                                 <Label Text=": " TextColor="Gray" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
                                                                                 <Label Text="{Binding ModelName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Static res:AppResources.lblIsDriver_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
-                                                                        HorizontalOptions="EndAndExpand" FontAttributes="Bold"></Label>
+                                                                                <!--<Label Text="{Static res:AppResources.lblIsDriver_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                       HorizontalOptions="EndAndExpand" FontAttributes="Bold"></Label>
                                                                                 <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding IsDriver}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding IsDriver}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>-->
                                                                             </StackLayout>
                                                                         </VerticalStackLayout>
                                                                     </Border>
@@ -438,6 +446,11 @@
                                 <Border.Shadow>
                                     <Shadow  Brush="{OnPlatform Android=Gray, iOS=LightGray}" Opacity="1" Radius="{OnPlatform Android=5 , iOS=3}"></Shadow>
                                 </Border.Shadow>
+                                <Border.Triggers>
+                                    <DataTrigger TargetType="Border" Binding="{Binding RequestDetailes.ResponseWithDistributor.Count}" Value="0">
+                                        <Setter Property="IsVisible" Value="False"></Setter>
+                                    </DataTrigger>
+                                </Border.Triggers>
                             </Border>
                             <CollectionView  x:Name="ItemsCollectionView" ItemsSource="{Binding RequestDetailes.ResponseWithDistributor}" VerticalOptions="FillAndExpand" Margin="0,20,0,0">
                                 <CollectionView.ItemTemplate>
@@ -484,7 +497,13 @@
 
                             <!--No Data-->
                             <StackLayout x:Name="stkNoData" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                <Image Source="noresult.png"></Image>
+                                <Image Source="noresult.png">
+                                    <Image.Triggers>
+                                        <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                                            <Setter Property="Source" Value="noresultar.png"></Setter>
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
                                 <StackLayout.Triggers>
                                     <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.ResponseWithDistributor.Count}" Value="0">
                                         <Setter Property="IsVisible" Value="True"></Setter>

@@ -249,7 +249,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
 
@@ -270,7 +270,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                     List<ResponseWithDistributorAirFlightDetailsRequest> LstAirFltRequest = new List<ResponseWithDistributorAirFlightDetailsRequest>();
                     foreach (var item in LstAirFlightDetails)
                     {
-                        if (item.Id == 0 || item.Id == null)
+                        if (string.IsNullOrEmpty(item.Id))
                         {
                             LstAirFltRequest.Add(new ResponseWithDistributorAirFlightDetailsRequest
                             {
@@ -288,7 +288,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
 
@@ -304,12 +304,12 @@ namespace TripBliss.ViewModels.ActivateViewModels
                 {
                     if (Connectivity.NetworkAccess != NetworkAccess.Internet)
                     {
-                        await App.Current!.MainPage!.DisplayAlert("Error", "No Internet connection!", "OK");
+                        await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.error, TripBliss.Resources.Language.AppResources.No_Internet_connection, TripBliss.Resources.Language.AppResources.OK);
                         return;
                     }
                     else
                     {
-                        if (model.Id == 0 || model.Id == null) //Id = 0 (Photo New)
+                        if (string.IsNullOrEmpty(model.Id)) //Id = 0 (Photo New)
                         {
                             LstAirFlightDetails.Remove(model);
                             if (IsCheckedTR == true && IsCheckedDS == false)
@@ -347,12 +347,12 @@ namespace TripBliss.ViewModels.ActivateViewModels
                 }
                 catch (Exception ex)
                 {
-                    await App.Current!.MainPage!.DisplayAlert("Error", ex.Message, "OK");
+                    await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.error, ex.Message, TripBliss.Resources.Language.AppResources.OK);
                 }
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
         }
@@ -367,7 +367,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                 {
                     if (Connectivity.NetworkAccess != NetworkAccess.Internet)
                     {
-                        await App.Current!.MainPage!.DisplayAlert("Error", "No Internet connection!", "OK");
+                        await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.error, TripBliss.Resources.Language.AppResources.No_Internet_connection, TripBliss.Resources.Language.AppResources.OK);
                         return;
                     }
                     else
@@ -375,8 +375,8 @@ namespace TripBliss.ViewModels.ActivateViewModels
                         if (LstAirFlightDetails.Count > 0) //Id = 0 (Photo New)
                         {
                             IsBusy = false;
-                            bool ans = await App.Current!.MainPage!.DisplayAlert("Info", "Do you agree to delete all photos?", "OK", "Cancel");
-                            var obj = LstAirFlightDetails.Where(x => x.Id != null && x.Id != 0).FirstOrDefault();
+                            bool ans = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Info, TripBliss.Resources.Language.AppResources.Do_you_agree_to_delete_all_photos, TripBliss.Resources.Language.AppResources.OK, TripBliss.Resources.Language.AppResources.Cancel);
+                            var obj = LstAirFlightDetails.Where(x => !string.IsNullOrEmpty(x.Id)).FirstOrDefault();
                             if (ans)
                             {
                                 if (obj != null)
@@ -402,12 +402,12 @@ namespace TripBliss.ViewModels.ActivateViewModels
                 }
                 catch (Exception ex)
                 {
-                    await App.Current!.MainPage!.DisplayAlert("Error", ex.Message, "OK");
+                    await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.error, ex.Message, TripBliss.Resources.Language.AppResources.OK);
                 }
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
         }

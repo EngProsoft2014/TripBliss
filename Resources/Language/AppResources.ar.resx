@@ -142,7 +142,7 @@
     <value>تفاصيل الطلب</value>
   </data>
   <data name="hdrAgency" xml:space="preserve">
-    <value>وكالة</value>
+    <value>وكالة سفر</value>
   </data>
   <data name="hdrChooseDistributor" xml:space="preserve">
     <value>اختر الموزع</value>
@@ -166,7 +166,7 @@
     <value>العروض</value>
   </data>
   <data name="hdrvehicle-RequestDetails" xml:space="preserve">
-    <value>عربة</value>
+    <value>سيارة</value>
   </data>
   <data name="lblAccount-More" xml:space="preserve">
     <value>حساب الشركة</value>
@@ -176,9 +176,6 @@
   </data>
   <data name="lblAirFlightServices" xml:space="preserve">
     <value>خدمات الطيران الجوي</value>
-  </data>
-  <data name="lblBrand-TranServices" xml:space="preserve">
-    <value>ماركة</value>
   </data>
   <data name="lblCarrier-AirService" xml:space="preserve">
     <value>الناقل</value>
@@ -244,7 +241,7 @@
     <value>وجبات</value>
   </data>
   <data name="lblModel-TranService" xml:space="preserve">
-    <value>نموذج</value>
+    <value>طراز</value>
   </data>
   <data name="lblMRPD-RequestDetails" xml:space="preserve">
     <value>سعر الوجبة في اليوم الواحد</value>
@@ -313,7 +310,7 @@
     <value>المستخدمين</value>
   </data>
   <data name="lblView-RequestDetails" xml:space="preserve">
-    <value>المنظر</value>
+    <value>إطلالة</value>
   </data>
   <data name="lblVisaServices" xml:space="preserve">
     <value>خدمات التأشيرات</value>
@@ -382,10 +379,10 @@
     <value>تأكيد</value>
   </data>
   <data name="lblIsDriver-RequestDetails" xml:space="preserve">
-    <value>هل هو سائق</value>
+    <value>سائق</value>
   </data>
   <data name="lblModelName-RequestDetails" xml:space="preserve">
-    <value>نموذج</value>
+    <value>طراز</value>
   </data>
   <data name="lblTypeName-RequestDetails" xml:space="preserve">
     <value>نوع</value>
@@ -566,5 +563,365 @@
   </data>
   <data name="btnDeleteAccount-ProfilePage" xml:space="preserve">
     <value>حذف الحساب</value>
+  </data>
+  <data name="PermissionAlert" xml:space="preserve">
+    <value>غير مسموح لك هذا الإجراء.</value>
+  </data>
+  <data name="PasswordInvalid" xml:space="preserve">
+    <value>كلمة المرور غير صحيحة</value>
+  </data>
+  <data name="DeleteCompanySuccess" xml:space="preserve">
+    <value>تم إزالة الشركة بنجاح</value>
+  </data>
+  <data name="ErrorTryAgain" xml:space="preserve">
+    <value>لقد حدث خطأ ما برجاء المحاولة مرة أخرى</value>
+  </data>
+  <data name="AddResponseSuccess" xml:space="preserve">
+    <value>تم الرد بنجاح </value>
+  </data>
+  <data name="PutPriceAlert" xml:space="preserve">
+    <value>من فضلك ضع سعر لخدمة على الأقل</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>سؤال؟</value>
+  </data>
+  <data name="AreYouAcceptThisFinallPrice" xml:space="preserve">
+    <value>هل توافق على هذه الأسعار نهائيا؟</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>نعم</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>لا</value>
+  </data>
+  <data name="MakeReviewAndFinishRequest" xml:space="preserve">
+    <value>هل تريد عمل تعليق وانهاء الطلب ونقله الى السجل</value>
+  </data>
+  <data name="ReviewSuccess" xml:space="preserve">
+    <value>تم إضافة التعليق بنجاح</value>
+  </data>
+  <data name="Agency_must_pay_part_of_the_amount_due" xml:space="preserve">
+    <value>يتوجب على الشركة دفع جزء من المبلغ المستحق.</value>
+  </data>
+  <data name="This_account_is_an_admin" xml:space="preserve">
+    <value>هذا الحساب مسؤول(أدمن) ولا يحق له الوصول إلى التطبيق</value>
+  </data>
+  <data name="user_name_is_not_registered" xml:space="preserve">
+    <value>اسم المستخدم هذا غير مسجل</value>
+  </data>
+  <data name="UserDeleteSuccess" xml:space="preserve">
+    <value>تم إزالة هذا المستخم بنجاح</value>
+  </data>
+  <data name="Do_you_Want_to_Delete_the_Account" xml:space="preserve">
+    <value>هل تريد إزالة هذا الحساب؟</value>
+  </data>
+  <data name="RegisterSuccessfully" xml:space="preserve">
+    <value>تم تسجيل الحساب بنجاح</value>
+  </data>
+  <data name="SuccessfullyLogin" xml:space="preserve">
+    <value>تم الدخول بنجاح</value>
+  </data>
+  <data name="enter_vaild_Email" xml:space="preserve">
+    <value>يرجى إدخال بريد إلكترونى صحيح</value>
+  </data>
+  <data name="enter_your_Email" xml:space="preserve">
+    <value>يرجى إدخال بريدك الإلكترونى</value>
+  </data>
+  <data name="Enter_Old_Password" xml:space="preserve">
+    <value>يرجى إدخال كلمة المرور القديمة-إجباريا</value>
+  </data>
+  <data name="Enter_New_Password" xml:space="preserve">
+    <value>يرجى إدخال كلمة المرور الجديدة-إجباريا</value>
+  </data>
+  <data name="Password_changed_successfully" xml:space="preserve">
+    <value>تم تغيير كلمة المرور بنجاح</value>
+  </data>
+  <data name="Error_Please_Check_Data_again" xml:space="preserve">
+    <value>يرجى مراجعة البيانات مرة أخرى</value>
+  </data>
+  <data name="Required_UserName" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: اسم المستخدم.</value>
+  </data>
+  <data name="Required_Password" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: كلمة المرور.</value>
+  </data>
+  <data name="Required_CompanyType" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: نوع الشركة.</value>
+  </data>
+  <data name="Required_CompanyName" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: اسم الشركة.</value>
+  </data>
+  <data name="Required_CompanyEmail" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: بريد إلكترون للشركة.</value>
+  </data>
+  <data name="Required_CompanyPhone" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: جوال الشركة.</value>
+  </data>
+  <data name="Required_UserEmail" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: البريد الإلكترونى للمستخدم.</value>
+  </data>
+  <data name="Required_FileName" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: اسم الملف.</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>خطأ</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>نعم</value>
+  </data>
+  <data name="Camera_not_supported" xml:space="preserve">
+    <value>الكاميرا غير مدعومة على هذا الجوال</value>
+  </data>
+  <data name="No_image_here" xml:space="preserve">
+    <value>لا يوجد صورة هنا</value>
+  </data>
+  <data name="Successfully_AddResponse" xml:space="preserve">
+    <value>تم إضافة الرد بنجاح</value>
+  </data>
+  <data name="Successfully_permissions_updated" xml:space="preserve">
+    <value>تم تعديل الأذونات بنجاح</value>
+  </data>
+  <data name="Successfully_action_completed" xml:space="preserve">
+    <value>تم إنهاء الإجراء بنجاح</value>
+  </data>
+  <data name="Successfully_createuser" xml:space="preserve">
+    <value>تم إنشاء مستخدم جديد بنجاح</value>
+  </data>
+  <data name="Successfully_company_deleted" xml:space="preserve">
+    <value>تم إزالة الشركة بنجاح</value>
+  </data>
+  <data name="Do_you_Want_to_Delete_Company_Account" xml:space="preserve">
+    <value>هل تريد إزالة حساب الشركة؟</value>
+  </data>
+  <data name="Required_SelectCarrier" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: أختيار شركة الطيران.</value>
+  </data>
+  <data name="The_selected_date_is_less_than_today" xml:space="preserve">
+    <value>التاريخ المحدد أقل من تاريخ اليوم.</value>
+  </data>
+  <data name="Required_SelectClass" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: أختيار الدرجه.</value>
+  </data>
+  <data name="Required_FromLocation" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: من الموقع.</value>
+  </data>
+  <data name="Required_ToLocation" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: إلى الموقع.</value>
+  </data>
+  <data name="time_departure_less_than_time_arrival" xml:space="preserve">
+    <value>يجب أن يكون وقت المغادرة المتوقع أقل من وقت الوصول المتوقع.</value>
+  </data>
+  <data name="Required_PassengersCount" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: عدد الأشخاص.</value>
+  </data>
+  <data name="add_at_least_one_service" xml:space="preserve">
+    <value>يرجى إضافة خدمة واحدة على الأقل.</value>
+  </data>
+  <data name="Complete_info" xml:space="preserve">
+    <value>إكمال البيانات</value>
+  </data>
+  <data name="Add_Request_Name" xml:space="preserve">
+    <value>يرجى إضافة اسم الطلب</value>
+  </data>
+  <data name="Add_Request_name_is_required" xml:space="preserve">
+    <value>إضافة اسم للطلب يكون مطلوبا</value>
+  </data>
+  <data name="Request_name_required_count" xml:space="preserve">
+    <value>يجب أن يكون اسم الطلب مكونًا من 3 إلى 15 حرفًا</value>
+  </data>
+  <data name="Successfully_AddRequest" xml:space="preserve">
+    <value>تم إضافة الطلب بنجاح</value>
+  </data>
+  <data name="Sorry_Dont_have_distribuitor" xml:space="preserve">
+    <value>معذرة, انت لا تملك موزع لديك</value>
+  </data>
+  <data name="Required_SelectLocation" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: أختيار الموقع.</value>
+  </data>
+  <data name="Required_SelectHotel" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: أختيار الفندق.</value>
+  </data>
+  <data name="Required_SelectRoomView" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: أختيار إطلالة الغرفة.</value>
+  </data>
+  <data name="Required_SelectRoomType" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: أختيار نوع الغرفة.</value>
+  </data>
+  <data name="Required_SelectMeal" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: أختيار الوجبة.</value>
+  </data>
+  <data name="Required_RoomCount" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: عدد الغرف.</value>
+  </data>
+  <data name="checkin_date_today_or_after" xml:space="preserve">
+    <value>يرجى تحديد تاريخ تسجيل الوصول اليوم أو بعد ذلك.</value>
+  </data>
+  <data name="Arrival_date_must_be_less_than_departure_date" xml:space="preserve">
+    <value>يجب أن يكون تاريخ الوصول أقل من تاريخ المغادرة.</value>
+  </data>
+  <data name="select_at_least_one_distribuitor" xml:space="preserve">
+    <value>يرجى تحديد موزع واحد على الأقل.</value>
+  </data>
+  <data name="Required_SelectCarType" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: أختيار نوع السيارة.</value>
+  </data>
+  <data name="Required_SelectCarBrand" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: حدد ماركة السيارة.</value>
+  </data>
+  <data name="Required_SelectCarModel" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: حدد طراز السيارة.</value>
+  </data>
+  <data name="Required_TransportCount" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: عدد النقل.</value>
+  </data>
+  <data name="Required_Date" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: التاريخ.</value>
+  </data>
+  <data name="Required_SelectTypeofVisa" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: حدد نوع التأشيرة.</value>
+  </data>
+  <data name="Failed_favourite_delete" xml:space="preserve">
+    <value>فشل حذف المفضلة</value>
+  </data>
+  <data name="Check_to_one_service_or_more" xml:space="preserve">
+    <value>يرجى التحقق من خدمة واحدة أو أكثر</value>
+  </data>
+  <data name="already_paid_cannot_be_modified" xml:space="preserve">
+    <value>لقد تم دفع هذا الطلب بالفعل ولا يمكن تعديله.</value>
+  </data>
+  <data name="This_value_is_greater_than_the_total_price" xml:space="preserve">
+    <value>هذه القيمة أكبر من السعر الإجمالي.</value>
+  </data>
+  <data name="Successfully_for_Paying" xml:space="preserve">
+    <value>تم الدفع بنجاح</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>تحذير</value>
+  </data>
+  <data name="Found_Problem_Internal_Server" xml:space="preserve">
+    <value>تم العثور على مشكلة بالخادم الداخلي.</value>
+  </data>
+  <data name="Are_You_Accept_This_Price" xml:space="preserve">
+    <value>هل تقبل هذا السعر؟</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>بيانات</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="Do_you_agree_to_delete_all_photos" xml:space="preserve">
+    <value>هل توافق على حذف كافة الصور؟</value>
+  </data>
+  <data name="No_Internet_connection" xml:space="preserve">
+    <value>لا يوجد اتصال بالإنترنت</value>
+  </data>
+  <data name="Do_you_want_to_disable_user_account" xml:space="preserve">
+    <value>هل تريد تعطيل حساب المستخدم؟</value>
+  </data>
+  <data name="Do_you_want_to_enable_user_account" xml:space="preserve">
+    <value>هل تريد تفعيل حساب المستخدم؟</value>
+  </data>
+  <data name="Are_You_Accept_To_Pay" xml:space="preserve">
+    <value>هل تقبل الدفع؟</value>
+  </data>
+  <data name="Do_you_want_to_exit_the_program" xml:space="preserve">
+    <value>هل تريد الخروج من البرنامج؟</value>
+  </data>
+  <data name="Do_you_want_to_Logout" xml:space="preserve">
+    <value>هل تريد تسجيل الخروج؟</value>
+  </data>
+  <data name="Please_make_feedback_to_finish_request" xml:space="preserve">
+    <value>يرجى تقديم ملاحظات لإنهاء الطلب</value>
+  </data>
+  <data name="ActiveStatus" xml:space="preserve">
+    <value>نشط</value>
+  </data>
+  <data name="NotActiveStatus" xml:space="preserve">
+    <value>غير نشط</value>
+  </data>
+  <data name="lblBrand_TranServices" xml:space="preserve">
+    <value>ماركة</value>
+  </data>
+  <data name="lblReviews" xml:space="preserve">
+    <value>التعليقات</value>
+  </data>
+  <data name="lblBy" xml:space="preserve">
+    <value>بواسطة</value>
+  </data>
+  <data name="There_are_no_reviews" xml:space="preserve">
+    <value>لا توجد مراجعات لهذه الشركة حتى الآن.</value>
+  </data>
+  <data name="btn_Send_offer" xml:space="preserve">
+    <value>إرسال عرض</value>
+  </data>
+  <data name="In_Review" xml:space="preserve">
+    <value>فى المراجعة</value>
+  </data>
+  <data name="Accepted" xml:space="preserve">
+    <value>مقبول</value>
+  </data>
+  <data name="Denied" xml:space="preserve">
+    <value>مرفوض</value>
+  </data>
+  <data name="plc_File_Name" xml:space="preserve">
+    <value>اسم الملف</value>
+  </data>
+  <data name="lblUser_Permission" xml:space="preserve">
+    <value>إذونات المستخدم</value>
+  </data>
+  <data name="lblDetails_Request" xml:space="preserve">
+    <value>تفاصيل الطلب</value>
+  </data>
+  <data name="lblRequest_Travel_Agency_Permission" xml:space="preserve">
+    <value>عرض الموزعين</value>
+  </data>
+  <data name="lblOffer" xml:space="preserve">
+    <value>العروض</value>
+  </data>
+  <data name="lblUsers" xml:space="preserve">
+    <value>المستخدمين</value>
+  </data>
+  <data name="lblDocuments" xml:space="preserve">
+    <value>الوثائق</value>
+  </data>
+  <data name="lblHistory" xml:space="preserve">
+    <value>السجل</value>
+  </data>
+  <data name="lblCompany_Account" xml:space="preserve">
+    <value>حساب الشركة</value>
+  </data>
+  <data name="lblShow_Agencies" xml:space="preserve">
+    <value>عرض وكالات السفر</value>
+  </data>
+  <data name="lblMore_Details" xml:space="preserve">
+    <value>مزيد من التفاصيل</value>
+  </data>
+  <data name="RequestDeleteSuccess" xml:space="preserve">
+    <value>تم إزالة الطلب بنجاح</value>
+  </data>
+  <data name="ResponseDeleteSuccess" xml:space="preserve">
+    <value>تم إزالة الرد بنجاح</value>
+  </data>
+  <data name="Do_You_Want_Delete_Request" xml:space="preserve">
+    <value>هل تريد إزالة الطلب؟</value>
+  </data>
+  <data name="Do_You_Want_Delete_Response" xml:space="preserve">
+    <value>هل تريد إزالة الرد ؟</value>
+  </data>
+  <data name="Review" xml:space="preserve">
+    <value>تعليق</value>
+  </data>
+  <data name="Feedback_for_Distributor" xml:space="preserve">
+    <value>ملاحظات للموزع</value>
+  </data>
+  <data name="Enter_Feedback" xml:space="preserve">
+    <value>إدخال الملاحظات</value>
+  </data>
+  <data name="Feedback_for_TravelAgency" xml:space="preserve">
+    <value>ملاحظات لوكالة السفر</value>
+  </data>
+  <data name="request_was_rejected_by_all_selected_distributors" xml:space="preserve">
+    <value>تم رفض الطلب من قبل كل الموزعيين المختاريين</value>
   </data>
 </root>

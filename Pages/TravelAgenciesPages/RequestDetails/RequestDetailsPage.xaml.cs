@@ -26,7 +26,7 @@ public partial class RequestDetailsPage : Controls.CustomControl
             if (!Constants.Permissions.CheckPermission(Constants.Permissions.Show_Active_Distributors_for_Request))
             {
                 Model.RequestDetailes.ResponseWithDistributor = new List<Models.ResponseWithDistributorResponse>();
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
         }

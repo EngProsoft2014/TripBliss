@@ -70,7 +70,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             if (SelectedDistributorCompanys!.Count == 0 )
             {
-                var toast = Toast.Make("Please select at least one distribuitor.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.select_at_least_one_distribuitor, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else
@@ -128,7 +128,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             }
             else
             {
-                var toast = Toast.Make("Sorry Don't have distribuitor.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Sorry_Dont_have_distribuitor, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
         }

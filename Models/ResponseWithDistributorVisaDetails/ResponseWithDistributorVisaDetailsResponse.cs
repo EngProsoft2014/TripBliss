@@ -4,8 +4,8 @@ namespace TripBliss.Models.ResponseWithDistributorVisaDetails
 {
     public class ResponseWithDistributorVisaDetailsResponse : INotifyPropertyChanged
     {
-        int? _Id;
-        public int? Id
+        string? _Id;
+        public string? Id
         {
             get
             {
@@ -20,7 +20,7 @@ namespace TripBliss.Models.ResponseWithDistributorVisaDetails
                 }
             }
         }
-        public int? ResponseWithDistributorVisaId { get; set; }
+        public string? ResponseWithDistributorVisaId { get; set; }
         public string ImgName { get; set; } = string.Empty;
         public string UrlImgName { get; set; } = string.Empty;
         public int UserCategory { get; set; }

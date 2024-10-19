@@ -47,7 +47,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         #region Methods
 
-        async Task Inti()
+        async void Inti()
         {
             if (Constants.Permissions.CheckPermission(Constants.Permissions.TR_Show_Distributors))
             {
@@ -58,7 +58,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
         }
@@ -142,7 +142,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
                 else
                 {
-                    var toast = Toast.Make("Failed favourite delete", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Failed_favourite_delete, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
             }
@@ -177,7 +177,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
 
@@ -237,6 +237,15 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         async Task Selection(DistributorCompanyResponse model)
         {
             var vm = new Tr_ProviderDetailsViewModel(model.Id,Rep,_service);
+            var page = new Tr_ProviderDetailsPage();
+            page.BindingContext = vm;
+            await App.Current!.MainPage!.Navigation.PushAsync(page);
+        }
+
+        [RelayCommand]
+        async Task SelectionFevourite(TravelAgencywithDistributorsResponse model)
+        {
+            var vm = new Tr_ProviderDetailsViewModel(model.DistributorCompanyId!, Rep, _service);
             var page = new Tr_ProviderDetailsPage();
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);

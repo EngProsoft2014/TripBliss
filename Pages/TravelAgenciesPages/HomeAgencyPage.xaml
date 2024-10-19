@@ -90,6 +90,11 @@
                                                             <Label Text="{Binding TotalPriceDisAcceptCount}" FontSize="10" TextColor="Gray"></Label>
                                                         </HorizontalStackLayout>
                                                     </VerticalStackLayout>
+                                                    <StackLayout.Triggers>
+                                                        <DataTrigger TargetType="StackLayout" Binding="{Binding ResponseWithDistributorCount}" Value="0">
+                                                            <Setter Property="ToolTipProperties.Text" Value="{Binding ToolTipDisAgree}"></Setter>
+                                                        </DataTrigger>
+                                                    </StackLayout.Triggers>
                                                 </StackLayout>
                                                 <Border.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_HomeViewModel}}, Path=SelectionCommand}"
@@ -100,6 +105,10 @@
                                                         <Setter Property="Stroke" Value="Red"></Setter>
                                                         <Setter Property="StrokeThickness" Value="3"></Setter>
                                                         <Setter Property="BackgroundColor" Value="LightYellow"></Setter>
+                                                    </DataTrigger>
+                                                    <DataTrigger TargetType="Border" Binding="{Binding ResponseWithDistributorCount}" Value="0">
+                                                        <Setter Property="Stroke" Value="#1c874b"></Setter>
+                                                        <Setter Property="StrokeThickness" Value="3"></Setter>
                                                     </DataTrigger>
                                                 </Border.Triggers>
                                             </Border>
@@ -115,7 +124,13 @@
 
                                 <!--No Data-->
                                 <StackLayout x:Name="stkNoData" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                    <Image Source="noresult.png"></Image>
+                                    <Image Source="noresult.png">
+                                        <Image.Triggers>
+                                            <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                                                <Setter Property="Source" Value="noresultar.png"></Setter>
+                                            </DataTrigger>
+                                        </Image.Triggers>
+                                    </Image>
                                     <StackLayout.Triggers>
                                         <DataTrigger TargetType="StackLayout" Binding="{Binding Requests.Count}" Value="0">
                                             <Setter Property="IsVisible" Value="True"></Setter>
@@ -236,7 +251,30 @@
                                                                     </Border>
                                                                 </DataTemplate>
                                                             </CollectionView.ItemTemplate>
+
+                                                            <CollectionView.Triggers>
+                                                                <DataTrigger TargetType="CollectionView" Binding="{Binding DistributorCompanys.Count}" Value="0">
+                                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                                    <Setter Property="HeightRequest" Value="0"></Setter>
+                                                                </DataTrigger>
+                                                            </CollectionView.Triggers>
                                                         </CollectionView>
+
+                                                        <!--No Data-->
+                                                        <StackLayout x:Name="stkNoDataFV1" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                                            <Image Source="noresult.png">
+                                                                <Image.Triggers>
+                                                                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                                                                        <Setter Property="Source" Value="noresultar.png"></Setter>
+                                                                    </DataTrigger>
+                                                                </Image.Triggers>
+                                                            </Image>
+                                                            <StackLayout.Triggers>
+                                                                <DataTrigger TargetType="StackLayout" Binding="{Binding DistributorCompanys.Count}" Value="0">
+                                                                    <Setter Property="IsVisible" Value="True"></Setter>
+                                                                </DataTrigger>
+                                                            </StackLayout.Triggers>
+                                                        </StackLayout>
                                                     </StackLayout>
                                                     <ContentView.Triggers>
                                                         <DataTrigger TargetType="ContentView" Binding="{Binding Lang}" Value="ar">
@@ -319,13 +357,34 @@
                                                                             </VerticalStackLayout>
                                                                         </StackLayout>
                                                                         <Border.GestureRecognizers>
-                                                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=SelectionCommand}"
+                                                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=SelectionFevouriteCommand}"
                                                                                                   CommandParameter="{Binding}"></TapGestureRecognizer>
                                                                         </Border.GestureRecognizers>
                                                                     </Border>
                                                                 </DataTemplate>
                                                             </CollectionView.ItemTemplate>
+                                                            <CollectionView.Triggers>
+                                                                <DataTrigger TargetType="CollectionView" Binding="{Binding FavouriteDistributorCompanys.Count}" Value="0">
+                                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                                    <Setter Property="HeightRequest" Value="0"></Setter>
+                                                                </DataTrigger>
+                                                            </CollectionView.Triggers>
                                                         </CollectionView>
+                                                        <!--No Data-->
+                                                        <StackLayout x:Name="stkNoDataFV2" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                                            <Image Source="noresult.png">
+                                                                <Image.Triggers>
+                                                                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                                                                        <Setter Property="Source" Value="noresultar.png"></Setter>
+                                                                    </DataTrigger>
+                                                                </Image.Triggers>
+                                                            </Image>
+                                                            <StackLayout.Triggers>
+                                                                <DataTrigger TargetType="StackLayout" Binding="{Binding FavouriteDistributorCompanys.Count}" Value="0">
+                                                                    <Setter Property="IsVisible" Value="True"></Setter>
+                                                                </DataTrigger>
+                                                            </StackLayout.Triggers>
+                                                        </StackLayout>
                                                     </StackLayout>
                                                     <!--<ContentView.BindingContext>
                                                         <dvm:TravelAgencyViewModel></dvm:TravelAgencyViewModel>
@@ -638,13 +697,6 @@
                                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_HistoryViewModel}}, Path=SelectionCommand}"
                                                                             CommandParameter="{Binding}"></TapGestureRecognizer>
                                                 </Border.GestureRecognizers>
-                                                <Border.Triggers>
-                                                    <DataTrigger TargetType="Border" Binding="{Binding IsAlertReview}" Value="True">
-                                                        <Setter Property="Stroke" Value="Red"></Setter>
-                                                        <Setter Property="StrokeThickness" Value="3"></Setter>
-                                                        <Setter Property="BackgroundColor" Value="LightYellow"></Setter>
-                                                    </DataTrigger>
-                                                </Border.Triggers>
                                             </Border>
                                         </DataTemplate>
                                     </CollectionView.ItemTemplate>
@@ -658,7 +710,13 @@
 
                                 <!--No Data-->
                                 <StackLayout x:Name="stkNoData2" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                    <Image Source="noresult.png"></Image>
+                                    <Image Source="noresult.png">
+                                        <Image.Triggers>
+                                            <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                                                <Setter Property="Source" Value="noresultar.png"></Setter>
+                                            </DataTrigger>
+                                        </Image.Triggers>
+                                    </Image>
                                     <StackLayout.Triggers>
                                         <DataTrigger TargetType="StackLayout" Binding="{Binding Requests.Count}" Value="0">
                                             <Setter Property="IsVisible" Value="True"></Setter>

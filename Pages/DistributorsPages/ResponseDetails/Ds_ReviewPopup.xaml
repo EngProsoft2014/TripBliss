@@ -2,6 +2,7 @@
 <mopups:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+                  xmlns:res="clr-namespace:TripBliss.Resources.Language"
                   xmlns:mopupsanim="clr-namespace:Mopups.Animations;assembly=Mopups"
                   xmlns:rating="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
                   x:Class="TripBliss.Pages.DistributorsPages.ResponseDetailes.Ds_ReviewPopup"        
@@ -23,7 +24,7 @@
     <Border StrokeShape="RoundRectangle 20" Padding="20" VerticalOptions="CenterAndExpand" HeightRequest="400" HorizontalOptions="FillAndExpand" Margin="30" BackgroundColor="White">
 
         <StackLayout Spacing="20" VerticalOptions="FillAndExpand">
-            <Label Text="Review" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
+            <Label Text="{Static res:AppResources.Review}" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
 
             <rating:SfRating ItemSpacing="10" ItemSize="30" Margin="0,0,0,20" HorizontalOptions="CenterAndExpand" Value="{Binding ModelReview.ReviewToDistributor}">
                 <rating:SfRating.RatingSettings>
@@ -32,10 +33,10 @@
             </rating:SfRating>
 
             <StackLayout Spacing="10" VerticalOptions="FillAndExpand">
-                <Label Text="Feedback for Distributor" TextColor="#333" FontSize="14" FontAttributes="Bold" HorizontalOptions="StartAndExpand"></Label>
+                <Label Text="{Static res:AppResources.Feedback_for_TravelAgency}" TextColor="#333" FontSize="14" FontAttributes="Bold" HorizontalOptions="StartAndExpand"></Label>
 
                 <Border StrokeShape="RoundRectangle 5">
-                    <Editor Placeholder="Enter Feedback" Text="{Binding ModelReview.ReviewTravelAgentNote}" HeightRequest="120"></Editor>
+                    <Editor Placeholder="{Static res:AppResources.Enter_Feedback}" Text="{Binding ModelReview.ReviewTravelAgentNote}" HeightRequest="120"></Editor>
 
                 </Border>
             </StackLayout>
@@ -43,14 +44,14 @@
 
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" Spacing="40">
-                    
-                    <Button Text="Apply" FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" FontSize="13"
+
+                <Button Text="{Static res:AppResources.btnApply_Forgot}" FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" FontSize="13"
                          BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
                          Command="{Binding ApplyReviewCommand}" CommandParameter="{Binding ModelReview}">
                     </Button>
 
-                <Button Text="Cancel" FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" FontSize="13" HorizontalOptions="FillAndExpand"
-                             BackgroundColor="White" CornerRadius="5" TextColor="Red" BorderColor="Red" BorderWidth="1" FontAttributes="Bold"
+                <Button Text="{Static res:AppResources.Cancel}" FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" FontSize="13" HorizontalOptions="FillAndExpand"
+                             BackgroundColor="White" CornerRadius="5" TextColor="#2fa562" BorderColor="#2fa562" BorderWidth="1" FontAttributes="Bold"
                              Command="{Binding CancelReviewCommand}">
                     </Button>
          

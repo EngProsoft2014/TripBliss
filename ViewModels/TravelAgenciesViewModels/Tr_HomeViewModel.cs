@@ -34,8 +34,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         {
             Rep = generic;
             _service = service;
-            Init();
-            
+            Init(); 
         } 
         #endregion
 
@@ -46,7 +45,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             {
                 await LoadPermissions();
             }
-            await GetRequestes();     
+            await GetRequestes();
         }
 
         async Task LoadPermissions()
@@ -96,8 +95,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             }
             else
             {
-                var toast = Toast.Make("Permission not allowed for this action.", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                await toast.Show();
+                //var toast = Toast.Make(Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                //await toast.Show();
             }
 
             IsBusy = false;
