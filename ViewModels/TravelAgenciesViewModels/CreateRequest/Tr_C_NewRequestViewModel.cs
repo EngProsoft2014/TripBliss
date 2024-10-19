@@ -336,8 +336,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                         string UserToken = await _service.UserToken();
 
                         string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
+                        UserDialogs.Instance.ShowLoading();
                         var json = await Rep.PostTRAsync<RequestTravelAgencyRequest, RequestTravelAgencyResponse>(ApiConstants.AddRequestApi + $"{id}/RequestTravelAgency", RequestTravelAgency, UserToken);
-
+                        UserDialogs.Instance.HideHud();
                         if (json.Item1 != null)
                         {
                             var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Successfully_AddRequest, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
