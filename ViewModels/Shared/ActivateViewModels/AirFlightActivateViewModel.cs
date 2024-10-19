@@ -146,7 +146,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
         [RelayCommand]
         async Task GetTRAirflightAttachment()
         {
-            
+
             IsCheckedTR = true;
             IsCheckedDS = false;
             LstTRAirFlightDetails = new ObservableCollection<ResponseWithDistributorAirFlightDetailsResponse>(LstAirFlightDetails.Where(a => !string.IsNullOrEmpty(a.TravelAgencyCompanyName) && string.IsNullOrEmpty(a.DistributorCompanyName)).ToList());
@@ -164,7 +164,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
         [RelayCommand]
         async Task GetDSAirflightAttachment()
         {
-            
+
             IsCheckedDS = true;
             IsCheckedTR = false;
             LstDSAirFlightDetails = new ObservableCollection<ResponseWithDistributorAirFlightDetailsResponse>(LstAirFlightDetails.Where(a => !string.IsNullOrEmpty(a.DistributorCompanyName) && string.IsNullOrEmpty(a.TravelAgencyCompanyName)).ToList());
@@ -184,10 +184,18 @@ namespace TripBliss.ViewModels.ActivateViewModels
         {
             if (model.UrlImgName.EndsWith(".pdf") || model.Extension == ".pdf")
             {
-                var vm = new PdfViewerViewModel(model.UrlImgName);
-                var page = new PdfViewerPage();
-                page.BindingContext = vm;
-                await App.Current!.MainPage!.Navigation.PushAsync(page);
+                if (string.IsNullOrEmpty(model.UrlImgName))
+                {
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.OpenfileAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
+                else
+                {
+                    var vm = new PdfViewerViewModel(model.UrlImgName);
+                    var page = new PdfViewerPage();
+                    page.BindingContext = vm;
+                    await App.Current!.MainPage!.Navigation.PushAsync(page);
+                }
             }
             else
             {

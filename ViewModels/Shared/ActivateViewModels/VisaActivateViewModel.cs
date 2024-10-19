@@ -172,10 +172,18 @@ namespace TripBliss.ViewModels.ActivateViewModels
         {
             if (model.UrlImgName.EndsWith(".pdf"))
             {
-                var vm = new PdfViewerViewModel(model.UrlImgName);
-                var page = new PdfViewerPage();
-                page.BindingContext = vm;
-                await App.Current!.MainPage!.Navigation.PushAsync(page);
+                if (string.IsNullOrEmpty(model.UrlImgName))
+                {
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.OpenfileAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
+                else
+                {
+                    var vm = new PdfViewerViewModel(model.UrlImgName);
+                    var page = new PdfViewerPage();
+                    page.BindingContext = vm;
+                    await App.Current!.MainPage!.Navigation.PushAsync(page);
+                }
             }
             else
             {

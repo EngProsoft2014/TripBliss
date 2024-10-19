@@ -924,4 +924,7 @@
   <data name="request_was_rejected_by_all_selected_distributors" xml:space="preserve">
     <value>تم رفض الطلب من قبل كل الموزعيين المختاريين</value>
   </data>
+  <data name="OpenfileAlert" xml:space="preserve">
+    <value>يرجى تحميل الملف قبل فتحه.</value>
+  </data>
 </root>

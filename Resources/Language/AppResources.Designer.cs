@@ -1798,6 +1798,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please upload file before open it..
+        /// </summary>
+        internal static string OpenfileAlert {
+            get {
+                return ResourceManager.GetString("OpenfileAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OutStanding Balance.
         /// </summary>
         internal static string OSBlance_payment {

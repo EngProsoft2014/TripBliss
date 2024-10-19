@@ -924,4 +924,7 @@
   <data name="request_was_rejected_by_all_selected_distributors" xml:space="preserve">
     <value>The request was rejected by all selected distributors.</value>
   </data>
+  <data name="OpenfileAlert" xml:space="preserve">
+    <value>Please upload file before open it.</value>
+  </data>
 </root>
