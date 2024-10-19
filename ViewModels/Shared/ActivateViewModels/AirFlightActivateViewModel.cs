@@ -290,7 +290,10 @@ namespace TripBliss.ViewModels.ActivateViewModels
 
                     string UserToken = await _service.UserToken();
                     string Postjson = await Rep.PostMultiPicAsync($"{ApiConstants.PostAirFlightImageApi}{Model.ResponseWithDistributorId}/{Model.Id}", LstAirFltRequest, UserToken);
-
+                    if (!string.IsNullOrEmpty(Postjson))
+                    {
+                        Init();
+                    }
                     UserDialogs.Instance.HideHud();
                 }
             }

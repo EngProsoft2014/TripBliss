@@ -281,7 +281,10 @@ namespace TripBliss.ViewModels.ActivateViewModels
 
                     string UserToken = await _service.UserToken();
                     string Postjson = await Rep.PostMultiPicAsync($"{ApiConstants.PostVisaImageApi}{Model.ResponseWithDistributorId}/{Model.Id}", LstVisaRequest, UserToken);
-
+                    if (!string.IsNullOrEmpty(Postjson))
+                    {
+                        Init();
+                    }
                     UserDialogs.Instance.HideHud();
                 }
             }

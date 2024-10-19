@@ -102,8 +102,9 @@ namespace TripBliss.ViewModels
                                 var stream = await photo.OpenReadAsync();
                                 model.ImgFile = Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream));
                                 model.Extension = Path.GetExtension(photo.FullPath);
+                                
                                 await DoneUploadDoc(model);
-
+                                
                             }
                         }
                         else
@@ -230,9 +231,9 @@ namespace TripBliss.ViewModels
                         Id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
                         uri = $"{ApiConstants.GetDistDocApi}{Id}/DistributorCompanyDoc";
                     }
-                    UserDialogs.Instance.ShowLoading();
+                    
                     var json = await Rep.GetAsync<ObservableCollection<TravelAgencyCompanyDocResponse>>(uri, UserToken);
-                    UserDialogs.Instance.HideHud();
+                    
 
                     if (json != null)
                     {
@@ -290,7 +291,6 @@ namespace TripBliss.ViewModels
                 {
                     await GetDocs();
                 }
-                
             }
             UserDialogs.Instance.HideHud();
             IsBusy = true;
