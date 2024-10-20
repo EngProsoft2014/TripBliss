@@ -511,6 +511,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t any change value !!.
+        /// </summary>
+        internal static string Dont_any_change {
+            get {
+                return ResourceManager.GetString("Dont_any_change", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Driver Number.
         /// </summary>
         internal static string DriverNumber_TransportActive {
@@ -574,6 +583,24 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error downloading PDF:.
+        /// </summary>
+        internal static string Error_downloading_PDF {
+            get {
+                return ResourceManager.GetString("Error_downloading_PDF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error opening PDF:.
+        /// </summary>
+        internal static string Error_opening_PDF {
+            get {
+                return ResourceManager.GetString("Error_opening_PDF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error Please Check Data again..
         /// </summary>
         internal static string Error_Please_Check_Data_again {
@@ -597,6 +624,15 @@ namespace TripBliss.Resources.Language {
         internal static string Failed_favourite_delete {
             get {
                 return ResourceManager.GetString("Failed_favourite_delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to download the PDF..
+        /// </summary>
+        internal static string Failed_to_download_the_PDF {
+            get {
+                return ResourceManager.GetString("Failed_to_download_the_PDF", resourceCulture);
             }
         }
         
@@ -1830,6 +1866,15 @@ namespace TripBliss.Resources.Language {
         internal static string PasswordInvalid {
             get {
                 return ResourceManager.GetString("PasswordInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PDF file not found at path:.
+        /// </summary>
+        internal static string PDF_file_not_found_at_path {
+            get {
+                return ResourceManager.GetString("PDF_file_not_found_at_path", resourceCulture);
             }
         }
         

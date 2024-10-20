@@ -927,4 +927,19 @@
   <data name="OpenfileAlert" xml:space="preserve">
     <value>Please upload file before open it.</value>
   </data>
+  <data name="Dont_any_change" xml:space="preserve">
+    <value>Don't any change value !!</value>
+  </data>
+  <data name="Failed_to_download_the_PDF" xml:space="preserve">
+    <value>Failed to download the PDF.</value>
+  </data>
+  <data name="PDF_file_not_found_at_path" xml:space="preserve">
+    <value>PDF file not found at path:</value>
+  </data>
+  <data name="Error_opening_PDF" xml:space="preserve">
+    <value>Error opening PDF:</value>
+  </data>
+  <data name="Error_downloading_PDF" xml:space="preserve">
+    <value>Error downloading PDF:</value>
+  </data>
 </root>

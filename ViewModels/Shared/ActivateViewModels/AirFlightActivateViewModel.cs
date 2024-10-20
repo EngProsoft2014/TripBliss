@@ -191,10 +191,12 @@ namespace TripBliss.ViewModels.ActivateViewModels
                 }
                 else
                 {
-                    var vm = new PdfViewerViewModel(model.UrlImgName);
-                    var page = new PdfViewerPage();
-                    page.BindingContext = vm;
-                    await App.Current!.MainPage!.Navigation.PushAsync(page);
+                    //var vm = new PdfViewerViewModel(model.UrlImgName);
+                    //var page = new PdfViewerPage();
+                    //page.BindingContext = vm;
+                    //await App.Current!.MainPage!.Navigation.PushAsync(page);
+
+                    await App.Current!.MainPage!.Navigation.PushAsync(new PdfViewerPage(model.UrlImgName));
                 }
             }
             else
@@ -273,7 +275,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
             {
                 if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
-                    UserDialogs.Instance.ShowLoading();
+                    
 
                     List<ResponseWithDistributorAirFlightDetailsRequest> LstAirFltRequest = new List<ResponseWithDistributorAirFlightDetailsRequest>();
                     foreach (var item in LstAirFlightDetails)
@@ -288,13 +290,22 @@ namespace TripBliss.ViewModels.ActivateViewModels
                         }
                     }
 
-                    string UserToken = await _service.UserToken();
-                    string Postjson = await Rep.PostMultiPicAsync($"{ApiConstants.PostAirFlightImageApi}{Model.ResponseWithDistributorId}/{Model.Id}", LstAirFltRequest, UserToken);
-                    if (!string.IsNullOrEmpty(Postjson))
+                    if(LstAirFltRequest.Count > 0)
                     {
-                        Init();
+                        string UserToken = await _service.UserToken();
+                        UserDialogs.Instance.ShowLoading();
+                        string Postjson = await Rep.PostMultiPicAsync($"{ApiConstants.PostAirFlightImageApi}{Model.ResponseWithDistributorId}/{Model.Id}", LstAirFltRequest, UserToken);
+                        UserDialogs.Instance.HideHud();
+                        if (!string.IsNullOrEmpty(Postjson))
+                        {
+                            Init();
+                        }
                     }
-                    UserDialogs.Instance.HideHud();
+                    else
+                    {
+                        var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Dont_any_change, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
+                    }  
                 }
             }
             else

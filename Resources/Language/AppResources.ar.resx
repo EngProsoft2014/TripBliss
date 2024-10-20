@@ -927,4 +927,19 @@
   <data name="OpenfileAlert" xml:space="preserve">
     <value>يرجى تحميل الملف قبل فتحه.</value>
   </data>
+  <data name="Dont_any_change" xml:space="preserve">
+    <value>لا يوجد أى تعديل فى البيانات</value>
+  </data>
+  <data name="Failed_to_download_the_PDF" xml:space="preserve">
+    <value>فشل في تحميل ملف PDF.</value>
+  </data>
+  <data name="PDF_file_not_found_at_path" xml:space="preserve">
+    <value>لم يتم العثور على ملف PDF في المسار:</value>
+  </data>
+  <data name="Error_opening_PDF" xml:space="preserve">
+    <value>خطأ في فتح ملف PDF:</value>
+  </data>
+  <data name="Error_downloading_PDF" xml:space="preserve">
+    <value>خطأ في تنزيل ملف PDF:</value>
+  </data>
 </root>

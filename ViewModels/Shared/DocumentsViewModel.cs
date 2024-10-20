@@ -50,10 +50,12 @@ namespace TripBliss.ViewModels
         {
             if (model!.UrlUploadFile!.Contains(".pdf"))
             {
-                var vm = new PdfViewerViewModel(model.UrlUploadFile);
-                var page = new PdfViewerPage();
-                page.BindingContext = vm;
-                await App.Current!.MainPage!.Navigation.PushAsync(page);
+                //var vm = new PdfViewerViewModel(model.UrlUploadFile);
+                //var page = new PdfViewerPage();
+                //page.BindingContext = vm;
+                //await App.Current!.MainPage!.Navigation.PushAsync(page);
+
+                await App.Current!.MainPage!.Navigation.PushAsync(new PdfViewerPage(model.UrlUploadFile));
             }
             else
             {
@@ -274,7 +276,7 @@ namespace TripBliss.ViewModels
         async Task DoneUploadDoc(TravelAgencyCompanyDocResponse model)
         {
             IsBusy = false;
-            UserDialogs.Instance.ShowLoading();
+            
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 
@@ -286,13 +288,17 @@ namespace TripBliss.ViewModels
                     uri = $"{ApiConstants.GetDistDocApi}{Id}/DistributorCompanyDoc";
                 }
                 string UserToken = await _service.UserToken();
+
+                UserDialogs.Instance.ShowLoading();
                 var Postjson = await Rep.PostAsync(uri, model!, UserToken);
+                UserDialogs.Instance.HideHud();
+
                 if (Postjson!.Id != null || Postjson.Id != 0)
                 {
                     await GetDocs();
                 }
             }
-            UserDialogs.Instance.HideHud();
+            
             IsBusy = true;
         }
         #endregion
