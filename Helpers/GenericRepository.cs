@@ -14,6 +14,7 @@ using static TripBliss.Helpers.ErrorsResult;
 using static SQLite.SQLite3;
 
 
+
 namespace TripBliss.Helpers
 {
     public interface IGenericRepository

@@ -39,6 +39,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         {
             IsBusy = false;
             ReviewClose.Invoke(model);
+            IsBusy = true;
         }
 
         [RelayCommand]

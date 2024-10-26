@@ -47,8 +47,41 @@ namespace TripBliss
             {
                 MainPage = new NavigationPage(new LoginPage(new ViewModels.LoginViewModel(Rep, _service)));
             }
+
+            Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
         }
 
+        private async void Connectivity_ConnectivityChanged(object? sender, ConnectivityChangedEventArgs e)
+        {
+            if(e.NetworkAccess != NetworkAccess.Internet)
+            {
+                // Connection to internet is Not available
+                await App.Current!.MainPage!.Navigation.PushAsync(new NoInternetPage(Rep, _service));
+                return;
+            }
+        }
+
+        protected async override void OnStart()
+        {
+            base.OnStart();
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                // Connection to internet is Not available
+                await App.Current!.MainPage!.Navigation.PushAsync(new NoInternetPage(Rep, _service));
+                return;
+            }
+        }
+
+        protected async override void OnResume()
+        {
+            base.OnResume();
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                // Connection to internet is Not available
+                await App.Current!.MainPage!.Navigation.PushAsync(new NoInternetPage(Rep, _service));
+                return;
+            }
+        }
 
         void LoadSetting()
         {
@@ -65,9 +98,5 @@ namespace TripBliss
             }
         }
 
-        protected async override void OnStart()
-        {
-            base.OnStart();   
-        }
     }
 }

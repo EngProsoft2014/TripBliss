@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
+using TripBliss.Pages.Shared;
 using static TripBliss.Helpers.ErrorsResult;
 
 namespace TripBliss.ViewModels

@@ -18,6 +18,8 @@ namespace TripBliss.Constants
 
         public string? ClaimTitle { get; set; }
 
+        public string? claimTitleAr { get; set; }
+
         public string? ClaimValue { get; set; }
     }
 

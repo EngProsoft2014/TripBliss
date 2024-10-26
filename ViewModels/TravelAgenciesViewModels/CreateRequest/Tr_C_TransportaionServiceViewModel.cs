@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Pages.Shared;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 {
@@ -106,6 +107,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     CarBrands = json;
                 }
             }
+
         }
 
         async Task GetCarModels()
@@ -139,6 +141,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     CarTypes = json;
                 }
             }
+
         }
         #endregion
 
@@ -199,10 +202,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 TransportResponseModel.Date = request.Date;
                 TransportResponseModel.TransportCount = request.TransportCount;
                 TransportResponseModel.TypeName = SelectrdType.TypeName;
+                TransportResponseModel.TypeNameAr = SelectrdType.TypeNameAr;
                 TransportResponseModel.Notes = request.Notes;
+                Controls.StaticMember.EndRequestStatic = (request.Date > DateOnly.FromDateTime(Controls.StaticMember.EndRequestStatic)) ? request.Date.ToDateTime(new TimeOnly(0,0)) : Controls.StaticMember.EndRequestStatic;
 
-                Controls.StaticMember.EndRequestStatic = (Controls.StaticMember.EndRequestStatic != null && Convert.ToDateTime(request.Date) > Controls.StaticMember.EndRequestStatic) ? Convert.ToDateTime(request.Date) : Controls.StaticMember.EndRequestStatic;
-                
                 TransportClose.Invoke(request, TransportResponseModel);
                 await App.Current!.MainPage!.Navigation.PopAsync();
 

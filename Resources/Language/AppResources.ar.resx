@@ -942,4 +942,28 @@
   <data name="Error_downloading_PDF" xml:space="preserve">
     <value>خطأ في تنزيل ملف PDF:</value>
   </data>
+  <data name="finish_the_request_and_move_it_to_the_History_Msg" xml:space="preserve">
+    <value>إذا كنت تريد إنهاء الطلب ونقله إلى السجل، فيجب عليك وضع تعليق لجميع الموزعين الموجودين في هذا الطلب.</value>
+  </data>
+  <data name="Resend_verify_to" xml:space="preserve">
+    <value>إعادة إرسال التحقق إلى</value>
+  </data>
+  <data name="click" xml:space="preserve">
+    <value>أضغط</value>
+  </data>
+  <data name="here" xml:space="preserve">
+    <value>هنا</value>
+  </data>
+  <data name="Waiting_time_to_resend" xml:space="preserve">
+    <value>وقت الانتظار لإعادة الإرسال</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>إعادة المحاولة</value>
+  </data>
+  <data name="Please_Enter_ammount" xml:space="preserve">
+    <value>الرجاء إدخال المبلغ</value>
+  </data>
+  <data name="SAR" xml:space="preserve">
+    <value>رس</value>
+  </data>
 </root>

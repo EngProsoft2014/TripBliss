@@ -1,5 +1,6 @@
 
 using CommunityToolkit.Maui.Alerts;
+using Controls.UserDialogs.Maui;
 using Microsoft.AspNet.SignalR.Client.Http;
 using Syncfusion.Maui.Core.Carousel;
 using System.Globalization;
@@ -15,10 +16,10 @@ public partial class HomeAgencyPage : Controls.CustomControl
     IGenericRepository Rep;
     readonly Services.Data.ServicesService _service;
     Tr_HomeViewModel ViewModel;
-    public HomeAgencyPage(Tr_HomeViewModel viewModel,IGenericRepository generic, Services.Data.ServicesService service)
+    Tr_C_TravelAgencyViewModel ViewModelTap2;
+    public HomeAgencyPage(Tr_HomeViewModel viewModel, IGenericRepository generic, Services.Data.ServicesService service)
     {
         InitializeComponent();
-
         this.BindingContext = ViewModel = viewModel;
         Rep = generic;
         _service = service;
@@ -29,11 +30,35 @@ public partial class HomeAgencyPage : Controls.CustomControl
         base.OnAppearing();
         tabMain.SelectedIndex = Controls.StaticMember.WayOfTab;
 
-        if (tabMain.SelectedIndex == 0 && !Constants.Permissions.CheckPermission(Constants.Permissions.Show_Home_Requests))
+        if(Connectivity.NetworkAccess == NetworkAccess.Internet)
         {
-            var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-            await toast.Show();
-        }
+            if(tabMain.SelectedIndex == 0)
+            {
+                conviewHome.BindingContext = ViewModel = new Tr_HomeViewModel(Rep, _service);
+
+                if (!Constants.Permissions.CheckPermission(Constants.Permissions.Show_Home_Requests))
+                {
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
+            }
+            else if(tabMain.SelectedIndex == 1)
+            {
+                DisConView.BindingContext = ViewModelTap2 = new Tr_C_TravelAgencyViewModel(Rep, _service);                
+            }
+            else if(tabMain.SelectedIndex == 2)
+            {
+                conviewOffers.BindingContext = new Tr_O_ChooseOfferViewModel(Rep);
+            }
+            else if (tabMain.SelectedIndex == 3)
+            {
+                conviewHistory.BindingContext = new Tr_HistoryViewModel(Rep, _service);
+            }
+            else if (tabMain.SelectedIndex == 4)
+            {
+                conviewMore.BindingContext = new Tr_MoreViewModel(Rep, _service);
+            }
+        } 
     }
 
 
@@ -56,7 +81,8 @@ public partial class HomeAgencyPage : Controls.CustomControl
         Controls.StaticMember.WayOfTab = (int)e.NewIndex;
         if ((int)e.NewIndex == 0)
         {
-            conviewHome.BindingContext = new Tr_HomeViewModel(Rep, _service);
+            conviewHome.BindingContext = ViewModel = new Tr_HomeViewModel(Rep, _service);
+
             if (!Constants.Permissions.CheckPermission(Constants.Permissions.Show_Home_Requests))
             {
                 var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
@@ -65,7 +91,8 @@ public partial class HomeAgencyPage : Controls.CustomControl
         }
         if ((int)e.NewIndex == 1)
         {
-            DisConView.BindingContext = new Tr_C_TravelAgencyViewModel(Rep, _service);
+            DisConView.BindingContext = ViewModelTap2 = new Tr_C_TravelAgencyViewModel(Rep, _service);
+
             //conviewDist.BindingContext = new Tr_C_TravelAgencyViewModel(Rep);
             //conviewFevourites.BindingContext = new Tr_C_TravelAgencyViewModel(Rep);
         }
@@ -82,4 +109,6 @@ public partial class HomeAgencyPage : Controls.CustomControl
             conviewMore.BindingContext = new Tr_MoreViewModel(Rep, _service);
         }
     }
+
+
 }

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Controls="clr-namespace:TripBliss.Controls"
+             xmlns:res="clr-namespace:TripBliss.Resources.Language"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModels"
+             x:Class="TripBliss.Pages.DistributorsPages.Dis_DocumentsPage"
+             Title="Dis_DocumentsPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White"
+             IsEnabled="{Binding IsBusy}">
+    <StackLayout Orientation="Vertical" Margin="20" Spacing="10">
+        <StackLayout Orientation="Horizontal">
+            <Image VerticalOptions="CenterAndExpand">
+                <Image.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                </Image.Source>
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                        <Setter Property="Rotation" Value="180"></Setter>
+                    </DataTrigger>
+                </Image.Triggers>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackPressedCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="{Static res:AppResources.hdrMyDocuments_DocumentsPage}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                   TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+            <Label  FontAutoScalingEnabled="False" FontSize="14" HorizontalOptions="End"
+                   VerticalOptions="CenterAndExpand" FontAttributes="Bold">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding ReviewVM}" Value="0">
+                        <Setter Property="Text" Value="{Static res:AppResources.In_Review}"></Setter>
+                        <Setter Property="TextColor" Value="#1c92c9"></Setter>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label" Binding="{Binding ReviewVM}" Value="1">
+                        <Setter Property="Text" Value="{Static res:AppResources.Accepted}"></Setter>
+                        <Setter Property="TextColor" Value="Green"></Setter>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label" Binding="{Binding ReviewVM}" Value="2">
+                        <Setter Property="Text" Value="{Static res:AppResources.Denied}"></Setter>
+                        <Setter Property="TextColor" Value="Red"></Setter>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+        </StackLayout>
+        <Label Text="{Static res:AppResources.lblCoOrTaOrQu}" FontAutoScalingEnabled="False" FontSize="14"
+               FontAttributes="Bold" HorizontalOptions="CenterAndExpand" TextColor="#333" Margin="0,30,0,30"></Label>
+
+        <CollectionView ItemsSource="{Binding LstDoc}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="20"></GridItemsLayout>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Spacing="5">
+                        <Border StrokeShape="RoundRectangle 10">
+                            <Entry Text="{Binding NameDoc}" FontSize="14" TextColor="Black" Keyboard="Text" Placeholder="{Static res:AppResources.plc_File_Name}" PlaceholderColor="Gray"></Entry>
+                        </Border>
+                        <StackLayout Orientation="Horizontal" Margin="0,0,0,0" HorizontalOptions="FillAndExpand">
+                            <!--Image-->
+                            <StackLayout HorizontalOptions="Start">
+                                <Border BackgroundColor="#2fa562" Padding="0" VerticalOptions="FillAndExpand" WidthRequest="130" HeightRequest="90">
+                                    <Image x:Name="PicSch" Source="{Binding UrlUploadFile}" Aspect="Fill">
+                                        <Image.Triggers>
+                                            <DataTrigger TargetType="Image" Binding="{Binding Extension}" Value="pdf">
+                                                <Setter Property="Source">
+                                                    <Setter.Value>
+                                                        <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="White" Size="40"></FontImageSource>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+                                                <Setter Property="HorizontalOptions" Value="CenterAndExpand"></Setter>
+                                                <Setter Property="Margin" Value="{OnPlatform iOS='30,10'}"></Setter>
+                                            </DataTrigger>
+                                        </Image.Triggers>
+                                    </Image>
+                                    <Border.StrokeShape>
+                                        <RoundRectangle Stroke="LightGray" StrokeThickness="1" CornerRadius="10"></RoundRectangle>
+                                    </Border.StrokeShape>
+                                    <Border.Shadow>
+                                        <Shadow Offset="1,2" Brush="{OnPlatform Android=Gray,iOS=LightGray}" Radius="5"></Shadow>
+                                    </Border.Shadow>
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_DocumentsViewModel}}, Path=OpenFullScreenImageCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                    </Border.GestureRecognizers>
+                                </Border>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Margin="5,0,0,0" Spacing="20">
+                                <Image>
+                                    <Image.Source>
+                                        <FontImageSource FontFamily="FontIcon" Color="DimGray" Glyph="" Size="30"></FontImageSource>
+                                    </Image.Source>
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_DocumentsViewModel}}, Path=PickPdfCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image>
+                                    <Image.Source>
+                                        <FontImageSource FontFamily="FontIcon" Color="DimGray" Glyph="" Size="30"></FontImageSource>
+                                    </Image.Source>
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_DocumentsViewModel}}, Path=PickPhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image>
+                                    <Image.Source>
+                                        <FontImageSource FontFamily="FontIconSolid" Color="DimGray" Glyph="" Size="30"></FontImageSource>
+                                    </Image.Source>
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_DocumentsViewModel}}, Path=TakePhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+                        </StackLayout>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</Controls:CustomControl>

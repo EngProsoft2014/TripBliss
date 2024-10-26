@@ -12,6 +12,7 @@ using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages.DistributorsPages.ResponseDetailes;
+using TripBliss.Pages.Shared;
 using TripBliss.ViewModels.DistributorsViewModels.ResponseDetails;
 
 namespace TripBliss.ViewModels.DistributorsViewModels
@@ -64,6 +65,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels
                         }
                     }
                 }
+
             }
             else
             {
@@ -155,9 +157,9 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         [RelayCommand]
         async Task Selection(ResponseWithDistributorResponse model)
         {
-            if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_Response))
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_Response_Details_History))
             {
-                await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new Dis_D_RequestDetailsViewModel(model.Id, Rep, _service)));
+                await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new Dis_D_RequestDetailsViewModel(model.Id!, Rep, _service)));
             }
             else
             {

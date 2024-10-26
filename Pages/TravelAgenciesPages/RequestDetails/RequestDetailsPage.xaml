@@ -49,6 +49,11 @@
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding DeleteRequestCommand}"></TapGestureRecognizer>
                                     </Image.GestureRecognizers>
+                                    <Image.Triggers>
+                                        <DataTrigger TargetType="Image" Binding="{Binding RequestDetailes.ActiveDelete}" Value="False">
+                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                        </DataTrigger>
+                                    </Image.Triggers>
                                 </Image>
                             </StackLayout>
                             <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Padding="0,0,0,20">
@@ -72,9 +77,9 @@
                                                                         <Label VerticalTextAlignment="Center" Padding="5" FontAutoScalingEnabled="False">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding LocationName}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                                                                    <Span Text="{Binding LocationNameLang}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
                                                                                     <Span Text=" - " TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
-                                                                                    <Span Text="{Binding HotelName}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                                                                    <Span Text="{Binding HotelNameLang}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -106,12 +111,12 @@
                                                                                     <Label Text="{Static res:AppResources.lblRoomType_HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                        FontAttributes="Bold"></Label>
                                                                                     <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                    <Label Text="{Binding RoomTypeName}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                    <Label Text="{Binding RoomTypeNameLang}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
 
                                                                                     <Label Text="{Static res:AppResources.lblView_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                        FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
                                                                                     <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                    <Label Text="{Binding RoomViewName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                    <Label Text="{Binding RoomViewNameLang}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
                                                                                 </StackLayout>
                                                                                 <StackLayout Orientation="Horizontal">
                                                                                     <Label Text="{Static res:AppResources.lblNoOfRoom_HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
@@ -121,7 +126,7 @@
                                                                                     <Label Text="{Static res:AppResources.lblMeals_HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                        HorizontalOptions="EndAndExpand" FontAttributes="Bold"></Label>
                                                                                     <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                    <Label Text="{Binding MealName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                    <Label Text="{Binding MealNameLang}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
                                                                                 </StackLayout>
                                                                             </VerticalStackLayout>
                                                                         </Border>
@@ -195,18 +200,18 @@
                                                                                 <Label Text="{Static res:AppResources.lblBrand_TranServices}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                                         FontAttributes="Bold"></Label>
                                                                                 <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding BrandName}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding BrandNameLang}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
 
                                                                                 <Label Text="{Static res:AppResources.lblTypeName_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                                        FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
                                                                                 <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding TypeName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding TypeNameLang}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
                                                                             </StackLayout>
                                                                             <StackLayout Orientation="Horizontal">
                                                                                 <Label Text="{Static res:AppResources.lblModel_TranService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                                        FontAttributes="Bold"></Label>
                                                                                 <Label Text=": " TextColor="Gray" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding ModelName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding ModelNameLang}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
                                                                                 <!--<Label Text="{Static res:AppResources.lblIsDriver_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                                        HorizontalOptions="EndAndExpand" FontAttributes="Bold"></Label>
                                                                                 <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
@@ -277,12 +282,12 @@
                                                                                 <Label Text="{Static res:AppResources.lblCarrier_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                                        FontAttributes="Bold"></Label>
                                                                                 <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding AirLine}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding AirLineLang}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
 
                                                                                 <Label Text="{Static res:AppResources.lblClass_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                                        FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
                                                                                 <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding ClassName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding ClassNameLang}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
                                                                             </StackLayout>
                                                                             <StackLayout Orientation="Horizontal">
                                                                                 <Label Text="ETD" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
@@ -348,7 +353,7 @@
                                                                     <Label Text="{Static res:AppResources.lblVisaType_VisaService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                            FontFamily="Almarai-Regular"></Label>
                                                                     <Label Text=": " TextColor="Black" VerticalTextAlignment="Center" FontSize="13" FontAutoScalingEnabled="False"></Label>
-                                                                    <Label Text="{Binding VisaName}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center"></Label>
+                                                                    <Label Text="{Binding VisaNameLang}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center"></Label>
                                                                     <Line StrokeThickness="1" Y1="0" Y2="40" Stroke="Gray" HorizontalOptions="EndAndExpand"></Line>
                                                                     <VerticalStackLayout Margin="10,0" VerticalOptions="CenterAndExpand">
                                                                         <Label Text="{Binding PersonCount}" FontAutoScalingEnabled="False" FontSize="11" TextColor="#387955" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
@@ -460,7 +465,13 @@
                                                 <VerticalStackLayout Padding="10" Spacing="5">
                                                     <Label Text="{Binding DistributorCompanyName}" FontAutoScalingEnabled="False" FontSize="14" TextColor="Black" FontAttributes="Bold"></Label>
                                                     <Label Text="{Binding DistributorCompanyPhone}" FontSize="12" FontAutoScalingEnabled="False" TextColor="Gray"></Label>
-                                                    <Label Text="{Binding ChoosenServices}" FontSize="12" FontAutoScalingEnabled="False" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                                    <Label Text="{Binding ChoosenServices}" FontSize="12" FontAutoScalingEnabled="False" TextColor="Orange" Margin="0,3,0,0">
+                                                        <Label.Triggers>
+                                                            <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_RequestDetailsViewModel}}, Path=Lang}" Value="ar">
+                                                                <Setter Property="Text" Value="{Binding ChoosenServicesAr}"></Setter>
+                                                            </DataTrigger>
+                                                        </Label.Triggers>
+                                                    </Label>
                                                     <Label Text="{Binding DistributorCompanyAddress}" FontSize="12" TextColor="DeepSkyBlue" Margin="0,3,0,0"
                                                            FontAutoScalingEnabled="False"></Label>
                                                 </VerticalStackLayout>
@@ -512,7 +523,7 @@
                             </StackLayout>
 
                             <StackLayout VerticalOptions="EndAndExpand">
-                                <Label Text="If you want to finish the request and move it to the History, you should be reviewed for all distributors in this request." 
+                                <Label Text="{Static res:AppResources.finish_the_request_and_move_it_to_the_History_Msg}" 
                                        TextColor="Gray" FontSize="14" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
                                 <StackLayout.Triggers>
                                     <DataTrigger TargetType="StackLayout" Binding="{Binding RequestDetailes.ResponseWithDistributor.Count}" Value="0">

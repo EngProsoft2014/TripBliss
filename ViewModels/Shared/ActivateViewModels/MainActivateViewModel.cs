@@ -8,6 +8,8 @@ using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Models.ResponseWithDistributorVisaDetails;
 using TripBliss.Pages.ActivateDetailsPages;
+using TripBliss.Pages.Shared;
+using Syncfusion.Maui.DataSource.Extensions;
 
 namespace TripBliss.ViewModels.ActivateViewModels
 {
@@ -99,7 +101,31 @@ namespace TripBliss.ViewModels.ActivateViewModels
         [RelayCommand]
         public async Task SelectHotel(ResponseWithDistributorHotelDetailsResponse model)
         {
-            var vm = new HotelActivateViewModel(IsRequestHistoryTR, IsRequestHistoryDS,model, Rep, _service);
+            //var vm = new HotelActivateViewModel(IsRequestHistoryTR, IsRequestHistoryDS,model, Rep, _service);
+            //var page = new HotelServicesActivateDetails();
+            //page.BindingContext = vm;
+            //await App.Current!.MainPage!.Navigation.PushAsync(page);
+
+            var vm = new HotelActivateViewModel(IsRequestHistoryTR, IsRequestHistoryDS, model, Rep, _service);
+            vm.HotelDetailsClose += (item) =>
+            {
+                try
+                {
+                    ActiveHotels.ToList().ForEach(f =>
+                    {
+                        if(f != null && f.CountRow == item.CountRow)
+                        {
+                            f.GuestName = item.GuestName;
+                            f.RoomRef = item.RoomRef;
+                        }
+                    });
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            };
             var page = new HotelServicesActivateDetails();
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -107,7 +133,31 @@ namespace TripBliss.ViewModels.ActivateViewModels
         [RelayCommand]
         public async Task SelectTransportaion(ResponseWithDistributorTransportDetailsResponse model)
         {
+            //var vm = new TransportActivateViewModel(IsRequestHistoryTR, IsRequestHistoryDS, model, Rep, _service);
+            //var page = new TransportServicesActivateDetails();
+            //page.BindingContext = vm;
+            //await App.Current!.MainPage!.Navigation.PushAsync(page);
+
             var vm = new TransportActivateViewModel(IsRequestHistoryTR, IsRequestHistoryDS, model, Rep, _service);
+            vm.TransportDetailsClose += (item) =>
+            {
+                try
+                {
+                    ActiveTransport.ToList().ForEach(f =>
+                    {
+                        if (f != null && f.CountRow == item.CountRow)
+                        {
+                            f.LeaderName = item.LeaderName;
+                            f.PlateNumber = item.PlateNumber;
+                        }
+                    });
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            };
             var page = new TransportServicesActivateDetails();
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -167,11 +217,21 @@ namespace TripBliss.ViewModels.ActivateViewModels
                     if (json != null)
                     {
                         ActiveHotels!.Clear();
+                        int count = 0;
+                        foreach (var item in json)
+                        {
+                            if (item.Id == null)
+                            {
+                                count++;
+                                item.CountRow = count;
+                            }
+                        }
                         ActiveHotels = json;
                     }
                 }
 
             }
+
 
             IsBusy = true;
         }
@@ -192,11 +252,23 @@ namespace TripBliss.ViewModels.ActivateViewModels
                     if (json != null)
                     {
                         ActiveTransport!.Clear();
+
+                        int count = 0;
+                        foreach (var item in json)
+                        {
+                            if(item.Id == null)
+                            {
+                                count ++;
+                                item.CountRow = count;
+                            }
+                        }
                         ActiveTransport = json;
+                        
                     }
                 }
 
             }
+
 
             IsBusy = true;
         }
@@ -223,6 +295,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
 
             }
 
+
             IsBusy = true;
         }
 
@@ -247,6 +320,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                 }
 
             }
+
 
             IsBusy = true;
         }
@@ -276,6 +350,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                 }
             }
 
+
             IsBusy = true;
         }
 
@@ -303,6 +378,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                     await toast.Show();
                 }
             }
+
 
             IsBusy = true;
         }
@@ -332,6 +408,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                 }
             }
 
+
             IsBusy = true;
         }
 
@@ -359,6 +436,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                     await toast.Show();
                 }
             }
+
 
             IsBusy = true;
         }

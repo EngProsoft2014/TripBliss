@@ -67,7 +67,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                     {
                         json.ImageFile = ImageSource.FromUri(new Uri($"{Helpers.Utility.ServerUrl}{json.UrlLogo}"));
                         CompanyResponse = json;
-
+                        CompanyResponse.UrlLogo = json.UrlLogo == null ? "" : json.UrlLogo;    
                     }
                 }
 
@@ -126,13 +126,15 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                     string UserToken = await _service.UserToken();
 
                     string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
+                    UserDialogs.Instance.ShowLoading();
                     var json = await Rep.PutAsync<TravelAgencyCompanyRequest>(ApiConstants.PutTravelCompanyDetailsApi + id, CompanyRequest, UserToken);
-
+                    UserDialogs.Instance.HideHud();
                     if (json != null)
                     {
                         await GetCompanyDetiles();
                     }
                 }
+
             }
             else
             {
@@ -181,12 +183,11 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             if (answer)
             {
                 IsBusy = false;
-                UserDialogs.Instance.ShowLoading();
-
+                
                 string UserToken = await _service.UserToken();
-
+                UserDialogs.Instance.ShowLoading();
                 var json = await Rep.PutAsync<string>(ApiConstants.PutTRCompanyAccountDelete + CompanyResponse.Id + "/ToggleActive", null, UserToken);
-
+                UserDialogs.Instance.HideHud();
                 if (string.IsNullOrEmpty(json))
                 {
                     var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Successfully_company_deleted, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
@@ -206,7 +207,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                     await toast.Show();
                 }
 
-                UserDialogs.Instance.HideHud();
                 IsBusy = true;
             }
 

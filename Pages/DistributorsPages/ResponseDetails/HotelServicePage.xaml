@@ -45,7 +45,7 @@
                         <Label Text="{Static res:AppResources.lblHotelName_HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                             <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
-                                   Text="{Binding HotelService.RequestTravelAgencyHotel.HotelName}" ></Entry>
+                                   Text="{Binding HotelService.RequestTravelAgencyHotel.HotelNameLang}" ></Entry>
                         </Border>
                         <StackLayout Orientation="Horizontal" Spacing="35">
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
@@ -68,14 +68,14 @@
                                 <Label Text="{Static res:AppResources.lblRoomView_HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                     <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
-                                           Text="{Binding HotelService.RequestTravelAgencyHotel.RoomViewName}"></Entry>
+                                           Text="{Binding HotelService.RequestTravelAgencyHotel.RoomViewNameLang}"></Entry>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{Static res:AppResources.lblRoomType_HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                     <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
-                                           Text="{Binding HotelService.RequestTravelAgencyHotel.RoomTypeName}"></Entry>
+                                           Text="{Binding HotelService.RequestTravelAgencyHotel.RoomTypeNameLang}"></Entry>
                                 </Border>
                             </VerticalStackLayout>
                         </StackLayout>
@@ -84,7 +84,7 @@
                                 <Label Text="{Static res:AppResources.lblMeals_HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                     <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
-                                           Text="{Binding HotelService.RequestTravelAgencyHotel.MealName}"></Entry>
+                                           Text="{Binding HotelService.RequestTravelAgencyHotel.MealNameLang}"></Entry>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="5">

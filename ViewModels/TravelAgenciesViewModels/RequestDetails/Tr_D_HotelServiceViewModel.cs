@@ -7,6 +7,7 @@ using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages.ActivateDetailsPages;
+using TripBliss.Pages.Shared;
 using TripBliss.ViewModels.ActivateViewModels;
 
 
@@ -136,7 +137,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 }
             }
 
-
         }
 
         async Task GetHotels()
@@ -155,7 +155,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 }
             }
 
-
         }
 
         async Task GetMeals()
@@ -172,8 +171,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     Meals = json;
                 }
             }
-
-
+  
         }
 
         async Task GetRoomTypes()
@@ -191,8 +189,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     RoomTypes = json;
                 }
             }
-
-
         }
 
         async Task GetRoomViews()
@@ -210,7 +206,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     RoomViews = json;
                 }
             }
-
 
         }
         #endregion

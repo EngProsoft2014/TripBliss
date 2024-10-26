@@ -12,6 +12,7 @@ using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Models.Visa;
+using TripBliss.Pages.Shared;
 
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
@@ -93,6 +94,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     Visas = json;
                 }
             }
+
         } 
         #endregion
 
@@ -117,6 +119,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
                 VisaResponseModel!.VisaId = request.VisaId = SelectedVisa!.Id;
                 VisaResponseModel!.VisaName = SelectedVisa.VisaName;
+                VisaResponseModel!.VisaNameAr = SelectedVisa.VisaNameAr;
                 VisaResponseModel!.PersonCount = request.PersonCount;
                 VisaResponseModel!.Notes = request.Notes;
                 VisaClose.Invoke(request, VisaResponseModel);

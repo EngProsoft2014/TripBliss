@@ -36,7 +36,7 @@
                 <Label Text="{Static res:AppResources.Feedback_for_Distributor}" TextColor="#333" FontSize="14" FontAttributes="Bold" HorizontalOptions="StartAndExpand"></Label>
 
                 <Border StrokeShape="RoundRectangle 5">
-                    <Editor Placeholder="{Static res:AppResources.Enter_Feedback}" Text="{Binding ModelReview.ReviewTravelAgentNote}" HeightRequest="120"></Editor>
+                    <Editor Placeholder="{Static res:AppResources.Enter_Feedback}" Text="{Binding ModelReview.ReviewTravelAgentNote}" HeightRequest="120" FontSize="14" TextColor="#333"></Editor>
 
                 </Border>
             </StackLayout>

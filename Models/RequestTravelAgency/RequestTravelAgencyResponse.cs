@@ -22,10 +22,11 @@ namespace TripBliss.Models
         public int CountTransport { get; set; }
         public int CountVisa { get; set; }
         public string ChoosenServices { get; set; } = string.Empty;
+        public string ChoosenServicesAr { get; set; } = string.Empty;
         public DateTime? CreateDate { get; set; }
         public DateTime? EndRequest { get; set; }
         public bool? IsAlertReview { get; set; }
-        //public bool IsShowExpiredTemplete { get { return EndRequest != null && EndRequest > DateTime.Now.AddDays(3) ? true : false; } }
+        public bool? ActiveDelete { get; set; }
         public string ToolTip { get{ return IsAlertReview == true ? TripBliss.Resources.Language.AppResources.Please_make_feedback_to_finish_request : ""; } }
         public string ToolTipDisAgree { get{ return ResponseWithDistributorCount == 0 ? TripBliss.Resources.Language.AppResources.request_was_rejected_by_all_selected_distributors : ""; } }
         public List<ResponseWithDistributorResponse>? ResponseWithDistributor { get; set; }

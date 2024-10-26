@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:Controls="clr-namespace:TripBliss.Controls"
+                        xmlns:res="clr-namespace:TripBliss.Resources.Language"
+                        x:Class="TripBliss.Pages.Shared.NoInternetPage"
+                        Title="NoInternetPage"
+                        NavigationPage.HasNavigationBar="False"
+                        BackgroundColor="White">
+
+    <Controls:CustomControl.Content>
+        <Grid VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,100,0,0">
+            <StackLayout Spacing="30">
+                <Image Source="NoInternet.jpg" Aspect="Fill" HeightRequest="250" WidthRequest="250"/>
+
+                <Label Text="{Static res:AppResources.No_Internet_connection}" FontSize="22" TextColor="#333" HorizontalOptions="CenterAndExpand"></Label>
+
+                <Button Text="{Static res:AppResources.Retry}" 
+                         TextTransform="None"
+                         BackgroundColor="#e8fff2"
+                         TextColor="#333" 
+                         BorderColor="#2fa562"
+                         BorderWidth="2"
+                         Margin="30,30,30,0"
+                         VerticalOptions="End"
+                         Clicked="Button_Clicked"></Button>
+            </StackLayout>
+
+        </Grid>
+    </Controls:CustomControl.Content>
+</Controls:CustomControl>

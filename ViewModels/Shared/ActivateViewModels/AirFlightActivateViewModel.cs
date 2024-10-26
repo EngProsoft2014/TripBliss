@@ -36,10 +36,6 @@ namespace TripBliss.ViewModels.ActivateViewModels
         [ObservableProperty]
         ObservableCollection<ResponseWithDistributorAirFlightDetailsResponse> lstDSAirFlightDetails = new ObservableCollection<ResponseWithDistributorAirFlightDetailsResponse>();
 
-        [ObservableProperty]
-        ObservableCollection<TravelAgencyGuestResponse> guests = new ObservableCollection<TravelAgencyGuestResponse>();
-        [ObservableProperty]
-        TravelAgencyGuestResponse selectedGuest = new TravelAgencyGuestResponse();
 
         [ObservableProperty]
         ImageSource imageFile;
@@ -125,6 +121,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                     }
                 }
             }
+
         }
         #endregion
 
@@ -307,6 +304,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                         await toast.Show();
                     }  
                 }
+
             }
             else
             {

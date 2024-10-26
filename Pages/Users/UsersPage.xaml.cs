@@ -1,4 +1,4 @@
-using TripBliss.ViewModels.Users;
+using TripBliss.ViewModels.Shared.UsersViewModels;
 
 namespace TripBliss.Pages.Users;
 

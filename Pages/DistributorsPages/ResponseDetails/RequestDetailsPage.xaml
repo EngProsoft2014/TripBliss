@@ -42,13 +42,18 @@
                                     </Image>
                                     <Label Text="{Binding Response.RequestName}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
-                                    <Image VerticalOptions="End">
+                                    <Image VerticalOptions="End" IsVisible="False">
                                         <Image.Source>
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
                                         </Image.Source>
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding DeleteRequestCommand}"></TapGestureRecognizer>
                                         </Image.GestureRecognizers>
+                                        <Image.Triggers>
+                                            <DataTrigger TargetType="Image" Binding="{Binding Response.TotalPriceAgentAccept}" Value="0">
+                                                <Setter Property="IsVisible" Value="True"></Setter>
+                                            </DataTrigger>
+                                        </Image.Triggers>
                                     </Image>
                                 </StackLayout>
                                 <ScrollView VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
@@ -72,9 +77,9 @@
                                                                             <Label VerticalTextAlignment="Center" Padding="5" FontAutoScalingEnabled="False">
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
-                                                                                        <Span Text="{Binding RequestTravelAgencyHotel.LocationName}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                                                                        <Span Text="{Binding RequestTravelAgencyHotel.LocationNameLang}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
                                                                                         <Span Text=" - " TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
-                                                                                        <Span Text="{Binding RequestTravelAgencyHotel.HotelName}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                                                                        <Span Text="{Binding RequestTravelAgencyHotel.HotelNameLang}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
                                                                                     </FormattedString>
                                                                                 </Label.FormattedText>
                                                                             </Label>
@@ -106,12 +111,12 @@
                                                                                         <Label Text="{Static res:AppResources.lblRoomType_HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                                                 FontAttributes="Bold"></Label>
                                                                                         <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                        <Label Text="{Binding RequestTravelAgencyHotel.RoomTypeName}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                        <Label Text="{Binding RequestTravelAgencyHotel.RoomTypeNameLang}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
 
                                                                                         <Label Text="{Static res:AppResources.lblView_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                                                 FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
                                                                                         <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                        <Label Text="{Binding RequestTravelAgencyHotel.RoomViewName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                        <Label Text="{Binding RequestTravelAgencyHotel.RoomViewNameLang}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
                                                                                     </StackLayout>
                                                                                     <StackLayout Orientation="Horizontal">
                                                                                         <Label Text="{Static res:AppResources.lblNoOfRoom_HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
@@ -121,7 +126,7 @@
                                                                                         <Label Text="{Static res:AppResources.lblMeals_HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                                                 HorizontalOptions="EndAndExpand" FontAttributes="Bold"></Label>
                                                                                         <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                        <Label Text="{Binding RequestTravelAgencyHotel.MealName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                        <Label Text="{Binding RequestTravelAgencyHotel.MealNameLang}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
                                                                                     </StackLayout>
                                                                                 </VerticalStackLayout>
                                                                             </Border>
@@ -194,18 +199,18 @@
                                                                                     <Label Text="{Static res:AppResources.lblBrand_TranServices}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                                            FontAttributes="Bold"></Label>
                                                                                     <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                    <Label Text="{Binding RequestTravelAgencyTransport.BrandName}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                    <Label Text="{Binding RequestTravelAgencyTransport.BrandNameLang}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
 
                                                                                     <Label Text="{Static res:AppResources.lblTypeName_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                                            FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
                                                                                     <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                    <Label Text="{Binding RequestTravelAgencyTransport.TypeName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                    <Label Text="{Binding RequestTravelAgencyTransport.TypeNameLang}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
                                                                                 </StackLayout>
                                                                                 <StackLayout Orientation="Horizontal">
                                                                                     <Label Text="{Static res:AppResources.lblModel_TranService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                                             FontAttributes="Bold"></Label>
                                                                                     <Label Text=": " TextColor="Gray" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                    <Label Text="{Binding RequestTravelAgencyTransport.ModelName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                    <Label Text="{Binding RequestTravelAgencyTransport.ModelNameLang}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
                                                                                     <!--<Label Text="{Static res:AppResources.lblIsDriver_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                                             HorizontalOptions="EndAndExpand" FontAttributes="Bold"></Label>
                                                                                     <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
@@ -277,12 +282,12 @@
                                                                                     <Label Text="{Static res:AppResources.lblCarrier_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                                            FontAttributes="Bold"></Label>
                                                                                     <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                    <Label Text="{Binding RequestTravelAgencyAirFlight.AirLine}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                    <Label Text="{Binding RequestTravelAgencyAirFlight.AirLineLang}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
 
                                                                                     <Label Text="{Static res:AppResources.lblClass_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                                             FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
                                                                                     <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                    <Label Text="{Binding RequestTravelAgencyAirFlight.ClassName}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                    <Label Text="{Binding RequestTravelAgencyAirFlight.ClassNameLang}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
                                                                                 </StackLayout>
                                                                                 <StackLayout Orientation="Horizontal">
                                                                                     <Label Text="ETD" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
@@ -309,7 +314,7 @@
                                                                                 <StackLayout Orientation="Horizontal">
 
                                                                                     <Label Text="{Static res:AppResources.lblInfant_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
-                                                   FontAttributes="Bold"></Label>
+                                                                                           FontAttributes="Bold"></Label>
                                                                                     <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
                                                                                     <Label Text="{Binding RequestTravelAgencyAirFlight.InfoInfantCount}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
                                                                                 </StackLayout>
@@ -348,7 +353,7 @@
                                                                         <Label Text="{Static res:AppResources.lblVisaType_VisaService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                                FontFamily="Almarai-Regular"></Label>
                                                                         <Label Text=": " TextColor="Black" FontSize="13" FontAutoScalingEnabled="False" VerticalOptions="Center"></Label>
-                                                                        <Label Text="{Binding RequestTravelAgencyVisa.VisaName}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center"></Label>
+                                                                        <Label Text="{Binding RequestTravelAgencyVisa.VisaNameLang}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center"></Label>
                                                                         <Line StrokeThickness="1" Y1="0" Y2="40" Stroke="Gray" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></Line>
                                                                         <VerticalStackLayout Margin="10,0" VerticalOptions="CenterAndExpand">
                                                                             <Label Text="{Binding RequestTravelAgencyVisa.PersonCount}" FontAutoScalingEnabled="False" FontSize="11" TextColor="#387955" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
@@ -428,7 +433,7 @@
                                     <Label Text="{Binding Response.RequestName}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
 
-                                    <Button Text="Review" IsVisible="{Binding IsShowReviewBtn}" FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" FontSize="{OnPlatform Android=12,iOS=14}"
+                                    <Button Text="{Static res:AppResources.Review}" IsVisible="{Binding IsShowReviewBtn}" FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" FontSize="{OnPlatform Android=12,iOS=14}"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=ReviewClickedCommand}"
                                             BackgroundColor="#ff7700" CornerRadius="5" TextColor="White" WidthRequest="70" Margin="0,0,0,0" FontAttributes="Bold">
                                         <Button.Triggers>
@@ -456,9 +461,9 @@
                                                                         <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding RequestTravelAgencyHotel.LocationName}" TextColor="Gray" FontSize="12"></Span>
+                                                                                    <Span Text="{Binding RequestTravelAgencyHotel.LocationNameLang}" TextColor="Gray" FontSize="12"></Span>
                                                                                     <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                                                    <Span Text="{Binding RequestTravelAgencyHotel.HotelName}" TextColor="Gray" FontSize="12"></Span>
+                                                                                    <Span Text="{Binding RequestTravelAgencyHotel.HotelNameLang}" TextColor="Gray" FontSize="12"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -511,7 +516,7 @@
                                                             <Grid HorizontalOptions="FillAndExpand">
                                                                 <ScrollView Orientation="Horizontal" Padding="3,0,33,0" HorizontalScrollBarVisibility="Never">
                                                                     <StackLayout Orientation="Horizontal" Spacing="10" Padding="3" Margin="0,5" VerticalOptions="Center">
-                                                                        <Label Text="{Binding RequestTravelAgencyTransport.TypeName}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="12" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                                                        <Label Text="{Binding RequestTravelAgencyTransport.TypeNameLang}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="12" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
                                                                         <Label TextColor="Gray" FontAutoScalingEnabled="False" FontSize="12" VerticalTextAlignment="Center">
                                                                             <Label.Text>
                                                                                 <MultiBinding StringFormat="{}{0} - {1}">
@@ -643,7 +648,7 @@
                                                                         <Label FontAutoScalingEnabled="False">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding RequestTravelAgencyVisa.VisaName}" TextColor="Gray" FontSize="12"></Span>
+                                                                                    <Span Text="{Binding RequestTravelAgencyVisa.VisaNameLang}" TextColor="Gray" FontSize="12"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>

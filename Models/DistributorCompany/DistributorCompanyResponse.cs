@@ -14,7 +14,7 @@ namespace TripBliss.Models
         public string? Email { get; set; }
         public string? Policy { get; set; }
         public string? Logo { get; set; }
-        public string? UrlLogo { get; set; }
+        public string UrlLogo { get; set; } = string.Empty;
         public DateOnly? ExpireDateAcc { get; set; }
         public bool? SendWithAllBulk { get; set; }
         public string? StripeUsername { get; set; }

@@ -9,7 +9,9 @@ using System.Runtime.CompilerServices;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Pages.Shared;
 using TripBliss.Pages.TravelAgenciesPages;
+using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
@@ -32,13 +34,15 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         #region Services
         IGenericRepository Rep;
         readonly Services.Data.ServicesService _service;
+        ResponseWithDistributorResponse _distributorResponse;
         #endregion
 
         #region Cons
-        public Tr_D_PaymentViewModel(string id,int totalPrice,int totalPayment, IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_D_PaymentViewModel(string id,int totalPrice,int totalPayment, ResponseWithDistributorResponse distributorResponse, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
+            _distributorResponse = distributorResponse;
             ReqId = id;
             Totalpayment = totalPayment;
             OutStandingprice = totalPrice - totalPayment;
@@ -54,7 +58,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.Are_You_Accept_To_Pay, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
             IsBusy = false;
 
-            UserDialogs.Instance.ShowLoading();
+            
             if (Connectivity.NetworkAccess == NetworkAccess.Internet && answer)
             {
 
@@ -68,14 +72,16 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     Refnumber = "stetrrcc",
                 };
 
+                UserDialogs.Instance.ShowLoading();
                 var json = await Rep.PostTRAsync<ResponseWithDistributorPaymentRequest, ResponseWithDistributorPaymentResponse>(ApiConstants.AllPaymentApi + $"{ReqId}/ResponseWithDistributorPayment", paymentRequest, UserToken);
+                UserDialogs.Instance.HideHud();
 
                 if (json.Item1 != null)
                 {
                     var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Successfully_for_Paying, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                     Totalpayment = (int)(Totalpayment + paymentRequest.AmountPayment);
-                    OutStandingprice = IsAllPyment == true ? 0 : OutStandingprice - paymentRequest.AmountPayment.Value;
+                    //OutStandingprice = IsAllPyment == true ? 0 : OutStandingprice - paymentRequest.AmountPayment.Value;
                     await GetPayDetailes();     
                 }
                 else
@@ -84,13 +90,16 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     await toast.Show();
                 }
             }
-            UserDialogs.Instance.HideHud();
+            
             IsBusy = true;
         }
         [RelayCommand]
         async Task BackButtonClicked()
         {
+            new Tr_D_ConfirmResponsePageViewModel(_distributorResponse, Rep, _service);
             await App.Current!.MainPage!.Navigation.PopAsync();
+            //await App.Current!.MainPage!.Navigation.PushAsync(new ConfirmResponsePage(new Tr_D_ConfirmResponsePageViewModel(_distributorResponse, Rep, _service), Rep));
+            //App.Current.MainPage.Navigation.RemovePage(App.Current.MainPage.Navigation.NavigationStack[App.Current.MainPage.Navigation.NavigationStack.Count - 2]);
         }
 
         #region Methods
@@ -114,6 +123,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     Payments = json1;
                 }
             }
+
             IsBusy = true;
         } 
 

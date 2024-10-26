@@ -13,6 +13,7 @@ namespace TripBliss.Models.Premission
         public string? userId { get; set; }
         public string? categoryPermissions { get; set; }
         public string? claimTitle { get; set; }
+        public string? claimTitleAr { get; set; }
         public string? claimValue { get; set; }
         public bool choosenPermission { get; set; }
     }

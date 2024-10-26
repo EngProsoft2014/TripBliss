@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              xmlns:res="clr-namespace:TripBliss.Resources.Language"
-             xmlns:vm="clr-namespace:TripBliss.ViewModels.Users"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.Shared.UsersViewModels"
              x:Class="TripBliss.Pages.Users.UsersPage"
              Title="Tr_UsersPage"
              NavigationPage.HasNavigationBar="False"

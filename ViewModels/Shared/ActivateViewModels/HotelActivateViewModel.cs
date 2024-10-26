@@ -20,10 +20,6 @@ namespace TripBliss.ViewModels.ActivateViewModels
         [ObservableProperty]
         ResponseWithDistributorHotelDetailsResponse detailsResponse = new ResponseWithDistributorHotelDetailsResponse();
         [ObservableProperty]
-        ObservableCollection<TravelAgencyGuestResponse> guests = new ObservableCollection<TravelAgencyGuestResponse>();
-        [ObservableProperty]
-        TravelAgencyGuestResponse selectedGuest = new TravelAgencyGuestResponse();
-        [ObservableProperty]
         bool isRequestHistory;
         #endregion
         //GuestName
@@ -31,6 +27,10 @@ namespace TripBliss.ViewModels.ActivateViewModels
         readonly Services.Data.ServicesService _service;
         IGenericRepository Rep;
         #endregion
+
+        public delegate void HotelDetailsDelegte(ResponseWithDistributorHotelDetailsResponse model);
+        public event HotelDetailsDelegte HotelDetailsClose;
+
 
         #region Cons
         public HotelActivateViewModel(bool _IsRequestHistoryTR, bool _IsRequestHistoryDS, ResponseWithDistributorHotelDetailsResponse model, IGenericRepository generic, Services.Data.ServicesService service)
@@ -50,6 +50,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
             if (Constants.Permissions.CheckPermission(Constants.Permissions.Edit_Service))
             {
                 //DetailsResponse.TravelAgencyGuestId = selectedGuest?.Id ?? null;
+                HotelDetailsClose.Invoke(DetailsResponse);
                 await App.Current!.MainPage!.Navigation.PopAsync();
             }
             else
@@ -66,40 +67,6 @@ namespace TripBliss.ViewModels.ActivateViewModels
         }
         #endregion
 
-        #region Methods
-        async void Init()
-        {
-            //await GetAllGuests();    
-        }
-
-        async Task GetAllGuests()
-        {
-            IsBusy = true;
-
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            {
-                string TravelAgencyId = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
-                string DistributorId = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
-                if (!string.IsNullOrEmpty(TravelAgencyId) && string.IsNullOrEmpty(DistributorId)) 
-                {
-                    string UserToken = await _service.UserToken();
-                    if (!string.IsNullOrEmpty(UserToken))
-                    {
-                        UserDialogs.Instance.ShowLoading();
-                        var json = await Rep.GetAsync<ObservableCollection<TravelAgencyGuestResponse>>(ApiConstants.GuestApi + $"{TravelAgencyId}/TravelAgencyGuest", UserToken);
-                        UserDialogs.Instance.HideHud();
-                        if (json != null)
-                        {
-                            Guests!.Clear();
-                            Guests = json;
-                            //SelectedGuest = Guests?.FirstOrDefault(g => g.Id == DetailsResponse.TravelAgencyGuestId) ?? new TravelAgencyGuestResponse();
-                        }
-                    }
-                }
-            }
-
-            IsBusy = false;
-        } 
-        #endregion
+       
     }
 }

@@ -92,12 +92,13 @@
                                     </StackLayout>
 
                                     <StackLayout.Triggers>
-                                        <DataTrigger TargetType="StackLayout" Binding="{Binding Requests.Count}" Value="0">
+                                        <DataTrigger TargetType="StackLayout" Binding="{Binding Responses.Count}" Value="0">
                                             <Setter Property="IsVisible" Value="False"></Setter>
                                         </DataTrigger>
                                     </StackLayout.Triggers>
                                 </StackLayout>
-                                <CollectionView x:Name="colRequests" ItemsSource="{Binding Requests}" Margin="{OnPlatform iOS='20,0,20,0'}" VerticalScrollBarVisibility="Never" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <CollectionView x:Name="colRequests" ItemsSource="{Binding Responses}" Margin="{OnPlatform iOS='20,0,20,0'}" VerticalScrollBarVisibility="Never"
+                                                VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RemainingItemsThreshold="1" RemainingItemsThresholdReachedCommand="{Binding GetLoadMoreCommand}">
                                     <CollectionView.ItemsLayout>
                                         <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
                                     </CollectionView.ItemsLayout>
@@ -108,13 +109,19 @@
                                                     <VerticalStackLayout Padding="10" Spacing="5">
                                                         <Label Text="{Binding RequestName}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
                                                         <Label Text="{Binding TravelAgencyCompanyName}" FontSize="12" TextColor="Gray"></Label>
-                                                        <Label Text="{Binding ChoosenServices}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                                        <Label Text="{Binding ChoosenServices}" FontSize="12" TextColor="Orange" Margin="0,3,0,0">
+                                                            <Label.Triggers>
+                                                                <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_HomeViewModel}}, Path=Lang}" Value="ar">
+                                                                    <Setter Property="Text" Value="{Binding ChoosenServicesAr}"></Setter>
+                                                                </DataTrigger>
+                                                            </Label.Triggers>
+                                                        </Label>
                                                         <HorizontalStackLayout Margin="0,3,0,0" Spacing="2">
                                                             <Label Text="{Static res:AppResources.lblDate_TranService}" FontSize="12" TextColor="Blue"></Label>
                                                             <Label Text=":" FontSize="12" TextColor="Blue"></Label>
                                                             <Label Text="{Binding CreateDate,StringFormat='{0:MM-dd-yyyy}'}" FontSize="11" TextColor="#059ce3" ></Label>
                                                         </HorizontalStackLayout>
-                                                        
+
                                                     </VerticalStackLayout>
                                                     <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand" Spacing="1">
                                                         <Border  HorizontalOptions="EndAndExpand"
@@ -147,11 +154,11 @@
                                                             </Border.Triggers>
                                                         </Border>
                                                     </StackLayout>
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_HomeViewModel}}, Path=SelectionCommand}"
+                                                                              CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                    </StackLayout.GestureRecognizers>
                                                 </StackLayout>
-                                                <Border.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_HomeViewModel}}, Path=SelectionCommand}"
-                                                                          CommandParameter="{Binding}"></TapGestureRecognizer>
-                                                </Border.GestureRecognizers>
                                                 <Border.Triggers>
                                                     <DataTrigger TargetType="Border" Binding="{Binding IsAlertReview}" Value="True">
                                                         <Setter Property="Stroke" Value="Red"></Setter>
@@ -164,7 +171,7 @@
                                     </CollectionView.ItemTemplate>
 
                                     <CollectionView.Triggers>
-                                        <DataTrigger TargetType="CollectionView" Binding="{Binding Requests.Count}" Value="0">
+                                        <DataTrigger TargetType="CollectionView" Binding="{Binding Responses.Count}" Value="0">
                                             <Setter Property="IsVisible" Value="False"></Setter>
                                         </DataTrigger>
                                     </CollectionView.Triggers>
@@ -180,7 +187,7 @@
                                         </Image.Triggers>
                                     </Image>
                                     <StackLayout.Triggers>
-                                        <DataTrigger TargetType="StackLayout" Binding="{Binding Requests.Count}" Value="0">
+                                        <DataTrigger TargetType="StackLayout" Binding="{Binding Responses.Count}" Value="0">
                                             <Setter Property="IsVisible" Value="True"></Setter>
                                         </DataTrigger>
                                     </StackLayout.Triggers>
@@ -219,7 +226,8 @@
                                         </DataTrigger>
                                     </Border.Triggers>
                                 </Border>
-                                <CollectionView x:Name="TrColc" ItemsSource="{Binding CompanyResponses}" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" SelectionMode="None">
+                                <CollectionView x:Name="TrColc" ItemsSource="{Binding CompanyResponses}" RemainingItemsThreshold="1" RemainingItemsThresholdReachedCommand="{Binding GetLoadMoreCommand}"
+                                                VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" SelectionMode="None">
                                     <CollectionView.ItemsLayout>
                                         <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
                                     </CollectionView.ItemsLayout>

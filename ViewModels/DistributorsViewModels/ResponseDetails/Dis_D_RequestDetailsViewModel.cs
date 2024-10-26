@@ -9,6 +9,7 @@ using TripBliss.Models;
 using TripBliss.Models.ResponseWithDistributor;
 using TripBliss.Pages.DistributorsPages;
 using TripBliss.Pages.DistributorsPages.ResponseDetailes;
+using TripBliss.Pages.Shared;
 
 namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 {
@@ -134,7 +135,6 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 
         async Task GetRequestDetailes(string ReqId)
         {
-
             string DisId = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -157,6 +157,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                     }    
                 }
             }
+
         }
 
        
@@ -198,6 +199,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                         Response = new ResponseWithDistributorDetailsResponse();
                         Response = json.Item1;
 
+                        new Dis_D_RequestDetailsViewModel(Response?.Id!, Rep, _service);
                         //Controls.StaticMember.WayOfTab = 0;
                         //await App.Current!.MainPage!.Navigation.PushAsync(new HomeDistributorsPage(new Dis_HomeViewModel(Rep, _service), Rep, _service));
                     }
@@ -235,7 +237,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                     {
                         UserDialogs.Instance.ShowLoading();
                         string UserToken = await _service.UserToken();
-                        var json = await Rep.PostTRAsync<ResponseWithDistributorReviewDistributorRequest, string>(string.Format($"/Distributor/{Response.DistributorCompanyId}/ResponseWithDistributor/{Response.Id}/ReviewToTravelAgency"), model, UserToken);
+                        var json = await Rep.PostTRAsync<ResponseWithDistributorReviewDistributorRequest, string>(string.Format($"Distributor/{Response.DistributorCompanyId}/ResponseWithDistributor/{Response.Id}/ReviewToTravelAgency"), model, UserToken);
                         UserDialogs.Instance.HideHud();
                         if (json.Item1 == null && json.Item2 == null)
                         {
@@ -288,6 +290,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                             await toast.Show();
                         }
                     }
+
                 }
                 else
                 {

@@ -13,6 +13,7 @@ using TripBliss.Helpers;
 using TripBliss.Constants;
 using Controls.UserDialogs.Maui;
 using CommunityToolkit.Maui.Alerts;
+using TripBliss.Pages.Shared;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {
@@ -62,6 +63,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     RequestDetailes = json;
                 }
             }
+
         }
 
         //void LoadTransportaionData()
@@ -349,6 +351,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                             await toast.Show();
                         }
                     }
+
                 }
                 else
                 {

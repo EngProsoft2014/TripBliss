@@ -66,10 +66,12 @@
                             <Label IsVisible="{Binding IsNotVerfy}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Resend verify to " TextColor="Gray" FontSize="12"></Span>
-                                        <Span Text="{Binding ResendEmail,StringFormat='( {0} )'}" TextColor="#2fb569" FontSize="12"></Span>
-                                        <Span Text=" click" TextColor="Gray" FontSize="12"></Span>
-                                        <Span Text=" here" TextColor="#059ce3" FontSize="13" FontAttributes="Bold">
+                                        <Span Text="{Static res:AppResources.Resend_verify_to}" TextColor="Gray" FontSize="12"></Span>
+                                        <Span Text="{Binding ResendEmail,StringFormat=' ( {0} )'}" TextColor="#2fb569" FontSize="12"></Span>
+                                        <Span Text=" " FontSize="13" FontAttributes="Bold"></Span>
+                                        <Span Text="{Static res:AppResources.click}" TextColor="Gray" FontSize="12"></Span>
+                                        <Span Text=" " FontSize="13" FontAttributes="Bold"></Span>
+                                        <Span Text="{Static res:AppResources.here}" TextColor="#059ce3" FontSize="13" FontAttributes="Bold">
                                             <Span.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding VerfivationClickCommand}"></TapGestureRecognizer>
                                             </Span.GestureRecognizers>
@@ -78,7 +80,7 @@
                                 </Label.FormattedText>
                             </Label>
                             <StackLayout Orientation="Horizontal" Spacing="10">
-                                <Label Text="Waiting time to resend" FontSize="14" TextColor="#333" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center">
+                                <Label Text="{Static res:AppResources.Waiting_time_to_resend}" FontSize="14" TextColor="#333" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center">
 
                                 </Label>
                                 <Label Text="{Binding TimeRemaining}" FontSize="15" FontAttributes="Bold" TextColor="#2fb569" VerticalTextAlignment="Center">

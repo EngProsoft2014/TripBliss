@@ -93,7 +93,7 @@
                 <StackLayout Orientation="Vertical" Margin="0,0">
                     <Label Text="{Static res:AppResources.lblTransportationServices}" FontSize="16" TextColor="DarkOrange" FontAttributes="None" VerticalTextAlignment="Center"></Label>
                     <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" >
-                        <CollectionView ItemsSource="{Binding ActiveTransport}" VerticalOptions="FillAndExpand" SelectionMode="Single">
+                        <CollectionView x:Name="ColActiveTransport" ItemsSource="{Binding ActiveTransport}" VerticalOptions="FillAndExpand" SelectionMode="Single">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid HorizontalOptions="FillAndExpand">
@@ -117,7 +117,10 @@
                                                 </Label>
 
                                                 <StackLayout.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainActivateViewModel}}, Path=SelectTransportaionCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainActivateViewModel}}, Path=SelectTransportaionCommand}"
+                                                                          CommandParameter="{Binding .}">
+                                                        
+                                                    </TapGestureRecognizer>
                                                 </StackLayout.GestureRecognizers>
 
                                             </StackLayout>

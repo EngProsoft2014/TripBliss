@@ -14,7 +14,7 @@ using TripBliss.Pages.DistributorsPages;
 using TripBliss.Pages.MainPopups;
 using TripBliss.Pages.Shared;
 using TripBliss.Pages.Users;
-using TripBliss.ViewModels.Users;
+using TripBliss.ViewModels.Shared.UsersViewModels;
 
 namespace TripBliss.ViewModels.DistributorsViewModels
 {
@@ -38,8 +38,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         {
             if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_Documents))
             {
-                var vm = new DocumentsViewModel(Rep, _service);
-                var page = new DocumentsPage(vm);
+                var vm = new Dis_DocumentsViewModel(Rep, _service);
+                var page = new Dis_DocumentsPage(vm);
                 page.BindingContext = vm;
                 await App.Current!.MainPage!.Navigation.PushAsync(page);
             }

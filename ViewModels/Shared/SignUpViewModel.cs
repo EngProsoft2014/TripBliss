@@ -47,8 +47,6 @@ namespace TripBliss.ViewModels
         string companyName;
         [ObservableProperty]
         string companyPhone;
-        [ObservableProperty]
-        string companyEmail;
 
 
         [RelayCommand]
@@ -64,11 +62,6 @@ namespace TripBliss.ViewModels
                 else if (string.IsNullOrEmpty(CompanyName))
                 {
                     var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_CompanyName, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                    await toast.Show();
-                }
-                else if (string.IsNullOrEmpty(CompanyEmail))
-                {
-                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_CompanyEmail, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else if (string.IsNullOrEmpty(CompanyPhone))
@@ -100,7 +93,7 @@ namespace TripBliss.ViewModels
                     {
                         model.DistributorCompany = new DistributorCompanyRequest();
                         model.DistributorCompany!.CompanyName = CompanyName;
-                        model.DistributorCompany.Email = CompanyEmail;
+                        model.DistributorCompany.Email = null;
                         model.DistributorCompany.Phone = CompanyPhone;
                         model.DistributorCompany.Review = 0;
                     }
@@ -108,7 +101,7 @@ namespace TripBliss.ViewModels
                     {
                         model.TravelAgencyCompany = new TravelAgencyCompanyRequest();
                         model.TravelAgencyCompany!.CompanyName = CompanyName;
-                        model.TravelAgencyCompany.Email = CompanyEmail;
+                        model.TravelAgencyCompany.Email = null;
                         model.TravelAgencyCompany.Phone = CompanyPhone;
                         model.TravelAgencyCompany.Review = 0;
                     }
@@ -157,6 +150,7 @@ namespace TripBliss.ViewModels
                     IsBusy = false;
                 }
             }
+
         }
     }
 }

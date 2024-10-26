@@ -403,6 +403,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to click.
+        /// </summary>
+        internal static string click {
+            get {
+                return ResourceManager.GetString("click", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Complete info.
         /// </summary>
         internal static string Complete_info {
@@ -655,6 +664,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to If you want to finish the request and move it to the History, you should be reviewed for all distributors in this request..
+        /// </summary>
+        internal static string finish_the_request_and_move_it_to_the_History_Msg {
+            get {
+                return ResourceManager.GetString("finish_the_request_and_move_it_to_the_History_Msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Found Problem Internal Server..
         /// </summary>
         internal static string Found_Problem_Internal_Server {
@@ -903,6 +921,15 @@ namespace TripBliss.Resources.Language {
         internal static string hdVisaDetails {
             get {
                 return ResourceManager.GetString("hdVisaDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to here.
+        /// </summary>
+        internal static string here {
+            get {
+                return ResourceManager.GetString("here", resourceCulture);
             }
         }
         
@@ -2041,6 +2068,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please Enter amount.
+        /// </summary>
+        internal static string Please_Enter_ammount {
+            get {
+                return ResourceManager.GetString("Please_Enter_ammount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please make feedback to finish request.
         /// </summary>
         internal static string Please_make_feedback_to_finish_request {
@@ -2329,11 +2365,29 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resend verify to.
+        /// </summary>
+        internal static string Resend_verify_to {
+            get {
+                return ResourceManager.GetString("Resend_verify_to", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Successfuly, for Response Delete.
         /// </summary>
         internal static string ResponseDeleteSuccess {
             get {
                 return ResourceManager.GetString("ResponseDeleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retry.
+        /// </summary>
+        internal static string Retry {
+            get {
+                return ResourceManager.GetString("Retry", resourceCulture);
             }
         }
         
@@ -2361,6 +2415,15 @@ namespace TripBliss.Resources.Language {
         internal static string RoomRef_HotelActive {
             get {
                 return ResourceManager.GetString("RoomRef-HotelActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SAR.
+        /// </summary>
+        internal static string SAR {
+            get {
+                return ResourceManager.GetString("SAR", resourceCulture);
             }
         }
         
@@ -2514,6 +2577,15 @@ namespace TripBliss.Resources.Language {
         internal static string UserDeleteSuccess {
             get {
                 return ResourceManager.GetString("UserDeleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Waiting time to resend.
+        /// </summary>
+        internal static string Waiting_time_to_resend {
+            get {
+                return ResourceManager.GetString("Waiting_time_to_resend", resourceCulture);
             }
         }
         

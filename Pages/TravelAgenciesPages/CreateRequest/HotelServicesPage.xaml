@@ -36,13 +36,15 @@
                     <StackLayout Orientation="Vertical" Padding="15,15,15,25">
                         <Label Text="{Static res:AppResources.lblLocation_HotelSevice}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                            <Picker x:Name="LocPick" TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding Locations}" ItemDisplayBinding="{Binding LocationName}"
-                                    SelectedItem="{Binding SelectedLocation}" SelectedIndexChanged="LocationPicker"></Picker>
+                            <Picker x:Name="LocPick" TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding Locations}" ItemDisplayBinding="{Binding LocationNameLang}"
+                                    SelectedItem="{Binding SelectedLocation}" SelectedIndexChanged="LocationPicker">
+                            </Picker>
                         </Border>
                         <Label Text="{Static res:AppResources.lblHotelName_HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                            <Picker x:Name="HotelPick" TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding Hoteles}" ItemDisplayBinding="{Binding HotelName}"
-                                    SelectedItem="{Binding SelectedHotel}"></Picker>
+                            <Picker x:Name="HotelPick" TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding Hoteles}" ItemDisplayBinding="{Binding HotelNameLang}"
+                                    SelectedItem="{Binding SelectedHotel}">
+                            </Picker>
                         </Border>
                         <StackLayout Orientation="Horizontal" Spacing="35">
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
@@ -62,15 +64,17 @@
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{Static res:AppResources.lblRoomView_HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Picker TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding RoomViews}" ItemDisplayBinding="{Binding RoomViewName}"
-                                            SelectedItem="{Binding SelectedRoomView}"></Picker>
+                                    <Picker TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding RoomViews}" ItemDisplayBinding="{Binding RoomViewNameLang}"
+                                            SelectedItem="{Binding SelectedRoomView}">
+                                    </Picker>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{Static res:AppResources.lblRoomType_HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Picker TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding RoomTypes}" ItemDisplayBinding="{Binding RoomTypeName}"
-                                            SelectedItem="{Binding SelectedRoomType}"></Picker>
+                                    <Picker TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding RoomTypes}" ItemDisplayBinding="{Binding RoomTypeNameLang}"
+                                            SelectedItem="{Binding SelectedRoomType}">
+                                    </Picker>
                                 </Border>
                             </VerticalStackLayout>
                         </StackLayout>
@@ -78,8 +82,9 @@
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{Static res:AppResources.lblMeals_HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Picker TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding Meals}" ItemDisplayBinding="{Binding MealName}"
-                                            SelectedItem="{Binding SelectedMeal}"></Picker>
+                                    <Picker TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding Meals}" ItemDisplayBinding="{Binding MealNameLang}"
+                                            SelectedItem="{Binding SelectedMeal}">
+                                    </Picker>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand">

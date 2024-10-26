@@ -10,8 +10,9 @@ using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Pages.Shared;
 
-namespace TripBliss.ViewModels.Users
+namespace TripBliss.ViewModels.Shared.UsersViewModels
 {
     public partial class AddUserViewModel : BaseViewModel
     {
@@ -61,17 +62,17 @@ namespace TripBliss.ViewModels.Users
                 {
                     IsBusy = true;
                     UserDialogs.Instance.ShowLoading();
-                    model.UserPermision = 2;
-                    model.UserCategory = Preferences.Default.Get(ApiConstants.userCategory, 0);
-                    if (model.UserCategory == 3)
+                    AddModel.UserPermision = 2;
+                    AddModel.UserCategory = Preferences.Default.Get(ApiConstants.userCategory, 0);
+                    if (AddModel.UserCategory == 3)
                     {
-                        model.DistributorCompanyId = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
+                        AddModel.DistributorCompanyId = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
                     }
                     else
                     {
-                        model.TravelAgencyCompanyId = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
+                        AddModel.TravelAgencyCompanyId = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
                     }
-                    var json = await Rep.PostTRAsync<ApplicationUserRequest, ApplicationUserResponse>(Constants.ApiConstants.RegisterApi, model);
+                    var json = await Rep.PostTRAsync<ApplicationUserRequest, ApplicationUserResponse>(Constants.ApiConstants.RegisterApi, AddModel);
 
                     if (json.Item1 != null && json.Item2 == null)
                     {
@@ -90,6 +91,7 @@ namespace TripBliss.ViewModels.Users
                     IsBusy = false;
                 }
             }
+
         } 
         #endregion
     }

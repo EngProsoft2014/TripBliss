@@ -85,6 +85,7 @@ namespace TripBliss.ViewModels
                 }
 
             }
+
         }
 
         [RelayCommand]

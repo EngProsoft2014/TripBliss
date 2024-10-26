@@ -6,8 +6,12 @@
         public string? RequestTravelAgencyId { get; set; }
         public int AirFlightId { get; set; }
         public string? AirLine { get; set; }
+        public string? AirLineAr { get; set; }
+        public string? AirLineLang { get { return Preferences.Default.Get("Lan", "en") == "ar" ? AirLineAr : AirLine; } }
         public int ClassAirFlightId { get; set; }
         public string? ClassName { get; set; }
+        public string? ClassNameAr { get; set; }
+        public string? ClassNameLang { get { return Preferences.Default.Get("Lan", "en") == "ar" ? ClassNameAr : ClassName; } }
         public DateTime Date { get; set; }
         public string? AirportFrom { get; set; }
         public string? AirportTo { get; set; }

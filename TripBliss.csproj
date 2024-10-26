@@ -166,6 +166,9 @@
 	  <Compile Update="Pages\DistributorsPages\Dis_AccountPage.xaml.cs">
 	    <DependentUpon>Dis_AccountPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\DistributorsPages\Dis_DocumentsPage.xaml.cs">
+	    <DependentUpon>Dis_DocumentsPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\TravelAgenciesPages\CreateRequest\ChooseDistributorPage.xaml.cs">
 	    <DependentUpon>ChooseDistributorPage.xaml</DependentUpon>
 	  </Compile>
@@ -196,8 +199,8 @@
 	  <Compile Update="Pages\TravelAgenciesPages\RequestDetails\VisaServicePage.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\Shared\DocumentsPage.xaml.cs">
-	    <DependentUpon>DocumentsPage.xaml</DependentUpon>
+	  <Compile Update="Pages\TravelAgenciesPages\Tr_DocumentsPage.xaml.cs">
+	    <DependentUpon>Tr_DocumentsPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\Users\AddUserPage.xaml.cs">
 	    <DependentUpon>AddUserPage.xaml</DependentUpon>
@@ -241,6 +244,9 @@
 	  <MauiXaml Update="Pages\DistributorsPages\ResponseDetails\Ds_ReviewPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\DistributorsPages\Dis_DocumentsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\Shared\ChangePassPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -281,6 +287,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\MainPopups\LanguagePopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Shared\NoInternetPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Shared\PdfViewerPage.xaml">
@@ -358,7 +367,7 @@
 	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\VisaServicePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Shared\DocumentsPage.xaml">
+	  <MauiXaml Update="Pages\TravelAgenciesPages\Tr_DocumentsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\TravelAgenciesPages\Tr_AccountPage.xaml">

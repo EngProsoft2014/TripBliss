@@ -7,6 +7,7 @@ using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages.ActivateDetailsPages;
+using TripBliss.Pages.Shared;
 using TripBliss.ViewModels.ActivateViewModels;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
@@ -114,6 +115,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     CarBrands = json;
                 }
             }
+
         }
 
         async Task GetCarModels()
@@ -147,6 +149,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     CarTypes = json;
                 }
             }
+
         }
         #endregion
 

@@ -13,6 +13,7 @@ using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Models.Visa;
 using TripBliss.Pages.ActivateDetailsPages;
+using TripBliss.Pages.Shared;
 using TripBliss.Pages.TravelAgenciesPages.ActivateDetailsPages;
 using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 using TripBliss.ViewModels.ActivateViewModels;
@@ -104,6 +105,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     Visas = json;
                 }
             }
+
         }
         #endregion
 

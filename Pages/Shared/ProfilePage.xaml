@@ -30,50 +30,50 @@
             <StackLayout Spacing="20" HorizontalOptions="FillAndExpand" Margin="20,0">
 
 
-                <StackLayout>
+                <StackLayout Margin="0,0,0,10">
                     <Image VerticalOptions="CenterAndExpand">
                         <Image.Source>
                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="100"></FontImageSource>
                         </Image.Source>
                     </Image>
-                    <StackLayout HorizontalOptions="Center" Spacing="0" Margin="0,10,0,10">
+                    <!--<StackLayout HorizontalOptions="Center" Spacing="0" Margin="0,10,0,10">
 
                         <Label 
-                                     FontAttributes="Bold" Text="{Binding Account.userName}"
+                                     FontAttributes="Bold" Text="{Binding Account.UserName}"
                                      FontSize="14"
                                      HorizontalTextAlignment="Center"
                                      TextColor="#333">
                         </Label>
 
-                        <Label Text="{Binding Account.email}"
+                        <Label Text="{Binding Account.Email}"
                                          FontSize="10"
                                          HorizontalTextAlignment="Center"
                                          TextColor="#333"></Label>
 
-                    </StackLayout>
+                    </StackLayout>-->
                 </StackLayout>
 
 
 
                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray">
-                    <Entry Text="{Binding Account.email}" Keyboard="Text" TextColor="Black" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcEmail_SignUpPage}" HorizontalTextAlignment="Center"
+                    <Entry Text="{Binding Account.Email}" Keyboard="Text" TextColor="Black" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcEmail_SignUpPage}" HorizontalTextAlignment="Center"
                            Margin="10,2" HorizontalOptions="CenterAndExpand" IsReadOnly="True"></Entry>
                 </Border>
                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray">
-                    <Entry Text="{Binding Account.userName}" Keyboard="Numeric" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcUserName_Login}"
+                    <Entry Text="{Binding Account.UserName}" Keyboard="Numeric" TextColor="Black" FontSize="14" FontAttributes="Bold" Placeholder="{Static res:AppResources.plcUserName_Login}"
                            HorizontalTextAlignment="Center" Margin="10,2" IsReadOnly="True"></Entry>
                 </Border>
                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray">
-                    <Entry Text="{Binding Account.userCategory}" Placeholder="{Static res:AppResources.plcUserCategory_Profile}" Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                    <Entry Text="{Binding Account.UserCategory}" Placeholder="{Static res:AppResources.plcUserCategory_Profile}" Keyboard="Email" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center"
                            Margin="10,2" IsReadOnly="True"></Entry>
                 </Border>
                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray">
-                    <Entry Text="{Binding Account.userPermision}" Placeholder="{Static res:AppResources.plcUserPermission_Profile}" Keyboard="Text" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                    <Entry Text="{Binding Account.UserPermision}" Placeholder="{Static res:AppResources.plcUserPermission_Profile}" Keyboard="Text" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center"
                            Margin="10,2" IsReadOnly="True"></Entry>
                 </Border>
                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray">
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,2">
-                        <Entry Text="{Binding Account.companyName}" Placeholder="{Static res:AppResources.plcCompanyName_SignUp}" FontAutoScalingEnabled="False" Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" 
+                        <Entry Text="{Binding Account.CompanyName}" Placeholder="{Static res:AppResources.plcCompanyName_SignUp}" FontAutoScalingEnabled="False" Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" 
                                 HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" IsReadOnly="True"></Entry>
                     </StackLayout>
                 </Border>
@@ -87,7 +87,7 @@
                             BackgroundColor="White" CornerRadius="5" TextColor="Red" BorderColor="Red" BorderWidth="1" Margin="0,0,0,0" FontAttributes="Bold" HorizontalOptions="End"
                             Command="{Binding DisableAccountCommand}">
                         <Button.Triggers>
-                            <DataTrigger TargetType="Button" Binding="{Binding Account.userPermision}" Value="Owner">
+                            <DataTrigger TargetType="Button" Binding="{Binding Account.UserPermision}" Value="Owner">
                                 <Setter Property="IsVisible" Value="False"></Setter>
                             </DataTrigger>
                         </Button.Triggers>

@@ -12,17 +12,16 @@ public partial class HomeDistributorsPage : Controls.CustomControl
 {
     IGenericRepository Rep;
     readonly Services.Data.ServicesService _service;
-    Dis_HomeViewModel Model;
+    Dis_HomeViewModel ViewModel;
     Dis_DistributorsViewModel distributorsViewModel;
 
     [Obsolete]
-    public HomeDistributorsPage(Dis_HomeViewModel model,IGenericRepository generic, Services.Data.ServicesService service)
+    public HomeDistributorsPage(Dis_HomeViewModel viewModel,IGenericRepository generic, Services.Data.ServicesService service)
 	{
 		InitializeComponent();
         Rep = generic;
         _service = service; 
-        BindingContext = model;  
-        Model = model;
+        BindingContext = ViewModel = viewModel;  
 
         chkAll.IsChecked = true;
         chkAll.Color = Color.FromHex("#46b356");
@@ -111,7 +110,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
             chkActive.Color = Color.FromHex("#46b356");
             chkNotActive.Color = Color.FromHex("#a1a1a1");
             chkNotActive.IsChecked = false;
-            colRequests.ItemsSource = Model.Requests.Where(a=>a.TotalPriceAgentAccept >0);
+            colRequests.ItemsSource = ViewModel.Responses.Where(a=>a.TotalPriceAgentAccept >0);
         }
         else
         {
@@ -137,7 +136,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
             chkActive.Color = Color.FromHex("#a1a1a1");
             chkActive.IsChecked = false;
             chkNotActive.Color = Color.FromHex("#46b356");
-            colRequests.ItemsSource = Model.Requests.Where(a => a.TotalPriceAgentAccept == 0);
+            colRequests.ItemsSource = ViewModel.Responses.Where(a => a.TotalPriceAgentAccept == 0);
         }
         else
         {
@@ -163,7 +162,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
             chkActive.IsChecked = false;
             chkNotActive.Color = Color.FromHex("#a1a1a1");
             chkNotActive.IsChecked = false;
-            colRequests.ItemsSource = Model.Requests;
+            colRequests.ItemsSource = ViewModel.Responses;
         }
         else
         {
@@ -183,7 +182,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
         Controls.StaticMember.WayOfTab = (int)e.NewIndex;
         if ((int)e.NewIndex == 0)
         {
-            HomeView.BindingContext = new Dis_HomeViewModel(Rep, _service);
+            HomeView.BindingContext = ViewModel = new Dis_HomeViewModel(Rep, _service);
 
             if (!Constants.Permissions.CheckPermission(Constants.Permissions.Show_Home_Requests))
             {
@@ -194,6 +193,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
         if ((int)e.NewIndex == 1)
         {
             AgencyView.BindingContext = distributorsViewModel = new Dis_DistributorsViewModel(Rep, _service);
+
             Controls.StaticMember.ShowSendOfferBtn = true;
         }
         if ((int)e.NewIndex == 2)
@@ -214,4 +214,6 @@ public partial class HomeDistributorsPage : Controls.CustomControl
     {
         TrColc.ItemsSource = distributorsViewModel.CompanyResponses!.Where(x => (x.CompanyName!).ToLower().Contains(e.NewTextValue.ToLower()));
     }
+
+
 }

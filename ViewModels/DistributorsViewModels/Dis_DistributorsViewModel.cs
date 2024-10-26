@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using Microsoft.AspNet.SignalR.Client.Http;
+using Syncfusion.Maui.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Constants;
+using TripBliss.DataPaginated;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages;
@@ -28,7 +30,11 @@ namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
     {
         #region Prop
         [ObservableProperty]
-        ObservableCollection<TravelAgencyCompanyResponse> companyResponses = new ObservableCollection<TravelAgencyCompanyResponse>(); 
+        ObservableCollection<TravelAgencyCompanyResponse> companyResponses = new ObservableCollection<TravelAgencyCompanyResponse>();
+        [ObservableProperty]
+        public ObservableCollection<TravelAgencyCompanyResponse> agenciesInPage = new ObservableCollection<TravelAgencyCompanyResponse>();
+        public int PageNumber { get; set; }
+        public bool IsHasNext { get; set; }
         #endregion
 
         #region Services
@@ -48,33 +54,77 @@ namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
         #region Methods
         async void Init()
         {
+            PageNumber = 1;
+            IsHasNext =true;
+            await LoadAgency();
+        }
+
+        public async Task LoadAgency()
+        {
+            IsBusy = false;
+
             if (Constants.Permissions.CheckPermission(Constants.Permissions.DS_Show_Agencies))
             {
-                await LoadAgency();
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                {
+                    string UserToken = await _service.UserToken();
+                    if (!string.IsNullOrEmpty(UserToken))
+                    {
+                        UserDialogs.Instance.ShowLoading();
+                        var json = await Rep.GetAsync<PagenationList<TravelAgencyCompanyResponse>>(ApiConstants.GetTravelCompanysApi + $"/{PageNumber}", UserToken);
+                        UserDialogs.Instance.HideHud();
+                        if (json != null)
+                        {
+                            PagenationList<TravelAgencyCompanyResponse> AgenciesPage = json;
+                            
+                            IsHasNext = AgenciesPage.HasNextPage;
+
+                            AgenciesInPage = new ObservableCollection<TravelAgencyCompanyResponse>(AgenciesPage?.DataModel!);
+
+                            if (CompanyResponses.Count == 0)
+                            {
+                                CompanyResponses = new ObservableCollection<TravelAgencyCompanyResponse>(AgenciesInPage.OrderBy(x => x.CompanyName).ToList());
+                            }
+                            else
+                            {
+                                if (CompanyResponses != AgenciesInPage)
+                                {
+                                    AgenciesInPage.ForEach(f => CompanyResponses.Add(f));
+                                }
+                            }
+
+                            PageNumber += 1;
+                        }
+
+                        //var toast = Toast.Make(CompanyResponses.Count().ToString(), CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        //await toast.Show();
+                    }
+                }
+
             }
             else
             {
                 var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
-        }
+            
+            IsBusy = true;
 
-        async Task LoadAgency()
-        {
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            {
-                string UserToken = await _service.UserToken();
-                if (!string.IsNullOrEmpty(UserToken))
-                {
-                    UserDialogs.Instance.ShowLoading();
-                    var json = await Rep.GetAsync<ObservableCollection<TravelAgencyCompanyResponse>>(ApiConstants.GetTravelCompanysApi, UserToken);
-                    UserDialogs.Instance.HideHud();
-                    if (json != null)
-                    {
-                        CompanyResponses = json;
-                    }
-                }
-            }
+
+            //if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            //{
+            //    string UserToken = await _service.UserToken();
+            //    if (!string.IsNullOrEmpty(UserToken))
+            //    {
+            //        UserDialogs.Instance.ShowLoading();
+            //        var json = await Rep.GetAsync<ObservableCollection<TravelAgencyCompanyResponse>>(ApiConstants.GetTravelCompanysApi, UserToken);
+            //        UserDialogs.Instance.HideHud();
+            //        if (json != null)
+            //        {
+            //            CompanyResponses = json;
+            //        }
+            //    }
+            //}
         } 
         #endregion
 
@@ -91,6 +141,15 @@ namespace TripBliss.ViewModels.DistributorsViewModels.CreateResponse
             var page = new Dis_ProviderDetailsPage();
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
+        }
+
+        [RelayCommand]
+        async Task GetLoadMore()
+        {
+            if (IsHasNext)
+            {
+                await LoadAgency();
+            }
         }
         #endregion
 

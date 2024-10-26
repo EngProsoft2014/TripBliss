@@ -8,6 +8,7 @@ using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Exceptions;
 using Newtonsoft.Json;
+using TripBliss.Pages.Shared;
 
 
 
@@ -111,24 +112,28 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         //Test
         public async Task GetAirLinesInfo()
         {
-            var client = new HttpClient();
-            var request = new HttpRequestMessage
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri("https://iata-and-icao-codes.p.rapidapi.com/airlines"),
-                Headers =
+                var client = new HttpClient();
+                var request = new HttpRequestMessage
+                {
+                    Method = HttpMethod.Get,
+                    RequestUri = new Uri("https://iata-and-icao-codes.p.rapidapi.com/airlines"),
+                    Headers =
                         {
                             { "x-rapidapi-key", "6fccfd7c71msh7934183b73f2229p11ce70jsn0061fc86c83f" },
                             { "x-rapidapi-host", "iata-and-icao-codes.p.rapidapi.com" },
                         },
-            };
-            using (var response = await client.SendAsync(request))
-            {
-                response.EnsureSuccessStatusCode();
-                var json = await response.Content.ReadAsStringAsync();
-                var body = JsonConvert.DeserializeObject<ObservableCollection<AirLines>>(json);
-                LstAirLines = body!;
+                };
+                using (var response = await client.SendAsync(request))
+                {
+                    response.EnsureSuccessStatusCode();
+                    var json = await response.Content.ReadAsStringAsync();
+                    var body = JsonConvert.DeserializeObject<ObservableCollection<AirLines>>(json);
+                    LstAirLines = body!;
+                }
             }
+
         }
 
         async Task GetAirFlights()
@@ -145,6 +150,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     AirFlights = json;
                 }
             }
+
         }
 
         async Task GetClasses()
@@ -161,6 +167,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     Classes = json;
                 }
             }
+
         }
         #endregion
 
@@ -269,6 +276,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
                 Request.AirFlightId = AirFlightResponseModel.AirFlightId = AirFlightSelected!.Id;
                 AirFlightResponseModel.AirLine = AirFlightSelected.AirLine;
+                AirFlightResponseModel.AirLineAr = AirFlightSelected.AirLineAr;
                 Request.ClassAirFlightId = AirFlightResponseModel.ClassAirFlightId = ClassSelected!.Id;
                 AirFlightResponseModel.ClassName = ClassSelected.ClassName;
                 AirFlightResponseModel.AirportFrom = Request.AirportFrom;
@@ -280,14 +288,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 AirFlightResponseModel.InfoAdultCount = Request.InfoAdultCount;
                 AirFlightResponseModel.InfoChildCount = Request.InfoChildCount;
                 AirFlightResponseModel.InfoInfantCount = Request.InfoInfantCount;
-                
                 AirFlightResponseModel.TotalPerson = Request.TotalPerson;
                 AirFlightResponseModel.TotalPerson = Request.TotalPerson = Request.InfoChildCount + Request.InfoAdultCount + Request.InfoInfantCount;
-
-                Controls.StaticMember.EndRequestStatic = (Controls.StaticMember.EndRequestStatic != null && Request.Date > Controls.StaticMember.EndRequestStatic) ? Request.Date : Controls.StaticMember.EndRequestStatic;
-
+                Controls.StaticMember.EndRequestStatic = (Request.Date > Controls.StaticMember.EndRequestStatic) ? Request.Date : Controls.StaticMember.EndRequestStatic;
                 AirFlightClose.Invoke(Request, AirFlightResponseModel);
-
                 await App.Current!.MainPage!.Navigation.PopAsync();
 
                 UserDialogs.Instance.HideHud();

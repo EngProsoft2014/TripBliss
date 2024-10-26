@@ -37,7 +37,7 @@
                     <StackLayout Orientation="Vertical" Padding="15,15,15,25">
                         <Label Text="{Static res:AppResources.lblCarrier_AirService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                            <!--<Picker TextColor="Black" FontSize="14" ItemsSource="{Binding AirFlights}" ItemDisplayBinding="{Binding AirLine}" SelectedItem="{Binding AirFlightSelected}"></Picker>-->
+                            <!--<Picker TextColor="Black" FontSize="14" ItemsSource="{Binding AirFlights}" ItemDisplayBinding="{Binding AirLineLang}" SelectedItem="{Binding AirFlightSelected}"></Picker>-->
                             <editors:SfComboBox x:Name="comboBox" 
                                                   ItemsSource="{Binding LstAirLines}"
 
@@ -66,7 +66,7 @@
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{Static res:AppResources.lblClass_AirService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                                    <Picker TextColor="Black" FontSize="14" ItemsSource="{Binding Classes}" FontAutoScalingEnabled="False" ItemDisplayBinding="{Binding ClassName}" SelectedItem="{Binding ClassSelected}"></Picker>
+                                    <Picker TextColor="Black" FontSize="14" ItemsSource="{Binding Classes}" FontAutoScalingEnabled="False" ItemDisplayBinding="{Binding ClassNameLang}" SelectedItem="{Binding ClassSelected}"></Picker>
                                 </Border>
                             </VerticalStackLayout>
                         </StackLayout>
@@ -88,14 +88,14 @@
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" Spacing="35">
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
-                                <Label Text="{Static res:AppResources.lblETD_AirService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Label Text="ETD" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                     <TimePicker TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" FontAutoScalingEnabled="False"
                                        Time="{Binding AirFlightRequestModel.ETD}"></TimePicker>
                                 </Border>
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
-                                <Label Text="{Static res:AppResources.lblETA_AirService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Label Text="ETA" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                     <TimePicker TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" FontAutoScalingEnabled="False"
                                        Time="{Binding AirFlightRequestModel.ETA}"></TimePicker>

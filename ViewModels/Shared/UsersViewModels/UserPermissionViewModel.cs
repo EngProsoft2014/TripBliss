@@ -15,10 +15,11 @@ using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Models.Premission;
+using TripBliss.Pages.Shared;
 
 
 
-namespace TripBliss.ViewModels.Shared
+namespace TripBliss.ViewModels.Shared.UsersViewModels
 {
 
     public partial class UserPermissionViewModel : BaseViewModel
@@ -87,6 +88,7 @@ namespace TripBliss.ViewModels.Shared
                     await toast.Show();
                 }
             }
+
         }
         #endregion
 
@@ -117,6 +119,7 @@ namespace TripBliss.ViewModels.Shared
                 }
                 UserDialogs.Instance.HideHud();
             }
+
         }
 
         void OrganizeLists(ObservableCollection<PremissionResponse> Lst)

@@ -30,10 +30,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
         ObservableCollection<ResponseWithDistributorVisaDetailsResponse> lstTrVisaDetails = new ObservableCollection<ResponseWithDistributorVisaDetailsResponse>();
         [ObservableProperty]
         ObservableCollection<ResponseWithDistributorVisaDetailsResponse> lstDisVisaDetails = new ObservableCollection<ResponseWithDistributorVisaDetailsResponse>();
-        [ObservableProperty]
-        ObservableCollection<TravelAgencyGuestResponse> guests = new ObservableCollection<TravelAgencyGuestResponse>();
-        [ObservableProperty]
-        TravelAgencyGuestResponse selectedGuest = new TravelAgencyGuestResponse();
+
 
         [ObservableProperty]
         ImageSource imageFile;
@@ -116,6 +113,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                     }
                 }
             }
+
         }
         #endregion
 
@@ -297,6 +295,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                     }
                     
                 }
+
             }
             else
             {

@@ -942,4 +942,28 @@
   <data name="Error_downloading_PDF" xml:space="preserve">
     <value>Error downloading PDF:</value>
   </data>
+  <data name="finish_the_request_and_move_it_to_the_History_Msg" xml:space="preserve">
+    <value>If you want to finish the request and move it to the History, you should be reviewed for all distributors in this request.</value>
+  </data>
+  <data name="Resend_verify_to" xml:space="preserve">
+    <value>Resend verify to</value>
+  </data>
+  <data name="click" xml:space="preserve">
+    <value>click</value>
+  </data>
+  <data name="here" xml:space="preserve">
+    <value>here</value>
+  </data>
+  <data name="Waiting_time_to_resend" xml:space="preserve">
+    <value>Waiting time to resend</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="Please_Enter_ammount" xml:space="preserve">
+    <value>Please Enter amount</value>
+  </data>
+  <data name="SAR" xml:space="preserve">
+    <value>SAR</value>
+  </data>
 </root>

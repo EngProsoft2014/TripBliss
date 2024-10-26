@@ -59,7 +59,7 @@
                                                 </DataTrigger>
                                             </Picker.Triggers>
                                         </Picker>
-                                        <Label Text="{Binding ServiceModdel.RequestTravelAgencyTransport.TypeName}" TextColor="Black" FontSize="14"
+                                        <Label Text="{Binding ServiceModdel.RequestTravelAgencyTransport.TypeNameLang}" TextColor="Black" FontSize="14"
                                                IsVisible="False" Margin="10">
                                             <Label.Triggers>
                                                 <DataTrigger TargetType="Label" Binding="{Binding ServiceModdel.AcceptAgen}" Value="True">
@@ -83,7 +83,7 @@
                                                 </DataTrigger>
                                             </Picker.Triggers>
                                         </Picker>
-                                        <Label Text="{Binding ServiceModdel.RequestTravelAgencyTransport.BrandName}" TextColor="Black" FontSize="14"
+                                        <Label Text="{Binding ServiceModdel.RequestTravelAgencyTransport.BrandNameLang}" TextColor="Black" FontSize="14"
                                                 IsVisible="False" Margin="10">
                                             <Label.Triggers>
                                                 <DataTrigger TargetType="Label" Binding="{Binding ServiceModdel.AcceptAgen}" Value="True">
@@ -109,7 +109,7 @@
                                                 </DataTrigger>
                                             </Picker.Triggers>
                                         </Picker>
-                                        <Label Text="{Binding ServiceModdel.RequestTravelAgencyTransport.ModelName}" TextColor="Black" FontSize="14"
+                                        <Label Text="{Binding ServiceModdel.RequestTravelAgencyTransport.ModelNameLang}" TextColor="Black" FontSize="14"
         IsVisible="False" Margin="10">
                                             <Label.Triggers>
                                                 <DataTrigger TargetType="Label" Binding="{Binding ServiceModdel.AcceptAgen}" Value="True">

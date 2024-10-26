@@ -2,9 +2,10 @@
 {
     public record DistributorCompanyDocRequest
     {
-        public string? DistributorCompanyId { get; set; }
+        public string? Id { get; set; }
         public string? NameDoc { get; set; }
         public string? Notes { get; set; }
-        public string? UploadFile { get; set; }
+        public byte[]? ImgFile { get; set; } = default!;
+        public string? Extension { get; set; }
     }
 }

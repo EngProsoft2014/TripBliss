@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
-using TripBliss.Models.Account;
+using TripBliss.Models;
 using TripBliss.Pages;
 using TripBliss.Pages.MainPopups;
 using TripBliss.Pages.Shared;
@@ -23,7 +23,7 @@ namespace TripBliss.ViewModels
     public partial class ProfileViewModel : BaseViewModel
     {
         [ObservableProperty]
-        AccountResponse account;
+        ApplicationUserProfileResponse account;
         #region Service
         readonly IGenericRepository Rep;
         readonly Services.Data.ServicesService _service;
@@ -111,7 +111,7 @@ namespace TripBliss.ViewModels
                 if (!string.IsNullOrEmpty(UserToken))
                 {
 
-                    var json = await Rep.GetAsync<AccountResponse>(ApiConstants.GetUserAccountApi, UserToken);
+                    var json = await Rep.GetAsync<ApplicationUserProfileResponse>(ApiConstants.GetUserAccountApi, UserToken);
 
                     if (json != null)
                     {
@@ -120,6 +120,7 @@ namespace TripBliss.ViewModels
                 }
                 UserDialogs.Instance.HideHud();
             }
+
 
             IsBusy = true;
         } 

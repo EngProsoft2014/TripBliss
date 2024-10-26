@@ -12,7 +12,7 @@ namespace TripBliss.Models
         public string? Phone { get; set; }
         public string? Email { get; set; }
         public string? Logo { get; set; }
-        public string? UrlLogo { get; set; }
+        public string UrlLogo { get; set; } = string.Empty;
         public DateOnly? ExpireDateAcc { get; set; }
         public bool? ShowAllDistributors { get; set; }
         public int? Review { get; set; }

@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
+using Microsoft.AspNet.SignalR.Client;
 using Syncfusion.Maui.Data;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Constants;
+using TripBliss.DataPaginated;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Models.DistributorCompany;
 using TripBliss.Pages;
+using TripBliss.Pages.Shared;
 using TripBliss.Pages.TravelAgenciesPages;
 using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
 
@@ -26,9 +29,13 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [ObservableProperty]
         public ObservableCollection<DistributorCompanyResponse> distributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
         [ObservableProperty]
+        public ObservableCollection<DistributorCompanyResponse> distributorCompanysInPage = new ObservableCollection<DistributorCompanyResponse>();
+        [ObservableProperty]
         public ObservableCollection<TravelAgencywithDistributorsResponse> favouriteDistributorCompanys = new ObservableCollection<TravelAgencywithDistributorsResponse>();
         [ObservableProperty]
         public int indexTap;
+        public int PageNumber { get; set; }
+        public bool IsHasNext { get; set; }
         #endregion
 
         #region Services
@@ -51,6 +58,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             if (Constants.Permissions.CheckPermission(Constants.Permissions.TR_Show_Distributors))
             {
+                PageNumber = 1;
+                IsHasNext = true;
                 UserDialogs.Instance.ShowLoading();
                 await GetDistributors();
                 await GetFavouiterDistributors();
@@ -62,27 +71,51 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 await toast.Show();
             }
         }
-        async Task GetDistributors()
+
+        public async Task GetDistributors()
         {
-            IsBusy = true;
+            IsBusy = false;
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
                 string UserToken = await _service.UserToken();
 
-                var json = await Rep.GetAsync<ObservableCollection<DistributorCompanyResponse>>(ApiConstants.GetDistributorCompaniesApi + $"{id}", UserToken);
+                UserDialogs.Instance.ShowLoading();
+                var json = await Rep.GetAsync<PagenationList<DistributorCompanyResponse>>(ApiConstants.GetDistributorCompaniesApi + $"{id}/{PageNumber}", UserToken);
+                UserDialogs.Instance.HideHud();
 
                 if (json != null)
                 {
+                    PagenationList<DistributorCompanyResponse> Distributors = json;
+                  
+                    IsHasNext = Distributors.HasNextPage;
 
-                    DistributorCompanys!.Clear();
-                    DistributorCompanys = json;
+                    DistributorCompanysInPage = new ObservableCollection<DistributorCompanyResponse>(Distributors?.DataModel!);
+
+                    if (DistributorCompanys.Count == 0)
+                    {
+                        DistributorCompanys = new ObservableCollection<DistributorCompanyResponse>(DistributorCompanysInPage.OrderBy(x => x.CompanyName).ToList());
+                    }
+                    else
+                    {
+                        if (DistributorCompanys != DistributorCompanysInPage)
+                        {
+                            DistributorCompanysInPage.ForEach(f=> DistributorCompanys.Add(f));         
+                        }      
+                    }
+                    PageNumber += 1;
                 }
+
+                //var toast = Toast.Make(DistributorCompanys.Count().ToString(), CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                //await toast.Show();
             }
 
-            IsBusy = false;
+
+            IsBusy = true;
         }
+
+        
         async Task GetFavouiterDistributors()
         {
             IsBusy = true;
@@ -122,10 +155,11 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
 
+
             IsBusy = false;
         }
 
-        async Task<string?> DeletFavouiterDistributors(int RecordId)
+        async Task<string?> DeletFavouiterDistributors(string RecordId)
         {
             IsBusy = true;
 
@@ -146,6 +180,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     await toast.Show();
                 }
             }
+
 
             IsBusy = false;
             return null;
@@ -205,7 +240,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     TravelAgencywithDistributorsResponse? Model = FavouriteDistributorCompanys!.FirstOrDefault(a => a.DistributorCompany!.Id! == Item.Id!);
                     if (Model != null)
                     {
-                        string? Stat = await DeletFavouiterDistributors(Model!.Id);
+                        string? Stat = await DeletFavouiterDistributors(Model.Id!);
                         if (!string.IsNullOrEmpty(Stat) && Stat == "No Content")
                         {
                             FavouriteDistributorCompanys!.Remove(Model!);
@@ -225,7 +260,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             if (!string.IsNullOrEmpty(model.DistributorCompanyId) && model.DistributorCompany != null)
             {
-                string? Stat = await DeletFavouiterDistributors(model.Id);
+                string? Stat = await DeletFavouiterDistributors(model.Id!);
                 if (!string.IsNullOrEmpty(Stat) && Stat == "No Content")
                 {
                     FavouriteDistributorCompanys!.Remove(model);
@@ -236,7 +271,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         async Task Selection(DistributorCompanyResponse model)
         {
-            var vm = new Tr_ProviderDetailsViewModel(model.Id,Rep,_service);
+            var vm = new Tr_ProviderDetailsViewModel(model.Id, Rep, _service);
             var page = new Tr_ProviderDetailsPage();
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -249,6 +284,15 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             var page = new Tr_ProviderDetailsPage();
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
+        }
+
+        [RelayCommand]
+        async Task GetLoadMore()
+        {
+            if (IsHasNext)
+            {
+                await GetDistributors();
+            }
         }
         #endregion
 

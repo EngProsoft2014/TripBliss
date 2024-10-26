@@ -59,7 +59,7 @@
                             <StackLayout Orientation="Vertical" VerticalOptions="{OnPlatform Android=FillAndExpand, iOS=StartAndExpand}" Spacing="10">
                                 <Label Text="{Static res:AppResources.hdrMyRequests}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"
                                    TextColor="Black" VerticalOptions="Start" Margin="{OnPlatform Android='20,20,20,5', iOS='20,0,20,5'}"></Label>
-                                <CollectionView ItemsSource="{Binding Requests}" VerticalScrollBarVisibility="Never" 
+                                <CollectionView ItemsSource="{Binding Requests}" VerticalScrollBarVisibility="Never" RemainingItemsThreshold="1" RemainingItemsThresholdReachedCommand="{Binding GetLoadMoreCommand}"
                                             VerticalOptions="FillAndExpand" SelectionMode="Single">
                                     <CollectionView.ItemsLayout>
                                         <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
@@ -70,7 +70,13 @@
                                                 <StackLayout Orientation="Horizontal" ToolTipProperties.Text="{Binding ToolTip}">
                                                     <VerticalStackLayout Padding="10" Spacing="5">
                                                         <Label Text="{Binding RequestName}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
-                                                        <Label Text="{Binding ChoosenServices}" FontAutoScalingEnabled="False" FontSize="12" TextColor="#ff7700" Margin="0,3,0,0"></Label>
+                                                        <Label Text="{Binding ChoosenServices}" FontAutoScalingEnabled="False" FontSize="12" TextColor="#ff7700" Margin="0,3,0,0">
+                                                            <Label.Triggers>
+                                                                <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_HomeViewModel}}, Path=Lang}" Value="ar">
+                                                                    <Setter Property="Text" Value="{Binding ChoosenServicesAr}"></Setter>
+                                                                </DataTrigger>
+                                                            </Label.Triggers>
+                                                        </Label>
                                                         <HorizontalStackLayout Margin="0,3,0,0" Spacing="2">
                                                             <Label Text="{Static res:AppResources.lblDate_TranService}" FontSize="12" TextColor="Blue"></Label>
                                                             <Label Text=":" FontSize="12" TextColor="Blue"></Label>
@@ -95,11 +101,11 @@
                                                             <Setter Property="ToolTipProperties.Text" Value="{Binding ToolTipDisAgree}"></Setter>
                                                         </DataTrigger>
                                                     </StackLayout.Triggers>
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_HomeViewModel}}, Path=SelectionCommand}"
+                                                                            CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                    </StackLayout.GestureRecognizers>
                                                 </StackLayout>
-                                                <Border.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_HomeViewModel}}, Path=SelectionCommand}"
-                                                     CommandParameter="{Binding}"></TapGestureRecognizer>
-                                                </Border.GestureRecognizers>
                                                 <Border.Triggers>
                                                     <DataTrigger TargetType="Border" Binding="{Binding IsAlertReview}" Value="True">
                                                         <Setter Property="Stroke" Value="Red"></Setter>
@@ -111,6 +117,7 @@
                                                         <Setter Property="StrokeThickness" Value="3"></Setter>
                                                     </DataTrigger>
                                                 </Border.Triggers>
+                                                
                                             </Border>
                                         </DataTemplate>
                                     </CollectionView.ItemTemplate>
@@ -177,7 +184,8 @@
                                             <tabView:SfTabItem.Content>
                                                 <ContentView x:Name="conviewDist">
                                                     <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20">
-                                                        <CollectionView ItemsSource="{Binding DistributorCompanys}" VerticalOptions="FillAndExpand" SelectionMode="None">
+                                                        <CollectionView ItemsSource="{Binding DistributorCompanys}" VerticalOptions="FillAndExpand" SelectionMode="None" 
+                                                                        RemainingItemsThreshold="1" RemainingItemsThresholdReachedCommand="{Binding GetLoadMoreCommand}">
                                                             <CollectionView.ItemsLayout>
                                                                 <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
                                                             </CollectionView.ItemsLayout>
@@ -461,6 +469,11 @@
                                     <Border.Shadow>
                                         <Shadow  Brush="{OnPlatform Android=DarkGray,iOS=LightGray}" Opacity="1"></Shadow>
                                     </Border.Shadow>
+                                    <Border.Triggers>
+                                        <DataTrigger TargetType="Border" Binding="{Binding Offers.Count}" Value="0">
+                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                        </DataTrigger>
+                                    </Border.Triggers>
                                 </Border>
                                 <CollectionView x:Name="colOffers" ItemsSource="{Binding Offers}" VerticalOptions="FillAndExpand" SelectionMode="Single"
                                                 Margin="0,10,0,0" VerticalScrollBarVisibility="Never">
@@ -518,8 +531,31 @@
                                             </Border>
                                         </DataTemplate>
                                     </CollectionView.ItemTemplate>
+                                    <CollectionView.Triggers>
+                                        <DataTrigger TargetType="CollectionView" Binding="{Binding Offers.Count}" Value="0">
+                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                            <Setter Property="HeightRequest" Value="0"></Setter>
+                                        </DataTrigger>
+                                    </CollectionView.Triggers>
                                 </CollectionView>
+
+                                <!--No Data-->
+                                <StackLayout x:Name="stkNoData2" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Image Source="noresult.png">
+                                        <Image.Triggers>
+                                            <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                                                <Setter Property="Source" Value="noresultar.png"></Setter>
+                                            </DataTrigger>
+                                        </Image.Triggers>
+                                    </Image>
+                                    <StackLayout.Triggers>
+                                        <DataTrigger TargetType="StackLayout" Binding="{Binding Offers.Count}" Value="0">
+                                            <Setter Property="IsVisible" Value="True"></Setter>
+                                        </DataTrigger>
+                                    </StackLayout.Triggers>
+                                </StackLayout>
                             </StackLayout>
+
                             <ContentView.Triggers>
                                 <DataTrigger TargetType="ContentView" Binding="{Binding Lang}" Value="ar">
                                     <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
@@ -709,7 +745,7 @@
                                 </CollectionView>
 
                                 <!--No Data-->
-                                <StackLayout x:Name="stkNoData2" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                <StackLayout x:Name="stkNoData3" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                     <Image Source="noresult.png">
                                         <Image.Triggers>
                                             <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">

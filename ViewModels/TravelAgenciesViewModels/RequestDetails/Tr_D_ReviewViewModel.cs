@@ -40,6 +40,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         {
             IsBusy = false;
             ReviewClose.Invoke(model);
+            IsBusy = true;
         }
 
         [RelayCommand]

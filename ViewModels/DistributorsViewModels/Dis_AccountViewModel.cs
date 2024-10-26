@@ -67,10 +67,13 @@ namespace TripBliss.ViewModels.DistributorsViewModels
                     {
                         json.ImageFile = ImageSource.FromUri(new Uri($"{Helpers.Utility.ServerUrl}{json.UrlLogo}"));
                         CompanyResponse = json;
-
+                        CompanyResponse.UrlLogo = json.UrlLogo == null ? "" : json.UrlLogo;
                     }
                 }
-
+            }
+            else
+            {
+                await App.Current!.MainPage!.Navigation.PushAsync(new NoInternetPage(Rep,_service));
             }
 
             IsBusy = false;
@@ -120,8 +123,9 @@ namespace TripBliss.ViewModels.DistributorsViewModels
                     string UserToken = await _service.UserToken();
 
                     string id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
+                    UserDialogs.Instance.ShowLoading();
                     var json = await Rep.PutAsync<DistributorCompanyRequest>(ApiConstants.PutDistCompanyDetailsApi + id, CompanyRequest, UserToken);
-
+                    UserDialogs.Instance.HideHud();
                     if (json != null)
                     {
                         await GetCompanyDetiles();
@@ -173,11 +177,11 @@ namespace TripBliss.ViewModels.DistributorsViewModels
             if (answer)
             {
                 IsBusy = false;
-                UserDialogs.Instance.ShowLoading();
 
                 string UserToken = await _service.UserToken();
-
+                UserDialogs.Instance.ShowLoading();
                 var json = await Rep.PutAsync<string>(ApiConstants.PutDSCompanyAccountDelete + CompanyResponse.Id + "/ToggleActive", null, UserToken);
+                UserDialogs.Instance.HideHud();
 
                 if (string.IsNullOrEmpty(json))
                 {
@@ -198,7 +202,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels
                     await toast.Show();
                 }
 
-                UserDialogs.Instance.HideHud();
+                
                 IsBusy = true;
             }
         }

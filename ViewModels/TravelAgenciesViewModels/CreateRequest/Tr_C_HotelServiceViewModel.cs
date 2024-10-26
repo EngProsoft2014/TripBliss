@@ -12,6 +12,7 @@ using TripBliss.Constants;
 using CommunityToolkit.Maui.Alerts;
 using Controls.UserDialogs.Maui;
 using Microsoft.AspNet.SignalR.Client.Http;
+using TripBliss.Pages.Shared;
 
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
@@ -130,7 +131,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
 
-           
         }
 
         async Task GetHotels()
@@ -149,7 +149,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
 
-            
         }
 
         async Task GetMeals()
@@ -167,7 +166,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
 
-            
         }
 
         async Task GetRoomTypes()
@@ -186,7 +184,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
 
-            
         }
 
         async Task GetRoomViews()
@@ -205,7 +202,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
 
-            
         } 
         #endregion
 
@@ -289,13 +285,16 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 request.RoomTypeId = HotelResponseModel!.RoomTypeId = SelectedRoomType!.Id;
 
                 HotelResponseModel!.HotelName = SelectedHotel!.HotelName;
+                HotelResponseModel!.HotelNameAr = SelectedHotel!.HotelNameAr;
                 HotelResponseModel!.CheckIn = request.CheckIn;
                 HotelResponseModel!.CheckOut = request.CheckOut;
                 HotelResponseModel!.Notes = request.Notes;
                 HotelResponseModel!.RoomViewName = SelectedRoomView!.RoomViewName;
+                HotelResponseModel!.RoomViewNameAr = SelectedRoomView!.RoomViewNameAr;
                 HotelResponseModel!.LocationName = SelectedLocation!.LocationName;
+                HotelResponseModel!.LocationNameAr = SelectedLocation!.LocationNameAr;
                 HotelResponseModel!.RoomCount = request.RoomCount;
-                Controls.StaticMember.EndRequestStatic = (Controls.StaticMember.EndRequestStatic != null && request.CheckOut > Controls.StaticMember.EndRequestStatic) ? request.CheckOut : Controls.StaticMember.EndRequestStatic;
+                Controls.StaticMember.EndRequestStatic = (request.CheckOut > Controls.StaticMember.EndRequestStatic) ? request.CheckOut : Controls.StaticMember.EndRequestStatic;
                 HotelClose.Invoke(request, HotelResponseModel);
                 await App.Current!.MainPage!.Navigation.PopAsync();
 

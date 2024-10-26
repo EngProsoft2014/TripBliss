@@ -44,7 +44,7 @@
                         <Label Text="{Static res:AppResources.lblLocation_HotelSevice}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                             <VerticalStackLayout>
-                                <Picker x:Name="LocPick" TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding Locations}" ItemDisplayBinding="{Binding LocationName}"
+                                <Picker x:Name="LocPick" TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding Locations}" ItemDisplayBinding="{Binding LocationNameLang}"
                                         SelectedItem="{Binding SelectedLocation}" SelectedIndexChanged="LocationPicker">
                                     <Picker.Triggers>
                                         <DataTrigger TargetType="Picker" Binding="{Binding HotelService.AcceptAgen}" Value="True">
@@ -52,7 +52,7 @@
                                         </DataTrigger>
                                     </Picker.Triggers>
                                 </Picker>
-                                <Label Text="{Binding HotelService.RequestTravelAgencyHotel.LocationName}" TextColor="Black" FontSize="14"
+                                <Label Text="{Binding HotelService.RequestTravelAgencyHotel.LocationNameLang}" TextColor="Black" FontSize="14"
                                        IsVisible="False" Margin="10">
                                     <Label.Triggers>
                                         <DataTrigger TargetType="Label" Binding="{Binding HotelService.AcceptAgen}" Value="True">
@@ -65,7 +65,7 @@
                         <Label Text="{Static res:AppResources.lblHotelName_HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                             <VerticalStackLayout>
-                                <Picker x:Name="HotelPick" TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding Hoteles}" ItemDisplayBinding="{Binding HotelName}"
+                                <Picker x:Name="HotelPick" TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding Hoteles}" ItemDisplayBinding="{Binding HotelNameLang}"
                                 SelectedItem="{Binding SelectedHotel}">
                                     <Picker.Triggers>
                                         <DataTrigger TargetType="Picker" Binding="{Binding HotelService.AcceptAgen}" Value="True">
@@ -73,7 +73,7 @@
                                         </DataTrigger>
                                     </Picker.Triggers>
                                 </Picker>
-                                <Label Text="{Binding HotelService.RequestTravelAgencyHotel.HotelName}" TextColor="Black" FontSize="14"
+                                <Label Text="{Binding HotelService.RequestTravelAgencyHotel.HotelNameLang}" TextColor="Black" FontSize="14"
                                        Margin="10" IsVisible="False">
                                     <Label.Triggers>
                                         <DataTrigger TargetType="Label" Binding="{Binding HotelService.AcceptAgen}" Value="True">
@@ -103,7 +103,7 @@
                                 <Label Text="{Static res:AppResources.lblRoomView_HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                     <VerticalStackLayout>
-                                        <Picker TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding RoomViews}" ItemDisplayBinding="{Binding RoomViewName}"
+                                        <Picker TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding RoomViews}" ItemDisplayBinding="{Binding RoomViewNameLang}"
                                                 SelectedItem="{Binding SelectedRoomView}">
                                             <Picker.Triggers>
                                                 <DataTrigger TargetType="Picker" Binding="{Binding HotelService.AcceptAgen}" Value="True">
@@ -111,7 +111,7 @@
                                                 </DataTrigger>
                                             </Picker.Triggers>
                                         </Picker>
-                                        <Label Text="{Binding HotelService.RequestTravelAgencyHotel.RoomViewName}" TextColor="Black" FontSize="14"
+                                        <Label Text="{Binding HotelService.RequestTravelAgencyHotel.RoomViewNameLang}" TextColor="Black" FontSize="14"
                                                Margin="10" IsVisible="False">
                                             <Label.Triggers>
                                                 <DataTrigger TargetType="Label" Binding="{Binding HotelService.AcceptAgen}" Value="True">
@@ -127,7 +127,7 @@
                                 <Label Text="{Static res:AppResources.lblRoomType_HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                     <VerticalStackLayout>
-                                        <Picker TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding RoomTypes}" ItemDisplayBinding="{Binding RoomTypeName}"
+                                        <Picker TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding RoomTypes}" ItemDisplayBinding="{Binding RoomTypeNameLang}"
                                                 SelectedItem="{Binding SelectedRoomType}">
                                             <Picker.Triggers>
                                                 <DataTrigger TargetType="Picker" Binding="{Binding HotelService.AcceptAgen}" Value="True">
@@ -135,7 +135,7 @@
                                                 </DataTrigger>
                                             </Picker.Triggers>
                                         </Picker>
-                                        <Label Text="{Binding HotelService.RequestTravelAgencyHotel.RoomTypeName}" TextColor="Black" FontSize="14"
+                                        <Label Text="{Binding HotelService.RequestTravelAgencyHotel.RoomTypeNameLang}" TextColor="Black" FontSize="14"
                                                Margin="10" IsVisible="False">
                                             <Label.Triggers>
                                                 <DataTrigger TargetType="Label" Binding="{Binding HotelService.AcceptAgen}" Value="True">
@@ -153,7 +153,7 @@
                                 <Label Text="{Static res:AppResources.lblMeals_HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                                 <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                                     <VerticalStackLayout>
-                                        <Picker TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding Meals}" ItemDisplayBinding="{Binding MealName}"
+                                        <Picker TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding Meals}" ItemDisplayBinding="{Binding MealNameLang}"
                                         SelectedItem="{Binding SelectedMeal}">
                                             <Picker.Triggers>
                                                 <DataTrigger TargetType="Picker" Binding="{Binding HotelService.AcceptAgen}" Value="True">
@@ -161,7 +161,7 @@
                                                 </DataTrigger>
                                             </Picker.Triggers>
                                         </Picker>
-                                        <Label Text="{Binding HotelService.RequestTravelAgencyHotel.MealName}" TextColor="Black" FontSize="14"
+                                        <Label Text="{Binding HotelService.RequestTravelAgencyHotel.MealNameLang}" TextColor="Black" FontSize="14"
                                                Margin="10" IsVisible="False">
                                             <Label.Triggers>
                                                 <DataTrigger TargetType="Label" Binding="{Binding HotelService.AcceptAgen}" Value="True">

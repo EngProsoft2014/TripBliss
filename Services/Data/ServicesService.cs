@@ -11,6 +11,7 @@ using TripBliss.Models;
 using TripBliss.Constants;
 using CommunityToolkit.Maui.Alerts;
 using Controls.UserDialogs.Maui;
+using TripBliss.Pages.Shared;
 
 
 
@@ -90,6 +91,10 @@ namespace TripBliss.Services.Data
                             await toast.Show();
                         }
                     }
+                }
+                else
+                {
+                    await App.Current!.MainPage!.Navigation.PushAsync(new NoInternetPage(Rep, this));
                 }
             }
             else

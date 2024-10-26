@@ -26,7 +26,7 @@
         <StackLayout Spacing="20" VerticalOptions="FillAndExpand">
             <Label Text="{Static res:AppResources.Review}" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
 
-            <rating:SfRating ItemSpacing="10" ItemSize="30" Margin="0,0,0,20" HorizontalOptions="CenterAndExpand" Value="{Binding ModelReview.ReviewToDistributor}">
+            <rating:SfRating ItemSpacing="10" ItemSize="30" Margin="0,0,0,20" HorizontalOptions="CenterAndExpand" Value="{Binding ModelReview.ReviewToTravelAgency}">
                 <rating:SfRating.RatingSettings>
                     <rating:RatingSettings RatedFill="Gold" UnratedFill="White"/>
                 </rating:SfRating.RatingSettings>
@@ -36,7 +36,7 @@
                 <Label Text="{Static res:AppResources.Feedback_for_TravelAgency}" TextColor="#333" FontSize="14" FontAttributes="Bold" HorizontalOptions="StartAndExpand"></Label>
 
                 <Border StrokeShape="RoundRectangle 5">
-                    <Editor Placeholder="{Static res:AppResources.Enter_Feedback}" Text="{Binding ModelReview.ReviewTravelAgentNote}" HeightRequest="120"></Editor>
+                    <Editor Placeholder="{Static res:AppResources.Enter_Feedback}" Text="{Binding ModelReview.ReviewDistributorNote}" HeightRequest="120" FontSize="14" TextColor="#333"></Editor>
 
                 </Border>
             </StackLayout>

@@ -14,80 +14,79 @@ namespace TripBliss.ViewModels.DistributorsViewModels.Offer
     public partial class Dis_O_OfferViewersViewModel : BaseViewModel
     {
         [ObservableProperty]
-        public ObservableCollection<TravelAgenciesModel>? travelAgencies;
+        public ObservableCollection<TravelAgencyCompanyResponse>? travelAgencies = new ObservableCollection<TravelAgencyCompanyResponse>();
 
         IGenericRepository Rep;
         public Dis_O_OfferViewersViewModel(IGenericRepository generic)
         {
             Rep = generic;
-            TravelAgencies = new ObservableCollection<TravelAgenciesModel>();
             LoadData();
         }
 
 
         void LoadData()
         {
-            TravelAgencies.Add(new TravelAgenciesModel
+            TravelAgencies.Add(new TravelAgencyCompanyResponse
             {
                 Address = "Egypt",
-                Name = "Akl Group",
+                CompanyName = "Akl Group",
                 Phone = "+20155154110",
-                Rate = "4.5",
-                Services = "Hotel - Ticketing - Transportation"
+                ReviewToTravelAgency = 4.5,
+                Logo = "Hotel - Ticketing - Transportation"
             });
 
-            TravelAgencies.Add(new TravelAgenciesModel
+            TravelAgencies.Add(new TravelAgencyCompanyResponse
             {
                 Address = "Saudi Arabia",
-                Name = "Al Faisal Company",
+                CompanyName = "Al Faisal Company",
                 Phone = "+966123456789",
-                Rate = "4.2",
-                Services = "Hotel - Transportation"
+                ReviewToTravelAgency = 4.2,
+                Logo = "Hotel - Transportation"
             });
 
-            TravelAgencies.Add(new TravelAgenciesModel
+            TravelAgencies.Add(new TravelAgencyCompanyResponse
             {
                 Address = "United Arab Emirates",
-                Name = "Dubai Services",
+                CompanyName = "Dubai Services",
                 Phone = "+971987654321",
-                Rate = "4.7",
-                Services = "Hotel - Ticketing - Tours"
+                ReviewToTravelAgency = 4.7,
+                Logo = "Hotel - Ticketing - Tours"
             });
 
-            TravelAgencies.Add(new TravelAgenciesModel
+            TravelAgencies.Add(new TravelAgencyCompanyResponse
             {
                 Address = "Qatar",
-                Name = "Qatar Hospitality",
+                CompanyName = "Qatar Hospitality",
                 Phone = "+974654321987",
-                Rate = "4.3",
-                Services = "Hotel - Transportation - Ticketing"
+                ReviewToTravelAgency = 4.3,
+                Logo = "Hotel - Transportation - Ticketing"
             });
 
-            TravelAgencies.Add(new TravelAgenciesModel
+            TravelAgencies.Add(new TravelAgencyCompanyResponse
             {
                 Address = "Kuwait",
-                Name = "Kuwait Travels",
+                CompanyName = "Kuwait Travels",
                 Phone = "+965321654987",
-                Rate = "4.6",
-                Services = "Hotel - Ticketing - Transportation"
+                ReviewToTravelAgency = 4.6,
+                Logo = "Hotel - Ticketing - Transportation"
             });
 
-            TravelAgencies.Add(new TravelAgenciesModel
+            TravelAgencies.Add(new TravelAgencyCompanyResponse
             {
                 Address = "Bahrain",
-                Name = "Bahrain Tour Services",
+                CompanyName = "Bahrain Tour Services",
                 Phone = "+973789456123",
-                Rate = "4.4",
-                Services = "Hotel - Tours - Transportation"
+                ReviewToTravelAgency = 4.4,
+                Logo = "Hotel - Tours - Transportation"
             });
 
-            TravelAgencies.Add(new TravelAgenciesModel
+            TravelAgencies.Add(new TravelAgencyCompanyResponse
             {
                 Address = "Oman",
-                Name = "Oman Travel Agency",
+                CompanyName = "Oman Travel Agency",
                 Phone = "+968456123789",
-                Rate = "4.8",
-                Services = "Hotel - Ticketing - Transportation"
+                ReviewToTravelAgency = 4.8,
+                Logo = "Hotel - Ticketing - Transportation"
             });
 
         }

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              xmlns:res="clr-namespace:TripBliss.Resources.Language"
+                        xmlns:vm="clr-namespace:TripBliss.ViewModels.Shared.UsersViewModels"
              x:Class="TripBliss.Pages.Shared.UserPermissionPage"
              Title="UserPermissionPage"
              BackgroundColor="White"
@@ -65,7 +66,13 @@
                                 <DataTemplate>
                                     <VerticalStackLayout>
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                            <Label Text="{Binding claimTitle}" TextColor="#333" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <Label Text="{Binding claimTitle}" TextColor="#333" FontSize="13" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:UserPermissionViewModel}}, Path=Lang}" Value="ar">
+                                                        <Setter Property="Text" Value="{Binding claimTitleAr}"></Setter>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
                                             <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
 
                                         </StackLayout>
@@ -124,7 +131,13 @@
                                 <DataTemplate>
                                     <VerticalStackLayout>
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                            <Label Text="{Binding claimTitle}" FontSize="13" TextColor="#333" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <Label Text="{Binding claimTitle}" FontSize="13" TextColor="#333" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:UserPermissionViewModel}}, Path=Lang}" Value="ar">
+                                                        <Setter Property="Text" Value="{Binding claimTitleAr}"></Setter>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
                                             <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
 
                                         </StackLayout>
@@ -179,7 +192,13 @@
                                 <DataTemplate>
                                     <VerticalStackLayout>
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                            <Label Text="{Binding claimTitle}" FontSize="13" TextColor="#333" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <Label Text="{Binding claimTitle}" FontSize="13" TextColor="#333" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:UserPermissionViewModel}}, Path=Lang}" Value="ar">
+                                                        <Setter Property="Text" Value="{Binding claimTitleAr}"></Setter>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
                                             <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
 
                                         </StackLayout>
@@ -235,7 +254,13 @@
                                 <DataTemplate>
                                     <VerticalStackLayout>
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                            <Label Text="{Binding claimTitle}" FontSize="13" TextColor="#333" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <Label Text="{Binding claimTitle}" FontSize="13" TextColor="#333" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:UserPermissionViewModel}}, Path=Lang}" Value="ar">
+                                                        <Setter Property="Text" Value="{Binding claimTitleAr}"></Setter>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
                                             <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
 
                                         </StackLayout>
@@ -291,7 +316,13 @@
                                 <DataTemplate>
                                     <VerticalStackLayout>
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                            <Label Text="{Binding claimTitle}" FontSize="13" TextColor="#333" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <Label Text="{Binding claimTitle}" FontSize="13" TextColor="#333" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:UserPermissionViewModel}}, Path=Lang}" Value="ar">
+                                                        <Setter Property="Text" Value="{Binding claimTitleAr}"></Setter>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
                                             <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
 
                                         </StackLayout>
@@ -347,7 +378,13 @@
                                 <DataTemplate>
                                     <VerticalStackLayout>
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                            <Label Text="{Binding claimTitle}" FontSize="13" TextColor="#333" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <Label Text="{Binding claimTitle}" FontSize="13" TextColor="#333" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:UserPermissionViewModel}}, Path=Lang}" Value="ar">
+                                                        <Setter Property="Text" Value="{Binding claimTitleAr}"></Setter>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
                                             <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
 
                                         </StackLayout>
@@ -403,7 +440,13 @@
                                 <DataTemplate>
                                     <VerticalStackLayout>
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                            <Label Text="{Binding claimTitle}" FontSize="13" TextColor="#333" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"></Label>
+                                            <Label Text="{Binding claimTitle}" FontSize="13" TextColor="#333" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:UserPermissionViewModel}}, Path=Lang}" Value="ar">
+                                                        <Setter Property="Text" Value="{Binding claimTitleAr}"></Setter>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
                                             <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding choosenPermission}" Color="Green"></CheckBox>
 
                                         </StackLayout>

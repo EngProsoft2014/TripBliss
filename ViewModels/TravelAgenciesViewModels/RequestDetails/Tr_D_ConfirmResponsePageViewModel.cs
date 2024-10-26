@@ -19,6 +19,7 @@ using TripBliss.Pages.TravelAgenciesPages;
 using Mopups.Services;
 using TripBliss.Models.ResponseWithDistributor;
 using Newtonsoft.Json;
+using TripBliss.Pages.Shared;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {
@@ -33,11 +34,13 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         bool isShowReviewBtn;
         [ObservableProperty]
         bool isRequestHistory;
+
         #endregion
 
         #region Services
         IGenericRepository Rep;
         readonly Services.Data.ServicesService _service;
+        ResponseWithDistributorResponse _distributorResponse;
         #endregion
 
         #region Cons
@@ -45,7 +48,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         {
             Rep = generic;
             _service = service;
-            _ = Init(distributorResponse.DistributorCompanyId, distributorResponse.Id);
+            _distributorResponse = distributorResponse;
+            
+            Init(distributorResponse.DistributorCompanyId, distributorResponse.Id!);
         }
         #endregion
 
@@ -63,8 +68,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 bool result = CheckChooseServices();
                 if (result)
                 {
-                    var vm = new Tr_D_PaymentViewModel(Response.Id, Response.TotalPriceAgentAccept, Response.TotalPayment, Rep, _service);
-                    var page = new PaymentPage(vm);
+                    await GetRequestDetailes(_distributorResponse.DistributorCompanyId, _distributorResponse.Id!);
+
+                    var vm = new Tr_D_PaymentViewModel(Response.Id!, Response.TotalPriceAgentAccept, Response.TotalPayment, _distributorResponse, Rep, _service);
+                    var page = new PaymentPage(vm, _distributorResponse, Rep,_service);
                     page.BindingContext = vm;
                     await App.Current!.MainPage!.Navigation.PushAsync(page);
                 }
@@ -91,7 +98,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             {
                 if (Response.TotalPayment > 0)
                 {
-                    await Init(Response.DistributorCompanyId, Response.Id);
+                    Init(Response.DistributorCompanyId, Response.Id!);
                     var toast = Toast.Make(TripBliss.Resources.Language.AppResources.already_paid_cannot_be_modified, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
@@ -114,6 +121,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                             await toast.Show();
 
                             IsShowPaymentBtn = true;
+                            await GetRequestDetailes(json.Item1.DistributorCompanyId, json.Item1.Id!);
                             //Controls.StaticMember.WayOfTab = 0;
                             //await App.Current!.MainPage!.Navigation.PushAsync(new HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service));
                         }
@@ -217,7 +225,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         #endregion
 
         #region Methodes
-        async Task Init(string distId, string ReqId)
+        async void Init(string distId, string ReqId)
         {
             UserDialogs.Instance.ShowLoading();
             await GetRequestDetailes(distId, ReqId);
@@ -253,12 +261,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                         else
                         {
                             IsShowPaymentBtn = false;
+                            CheckShowReview();
                         }
-                        CheckShowReview();
+                        
                     }
 
                 }
             }
+
 
             IsBusy = true;
         }
@@ -270,7 +280,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             var ResponseTrans = Response?.ResponseWithDistributorTransport?.Where(x => x.AcceptAgen == true).FirstOrDefault();
             var ResponseVisa = Response?.ResponseWithDistributorVisa?.Where(x => x.AcceptAgen == true).FirstOrDefault();
 
-            if (ResponseAirFlt != null || ResponseHotel != null || ResponseTrans != null || ResponseVisa != null)
+            if ((ResponseAirFlt != null || ResponseHotel != null || ResponseTrans != null || ResponseVisa != null) && (Response?.TotalPriceAgentAccept > 0 && Response?.TotalPriceAgentAccept != Response?.TotalPayment))
             {
                 return true;
             }
@@ -287,18 +297,15 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 if(string.IsNullOrEmpty(Response?.ReviewUserTravelAgentName))
                 {
                     IsShowReviewBtn = true;
-                    IsShowPaymentBtn = false;
                 }
                 else
                 {
                     IsShowReviewBtn = false;
-                    IsShowPaymentBtn = false;
                 }
             }
             else
             {
                 IsShowReviewBtn = false;
-                IsShowPaymentBtn = true;
             }
         }
 
@@ -308,7 +315,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
             IsBusy = false;
 
-            UserDialogs.Instance.ShowLoading();
+            
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
 
@@ -321,9 +328,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     Notes = "",
                     Refnumber = "stetrrcc",
                 };
-
+                UserDialogs.Instance.ShowLoading();
                 var json = await Rep.PostTRAsync<ResponseWithDistributorPaymentRequest, ResponseWithDistributorPaymentResponse>(ApiConstants.AllPaymentApi + $"{Response.Id}/ResponseWithDistributorPayment", paymentRequest, UserToken);
-
+                UserDialogs.Instance.HideHud();
                 if (json.Item1 != null)
                 {
 
@@ -333,7 +340,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
                 }
             }
-            UserDialogs.Instance.HideHud();
+
             IsBusy = true;
         }
         #endregion

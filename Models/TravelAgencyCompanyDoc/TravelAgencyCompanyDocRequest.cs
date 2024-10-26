@@ -2,7 +2,7 @@
 {
     public record TravelAgencyCompanyDocRequest
     {
-        public int Id { get; set; }
+        public string? Id { get; set; }
         public string? NameDoc { get; set; }
         public string? Notes { get; set; }
         public byte[]? ImgFile { get; set; } = default!;

@@ -35,11 +35,12 @@
         public bool ReviewDistributorShow { get; set; }
 
         public string ChoosenServices { get; set; } = string.Empty;
+        public string ChoosenServicesAr { get; set; } = string.Empty;
         public DateTime? CreateDate { get; set; }
 
         public DateTime? EndRequest { get; set; }
-        //public bool IsShowExpiredTemplete { get { return EndRequest != null && EndRequest > DateTime.Now.AddDays(3) ? true : false; } }
         public bool? IsAlertReview { get; set; }
         public string ToolTip { get { return IsAlertReview == true ? TripBliss.Resources.Language.AppResources.Please_make_feedback_to_finish_request : ""; } }
+
     }
 }

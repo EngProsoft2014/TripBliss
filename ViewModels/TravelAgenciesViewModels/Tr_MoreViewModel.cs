@@ -9,7 +9,7 @@ using TripBliss.Pages.MainPopups;
 using TripBliss.Pages.Shared;
 using TripBliss.Pages.TravelAgenciesPages;
 using TripBliss.Pages.Users;
-using TripBliss.ViewModels.Users;
+using TripBliss.ViewModels.Shared.UsersViewModels;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels
 {
@@ -59,8 +59,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         {
             if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_Documents))
             {
-                var vm = new DocumentsViewModel(Rep, _service);
-                var page = new DocumentsPage(vm);
+                var vm = new Tr_DocumentsViewModel(Rep, _service);
+                var page = new Tr_DocumentsPage(vm);
                 page.BindingContext = vm;
                 await App.Current!.MainPage!.Navigation.PushAsync(page);
             }

@@ -72,9 +72,9 @@
                                             <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{Binding LocationName}" TextColor="Gray" FontSize="12"></Span>
+                                                        <Span Text="{Binding LocationNameLang}" TextColor="Gray" FontSize="12"></Span>
                                                         <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                        <Span Text="{Binding HotelName}" TextColor="Gray" FontSize="12"></Span>
+                                                        <Span Text="{Binding HotelNameLang}" TextColor="Gray" FontSize="12"></Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -125,7 +125,7 @@
                                 <Grid HorizontalOptions="FillAndExpand">
                                     <ScrollView Orientation="Horizontal" Padding="3,0,5,0" HorizontalScrollBarVisibility="Never">
                                         <StackLayout Orientation="Horizontal" Spacing="10" Padding="3" Margin="0,5" VerticalOptions="Center">
-                                            <Label Text="{Binding TypeName}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="12" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                            <Label Text="{Binding TypeNameLang}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="12" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
                                             <Label TextColor="Gray" FontAutoScalingEnabled="False" FontSize="12" VerticalTextAlignment="Center">
                                                 <Label.Text>
                                                     <MultiBinding StringFormat="{}{0} - {1}">
@@ -253,7 +253,8 @@
                                             <Label FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{Binding VisaName}" TextColor="Gray" FontSize="12"></Span>
+                                                        <Span Text="{Binding VisaNameLang}" TextColor="Gray" FontSize="12">
+                                                        </Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>

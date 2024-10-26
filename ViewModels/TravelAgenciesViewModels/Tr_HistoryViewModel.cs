@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Pages.Shared;
+using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels
 {
@@ -37,8 +40,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             }
         }
 
-
-
         #region Methods
         async void Init()
         {
@@ -65,6 +66,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                         }
                     }
                 }
+
             }
             else
             {
@@ -73,9 +75,25 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             }
         }
 
+        #region RelayCommand
+        [RelayCommand]
+        async Task Selection(RequestTravelAgencyResponse model)
+        {
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_Request_Details_History))
+            {
+                await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new RequestDetails.Tr_D_RequestDetailsViewModel(model.Id!, Rep, _service)));
+            }
+            else
+            {
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+        }
+        #endregion
+
         //void LoadData()
         //{
-            
+
         //    Requests.Add(new RequestClassModel()
         //    {
         //        Date = DateOnly.FromDateTime(DateTime.Now),
@@ -148,7 +166,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         //        Services = "Hotel - Tickting - Transportion"
 
         //    });
-            
+
         //}
         #endregion
     }

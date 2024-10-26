@@ -14,9 +14,9 @@ using TripBliss.Pages.Shared;
 using TripBliss.Services;
 
 
-namespace TripBliss.ViewModels
+namespace TripBliss.ViewModels.TravelAgenciesViewModels
 {
-    public partial class DocumentsViewModel : BaseViewModel
+    public partial class Tr_DocumentsViewModel : BaseViewModel
     {
         [ObservableProperty]
         ObservableCollection<TravelAgencyCompanyDocResponse> lstDoc = new ObservableCollection<TravelAgencyCompanyDocResponse>();
@@ -30,7 +30,7 @@ namespace TripBliss.ViewModels
         #endregion
 
         #region Cons
-        public DocumentsViewModel(IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_DocumentsViewModel(IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
@@ -42,7 +42,7 @@ namespace TripBliss.ViewModels
         [RelayCommand]
         void OnBackPressed()
         {
-            App.Current!.MainPage!.Navigation.PopAsync();
+            Application.Current!.MainPage!.Navigation.PopAsync();
         }
 
         [RelayCommand]
@@ -55,27 +55,27 @@ namespace TripBliss.ViewModels
                 //page.BindingContext = vm;
                 //await App.Current!.MainPage!.Navigation.PushAsync(page);
 
-                await App.Current!.MainPage!.Navigation.PushAsync(new PdfViewerPage(model.UrlUploadFile));
+                await Application.Current!.MainPage!.Navigation.PushAsync(new PdfViewerPage(model.UrlUploadFile));
             }
             else
             {
                 if (string.IsNullOrEmpty(model.UrlUploadFile))
                 {
-                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.No_image_here, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(Resources.Language.AppResources.No_image_here, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else
                 {
-                    ImageSource sou = ImageSource.FromUri(new Uri(model.UrlUploadFile!)); 
+                    ImageSource sou = ImageSource.FromUri(new Uri(model.UrlUploadFile!));
                     IsBusy = false;
                     UserDialogs.Instance.ShowLoading();
                     await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(sou));
                     UserDialogs.Instance.HideHud();
                     IsBusy = true;
                 }
-                
+
             }
-            
+
         }
 
         [RelayCommand]
@@ -85,7 +85,7 @@ namespace TripBliss.ViewModels
             {
                 if (string.IsNullOrEmpty(model.NameDoc))
                 {
-                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_FileName, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(Resources.Language.AppResources.Required_FileName, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else
@@ -102,27 +102,27 @@ namespace TripBliss.ViewModels
                             {
                                 // Get the file path to save it
                                 var stream = await photo.OpenReadAsync();
-                                model.ImgFile = Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream));
+                                model.ImgFile = Convert.ToBase64String(Utility.ReadToEnd(stream));
                                 model.Extension = Path.GetExtension(photo.FullPath);
-                                
+
                                 await DoneUploadDoc(model);
-                                
+
                             }
                         }
                         else
                         {
-                            await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.error, TripBliss.Resources.Language.AppResources.Camera_not_supported, TripBliss.Resources.Language.AppResources.OK);
+                            await Application.Current!.MainPage!.DisplayAlert(Resources.Language.AppResources.error, Resources.Language.AppResources.Camera_not_supported, Resources.Language.AppResources.OK);
                         }
                     }
                     catch (Exception ex)
                     {
-                        await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.error, ex.Message, TripBliss.Resources.Language.AppResources.OK);
+                        await Application.Current!.MainPage!.DisplayAlert(Resources.Language.AppResources.error, ex.Message, Resources.Language.AppResources.OK);
                     }
                 }
             }
             else
             {
-                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
 
@@ -134,7 +134,7 @@ namespace TripBliss.ViewModels
             {
                 if (string.IsNullOrEmpty(model.NameDoc))
                 {
-                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_FileName, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(Resources.Language.AppResources.Required_FileName, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else
@@ -148,7 +148,7 @@ namespace TripBliss.ViewModels
                         {
                             // Open a stream to read the photo
                             var stream = await photo.OpenReadAsync();
-                            model.ImgFile = Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream));
+                            model.ImgFile = Convert.ToBase64String(Utility.ReadToEnd(stream));
                             model.Extension = Path.GetExtension(photo.FullPath);
                             await DoneUploadDoc(model);
                         }
@@ -161,7 +161,7 @@ namespace TripBliss.ViewModels
             }
             else
             {
-                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
 
@@ -173,7 +173,7 @@ namespace TripBliss.ViewModels
             {
                 if (string.IsNullOrEmpty(model.NameDoc))
                 {
-                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_FileName, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(Resources.Language.AppResources.Required_FileName, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else
@@ -189,20 +189,20 @@ namespace TripBliss.ViewModels
                         if (result != null && result.FileName.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
                         {
                             var stream = await result.OpenReadAsync();
-                            model.ImgFile = Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream));
+                            model.ImgFile = Convert.ToBase64String(Utility.ReadToEnd(stream));
                             model.Extension = ".pdf";
                             await DoneUploadDoc(model);
                         }
                     }
                     catch (Exception ex)
                     {
-                        await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.error, $"{ex.Message}", TripBliss.Resources.Language.AppResources.OK);
+                        await Application.Current!.MainPage!.DisplayAlert(Resources.Language.AppResources.error, $"{ex.Message}", Resources.Language.AppResources.OK);
                     }
                 }
             }
             else
             {
-                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                var toast = Toast.Make(Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
 
@@ -219,23 +219,17 @@ namespace TripBliss.ViewModels
 
         async Task GetDocs() // TravelAgencyCompanyDocResponse used for Distributors and Travel Agency
         {
-            
+
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 string UserToken = await _service.UserToken();
                 UserDialogs.Instance.ShowLoading();
                 if (!string.IsNullOrEmpty(UserToken))
                 {
-                    string Id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "") ;
+                    string Id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
                     string uri = $"{ApiConstants.GetTravelDocApi}{Id}/TravelAgencyCompanyDoc";
-                    if (Id == "")
-                    {
-                        Id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
-                        uri = $"{ApiConstants.GetDistDocApi}{Id}/DistributorCompanyDoc";
-                    }
-                    
+
                     var json = await Rep.GetAsync<ObservableCollection<TravelAgencyCompanyDocResponse>>(uri, UserToken);
-                    
 
                     if (json != null)
                     {
@@ -247,7 +241,7 @@ namespace TripBliss.ViewModels
                         }
                         else if (json.Count == 1)
                         {
-                            json[0].UrlUploadFile = $"{Helpers.Utility.ServerUrl}{json[0].UrlUploadFile}";
+                            json[0].UrlUploadFile = $"{Utility.ServerUrl}{json[0].UrlUploadFile}";
                             if (json[0].UrlUploadFile.EndsWith(".pdf"))
                             {
                                 json[0].Extension = "pdf";
@@ -260,45 +254,42 @@ namespace TripBliss.ViewModels
                             LstDoc = json;
                             foreach (var item in LstDoc)
                             {
-                                item.UrlUploadFile = $"{Helpers.Utility.ServerUrl}{item.UrlUploadFile}";
+                                item.UrlUploadFile = $"{Utility.ServerUrl}{item.UrlUploadFile}";
                                 if (item.UrlUploadFile.EndsWith(".pdf"))
                                 {
                                     item.Extension = "pdf";
-                                } 
+                                }
                             }
                         }
                     }
                 }
                 UserDialogs.Instance.HideHud();
             }
+
         }
 
         async Task DoneUploadDoc(TravelAgencyCompanyDocResponse model)
         {
             IsBusy = false;
-            
+
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                
+
                 string Id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
                 string uri = $"{ApiConstants.GetTravelDocApi}{Id}/TravelAgencyCompanyDoc";
-                if (Id == "")
-                {
-                    Id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
-                    uri = $"{ApiConstants.GetDistDocApi}{Id}/DistributorCompanyDoc";
-                }
+
                 string UserToken = await _service.UserToken();
 
                 UserDialogs.Instance.ShowLoading();
                 var Postjson = await Rep.PostAsync(uri, model!, UserToken);
                 UserDialogs.Instance.HideHud();
 
-                if (Postjson!.Id != null || Postjson.Id != 0)
+                if (!string.IsNullOrEmpty(Postjson.Id))
                 {
                     await GetDocs();
                 }
             }
-            
+
             IsBusy = true;
         }
         #endregion

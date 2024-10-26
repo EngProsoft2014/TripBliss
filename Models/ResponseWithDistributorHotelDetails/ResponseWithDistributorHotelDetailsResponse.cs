@@ -21,7 +21,23 @@ namespace TripBliss.Models
             }
         }
         public string? ResponseWithDistributorHotelId { get; set; }
-        public string? GuestName { get; set; }
+
+        string? _GuestName;
+        public string? GuestName
+        {
+            get
+            {
+                return _GuestName;
+            }
+            set
+            {
+                _GuestName = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("GuestName"));
+                }
+            }
+        }
         string? _RoomRef;
         public string? RoomRef
         {
@@ -39,6 +55,7 @@ namespace TripBliss.Models
             }
         }
         public string? Notes { get; set; }
+        public int? CountRow { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
     }

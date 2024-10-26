@@ -16,7 +16,7 @@ using TripBliss.Pages.Shared;
 using TripBliss.Pages.Users;
 using TripBliss.ViewModels.Shared;
 
-namespace TripBliss.ViewModels.Users
+namespace TripBliss.ViewModels.Shared.UsersViewModels
 {
     public partial class UsersViewModel : BaseViewModel
     {
@@ -163,6 +163,7 @@ namespace TripBliss.ViewModels.Users
                     }
                 }
             }
+
         } 
 
         #endregion

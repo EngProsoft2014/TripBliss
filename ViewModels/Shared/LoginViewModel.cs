@@ -172,12 +172,13 @@ namespace TripBliss.ViewModels
                     }
                     else
                     {
-                        if (json!.Item2!.errors!.Keys.Contains("Invalid Confirm Email"))
+                        if (json!.Item2!.errors!.Keys.Contains("Invalid Confirm Email - بريد إلكتروني مؤكد غير صالح"))
                         {
                             IsNotVerfy = true;
                             string Result = json.Item2.errors.FirstOrDefault().Value.ToString()!;
                             List<string> LstResult = Result.Split('_').ToList();
-                            ResendEmail = LstResult[1].Trim();
+                            List<string> LstResult2 = LstResult[1].Split('-').ToList();
+                            ResendEmail = LstResult2[0].Trim();
                         }
 
                         var toast = Toast.Make($"{json.Item2.errors.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
@@ -188,6 +189,7 @@ namespace TripBliss.ViewModels
                     IsBusy = false;
                 }
             }
+
         }
 
         [RelayCommand]
@@ -231,6 +233,7 @@ namespace TripBliss.ViewModels
                     await toast.Show();
                 }
             }
+
 
             IsBusy = true;
         }

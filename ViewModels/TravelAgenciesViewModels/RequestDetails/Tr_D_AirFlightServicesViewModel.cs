@@ -8,6 +8,7 @@ using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages.ActivateDetailsPages;
+using TripBliss.Pages.Shared;
 using TripBliss.Pages.TravelAgenciesPages.ActivateDetailsPages;
 using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 using TripBliss.ViewModels.ActivateViewModels;
@@ -123,24 +124,28 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         //Test
         public async Task GetAirLinesInfo()
         {
-            var client = new HttpClient();
-            var request = new HttpRequestMessage
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri("https://iata-and-icao-codes.p.rapidapi.com/airlines"),
-                Headers =
+                var client = new HttpClient();
+                var request = new HttpRequestMessage
+                {
+                    Method = HttpMethod.Get,
+                    RequestUri = new Uri("https://iata-and-icao-codes.p.rapidapi.com/airlines"),
+                    Headers =
                         {
                             { "x-rapidapi-key", "6fccfd7c71msh7934183b73f2229p11ce70jsn0061fc86c83f" },
                             { "x-rapidapi-host", "iata-and-icao-codes.p.rapidapi.com" },
                         },
-            };
-            using (var response = await client.SendAsync(request))
-            {
-                response.EnsureSuccessStatusCode();
-                var json = await response.Content.ReadAsStringAsync();
-                var body = JsonConvert.DeserializeObject<ObservableCollection<AirLines>>(json);
-                LstAirLines = body!;
+                };
+                using (var response = await client.SendAsync(request))
+                {
+                    response.EnsureSuccessStatusCode();
+                    var json = await response.Content.ReadAsStringAsync();
+                    var body = JsonConvert.DeserializeObject<ObservableCollection<AirLines>>(json);
+                    LstAirLines = body!;
+                }
             }
+
         }
 
         async Task GetAirFlights()
@@ -157,6 +162,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     AirFlights = json;
                 }
             }
+
         }
 
         async Task GetClasses()
@@ -173,6 +179,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     Classes = json;
                 }
             }
+
         }
         #endregion
 

@@ -21,7 +21,23 @@ namespace TripBliss.Models
             }
         }
         public string? ResponseWithDistributorTransportId { get; set; }
-        public string? LeaderName { get; set; }
+
+        string? _LeaderName;
+        public string? LeaderName
+        {
+            get
+            {
+                return _LeaderName;
+            }
+            set
+            {
+                _LeaderName = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("LeaderName"));
+                }
+            }
+        }
         string? _PlateNumber;
         public string? PlateNumber
         {
@@ -55,6 +71,9 @@ namespace TripBliss.Models
             }
         }
         public string? Notes { get; set; }
+        public int? CountRow { get; set; }
+
+
 
         public event PropertyChangedEventHandler? PropertyChanged;
     }
