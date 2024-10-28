@@ -124,6 +124,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adult Price.
+        /// </summary>
+        internal static string Adult_Price {
+            get {
+                return ResourceManager.GetString("Adult_Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Agency must pay part of the amount due..
         /// </summary>
         internal static string Agency_must_pay_part_of_the_amount_due {
@@ -399,6 +408,15 @@ namespace TripBliss.Resources.Language {
         internal static string checkin_date_today_or_after {
             get {
                 return ResourceManager.GetString("checkin_date_today_or_after", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Child Price.
+        /// </summary>
+        internal static string Child_Price {
+            get {
+                return ResourceManager.GetString("Child_Price", resourceCulture);
             }
         }
         
@@ -939,6 +957,15 @@ namespace TripBliss.Resources.Language {
         internal static string In_Review {
             get {
                 return ResourceManager.GetString("In_Review", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Infant Price.
+        /// </summary>
+        internal static string Infant_Price {
+            get {
+                return ResourceManager.GetString("Infant_Price", resourceCulture);
             }
         }
         

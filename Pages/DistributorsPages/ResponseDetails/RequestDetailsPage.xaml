@@ -470,17 +470,20 @@
                                                                         <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding RequestTravelAgencyHotel.CheckIn, StringFormat='{0:d}'}" TextColor="Gray" FontSize="12"></Span>
+                                                                                    <Span Text="{Binding RequestTravelAgencyHotel.CheckIn, StringFormat='{0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12"></Span>
                                                                                     <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                                                    <Span Text="{Binding RequestTravelAgencyHotel.CheckOut , StringFormat='{0:d}'}" TextColor="Gray" FontSize="12"></Span>
+                                                                                    <Span Text="{Binding RequestTravelAgencyHotel.CheckOut , StringFormat='{0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
-                                                                        <Label Text="{Binding Price,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" 
+                                                                        <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" 
                                                                                 VerticalOptions="EndAndExpand" FontSize="11">
                                                                             <Label.Triggers>
-                                                                                <DataTrigger TargetType="Label" Binding="{Binding Price}" Value="0">
+                                                                                <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
                                                                                     <Setter Property="IsVisible" Value="False"></Setter>
+                                                                                </DataTrigger>
+                                                                                <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=Lang}" Value="ar">
+                                                                                    <Setter Property="Text" Value="{Binding Total,StringFormat='{0} رس'}"></Setter>
                                                                                 </DataTrigger>
                                                                             </Label.Triggers>
                                                                         </Label>
@@ -526,19 +529,36 @@
                                                                             </Label.Text>
 
                                                                         </Label>
-                                                                        <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                                                        <!--<Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
                                                                                     <Span Text="{Binding RequestTravelAgencyTransport.TransportCount,StringFormat='{0} pax'}" TextColor="Gray" FontSize="12"></Span>
-                                                                                    <Span Text="{Binding RequestTravelAgencyTransport.Date, StringFormat='   {0:d}'}" TextColor="Gray" FontSize="12"></Span>
+                                                                                    <Span Text="{Binding RequestTravelAgencyTransport.Date, StringFormat='   {0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
+                                                                        </Label>-->
+                                                                        <Label Text="{Binding RequestTravelAgencyTransport.Date, StringFormat='  {0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+
                                                                         </Label>
-                                                                        <Label Text="{Binding Price,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue"
+                                                                        
+                                                                        <Label Text="{Binding RequestTravelAgencyTransport.TransportCount,StringFormat='{0} car'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                                                            <Label.Triggers>
+                                                                                <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=Lang}" Value="ar">
+                                                                                    <Setter Property="Text" Value="{Binding RequestTravelAgencyTransport.TransportCount,StringFormat='{0} سيارة'}"></Setter>
+                                                                                </DataTrigger>
+                                                                            </Label.Triggers>
+                                                                        </Label>
+
+
+
+                                                                        <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue"
                                                                            VerticalOptions="EndAndExpand" FontSize="11">
                                                                             <Label.Triggers>
-                                                                                <DataTrigger TargetType="Label" Binding="{Binding Price}" Value="0">
+                                                                                <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
                                                                                     <Setter Property="IsVisible" Value="False"></Setter>
+                                                                                </DataTrigger>
+                                                                                <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=Lang}" Value="ar">
+                                                                                    <Setter Property="Text" Value="{Binding Total,StringFormat='{0} رس'}"></Setter>
                                                                                 </DataTrigger>
                                                                             </Label.Triggers>
                                                                         </Label>
@@ -577,7 +597,7 @@
                                                                         <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding RequestTravelAgencyAirFlight.RequestTravelAgencyId , StringFormat='RF {0}'}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
+                                                                                    <Span Text="{Binding RequestTravelAgencyAirFlight.AirLineLang}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -590,19 +610,36 @@
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
-                                                                        <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                                                        <!--<Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
                                                                                     <Span Text="{Binding RequestTravelAgencyAirFlight.TotalPerson,StringFormat='{0} pax'}" TextColor="Gray" FontSize="12"></Span>
-                                                                                    <Span Text="{Binding RequestTravelAgencyAirFlight.Date , StringFormat='    {0:d}'}" TextColor="Gray" FontSize="12"></Span>
+                                                                                    <Span Text="{Binding RequestTravelAgencyAirFlight.Date , StringFormat='    {0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
+                                                                        </Label>-->
+
+                                                                        <Label Text="{Binding RequestTravelAgencyAirFlight.Date, StringFormat='  {0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+
                                                                         </Label>
+
+                                                                        <Label Text="{Binding RequestTravelAgencyAirFlight.TotalPerson,StringFormat='{0} pax'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                                                            <Label.Triggers>
+                                                                                <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=Lang}" Value="ar">
+                                                                                    <Setter Property="Text" Value="{Binding RequestTravelAgencyAirFlight.TotalPerson,StringFormat='{0} شخص'}"></Setter>
+                                                                                </DataTrigger>
+                                                                            </Label.Triggers>
+                                                                        </Label>
+
+                                                                        
                                                                         <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue"
                                                                                  VerticalOptions="EndAndExpand" FontSize="11">
                                                                             <Label.Triggers>
                                                                                 <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
                                                                                     <Setter Property="IsVisible" Value="False"></Setter>
+                                                                                </DataTrigger>
+                                                                                <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=Lang}" Value="ar">
+                                                                                    <Setter Property="Text" Value="{Binding Total,StringFormat='{0} رس'}"></Setter>
                                                                                 </DataTrigger>
                                                                             </Label.Triggers>
                                                                         </Label>
@@ -652,18 +689,31 @@
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
-                                                                        <Label FontAutoScalingEnabled="False">
+                                                                        <!--<Label FontAutoScalingEnabled="False">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
                                                                                     <Span Text="{Binding RequestTravelAgencyVisa.PersonCount,StringFormat='{0} pax'}" TextColor="Gray" FontSize="12"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
+                                                                        </Label>-->
+
+
+                                                                        <Label Text="{Binding RequestTravelAgencyVisa.PersonCount,StringFormat='{0} pax'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                                                            <Label.Triggers>
+                                                                                <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=Lang}" Value="ar">
+                                                                                    <Setter Property="Text" Value="{Binding RequestTravelAgencyVisa.PersonCount,StringFormat='{0} شخص'}"></Setter>
+                                                                                </DataTrigger>
+                                                                            </Label.Triggers>
                                                                         </Label>
-                                                                        <Label Text="{Binding Price,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue"
+
+                                                                        <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue"
                                                                            VerticalOptions="EndAndExpand" FontSize="11">
                                                                             <Label.Triggers>
-                                                                                <DataTrigger TargetType="Label" Binding="{Binding Price}" Value="0">
+                                                                                <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
                                                                                     <Setter Property="IsVisible" Value="False"></Setter>
+                                                                                </DataTrigger>
+                                                                                <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=Lang}" Value="ar">
+                                                                                    <Setter Property="Text" Value="{Binding Total,StringFormat='{0} رس'}"></Setter>
                                                                                 </DataTrigger>
                                                                             </Label.Triggers>
                                                                         </Label>

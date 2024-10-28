@@ -966,4 +966,13 @@
   <data name="SAR" xml:space="preserve">
     <value>SAR</value>
   </data>
+  <data name="Adult_Price" xml:space="preserve">
+    <value>Adult Price</value>
+  </data>
+  <data name="Child_Price" xml:space="preserve">
+    <value>Child Price</value>
+  </data>
+  <data name="Infant_Price" xml:space="preserve">
+    <value>Infant Price</value>
+  </data>
 </root>

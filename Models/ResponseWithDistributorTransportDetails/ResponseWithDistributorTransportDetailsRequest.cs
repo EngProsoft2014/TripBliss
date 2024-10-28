@@ -9,5 +9,7 @@
         public string? PlateNumber { get; set; }
         public string? DriverPhone { get; set; }
         public string? Notes { get; set; }
+        public string CreatedUser { get; set; } = string.Empty;
+        public DateTime CreatedDate { get; set; }
     }
 }

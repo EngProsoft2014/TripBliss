@@ -16,10 +16,16 @@ public partial class TransportaionServicePage : Controls.CustomControl
 
     private void TypePic_SelectedIndexChanged(object sender, EventArgs e)
     {
-        var cc = TypePic.SelectedItem as CarTypeResponse;
-        if (cc != null)
+        var cc = TypePic.SelectedItem as CarTypeResponse; 
+        var cc2 = BrandPick.SelectedItem as CarBrandResponse;
+
+        if (cc != null && cc2 != null)
         {
-            BrandPick.ItemsSource = Model.CarBrands.Where(a => a.CarTypeId == cc.Id).ToList();
+            if(cc.Id != cc2.CarTypeId) 
+            {
+                Model.SelectrdBrand = Model.CarBrands.FirstOrDefault(a => a.CarTypeId == cc.Id)!;
+                Model.SelectrdModel = Model.CarModel.FirstOrDefault(a => a.CarBrandId == Model.SelectrdBrand.Id)!;
+            }
         }
         
     }
@@ -33,4 +39,5 @@ public partial class TransportaionServicePage : Controls.CustomControl
         }
         
     }
+
 }

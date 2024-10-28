@@ -8,5 +8,7 @@
         public string? GuestName { get; set; }
         public string? RoomRef { get; set; }
         public string? Notes { get; set; }
+        public string CreatedUser { get; set; } = string.Empty;
+        public DateTime CreatedDate { get; set; }
     }
 }

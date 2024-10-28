@@ -56,6 +56,8 @@ namespace TripBliss.Models
         }
         public string? Notes { get; set; }
         public int? CountRow { get; set; }
+        public string CreatedUser { get; set; } = string.Empty;
+        public DateTime CreatedDate { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
     }

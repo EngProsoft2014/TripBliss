@@ -59,7 +59,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         public Tr_C_TransportaionServiceViewModel(RequestTravelAgencyTransportResponse model , IGenericRepository generic , Services.Data.ServicesService service)
         {
             Rep = generic;
-            TransportResponseModel = model;
+            //TransportResponseModel = model;
             TransportRequestModel!.Date = DateOnly.FromDateTime(DateTime.Now);
             _service = service;
             Init(model);

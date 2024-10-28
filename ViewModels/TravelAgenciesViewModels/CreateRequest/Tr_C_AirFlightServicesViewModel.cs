@@ -63,7 +63,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         public Tr_C_AirFlightServicesViewModel(RequestTravelAgencyAirFlightResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
-            AirFlightResponseModel = model;
+            //AirFlightResponseModel = model;
             _service = service;
             AirFlightRequestModel!.Date = DateTime.Now;
             Init(model);

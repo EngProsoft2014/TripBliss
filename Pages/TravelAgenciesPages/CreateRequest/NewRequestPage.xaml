@@ -81,9 +81,9 @@
                                             <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{Binding CheckIn, StringFormat='{0:d}'}" TextColor="Gray" FontSize="12"></Span>
+                                                        <Span Text="{Binding CheckIn, StringFormat='{0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12"></Span>
                                                         <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                        <Span Text="{Binding CheckOut , StringFormat='{0:d}'}" TextColor="Gray" FontSize="12"></Span>
+                                                        <Span Text="{Binding CheckOut , StringFormat='{0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12"></Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -134,13 +134,25 @@
                                                     </MultiBinding>
                                                 </Label.Text>
                                             </Label>
-                                            <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                            <!--<Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{Binding TransportCount,StringFormat='{0} pax'}" TextColor="Gray" FontSize="12"></Span>
-                                                        <Span Text="{Binding Date, StringFormat='   {0:d}'}" TextColor="Gray" FontSize="12"></Span>
+                                                        <Span Text="{Binding Date, StringFormat='   {0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12"></Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
+                                            </Label>-->
+
+                                            <Label Text="{Binding Date, StringFormat='  {0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+
+                                            </Label>
+
+                                            <Label Text="{Binding TransportCount,StringFormat='{0} car'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path=Lang}" Value="ar">
+                                                        <Setter Property="Text" Value="{Binding TransportCount,StringFormat='{0} سيارة'}"></Setter>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
                                             </Label>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path=SelectTransportaionCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
@@ -196,13 +208,25 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                            <!--<Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{Binding TotalPerson,StringFormat='{0} pax'}" TextColor="Gray" FontSize="12"></Span>
                                                         <Span Text="{Binding Date , StringFormat='    {0:d}'}" TextColor="Gray" FontSize="12"></Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
+                                            </Label>-->
+
+                                            <Label Text="{Binding Date, StringFormat='  {0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+
+                                            </Label>
+
+                                            <Label Text="{Binding TotalPerson,StringFormat='{0} pax'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path=Lang}" Value="ar">
+                                                        <Setter Property="Text" Value="{Binding TotalPerson,StringFormat='{0} شخص'}"></Setter>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
                                             </Label>
 
                                             <StackLayout.GestureRecognizers>
@@ -258,12 +282,20 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <Label FontAutoScalingEnabled="False">
+                                            <!--<Label FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{Binding PersonCount,StringFormat='{0} pax'}" TextColor="Gray" FontSize="12"></Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
+                                            </Label>-->
+
+                                            <Label Text="{Binding PersonCount,StringFormat='{0} pax'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path=Lang}" Value="ar">
+                                                        <Setter Property="Text" Value="{Binding PersonCount,StringFormat='{0} شخص'}"></Setter>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
                                             </Label>
 
                                             <StackLayout.GestureRecognizers>

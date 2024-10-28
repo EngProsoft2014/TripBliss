@@ -67,11 +67,13 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                 bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.Are_You_Accept_This_Price, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
                 if (answer)
                 {
+                    HotelService!.Total = HotelService.Price * HotelService.RequestTravelAgencyHotel.RoomCount;
                     HotelService!.AcceptPriceDis = answer;
                     await App.Current!.MainPage!.Navigation.PopAsync();
                 }
                 else
                 {
+                    HotelService!.Total = HotelService.Price * HotelService.RequestTravelAgencyHotel.RoomCount;
                     HotelService!.Price = Oldprice;
                     await App.Current!.MainPage!.Navigation.PopAsync();
                 } 

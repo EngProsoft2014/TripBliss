@@ -54,6 +54,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             if (ServiceModdel != null)
             {
                 bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.Are_You_Accept_This_Price, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
+                ServiceModdel!.Total = ServiceModdel.Price * ServiceModdel.RequestTravelAgencyTransport.TransportCount;
                 ServiceModdel!.AcceptPriceDis = answer;
                 await App.Current!.MainPage!.Navigation.PopAsync();
             }

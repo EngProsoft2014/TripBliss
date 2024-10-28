@@ -1,6 +1,6 @@
 using CommunityToolkit.Maui.Views;
 using Mopups.Services;
-using System.IO;
+using SkiaSharp;
 
 
 namespace TripBliss.Pages.MainPopups;
@@ -31,16 +31,37 @@ public partial class AddAttachmentsPopup : Mopups.Pages.PopupPage
             // Check if the camera is available
             if (MediaPicker.Default.IsCaptureSupported)
             {
+                //// Capture the photo
+                //var photo = await MediaPicker.Default.CapturePhotoAsync();
+
+                //if (photo != null)
+                //{
+                //    // Get the file path to save it
+                //    var stream = await photo.OpenReadAsync();
+
+                //    // Display the image
+                //    ImageClose.Invoke(Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream)), photo.FullPath);
+                //}
+
+
                 // Capture the photo
                 var photo = await MediaPicker.Default.CapturePhotoAsync();
 
                 if (photo != null)
                 {
-                    // Get the file path to save it
-                    var stream = await photo.OpenReadAsync();
+                    using var stream = await photo.OpenReadAsync();
+                    using var memoryStream = new MemoryStream();
+
+                    // Load the image into SkiaSharp and resize it
+                    using var originalBitmap = SKBitmap.Decode(stream);
+                    var resizedBitmap = originalBitmap.Resize(new SKImageInfo(800, 600), SKFilterQuality.Medium);
+
+                    using var image = SKImage.FromBitmap(resizedBitmap);
+                    using var data = image.Encode(SKEncodedImageFormat.Jpeg, 75); // Compression level: 75%
+                    data.SaveTo(memoryStream);
 
                     // Display the image
-                    ImageClose.Invoke(Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream)), photo.FullPath);
+                    ImageClose.Invoke(Convert.ToBase64String(memoryStream.ToArray()), photo.FullPath);
                 }
             }
             else
@@ -58,16 +79,36 @@ public partial class AddAttachmentsPopup : Mopups.Pages.PopupPage
     {
         try
         {
+            //// Open the photo gallery
+            //var photo = await MediaPicker.Default.PickPhotoAsync();
+
+            //if (photo != null)
+            //{
+            //    // Open a stream to read the photo
+            //    var stream = await photo.OpenReadAsync();
+
+            //    // Display the selected photo in the Image control
+            //    ImageClose.Invoke(Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream)), photo.FullPath);
+            //}
+
             // Open the photo gallery
             var photo = await MediaPicker.Default.PickPhotoAsync();
 
             if (photo != null)
             {
-                // Open a stream to read the photo
-                var stream = await photo.OpenReadAsync();
+                using var stream = await photo.OpenReadAsync();
+                using var memoryStream = new MemoryStream();
+
+                // Load the image into SkiaSharp and resize it
+                using var originalBitmap = SKBitmap.Decode(stream);
+                var resizedBitmap = originalBitmap.Resize(new SKImageInfo(800, 600), SKFilterQuality.Medium);
+
+                using var image = SKImage.FromBitmap(resizedBitmap);
+                using var data = image.Encode(SKEncodedImageFormat.Jpeg, 75); // Compression level: 75%
+                data.SaveTo(memoryStream);
 
                 // Display the selected photo in the Image control
-                ImageClose.Invoke(Convert.ToBase64String(Helpers.Utility.ReadToEnd(stream)), photo.FullPath);
+                ImageClose.Invoke(Convert.ToBase64String(memoryStream.ToArray()), photo.FullPath);
             }
         }
         catch (Exception ex)

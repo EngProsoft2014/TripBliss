@@ -71,7 +71,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             Rep = generic;
             _service = service;
-            HotelResponseModel = model;
+            //HotelResponseModel = model;
             HotelRequestModel!.CheckIn = DateTime.Now;
             HotelRequestModel!.CheckOut = DateTime.Now.AddDays(7);
             Init(model);

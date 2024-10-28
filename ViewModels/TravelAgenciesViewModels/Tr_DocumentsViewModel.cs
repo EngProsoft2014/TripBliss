@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using Mopups.Services;
+using SkiaSharp;
 using Syncfusion.Pdf;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -94,19 +95,28 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                     {
                         // Check if the camera is available
                         if (MediaPicker.Default.IsCaptureSupported)
-                        {
+                        {                
                             // Capture the photo
                             var photo = await MediaPicker.Default.CapturePhotoAsync();
 
                             if (photo != null)
                             {
-                                // Get the file path to save it
-                                var stream = await photo.OpenReadAsync();
-                                model.ImgFile = Convert.ToBase64String(Utility.ReadToEnd(stream));
+                                using var stream = await photo.OpenReadAsync();
+                                using var memoryStream = new MemoryStream();
+
+                                // Load the image into SkiaSharp and resize it
+                                using var originalBitmap = SKBitmap.Decode(stream);
+                                var resizedBitmap = originalBitmap.Resize(new SKImageInfo(800, 600), SKFilterQuality.Medium);
+
+                                using var image = SKImage.FromBitmap(resizedBitmap);
+                                using var data = image.Encode(SKEncodedImageFormat.Jpeg, 75); // Compression level: 75%
+                                data.SaveTo(memoryStream);
+
+                                // Convert the compressed image to Base64
+                                model.ImgFile = Convert.ToBase64String(memoryStream.ToArray());
                                 model.Extension = Path.GetExtension(photo.FullPath);
 
                                 await DoneUploadDoc(model);
-
                             }
                         }
                         else
@@ -146,10 +156,21 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
 
                         if (photo != null)
                         {
-                            // Open a stream to read the photo
-                            var stream = await photo.OpenReadAsync();
-                            model.ImgFile = Convert.ToBase64String(Utility.ReadToEnd(stream));
+                            using var stream = await photo.OpenReadAsync();
+                            using var memoryStream = new MemoryStream();
+
+                            // Load the image into SkiaSharp and resize it
+                            using var originalBitmap = SKBitmap.Decode(stream);
+                            var resizedBitmap = originalBitmap.Resize(new SKImageInfo(800, 600), SKFilterQuality.Medium);
+
+                            using var image = SKImage.FromBitmap(resizedBitmap);
+                            using var data = image.Encode(SKEncodedImageFormat.Jpeg, 75); // Compression level: 75%
+                            data.SaveTo(memoryStream);
+
+                            // Convert the compressed image to Base64
+                            model.ImgFile = Convert.ToBase64String(memoryStream.ToArray());
                             model.Extension = Path.GetExtension(photo.FullPath);
+
                             await DoneUploadDoc(model);
                         }
                     }
