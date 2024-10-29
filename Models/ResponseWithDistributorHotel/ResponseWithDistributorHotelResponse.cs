@@ -41,8 +41,38 @@ namespace TripBliss.Models
             }
         }
         public string? Notes { get; set; }
-        public bool AcceptPriceDis { get; set; }
-        public bool AcceptAgen { get; set; }
+        bool _AcceptPriceDis;
+        public bool AcceptPriceDis
+        {
+            get
+            {
+                return _AcceptPriceDis;
+            }
+            set
+            {
+                _AcceptPriceDis = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("AcceptPriceDis"));
+                }
+            }
+        }
+        bool _AcceptAgen;
+        public bool AcceptAgen
+        {
+            get
+            {
+                return _AcceptAgen;
+            }
+            set
+            {
+                _AcceptAgen = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("AcceptAgen"));
+                }
+            }
+        }
         public string CreatedUser { get; set; } = string.Empty;
         public DateTime CreatedDate { get; set; }
         public RequestTravelAgencyHotelResponse RequestTravelAgencyHotel { get; set; } = default!;

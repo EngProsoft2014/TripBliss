@@ -1494,6 +1494,15 @@ namespace TripBliss.Resources.Language {
         /// <summary>
         ///   Looks up a localized string similar to Notes.
         /// </summary>
+        internal static string lblNotes {
+            get {
+                return ResourceManager.GetString("lblNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notes.
+        /// </summary>
         internal static string lblNotes_HotelService {
             get {
                 return ResourceManager.GetString("lblNotes-HotelService", resourceCulture);
@@ -1537,7 +1546,7 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pass No..
+        ///   Looks up a localized string similar to Number of Visas.
         /// </summary>
         internal static string lblPassNo_VisaService {
             get {
@@ -2631,6 +2640,15 @@ namespace TripBliss.Resources.Language {
         internal static string Yes {
             get {
                 return ResourceManager.GetString("Yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Token expired, Please Enter Your Password.
+        /// </summary>
+        internal static string Your_Token_expired_Please_Enter_Your_Password {
+            get {
+                return ResourceManager.GetString("Your_Token_expired_Please_Enter_Your_Password", resourceCulture);
             }
         }
     }

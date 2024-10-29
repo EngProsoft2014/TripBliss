@@ -65,7 +65,7 @@ namespace TripBliss.Services.Data
                 {        
                     if (!string.IsNullOrEmpty(Preferences.Default.Get(ApiConstants.username, "")))
                     {
-                        string Pass = await App.Current!.MainPage!.DisplayPromptAsync("Info", "Your Token expired, Please Enter Your Password", "Ok");
+                        string Pass = await App.Current!.MainPage!.DisplayPromptAsync(TripBliss.Resources.Language.AppResources.Info, TripBliss.Resources.Language.AppResources.Your_Token_expired_Please_Enter_Your_Password, TripBliss.Resources.Language.AppResources.OK);
 
                         ApplicationUserLoginRequest model = new ApplicationUserLoginRequest()
                         {

@@ -195,7 +195,7 @@
                                             <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{Binding RequestTravelAgencyId , StringFormat='RF {0}'}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
+                                                        <Span Text="{Binding AirLineLang}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>

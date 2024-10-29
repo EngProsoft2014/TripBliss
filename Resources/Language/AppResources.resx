@@ -262,7 +262,7 @@
     <value>Notes</value>
   </data>
   <data name="lblPassNo-VisaService" xml:space="preserve">
-    <value>Pass No.</value>
+    <value>Number of Visas</value>
   </data>
   <data name="lblPrivacyPolicy-More" xml:space="preserve">
     <value>Privacy Policy</value>
@@ -974,5 +974,11 @@
   </data>
   <data name="Infant_Price" xml:space="preserve">
     <value>Infant Price</value>
+  </data>
+  <data name="lblNotes" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="Your_Token_expired_Please_Enter_Your_Password" xml:space="preserve">
+    <value>Your Token expired, Please Enter Your Password</value>
   </data>
 </root>

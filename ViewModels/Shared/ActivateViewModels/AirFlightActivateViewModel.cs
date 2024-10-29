@@ -401,9 +401,10 @@ namespace TripBliss.ViewModels.ActivateViewModels
                             {
                                 if (obj != null)
                                 {
+                                    int UserCategory = Preferences.Default.Get(ApiConstants.userCategory, 0);
                                     UserDialogs.Instance.ShowLoading();
                                     string UserToken = await _service.UserToken();
-                                    var json = await Rep.PostAsync<string>(string.Format($"{ApiConstants.DeleteAllAirFlightImageApi}{Model.Id}"), null, UserToken);
+                                    var json = await Rep.PostAsync<string>(string.Format($"{ApiConstants.DeleteAllAirFlightImageApi}{Model.Id}/UserCategory/{UserCategory}"), null, UserToken);
                                     UserDialogs.Instance.HideHud();
                                     if (json == null)
                                     {

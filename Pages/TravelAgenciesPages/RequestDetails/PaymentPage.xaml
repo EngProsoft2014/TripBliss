@@ -44,6 +44,9 @@
                     <DataTrigger TargetType="Entry" Binding="{Binding Source={x:Reference FBCheck},Path=IsChecked}" Value="True">
                         <Setter Property="IsVisible" Value="False"></Setter>
                     </DataTrigger>
+                    <DataTrigger TargetType="Entry" Binding="{Binding Lang}" Value="ar">
+                        <Setter Property="Placeholder" Value="{Static res:AppResources.Please_Enter_ammount}"></Setter>
+                    </DataTrigger>
                 </Entry.Triggers>
             </Entry>
         </HorizontalStackLayout>

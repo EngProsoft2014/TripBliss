@@ -262,7 +262,7 @@
     <value>ملحوظات</value>
   </data>
   <data name="lblPassNo-VisaService" xml:space="preserve">
-    <value>رقم المرور</value>
+    <value>عدد التأشيرات</value>
   </data>
   <data name="lblPrivacyPolicy-More" xml:space="preserve">
     <value>سياسة الخصوصية</value>
@@ -974,5 +974,11 @@
   </data>
   <data name="Infant_Price" xml:space="preserve">
     <value>سعر الرضيع</value>
+  </data>
+  <data name="lblNotes" xml:space="preserve">
+    <value>ملاحظات</value>
+  </data>
+  <data name="Your_Token_expired_Please_Enter_Your_Password" xml:space="preserve">
+    <value>انتهت صلاحية الرمز الخاص بك، يرجى إدخال كلمة المرور الخاصة بك</value>
   </data>
 </root>

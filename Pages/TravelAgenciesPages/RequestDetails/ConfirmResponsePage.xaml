@@ -111,15 +111,19 @@
                                                     </DataTrigger>
                                                 </Label.Triggers>
                                             </Label>
-                                            <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0"
+                                            <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0" IsEnabled="False"
                                               IsChecked="{Binding AcceptAgen}">
                                                 <CheckBox.Triggers>
-                                                    <DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="True">
+                                                    <!--<DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="True">
                                                         <Setter Property="IsEnabled" Value="False"></Setter>
-                                                    </DataTrigger>
-                                                    <DataTrigger TargetType="CheckBox" Binding="{Binding AcceptPriceDis}" Value="False">
-                                                        <Setter Property="IsEnabled" Value="False"></Setter>
-                                                    </DataTrigger>
+                                                    </DataTrigger>-->
+                                                    <MultiTrigger TargetType="CheckBox">
+                                                        <MultiTrigger.Conditions>
+                                                            <BindingCondition Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=Response.TotalPayment}" Value="0" />
+                                                            <BindingCondition Binding="{Binding AcceptPriceDis}" Value="True" />
+                                                        </MultiTrigger.Conditions>
+                                                        <Setter Property="IsEnabled" Value="True" />
+                                                    </MultiTrigger>
                                                 </CheckBox.Triggers>
                                             </CheckBox>
                                         </StackLayout>
@@ -195,15 +199,19 @@
                                                     </DataTrigger>
                                                 </Label.Triggers>
                                             </Label>
-                                            <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0"
+                                            <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0" IsEnabled="False"
                                                       IsChecked="{Binding AcceptAgen}">
                                                 <CheckBox.Triggers>
-                                                    <DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="True">
+                                                    <!--<DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="True">
                                                         <Setter Property="IsEnabled" Value="False"></Setter>
-                                                    </DataTrigger>
-                                                    <DataTrigger TargetType="CheckBox" Binding="{Binding AcceptPriceDis}" Value="False">
-                                                        <Setter Property="IsEnabled" Value="False"></Setter>
-                                                    </DataTrigger>
+                                                    </DataTrigger>-->
+                                                    <MultiTrigger TargetType="CheckBox">
+                                                        <MultiTrigger.Conditions>
+                                                            <BindingCondition Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=Response.TotalPayment}" Value="0" />
+                                                            <BindingCondition Binding="{Binding AcceptPriceDis}" Value="True" />
+                                                        </MultiTrigger.Conditions>
+                                                        <Setter Property="IsEnabled" Value="True" />
+                                                    </MultiTrigger>
                                                 </CheckBox.Triggers>
                                             </CheckBox>
                                         </StackLayout>
@@ -296,15 +304,19 @@
                                                     </DataTrigger>
                                                 </Label.Triggers>
                                             </Label>
-                                            <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0"
+                                            <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0" IsEnabled="False"
                                                         IsChecked="{Binding AcceptAgen}">
                                                 <CheckBox.Triggers>
-                                                    <DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="True">
+                                                    <!--<DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="True">
                                                         <Setter Property="IsEnabled" Value="False"></Setter>
-                                                    </DataTrigger>
-                                                    <DataTrigger TargetType="CheckBox" Binding="{Binding AcceptPriceDis}" Value="False">
-                                                        <Setter Property="IsEnabled" Value="False"></Setter>
-                                                    </DataTrigger>
+                                                    </DataTrigger>-->
+                                                    <MultiTrigger TargetType="CheckBox">
+                                                        <MultiTrigger.Conditions>
+                                                            <BindingCondition Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=Response.TotalPayment}" Value="0" />
+                                                            <BindingCondition Binding="{Binding AcceptPriceDis}" Value="True" />
+                                                        </MultiTrigger.Conditions>
+                                                        <Setter Property="IsEnabled" Value="True" />
+                                                    </MultiTrigger>
                                                 </CheckBox.Triggers>
                                             </CheckBox>
                                         </StackLayout>
@@ -387,15 +399,19 @@
                                                     </DataTrigger>
                                                 </Label.Triggers>
                                             </Label>
-                                            <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0"
+                                            <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0" IsEnabled="False"
                                                       IsChecked="{Binding AcceptAgen}">
                                                 <CheckBox.Triggers>
-                                                    <DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="True">
+                                                    <!--<DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="True">
                                                         <Setter Property="IsEnabled" Value="False"></Setter>
-                                                    </DataTrigger>
-                                                    <DataTrigger TargetType="CheckBox" Binding="{Binding AcceptPriceDis}" Value="False">
-                                                        <Setter Property="IsEnabled" Value="False"></Setter>
-                                                    </DataTrigger>
+                                                    </DataTrigger>-->
+                                                    <MultiTrigger TargetType="CheckBox">
+                                                        <MultiTrigger.Conditions>
+                                                            <BindingCondition Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=Response.TotalPayment}" Value="0" />
+                                                            <BindingCondition Binding="{Binding AcceptPriceDis}" Value="True" />
+                                                        </MultiTrigger.Conditions>
+                                                        <Setter Property="IsEnabled" Value="True" />
+                                                    </MultiTrigger>
                                                 </CheckBox.Triggers>
                                             </CheckBox>
                                         </StackLayout>

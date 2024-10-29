@@ -280,7 +280,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             var ResponseTrans = Response?.ResponseWithDistributorTransport?.Where(x => x.AcceptAgen == true).FirstOrDefault();
             var ResponseVisa = Response?.ResponseWithDistributorVisa?.Where(x => x.AcceptAgen == true).FirstOrDefault();
 
-            if ((ResponseAirFlt != null || ResponseHotel != null || ResponseTrans != null || ResponseVisa != null) && (Response?.TotalPriceAgentAccept > 0 && Response?.TotalPriceAgentAccept != Response?.TotalPayment))
+            if (((ResponseAirFlt != null || ResponseHotel != null || ResponseTrans != null || ResponseVisa != null) && Response?.TotalPriceAgentAccept == 0) || ((ResponseAirFlt != null || ResponseHotel != null || ResponseTrans != null || ResponseVisa != null) && (Response?.TotalPriceAgentAccept > 0 && Response?.TotalPriceAgentAccept != Response?.TotalPayment)))
             {
                 return true;
             }

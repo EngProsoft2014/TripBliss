@@ -498,6 +498,10 @@
                                                                     <Setter Property="Stroke" Value="Green"></Setter>
                                                                     <Setter Property="StrokeThickness" Value="2"></Setter>
                                                                 </DataTrigger>
+                                                                <DataTrigger TargetType="Border" Binding="{Binding AcceptAgen}" Value="True">
+                                                                    <Setter Property="Stroke" Value="DodgerBlue"></Setter>
+                                                                    <Setter Property="StrokeThickness" Value="2"></Setter>
+                                                                </DataTrigger>
                                                             </Border.Triggers>
                                                         </Border>
 
@@ -573,6 +577,10 @@
                                                             <Border.Triggers>
                                                                 <DataTrigger TargetType="Border" Binding="{Binding AcceptPriceDis}" Value="True">
                                                                     <Setter Property="Stroke" Value="Green"></Setter>
+                                                                    <Setter Property="StrokeThickness" Value="2"></Setter>
+                                                                </DataTrigger>
+                                                                <DataTrigger TargetType="Border" Binding="{Binding AcceptAgen}" Value="True">
+                                                                    <Setter Property="Stroke" Value="DodgerBlue"></Setter>
                                                                     <Setter Property="StrokeThickness" Value="2"></Setter>
                                                                 </DataTrigger>
                                                             </Border.Triggers>
@@ -655,6 +663,10 @@
                                                                     <Setter Property="Stroke" Value="Green"></Setter>
                                                                     <Setter Property="StrokeThickness" Value="2"></Setter>
                                                                 </DataTrigger>
+                                                                <DataTrigger TargetType="Border" Binding="{Binding AcceptAgen}" Value="True">
+                                                                    <Setter Property="Stroke" Value="DodgerBlue"></Setter>
+                                                                    <Setter Property="StrokeThickness" Value="2"></Setter>
+                                                                </DataTrigger>
                                                             </Border.Triggers>
                                                         </Border>
                                                     </DataTemplate>
@@ -728,6 +740,10 @@
                                                                     <Setter Property="Stroke" Value="Green"></Setter>
                                                                     <Setter Property="StrokeThickness" Value="2"></Setter>
                                                                 </DataTrigger>
+                                                                <DataTrigger TargetType="Border" Binding="{Binding AcceptAgen}" Value="True">
+                                                                    <Setter Property="Stroke" Value="DodgerBlue"></Setter>
+                                                                    <Setter Property="StrokeThickness" Value="2"></Setter>
+                                                                </DataTrigger>
                                                             </Border.Triggers>
                                                         </Border>
                                                     </DataTemplate>
@@ -737,11 +753,22 @@
                                     </StackLayout>
                                 </ScrollView>
                                 <Button VerticalOptions="End" Text="{Static res:AppResources.btnApply_Forgot}" FontSize="16" FontAttributes="Bold" BackgroundColor="#2fa562" TextColor="White" Margin="20,0,20,20"
-                                        Command="{Binding AddToRequestCommand}">
+                                        Command="{Binding AddToRequestCommand}" IsVisible="False">
                                     <Button.Triggers>
-                                        <DataTrigger TargetType="Button" Binding="{Binding IsRequestHistory}" Value="True">
-                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                        <!--<DataTrigger TargetType="Button" Binding="{Binding IsRequestHistory}" Value="False">
+                                            <Setter Property="IsVisible" Value="True"></Setter>
                                         </DataTrigger>
+                                        <DataTrigger TargetType="Button" Binding="{Binding Response.TotalPayment}" Value="0">
+                                            <Setter Property="IsVisible" Value="True"></Setter>
+                                        </DataTrigger>-->
+
+                                        <MultiTrigger TargetType="Button">
+                                            <MultiTrigger.Conditions>
+                                                <BindingCondition Binding="{Binding IsRequestHistory}" Value="False" />
+                                                <BindingCondition Binding="{Binding Response.TotalPayment}" Value="0" />
+                                            </MultiTrigger.Conditions>
+                                            <Setter Property="IsVisible" Value="True" />
+                                        </MultiTrigger>
                                     </Button.Triggers>
                                 </Button>
                             </StackLayout>

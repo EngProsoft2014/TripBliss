@@ -5,6 +5,7 @@ using TripBliss.Helpers;
 using TripBliss.Pages.TravelAgenciesPages;
 using Akavache;
 using TripBliss.Pages.Shared;
+using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 
 namespace TripBliss
 {

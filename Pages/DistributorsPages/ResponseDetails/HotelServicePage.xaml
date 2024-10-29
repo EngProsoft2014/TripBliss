@@ -101,14 +101,21 @@
                         </StackLayout>
                         <Label Text="{Static res:AppResources.lblPrice_RequestDetails}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
-                            <Entry Keyboard="Numeric" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" Text="{Binding HotelService.Price}"></Entry>
+                            <Entry Keyboard="Numeric" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" Text="{Binding HotelService.Price}">
+                                <Entry.Triggers>
+                                    <DataTrigger TargetType="Entry" Binding="{Binding HotelService.AcceptAgen}" Value="True">
+                                        <Setter Property="IsReadOnly" Value="True"></Setter>
+                                    </DataTrigger>
+                                </Entry.Triggers>
+                            </Entry>
+                            
                         </Border>
-                        <Label Text="{Static res:AppResources.lblNoteForAgency_HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                        <!--<Label Text="{Static res:AppResources.lblNoteForAgency_HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="100">
                             <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular" IsReadOnly="True"
                            Text="{Binding HotelService.RequestTravelAgencyHotel.Notes}"></Entry>
-                        </Border>
-                        <Label Text="{Static res:AppResources.lblNoteForDist_HotelService}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                        </Border>-->
+                        <Label Text="{Static res:AppResources.lblNotes}" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="100">
                             <Entry Keyboard="Text" TextColor="Black" FontSize="13" FontFamily="OpenSansRegular"
                                    Text="{Binding HotelService.Notes}"></Entry>

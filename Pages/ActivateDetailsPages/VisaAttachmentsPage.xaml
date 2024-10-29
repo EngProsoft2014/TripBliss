@@ -181,7 +181,7 @@
                                         </StackLayout>
 
                                         <!--Image Delete-->
-                                        <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsAllowEdit}">
+                                        <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type vm:VisaActivateViewModel}}, Path=IsAllowEdit}">
                                             <Image>
                                                 <Image.Source>
                                                     <FontImageSource FontFamily="FontIconSolid" Color="DimGray" Glyph="" Size="30"></FontImageSource>
@@ -266,7 +266,7 @@
                                         </StackLayout>
 
                                         <!--Image Delete-->
-                                        <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsAllowEdit}">
+                                        <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand" IsVisible="{Binding Source={RelativeSource AncestorType={x:Type vm:VisaActivateViewModel}}, Path=IsAllowEdit}">
                                             <Image >
                                                 <Image.Source>
                                                     <FontImageSource FontFamily="FontIconSolid" Color="DimGray" Glyph="" Size="30"></FontImageSource>

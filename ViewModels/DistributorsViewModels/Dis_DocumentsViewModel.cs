@@ -321,7 +321,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 string Id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
-                string uri = $"{ApiConstants.GetTravelDocApi}{Id}/DistributorCompanyDoc";
+                string uri = $"{ApiConstants.GetDistDocApi}{Id}/DistributorCompanyDoc";
 
                 string UserToken = await _service.UserToken();
 
