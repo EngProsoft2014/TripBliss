@@ -396,7 +396,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                         {
                             IsBusy = false;
                             bool ans = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Info, TripBliss.Resources.Language.AppResources.Do_you_agree_to_delete_all_photos, TripBliss.Resources.Language.AppResources.OK, TripBliss.Resources.Language.AppResources.Cancel);
-                            var obj = LstAirFlightDetails.Where(x => !string.IsNullOrEmpty(x.Id)).FirstOrDefault();
+                            var obj = LstAirFlightDetails.Where(x => !string.IsNullOrEmpty(x.Id)).FirstOrDefault(); // old photos
                             if (ans)
                             {
                                 if (obj != null)
@@ -408,12 +408,30 @@ namespace TripBliss.ViewModels.ActivateViewModels
                                     UserDialogs.Instance.HideHud();
                                     if (json == null)
                                     {
-                                        LstAirFlightDetails.Clear();
+                                        if (TOD == "T")
+                                        {
+                                            LstTRAirFlightDetails.ForEach(f => LstAirFlightDetails.Remove(f));
+                                            LstTRAirFlightDetails.Clear();
+                                        }
+                                        else
+                                        {
+                                            LstDSAirFlightDetails.ForEach(f => LstAirFlightDetails.Remove(f));
+                                            LstDSAirFlightDetails.Clear();
+                                        }
                                     }
                                 }
                                 else
                                 {
-                                    LstAirFlightDetails.Clear();
+                                    if (TOD == "T")
+                                    {
+                                        LstTRAirFlightDetails.ForEach(f => LstAirFlightDetails.Remove(f));
+                                        LstTRAirFlightDetails.Clear();
+                                    }
+                                    else
+                                    {
+                                        LstDSAirFlightDetails.ForEach(f => LstAirFlightDetails.Remove(f));
+                                        LstDSAirFlightDetails.Clear();
+                                    }
                                 }
                             }
 

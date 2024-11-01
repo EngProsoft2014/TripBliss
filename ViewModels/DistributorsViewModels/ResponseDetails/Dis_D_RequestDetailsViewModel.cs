@@ -69,7 +69,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task SelectHotel(ResponseWithDistributorHotelResponse model)
         {
-            var vm = new Dis_D_HotelServiceViewModel(IsRequestHistory,Response.TotalPayment,model, Rep, _service);
+            var vm = new Dis_D_HotelServiceViewModel(IsRequestHistory, Response.TotalPayment, model, Rep, _service);
             var page = new HotelServicePage(vm);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -85,7 +85,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task SelectTransportaion(ResponseWithDistributorTransportResponse model)
         {
-            var vm = new Dis_D_TransportaionServiceViewModel(IsRequestHistory,Response.TotalPayment, model, Rep, _service);
+            var vm = new Dis_D_TransportaionServiceViewModel(IsRequestHistory, Response.TotalPayment, model, Rep, _service);
             var page = new TransportaionServicePage(vm);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -117,7 +117,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task SelectVisa(ResponseWithDistributorVisaResponse model)
         {
-            var vm = new Dis_D_VisaServiceViewModel(IsRequestHistory, Response.TotalPayment, model, Rep,_service);
+            var vm = new Dis_D_VisaServiceViewModel(IsRequestHistory, Response.TotalPayment, model, Rep, _service);
             var page = new VisaServicePage(vm);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -141,12 +141,13 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                 string UserToken = await _service.UserToken();
 
                 var json = await Rep.GetAsync<ResponseWithDistributorDetailsResponse>(ApiConstants.ResponseDetailsDistApi + $"{DisId}/ResponseWithDistributor/{ReqId}", UserToken);
-                
+
                 if (json != null)
                 {
                     Response = json;
 
-                    if(!string.IsNullOrEmpty(DisId) && !string.IsNullOrEmpty(Response.ReviewUserDistributorName))
+                    //if(!string.IsNullOrEmpty(DisId) && !string.IsNullOrEmpty(Response.ReviewUserDistributorName))
+                    if (Response.IsHistory == true)
                     {
                         IsRequestHistory = true;
                     }
@@ -154,67 +155,67 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                     {
                         IsRequestHistory = false;
                         CheckShowReview();
-                    }    
+                    }
                 }
             }
 
         }
 
-       
+
         #endregion
 
         #region RelayCommand
         [RelayCommand]
         [Obsolete]
         async Task AddToRequest()
-        {        
+        {
             IsBusy = false;
 
-            var ResponseAirFlt = Response?.ResponseWithDistributorAirFlight?.Where(x => x.AcceptPriceDis == true).FirstOrDefault();
-            var ResponseHotel = Response?.ResponseWithDistributorHotel?.Where(x => x.AcceptPriceDis == true).FirstOrDefault();
-            var ResponseTrans = Response?.ResponseWithDistributorTransport?.Where(x => x.AcceptPriceDis == true).FirstOrDefault();
-            var ResponseVisa = Response?.ResponseWithDistributorVisa?.Where(x => x.AcceptPriceDis == true).FirstOrDefault();
+            //var ResponseAirFlt = Response?.ResponseWithDistributorAirFlight?.Where(x => x.AcceptPriceDis == true).FirstOrDefault();
+            //var ResponseHotel = Response?.ResponseWithDistributorHotel?.Where(x => x.AcceptPriceDis == true).FirstOrDefault();
+            //var ResponseTrans = Response?.ResponseWithDistributorTransport?.Where(x => x.AcceptPriceDis == true).FirstOrDefault();
+            //var ResponseVisa = Response?.ResponseWithDistributorVisa?.Where(x => x.AcceptPriceDis == true).FirstOrDefault();
 
-            if (ResponseAirFlt != null || ResponseHotel != null || ResponseTrans != null || ResponseVisa != null)
+            //if (ResponseAirFlt != null || ResponseHotel != null || ResponseTrans != null || ResponseVisa != null)
+            //{
+            bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.AreYouAcceptThisFinallPrice, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet && answer)
             {
-                bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.AreYouAcceptThisFinallPrice, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
 
-                if (Connectivity.NetworkAccess == NetworkAccess.Internet && answer)
+                string UserToken = await _service.UserToken();
+
+                string id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
+
+                UserDialogs.Instance.ShowLoading();
+                //var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorResponse>(ApiConstants.ResponseDetailsDistApi + $"{id}/ResponseWithDistributor/{Response.Id}", Response, UserToken);
+                var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorDetailsResponse>(ApiConstants.ResponseDetailsDistApi + $"{id}/ResponseWithDistributor/{Response.Id}", Response, UserToken);
+                UserDialogs.Instance.HideHud();
+
+                if (json.Item1 != null)
                 {
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.AddResponseSuccess, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
 
-                    string UserToken = await _service.UserToken();
+                    Response = new ResponseWithDistributorDetailsResponse();
+                    Response = json.Item1;
 
-                    string id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
-
-                    UserDialogs.Instance.ShowLoading();
-                    //var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorResponse>(ApiConstants.ResponseDetailsDistApi + $"{id}/ResponseWithDistributor/{Response.Id}", Response, UserToken);
-                    var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorDetailsResponse>(ApiConstants.ResponseDetailsDistApi + $"{id}/ResponseWithDistributor/{Response.Id}", Response, UserToken);
-                    UserDialogs.Instance.HideHud();
-
-                    if (json.Item1 != null)
-                    {
-                        var toast = Toast.Make(TripBliss.Resources.Language.AppResources.AddResponseSuccess, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                        await toast.Show();
-
-                        Response = new ResponseWithDistributorDetailsResponse();
-                        Response = json.Item1;
-
-                        new Dis_D_RequestDetailsViewModel(Response?.Id!, Rep, _service);
-                        //Controls.StaticMember.WayOfTab = 0;
-                        //await App.Current!.MainPage!.Navigation.PushAsync(new HomeDistributorsPage(new Dis_HomeViewModel(Rep, _service), Rep, _service));
-                    }
-                    else
-                    {
-                        var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                        await toast.Show();
-                    }
+                    new Dis_D_RequestDetailsViewModel(Response?.Id!, Rep, _service);
+                    //Controls.StaticMember.WayOfTab = 0;
+                    //await App.Current!.MainPage!.Navigation.PushAsync(new HomeDistributorsPage(new Dis_HomeViewModel(Rep, _service), Rep, _service));
+                }
+                else
+                {
+                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
                 }
             }
-            else
-            {
-                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PutPriceAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                await toast.Show();
-            }             
+            //}
+            //else
+            //{
+            //    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PutPriceAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+            //    await toast.Show();
+            //}             
 
             IsBusy = true;
         }

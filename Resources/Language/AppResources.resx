@@ -981,4 +981,7 @@
   <data name="Your_Token_expired_Please_Enter_Your_Password" xml:space="preserve">
     <value>Your Token expired, Please Enter Your Password</value>
   </data>
+  <data name="late_no_response" xml:space="preserve">
+    <value>late (no response)</value>
+  </data>
 </root>

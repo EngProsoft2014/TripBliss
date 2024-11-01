@@ -65,7 +65,6 @@ namespace TripBliss.ViewModels.DistributorsViewModels
                         }
                     }
                 }
-
             }
             else
             {

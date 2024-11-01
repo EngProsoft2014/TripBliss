@@ -68,7 +68,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                 if (answer)
                 {
                     HotelService!.Total = HotelService.Price * HotelService.RequestTravelAgencyHotel.RoomCount;
-                    HotelService!.AcceptPriceDis = answer;
+                    HotelService!.AcceptPriceDis = HotelService.Price == 0 ? false : answer;
                     await App.Current!.MainPage!.Navigation.PopAsync();
                 }
                 else

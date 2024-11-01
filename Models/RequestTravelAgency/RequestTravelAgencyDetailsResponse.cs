@@ -9,6 +9,7 @@ namespace TripBliss.Models
         public string? RequestName { get; set; }
         public bool IsDelete { get; set; }
         public bool? ActiveDelete { get; set; }
+        public bool? IsHistory { get; set; }
         public TravelAgencyCompanyResponse? TravelAgencyCompany { get; set; }
         public List<ResponseWithDistributorResponse>? ResponseWithDistributor { get; set; }
         public List<RequestTravelAgencyHotelResponse>? RequestTravelAgencyHotel { get; set; }

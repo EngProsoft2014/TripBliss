@@ -524,16 +524,11 @@
                                                             </Label.FormattedText>
                                                         </Label>
                                                     </VerticalStackLayout>
-                                                    <!--<StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand" Spacing="1">
+                                                    <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand" Spacing="1">
                                                         <Border HorizontalOptions="EndAndExpand"
                                                                 VerticalOptions="StartAndExpand" Padding="0,3" WidthRequest="80">
-                                                            <Label x:Name="lblAct" Text="{Static res:AppResources.ActiveStatus}" TextColor="White" FontAttributes="Bold"  FontSize="12" HorizontalTextAlignment="Center">
-                                                                <Label.Triggers>
-                                                                    <DataTrigger TargetType="Label" Binding="{Binding TotalPriceAgentAccept}" Value="0">
-                                                                        <Setter Property="Text" Value="{Static res:AppResources.NotActiveStatus}"></Setter>
-                                                                        <Setter Property="TextColor" Value="Gray"></Setter>
-                                                                    </DataTrigger>
-                                                                </Label.Triggers>
+                                                            <Label x:Name="lblAct" Text="{Static res:AppResources.late_no_response}" TextColor="White" BackgroundColor="Red"  FontAttributes="Bold"  FontSize="12" HorizontalTextAlignment="Center">
+                                                               
                                                             </Label>
                                                             <Border.StrokeShape>
                                                                 <RoundRectangle CornerRadius="0,20,20,0"></RoundRectangle>
@@ -546,15 +541,14 @@
                                                                         </Setter.Value>
                                                                     </Setter>
                                                                 </DataTrigger>
-                                                                <DataTrigger TargetType="Border" Binding="{Binding Source={x:Reference lblAct},Path=Text}" Value="{Static res:AppResources.ActiveStatus}">
-                                                                    <Setter Property="BackgroundColor" Value="#2FA562"></Setter>
-                                                                </DataTrigger>
-                                                                <DataTrigger TargetType="Border" Binding="{Binding Source={x:Reference lblAct},Path=Text}" Value="{Static res:AppResources.NotActiveStatus}">
-                                                                    <Setter Property="BackgroundColor" Value="Transparent"></Setter>
-                                                                </DataTrigger>
                                                             </Border.Triggers>
                                                         </Border>
-                                                    </StackLayout>-->
+                                                        <StackLayout.Triggers>
+                                                            <DataTrigger TargetType="StackLayout" Binding="{Binding IsLate}" Value="False">
+                                                                <Setter Property="IsVisible" Value="False"></Setter>
+                                                            </DataTrigger>
+                                                        </StackLayout.Triggers>
+                                                    </StackLayout>
                                                 </StackLayout>
                                                 <Border.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_HistoryViewModel}}, Path=SelectionCommand}"

@@ -29,6 +29,8 @@ namespace TripBliss.Models
         public DateTime? ReviewDistributorDateTime { get; set; }
         public bool ReviewDistributorShow { get; set; }
 
+        public bool? IsHistory { get; set; }
+
         public DistributorCompanyResponse DistributorCompany { get; set; } = default!;
         public List<ResponseWithDistributorHotelResponse>? ResponseWithDistributorHotel { set; get; } = [];
         public List<ResponseWithDistributorTransportResponse>? ResponseWithDistributorTransport { set; get; } = [];

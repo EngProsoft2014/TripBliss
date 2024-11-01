@@ -979,6 +979,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to late (no response).
+        /// </summary>
+        internal static string late_no_response {
+            get {
+                return ResourceManager.GetString("late_no_response", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Company Account.
         /// </summary>
         internal static string lblAccount_More {

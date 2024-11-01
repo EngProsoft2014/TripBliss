@@ -232,6 +232,9 @@
                 <DataTrigger TargetType="ScrollView" Binding="{Binding HotelService.AcceptAgen}" Value="True">
                     <Setter Property="IsEnabled" Value="False"></Setter>
                 </DataTrigger>
+                <DataTrigger TargetType="ScrollView" Binding="{Binding IsPayment}" Value="True">
+                    <Setter Property="IsEnabled" Value="False"></Setter>
+                </DataTrigger>
             </ScrollView.Triggers>
         </ScrollView>
     </StackLayout>

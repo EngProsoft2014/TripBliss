@@ -242,7 +242,7 @@
                                             <Border BackgroundColor="White" Padding="0" VerticalOptions="FillAndExpand">
                                                 <Image x:Name="PicSch2" Source="{Binding ImageFile}" WidthRequest="130" HeightRequest="90" Aspect="Fill">
                                                     <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirFlightActivateViewModel}}, Path=OpenFullScreenImageCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:VisaActivateViewModel}}, Path=OpenFullScreenImageCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                     </Image.GestureRecognizers>
                                                     <Image.Triggers>
                                                         <DataTrigger TargetType="Image" Binding="{Binding Extension}" Value=".pdf">
@@ -273,7 +273,7 @@
                                                 </Image.Source>
                                             </Image>
                                             <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AirFlightActivateViewModel}}, Path=DeletePhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:VisaActivateViewModel}}, Path=DeletePhotoCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                             </StackLayout.GestureRecognizers>
                                             <StackLayout.Triggers>
                                                 <DataTrigger TargetType="StackLayout" Binding="{Binding IsRequestHistory}" Value="True">

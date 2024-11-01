@@ -981,4 +981,7 @@
   <data name="Your_Token_expired_Please_Enter_Your_Password" xml:space="preserve">
     <value>انتهت صلاحية الرمز الخاص بك، يرجى إدخال كلمة المرور الخاصة بك</value>
   </data>
+  <data name="late_no_response" xml:space="preserve">
+    <value>متأخر (لا يوجد رد)</value>
+  </data>
 </root>

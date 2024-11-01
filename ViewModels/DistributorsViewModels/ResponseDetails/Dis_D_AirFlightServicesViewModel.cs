@@ -58,7 +58,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         async Task AplyClicked()
         {
             bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.Are_You_Accept_This_Price, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
-            Moddel!.AcceptPriceDis = answer;
+            Moddel!.AcceptPriceDis = (Moddel.PriceAdult + Moddel.PriceChild + Moddel.PriceInfant == 0) ? false : answer;
             Moddel.Total = (Moddel.PriceAdult * Moddel.RequestTravelAgencyAirFlight.InfoAdultCount) + (Moddel.PriceChild * Moddel.RequestTravelAgencyAirFlight.InfoChildCount) + (Moddel.PriceInfant * Moddel.RequestTravelAgencyAirFlight.InfoInfantCount);
             await App.Current!.MainPage!.Navigation.PopAsync();
         }

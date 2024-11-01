@@ -42,6 +42,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [ObservableProperty]
         public int totalPayment = 0;
         [ObservableProperty]
+        public bool isPayment;
+        [ObservableProperty]
         bool isRequestHistory;
         //Test
         [ObservableProperty]
@@ -67,6 +69,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             _service = service;
             IsRequestHistory = _IsRequestHistory;
             TotalPayment = payment;
+            IsPayment = payment == 0 ? false : true;
             if (model.AcceptAgen == false)
             {
                 Init(model);

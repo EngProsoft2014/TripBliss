@@ -122,6 +122,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 VisaResponseModel!.VisaNameAr = SelectedVisa.VisaNameAr;
                 VisaResponseModel!.PersonCount = request.PersonCount;
                 VisaResponseModel!.Notes = request.Notes;
+                Controls.StaticMember.EndRequestStatic = (request.DateVisa > DateOnly.FromDateTime(Controls.StaticMember.EndRequestStatic)) ? request.DateVisa.ToDateTime(new TimeOnly(0, 0)) : Controls.StaticMember.EndRequestStatic;
+
                 VisaClose.Invoke(request, VisaResponseModel);
                 await App.Current!.MainPage!.Navigation.PopAsync();
 

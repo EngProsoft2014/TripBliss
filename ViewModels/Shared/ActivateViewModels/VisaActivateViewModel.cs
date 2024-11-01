@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using Mopups.Services;
+using Syncfusion.Maui.DataSource.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -386,7 +387,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                         {
                             IsBusy = false;
                             bool ans = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Info, TripBliss.Resources.Language.AppResources.Do_you_agree_to_delete_all_photos, TripBliss.Resources.Language.AppResources.OK, TripBliss.Resources.Language.AppResources.Cancel);
-                            var obj = LstVisaDetails.Where(x => !string.IsNullOrEmpty(x.Id)).FirstOrDefault();
+                            var obj = LstVisaDetails.Where(x => !string.IsNullOrEmpty(x.Id)).FirstOrDefault();// old photos
                             if (ans)
                             {
                                 if (obj != null)
@@ -398,12 +399,30 @@ namespace TripBliss.ViewModels.ActivateViewModels
                                     UserDialogs.Instance.HideHud();
                                     if (json == null)
                                     {
-                                        LstVisaDetails.Clear();
+                                        if (TOD == "T")
+                                        {
+                                            LstTrVisaDetails.ForEach(f => LstVisaDetails.Remove(f));
+                                            LstTrVisaDetails.Clear();
+                                        }
+                                        else
+                                        {
+                                            LstDisVisaDetails.ForEach(f => LstVisaDetails.Remove(f));
+                                            LstDisVisaDetails.Clear();
+                                        }
                                     }
                                 }
                                 else
                                 {
-                                    LstVisaDetails.Clear();
+                                    if (TOD == "T")
+                                    {
+                                        LstTrVisaDetails.ForEach(f => LstVisaDetails.Remove(f));
+                                        LstTrVisaDetails.Clear();
+                                    }
+                                    else
+                                    {
+                                        LstDisVisaDetails.ForEach(f => LstVisaDetails.Remove(f));
+                                        LstDisVisaDetails.Clear();
+                                    }
                                 }
                             }
 

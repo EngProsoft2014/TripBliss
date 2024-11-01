@@ -34,6 +34,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         bool isShowReviewBtn;
         [ObservableProperty]
         bool isRequestHistory;
+        [ObservableProperty]
+        public bool isPayment;
 
         #endregion
 
@@ -92,10 +94,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         {
             IsBusy = false;
 
-            bool result = CheckChooseServices();
+            //bool result = CheckChooseServices();
 
-            if (result)
-            {
+            //if (result)
+            //{
                 if (Response.TotalPayment > 0)
                 {
                     Init(Response.DistributorCompanyId, Response.Id!);
@@ -132,12 +134,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                         }
                     }
                 }
-            }
-            else
-            {
-                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Check_to_one_service_or_more, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                await toast.Show();
-            }
+            //}
+            //else
+            //{
+            //    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Check_to_one_service_or_more, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+            //    await toast.Show();
+            //}
 
             IsBusy = true;
         }
@@ -244,8 +246,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 if (json != null)
                 {
                     Response = json;
-                    
-                    if (!string.IsNullOrEmpty(Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "")) && !string.IsNullOrEmpty(Response.ReviewUserTravelAgentName))
+
+                    IsPayment = Response.TotalPayment == 0 ? false : true;
+
+
+                    //if (!string.IsNullOrEmpty(Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "")) && !string.IsNullOrEmpty(Response.ReviewUserTravelAgentName))
+                    if (Response.IsHistory == true)
                     {
                         IsRequestHistory = true;
                     }
@@ -275,12 +281,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
         bool CheckChooseServices()
         {
-            var ResponseAirFlt = Response?.ResponseWithDistributorAirFlight?.Where(x => x.AcceptAgen == true).FirstOrDefault();
-            var ResponseHotel = Response?.ResponseWithDistributorHotel?.Where(x => x.AcceptAgen == true).FirstOrDefault();
-            var ResponseTrans = Response?.ResponseWithDistributorTransport?.Where(x => x.AcceptAgen == true).FirstOrDefault();
-            var ResponseVisa = Response?.ResponseWithDistributorVisa?.Where(x => x.AcceptAgen == true).FirstOrDefault();
-
-            if (((ResponseAirFlt != null || ResponseHotel != null || ResponseTrans != null || ResponseVisa != null) && Response?.TotalPriceAgentAccept == 0) || ((ResponseAirFlt != null || ResponseHotel != null || ResponseTrans != null || ResponseVisa != null) && (Response?.TotalPriceAgentAccept > 0 && Response?.TotalPriceAgentAccept != Response?.TotalPayment)))
+            if (Response?.TotalPriceAgentAccept == 0 || (Response?.TotalPriceAgentAccept > 0 && Response?.TotalPriceAgentAccept != Response?.TotalPayment))
             {
                 return true;
             }
@@ -289,6 +290,23 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 return false;
             }
         }
+
+        //bool CheckChooseServices()
+        //{
+        //    var ResponseAirFlt = Response?.ResponseWithDistributorAirFlight?.Where(x => x.AcceptAgen == true).FirstOrDefault();
+        //    var ResponseHotel = Response?.ResponseWithDistributorHotel?.Where(x => x.AcceptAgen == true).FirstOrDefault();
+        //    var ResponseTrans = Response?.ResponseWithDistributorTransport?.Where(x => x.AcceptAgen == true).FirstOrDefault();
+        //    var ResponseVisa = Response?.ResponseWithDistributorVisa?.Where(x => x.AcceptAgen == true).FirstOrDefault();
+
+        //    if (((ResponseAirFlt != null || ResponseHotel != null || ResponseTrans != null || ResponseVisa != null) && Response?.TotalPriceAgentAccept == 0) || ((ResponseAirFlt != null || ResponseHotel != null || ResponseTrans != null || ResponseVisa != null) && (Response?.TotalPriceAgentAccept > 0 && Response?.TotalPriceAgentAccept != Response?.TotalPayment)))
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
 
         void CheckShowReview()
         {

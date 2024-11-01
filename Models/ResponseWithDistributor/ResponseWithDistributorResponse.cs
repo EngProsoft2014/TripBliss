@@ -40,6 +40,7 @@
 
         public DateTime? EndRequest { get; set; }
         public bool? IsAlertReview { get; set; }
+        public bool? IsLate { get; set; }
         public string ToolTip { get { return IsAlertReview == true ? TripBliss.Resources.Language.AppResources.Please_make_feedback_to_finish_request : ""; } }
 
     }

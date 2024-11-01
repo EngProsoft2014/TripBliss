@@ -45,6 +45,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [ObservableProperty]
         public int totalPayment = 0;
         [ObservableProperty]
+        public bool isPayment;
+        [ObservableProperty]
         bool isRequestHistory;
 
         public delegate void HotelDelegte(ResponseWithDistributorHotelResponse HotelResponse);
@@ -67,6 +69,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             HotelService = model;
             _service = service;
             TotalPayment = payment;
+            IsPayment = payment == 0 ? false : true;
             IsRequestHistory = _IsRequestHistory;
             if (model.AcceptAgen == false)
             {

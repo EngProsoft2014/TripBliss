@@ -50,7 +50,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         async Task Apply()
         {
             bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.Are_You_Accept_This_Price, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
-            Moddel!.AcceptPriceDis = answer;
+            Moddel!.AcceptPriceDis = Moddel.Price == 0 ? false : answer;
             Moddel!.Total = Moddel.Price * Moddel.RequestTravelAgencyVisa.PersonCount;
             await App.Current!.MainPage!.Navigation.PopAsync();
         }
