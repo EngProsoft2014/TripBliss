@@ -9,6 +9,7 @@
         public string? VisaNameAr { get; set; }
         public string? VisaNameLang { get { return Preferences.Default.Get("Lan", "en") == "ar" ? VisaNameAr : VisaName; } }
         public DateOnly DateVisa { get; set; }
+        public DateTime DateVisaVM { get; set; }
         public int PersonCount { get; set; }
         public string? Notes { get; set; }
     }

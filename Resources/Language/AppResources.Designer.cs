@@ -1861,6 +1861,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Max delivery date.
+        /// </summary>
+        internal static string Max_delivery_date {
+            get {
+                return ResourceManager.GetString("Max_delivery_date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         internal static string No {
@@ -2406,6 +2415,15 @@ namespace TripBliss.Resources.Language {
         internal static string Required_UserName {
             get {
                 return ResourceManager.GetString("Required_UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Visa Date..
+        /// </summary>
+        internal static string Required_Visa_Date {
+            get {
+                return ResourceManager.GetString("Required_Visa_Date", resourceCulture);
             }
         }
         

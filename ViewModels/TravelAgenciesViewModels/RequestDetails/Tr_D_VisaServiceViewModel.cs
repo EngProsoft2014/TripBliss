@@ -80,6 +80,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
             VisaRequestModel = new RequestTravelAgencyVisaRequest
             {
+                DateVisa = model.RequestTravelAgencyVisa.DateVisa,
+                DateVisaVM = model.RequestTravelAgencyVisa.DateVisaVM,
                 PersonCount = model.RequestTravelAgencyVisa.PersonCount,
                 Notes = model.Notes,
             };
@@ -90,6 +92,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         {
             VisaRequestModel = new RequestTravelAgencyVisaRequest
             {
+                DateVisa = Moddel.RequestTravelAgencyVisa.DateVisa,
+                DateVisaVM = Moddel.RequestTravelAgencyVisa.DateVisaVM,
                 PersonCount = Moddel.RequestTravelAgencyVisa.PersonCount,
                 Notes = Moddel.Notes,
             };

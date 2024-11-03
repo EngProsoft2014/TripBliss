@@ -54,6 +54,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             Rep = generic;
             _service = service;
             TransportRequestModel!.Date = DateOnly.FromDateTime(DateTime.Now);
+            TransportRequestModel!.DateVM = DateTime.Now;
             Init();
         }
         public Tr_C_TransportaionServiceViewModel(RequestTravelAgencyTransportResponse model , IGenericRepository generic , Services.Data.ServicesService service)
@@ -61,6 +62,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             Rep = generic;
             //TransportResponseModel = model;
             TransportRequestModel!.Date = DateOnly.FromDateTime(DateTime.Now);
+            TransportRequestModel!.DateVM = DateTime.Now;
             _service = service;
             Init(model);
         }
@@ -78,6 +80,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 FromLocation = model.FromLocation,
                 ToLocation = model.ToLocation,
                 Date = model.Date,
+                DateVM = model.Date.ToDateTime(new TimeOnly(0, 0)),
                 Notes = model.Notes,
                 Time = model.Time,
                 TransportCount = model.TransportCount,
@@ -169,7 +172,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_TransportCount, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
-            else if (request.Date < DateOnly.FromDateTime(DateTime.Now))
+            else if (request.DateVM < DateTime.Now)
             {
                 var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_Date, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
@@ -189,6 +192,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 IsBusy = false;
                 UserDialogs.Instance.ShowLoading();
 
+                request.Date = DateOnly.FromDateTime(request.DateVM);
 
                 request.CarBrandId = SelectrdBrand!.Id;
                 request.CarTypeId = SelectrdType!.Id;

@@ -984,4 +984,10 @@
   <data name="late_no_response" xml:space="preserve">
     <value>late (no response)</value>
   </data>
+  <data name="Max_delivery_date" xml:space="preserve">
+    <value>Max delivery date</value>
+  </data>
+  <data name="Required_Visa_Date" xml:space="preserve">
+    <value>Please Complete This Field Required : Visa Date.</value>
+  </data>
 </root>

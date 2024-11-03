@@ -191,8 +191,11 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         async Task AddRequest()
         {
+            IsBusy = false;
+
             if (Constants.Permissions.CheckPermission(Constants.Permissions.TR_Add_Request))
             {
+                UserDialogs.Instance.ShowLoading();
                 if (IndexTap == 0)
                 {
                     await App.Current!.MainPage!.Navigation.PushAsync(new ChooseDistributorPage(new Tr_C_ChooseDistributorViewModel(Rep, _service, DistributorCompanys), Rep));
@@ -209,12 +212,16 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     });
                     await App.Current!.MainPage!.Navigation.PushAsync(new ChooseDistributorPage(new Tr_C_ChooseDistributorViewModel(Rep, _service, LstDisModel), Rep));
                 }
+
+                UserDialogs.Instance.HideHud();
             }
             else
             {
                 var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
+
+            IsBusy = true;
 
         }
 

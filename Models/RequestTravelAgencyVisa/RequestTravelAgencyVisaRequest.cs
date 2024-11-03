@@ -5,6 +5,7 @@
         public int VisaId { get; set; }
         public int PersonCount { get; set; }
         public DateOnly DateVisa { get; set; }
+        public DateTime DateVisaVM { get; set; }
         public string? Notes { get; set; }
     }
 }
