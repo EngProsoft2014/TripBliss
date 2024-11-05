@@ -65,7 +65,7 @@ namespace TripBliss.Services.Data
                 {        
                     if (!string.IsNullOrEmpty(Preferences.Default.Get(ApiConstants.username, "")))
                     {
-                        string Pass = await App.Current!.MainPage!.DisplayPromptAsync(TripBliss.Resources.Language.AppResources.Info, TripBliss.Resources.Language.AppResources.Your_Token_expired_Please_Enter_Your_Password, TripBliss.Resources.Language.AppResources.OK);
+                        string Pass = await App.Current!.MainPage!.DisplayPromptAsync(TripBliss.Resources.Language.AppResources.Info, TripBliss.Resources.Language.AppResources.Your_Token_expired_Please_Enter_Your_Password, TripBliss.Resources.Language.AppResources.OK, TripBliss.Resources.Language.AppResources.Cancel);
 
                         ApplicationUserLoginRequest model = new ApplicationUserLoginRequest()
                         {

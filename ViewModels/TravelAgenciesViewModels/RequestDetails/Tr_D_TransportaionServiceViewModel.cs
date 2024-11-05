@@ -10,6 +10,7 @@ using TripBliss.Pages.ActivateDetailsPages;
 using TripBliss.Pages.Shared;
 using TripBliss.ViewModels.ActivateViewModels;
 
+
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {
     public partial class Tr_D_TransportaionServiceViewModel : BaseViewModel
@@ -83,7 +84,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 FromLocation = model.RequestTravelAgencyTransport.FromLocation,
                 ToLocation = model.RequestTravelAgencyTransport.ToLocation,
                 Date = model.RequestTravelAgencyTransport.Date,
-                DateVM = model.RequestTravelAgencyTransport.DateVM,
+                DateVM = model.RequestTravelAgencyTransport.Date.ToDateTime(new TimeOnly(0, 0)),
                 Notes = model.Notes,
                 Time = model.RequestTravelAgencyTransport.Time,
                 TransportCount = model.RequestTravelAgencyTransport.TransportCount,
@@ -100,7 +101,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 FromLocation = ServiceModdel.RequestTravelAgencyTransport.FromLocation,
                 ToLocation = ServiceModdel.RequestTravelAgencyTransport.ToLocation,
                 Date = ServiceModdel.RequestTravelAgencyTransport.Date,
-                DateVM = ServiceModdel.RequestTravelAgencyTransport.DateVM,
+                DateVM = ServiceModdel.RequestTravelAgencyTransport.Date.ToDateTime(new TimeOnly(0, 0)),
                 Notes = ServiceModdel.Notes,
                 Time = ServiceModdel.RequestTravelAgencyTransport.Time,
                 TransportCount = ServiceModdel.RequestTravelAgencyTransport.TransportCount,

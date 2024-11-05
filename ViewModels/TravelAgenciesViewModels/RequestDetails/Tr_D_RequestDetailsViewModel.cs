@@ -42,10 +42,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
         #region Methodes
         async Task Init(string ReqId)
-        {
-            UserDialogs.Instance.ShowLoading();
-            await GetRequestDetailes(ReqId);
-            UserDialogs.Instance.HideHud();
+        {     
+            await GetRequestDetailes(ReqId);   
         }
 
         async Task GetRequestDetailes(string ReqId)
@@ -56,7 +54,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             {
                 string UserToken = await _service.UserToken();
 
+                UserDialogs.Instance.ShowLoading();
                 var json = await Rep.GetAsync<RequestTravelAgencyDetailsResponse>(ApiConstants.RequestDetailesApi + $"{TravelId}/RequestTravelAgency/{ReqId}", UserToken);
+                UserDialogs.Instance.HideHud();
 
                 if (json != null)
                 {
@@ -336,7 +336,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     {
                         string UserToken = await _service.UserToken();
 
+                        UserDialogs.Instance.ShowLoading();
                         var json = await Rep.PostAsync<RequestTravelAgencyDetailsResponse>(ApiConstants.RequestDetailesApi + $"{TravelId}/RequestTravelAgency/{RequestId}/Delete", null, UserToken);
+                        UserDialogs.Instance.HideHud();
 
                         if (json == null)
                         {

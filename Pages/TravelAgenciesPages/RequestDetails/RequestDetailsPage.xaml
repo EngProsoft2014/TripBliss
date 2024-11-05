@@ -65,7 +65,7 @@
                                                 <DataTemplate>
 
                                                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,10">
-                                                        <Label Text="{Static res:AppResources.lblHotelServices}" FontAutoScalingEnabled="False" TextColor="DarkOrange" Margin="0,0,0,10" FontAttributes="Bold" FontSize="16">
+                                                        <Label Text="{Static res:AppResources.lblHotelServices}" FontAutoScalingEnabled="False" TextColor="DarkOrange" Margin="0,0,0,10" FontAttributes="Bold" FontSize="14">
 
                                                         </Label>
                                                         <StackLayout Spacing="10" HorizontalOptions="FillAndExpand">
@@ -77,9 +77,9 @@
                                                                         <Label VerticalTextAlignment="Center" Padding="5" FontAutoScalingEnabled="False">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding LocationNameLang}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
-                                                                                    <Span Text=" - " TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
-                                                                                    <Span Text="{Binding HotelNameLang}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                                                                    <Span Text="{Binding LocationNameLang}" TextColor="Black" FontSize="12" FontAttributes="Bold"></Span>
+                                                                                    <Span Text=" - " TextColor="Black" FontSize="12" FontAttributes="Bold"></Span>
+                                                                                    <Span Text="{Binding HotelNameLang}" TextColor="Black" FontSize="12" FontAttributes="Bold"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -93,40 +93,40 @@
                                                                     <BoxView HorizontalOptions="FillAndExpand" Color="Gray" HeightRequest=".5"></BoxView>
                                                                     <VerticalStackLayout>
                                                                         <StackLayout Orientation="Horizontal" Padding="5">
-                                                                            <Label Text="{Static res:AppResources.lblCheckIn_HotelService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="13"
+                                                                            <Label Text="{Static res:AppResources.lblCheckIn_HotelService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="12"
                                                                FontFamily="Almarai-Regular"></Label>
-                                                                            <Label Text=": " TextColor="Black" FontSize="13" FontAutoScalingEnabled="False"></Label>
+                                                                            <Label Text=": " TextColor="Black" FontSize="12" FontAutoScalingEnabled="False"></Label>
                                                                             <Label Text="{Binding CheckIn , StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="End"></Label>
-                                                                            <Label Text="{Static res:AppResources.lblCheckOut_HotelService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="13"
+                                                                            <Label Text="{Static res:AppResources.lblCheckOut_HotelService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="12"
                                                                FontFamily="Almarai-Regular" HorizontalOptions="EndAndExpand"></Label>
-                                                                            <Label Text=": " TextColor="Black" FontSize="13" FontAutoScalingEnabled="False"></Label>
+                                                                            <Label Text=": " TextColor="Black" FontSize="12" FontAutoScalingEnabled="False"></Label>
                                                                             <Label Text="{Binding CheckOut ,StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="End"></Label>
                                                                         </StackLayout>
-                                                                        <Label Text="{Static res:AppResources.lblRoomDetails_RequestDetails}" FontAutoScalingEnabled="False" TextColor="#387955" FontSize="14"
-                                                           FontAttributes="Bold" Margin="0,5" Padding="5"></Label>
+                                                                        <Label Text="{Static res:AppResources.lblRoomDetails_RequestDetails}" FontAutoScalingEnabled="False" TextColor="#387955" FontSize="12"
+                                                           FontAttributes="Bold" Margin="0,0" Padding="5"></Label>
                                                                         <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="7" Margin="10,0">
                                                                             <VerticalStackLayout Spacing="3">
                                                                                 <StackLayout Orientation="Horizontal">
 
-                                                                                    <Label Text="{Static res:AppResources.lblRoomType_HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                    <Label Text="{Static res:AppResources.lblRoomType_HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12"
                                                                        FontAttributes="Bold"></Label>
-                                                                                    <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                    <Label Text="{Binding RoomTypeNameLang}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                    <Label Text=": " TextColor="Gray" FontSize="12" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                    <Label Text="{Binding RoomTypeNameLang}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="11" FontAttributes="Bold"></Label>
 
-                                                                                    <Label Text="{Static res:AppResources.lblView_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                    <Label Text="{Static res:AppResources.lblView_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12"
                                                                        FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
-                                                                                    <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                    <Label Text="{Binding RoomViewNameLang}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                    <Label Text=": " TextColor="Gray" FontSize="12" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                    <Label Text="{Binding RoomViewNameLang}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="11" FontAttributes="Bold"></Label>
                                                                                 </StackLayout>
                                                                                 <StackLayout Orientation="Horizontal">
-                                                                                    <Label Text="{Static res:AppResources.lblNoOfRoom_HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                    <Label Text="{Static res:AppResources.lblNoOfRoom_HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12"
                                                                        FontAttributes="Bold"></Label>
-                                                                                    <Label Text=": " TextColor="Gray" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                    <Label Text="{Binding RoomCount}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                    <Label Text="{Static res:AppResources.lblMeals_HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                    <Label Text=": " TextColor="Gray" FontAutoScalingEnabled="False" FontSize="12" FontAttributes="Bold"></Label>
+                                                                                    <Label Text="{Binding RoomCount}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="11" FontAttributes="Bold"></Label>
+                                                                                    <Label Text="{Static res:AppResources.lblMeals_HotelService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12"
                                                                        HorizontalOptions="EndAndExpand" FontAttributes="Bold"></Label>
-                                                                                    <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                    <Label Text="{Binding MealNameLang}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                    <Label Text=": " TextColor="Gray" FontSize="12" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                    <Label Text="{Binding MealNameLang}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="11" FontAttributes="Bold"></Label>
                                                                                 </StackLayout>
                                                                             </VerticalStackLayout>
                                                                         </Border>
@@ -158,7 +158,7 @@
                                             <CarouselView.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,10">
-                                                        <Label Text="{Static res:AppResources.lblTransportationServices}" FontAutoScalingEnabled="False" TextColor="DarkOrange" Margin="0,0,0,10" FontAttributes="Bold" FontSize="16"></Label>
+                                                        <Label Text="{Static res:AppResources.lblTransportationServices}" FontAutoScalingEnabled="False" TextColor="DarkOrange" Margin="0,0,0,10" FontAttributes="Bold" FontSize="14"></Label>
                                                         <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="0,0,0,10"
                                                                 HorizontalOptions="FillAndExpand">
                                                             <StackLayout Orientation="Vertical" >
@@ -166,9 +166,9 @@
                                                                     <Label VerticalTextAlignment="Center" Padding="5" FontAutoScalingEnabled="False">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding FromLocation}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
-                                                                                <Span Text=" - " TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
-                                                                                <Span Text="{Binding ToLocation}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                                                                <Span Text="{Binding FromLocation}" TextColor="Black" FontSize="12" FontAttributes="Bold"></Span>
+                                                                                <Span Text=" - " TextColor="Black" FontSize="12" FontAttributes="Bold"></Span>
+                                                                                <Span Text="{Binding ToLocation}" TextColor="Black" FontSize="12" FontAttributes="Bold"></Span>
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -182,36 +182,43 @@
                                                                 <BoxView HorizontalOptions="FillAndExpand" Color="Gray" HeightRequest=".5"></BoxView>
                                                                 <VerticalStackLayout>
                                                                     <StackLayout Orientation="Horizontal" Padding="5">
-                                                                        <Label Text="{Static res:AppResources.lblDate_TranService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="13"
+                                                                        <Label Text="{Static res:AppResources.lblDate_TranService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="12"
                                                                                 FontFamily="Almarai-Regular"></Label>
-                                                                        <Label Text=": " TextColor="Black" FontSize="13" FontAutoScalingEnabled="False"></Label>
+                                                                        <Label Text=": " TextColor="Black" FontSize="12" FontAutoScalingEnabled="False"></Label>
                                                                         <Label Text="{Binding Date , StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="End"></Label>
-                                                                        <Label Text="{Static res:AppResources.lblTime_TranService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="13"
+                                                                        <Label Text="{Static res:AppResources.lblTime_TranService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="12"
                                                                                 FontFamily="Almarai-Regular" HorizontalOptions="EndAndExpand"></Label>
-                                                                        <Label Text=": " TextColor="Black" FontSize="13" FontAutoScalingEnabled="False"></Label>
-                                                                        <Label Text="{Binding Time , StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="End"></Label>
+                                                                        <Label Text=": " TextColor="Black" FontSize="12" FontAutoScalingEnabled="False"></Label>
+                                                                        <Label FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="End">
+                                                                            <Label.Text>
+                                                                                <MultiBinding StringFormat="{}{0:00}:{1:00;00}">
+                                                                                    <Binding Path="Time.Hours"/>
+                                                                                    <Binding Path="Time.Minutes"/>
+                                                                                </MultiBinding>
+                                                                            </Label.Text>
+                                                                        </Label>
                                                                     </StackLayout>
-                                                                    <Label Text="{Static res:AppResources.lblTransportDetails_RequestDetails}" FontAutoScalingEnabled="False" TextColor="#387955" FontSize="14"
-                                                                            FontAttributes="Bold" Margin="0,5" Padding="5"></Label>
+                                                                    <Label Text="{Static res:AppResources.lblTransportDetails_RequestDetails}" FontAutoScalingEnabled="False" TextColor="#387955" FontSize="12"
+                                                                            FontAttributes="Bold" Margin="0,0" Padding="5"></Label>
                                                                     <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="7" Margin="10,0">
                                                                         <VerticalStackLayout Spacing="3">
                                                                             <StackLayout Orientation="Horizontal">
 
-                                                                                <Label Text="{Static res:AppResources.lblBrand_TranServices}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                <Label Text="{Static res:AppResources.lblBrand_TranServices}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12"
                                                                                         FontAttributes="Bold"></Label>
-                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding BrandNameLang}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontSize="12" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding BrandNameLang}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="11" FontAttributes="Bold"></Label>
 
-                                                                                <Label Text="{Static res:AppResources.lblTypeName_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                <Label Text="{Static res:AppResources.lblTypeName_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12"
                                                                                        FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
-                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding TypeNameLang}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontSize="12" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding TypeNameLang}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="11" FontAttributes="Bold"></Label>
                                                                             </StackLayout>
                                                                             <StackLayout Orientation="Horizontal">
-                                                                                <Label Text="{Static res:AppResources.lblModel_TranService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                <Label Text="{Static res:AppResources.lblModel_TranService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12"
                                                                                        FontAttributes="Bold"></Label>
-                                                                                <Label Text=": " TextColor="Gray" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding ModelNameLang}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontAutoScalingEnabled="False" FontSize="12" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding ModelNameLang}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="11" FontAttributes="Bold"></Label>
                                                                                 <!--<Label Text="{Static res:AppResources.lblIsDriver_RequestDetails}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
                                                                                        HorizontalOptions="EndAndExpand" FontAttributes="Bold"></Label>
                                                                                 <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
@@ -244,7 +251,7 @@
                                             <CarouselView.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,10">
-                                                        <Label Text="{Static res:AppResources.lblAirFlightServices}" TextColor="DarkOrange" Margin="0,0,0,10" FontAutoScalingEnabled="False" FontAttributes="Bold" FontSize="16"></Label>
+                                                        <Label Text="{Static res:AppResources.lblAirFlightServices}" TextColor="DarkOrange" Margin="0,0,0,10" FontAutoScalingEnabled="False" FontAttributes="Bold" FontSize="14"></Label>
                                                         <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="0,0,0,10"
                                                                 HorizontalOptions="FillAndExpand">
                                                             <StackLayout Orientation="Vertical" >
@@ -252,9 +259,9 @@
                                                                     <Label VerticalTextAlignment="Center" Padding="5" FontAutoScalingEnabled="False">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Text="{Binding AirportFrom}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
-                                                                                <Span Text=" - " TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
-                                                                                <Span Text="{Binding AirportTo}" TextColor="Black" FontSize="14" FontAttributes="Bold"></Span>
+                                                                                <Span Text="{Binding AirportFrom}" TextColor="Black" FontSize="12" FontAttributes="Bold"></Span>
+                                                                                <Span Text=" - " TextColor="Black" FontSize="12" FontAttributes="Bold"></Span>
+                                                                                <Span Text="{Binding AirportTo}" TextColor="Black" FontSize="12" FontAttributes="Bold"></Span>
                                                                             </FormattedString>
                                                                         </Label.FormattedText>
                                                                     </Label>
@@ -268,55 +275,69 @@
                                                                 <BoxView HorizontalOptions="FillAndExpand" Color="Gray" HeightRequest=".5"></BoxView>
                                                                 <VerticalStackLayout>
                                                                     <StackLayout Orientation="Horizontal" Padding="5">
-                                                                        <Label Text="{Static res:AppResources.lblDate_TranService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="13"
+                                                                        <Label Text="{Static res:AppResources.lblDate_TranService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="11"
                                                                                FontFamily="Almarai-Regular"></Label>
-                                                                        <Label Text=": " TextColor="Black" FontSize="13" FontAutoScalingEnabled="False"></Label>
-                                                                        <Label Text="{Binding Date , StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="End"></Label>
+                                                                        <Label Text=": " TextColor="Black" FontSize="11" FontAutoScalingEnabled="False"></Label>
+                                                                        <Label Text="{Binding Date , StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="11" VerticalTextAlignment="End"></Label>
                                                                     </StackLayout>
-                                                                    <Label Text="{Static res:AppResources.lblAirFlightDetails_RequestDetails}" FontAutoScalingEnabled="False" TextColor="#387955" FontSize="14"
-                                                                           FontAttributes="Bold" Margin="0,5" Padding="5"></Label>
+                                                                    <Label Text="{Static res:AppResources.lblAirFlightDetails_RequestDetails}" FontAutoScalingEnabled="False" TextColor="#387955" FontSize="12"
+                                                                           FontAttributes="Bold" Margin="0,0" Padding="5"></Label>
                                                                     <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="7" Margin="10,0">
                                                                         <VerticalStackLayout Spacing="3">
                                                                             <StackLayout Orientation="Horizontal">
 
-                                                                                <Label Text="{Static res:AppResources.lblCarrier_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                <Label Text="{Static res:AppResources.lblCarrier_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12"
                                                                                        FontAttributes="Bold"></Label>
-                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding AirLineLang}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontSize="12" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding AirLineLang}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="11" FontAttributes="Bold"></Label>
 
-                                                                                <Label Text="{Static res:AppResources.lblClass_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                <Label Text="{Static res:AppResources.lblClass_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12"
                                                                                        FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
-                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding ClassNameLang}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontSize="12" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding ClassNameLang}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="11" FontAttributes="Bold"></Label>
                                                                             </StackLayout>
                                                                             <StackLayout Orientation="Horizontal">
-                                                                                <Label Text="ETD" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                <Label Text="ETD" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12"
                                                                                        FontAttributes="Bold"></Label>
-                                                                                <Label Text=": " TextColor="Gray" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding ETD,StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
-                                                                                <Label Text="ETA" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                <Label Text=": " TextColor="Gray" FontAutoScalingEnabled="False" FontSize="12" FontAttributes="Bold"></Label>
+                                                                                <Label FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="11" FontAttributes="Bold">
+                                                                                    <Label.Text>
+                                                                                        <MultiBinding StringFormat="{}{0:00}:{1:00;00}">
+                                                                                            <Binding Path="ETD.Hours"/>
+                                                                                            <Binding Path="ETD.Minutes"/>
+                                                                                        </MultiBinding>
+                                                                                    </Label.Text>
+                                                                                </Label>
+                                                                                <Label Text="ETA" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12"
                                                                                        HorizontalOptions="EndAndExpand" FontAttributes="Bold"></Label>
-                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding ETA,StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontSize="12" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="11" FontAttributes="Bold">
+                                                                                    <Label.Text>
+                                                                                        <MultiBinding StringFormat="{}{0:00}:{1:00;00}">
+                                                                                            <Binding Path="ETA.Hours"/>
+                                                                                            <Binding Path="ETA.Minutes"/>
+                                                                                        </MultiBinding>
+                                                                                    </Label.Text>
+                                                                                </Label>
                                                                             </StackLayout>
                                                                             <StackLayout Orientation="Horizontal">
 
-                                                                                <Label Text="{Static res:AppResources.lblAdult_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                <Label Text="{Static res:AppResources.lblAdult_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12"
                                                                                        FontAttributes="Bold"></Label>
-                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding InfoAdultCount}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontSize="12" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding InfoAdultCount}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="11" FontAttributes="Bold"></Label>
 
-                                                                                <Label Text="{Static res:AppResources.lblChild_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                <Label Text="{Static res:AppResources.lblChild_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12"
                                                                                        FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
-                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding InfoChildCount}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontSize="11" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding InfoChildCount}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="11" FontAttributes="Bold"></Label>
                                                                             </StackLayout>
                                                                             <StackLayout Orientation="Horizontal">
 
-                                                                                <Label Text="{Static res:AppResources.lblInfant_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="14"
+                                                                                <Label Text="{Static res:AppResources.lblInfant_AirService}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12"
                                                                                        FontAttributes="Bold"></Label>
-                                                                                <Label Text=": " TextColor="Gray" FontSize="14" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
-                                                                                <Label Text="{Binding InfoInfantCount}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="14" FontAttributes="Bold"></Label>
+                                                                                <Label Text=": " TextColor="Gray" FontSize="12" FontAutoScalingEnabled="False" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding InfoInfantCount}" TextColor="DarkOrange" FontAutoScalingEnabled="False" FontSize="11" FontAttributes="Bold"></Label>
                                                                             </StackLayout>
                                                                         </VerticalStackLayout>
                                                                     </Border>
@@ -345,14 +366,14 @@
                                             <CarouselView.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="0,10">
-                                                        <Label Text="{Static res:AppResources.lblVisaServices}" TextColor="DarkOrange" Margin="0,0,0,10" FontAttributes="Bold" FontSize="16"></Label>
+                                                        <Label Text="{Static res:AppResources.lblVisaServices}" TextColor="DarkOrange" Margin="0,0,0,10" FontAttributes="Bold" FontSize="14"></Label>
                                                         <Border StrokeShape="RoundRectangle 8" StrokeThickness="1" Padding="0,0,0,0"
                                                                 HorizontalOptions="FillAndExpand">
-                                                            <StackLayout Orientation="Vertical" Margin="10,0" VerticalOptions="CenterAndExpand">
-                                                                <StackLayout Orientation="Horizontal">
-                                                                    <Label Text="{Static res:AppResources.lblVisaType_VisaService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="14" FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                            <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                                                                <StackLayout Orientation="Horizontal" Margin="10,0">
+                                                                    <Label Text="{Static res:AppResources.lblVisaType_VisaService}" FontAutoScalingEnabled="False" TextColor="Black" FontSize="12" FontAttributes="Bold" VerticalTextAlignment="Center"
                                                                            FontFamily="Almarai-Regular"></Label>
-                                                                    <Label Text=": " TextColor="Black" VerticalTextAlignment="Center" FontSize="13" FontAutoScalingEnabled="False"></Label>
+                                                                    <Label Text=": " TextColor="Black" VerticalTextAlignment="Center" FontSize="12" FontAutoScalingEnabled="False"></Label>
                                                                     <Label Text="{Binding VisaNameLang}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center"></Label>
                                                                     <Line StrokeThickness="1" Y1="0" Y2="40" Stroke="Gray" HorizontalOptions="EndAndExpand"></Line>
                                                                     <VerticalStackLayout Margin="10,0" VerticalOptions="CenterAndExpand">
@@ -360,6 +381,13 @@
                                                                         <Label Text="{Static res:AppResources.lblpersons_RequestDetails}" FontAutoScalingEnabled="False" FontSize="11" TextColor="#387955"
                                                                                FontAttributes="Bold"></Label>
                                                                     </VerticalStackLayout>
+                                                                </StackLayout>
+                                                                <BoxView HorizontalOptions="FillAndExpand" Color="Gray" HeightRequest=".5"></BoxView>
+                                                                <StackLayout Orientation="Horizontal" Margin="10,7">
+                                                                    <Label Text="{Static res:AppResources.Max_delivery_date}" FontAutoScalingEnabled="False" TextColor="Gray" FontSize="12" FontAttributes="Bold" VerticalTextAlignment="Center"
+                                                                           FontFamily="Almarai-Regular"></Label>
+                                                                    <Label Text=": " TextColor="Black" VerticalTextAlignment="Center" FontSize="12" FontAutoScalingEnabled="False"></Label>
+                                                                    <Label Text="{Binding DateVisa,StringFormat='{0:d}'}" FontAutoScalingEnabled="False" TextColor="DarkOrange" FontSize="12" VerticalTextAlignment="Center"></Label>
                                                                 </StackLayout>
                                                             </StackLayout>
                                                         </Border>

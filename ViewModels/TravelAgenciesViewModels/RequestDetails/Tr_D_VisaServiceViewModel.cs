@@ -17,6 +17,7 @@ using TripBliss.Pages.Shared;
 using TripBliss.Pages.TravelAgenciesPages.ActivateDetailsPages;
 using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 using TripBliss.ViewModels.ActivateViewModels;
+using static Android.Graphics.ColorSpace;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {
@@ -81,7 +82,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             VisaRequestModel = new RequestTravelAgencyVisaRequest
             {
                 DateVisa = model.RequestTravelAgencyVisa.DateVisa,
-                DateVisaVM = model.RequestTravelAgencyVisa.DateVisaVM,
+                DateVisaVM = model.RequestTravelAgencyVisa.DateVisa.ToDateTime(new TimeOnly(0, 0)),
                 PersonCount = model.RequestTravelAgencyVisa.PersonCount,
                 Notes = model.Notes,
             };
@@ -93,7 +94,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             VisaRequestModel = new RequestTravelAgencyVisaRequest
             {
                 DateVisa = Moddel.RequestTravelAgencyVisa.DateVisa,
-                DateVisaVM = Moddel.RequestTravelAgencyVisa.DateVisaVM,
+                DateVisaVM = Moddel.RequestTravelAgencyVisa.DateVisa.ToDateTime(new TimeOnly(0, 0)),
                 PersonCount = Moddel.RequestTravelAgencyVisa.PersonCount,
                 Notes = Moddel.Notes,
             };

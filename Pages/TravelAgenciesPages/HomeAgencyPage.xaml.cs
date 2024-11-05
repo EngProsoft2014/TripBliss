@@ -23,6 +23,7 @@ public partial class HomeAgencyPage : Controls.CustomControl
         this.BindingContext = ViewModel = viewModel;
         Rep = generic;
         _service = service;
+
     }
 
     protected override async void OnAppearing()
@@ -30,7 +31,7 @@ public partial class HomeAgencyPage : Controls.CustomControl
         base.OnAppearing();
         tabMain.SelectedIndex = Controls.StaticMember.WayOfTab;
 
-        if(Connectivity.NetworkAccess == NetworkAccess.Internet)
+        if (Connectivity.NetworkAccess == NetworkAccess.Internet)
         {
             if(tabMain.SelectedIndex == 0)
             {

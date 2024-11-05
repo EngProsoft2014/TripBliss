@@ -170,7 +170,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         [RelayCommand]
         async Task Selection(RequestTravelAgencyResponse model)
         {
+            //UserDialogs.Instance.ShowLoading();
             await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new RequestDetails.Tr_D_RequestDetailsViewModel(model.Id,Rep,_service)));
+            //UserDialogs.Instance.HideHud();
         }
 
 
