@@ -31,35 +31,11 @@ public partial class HomeAgencyPage : Controls.CustomControl
         base.OnAppearing();
         tabMain.SelectedIndex = Controls.StaticMember.WayOfTab;
 
-        if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+        if (tabMain.SelectedIndex == 0 && !Constants.Permissions.CheckPermission(Constants.Permissions.Show_Home_Requests))
         {
-            if(tabMain.SelectedIndex == 0)
-            {
-                conviewHome.BindingContext = ViewModel = new Tr_HomeViewModel(Rep, _service);
-
-                if (!Constants.Permissions.CheckPermission(Constants.Permissions.Show_Home_Requests))
-                {
-                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                    await toast.Show();
-                }
-            }
-            else if(tabMain.SelectedIndex == 1)
-            {
-                DisConView.BindingContext = ViewModelTap2 = new Tr_C_TravelAgencyViewModel(Rep, _service);                
-            }
-            else if(tabMain.SelectedIndex == 2)
-            {
-                conviewOffers.BindingContext = new Tr_O_ChooseOfferViewModel(Rep);
-            }
-            else if (tabMain.SelectedIndex == 3)
-            {
-                conviewHistory.BindingContext = new Tr_HistoryViewModel(Rep, _service);
-            }
-            else if (tabMain.SelectedIndex == 4)
-            {
-                conviewMore.BindingContext = new Tr_MoreViewModel(Rep, _service);
-            }
-        } 
+            var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+            await toast.Show();
+        }
     }
 
 

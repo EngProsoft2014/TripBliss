@@ -123,7 +123,7 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid HorizontalOptions="FillAndExpand">
-                                    <ScrollView Orientation="Horizontal" Padding="3,0,5,0" HorizontalScrollBarVisibility="Never">
+                                    <ScrollView Orientation="Horizontal" Padding="3,0,33,0" HorizontalScrollBarVisibility="Never">
                                         <StackLayout Orientation="Horizontal" Spacing="10" Padding="3" Margin="0,5" VerticalOptions="Center">
                                             <Label Text="{Binding TypeNameLang}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="12" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
                                             <Label TextColor="Gray" FontAutoScalingEnabled="False" FontSize="12" VerticalTextAlignment="Center">

@@ -113,7 +113,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                 {
                     ActiveHotels.ToList().ForEach(f =>
                     {
-                        if(f != null && f.CountRow == item.CountRow)
+                        if (f != null && ((f.CountRow != null && item.CountRow != null && f.CountRow == item.CountRow) || (!string.IsNullOrEmpty(f!.Id) && !string.IsNullOrEmpty(item.Id) && f!.Id == item.Id)))
                         {
                             f.GuestName = item.GuestName;
                             f.RoomRef = item.RoomRef;
@@ -145,7 +145,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
                 {
                     ActiveTransport.ToList().ForEach(f =>
                     {
-                        if (f != null && f.CountRow == item.CountRow)
+                        if (f != null && ((f.CountRow != null && item.CountRow != null && f.CountRow == item.CountRow) || (!string.IsNullOrEmpty(f!.Id) && !string.IsNullOrEmpty(item.Id) &&  f!.Id == item.Id)))
                         {
                             f.LeaderName = item.LeaderName;
                             f.PlateNumber = item.PlateNumber;

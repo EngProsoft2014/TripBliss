@@ -305,13 +305,13 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             }
             else
             {
-                string RequestName = await App.Current!.MainPage!.DisplayPromptAsync(TripBliss.Resources.Language.AppResources.Complete_info, TripBliss.Resources.Language.AppResources.Add_Request_Name);
+                string RequestName = await App.Current!.MainPage!.DisplayPromptAsync(TripBliss.Resources.Language.AppResources.Complete_info, TripBliss.Resources.Language.AppResources.Add_Request_Name, TripBliss.Resources.Language.AppResources.OK, TripBliss.Resources.Language.AppResources.Cancel);
                 if (string.IsNullOrEmpty(RequestName))
                 {
                     var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Add_Request_name_is_required, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
-                else if (RequestName.Length < 2 || RequestName.Length > 16)
+                else if (RequestName.Length < 2 || RequestName.Length > 25)
                 {
                     var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Request_name_required_count, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();

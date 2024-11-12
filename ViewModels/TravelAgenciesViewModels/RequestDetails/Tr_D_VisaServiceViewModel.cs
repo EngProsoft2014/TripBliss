@@ -17,7 +17,7 @@ using TripBliss.Pages.Shared;
 using TripBliss.Pages.TravelAgenciesPages.ActivateDetailsPages;
 using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 using TripBliss.ViewModels.ActivateViewModels;
-using static Android.Graphics.ColorSpace;
+
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {

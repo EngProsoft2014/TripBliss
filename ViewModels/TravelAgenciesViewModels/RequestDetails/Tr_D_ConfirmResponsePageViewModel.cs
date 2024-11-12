@@ -62,6 +62,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         {
             await App.Current!.MainPage!.Navigation.PopAsync();
         }
+
         [RelayCommand]
         async Task PaymentClicked()
         {
@@ -89,6 +90,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 await toast.Show();
             }
         }
+
         [RelayCommand]
         async Task Apply()
         {
