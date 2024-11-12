@@ -359,7 +359,7 @@
                                         </Border>-->
                                     </Grid>
                                     <Border.Shadow>
-                                        <Shadow  Brush="{OnPlatform Android=DarkGray,iOS=LightGray}" Opacity="1"></Shadow>
+                                        <Shadow  Brush="{OnPlatform Android=Gray, iOS=LightGray}" Opacity="1" Radius="{OnPlatform Android=5 , iOS=3}"></Shadow>
                                     </Border.Shadow>
                                     <Border.Triggers>
                                         <DataTrigger TargetType="Border" Binding="{Binding Offers.Count}" Value="0">
@@ -482,7 +482,7 @@
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="10">
                                 <Label Text="{Static res:AppResources.hdrHistory}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                        TextColor="Black" Margin="{OnPlatform Android='0,20,0,10',iOS='0,0,0,10'}"></Label>
-                                <Border StrokeShape="RoundRectangle 25" Stroke="Gray" HeightRequest="40" Margin="{OnPlatform Android='20,0', iOS='20,10'}" BackgroundColor="White">
+                                <Border StrokeShape="RoundRectangle 25" Stroke="Gray" HeightRequest="40" Margin="{OnPlatform Android='20,0', iOS='20,0,20,10'}" BackgroundColor="White">
                                     <Grid>
                                         <SearchBar BackgroundColor="White" Placeholder="{Static res:AppResources.plcSearch}" HeightRequest="40" FontSize="15" 
                                                    TextColor="Black"></SearchBar>
@@ -495,7 +495,7 @@
                                         </Border>-->
                                     </Grid>
                                     <Border.Shadow>
-                                        <Shadow  Brush="{OnPlatform Android=DarkGray,iOS=LightGray}" Opacity="1"></Shadow>
+                                        <Shadow  Brush="{OnPlatform Android=Gray, iOS=LightGray}" Opacity="1" Radius="{OnPlatform Android=5 , iOS=3}"></Shadow>
                                     </Border.Shadow>
                                     <Border.Triggers>
                                         <DataTrigger TargetType="Border" Binding="{Binding Requests.Count}" Value="0">
