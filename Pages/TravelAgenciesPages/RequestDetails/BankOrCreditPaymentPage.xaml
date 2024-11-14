@@ -1,49 +1,54 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:TripBliss.Resources.Language"
+             xmlns:Controls="clr-namespace:TripBliss.Controls"
              x:Class="TripBliss.Pages.TravelAgenciesPages.RequestDetails.BankOrCreditPaymentPage"
-             Title="BankOrCreditPaymentPage">
-
-
-    <StackLayout>
+             Title="BankOrCreditPaymentPage"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout Margin="20">
 
         <!--Payment Credit Card-->
 
         <StackLayout x:Name="stkCredit" VerticalOptions="FillAndExpand" IsVisible="False">
 
             <!--Toolbar Credit Card-->
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="{OnPlatform iOS='15,50,15,10', Android='15,10,15,10'}">
-
-                <Image x:Name="imgback">
+            <StackLayout Orientation="Horizontal">
+                <Image VerticalOptions="CenterAndExpand">
                     <Image.Source>
-                        <FontImageSource FontFamily="FontIconSolid" Color="#878686" Glyph="" Size="20"></FontImageSource>
+                        <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
                     </Image.Source>
+                    <Image.Triggers>
+                        <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                            <Setter Property="Rotation" Value="180"></Setter>
+                        </DataTrigger>
+                    </Image.Triggers>
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                        <TapGestureRecognizer Command="{Binding BackButtonClickedCommand}"></TapGestureRecognizer>
                     </Image.GestureRecognizers>
                 </Image>
-
-                <Label x:Name="lblTitle" Text="Credit Card" HeightRequest="30"
-                        VerticalOptions="FillAndExpand" Style="{StaticResource lblHeaderText}"
-                        HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="{Static res:AppResources.btnPayNow_NewRequest}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+           TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
             </StackLayout>
 
-            <ScrollView VerticalOptions="FillAndExpand" Padding="0,0,0,30">
-                <StackLayout Padding="20,20,20,0" VerticalOptions="FillAndExpand" TranslationY="0" Spacing="25">
-                    <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="EndAndExpand" Margin="0,0,20,10">
+            <ScrollView VerticalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand" TranslationY="0" Spacing="15">
+                    <StackLayout Orientation="Horizontal" Spacing="15" HorizontalOptions="EndAndExpand">
+                        <Label Text="Scan Card" TextColor="Black" VerticalTextAlignment="End"></Label>
                         <Image x:Name="imgBack">
                             <Image.Source>
-                                <FontImageSource FontFamily="FontIconSolid" Color="#b66dff" Glyph="" Size="25"></FontImageSource>
+                                <FontImageSource FontFamily="FontIconSolid" Color="#33a7f5" Glyph="" Size="25"></FontImageSource>
                             </Image.Source>
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding ScanCommand}"></TapGestureRecognizer>
                             </Image.GestureRecognizers>
                         </Image>
 
-                        <Label Text="Scan Card" VerticalTextAlignment="Center"></Label>
+                        
                     </StackLayout>
 
-                    <Border BackgroundColor="White" Padding="{OnPlatform Android='10,5,10,5',iOS=10}" HorizontalOptions="FillAndExpand">
+                    <Border BackgroundColor="White" Padding="3,0,0,0" HorizontalOptions="FillAndExpand">
                         <Entry Text="{Binding HolderName}"          
                                  TextColor="Gray"
                                  Placeholder="Card holder name"
@@ -60,7 +65,7 @@
                         </Border.StrokeShape>
                     </Border>
 
-                    <Border BackgroundColor="White" Padding="{OnPlatform Android='10,5,10,5',iOS=10}" HorizontalOptions="FillAndExpand">
+                    <Border BackgroundColor="White" Padding="3,0,0,0" HorizontalOptions="FillAndExpand">
                         <Entry Text="{Binding CardNumber}"
                                  TextColor="Gray"
                                  Placeholder="Card Number"
@@ -77,7 +82,7 @@
                     </Border>
 
                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                        <Border BackgroundColor="White" Padding="{OnPlatform Android='10,5,10,5',iOS=10}" WidthRequest="150" HorizontalOptions="Start">
+                        <Border BackgroundColor="White" Padding="3,0,0,0" WidthRequest="150" HorizontalOptions="Start">
                             <Entry Text="{Binding ExpirationDate}"               
                                      TextColor="Gray"
                                      Placeholder="Expired Date"
@@ -99,7 +104,7 @@
                             </Image.Source>
                         </Image>
 
-                        <Border BackgroundColor="White" Padding="{OnPlatform Android='10,5,10,5',iOS=10}" WidthRequest="150" HorizontalOptions="FillAndExpand">
+                        <Border BackgroundColor="White" Padding="3,0,0,0" WidthRequest="150" HorizontalOptions="FillAndExpand">
                             <Entry Text="{Binding Cvv}"
                                      TextColor="Gray"
                                      Placeholder="Cvv"
@@ -118,91 +123,59 @@
 
                     <StackLayout Orientation="Horizontal" Spacing="20">
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="5,5,5,5" Spacing="10">
+                            <CheckBox x:Name="FBCheck" Color="#33a7f5" IsChecked="{Binding IsAllPyment}"></CheckBox>
                             <Label Text="Full Payment" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
-                            <Switch x:Name="swtPayCredit" IsToggled="True" Scale="1.2" Toggled="swtPayCredit_Toggled" ThumbColor="#8f1fff" OnColor="#debdff"></Switch>
                         </StackLayout>
 
-                        <Border x:Name="yumPayCredit" BackgroundColor="White" TranslationX="18" Padding="{OnPlatform Android='10,5,10,5',iOS=10}" WidthRequest="160" HorizontalOptions="StartAndExpand">
+                        <Border x:Name="yumPayCredit" BackgroundColor="White" TranslationX="18" Padding="3,0,0,0" WidthRequest="160" HorizontalOptions="StartAndExpand">
                             <Entry x:Name="entryNewAmount"
                                    Text="{Binding OnePayment.Amount}"
                                    Placeholder="{Binding OneInvoice.Net}"
                                    FontSize="12"
                                    Keyboard="Numeric"
                                    VerticalTextAlignment="Center"
-                                   TextChanged="Entry_TextChanged"></Entry>
+                                   ></Entry>
 
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="10" Stroke="LightGray" StrokeThickness="2"></RoundRectangle>
                             </Border.StrokeShape>
                             <Border.Triggers>
-                                <DataTrigger TargetType="Border" Binding="{Binding Source={x:Reference swtPayCredit},Path=IsToggled}" Value="True">
+                                <DataTrigger TargetType="Border" Binding="{Binding Source={x:Reference FBCheck},Path=IsChecked}" Value="True">
                                     <Setter Property="IsVisible" Value="False"></Setter>
                                 </DataTrigger>
                             </Border.Triggers>
                         </Border>
                     </StackLayout>
 
-                    <StackLayout Spacing="10">
-                        <Label Text="Input Your Signature"/>
-                        <Frame BorderColor="Gray" HasShadow="True" Padding="2">
-                            <StackLayout>
-                                <mct:DrawingView x:Name="DrawBoardCredit"
-                                                   LineColor="Black"
-                                                   LineWidth="6"
-                                                   HorizontalOptions="FillAndExpand"
-                                                   VerticalOptions="FillAndExpand"
-                                                   HeightRequest="250"
-                                                   IsMultiLineModeEnabled="True"
-                                                   BackgroundColor="AliceBlue"/>
-
-                                <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="FillAndExpand">
-                                    <Button Text="Save" 
-                                            BackgroundColor="#b66dff" 
+                    <Border StrokeShape="RoundRectangle 2" StrokeThickness="0" VerticalOptions="EndAndExpand" Margin="0,0,0,20">
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="FillAndExpand">
+                                <Button Text="Save" 
+                                            BackgroundColor="#33a7f5" 
                                             TextColor="White" 
                                             HorizontalOptions="FillAndExpand"
-                                            Clicked="Button_Clicked_Save_Credit"/>
-                                    <Button Text="Clear Board" 
-                                            BorderColor="#b66dff"
+                                            />
+                                <Button Text="Clear Board" 
+                                            BorderColor="#33a7f5"
                                             BorderWidth="1" 
-                                            TextColor="#b66dff"
+                                            TextColor="#33a7f5"
                                             HorizontalOptions="FillAndExpand"
-                                            BackgroundColor="White" 
-                                            Clicked="Button_Clicked_Clear_Credit"/>
-                                </StackLayout>
+                                            BackgroundColor="White"/>
                             </StackLayout>
+                        </StackLayout>
 
-                        </Frame>
-                    </StackLayout>
+                    </Border>
 
                 </StackLayout>
 
             </ScrollView>
 
-            <Border BackgroundColor="#8f1fff" Padding="{OnPlatform Android='5,10,5,10',iOS='5,15,5,15'}" Margin="{OnPlatform Android=20,iOS='20,20,20,50'}" HorizontalOptions="FillAndExpand" VerticalOptions="End">
-                <Label x:Name="btnPayCredit" Text="{Binding OneInvoice.Net,StringFormat='Pay USD ${0}'}"
-                                 TextColor="White"
-                                 FontSize="16"
-                                 HorizontalOptions="CenterAndExpand"
-                                 VerticalTextAlignment="Center">
-                </Label>
-                <Border.Background>
-                    <LinearGradientBrush>
-                        <GradientStop Color="#8f1fff" Offset="0"></GradientStop>
-                        <GradientStop Color="#b66dff" Offset="0.5"></GradientStop>
-                        <GradientStop Color="#c995fc" Offset="1.0"></GradientStop>
-                        <GradientStop Color="#e3c7ff" Offset="1.0"></GradientStop>
-                    </LinearGradientBrush>
-                </Border.Background>
-
+            <Border StrokeShape="RoundRectangle 10" StrokeThickness="0" HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                <Button x:Name="btnPayCredit" Text="{Static res:AppResources.btnConfirm_NewRequest}" TextColor="Black" FontSize="16" FontAttributes="Bold"
+                        HorizontalOptions="FillAndExpand" BackgroundColor="#33a7f5"></Button>
                 <Border.Shadow>
                     <Shadow Brush="{OnPlatform Android=Gray, iOS=LightGray}" Radius="{OnPlatform Android=5,iOS=3}"></Shadow>
                 </Border.Shadow>
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="10" Stroke="LightGray" StrokeThickness="1"></RoundRectangle>
-                </Border.StrokeShape>
-                <Border.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding CreditPayNowCommand}" CommandParameter="{Binding OneInvoice}"></TapGestureRecognizer>
-                </Border.GestureRecognizers>
             </Border>
 
             <StackLayout.Triggers>
@@ -218,130 +191,83 @@
 
         <!--Payment Cash-->
 
-        <StackLayout x:Name="stkCash" IsVisible="False" VerticalOptions="FillAndExpand">
+        <StackLayout x:Name="stkCash" IsVisible="True" VerticalOptions="FillAndExpand">
 
             <!--Toolbar Payment Cash-->
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="{OnPlatform iOS='15,50,15,10', Android='15,10,15,10'}">
-
-                <Image x:Name="imgBack2">
+            <StackLayout Orientation="Horizontal">
+                <Image VerticalOptions="CenterAndExpand">
                     <Image.Source>
-                        <FontImageSource FontFamily="FontIconSolid" Color="#878686" Glyph="" Size="20"></FontImageSource>
+                        <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
                     </Image.Source>
+                    <Image.Triggers>
+                        <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                            <Setter Property="Rotation" Value="180"></Setter>
+                        </DataTrigger>
+                    </Image.Triggers>
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                        <TapGestureRecognizer Command="{Binding BackButtonClickedCommand}"></TapGestureRecognizer>
                     </Image.GestureRecognizers>
                 </Image>
-
-                <Label x:Name="lblTitle2" Text="Payment Cash" HeightRequest="30"
-                            VerticalOptions="FillAndExpand" Style="{StaticResource lblHeaderText}"
-                            HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="{Static res:AppResources.btnPayNow_NewRequest}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                       TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
             </StackLayout>
 
             <ScrollView VerticalOptions="FillAndExpand">
-                <StackLayout Padding="{OnPlatform iOS='20,15,20,10', Android='20,50,20,10'}" VerticalOptions="FillAndExpand" Spacing="50">
-                    <Border HeightRequest="160" Padding="0,10,0,10">
-                        <StackLayout  Spacing="0">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
-                                <Label x:Name="lblPayCash" Text="{Binding OneInvoice.Net}" 
-                                       FontSize="50"
-                                       HorizontalOptions="Center"
-                                       HorizontalTextAlignment="Center"
-                                       VerticalTextAlignment="Center" 
-                                       VerticalOptions="Center"
-                                       FontFamily="InterBold" 
-                                       TextColor="#FFFFFF"></Label>
-                                <Label Text="USD" 
-                                       FontSize="18"
-                                       HorizontalOptions="Start"
-                                       HorizontalTextAlignment="Center"
-                                       VerticalTextAlignment="Center" 
-                                       VerticalOptions="Center"
-                                       FontFamily="AlmaraiBold" 
-                                       TextColor="#FFFFFF">
-                                </Label>
-                            </StackLayout>
-
-
-                            <Label Text="Outstanding Balance" 
-                                   FontSize="23"
-                                   HorizontalOptions="Center"
-                                   HorizontalTextAlignment="Center"
-                                   VerticalTextAlignment="Center" 
-                                   VerticalOptions="Center"
-                                   FontFamily="AlmaraiRegular" 
-                                   TextColor="#FFFFFF"></Label>
+                <StackLayout VerticalOptions="FillAndExpand" Spacing="20">
+                    <Border StrokeShape="RoundRectangle 20" HeightRequest="150" BackgroundColor="#33a7f5" StrokeThickness="0" Margin="0,20,0,0">
+                        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                            <HorizontalStackLayout VerticalOptions="CenterAndExpand" Spacing="5" HorizontalOptions="CenterAndExpand">
+                                <Label Text="{Binding OutStandingprice}" FontSize="32"></Label>
+                                <Label Text="{Static res:AppResources.SAR}" FontSize="16" VerticalTextAlignment="Center" TranslationY="-7"></Label>
+                            </HorizontalStackLayout>
+                            <Label Text="{Static res:AppResources.OSBlance_payment}" FontSize="18" HorizontalOptions="CenterAndExpand"></Label>
                         </StackLayout>
-
-                        <Border.Background>
-                            <LinearGradientBrush>
-                                <GradientStop Color="#8f1fff" Offset="0"></GradientStop>
-                                <GradientStop Color="#b66dff" Offset="0.5"></GradientStop>
-                                <GradientStop Color="#c995fc" Offset="1.0"></GradientStop>
-                                <GradientStop Color="#e3c7ff" Offset="1.0"></GradientStop>
-                            </LinearGradientBrush>
-                        </Border.Background>
-
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="20"></RoundRectangle>
-                        </Border.StrokeShape>
                     </Border>
 
                     <StackLayout Orientation="Horizontal" Spacing="20">
-                        <StackLayout Orientation="Horizontal" Padding="5,5,5,5" Spacing="10">
+                        <StackLayout Orientation="Horizontal" Spacing="5">
+                            <CheckBox x:Name="FBCheck" Color="#33a7f5" IsChecked="{Binding IsAllPyment}"></CheckBox>
                             <Label Text="Full Payment" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
-                            <Switch x:Name="swtPayCash" IsToggled="True" Scale="1.2" Toggled="swtPayCredit_Toggled" ThumbColor="#8f1fff" OnColor="#debdff"></Switch>
                         </StackLayout>
 
-                        <Border x:Name="yumPayCash" BackgroundColor="White" TranslationX="18" Padding="5,5,5,0" Margin="0,0,20,0" WidthRequest="150" HorizontalOptions="EndAndExpand">
+                        <Border x:Name="yumPayCash" BackgroundColor="White" TranslationX="18" Padding="5,0,0,0" Margin="0,0,20,0" WidthRequest="150" HorizontalOptions="EndAndExpand">
                             <Entry x:Name="entryCashNewAmount"
                                    Text="{Binding OnePayment.Amount}"
                                    Placeholder="{Binding OneInvoice.Net}"
                                    FontSize="12"
                                    Keyboard="Numeric"
-                                   VerticalTextAlignment="Center"
-                                   TextChanged="Entry_TextChanged"></Entry>
+                                   VerticalTextAlignment="Center"></Entry>
 
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="10" Stroke="LightGray" StrokeThickness="2"></RoundRectangle>
                             </Border.StrokeShape>
                             <Border.Triggers>
-                                <DataTrigger TargetType="Border" Binding="{Binding Source={x:Reference swtPayCash},Path=IsToggled}" Value="True">
+                                <DataTrigger TargetType="Border" Binding="{Binding Source={x:Reference FBCheck},Path=IsChecked}" Value="True">
                                     <Setter Property="IsVisible" Value="False"></Setter>
                                 </DataTrigger>
                             </Border.Triggers>
                         </Border>
                     </StackLayout>
 
-                    <StackLayout Spacing="10">
-                        <Label Text="Input Your Signature"/>
-                        <Frame BorderColor="Gray" HasShadow="True" Padding="2">
+                    <StackLayout Spacing="10" VerticalOptions="EndAndExpand" Margin="0,0,0,20">
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="0">
                             <StackLayout>
-                                <mct:DrawingView x:Name="DrawBoardCash"
-                                                   LineColor="Black"
-                                                   LineWidth="6"
-                                                   HorizontalOptions="FillAndExpand"
-                                                   VerticalOptions="FillAndExpand"
-                                                   HeightRequest="250"
-                                                   IsMultiLineModeEnabled="True"
-                                                   BackgroundColor="AliceBlue"/>
 
                                 <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="FillAndExpand">
                                     <Button Text="Save" 
-                                            BackgroundColor="#b66dff" 
+                                            BackgroundColor="#33a7f5" 
                                             TextColor="White" 
-                                            HorizontalOptions="FillAndExpand"
-                                            Clicked="Button_Clicked_Save_Cash"/>
+                                            HorizontalOptions="FillAndExpand"/>
                                     <Button Text="Clear Board" 
-                                            BorderColor="#b66dff"
+                                            BorderColor="#33a7f5"
                                             BorderWidth="1" 
-                                            TextColor="#b66dff"
+                                            TextColor="#33a7f5"
                                             HorizontalOptions="FillAndExpand"
-                                            BackgroundColor="White" 
-                                            Clicked="Button_Clicked_Clear_Cash"/>
+                                            BackgroundColor="White"/>
                                 </StackLayout>
                             </StackLayout>
 
-                        </Frame>
+                        </Border>
                     </StackLayout>
 
 
@@ -349,31 +275,12 @@
 
             </ScrollView>
 
-            <Border Padding="{OnPlatform Android='5,10,5,10',iOS='5,15,5,15'}" Margin="{OnPlatform Android=20,iOS='20,20,20,50'}" VerticalOptions="End" HorizontalOptions="FillAndExpand">
-                <Label x:Name="btnPayCash" Text="{Binding OneInvoice.Net,StringFormat='Pay USD ${0}'}"
-                         TextColor="White"
-                         FontSize="16"
-                         HorizontalOptions="CenterAndExpand"
-                         VerticalTextAlignment="Center">
-                </Label>
-                <Border.Background>
-                    <LinearGradientBrush>
-                        <GradientStop Color="#8f1fff" Offset="0"></GradientStop>
-                        <GradientStop Color="#b66dff" Offset="0.5"></GradientStop>
-                        <GradientStop Color="#c995fc" Offset="1.0"></GradientStop>
-                        <GradientStop Color="#e3c7ff" Offset="1.0"></GradientStop>
-                    </LinearGradientBrush>
-                </Border.Background>
-
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="10"></RoundRectangle>
-                </Border.StrokeShape>
+            <Border StrokeShape="RoundRectangle 10" StrokeThickness="0" HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                <Button x:Name="btnPayBank" Text="{Static res:AppResources.btnConfirm_NewRequest}" TextColor="Black" FontSize="16" FontAttributes="Bold"
+            HorizontalOptions="FillAndExpand" BackgroundColor="#33a7f5"></Button>
                 <Border.Shadow>
                     <Shadow Brush="{OnPlatform Android=Gray, iOS=LightGray}" Radius="{OnPlatform Android=5,iOS=3}"></Shadow>
                 </Border.Shadow>
-                <Border.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding CashPayNowCommand}" CommandParameter="{Binding OneInvoice}"></TapGestureRecognizer>
-                </Border.GestureRecognizers>
             </Border>
 
             <StackLayout.Triggers>

@@ -18,7 +18,7 @@
     </Controls:CustomControl.Resources>
     <StackLayout Orientation="Vertical">
         <tabView:SfTabView TabBarPlacement="Bottom" VerticalOptions="FillAndExpand" IndicatorBackground="#1c874b"
-                               IndicatorPlacement="Top" TabBarHeight="55" FlowDirection="LeftToRight">
+                               IndicatorPlacement="Top" TabBarHeight="55" FlowDirection="LeftToRight" SelectionChanged="SfTabView_SelectionChanged">
             <tabView:SfTabView.Items>
                 <!--Request Details-->
                 <tabView:SfTabItem Header="{Static res:AppResources.btnRequestDetails_RequestDetails}" FontSize="14" BackgroundColor="#f6fcf2"
@@ -572,7 +572,7 @@
                                                                         <Label Text="{Binding RequestTravelAgencyTransport.Date, StringFormat='  {0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
 
                                                                         </Label>
-                                                                        
+
                                                                         <Label Text="{Binding RequestTravelAgencyTransport.TransportCount,StringFormat='{0} car'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                                             <Label.Triggers>
                                                                                 <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=Lang}" Value="ar">
@@ -667,7 +667,7 @@
                                                                             </Label.Triggers>
                                                                         </Label>
 
-                                                                        
+
                                                                         <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue"
                                                                                  VerticalOptions="EndAndExpand" FontSize="11">
                                                                             <Label.Triggers>
@@ -808,8 +808,88 @@
                         </ContentView>
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
+                <!--Paymment-->
+                <tabView:SfTabItem Header="{Static res:AppResources.BtnPayments_DisPayment}" FontSize="14" BackgroundColor="#f6fcf2" FontFamily="Almarai-Regular">
+                    <tabView:SfTabItem.Content>
+                        <ContentView x:Name="PaymmentView">
+                            <StackLayout Orientation="Vertical" Margin="20" Spacing="20">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image VerticalOptions="CenterAndExpand">
+                                        <Image.Source>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" Size="25"></FontImageSource>
+                                        </Image.Source>
+                                        <Image.Triggers>
+                                            <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                                                <Setter Property="Rotation" Value="180"></Setter>
+                                            </DataTrigger>
+                                        </Image.Triggers>
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BackButtonClickedCommand}"></TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label Text="{Binding Response.RequestName}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+               TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+                                </StackLayout>
+                                <Border StrokeShape="RoundRectangle 20" HeightRequest="150" BackgroundColor="#1c874b" StrokeThickness="0">
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                                        <HorizontalStackLayout VerticalOptions="CenterAndExpand" Spacing="5" HorizontalOptions="CenterAndExpand">
+                                            <Label Text="500" FontSize="32"></Label>
+                                            <Label Text="{Static res:AppResources.SAR}" FontSize="16" VerticalTextAlignment="Center" TranslationY="-7"></Label>
+                                        </HorizontalStackLayout>
+                                        <Label Text="{Static res:AppResources.OSBlance_payment}" FontSize="18" HorizontalOptions="CenterAndExpand"></Label>
+                                    </StackLayout>
+                                </Border>
+                                <HorizontalStackLayout>
+                                    <CheckBox x:Name="FBCheck" Color="#1c874b" CheckedChanged="FBCheck_CheckedChanged_1" IsChecked="{Binding IsAllPyment}"></CheckBox>
+                                    <Label Text="{Static res:AppResources.FullPayment_payment}" TextColor="Black" VerticalTextAlignment="Center" FontSize="14" FontAttributes="Bold"
+                                           ></Label>
+                                    <Entry x:Name="AmmountEntry" Text="{Binding CustomPrice}" Keyboard="Numeric" FontSize="14" TextColor="Black" HorizontalOptions="FillAndExpand"
+                                           Placeholder="{Static res:AppResources.Please_Enter_ammount}" Margin="15,0,0,0">
+                                        <Entry.Triggers>
+                                            <DataTrigger TargetType="Entry" Binding="{Binding Source={x:Reference FBCheck},Path=IsChecked}" Value="True">
+                                                <Setter Property="IsVisible" Value="False"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="Entry" Binding="{Binding Lang}" Value="ar">
+                                                <Setter Property="Placeholder" Value="{Static res:AppResources.Please_Enter_ammount}"></Setter>
+                                            </DataTrigger>
+                                        </Entry.Triggers>
+                                    </Entry>
+                                </HorizontalStackLayout>
+                                <Grid VerticalOptions="FillAndExpand">
+                                    <CollectionView ItemsSource="{Binding Payments}" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Margin="0,0,0,60">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border StrokeShape="RoundRectangle 20" Padding="15">
+                                                    <StackLayout Orientation="Horizontal" Spacing="15">
+                                                        <Image VerticalOptions="CenterAndExpand">
+                                                            <Image.Source>
+                                                                <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Black" Size="25"></FontImageSource>
+                                                            </Image.Source>
+                                                        </Image>
+                                                        <Label Text="{Binding CreatedDate, StringFormat='{0:MM-dd-yyyy}'}" TextColor="Black" VerticalTextAlignment="End" FontSize="14"></Label>
+                                                        <Label Text="{Binding AmountPayment}" TextColor="Green" VerticalTextAlignment="End" FontSize="14" HorizontalOptions="EndAndExpand"></Label>
+                                                    </StackLayout>
+                                                </Border>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                        <CollectionView.ItemsLayout>
+                                            <GridItemsLayout VerticalItemSpacing="10" Orientation="Vertical"></GridItemsLayout>
+                                        </CollectionView.ItemsLayout>
+                                    </CollectionView>
+                                    <Button Text="{Static res:AppResources.BtnCashConfirm_DisPayment}" BackgroundColor="#1c874b" FontSize="16" TextColor="White" FontAttributes="Bold"
+                                            Command="{Binding AddPaymentCommand}" VerticalOptions="End">
+                                        <Button.Triggers>
+                                            <DataTrigger TargetType="Button" Binding="{Binding OutStandingprice}" Value="0">
+                                                <Setter Property="IsEnabled" Value="False"></Setter>
+                                            </DataTrigger>
+                                        </Button.Triggers>
+                                    </Button>
+                                </Grid>
+                            </StackLayout>
+                        </ContentView>
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
             </tabView:SfTabView.Items>
-
         </tabView:SfTabView>
     </StackLayout>
 </Controls:CustomControl>

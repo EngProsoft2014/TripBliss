@@ -990,4 +990,16 @@
   <data name="Required_Visa_Date" xml:space="preserve">
     <value>يرجى إكمال هذا الحقل المطلوب: تاريخ تسليم التأشيرات.</value>
   </data>
+  <data name="PlcBankName_AccountPage" xml:space="preserve">
+    <value>اسم البنك</value>
+  </data>
+  <data name="PlcBankNumber_AccountPage" xml:space="preserve">
+    <value>رقم البنك</value>
+  </data>
+  <data name="BtnCashConfirm_DisPayment" xml:space="preserve">
+    <value>تأكيد الدفع نقدا</value>
+  </data>
+  <data name="BtnPayments_DisPayment" xml:space="preserve">
+    <value>المدفوعات</value>
+  </data>
 </root>

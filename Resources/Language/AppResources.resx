@@ -990,4 +990,16 @@
   <data name="Required_Visa_Date" xml:space="preserve">
     <value>Please Complete This Field Required : Visa Date.</value>
   </data>
+  <data name="PlcBankName_AccountPage" xml:space="preserve">
+    <value>Bank Name</value>
+  </data>
+  <data name="PlcBankNumber_AccountPage" xml:space="preserve">
+    <value>Bank Number</value>
+  </data>
+  <data name="BtnCashConfirm_DisPayment" xml:space="preserve">
+    <value>Cash Confirm</value>
+  </data>
+  <data name="BtnPayments_DisPayment" xml:space="preserve">
+    <value>Payments</value>
+  </data>
 </root>

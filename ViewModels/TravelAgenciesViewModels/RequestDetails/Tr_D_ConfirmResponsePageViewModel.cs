@@ -74,7 +74,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     await GetRequestDetailes(_distributorResponse.DistributorCompanyId, _distributorResponse.Id!);
 
                     var vm = new Tr_D_PaymentViewModel(Response.Id!, Response.TotalPriceAgentAccept, Response.TotalPayment, _distributorResponse, Rep, _service);
-                    var page = new PaymentPage(vm, _distributorResponse, Rep,_service);
+                    var page = new BankOrCreditPaymentPage(vm, _distributorResponse, Rep,_service);
                     page.BindingContext = vm;
                     await App.Current!.MainPage!.Navigation.PushAsync(page);
                 }

@@ -250,6 +250,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cash Confirm.
+        /// </summary>
+        internal static string BtnCashConfirm_DisPayment {
+            get {
+                return ResourceManager.GetString("BtnCashConfirm_DisPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         internal static string btnConfirm_NewRequest {
@@ -327,6 +336,15 @@ namespace TripBliss.Resources.Language {
         internal static string btnLogIn_Login {
             get {
                 return ResourceManager.GetString("btnLogIn-Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payments.
+        /// </summary>
+        internal static string BtnPayments_DisPayment {
+            get {
+                return ResourceManager.GetString("BtnPayments_DisPayment", resourceCulture);
             }
         }
         
@@ -2001,6 +2019,24 @@ namespace TripBliss.Resources.Language {
         internal static string plcAddress_AccountPage {
             get {
                 return ResourceManager.GetString("plcAddress-AccountPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank Name.
+        /// </summary>
+        internal static string PlcBankName_AccountPage {
+            get {
+                return ResourceManager.GetString("PlcBankName_AccountPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank Number.
+        /// </summary>
+        internal static string PlcBankNumber_AccountPage {
+            get {
+                return ResourceManager.GetString("PlcBankNumber_AccountPage", resourceCulture);
             }
         }
         
