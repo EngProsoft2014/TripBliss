@@ -6,6 +6,7 @@ using Microsoft.AspNet.SignalR.Client.Http;
 using Syncfusion.Maui.Data;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
+using System.Security.AccessControl;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
@@ -29,6 +30,19 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         bool isAllPyment;
         [ObservableProperty]
         ObservableCollection<ResponseWithDistributorPaymentResponse> payments;
+
+
+        [ObservableProperty]
+        string cardNumber;
+
+        [ObservableProperty]
+        string holderName;
+
+        [ObservableProperty]
+        string expirationDate;
+
+        [ObservableProperty]
+        string cvv;
         #endregion
 
         #region Services
@@ -145,6 +159,203 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 IsAllPyment = true;
             }
         }
+
+        //[RelayCommand]
+        //async void CreditPayNow(InvoiceModel model)
+        //{
+        //    IsBusy = true;
+
+        //    try
+        //    {
+        //        if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+        //        {
+        //            await App.Current!.MainPage!.DisplayAlert("Error", "No Internet Avialable !!!", "OK");
+        //            return;
+        //        }
+        //        else
+        //        {
+        //            UserDialogs.Instance.ShowLoading();
+        //            OneInvoice = model;
+
+        //            OnePayment.Type = 0;
+        //            OnePayment.Method = 3; //Debit Card
+
+        //            await PayViaStripe();
+        //            UserDialogs.Instance.HideHud();
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        await App.Current!.MainPage!.DisplayAlert("Error", "Please Complate All informations !!!", "OK");
+        //    }
+
+        //    IsBusy = false;
+        //}
+
+        //public async Task InitiolizModel(InvoiceModel model)
+        //{
+        //    try
+        //    {
+        //        if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+        //        {
+        //            await App.Current!.MainPage!.DisplayAlert("Error", "No Internet Avialable !!!", "OK");
+        //            return;
+        //        }
+        //        else
+        //        {
+        //            if (!string.IsNullOrEmpty(SignatureImageByte64))
+        //            {
+        //                if (OnePayment.Amount <= model.Net || OnePayment.Amount == null)
+        //                {
+        //                    string UserToken = await _service.UserToken();
+
+        //                    OnePayment.AccountId = model.AccountId;
+        //                    OnePayment.BrancheId = model.BrancheId;
+        //                    OnePayment.CustomerId = model.CustomerId;
+        //                    //OnePayment.ContractId = model.ContractId;
+        //                    OnePayment.InvoiceId = model.Id;
+        //                    //OnePayment.ExpensesId = model.ExpensesId;
+        //                    OnePayment.PaymentDate = DateTime.Now;
+        //                    OnePayment.SignatureDraw = SignatureImageByte64;
+
+        //                    OnePayment.Amount = OnePayment.Amount == null ? model.Net : OnePayment.Amount;
+        //                    //OnePayment.OverAmount = model.OverAmount;
+
+        //                    //OnePayment.IncreaseDecrease = model.IncreaseDecrease;
+        //                    //OnePayment.TransactionID = model.TransactionID;
+        //                    //OnePayment.CheckNumber = model.CheckNumber;
+        //                    //OnePayment.BankName = model.BankName;
+        //                    //OnePayment.AccountNumber = model.AccountNumber;
+        //                    OnePayment.Notes = model.Notes;
+        //                    OnePayment.Active = model.Active;
+        //                    OnePayment.CreateUser = model.CreateUser;
+        //                    OnePayment.CreateDate = model.CreateDate;
+
+        //                    UserDialogs.Instance.ShowLoading();
+        //                    var json = await ORep.PostDataAsync("api/Payments/InsertPayment", OnePayment, UserToken);
+        //                    UserDialogs.Instance.HideHud();
+
+        //                    if (json != null && json != "api not responding")
+        //                    {
+        //                        await App.Current.MainPage.DisplayAlert("FixPro", "Succes Payment for This Job.", "Ok");
+        //                        await App.Current.MainPage.Navigation.PushAsync(new MainPage());
+        //                    }
+        //                    else
+        //                    {
+        //                        await App.Current.MainPage.DisplayAlert("FixPro", "Field Payment for This Job.", "Ok");
+        //                    }
+        //                }
+        //                else
+        //                {
+        //                    await App.Current.MainPage.DisplayAlert("FixPro", "Please Enter Right Amount.", "Ok");
+        //                }
+        //            }
+        //            else
+        //            {
+        //                await App.Current.MainPage.DisplayAlert("FixPro", "Please Enter Signature.", "Ok");
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        await App.Current!.MainPage!.DisplayAlert("Error", ex.Message, "OK");
+        //    }
+
+        //}
+
+        //async Task GetSkretKey(int? BranchId)
+        //{
+        //    if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+        //    {
+        //        UserDialogs.Instance.ShowLoading();
+        //        string UserToken = await _service.UserToken();
+
+        //        var json = await ORep.GetAsync<StripeAccountModel>(string.Format("api/Payments/GetStripeAccount?" + "BranchId=" + BranchId), UserToken);
+
+        //        if (json != null)
+        //        {
+        //            StripeModel = json;
+        //        }
+
+        //        UserDialogs.Instance.HideHud();
+        //    }
+        //}
+
+        //public async Task PayViaStripe()
+        //{
+        //    if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+        //    {
+        //        await GetSkretKey(OneInvoice.BrancheId);
+
+        //        StripeConfiguration.ApiKey = StripeModel.SecretKey;
+
+        //        //StripeConfiguration.ApiKey = "sk_test_IHINMHgrNTLUWqh3IcTcMdNB";
+
+        //        // step 2: Assign card to token object
+        //        var stripeCard = new TokenCreateOptions
+        //        {
+        //            Card = new TokenCardOptions
+        //            {
+        //                Number = CardNumber,
+        //                Name = HolderName,
+        //                ExpMonth = ExpirationDate.Split('/')[0],
+        //                ExpYear = ExpirationDate.Split('/')[1],
+        //                Cvc = cvv,
+        //            }
+        //        };
+
+        //        Stripe.TokenService service = new Stripe.TokenService();
+        //        Stripe.Token newToken = service.Create(stripeCard);
+
+        //        // step 3: assign the token to the source
+        //        var option = new SourceCreateOptions
+        //        {
+        //            Type = SourceType.Card,
+        //            Currency = "USD",
+        //            Token = newToken.Id
+        //        };
+
+        //        var sourceService = new SourceService();
+        //        Stripe.Source source = sourceService.Create(option);
+
+        //        // step 4: create customer
+        //        CustomerCreateOptions customer = new CustomerCreateOptions
+        //        {
+        //            Name = CustomerDetails.FirstName + "" + CustomerDetails.LastName,
+        //            Email = CustomerDetails.Email,
+        //            Description = OneInvoice.ScheduleName,
+        //            Address = new AddressOptions { City = CustomerDetails.City, Country = CustomerDetails.Country, Line1 = CustomerDetails.Address, Line2 = "", PostalCode = CustomerDetails.PostalcodeZIP, State = CustomerDetails.State }
+        //        };
+
+        //        var customerService = new CustomerService();
+        //        var cust = customerService.Create(customer);
+
+        //        // step 5: charge option
+        //        var chargeoption = new ChargeCreateOptions
+        //        {
+        //            Amount = Convert.ToInt64(OneInvoice.Total * 100),
+        //            Currency = "USD",
+        //            ReceiptEmail = CustomerDetails.Email,
+        //            Customer = cust.Id,
+        //            Source = source.Id
+        //        };
+
+        //        // step 6: charge the customer
+        //        var chargeService = new ChargeService();
+        //        Charge charge = chargeService.Create(chargeoption);
+        //        if (charge.Status == "succeeded")
+        //        {
+        //            // success
+        //            await InitiolizModel(OneInvoice);
+        //        }
+        //        else
+        //        {
+        //            // failed
+        //            await App.Current!.MainPage!.DisplayAlert("Alert", "failed Payment for This Job.", "Ok");
+        //        }
+        //    }
+
+        //}
         #endregion
     }
 }

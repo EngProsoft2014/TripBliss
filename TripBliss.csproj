@@ -338,6 +338,9 @@
 	  <MauiXaml Update="Pages\ActivateDetailsPages\AirFlightAttachmentsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\TravelAgenciesPages\RequestDetails\BankOrCreditPaymentPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\TravelAgenciesPages\Tr_ProviderDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
