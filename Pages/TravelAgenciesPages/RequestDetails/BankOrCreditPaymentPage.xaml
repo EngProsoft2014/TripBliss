@@ -123,7 +123,7 @@
 
                     <StackLayout Orientation="Horizontal" Spacing="20">
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="5,5,5,5" Spacing="10">
-                            <CheckBox x:Name="FBCheck" Color="#33a7f5" IsChecked="{Binding IsAllPyment}"></CheckBox>
+                            <CheckBox x:Name="FBCheckCredit" Color="#33a7f5" IsChecked="{Binding IsAllPyment}"></CheckBox>
                             <Label Text="Full Payment" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
                         </StackLayout>
 
@@ -140,7 +140,7 @@
                                 <RoundRectangle CornerRadius="10" Stroke="LightGray" StrokeThickness="2"></RoundRectangle>
                             </Border.StrokeShape>
                             <Border.Triggers>
-                                <DataTrigger TargetType="Border" Binding="{Binding Source={x:Reference FBCheck},Path=IsChecked}" Value="True">
+                                <DataTrigger TargetType="Border" Binding="{Binding Source={x:Reference FBCheckBank},Path=IsChecked}" Value="True">
                                     <Setter Property="IsVisible" Value="False"></Setter>
                                 </DataTrigger>
                             </Border.Triggers>
@@ -226,7 +226,7 @@
 
                     <StackLayout Orientation="Horizontal" Spacing="20">
                         <StackLayout Orientation="Horizontal" Spacing="5">
-                            <CheckBox x:Name="FBCheck" Color="#33a7f5" IsChecked="{Binding IsAllPyment}"></CheckBox>
+                            <CheckBox x:Name="FBCheckBank" Color="#33a7f5" IsChecked="{Binding IsAllPyment}"></CheckBox>
                             <Label Text="Full Payment" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
                         </StackLayout>
 
@@ -242,7 +242,7 @@
                                 <RoundRectangle CornerRadius="10" Stroke="LightGray" StrokeThickness="2"></RoundRectangle>
                             </Border.StrokeShape>
                             <Border.Triggers>
-                                <DataTrigger TargetType="Border" Binding="{Binding Source={x:Reference FBCheck},Path=IsChecked}" Value="True">
+                                <DataTrigger TargetType="Border" Binding="{Binding Source={x:Reference FBCheckCredit},Path=IsChecked}" Value="True">
                                     <Setter Property="IsVisible" Value="False"></Setter>
                                 </DataTrigger>
                             </Border.Triggers>

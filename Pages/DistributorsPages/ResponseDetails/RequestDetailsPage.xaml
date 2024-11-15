@@ -824,7 +824,7 @@
                                             </DataTrigger>
                                         </Image.Triggers>
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding BackButtonClickedCommand}"></TapGestureRecognizer>
+                                            <TapGestureRecognizer Command="{Binding BackButtonCommand}"></TapGestureRecognizer>
                                         </Image.GestureRecognizers>
                                     </Image>
                                     <Label Text="{Binding Response.RequestName}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
