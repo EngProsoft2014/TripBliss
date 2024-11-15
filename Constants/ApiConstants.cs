@@ -143,6 +143,12 @@ namespace TripBliss.Constants
         // End Get All Payment Api  
         #endregion
 
+        #region PaymentActive
+        // Get All Payment Api
+        public static string PaymentActive = "ResponseWithDistributor/";
+        // End Get All Payment Api  
+        #endregion
+
         #region Hotel Active
         // Get All Hotel Active Details Api
         public static string HotelActive = "api/ResponseWithDistributorHotelDetails/ResponseWithDistributor/";

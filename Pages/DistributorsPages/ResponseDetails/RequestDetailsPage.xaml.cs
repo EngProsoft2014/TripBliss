@@ -1,23 +1,30 @@
+using TripBliss.Helpers;
 using TripBliss.ViewModels.DistributorsViewModels.ResponseDetails;
-using TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails;
 
 namespace TripBliss.Pages.DistributorsPages.ResponseDetailes;
 
 public partial class RequestDetailsPage : Controls.CustomControl
 {
-    Tr_D_PaymentViewModel Model;
-    public RequestDetailsPage(Dis_D_RequestDetailsViewModel model)
+    Dis_D_RequestDetailsViewModel Model;
+    Dis_D_PaymentViewModel PaymmentModel;
+    #region Services
+    readonly Services.Data.ServicesService _service;
+    IGenericRepository Rep;
+    #endregion
+    public RequestDetailsPage(Dis_D_RequestDetailsViewModel model, IGenericRepository generic, Services.Data.ServicesService service)
 	{
 		InitializeComponent();
-		BindingContext = model;
-	}
+        Rep = generic;
+        _service = service;
+        BindingContext = Model = model;
+    }
 
 
     private async void FBCheck_CheckedChanged_1(object sender, CheckedChangedEventArgs e)
     {
         if (e.Value && Model != null)
         {
-            await Model.CalcOutPrice(0);
+            await PaymmentModel.CalcOutPrice(0);
             AmmountEntry.Text = "";
         }
     }
@@ -26,7 +33,7 @@ public partial class RequestDetailsPage : Controls.CustomControl
     {
         if (e.NewIndex == 2)
         {
-            //PaymmentView.BindingContext = new Dis_D_PaymentViewModel();
+            PaymmentView.BindingContext = PaymmentModel = new Dis_D_PaymentViewModel(Model.Response.Id!, Model.Response.TotalPriceAgentAccept, Model.Response.TotalPayment, Rep, _service);
         } 
     }
 }

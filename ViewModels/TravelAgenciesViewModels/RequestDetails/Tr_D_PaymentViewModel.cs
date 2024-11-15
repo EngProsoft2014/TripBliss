@@ -43,11 +43,17 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [ObservableProperty]
         string cvv = "";
         [ObservableProperty]
-        int payMethod = 3;
+        int payMethod;
         [ObservableProperty]
         string photo = "";
         [ObservableProperty]
         string photoPath = "";
+
+        [ObservableProperty]
+        bool isStrip;
+
+        [ObservableProperty]
+        bool isBank;
 
         #endregion
 
@@ -58,11 +64,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         #endregion
 
         #region Cons
-        public Tr_D_PaymentViewModel(string id,int totalPrice,int totalPayment, ResponseWithDistributorResponse distributorResponse, IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_D_PaymentViewModel(bool isStripv, bool isBankv, string id,int totalPrice,int totalPayment, ResponseWithDistributorResponse distributorResponse, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
             _distributorResponse = distributorResponse;
+            IsStrip = isStripv;
+            IsBank = isBankv;
+            PayMethod = (isStripv==true && isBankv == true) ? 3 : (isStripv == true && isBankv == false) ? 2 : 3;
             ReqId = id;
             Totalpayment = totalPayment;
             OutStandingprice = totalPrice - totalPayment;
@@ -71,6 +80,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             Init();
         }
         #endregion
+
 
         [RelayCommand]
         async Task AddPayment()
@@ -128,6 +138,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             
             IsBusy = true;
         }
+
         [RelayCommand]
         async Task BackButtonClicked()
         {
@@ -136,6 +147,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             //await App.Current!.MainPage!.Navigation.PushAsync(new ConfirmResponsePage(new Tr_D_ConfirmResponsePageViewModel(_distributorResponse, Rep, _service), Rep));
             //App.Current.MainPage.Navigation.RemovePage(App.Current.MainPage.Navigation.NavigationStack[App.Current.MainPage.Navigation.NavigationStack.Count - 2]);
         }
+
         [RelayCommand]
         async Task Attachreceipt()
         {

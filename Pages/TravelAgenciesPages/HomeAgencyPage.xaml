@@ -596,7 +596,7 @@
                             </ContentView.Resources>
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="10" Margin="{OnPlatform Android=20, iOS='20,0,20,0'}">
                                 <Label Text="{Static res:AppResources.hdrHistory}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
-                                       TextColor="Black" Margin="{OnPlatform Android='0,20,0,10', iOS='20,0,20,0'}"></Label>
+                                       TextColor="Black" Margin="{OnPlatform Android='20,0,20,0', iOS='20,0,20,0'}"></Label>
                                 <Border StrokeShape="RoundRectangle 25" Stroke="Gray" HeightRequest="40" Margin="0,15,0,10" BackgroundColor="White">
                                     <Grid>
                                         <SearchBar BackgroundColor="White" 
@@ -704,7 +704,7 @@
                                     </CollectionView.ItemsLayout>
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
-                                            <Border StrokeShape="RoundRectangle 20" Margin="20,10">
+                                            <Border StrokeShape="RoundRectangle 20" Margin="{OnPlatform Android='0,0,0,10', iOS='20,10'}">
                                                 <StackLayout Orientation="Horizontal" ToolTipProperties.Text="{Binding ToolTip}">
                                                     <VerticalStackLayout Padding="10" Spacing="5">
                                                         <Label Text="{Binding RequestName}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>

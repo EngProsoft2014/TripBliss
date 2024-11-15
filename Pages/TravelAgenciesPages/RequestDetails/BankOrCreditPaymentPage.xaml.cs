@@ -43,17 +43,27 @@ public partial class BankOrCreditPaymentPage : ContentPage
         }
     }
 
-    private void FBCheckCredit_CheckedChanged(object sender, CheckedChangedEventArgs e)
-    {
-        if (e.Value)
-        {
-            Model.PayMethod = 2;
+    //private void FBCheckCredit_CheckedChanged(object sender, CheckedChangedEventArgs e)
+    //{
+    //    if (e.Value)
+    //    {
+    //        Model.PayMethod = 2;
             
-        }
-        else
-        {
-            Model.PayMethod = 3;
-        }
+    //    }
+    //    else
+    //    {
+    //        Model.PayMethod = 3;
+    //    }
+    //}
+
+    private void TapGestureRecognizer_TappedCredit(object sender, TappedEventArgs e)
+    {
+        Model.PayMethod = 2;//Credit Strip
+    }
+
+    private void TapGestureRecognizer_TappedBank(object sender, TappedEventArgs e)
+    {
+        Model.PayMethod = 3;//Bank Transfer
     }
 
 

@@ -137,6 +137,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             IsBusy = true;
         }
 
+
         public async Task CalcOutPrice(int CustomPrice)
         {
             if (CustomPrice > Totalprice)
@@ -155,6 +156,37 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                 IsAllPyment = true;
             }
         }
+
         #endregion
+
+
+        [RelayCommand]
+        async Task IsActivePayBank(ResponseWithDistributorPaymentResponse model)
+        {
+            IsBusy = false;
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.Are_recieved_your_bank, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
+                if (answer) 
+                {
+                    string UserToken = await _service.UserToken();
+
+                    var json1 = await Rep.PutAsync(ApiConstants.PaymentActive + $"{model.ResponseWithDistributorId}/ResponseWithDistributorPayment/{model.Id}/ToggleActive", UserToken);
+
+                    if (json1 == "")
+                    {
+                        var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Active_For_Pay_Bank, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
+                    }
+                    else
+                    {
+                        var toast1 = Toast.Make(TripBliss.Resources.Language.AppResources.ErrorTryAgain, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast1.Show();
+                    }
+                }
+            }
+
+            IsBusy = true;
+        }
     }
 }

@@ -20,6 +20,8 @@ namespace TripBliss.Models
         public string? StripeUsername { get; set; }
         public string? StripePassword { get; set; }
         public string? StripeSecretKey { get; set; }
+        public string? BankName { get; set; }
+        public string? BankAccounNumber { get; set; }
         public int? Review { get; set; }
         public byte[]? ImgFile { get; set; }
         public string? Extension { get; set; } = string.Empty;

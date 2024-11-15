@@ -1002,4 +1002,19 @@
   <data name="BtnPayments_DisPayment" xml:space="preserve">
     <value>Payments</value>
   </data>
+  <data name="title_Bank_Transfer" xml:space="preserve">
+    <value>Bank Transfer</value>
+  </data>
+  <data name="title_Payment_Credit" xml:space="preserve">
+    <value>Credit</value>
+  </data>
+  <data name="Active_For_Pay_Bank" xml:space="preserve">
+    <value>Successfully Confirm this payment</value>
+  </data>
+  <data name="Are_recieved_your_bank" xml:space="preserve">
+    <value>Are you sure you have received your bank transfer?</value>
+  </data>
+  <data name="lbl_Dont_have_PaymentMethods" xml:space="preserve">
+    <value>There are no payment methods available at this distributor.</value>
+  </data>
 </root>

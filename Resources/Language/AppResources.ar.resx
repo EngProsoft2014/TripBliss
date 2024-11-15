@@ -1002,4 +1002,19 @@
   <data name="BtnPayments_DisPayment" xml:space="preserve">
     <value>المدفوعات</value>
   </data>
+  <data name="title_Bank_Transfer" xml:space="preserve">
+    <value>تحويل بنكي</value>
+  </data>
+  <data name="title_Payment_Credit" xml:space="preserve">
+    <value>بطاقة ائتمانية</value>
+  </data>
+  <data name="Active_For_Pay_Bank" xml:space="preserve">
+    <value>تم تأكيد الدفع بنجاح</value>
+  </data>
+  <data name="Are_recieved_your_bank" xml:space="preserve">
+    <value>هل أنت متأكد من أنك استلمت التحويل البنكي الخاص بك؟</value>
+  </data>
+  <data name="lbl_Dont_have_PaymentMethods" xml:space="preserve">
+    <value>لا يوجد طرق دفع متاحة لدى هذا الموزع</value>
+  </data>
 </root>

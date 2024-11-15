@@ -824,19 +824,19 @@
                                             </DataTrigger>
                                         </Image.Triggers>
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding BackButtonCommand}"></TapGestureRecognizer>
+                                            <TapGestureRecognizer Command="{Binding BackButtonClickedCommand}"></TapGestureRecognizer>
                                         </Image.GestureRecognizers>
                                     </Image>
                                     <Label Text="{Binding Response.RequestName}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
-               TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+                                             TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
                                 </StackLayout>
                                 <Border StrokeShape="RoundRectangle 20" HeightRequest="150" BackgroundColor="#1c874b" StrokeThickness="0">
                                     <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
                                         <HorizontalStackLayout VerticalOptions="CenterAndExpand" Spacing="5" HorizontalOptions="CenterAndExpand">
-                                            <Label Text="500" FontSize="32"></Label>
-                                            <Label Text="{Static res:AppResources.SAR}" FontSize="16" VerticalTextAlignment="Center" TranslationY="-7"></Label>
+                                            <Label Text="{Binding OutStandingprice}" FontSize="32" TextColor="White"></Label>
+                                            <Label Text="{Static res:AppResources.SAR}" FontSize="16" TextColor="White" VerticalTextAlignment="Center" TranslationY="-7"></Label>
                                         </HorizontalStackLayout>
-                                        <Label Text="{Static res:AppResources.OSBlance_payment}" FontSize="18" HorizontalOptions="CenterAndExpand"></Label>
+                                        <Label Text="{Static res:AppResources.OSBlance_payment}" TextColor="White" FontSize="18" HorizontalOptions="CenterAndExpand"></Label>
                                     </StackLayout>
                                 </Border>
                                 <HorizontalStackLayout>
@@ -859,16 +859,40 @@
                                     <CollectionView ItemsSource="{Binding Payments}" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Margin="0,0,0,60">
                                         <CollectionView.ItemTemplate>
                                             <DataTemplate>
-                                                <Border StrokeShape="RoundRectangle 20" Padding="15">
+                                                <Border StrokeShape="RoundRectangle 20" Padding="15" HeightRequest="50">
                                                     <StackLayout Orientation="Horizontal" Spacing="15">
                                                         <Image VerticalOptions="CenterAndExpand">
                                                             <Image.Source>
                                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Black" Size="25"></FontImageSource>
                                                             </Image.Source>
                                                         </Image>
-                                                        <Label Text="{Binding CreatedDate, StringFormat='{0:MM-dd-yyyy}'}" TextColor="Black" VerticalTextAlignment="End" FontSize="14"></Label>
-                                                        <Label Text="{Binding AmountPayment}" TextColor="Green" VerticalTextAlignment="End" FontSize="14" HorizontalOptions="EndAndExpand"></Label>
+                                                        <Label Text="{Binding CreatedDate, StringFormat='{0:MM-dd-yyyy}'}" TextColor="Black" VerticalTextAlignment="Center" FontSize="14"></Label>
+                                                        <Label Text="{Binding AmountPayment}" TextColor="Green" VerticalTextAlignment="Center" FontSize="14" HorizontalOptions="EndAndExpand"></Label>
+                                                        <CheckBox x:Name="chekActive" Color="Green" IsChecked="{Binding Active}">
+                                                            <CheckBox.Triggers>
+                                                                <MultiTrigger TargetType="CheckBox">
+                                                                    <MultiTrigger.Conditions>
+                                                                        <BindingCondition Binding="{Binding PaymentMethod}" Value="3" />
+                                                                        <BindingCondition Binding="{Binding Active}" Value="False" />
+                                                                    </MultiTrigger.Conditions>
+                                                                    <Setter Property="IsChecked" Value="False" />
+                                                                </MultiTrigger>
+                                                                <DataTrigger TargetType="CheckBox" Binding="{Binding PaymentMethod}" Value="1">
+                                                                    <Setter Property="IsVisible" Value="False" />
+                                                                </DataTrigger>
+                                                                <DataTrigger TargetType="CheckBox" Binding="{Binding PaymentMethod}" Value="2">
+                                                                    <Setter Property="IsVisible" Value="False" />
+                                                                </DataTrigger>
+                                                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chekActive},Path=IsChecked}" Value="True">
+                                                                    <Setter Property="IsEnabled" Value="False" />
+                                                                </DataTrigger>
+                                                            </CheckBox.Triggers>
+                                                            <CheckBox.GestureRecognizers>
+                                                                <TapGestureRecognizer Command="{Binding IsActivePayBankCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                            </CheckBox.GestureRecognizers>
+                                                        </CheckBox>
                                                     </StackLayout>
+
                                                 </Border>
                                             </DataTemplate>
                                         </CollectionView.ItemTemplate>

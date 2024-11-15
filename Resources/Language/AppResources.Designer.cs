@@ -70,6 +70,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Successfully Confirm this payment.
+        /// </summary>
+        internal static string Active_For_Pay_Bank {
+            get {
+                return ResourceManager.GetString("Active_For_Pay_Bank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Active details.
         /// </summary>
         internal static string ActiveDetails___HotelServices {
@@ -147,6 +156,15 @@ namespace TripBliss.Resources.Language {
         internal static string already_paid_cannot_be_modified {
             get {
                 return ResourceManager.GetString("already_paid_cannot_be_modified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you have received your bank transfer?.
+        /// </summary>
+        internal static string Are_recieved_your_bank {
+            get {
+                return ResourceManager.GetString("Are_recieved_your_bank", resourceCulture);
             }
         }
         
@@ -1002,6 +1020,15 @@ namespace TripBliss.Resources.Language {
         internal static string late_no_response {
             get {
                 return ResourceManager.GetString("late_no_response", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no payment methods available at this distributor..
+        /// </summary>
+        internal static string lbl_Dont_have_PaymentMethods {
+            get {
+                return ResourceManager.GetString("lbl_Dont_have_PaymentMethods", resourceCulture);
             }
         }
         
@@ -2658,6 +2685,24 @@ namespace TripBliss.Resources.Language {
         internal static string time_departure_less_than_time_arrival {
             get {
                 return ResourceManager.GetString("time_departure_less_than_time_arrival", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank Transfer.
+        /// </summary>
+        internal static string title_Bank_Transfer {
+            get {
+                return ResourceManager.GetString("title_Bank_Transfer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Credit.
+        /// </summary>
+        internal static string title_Payment_Credit {
+            get {
+                return ResourceManager.GetString("title_Payment_Credit", resourceCulture);
             }
         }
         

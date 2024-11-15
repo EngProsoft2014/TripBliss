@@ -161,7 +161,6 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 
         }
 
-
         #endregion
 
         #region RelayCommand
