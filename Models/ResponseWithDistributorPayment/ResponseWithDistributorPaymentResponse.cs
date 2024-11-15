@@ -11,6 +11,9 @@
         public int? dbcr { get; set; }
         public int? AmountPayment { get; set; }
         public string? Refnumber { get; set; }
+        public string? ImgName { get; set; } = string.Empty;
+        public string? UrlImgName { get; set; } = string.Empty;
+        public bool? Active { get; set; }
         public string? Notes { get; set; }
         public DateTime? CreatedDate { get; set; }
     }

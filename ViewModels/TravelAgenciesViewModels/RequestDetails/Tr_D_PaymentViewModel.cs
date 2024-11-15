@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using Microsoft.AspNet.SignalR.Client.Http;
+using Mopups.Services;
 using Syncfusion.Maui.Data;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
@@ -29,20 +30,25 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [ObservableProperty]
         bool isAllPyment;
         [ObservableProperty]
-        ObservableCollection<ResponseWithDistributorPaymentResponse> payments;
-
+        ObservableCollection<ResponseWithDistributorPaymentResponse> payments;  
+        [ObservableProperty]
+        string cardNumber ="";
 
         [ObservableProperty]
-        string cardNumber;
+        string holderName = "";
 
         [ObservableProperty]
-        string holderName;
+        string expirationDate = "";
 
         [ObservableProperty]
-        string expirationDate;
-
+        string cvv = "";
         [ObservableProperty]
-        string cvv;
+        int payMethod = 3;
+        [ObservableProperty]
+        string photo = "";
+        [ObservableProperty]
+        string photoPath = "";
+
         #endregion
 
         #region Services
@@ -77,15 +83,30 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             {
 
                 string UserToken = await _service.UserToken();
+                string[] parts = [];
+                if (!string.IsNullOrEmpty(ExpirationDate))
+                {
+                    parts = ExpirationDate.Split('/');
+                }
                 ResponseWithDistributorPaymentRequest paymentRequest = new ResponseWithDistributorPaymentRequest
                 {
                     AmountPayment = IsAllPyment == true ? OutStandingprice : (Totalprice - Totalpayment - OutStandingprice),
-                    PaymentMethod = 1,
+                    PaymentMethod = PayMethod,
                     dbcr = 1,
-                    Notes ="",
+                    Notes = "",
                     Refnumber = "stetrrcc",
-                };
+                    CardholderName = HolderName,
+                    CardNumber = CardNumber,
+                    Cvc = Cvv,
+                    ImgFile = Convert.FromBase64String(Photo),
+                    Extension = PhotoPath
 
+                };
+                if (!string.IsNullOrEmpty(ExpirationDate))
+                {
+                    paymentRequest.ExpirationMonth = Convert.ToInt32(parts[0]);
+                    paymentRequest.ExpirationYear = Convert.ToInt32(parts[1]);
+                }
                 UserDialogs.Instance.ShowLoading();
                 var json = await Rep.PostTRAsync<ResponseWithDistributorPaymentRequest, ResponseWithDistributorPaymentResponse>(ApiConstants.AllPaymentApi + $"{ReqId}/ResponseWithDistributorPayment", paymentRequest, UserToken);
                 UserDialogs.Instance.HideHud();
@@ -114,6 +135,37 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             await App.Current!.MainPage!.Navigation.PopAsync();
             //await App.Current!.MainPage!.Navigation.PushAsync(new ConfirmResponsePage(new Tr_D_ConfirmResponsePageViewModel(_distributorResponse, Rep, _service), Rep));
             //App.Current.MainPage.Navigation.RemovePage(App.Current.MainPage.Navigation.NavigationStack[App.Current.MainPage.Navigation.NavigationStack.Count - 2]);
+        }
+        [RelayCommand]
+        async Task Attachreceipt()
+        {
+            IsBusy = false;
+
+            if (Constants.Permissions.CheckPermission(Constants.Permissions.Add_Attachment))
+            { 
+                var page = new Pages.MainPopups.AddAttachmentsPopup();
+                page.ImageClose += async (img, imgPath) =>
+                {
+                    if (!string.IsNullOrEmpty(img))
+                    {
+                        byte[] bytes = Convert.FromBase64String(img);
+
+                        Photo = img;
+                        PhotoPath = Path.GetExtension(imgPath);
+                        
+                        await MopupService.Instance.PopAsync();
+                    }
+                };
+
+                await MopupService.Instance.PushAsync(page);
+            }
+            else
+            {
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+
+            IsBusy = true;
         }
 
         #region Methods

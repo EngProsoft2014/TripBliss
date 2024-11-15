@@ -34,18 +34,29 @@
 
             <ScrollView VerticalOptions="FillAndExpand">
                 <StackLayout VerticalOptions="FillAndExpand" TranslationY="0" Spacing="15">
-                    <StackLayout Orientation="Horizontal" Spacing="15" HorizontalOptions="EndAndExpand">
-                        <Label Text="Scan Card" TextColor="Black" VerticalTextAlignment="End"></Label>
-                        <Image x:Name="imgBack">
-                            <Image.Source>
-                                <FontImageSource FontFamily="FontIconSolid" Color="#33a7f5" Glyph="" Size="25"></FontImageSource>
-                            </Image.Source>
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ScanCommand}"></TapGestureRecognizer>
-                            </Image.GestureRecognizers>
-                        </Image>
-
+                    <StackLayout Orientation="Horizontal" Spacing="15" HorizontalOptions="FillAndExpand">
+                        <HorizontalStackLayout VerticalOptions="CenterAndExpand">
+                            <CheckBox x:Name="FBCheckCredit3" Color="#33a7f5" CheckedChanged="FBCheckCredit_CheckedChanged" IsChecked="False">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding PayMethod}" Value="2">
+                                        <Setter Property="IsChecked" Value="True"></Setter>
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+                            <Label Text="credit" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
+                        </HorizontalStackLayout>
+                        <!--<HorizontalStackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                            <CheckBox x:Name="FBCheckCash3" Color="#33a7f5" IsChecked="True">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding PayMethod}" Value="2">
+                                        <Setter Property="IsChecked" Value="False"></Setter>
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+                            <Label Text="Cash" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
+                        </HorizontalStackLayout>-->
                         
+
                     </StackLayout>
 
                     <Border BackgroundColor="White" Padding="3,0,0,0" HorizontalOptions="FillAndExpand">
@@ -122,14 +133,13 @@
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal" Spacing="20">
-                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="5,5,5,5" Spacing="10">
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Spacing="10">
                             <CheckBox x:Name="FBCheckCredit" Color="#33a7f5" IsChecked="{Binding IsAllPyment}"></CheckBox>
                             <Label Text="Full Payment" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
                         </StackLayout>
 
-                        <Border x:Name="yumPayCredit" BackgroundColor="White" TranslationX="18" Padding="3,0,0,0" WidthRequest="160" HorizontalOptions="StartAndExpand">
+                        <Border x:Name="yumPayCredit" BackgroundColor="White" HorizontalOptions="FillAndExpand">
                             <Entry x:Name="entryNewAmount"
-                                   Text="{Binding OnePayment.Amount}"
                                    Placeholder="{Binding OneInvoice.Net}"
                                    FontSize="12"
                                    Keyboard="Numeric"
@@ -171,19 +181,16 @@
             </ScrollView>
 
             <Border StrokeShape="RoundRectangle 10" StrokeThickness="0" HorizontalOptions="FillAndExpand" VerticalOptions="End">
-                <Button x:Name="btnPayCredit" Text="{Static res:AppResources.btnConfirm_NewRequest}" TextColor="Black" FontSize="16" FontAttributes="Bold"
-                        HorizontalOptions="FillAndExpand" BackgroundColor="#33a7f5"></Button>
+                <Button x:Name="btnPayCredit" Text="{Static res:AppResources.btnConfirm_NewRequest}" TextColor="White" FontSize="16" FontAttributes="Bold"
+                        HorizontalOptions="FillAndExpand" BackgroundColor="#33a7f5" Command="{Binding AddPaymentCommand}"></Button>
                 <Border.Shadow>
                     <Shadow Brush="{OnPlatform Android=Gray, iOS=LightGray}" Radius="{OnPlatform Android=5,iOS=3}"></Shadow>
                 </Border.Shadow>
             </Border>
 
             <StackLayout.Triggers>
-                <DataTrigger TargetType="StackLayout" Binding="{Binding CashOrCredit}" Value="2">
+                <DataTrigger TargetType="StackLayout" Binding="{Binding PayMethod}" Value="2">
                     <Setter Property="IsVisible" Value="True"></Setter>
-                </DataTrigger>
-                <DataTrigger TargetType="StackLayout" Binding="{Binding Source={x:Reference stkCash},Path=IsVisible}" Value="True">
-                    <Setter Property="IsVisible" Value="False"></Setter>
                 </DataTrigger>
             </StackLayout.Triggers>
         </StackLayout>
@@ -191,7 +198,7 @@
 
         <!--Payment Cash-->
 
-        <StackLayout x:Name="stkCash" IsVisible="True" VerticalOptions="FillAndExpand">
+        <StackLayout x:Name="stkCash" IsVisible="False" VerticalOptions="FillAndExpand">
 
             <!--Toolbar Payment Cash-->
             <StackLayout Orientation="Horizontal">
@@ -214,7 +221,40 @@
 
             <ScrollView VerticalOptions="FillAndExpand">
                 <StackLayout VerticalOptions="FillAndExpand" Spacing="20">
-                    <Border StrokeShape="RoundRectangle 20" HeightRequest="150" BackgroundColor="#33a7f5" StrokeThickness="0" Margin="0,20,0,0">
+                    <StackLayout Orientation="Horizontal" Spacing="15" HorizontalOptions="FillAndExpand" >
+                        <HorizontalStackLayout VerticalOptions="CenterAndExpand">
+                            <CheckBox x:Name="FBCheckCredit2" Color="#33a7f5" CheckedChanged="FBCheckCredit_CheckedChanged" IsChecked="False">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding PayMethod}" Value="2">
+                                        <Setter Property="IsChecked" Value="True"></Setter>
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+                            <Label Text="credit" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
+                        </HorizontalStackLayout>
+                        <!--<HorizontalStackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                            <CheckBox x:Name="FBCheckCash2" Color="#33a7f5" CheckedChanged="FBCheckCash2_CheckedChanged" IsChecked="True">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding PayMethod}" Value="2">
+                                        <Setter Property="IsChecked" Value="False"></Setter>
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+                            <Label Text="Cash" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
+                        </HorizontalStackLayout>-->
+                        <HorizontalStackLayout Spacing="7" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                            <Image x:Name="imgBack">
+                                <Image.Source>
+                                    <FontImageSource FontFamily="FontIconSolid" Color="#33a7f5" Glyph="" Size="25"></FontImageSource>
+                                </Image.Source>
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding AttachreceiptCommand}"></TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Text="Attach the receipt" FontSize="14" TextColor="Black" VerticalTextAlignment="End"></Label>
+                        </HorizontalStackLayout>
+                    </StackLayout>
+                    <Border StrokeShape="RoundRectangle 20" HeightRequest="150" BackgroundColor="#33a7f5" StrokeThickness="0">
                         <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
                             <HorizontalStackLayout VerticalOptions="CenterAndExpand" Spacing="5" HorizontalOptions="CenterAndExpand">
                                 <Label Text="{Binding OutStandingprice}" FontSize="32"></Label>
@@ -223,26 +263,25 @@
                             <Label Text="{Static res:AppResources.OSBlance_payment}" FontSize="18" HorizontalOptions="CenterAndExpand"></Label>
                         </StackLayout>
                     </Border>
-
                     <StackLayout Orientation="Horizontal" Spacing="20">
                         <StackLayout Orientation="Horizontal" Spacing="5">
-                            <CheckBox x:Name="FBCheckBank" Color="#33a7f5" IsChecked="{Binding IsAllPyment}"></CheckBox>
+                            <CheckBox x:Name="FBCheckBank" Color="#33a7f5" IsChecked="{Binding IsAllPyment}" CheckedChanged="FBCheckBank_CheckedChanged"></CheckBox>
                             <Label Text="Full Payment" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
                         </StackLayout>
 
-                        <Border x:Name="yumPayCash" BackgroundColor="White" TranslationX="18" Padding="5,0,0,0" Margin="0,0,20,0" WidthRequest="150" HorizontalOptions="EndAndExpand">
+                        <Border x:Name="yumPayCash" BackgroundColor="Transparent" TranslationX="18" Padding="5,0,0,0" Margin="0,0,20,0" WidthRequest="150" HorizontalOptions="EndAndExpand">
                             <Entry x:Name="entryCashNewAmount"
-                                   Text="{Binding OnePayment.Amount}"
                                    Placeholder="{Binding OneInvoice.Net}"
                                    FontSize="12"
                                    Keyboard="Numeric"
-                                   VerticalTextAlignment="Center"></Entry>
-
+                                   TextColor="Black"
+                                   VerticalTextAlignment="Center"
+                                   TextChanged="entryCashNewAmount_TextChanged"></Entry>
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="10" Stroke="LightGray" StrokeThickness="2"></RoundRectangle>
                             </Border.StrokeShape>
                             <Border.Triggers>
-                                <DataTrigger TargetType="Border" Binding="{Binding Source={x:Reference FBCheckCredit},Path=IsChecked}" Value="True">
+                                <DataTrigger TargetType="Border" Binding="{Binding Source={x:Reference FBCheckBank},Path=IsChecked}" Value="True">
                                     <Setter Property="IsVisible" Value="False"></Setter>
                                 </DataTrigger>
                             </Border.Triggers>
@@ -256,7 +295,8 @@
                                 <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="FillAndExpand">
                                     <Button Text="Save" 
                                             BackgroundColor="#33a7f5" 
-                                            TextColor="White" 
+                                            TextColor="White"
+                                            FontAttributes="Bold"
                                             HorizontalOptions="FillAndExpand"/>
                                     <Button Text="Clear Board" 
                                             BorderColor="#33a7f5"
@@ -272,23 +312,19 @@
 
 
                 </StackLayout>
-
             </ScrollView>
 
             <Border StrokeShape="RoundRectangle 10" StrokeThickness="0" HorizontalOptions="FillAndExpand" VerticalOptions="End">
-                <Button x:Name="btnPayBank" Text="{Static res:AppResources.btnConfirm_NewRequest}" TextColor="Black" FontSize="16" FontAttributes="Bold"
-            HorizontalOptions="FillAndExpand" BackgroundColor="#33a7f5"></Button>
+                <Button x:Name="btnPayBank" Text="{Static res:AppResources.btnConfirm_NewRequest}" TextColor="White" FontSize="16" FontAttributes="Bold"
+            HorizontalOptions="FillAndExpand" BackgroundColor="#33a7f5" Command="{Binding AddPaymentCommand}"></Button>
                 <Border.Shadow>
                     <Shadow Brush="{OnPlatform Android=Gray, iOS=LightGray}" Radius="{OnPlatform Android=5,iOS=3}"></Shadow>
                 </Border.Shadow>
             </Border>
 
             <StackLayout.Triggers>
-                <DataTrigger TargetType="StackLayout" Binding="{Binding CashOrCredit}" Value="1">
+                <DataTrigger TargetType="StackLayout" Binding="{Binding PayMethod}" Value="3">
                     <Setter Property="IsVisible" Value="True"></Setter>
-                </DataTrigger>
-                <DataTrigger TargetType="StackLayout" Binding="{Binding Source={x:Reference stkCredit},Path=IsVisible}" Value="True">
-                    <Setter Property="IsVisible" Value="False"></Setter>
                 </DataTrigger>
             </StackLayout.Triggers>
         </StackLayout>

@@ -22,6 +22,42 @@ public partial class BankOrCreditPaymentPage : ContentPage
         _distributorResponse = distributorResponse;
     }
 
+    private async void entryCashNewAmount_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (string.IsNullOrEmpty(e.NewTextValue))
+        {
+            await Model.CalcOutPrice(0);
+        }
+        else
+        {
+            await Model.CalcOutPrice(Convert.ToInt32(e.NewTextValue!));
+        }
+        
+    }
+
+    private async void FBCheckBank_CheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        if (e.Value)
+        {
+            await Model.CalcOutPrice(0);
+        }
+    }
+
+    private void FBCheckCredit_CheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        if (e.Value)
+        {
+            Model.PayMethod = 2;
+            
+        }
+        else
+        {
+            Model.PayMethod = 3;
+        }
+    }
+
+
+
     //private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
     //{
     //    if (ViewModel != null && ViewModel.OneInvoice.Id == 0)

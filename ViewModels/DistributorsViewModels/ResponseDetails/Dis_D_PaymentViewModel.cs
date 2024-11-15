@@ -48,11 +48,10 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         #endregion
 
         #region Cons
-        public Dis_D_PaymentViewModel(string id, int totalPrice, int totalPayment, ResponseWithDistributorResponse distributorResponse, IGenericRepository generic, Services.Data.ServicesService service)
+        public Dis_D_PaymentViewModel(string id, int totalPrice, int totalPayment, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
-            _distributorResponse = distributorResponse;
             ReqId = id;
             Totalpayment = totalPayment;
             OutStandingprice = totalPrice - totalPayment;
@@ -103,6 +102,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 
             IsBusy = true;
         }
+
         [RelayCommand]
         async Task BackButtonClicked()
         {

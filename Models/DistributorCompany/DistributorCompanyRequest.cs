@@ -10,6 +10,8 @@
         public string? Policy { get; set; }
         public string? Logo { get; set; }
         public DateOnly? ExpireDateAcc { get; set; }
+        public string? BankName { get; set; }
+        public string? BankAccounNumber { get; set; }
         public string? StripeUsername { get; set; }
         public string? StripePassword { get; set; }
         public string? StripeSecretKey { get; set; }
