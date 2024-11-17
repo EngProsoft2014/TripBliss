@@ -66,7 +66,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         async Task PaymentClicked()
         {
-            if(!string.IsNullOrEmpty(Response.DistributorCompany.StripeSecretKey) && !string.IsNullOrEmpty(Response.DistributorCompany.BankAccounNumber))
+            if(string.IsNullOrEmpty(Response.DistributorCompany.StripeSecretKey) && string.IsNullOrEmpty(Response.DistributorCompany.BankAccounNumber))
+            {
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.lbl_Dont_have_PaymentMethods, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else
             {
                 if (Constants.Permissions.CheckPermission(Constants.Permissions.Payment))
                 {
@@ -75,19 +80,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     {
                         await GetRequestDetailes(_distributorResponse.DistributorCompanyId, _distributorResponse.Id!);
 
-                        bool isStrip = false;
-                        if(!string.IsNullOrEmpty(Response.DistributorCompany.StripeSecretKey))
-                        {
-                            isStrip = true;
-                        }
-
-                        bool isBank = false;
-                        if ( !string.IsNullOrEmpty(Response.DistributorCompany.BankAccounNumber))
-                        {
-                            isBank = true;
-                        }
-
-                        var vm = new Tr_D_PaymentViewModel(isStrip, isBank, Response.Id!, Response.TotalPriceAgentAccept, Response.TotalPayment, _distributorResponse, Rep, _service);
+                        var vm = new Tr_D_PaymentViewModel(Response.DistributorCompany, Response.Id!, Response.TotalPriceAgentAccept, Response.TotalPayment, _distributorResponse, Rep, _service);
                         var page = new BankOrCreditPaymentPage(vm, _distributorResponse, Rep, _service);
                         page.BindingContext = vm;
                         await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -103,11 +96,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
-            }
-            else
-            {
-                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.lbl_Dont_have_PaymentMethods, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                await toast.Show();
             }
         }
 

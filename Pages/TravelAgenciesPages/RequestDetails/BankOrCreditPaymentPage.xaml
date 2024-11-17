@@ -196,7 +196,12 @@
 
             <ScrollView VerticalOptions="FillAndExpand">
                 <StackLayout VerticalOptions="FillAndExpand" Spacing="20">
-                    <StackLayout Orientation="Horizontal" Spacing="15" HorizontalOptions="FillAndExpand" >
+                    <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="FillAndExpand" >
+
+                        <StackLayout>
+                            <Label Text="{Binding DisCompany.BankName}" TextColor="#333" FontSize="13" HorizontalOptions="CenterAndExpand"></Label>
+                            <Label Text="{Binding DisCompany.BankAccounNumber}" TextColor="#333" FontSize="13" HorizontalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
 
                         <HorizontalStackLayout Spacing="7" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
                             <Image>

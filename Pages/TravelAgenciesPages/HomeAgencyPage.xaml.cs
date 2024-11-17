@@ -23,7 +23,6 @@ public partial class HomeAgencyPage : Controls.CustomControl
         this.BindingContext = ViewModel = viewModel;
         Rep = generic;
         _service = service;
-
     }
 
     protected override async void OnAppearing()

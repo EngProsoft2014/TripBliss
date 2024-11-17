@@ -116,6 +116,7 @@ namespace TripBliss.ViewModels
 
                         if (!string.IsNullOrEmpty(UserModel?.Id))
                         {
+                            Controls.StaticMember.WayOfTab = 0;
 
                             Preferences.Default.Set(ApiConstants.userid, UserModel.Id);
                             Preferences.Default.Set(ApiConstants.email, UserModel.Email);
@@ -159,7 +160,7 @@ namespace TripBliss.ViewModels
                             {
                                 var toast1 = Toast.Make(TripBliss.Resources.Language.AppResources.This_account_is_an_admin, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                                 await toast1.Show();
-                            }
+                            }    
                         }
                         else
                         {

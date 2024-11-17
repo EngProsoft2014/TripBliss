@@ -21,7 +21,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
 		InitializeComponent();
         Rep = generic;
         _service = service; 
-        BindingContext = ViewModel = viewModel;  
+        BindingContext = ViewModel = viewModel;
 
         chkAll.IsChecked = true;
         chkAll.Color = Color.FromHex("#46b356");

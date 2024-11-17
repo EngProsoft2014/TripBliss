@@ -30,7 +30,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [ObservableProperty]
         bool isAllPyment;
         [ObservableProperty]
-        ObservableCollection<ResponseWithDistributorPaymentResponse> payments;  
+        ObservableCollection<ResponseWithDistributorPaymentResponse> payments;
+
+        [ObservableProperty]
+        DistributorCompanyResponse disCompany;
         [ObservableProperty]
         string cardNumber ="";
 
@@ -64,14 +67,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         #endregion
 
         #region Cons
-        public Tr_D_PaymentViewModel(bool isStripv, bool isBankv, string id,int totalPrice,int totalPayment, ResponseWithDistributorResponse distributorResponse, IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_D_PaymentViewModel(DistributorCompanyResponse DistributorCompany, string id,int totalPrice,int totalPayment, ResponseWithDistributorResponse distributorResponse, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
             _distributorResponse = distributorResponse;
-            IsStrip = isStripv;
-            IsBank = isBankv;
-            PayMethod = (isStripv==true && isBankv == true) ? 3 : (isStripv == true && isBankv == false) ? 2 : 3;
+            DisCompany = DistributorCompany;
             ReqId = id;
             Totalpayment = totalPayment;
             OutStandingprice = totalPrice - totalPayment;
@@ -185,6 +186,19 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         {
             UserDialogs.Instance.ShowLoading();
             await GetPayDetailes();
+
+            if (!string.IsNullOrEmpty(DisCompany.StripeSecretKey))
+            {
+                IsStrip =true;
+            }
+
+            if (!string.IsNullOrEmpty(DisCompany.BankAccounNumber))
+            {
+                IsBank = true;
+            }
+
+            PayMethod = (IsStrip == true && IsBank == true) ? 3 : (IsStrip == true && IsBank == false) ? 2 : 3;
+
             UserDialogs.Instance.HideHud();
         }
         async Task GetPayDetailes()
