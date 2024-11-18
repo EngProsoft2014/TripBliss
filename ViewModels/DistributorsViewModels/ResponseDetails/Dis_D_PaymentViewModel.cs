@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
+using Mopups.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Pages.Shared;
 
 namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 {
@@ -57,6 +59,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             OutStandingprice = totalPrice - totalPayment;
             Totalprice = totalPrice;
             IsAllPyment = true;
+            
             Init();
         }
         #endregion
@@ -102,6 +105,35 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 
             IsBusy = true;
         }
+
+        [RelayCommand]
+        async Task OpenFullScreenImage(ResponseWithDistributorPaymentResponse model)
+        {
+            if (model!.UrlImgNameVM!.Contains(".pdf"))
+            {
+                await App.Current!.MainPage!.Navigation.PushAsync(new PdfViewerPage(model.UrlImgNameVM));
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(model.UrlImgNameVM))
+                {
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.No_image_here, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
+                else
+                {
+                    ImageSource sou = ImageSource.FromUri(new Uri(model.UrlImgNameVM!));
+                    IsBusy = false;
+                    UserDialogs.Instance.ShowLoading();
+                    await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(sou));
+                    UserDialogs.Instance.HideHud();
+                    IsBusy = true;
+                }
+
+            }
+
+        }
+
 
         [RelayCommand]
         async Task BackButtonClicked()
@@ -171,9 +203,9 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                 {
                     string UserToken = await _service.UserToken();
 
-                    var json1 = await Rep.PutAsync(ApiConstants.PaymentActive + $"{model.ResponseWithDistributorId}/ResponseWithDistributorPayment/{model.Id}/ToggleActive", UserToken);
+                    var json1 = await Rep.PutAsync<string>(ApiConstants.PaymentActive + $"{model.ResponseWithDistributorId}/ResponseWithDistributorPayment/{model.Id}/ToggleActive",null, UserToken);
 
-                    if (json1 == "")
+                    if (string.IsNullOrEmpty(json1))
                     {
                         var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Active_For_Pay_Bank, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();

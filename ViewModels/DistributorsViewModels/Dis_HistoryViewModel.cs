@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
+using GoogleApi.Entities.Translate.Common.Enums;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -158,7 +159,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         {
             if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_Response_Details_History))
             {
-                await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new Dis_D_RequestDetailsViewModel(model.Id!, Rep, _service),Rep,_service));
+                await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new Dis_D_RequestDetailsViewModel(model.Id!, Rep, _service), new Dis_D_PaymentViewModel(model.Id!, model.TotalPriceAgentAccept, model.TotalPayment, Rep, _service), Rep,_service));
             }
             else
             {

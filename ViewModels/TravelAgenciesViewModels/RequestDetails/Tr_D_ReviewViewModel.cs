@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
 using System;
@@ -39,7 +40,16 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         async Task ApplyReview(ResponseWithDistributorReviewTravelAgentRequest model)
         {
             IsBusy = false;
-            ReviewClose.Invoke(model);
+            if(ModelReview.ReviewToDistributor > 0)
+            {
+                ReviewClose.Invoke(model);
+            }
+            else
+            {
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Plz_Choose_Rate_of_Review, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            
             IsBusy = true;
         }
 

@@ -67,7 +67,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                     {
                         json.ImageFile = ImageSource.FromUri(new Uri($"{Helpers.Utility.ServerUrl}{json.UrlLogo}"));
                         CompanyResponse = json;
-                        CompanyResponse.UrlLogo = json.UrlLogo == null ? "" : json.UrlLogo;    
+                        CompanyResponse.UrlLogo = json.UrlLogo == null ? "" : json.UrlLogo;
                     }
                 }
 
@@ -114,6 +114,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                         Extension = CompanyResponse.Extension,
                         Logo = CompanyResponse.Logo,
                         Address = CompanyResponse.Address,
+                        locationlatitude = CompanyResponse.locationlatitude,
+                        locationlongitude = CompanyResponse.locationlongitude,
+                        State = CompanyResponse.State,
+                        City = CompanyResponse.City,
+                        PostalcodeZIP = CompanyResponse.PostalcodeZIP,
+                        Country = CompanyResponse.Country,
                         Email = CompanyResponse.Email,
                         ExpireDateAcc = CompanyResponse.ExpireDateAcc,
                         Phone = CompanyResponse.Phone,
@@ -121,7 +127,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                         ImgFile = CompanyResponse.ImgFile,
                         ShowAllDistributors = CompanyResponse.ShowAllDistributors,
                         Website = CompanyResponse.Website,
-
                     };
                     string UserToken = await _service.UserToken();
 
@@ -183,7 +188,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             if (answer)
             {
                 IsBusy = false;
-                
+
                 string UserToken = await _service.UserToken();
                 UserDialogs.Instance.ShowLoading();
                 var json = await Rep.PutAsync<string>(ApiConstants.PutTRCompanyAccountDelete + CompanyResponse.Id + "/ToggleActive", null, UserToken);
@@ -193,7 +198,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                     var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Successfully_company_deleted, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
 
-                    string LangValueToKeep = Preferences.Default.Get("Lan", "en"); 
+                    string LangValueToKeep = Preferences.Default.Get("Lan", "en");
                     Preferences.Default.Clear();
                     await BlobCache.LocalMachine.InvalidateAll();
                     await BlobCache.LocalMachine.Vacuum();
@@ -214,10 +219,41 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         [RelayCommand]
         async Task MoreDetails()
         {
-            var vm = new Dis_ProviderDetailsViewModel(CompanyResponse!.Id!,Rep,_service);
+            var vm = new Dis_ProviderDetailsViewModel(CompanyResponse!.Id!, Rep, _service);
             var page = new Dis_ProviderDetailsPage();
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
+        }
+
+        [RelayCommand]
+        async Task SelecteAddress()
+        {
+            IsBusy = true;
+            try
+            {
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                {
+                    var popupView = new Pages.MainPopups.AddressPupop();
+                    popupView.DidClose += async (str) =>
+                    {
+                        CompanyResponse.Address = str.FullAddress;
+                        CompanyResponse.locationlatitude = str.Latitude.ToString();
+                        CompanyResponse.locationlongitude = str.Longitude.ToString();
+                        CompanyResponse.State = str.State;
+                        CompanyResponse.City = str.City;
+                        CompanyResponse.PostalcodeZIP = str.Zip;
+                        CompanyResponse.Country = str.Country;
+                    };
+
+                    await MopupService.Instance.PushAsync(popupView);
+                }
+            }
+            catch (Exception ex)
+            {
+                await App.Current!.MainPage!.DisplayAlert("Error", ex.Message, "OK");
+            }
+
+            IsBusy = false;
         }
         #endregion
     }

@@ -170,51 +170,51 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         {
             IsBusy = false;
 
-            //var ResponseAirFlt = Response?.ResponseWithDistributorAirFlight?.Where(x => x.AcceptPriceDis == true).FirstOrDefault();
-            //var ResponseHotel = Response?.ResponseWithDistributorHotel?.Where(x => x.AcceptPriceDis == true).FirstOrDefault();
-            //var ResponseTrans = Response?.ResponseWithDistributorTransport?.Where(x => x.AcceptPriceDis == true).FirstOrDefault();
-            //var ResponseVisa = Response?.ResponseWithDistributorVisa?.Where(x => x.AcceptPriceDis == true).FirstOrDefault();
+            var ResponseAirFlt = Response?.ResponseWithDistributorAirFlight?.Where(x => x.AcceptPriceDis == true).FirstOrDefault();
+            var ResponseHotel = Response?.ResponseWithDistributorHotel?.Where(x => x.AcceptPriceDis == true).FirstOrDefault();
+            var ResponseTrans = Response?.ResponseWithDistributorTransport?.Where(x => x.AcceptPriceDis == true).FirstOrDefault();
+            var ResponseVisa = Response?.ResponseWithDistributorVisa?.Where(x => x.AcceptPriceDis == true).FirstOrDefault();
 
-            //if (ResponseAirFlt != null || ResponseHotel != null || ResponseTrans != null || ResponseVisa != null)
-            //{
-            bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.AreYouAcceptThisFinallPrice, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
-
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet && answer)
+            if (ResponseAirFlt != null || ResponseHotel != null || ResponseTrans != null || ResponseVisa != null)
             {
+                bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.AreYouAcceptThisFinallPrice, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
 
-                string UserToken = await _service.UserToken();
-
-                string id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
-
-                UserDialogs.Instance.ShowLoading();
-                //var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorResponse>(ApiConstants.ResponseDetailsDistApi + $"{id}/ResponseWithDistributor/{Response.Id}", Response, UserToken);
-                var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorDetailsResponse>(ApiConstants.ResponseDetailsDistApi + $"{id}/ResponseWithDistributor/{Response.Id}", Response, UserToken);
-                UserDialogs.Instance.HideHud();
-
-                if (json.Item1 != null)
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet && answer)
                 {
-                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.AddResponseSuccess, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                    await toast.Show();
 
-                    Response = new ResponseWithDistributorDetailsResponse();
-                    Response = json.Item1;
+                    string UserToken = await _service.UserToken();
 
-                    new Dis_D_RequestDetailsViewModel(Response?.Id!, Rep, _service);
-                    //Controls.StaticMember.WayOfTab = 0;
-                    //await App.Current!.MainPage!.Navigation.PushAsync(new HomeDistributorsPage(new Dis_HomeViewModel(Rep, _service), Rep, _service));
-                }
-                else
-                {
-                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                    await toast.Show();
+                    string id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
+
+                    UserDialogs.Instance.ShowLoading();
+                    //var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorResponse>(ApiConstants.ResponseDetailsDistApi + $"{id}/ResponseWithDistributor/{Response.Id}", Response, UserToken);
+                    var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorDetailsResponse>(ApiConstants.ResponseDetailsDistApi + $"{id}/ResponseWithDistributor/{Response.Id}", Response, UserToken);
+                    UserDialogs.Instance.HideHud();
+
+                    if (json.Item1 != null)
+                    {
+                        var toast = Toast.Make(TripBliss.Resources.Language.AppResources.AddResponseSuccess, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
+
+                        Response = new ResponseWithDistributorDetailsResponse();
+                        Response = json.Item1;
+
+                        new Dis_D_RequestDetailsViewModel(Response?.Id!, Rep, _service);
+                        //Controls.StaticMember.WayOfTab = 0;
+                        //await App.Current!.MainPage!.Navigation.PushAsync(new HomeDistributorsPage(new Dis_HomeViewModel(Rep, _service), Rep, _service));
+                    }
+                    else
+                    {
+                        var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
+                    }
                 }
             }
-            //}
-            //else
-            //{
-            //    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PutPriceAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-            //    await toast.Show();
-            //}             
+            else
+            {
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PutPriceAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
 
             IsBusy = true;
         }

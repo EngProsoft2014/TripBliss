@@ -2203,6 +2203,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose Rate of Review please.
+        /// </summary>
+        internal static string Plz_Choose_Rate_of_Review {
+            get {
+                return ResourceManager.GetString("Plz_Choose_Rate_of_Review", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please put price to one service or more.
         /// </summary>
         internal static string PutPriceAlert {

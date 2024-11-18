@@ -1,6 +1,8 @@
-﻿namespace TripBliss.Models
+﻿using System.ComponentModel;
+
+namespace TripBliss.Models
 {
-    public record ResponseWithDistributorPaymentResponse
+    public record ResponseWithDistributorPaymentResponse : INotifyPropertyChanged
     {
         public string? Id { get; set; }
         public string? ResponseWithDistributorId { get; set; }
@@ -13,9 +15,27 @@
         public string? Refnumber { get; set; }
         public string? ImgName { get; set; } = string.Empty;
         public string? UrlImgName { get; set; } = string.Empty;
-        public bool? Active { get; set; }
+        public string? UrlImgNameVM { get { return Helpers.Utility.ServerUrl + UrlImgName; } }
+        bool? _Active;
+        public bool? Active
+        {
+            get
+            {
+                return _Active;
+            }
+            set
+            {
+                _Active = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Active"));
+                }
+            }
+        }
         public string? Notes { get; set; }
         public DateTime? CreatedDate { get; set; }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }
 

@@ -19,32 +19,31 @@
        PositionOut="Center" />
     </mopups:PopupPage.Animation>
 
-    <Border BackgroundColor="#FFFFFF" VerticalOptions="FillAndExpand">
-        <StackLayout>
-            <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="20">
+    <StackLayout VerticalOptions="FillAndExpand"  BackgroundColor="#FFFFFF" >
+        <StackLayout VerticalOptions="Start" Padding="20,0,20,0" HeightRequest="50">
 
-                <Image HorizontalOptions="End" VerticalOptions="Center">
-                    <Image.Source>
-                        <FontImageSource FontFamily="FontIconSolid" Glyph="" Color="#2fa562"></FontImageSource>
-                    </Image.Source>
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
-                    </Image.GestureRecognizers>
-                </Image>
-            </StackLayout>
-
-            <Border VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                <Grid>
-                    <local:PinchToZoomContainer>
-                        <local:PinchToZoomContainer.Content>
-                            <Image x:Name="imgFullScreen" VerticalOptions="FillAndExpand"></Image>
-                        </local:PinchToZoomContainer.Content>
-                    </local:PinchToZoomContainer>
-                </Grid>
-            </Border>
-
-
+            <Image HorizontalOptions="End" VerticalOptions="FillAndExpand" Aspect="AspectFit">
+                <Image.Source>
+                    <FontImageSource FontFamily="FontIconSolid" Glyph="" Color="#2fa562" Size="30"></FontImageSource>
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
         </StackLayout>
-    </Border>
+
+        <Border VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid>
+                <local:PinchToZoomContainer>
+                    <local:PinchToZoomContainer.Content>
+                        <Image x:Name="imgFullScreen" VerticalOptions="FillAndExpand"></Image>
+                    </local:PinchToZoomContainer.Content>
+                </local:PinchToZoomContainer>
+            </Grid>
+        </Border>
+
+
+    </StackLayout>
+
 
 </mopups:PopupPage>

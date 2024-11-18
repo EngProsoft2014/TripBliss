@@ -35,9 +35,14 @@
 		<key>XSAppIconAssets</key>
 		<string>Assets.xcassets/logo.appiconset</string>
 
+		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+		<string>Can we use your location at all times?</string>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>Can we use your location when your app is being used?</string>
+		
 		<key>CFBundleDevelopmentRegion</key>
 		<string>en</string>
-		<key>CFBundleLocalizations</key>
+		<key>CFBundleLocalizations</key>	
 		<array>
 			<string>en</string>
 			<string>ar</string>

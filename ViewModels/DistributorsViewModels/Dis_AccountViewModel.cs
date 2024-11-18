@@ -108,6 +108,12 @@ namespace TripBliss.ViewModels.DistributorsViewModels
                         Extension = CompanyResponse.Extension,
                         Logo = CompanyResponse.Logo,
                         Address = CompanyResponse.Address,
+                        locationlatitude = CompanyResponse.locationlatitude,
+                        locationlongitude = CompanyResponse.locationlongitude,
+                        State = CompanyResponse.State,
+                        City = CompanyResponse.City,
+                        PostalcodeZIP = CompanyResponse.PostalcodeZIP,
+                        Country = CompanyResponse.Country,
                         Email = CompanyResponse.Email,
                         ExpireDateAcc = CompanyResponse.ExpireDateAcc,
                         Phone = CompanyResponse.Phone,
@@ -118,6 +124,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels
                         StripePassword = CompanyResponse.StripePassword,
                         StripeSecretKey = CompanyResponse.StripeSecretKey,
                         StripeUsername = CompanyResponse.StripeUsername,
+                        BankAccounNumber = CompanyResponse.BankAccounNumber,
+                        BankName = CompanyResponse.BankName,
                         Website = CompanyResponse.Website
                     };
                     string UserToken = await _service.UserToken();
@@ -214,6 +222,37 @@ namespace TripBliss.ViewModels.DistributorsViewModels
             var page = new Tr_ProviderDetailsPage();
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
+        }
+
+        [RelayCommand]
+        async Task SelecteAddress()
+        {
+            IsBusy = true;
+            try
+            {
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                {
+                    var popupView = new Pages.MainPopups.AddressPupop();
+                    popupView.DidClose += async (str) =>
+                    {
+                        CompanyResponse.Address = str.FullAddress;
+                        CompanyResponse.locationlatitude = str.Latitude.ToString();
+                        CompanyResponse.locationlongitude = str.Longitude.ToString();
+                        CompanyResponse.State = str.State;
+                        CompanyResponse.City = str.City;
+                        CompanyResponse.PostalcodeZIP = str.Zip;
+                        CompanyResponse.Country = str.Country;
+                    };
+
+                    await MopupService.Instance.PushAsync(popupView);
+                }
+            }
+            catch (Exception ex)
+            {
+                await App.Current!.MainPage!.DisplayAlert("Error", ex.Message, "OK");
+            }
+
+            IsBusy = false;
         }
         #endregion
     }

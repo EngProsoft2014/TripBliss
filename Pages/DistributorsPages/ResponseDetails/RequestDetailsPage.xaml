@@ -461,7 +461,7 @@
                                     <Label Text="{Binding Response.RequestName}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                            TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
 
-                                    <Button Text="{Static res:AppResources.Review}" IsVisible="{Binding IsShowReviewBtn}" FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" FontSize="{OnPlatform Android=12,iOS=14}"
+                                    <Button Text="{Static res:AppResources.lblReviews}" IsVisible="{Binding IsShowReviewBtn}" FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" FontSize="{OnPlatform Android=12,iOS=14}"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=ReviewClickedCommand}"
                                             BackgroundColor="#ff7700" CornerRadius="5" TextColor="White" WidthRequest="70" Margin="0,0,0,0" FontAttributes="Bold">
                                         <Button.Triggers>
@@ -827,8 +827,13 @@
                                             <TapGestureRecognizer Command="{Binding BackButtonClickedCommand}"></TapGestureRecognizer>
                                         </Image.GestureRecognizers>
                                     </Image>
-                                    <Label Text="{Binding Response.RequestName}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
+                                    <Label Text="{Static res:AppResources.btnPayNow_NewRequest}" FontAutoScalingEnabled="False" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                              TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+                                    <StackLayout.Triggers>
+                                        <DataTrigger TargetType="StackLayout" Binding="{Binding Lang}" Value="ar">
+                                            <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
+                                        </DataTrigger>
+                                    </StackLayout.Triggers>
                                 </StackLayout>
                                 <Border StrokeShape="RoundRectangle 20" HeightRequest="150" BackgroundColor="#1c874b" StrokeThickness="0">
                                     <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
@@ -840,11 +845,17 @@
                                     </StackLayout>
                                 </Border>
                                 <HorizontalStackLayout>
-                                    <CheckBox x:Name="FBCheck" Color="#1c874b" CheckedChanged="FBCheck_CheckedChanged_1" IsChecked="{Binding IsAllPyment}"></CheckBox>
+                                    <CheckBox x:Name="FBCheck" Color="#1c874b" CheckedChanged="FBCheck_CheckedChanged_1" IsChecked="{Binding IsAllPyment}">
+                                        <CheckBox.Triggers>
+                                            <DataTrigger TargetType="CheckBox" Binding="{Binding OutStandingprice}" Value="0">
+                                                <Setter Property="IsEnabled" Value="False"></Setter>
+                                            </DataTrigger>
+                                        </CheckBox.Triggers>
+                                    </CheckBox>
                                     <Label Text="{Static res:AppResources.FullPayment_payment}" TextColor="Black" VerticalTextAlignment="Center" FontSize="14" FontAttributes="Bold"
                                            ></Label>
                                     <Entry x:Name="AmmountEntry" Text="{Binding CustomPrice}" Keyboard="Numeric" FontSize="14" TextColor="Black" HorizontalOptions="FillAndExpand"
-                                           Placeholder="{Static res:AppResources.Please_Enter_ammount}" Margin="15,0,0,0">
+                                           Placeholder="{Static res:AppResources.Please_Enter_ammount}" Margin="15,0,0,0" TextChanged="AmmountEntry_TextChanged">
                                         <Entry.Triggers>
                                             <DataTrigger TargetType="Entry" Binding="{Binding Source={x:Reference FBCheck},Path=IsChecked}" Value="True">
                                                 <Setter Property="IsVisible" Value="False"></Setter>
@@ -859,15 +870,30 @@
                                     <CollectionView ItemsSource="{Binding Payments}" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Margin="0,0,0,60">
                                         <CollectionView.ItemTemplate>
                                             <DataTemplate>
-                                                <Border StrokeShape="RoundRectangle 20" Padding="15" HeightRequest="50">
+                                                <Border StrokeShape="RoundRectangle 20" Padding="15,0,15,0" HeightRequest="50">
                                                     <StackLayout Orientation="Horizontal" Spacing="15">
                                                         <Image VerticalOptions="CenterAndExpand">
                                                             <Image.Source>
                                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Black" Size="25"></FontImageSource>
                                                             </Image.Source>
                                                         </Image>
+                                                        
                                                         <Label Text="{Binding CreatedDate, StringFormat='{0:MM-dd-yyyy}'}" TextColor="Black" VerticalTextAlignment="Center" FontSize="14"></Label>
+
+                                                        
+                                                        <Image Source="{Binding UrlImgNameVM}" WidthRequest="50" Aspect="AspectFit" >
+                                                            <Image.GestureRecognizers>
+                                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_PaymentViewModel}}, Path=OpenFullScreenImageCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                            </Image.GestureRecognizers>
+                                                            <Image.Triggers>
+                                                                <DataTrigger TargetType="Image" Binding="{Binding UrlImgNameVM}" Value="https://api.tripsbliss.com/">
+                                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                                </DataTrigger>
+                                                            </Image.Triggers>
+                                                        </Image>
+                                                        
                                                         <Label Text="{Binding AmountPayment}" TextColor="Green" VerticalTextAlignment="Center" FontSize="14" HorizontalOptions="EndAndExpand"></Label>
+                                                        
                                                         <CheckBox x:Name="chekActive" Color="Green" IsChecked="{Binding Active}">
                                                             <CheckBox.Triggers>
                                                                 <MultiTrigger TargetType="CheckBox">
@@ -888,7 +914,7 @@
                                                                 </DataTrigger>
                                                             </CheckBox.Triggers>
                                                             <CheckBox.GestureRecognizers>
-                                                                <TapGestureRecognizer Command="{Binding IsActivePayBankCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_PaymentViewModel}}, Path=IsActivePayBankCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                             </CheckBox.GestureRecognizers>
                                                         </CheckBox>
                                                     </StackLayout>

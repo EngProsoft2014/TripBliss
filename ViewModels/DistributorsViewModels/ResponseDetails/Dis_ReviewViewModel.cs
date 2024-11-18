@@ -1,5 +1,7 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using GoogleApi.Entities.Translate.Common.Enums;
 using Mopups.Services;
 using System;
 using System.Collections.Generic;
@@ -35,10 +37,18 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         #endregion
 
         [RelayCommand]
-        async Task ApplyReview(ResponseWithDistributorReviewDistributorRequest model)
+        async Task ApplyReview()
         {
             IsBusy = false;
-            ReviewClose.Invoke(model);
+            if(ModelReview.ReviewToTravelAgency > 0)
+            {
+                ReviewClose.Invoke(ModelReview);
+            }
+            else
+            {
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Plz_Choose_Rate_of_Review, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
             IsBusy = true;
         }
 

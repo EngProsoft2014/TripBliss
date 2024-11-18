@@ -8,7 +8,28 @@ namespace TripBliss.Models
 
         public string Id { get; set; }
         public string? CompanyName { get; set; }
-        public string? Address { get; set; }
+        string _Address;
+        public string Address
+        {
+            get
+            {
+                return _Address;
+            }
+            set
+            {
+                _Address = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("Address"));
+                }
+            }
+        }
+        public string locationlatitude { get; set; }
+        public string locationlongitude { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Country { get; set; }
+        public string PostalcodeZIP { get; set; }
         public string? Website { get; set; }
         public string? Phone { get; set; }
         public string? Email { get; set; }

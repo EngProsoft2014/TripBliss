@@ -1017,4 +1017,7 @@
   <data name="lbl_Dont_have_PaymentMethods" xml:space="preserve">
     <value>لا يوجد طرق دفع متاحة لدى هذا الموزع</value>
   </data>
+  <data name="Plz_Choose_Rate_of_Review" xml:space="preserve">
+    <value>الرجاء أختيار معدل التقييم</value>
+  </data>
 </root>

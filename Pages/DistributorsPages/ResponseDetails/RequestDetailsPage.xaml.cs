@@ -11,12 +11,13 @@ public partial class RequestDetailsPage : Controls.CustomControl
     readonly Services.Data.ServicesService _service;
     IGenericRepository Rep;
     #endregion
-    public RequestDetailsPage(Dis_D_RequestDetailsViewModel model, IGenericRepository generic, Services.Data.ServicesService service)
+    public RequestDetailsPage(Dis_D_RequestDetailsViewModel model, Dis_D_PaymentViewModel modelPay, IGenericRepository generic, Services.Data.ServicesService service)
 	{
 		InitializeComponent();
         Rep = generic;
         _service = service;
         BindingContext = Model = model;
+        PaymmentModel = modelPay;
     }
 
 
@@ -33,7 +34,40 @@ public partial class RequestDetailsPage : Controls.CustomControl
     {
         if (e.NewIndex == 2)
         {
-            PaymmentView.BindingContext = PaymmentModel = new Dis_D_PaymentViewModel(Model.Response.Id!, Model.Response.TotalPriceAgentAccept, Model.Response.TotalPayment, Rep, _service);
+            // = new Dis_D_PaymentViewModel(Model.Response.Id!, Model.Response.TotalPriceAgentAccept, Model.Response.TotalPayment, Rep, _service)
+            PaymmentView.BindingContext = PaymmentModel;
         } 
     }
+
+    private async void AmmountEntry_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (string.IsNullOrEmpty(e.NewTextValue))
+        {
+            await PaymmentModel.CalcOutPrice(0);
+        }
+        else
+        {
+            await PaymmentModel.CalcOutPrice(Convert.ToInt32(e.NewTextValue));
+        }
+    }
+
+
+    //[Obsolete]
+    //protected override bool OnBackButtonPressed()
+    //{
+    //    // Run the async code on the UI thread
+    //    Dispatcher.Dispatch(() =>
+    //    {
+    //        Action action = async () =>
+    //        {
+    //            new Tr_D_ConfirmResponsePageViewModel(_distributorResponse, Rep, _service);
+    //            await App.Current!.MainPage!.Navigation.PopAsync();
+    //            //await App.Current!.MainPage!.Navigation.PushAsync(new ConfirmResponsePage(new Tr_D_ConfirmResponsePageViewModel(_distributorResponse, Rep, _service), Rep));
+    //            //App.Current.MainPage.Navigation.RemovePage(App.Current.MainPage.Navigation.NavigationStack[App.Current.MainPage.Navigation.NavigationStack.Count - 2]);
+    //        };
+    //    });
+
+    //    // Return true to prevent the default behavior
+    //    return true;
+    //}
 }

@@ -526,8 +526,8 @@
                                                     </VerticalStackLayout>
                                                     <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand" Spacing="1">
                                                         <Border HorizontalOptions="EndAndExpand"
-                                                                VerticalOptions="StartAndExpand" Padding="0,3" WidthRequest="80">
-                                                            <Label x:Name="lblAct" Text="{Static res:AppResources.late_no_response}" TextColor="White" BackgroundColor="Red"  FontAttributes="Bold"  FontSize="12" HorizontalTextAlignment="Center">
+                                                                VerticalOptions="StartAndExpand" Padding="0,3" WidthRequest="100" BackgroundColor="Red">
+                                                            <Label x:Name="lblAct" Text="{Static res:AppResources.late_no_response}" TextColor="White" FontAttributes="Bold"  FontSize="12" HorizontalTextAlignment="Center">
                                                                
                                                             </Label>
                                                             <Border.StrokeShape>

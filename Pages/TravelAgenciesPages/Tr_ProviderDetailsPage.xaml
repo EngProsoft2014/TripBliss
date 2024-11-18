@@ -62,17 +62,17 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <VerticalStackLayout Spacing="3" Margin="0,10,0,0">
-                        <HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
                             <Label Text="{Binding RequestName}" TextColor="Black" FontSize="14.5" FontAttributes="Bold"></Label>
-                            <Label Text="{Binding ReviewTravelAgentDateTime}" TextColor="Gray" FontSize="12" FontAttributes="Italic"></Label>
+                            <Label Text="{Binding ReviewTravelAgentDateTime}" TextColor="Gray" FontSize="12"></Label>
                         </HorizontalStackLayout>
                         <rating:SfRating ItemSpacing="5" ItemSize="13" Value="{Binding ReviewToDistributor}" HorizontalOptions="StartAndExpand" IsReadOnly="True">
                             <rating:SfRating.RatingSettings>
                                 <rating:RatingSettings RatedFill="#00e363" UnratedFill="White" RatedStroke="LightGray" UnratedStroke="LightGray"/>
                             </rating:SfRating.RatingSettings>
                         </rating:SfRating>
-                        <HorizontalStackLayout>
-                            <Label Text="{Static res:AppResources.lblBy}" TextColor="Gray" FontSize="14" FontAttributes="Italic"></Label>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="{Static res:AppResources.lblBy}" TextColor="#333" FontSize="14" FontAttributes="Italic"></Label>
                             <Label Text="{Binding ReviewUserTravelAgentName,StringFormat=' {0}'}" TextColor="Gray" FontSize="14" FontAttributes="Italic"></Label>
                         </HorizontalStackLayout>
                         <Label Text="{Binding ReviewTravelAgentNote}" TextColor="Black" FontSize="14"></Label>

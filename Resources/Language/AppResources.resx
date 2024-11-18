@@ -1017,4 +1017,7 @@
   <data name="lbl_Dont_have_PaymentMethods" xml:space="preserve">
     <value>There are no payment methods available at this distributor.</value>
   </data>
+  <data name="Plz_Choose_Rate_of_Review" xml:space="preserve">
+    <value>Choose Rate of Review please</value>
+  </data>
 </root>
