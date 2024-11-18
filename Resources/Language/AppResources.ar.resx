@@ -1020,4 +1020,40 @@
   <data name="Plz_Choose_Rate_of_Review" xml:space="preserve">
     <value>الرجاء أختيار معدل التقييم</value>
   </data>
+  <data name="Enter_Address" xml:space="preserve">
+    <value>أختر العنوان</value>
+  </data>
+  <data name="Manually_enter_address" xml:space="preserve">
+    <value>أدخل العنوان يدويًا</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>الشارع</value>
+  </data>
+  <data name="Enter_Street" xml:space="preserve">
+    <value>أدخل الشاارع</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>المدينة</value>
+  </data>
+  <data name="Enter_City" xml:space="preserve">
+    <value>أدخل المدينة</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>الحي</value>
+  </data>
+  <data name="Enter_State" xml:space="preserve">
+    <value>أدخل الحي</value>
+  </data>
+  <data name="Postal_Code" xml:space="preserve">
+    <value>الرمز البريدي</value>
+  </data>
+  <data name="Enter_Postal_Code" xml:space="preserve">
+    <value>أدخل الرمز البريدي</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>الدولة</value>
+  </data>
+  <data name="Enter_Country" xml:space="preserve">
+    <value>أدخل الدولة</value>
+  </data>
 </root>

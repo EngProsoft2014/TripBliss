@@ -457,6 +457,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to City.
+        /// </summary>
+        internal static string City {
+            get {
+                return ResourceManager.GetString("City", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to click.
         /// </summary>
         internal static string click {
@@ -471,6 +480,15 @@ namespace TripBliss.Resources.Language {
         internal static string Complete_info {
             get {
                 return ResourceManager.GetString("Complete_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country.
+        /// </summary>
+        internal static string Country {
+            get {
+                return ResourceManager.GetString("Country", resourceCulture);
             }
         }
         
@@ -592,6 +610,33 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter Address.
+        /// </summary>
+        internal static string Enter_Address {
+            get {
+                return ResourceManager.GetString("Enter_Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter City.
+        /// </summary>
+        internal static string Enter_City {
+            get {
+                return ResourceManager.GetString("Enter_City", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Country.
+        /// </summary>
+        internal static string Enter_Country {
+            get {
+                return ResourceManager.GetString("Enter_Country", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter Feedback.
         /// </summary>
         internal static string Enter_Feedback {
@@ -615,6 +660,33 @@ namespace TripBliss.Resources.Language {
         internal static string Enter_Old_Password {
             get {
                 return ResourceManager.GetString("Enter_Old_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Postal Code.
+        /// </summary>
+        internal static string Enter_Postal_Code {
+            get {
+                return ResourceManager.GetString("Enter_Postal_Code", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter State.
+        /// </summary>
+        internal static string Enter_State {
+            get {
+                return ResourceManager.GetString("Enter_State", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Street.
+        /// </summary>
+        internal static string Enter_Street {
+            get {
+                return ResourceManager.GetString("Enter_Street", resourceCulture);
             }
         }
         
@@ -1906,6 +1978,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manually enter address.
+        /// </summary>
+        internal static string Manually_enter_address {
+            get {
+                return ResourceManager.GetString("Manually_enter_address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Max delivery date.
         /// </summary>
         internal static string Max_delivery_date {
@@ -2208,6 +2289,15 @@ namespace TripBliss.Resources.Language {
         internal static string Plz_Choose_Rate_of_Review {
             get {
                 return ResourceManager.GetString("Plz_Choose_Rate_of_Review", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Postal Code.
+        /// </summary>
+        internal static string Postal_Code {
+            get {
+                return ResourceManager.GetString("Postal_Code", resourceCulture);
             }
         }
         
@@ -2577,6 +2667,24 @@ namespace TripBliss.Resources.Language {
         internal static string Sorry_Dont_have_distribuitor {
             get {
                 return ResourceManager.GetString("Sorry_Dont_have_distribuitor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to State.
+        /// </summary>
+        internal static string State {
+            get {
+                return ResourceManager.GetString("State", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Street.
+        /// </summary>
+        internal static string Street {
+            get {
+                return ResourceManager.GetString("Street", resourceCulture);
             }
         }
         

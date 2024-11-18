@@ -1020,4 +1020,40 @@
   <data name="Plz_Choose_Rate_of_Review" xml:space="preserve">
     <value>Choose Rate of Review please</value>
   </data>
+  <data name="Enter_Address" xml:space="preserve">
+    <value>Enter Address</value>
+  </data>
+  <data name="Manually_enter_address" xml:space="preserve">
+    <value>Manually enter address</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="Enter_Street" xml:space="preserve">
+    <value>Enter Street</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="Enter_City" xml:space="preserve">
+    <value>Enter City</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="Enter_State" xml:space="preserve">
+    <value>Enter State</value>
+  </data>
+  <data name="Postal_Code" xml:space="preserve">
+    <value>Postal Code</value>
+  </data>
+  <data name="Enter_Postal_Code" xml:space="preserve">
+    <value>Enter Postal Code</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="Enter_Country" xml:space="preserve">
+    <value>Enter Country</value>
+  </data>
 </root>
