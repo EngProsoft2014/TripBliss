@@ -71,6 +71,11 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 var toast = Toast.Make(TripBliss.Resources.Language.AppResources.lbl_Dont_have_PaymentMethods, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
+            else if(CheckChooseServicesPrice() == false)
+            {
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Check_to_one_service_or_more, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
             else
             {
                 if (Constants.Permissions.CheckPermission(Constants.Permissions.Payment))
@@ -80,7 +85,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     {
                         await GetRequestDetailes(_distributorResponse.DistributorCompanyId, _distributorResponse.Id!);
 
-                        var vm = new Tr_D_PaymentViewModel(Response.DistributorCompany, Response.Id!, Response.TotalPriceAgentAccept, Response.TotalPayment, _distributorResponse, Rep, _service);
+                        var vm = new Tr_D_PaymentViewModel(Response, _distributorResponse, Rep, _service);
                         var page = new BankOrCreditPaymentPage(vm, _distributorResponse, Rep, _service);
                         page.BindingContext = vm;
                         await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -291,7 +296,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
         bool CheckChooseServices()
         {
-            if (Response?.TotalPriceAgentAccept == 0 || (Response?.TotalPriceAgentAccept > 0 && Response?.TotalPriceAgentAccept != Response?.TotalPayment))
+            if (Response.TotalPriceAgentAccept > 0 || (Response.TotalPriceAgentAccept > 0 && Response.TotalPriceAgentAccept != Response.TotalPayment))
             {
                 return true;
             }

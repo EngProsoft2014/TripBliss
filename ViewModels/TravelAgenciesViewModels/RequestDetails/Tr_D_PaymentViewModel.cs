@@ -18,7 +18,7 @@ using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {
-    
+
     public partial class Tr_D_PaymentViewModel : BaseViewModel
     {
         #region Prop
@@ -35,7 +35,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [ObservableProperty]
         DistributorCompanyResponse disCompany;
         [ObservableProperty]
-        string cardNumber ="";
+        string cardNumber = "";
 
         [ObservableProperty]
         string holderName = "";
@@ -58,6 +58,15 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [ObservableProperty]
         bool isBank;
 
+        [ObservableProperty]
+        int paymentNotActive;
+
+        [ObservableProperty]
+        bool isPaymentNotActive;
+
+        [ObservableProperty]
+        bool isPayAndAmounTrue = true;
+
         #endregion
 
         #region Services
@@ -67,16 +76,18 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         #endregion
 
         #region Cons
-        public Tr_D_PaymentViewModel(DistributorCompanyResponse DistributorCompany, string id,int totalPrice,int totalPayment, ResponseWithDistributorResponse distributorResponse, IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_D_PaymentViewModel(ResponseWithDistributorDetailsResponse model, ResponseWithDistributorResponse distributorResponse, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
             _distributorResponse = distributorResponse;
-            DisCompany = DistributorCompany;
-            ReqId = id;
-            Totalpayment = totalPayment;
-            OutStandingprice = totalPrice - totalPayment;
-            Totalprice = totalPrice;
+            DisCompany = model.DistributorCompany;
+            ReqId = model.Id!;
+            Totalpayment = model.TotalPayment;
+            OutStandingprice = model.TotalPriceAgentAccept - (model.TotalPayment + model.TotalPaymentNotActive);
+            Totalprice = model.TotalPriceAgentAccept;
+            PaymentNotActive = model.TotalPaymentNotActive;
+            IsPaymentNotActive = model.CountPaymentNotActive > 0 ? true : false;
             IsAllPyment = true;
             Init();
         }
@@ -86,58 +97,88 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         async Task AddPayment()
         {
-            bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.Are_You_Accept_To_Pay, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
-            IsBusy = false;
 
-            
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet && answer)
+            if (IsBank == true && IsStrip == false && string.IsNullOrEmpty(Photo))
             {
-
-                string UserToken = await _service.UserToken();
-                string[] parts = [];
-                if (!string.IsNullOrEmpty(ExpirationDate))
-                {
-                    parts = ExpirationDate.Split('/');
-                }
-                ResponseWithDistributorPaymentRequest paymentRequest = new ResponseWithDistributorPaymentRequest
-                {
-                    AmountPayment = IsAllPyment == true ? OutStandingprice : (Totalprice - Totalpayment - OutStandingprice),
-                    PaymentMethod = PayMethod,
-                    dbcr = 1,
-                    Notes = "",
-                    Refnumber = "stetrrcc",
-                    CardholderName = HolderName,
-                    CardNumber = CardNumber,
-                    Cvc = Cvv,
-                    ImgFile = Convert.FromBase64String(Photo),
-                    Extension = PhotoPath
-
-                };
-                if (!string.IsNullOrEmpty(ExpirationDate))
-                {
-                    paymentRequest.ExpirationMonth = Convert.ToInt32(parts[0]);
-                    paymentRequest.ExpirationYear = Convert.ToInt32(parts[1]);
-                }
-                UserDialogs.Instance.ShowLoading();
-                var json = await Rep.PostTRAsync<ResponseWithDistributorPaymentRequest, ResponseWithDistributorPaymentResponse>(ApiConstants.AllPaymentApi + $"{ReqId}/ResponseWithDistributorPayment", paymentRequest, UserToken);
-                UserDialogs.Instance.HideHud();
-
-                if (json.Item1 != null)
-                {
-                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Successfully_for_Paying, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                    await toast.Show();
-                    Totalpayment = (int)(Totalpayment + paymentRequest.AmountPayment);
-                    //OutStandingprice = IsAllPyment == true ? 0 : OutStandingprice - paymentRequest.AmountPayment.Value;
-                    await GetPayDetailes();     
-                }
-                else
-                {
-                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                    await toast.Show();
-                }
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.select_the_bank_transfer_image_first, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
             }
-            
-            IsBusy = true;
+            else if (IsBank == false && IsStrip == true && string.IsNullOrEmpty(HolderName))
+            {
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_Holder_Name, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (IsBank == false && IsStrip == true && string.IsNullOrEmpty(CardNumber))
+            {
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_Card_Number, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (IsBank == false && IsStrip == true && string.IsNullOrEmpty(ExpirationDate))
+            {
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_Expired_Date, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (IsBank == false && IsStrip == true && string.IsNullOrEmpty(Cvv))
+            {
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_cvv, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else
+            {
+                bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.Are_You_Accept_To_Pay, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
+
+                IsBusy = false;
+
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet && answer)
+                {
+
+                    string UserToken = await _service.UserToken();
+                    string[] parts = [];
+                    if (!string.IsNullOrEmpty(ExpirationDate))
+                    {
+                        parts = ExpirationDate.Split('/');
+                    }
+                    ResponseWithDistributorPaymentRequest paymentRequest = new ResponseWithDistributorPaymentRequest
+                    {
+                        AmountPayment = IsAllPyment == true ? OutStandingprice : (Totalprice - Totalpayment - OutStandingprice),
+                        PaymentMethod = PayMethod,
+                        dbcr = 1,
+                        Notes = "",
+                        Refnumber = "stetrrcc",
+                        CardholderName = HolderName,
+                        CardNumber = CardNumber,
+                        Cvc = Cvv,
+                        ImgFile = Convert.FromBase64String(Photo),
+                        Extension = PhotoPath
+
+                    };
+                    if (!string.IsNullOrEmpty(ExpirationDate))
+                    {
+                        paymentRequest.ExpirationMonth = Convert.ToInt32(parts[0]);
+                        paymentRequest.ExpirationYear = Convert.ToInt32(parts[1]);
+                    }
+                    UserDialogs.Instance.ShowLoading();
+                    var json = await Rep.PostTRAsync<ResponseWithDistributorPaymentRequest, ResponseWithDistributorPaymentResponse>(ApiConstants.AllPaymentApi + $"{ReqId}/ResponseWithDistributorPayment", paymentRequest, UserToken);
+                    UserDialogs.Instance.HideHud();
+
+                    if (json.Item1 != null)
+                    {
+                        var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Successfully_for_Paying, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
+                        Totalpayment = (int)(Totalpayment + paymentRequest.AmountPayment);
+                        //OutStandingprice = IsAllPyment == true ? 0 : OutStandingprice - paymentRequest.AmountPayment.Value;
+                        await GetPayDetailes();
+                    }
+                    else
+                    {
+                        var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
+                    }
+                }
+
+                IsBusy = true;
+
+            }
         }
 
         [RelayCommand]
@@ -155,7 +196,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             IsBusy = false;
 
             if (Constants.Permissions.CheckPermission(Constants.Permissions.Add_Attachment))
-            { 
+            {
                 var page = new Pages.MainPopups.AddAttachmentsPopup();
                 page.ImageClose += async (img, imgPath) =>
                 {
@@ -165,7 +206,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
                         Photo = img;
                         PhotoPath = Path.GetExtension(imgPath);
-                        
+
                         await MopupService.Instance.PopAsync();
                     }
                 };
@@ -189,7 +230,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
             if (!string.IsNullOrEmpty(DisCompany.StripeSecretKey))
             {
-                IsStrip =true;
+                IsStrip = true;
             }
 
             if (!string.IsNullOrEmpty(DisCompany.BankAccounNumber))
@@ -217,23 +258,32 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             }
 
             IsBusy = true;
-        } 
+        }
 
         public async Task CalcOutPrice(int CustomPrice)
-        {
-            if (CustomPrice > Totalprice)
+       {
+            if (CustomPrice > (Totalprice - PaymentNotActive))
             {
+                IsPayAndAmounTrue = false;
                 var toast = Toast.Make(TripBliss.Resources.Language.AppResources.This_value_is_greater_than_the_total_price, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
-            else if (CustomPrice !=0)
+            else if (CustomPrice == 0 && CustomPrice == (Totalprice - PaymentNotActive))
             {
-                OutStandingprice = Totalprice - Totalpayment - CustomPrice;
+                IsPayAndAmounTrue = false;
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.There_are_no_amounts_due, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (CustomPrice != 0)
+            {
+                IsPayAndAmounTrue = true;
+                OutStandingprice = Totalprice - Totalpayment - CustomPrice - PaymentNotActive;
                 IsAllPyment = false;
             }
             else
             {
-                OutStandingprice = Totalprice == Totalpayment ? 0 : Totalprice - Totalpayment;
+                IsPayAndAmounTrue = true;
+                OutStandingprice = Totalprice == Totalpayment ? 0 : Totalprice - Totalpayment - PaymentNotActive;
                 IsAllPyment = true;
             }
         }

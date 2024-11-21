@@ -33,6 +33,11 @@
                     </DataTrigger>
                 </Label.Triggers>
             </Label>
+            <StackLayout.Triggers>
+                <DataTrigger TargetType="StackLayout" Binding="{Binding Lang}" Value="ar">
+                    <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
+                </DataTrigger>
+            </StackLayout.Triggers>
         </StackLayout>
 
         <StackLayout Orientation="Horizontal" Spacing="15" HorizontalOptions="CenterAndExpand" Margin="0,20,0,20">
@@ -47,7 +52,7 @@
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_TappedCredit"></TapGestureRecognizer>
                     </CheckBox.GestureRecognizers>
                 </CheckBox>
-                <Label Text="credit" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
+                <Label Text="{Static res:AppResources.title_Payment_Credit}" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
                 <HorizontalStackLayout.Triggers>
                     <DataTrigger TargetType="HorizontalStackLayout" Binding="{Binding IsStrip}" Value="False">
                         <Setter Property="IsVisible" Value="False"></Setter>
@@ -66,7 +71,7 @@
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_TappedBank"></TapGestureRecognizer>
                     </CheckBox.GestureRecognizers>
                 </CheckBox>
-                <Label Text="Bank" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
+                <Label Text="{Static res:AppResources.title_Bank_Transfer}" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
                 <HorizontalStackLayout.Triggers>
                     <DataTrigger TargetType="HorizontalStackLayout" Binding="{Binding IsBank}" Value="False">
                         <Setter Property="IsVisible" Value="False"></Setter>
@@ -84,7 +89,7 @@
                     <Border BackgroundColor="White" Padding="3,0,0,0" HorizontalOptions="FillAndExpand">
                         <Entry Text="{Binding HolderName}"          
                                  TextColor="Gray"
-                                 Placeholder="Card holder name"
+                                 Placeholder="{Static res:AppResources.Card_holder_name}"
                                  FontSize="12"
                                  HorizontalOptions="FillAndExpand"
                                  VerticalTextAlignment="Center">
@@ -101,7 +106,7 @@
                     <Border BackgroundColor="White" Padding="3,0,0,0" HorizontalOptions="FillAndExpand">
                         <Entry Text="{Binding CardNumber}"
                                  TextColor="Gray"
-                                 Placeholder="Card Number"
+                                 Placeholder="{Static res:AppResources.Card_Number}"
                                  FontSize="12"
                                  HorizontalOptions="FillAndExpand"
                                  VerticalTextAlignment="Center">
@@ -118,7 +123,7 @@
                         <Border BackgroundColor="White" Padding="3,0,0,0" WidthRequest="150" HorizontalOptions="Start">
                             <Entry Text="{Binding ExpirationDate}"               
                                      TextColor="Gray"
-                                     Placeholder="Expired Date"
+                                     Placeholder="{Static res:AppResources.Expired_Date}"
                                      FontSize="12"
                                      HorizontalOptions="FillAndExpand"
                                      VerticalTextAlignment="Center">
@@ -157,7 +162,7 @@
                     <StackLayout Orientation="Horizontal" Spacing="20">
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center" Spacing="10">
                             <CheckBox x:Name="FBCheckCredit" Color="#1c874b" IsChecked="{Binding IsAllPyment}"></CheckBox>
-                            <Label Text="Full Payment" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
+                            <Label Text="{Static res:AppResources.FullPayment_payment}" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
                         </StackLayout>
 
                         <Border x:Name="yumPayCredit" BackgroundColor="White" HorizontalOptions="FillAndExpand">
@@ -212,10 +217,10 @@
                                     <TapGestureRecognizer Command="{Binding AttachreceiptCommand}"></TapGestureRecognizer>
                                 </Image.GestureRecognizers>
                             </Image>
-                            <Label Text="Attach the receipt" FontSize="14" TextColor="Black" VerticalTextAlignment="End"></Label>
+                            <Label Text="{Static res:AppResources.Attach_the_receipt}" FontSize="14" TextColor="Black" VerticalTextAlignment="End"></Label>
                         </HorizontalStackLayout>
                     </StackLayout>
-                    <Border StrokeShape="RoundRectangle 20" HeightRequest="150" BackgroundColor="#1c874b" StrokeThickness="0">
+                    <!--<Border StrokeShape="RoundRectangle 20" HeightRequest="150" BackgroundColor="#1c874b" StrokeThickness="0">
                         <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
                             <HorizontalStackLayout VerticalOptions="CenterAndExpand" Spacing="5" HorizontalOptions="CenterAndExpand">
                                 <Label Text="{Binding OutStandingprice}" FontSize="32" TextColor="White"></Label>
@@ -223,11 +228,45 @@
                             </HorizontalStackLayout>
                             <Label Text="{Static res:AppResources.OSBlance_payment}" TextColor="White" FontSize="18" HorizontalOptions="CenterAndExpand"></Label>
                         </StackLayout>
+                    </Border>-->
+                    <Border StrokeShape="RoundRectangle 20" HeightRequest="150" BackgroundColor="#1c874b" StrokeThickness="0">
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+
+                            <StackLayout HorizontalOptions="StartAndExpand" Padding="20,20,20,0" Spacing="0">
+                                <Label Text="{Static res:AppResources.Pending_Transactions}" FontSize="12" TextColor="White"></Label>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="3">
+                                    <Label Text="{Binding PaymentNotActive}" FontSize="12" TextColor="Yellow"></Label>
+                                    <Label Text="{Static res:AppResources.SAR}" FontSize="11" FontAttributes="Bold" TextColor="Yellow" VerticalTextAlignment="End" TranslationY="0"></Label>
+                                </StackLayout>
+
+                                <StackLayout.Triggers>
+                                    <DataTrigger TargetType="StackLayout" Binding="{Binding PaymentNotActive}" Value="0">
+                                        <Setter Property="IsVisible" Value="False"></Setter>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="StackLayout" Binding="{Binding IsPaymentNotActive}" Value="False">
+                                        <Setter Property="IsVisible" Value="False"></Setter>
+                                    </DataTrigger>
+                                </StackLayout.Triggers>
+                            </StackLayout>
+
+
+                            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" Spacing="5" HorizontalOptions="CenterAndExpand">
+                                <Label Text="{Binding OutStandingprice}" FontSize="32" TextColor="White"></Label>
+                                <Label Text="{Static res:AppResources.SAR}" FontSize="16" TextColor="White" VerticalTextAlignment="End" TranslationY="0"></Label>
+                            </StackLayout>
+                            <Label Text="{Static res:AppResources.OSBlance_payment}" TextColor="White" Padding="20,0,20,0" FontSize="18" HorizontalOptions="EndAndExpand"></Label>
+                        </StackLayout>
+
+                        <Border.Triggers>
+                            <DataTrigger TargetType="Border" Binding="{Binding Lang}" Value="ar">
+                                <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
+                            </DataTrigger>
+                        </Border.Triggers>
                     </Border>
                     <StackLayout Orientation="Horizontal" Spacing="20">
                         <StackLayout Orientation="Horizontal" Spacing="5">
                             <CheckBox x:Name="FBCheckBank" Color="#1c874b" IsChecked="{Binding IsAllPyment}" CheckedChanged="FBCheckBank_CheckedChanged"></CheckBox>
-                            <Label Text="Full Payment" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
+                            <Label Text="{Static res:AppResources.FullPayment_payment}" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
                         </StackLayout>
 
                         <Border x:Name="yumPayCash" BackgroundColor="Transparent" TranslationX="18" Padding="5,0,0,0" Margin="0,0,20,0" WidthRequest="150" HorizontalOptions="EndAndExpand">
@@ -284,7 +323,13 @@
 
             <Border StrokeShape="RoundRectangle 10" StrokeThickness="0" HorizontalOptions="FillAndExpand" VerticalOptions="End">
                 <Button x:Name="btnPayBankAndCredit" Text="{Static res:AppResources.btnConfirm_NewRequest}" TextColor="White" FontSize="16" FontAttributes="Bold"
-                        HorizontalOptions="FillAndExpand" BackgroundColor="#1c874b" Command="{Binding AddPaymentCommand}" CommandParameter="{Binding PayMethod}"></Button>
+                        HorizontalOptions="FillAndExpand" BackgroundColor="#1c874b" Command="{Binding AddPaymentCommand}" CommandParameter="{Binding PayMethod}">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsPayAndAmounTrue}" Value="False">
+                            <Setter Property="IsEnabled" Value="False"></Setter>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
                 <Border.Shadow>
                     <Shadow Brush="{OnPlatform Android=Gray, iOS=LightGray}" Radius="{OnPlatform Android=5,iOS=3}"></Shadow>
                 </Border.Shadow>

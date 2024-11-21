@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
+using GoogleApi.Entities.Translate.Common.Enums;
 using Mopups.Services;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,15 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 
         [ObservableProperty]
         string cvv;
+
+        [ObservableProperty]
+        int paymentNotActive;
+
+        [ObservableProperty]
+        bool isPaymentNotActive;
+
+        [ObservableProperty]
+        bool isPayAndAmounTrue = true;
         #endregion
 
         #region Services
@@ -50,16 +60,18 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         #endregion
 
         #region Cons
-        public Dis_D_PaymentViewModel(string id, int totalPrice, int totalPayment, IGenericRepository generic, Services.Data.ServicesService service)
+        public Dis_D_PaymentViewModel(ResponseWithDistributorResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
-            ReqId = id;
-            Totalpayment = totalPayment;
-            OutStandingprice = totalPrice - totalPayment;
-            Totalprice = totalPrice;
+            ReqId = model?.Id!;
+            Totalpayment = model!.TotalPayment!;
+            OutStandingprice = model.TotalPriceAgentAccept - (model.TotalPayment! + model.TotalPaymentNotActive);
+            Totalprice = model.TotalPriceAgentAccept;
+            PaymentNotActive = model.TotalPaymentNotActive;
+            IsPaymentNotActive = model.CountPaymentNotActive > 0 ? true : false;
             IsAllPyment = true;
-            
+
             Init();
         }
         #endregion
@@ -172,19 +184,28 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 
         public async Task CalcOutPrice(int CustomPrice)
         {
-            if (CustomPrice > Totalprice)
+            if (CustomPrice > (Totalprice - PaymentNotActive))
             {
+                IsPayAndAmounTrue = false;
                 var toast = Toast.Make(TripBliss.Resources.Language.AppResources.This_value_is_greater_than_the_total_price, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
+            }
+            else if (CustomPrice == 0 && CustomPrice == (Totalprice - PaymentNotActive))
+            {
+                IsPayAndAmounTrue = false;
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.There_are_no_amounts_due, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
             else if (CustomPrice != 0)
             {
-                OutStandingprice = Totalprice - Totalpayment - CustomPrice;
+                IsPayAndAmounTrue = true;
+                OutStandingprice = Totalprice - Totalpayment - CustomPrice - PaymentNotActive;
                 IsAllPyment = false;
             }
             else
             {
-                OutStandingprice = Totalprice == Totalpayment ? 0 : Totalprice - Totalpayment;
+                IsPayAndAmounTrue = true;
+                OutStandingprice = Totalprice == Totalpayment ? 0 : Totalprice - Totalpayment - PaymentNotActive;
                 IsAllPyment = true;
             }
         }
@@ -199,11 +220,11 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 bool answer = await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Question, TripBliss.Resources.Language.AppResources.Are_recieved_your_bank, TripBliss.Resources.Language.AppResources.Yes, TripBliss.Resources.Language.AppResources.No);
-                if (answer) 
+                if (answer)
                 {
                     string UserToken = await _service.UserToken();
 
-                    var json1 = await Rep.PutAsync<string>(ApiConstants.PaymentActive + $"{model.ResponseWithDistributorId}/ResponseWithDistributorPayment/{model.Id}/ToggleActive",null, UserToken);
+                    var json1 = await Rep.PutAsync<string>(ApiConstants.PaymentActive + $"{model.ResponseWithDistributorId}/ResponseWithDistributorPayment/{model.Id}/ToggleActive", null, UserToken);
 
                     if (string.IsNullOrEmpty(json1))
                     {

@@ -151,6 +151,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AirLines.
+        /// </summary>
+        internal static string AirLines {
+            get {
+                return ResourceManager.GetString("AirLines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This order has already been paid for and cannot be modified..
         /// </summary>
         internal static string already_paid_cannot_be_modified {
@@ -201,6 +210,15 @@ namespace TripBliss.Resources.Language {
         internal static string Arrival_date_must_be_less_than_departure_date {
             get {
                 return ResourceManager.GetString("Arrival_date_must_be_less_than_departure_date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attach the receipt.
+        /// </summary>
+        internal static string Attach_the_receipt {
+            get {
+                return ResourceManager.GetString("Attach_the_receipt", resourceCulture);
             }
         }
         
@@ -426,6 +444,24 @@ namespace TripBliss.Resources.Language {
         internal static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Card holder name.
+        /// </summary>
+        internal static string Card_holder_name {
+            get {
+                return ResourceManager.GetString("Card_holder_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Card Number.
+        /// </summary>
+        internal static string Card_Number {
+            get {
+                return ResourceManager.GetString("Card_Number", resourceCulture);
             }
         }
         
@@ -750,6 +786,15 @@ namespace TripBliss.Resources.Language {
         internal static string ErrorTryAgain {
             get {
                 return ResourceManager.GetString("ErrorTryAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expired Date.
+        /// </summary>
+        internal static string Expired_Date {
+            get {
+                return ResourceManager.GetString("Expired_Date", resourceCulture);
             }
         }
         
@@ -2086,6 +2131,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pending Transactions:.
+        /// </summary>
+        internal static string Pending_Transactions {
+            get {
+                return ResourceManager.GetString("Pending_Transactions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Permission not allowed for this action..
         /// </summary>
         internal static string PermissionAlert {
@@ -2356,6 +2410,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Card Number..
+        /// </summary>
+        internal static string Required_Card_Number {
+            get {
+                return ResourceManager.GetString("Required_Card_Number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please Complete This Field Required : Company Email..
         /// </summary>
         internal static string Required_CompanyEmail {
@@ -2392,11 +2455,29 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Cvv..
+        /// </summary>
+        internal static string Required_cvv {
+            get {
+                return ResourceManager.GetString("Required_cvv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please Complete This Field Required : Date..
         /// </summary>
         internal static string Required_Date {
             get {
                 return ResourceManager.GetString("Required_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Expired Date..
+        /// </summary>
+        internal static string Required_Expired_Date {
+            get {
+                return ResourceManager.GetString("Required_Expired_Date", resourceCulture);
             }
         }
         
@@ -2415,6 +2496,15 @@ namespace TripBliss.Resources.Language {
         internal static string Required_FromLocation {
             get {
                 return ResourceManager.GetString("Required_FromLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Holder Name..
+        /// </summary>
+        internal static string Required_Holder_Name {
+            get {
+                return ResourceManager.GetString("Required_Holder_Name", resourceCulture);
             }
         }
         
@@ -2662,6 +2752,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select the bank transfer image first..
+        /// </summary>
+        internal static string select_the_bank_transfer_image_first {
+            get {
+                return ResourceManager.GetString("select_the_bank_transfer_image_first", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sorry Don&apos;t have distribuitor..
         /// </summary>
         internal static string Sorry_Dont_have_distribuitor {
@@ -2766,6 +2865,15 @@ namespace TripBliss.Resources.Language {
         internal static string The_selected_date_is_less_than_today {
             get {
                 return ResourceManager.GetString("The_selected_date_is_less_than_today", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no amounts due..
+        /// </summary>
+        internal static string There_are_no_amounts_due {
+            get {
+                return ResourceManager.GetString("There_are_no_amounts_due", resourceCulture);
             }
         }
         

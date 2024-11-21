@@ -1056,4 +1056,40 @@
   <data name="Enter_Country" xml:space="preserve">
     <value>أدخل الدولة</value>
   </data>
+  <data name="AirLines" xml:space="preserve">
+    <value>شركات الطيران</value>
+  </data>
+  <data name="select_the_bank_transfer_image_first" xml:space="preserve">
+    <value>الرجاء أختيار صورة التحويل البنكى أولا</value>
+  </data>
+  <data name="Required_cvv" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: Cvv.</value>
+  </data>
+  <data name="Required_Holder_Name" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: اسم حامل الكارت.</value>
+  </data>
+  <data name="Required_Card_Number" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: رقم البطاقة.</value>
+  </data>
+  <data name="Required_Expired_Date" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: تاريخ انتهاء الصلاحية.</value>
+  </data>
+  <data name="Pending_Transactions" xml:space="preserve">
+    <value>المعاملات المعلقة</value>
+  </data>
+  <data name="There_are_no_amounts_due" xml:space="preserve">
+    <value>لا توجد مبالغ تستحق الدفع</value>
+  </data>
+  <data name="Card_holder_name" xml:space="preserve">
+    <value>اسم حامل البطاقة</value>
+  </data>
+  <data name="Card_Number" xml:space="preserve">
+    <value>رقم البطاقة</value>
+  </data>
+  <data name="Expired_Date" xml:space="preserve">
+    <value>تاريخ انتهاء الصلاحية</value>
+  </data>
+  <data name="Attach_the_receipt" xml:space="preserve">
+    <value>إرفاق الإيصال</value>
+  </data>
 </root>

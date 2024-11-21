@@ -836,21 +836,41 @@
                                     </StackLayout.Triggers>
                                 </StackLayout>
                                 <Border StrokeShape="RoundRectangle 20" HeightRequest="150" BackgroundColor="#1c874b" StrokeThickness="0">
-                                    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
-                                        <HorizontalStackLayout VerticalOptions="CenterAndExpand" Spacing="5" HorizontalOptions="CenterAndExpand">
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+
+                                        <StackLayout HorizontalOptions="StartAndExpand" Padding="20,20,20,0" Spacing="0">
+                                            <Label Text="{Static res:AppResources.Pending_Transactions}" FontSize="12" TextColor="White"></Label>
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="3">
+                                                <Label Text="{Binding PaymentNotActive}" FontSize="12" TextColor="Yellow"></Label>
+                                                <Label Text="{Static res:AppResources.SAR}" FontSize="11" FontAttributes="Bold" TextColor="Yellow" VerticalTextAlignment="End" TranslationY="0"></Label>
+                                            </StackLayout>
+                                       
+                                            <StackLayout.Triggers>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding PaymentNotActive}" Value="0">
+                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="StackLayout" Binding="{Binding IsPaymentNotActive}" Value="False">
+                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                </DataTrigger>
+                                            </StackLayout.Triggers>
+                                        </StackLayout>
+
+
+                                        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" Spacing="5" HorizontalOptions="CenterAndExpand">
                                             <Label Text="{Binding OutStandingprice}" FontSize="32" TextColor="White"></Label>
-                                            <Label Text="{Static res:AppResources.SAR}" FontSize="16" TextColor="White" VerticalTextAlignment="Center" TranslationY="-7"></Label>
-                                        </HorizontalStackLayout>
-                                        <Label Text="{Static res:AppResources.OSBlance_payment}" TextColor="White" FontSize="18" HorizontalOptions="CenterAndExpand"></Label>
+                                            <Label Text="{Static res:AppResources.SAR}" FontSize="16" TextColor="White" VerticalTextAlignment="End" TranslationY="0"></Label>
+                                        </StackLayout>
+                                        <Label Text="{Static res:AppResources.OSBlance_payment}" TextColor="White" Padding="20,0,20,0" FontSize="18" HorizontalOptions="EndAndExpand"></Label>
                                     </StackLayout>
+
+                                    <Border.Triggers>
+                                        <DataTrigger TargetType="Border" Binding="{Binding Lang}" Value="ar">
+                                            <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
+                                        </DataTrigger>
+                                    </Border.Triggers>
                                 </Border>
                                 <HorizontalStackLayout>
                                     <CheckBox x:Name="FBCheck" Color="#1c874b" CheckedChanged="FBCheck_CheckedChanged_1" IsChecked="{Binding IsAllPyment}">
-                                        <CheckBox.Triggers>
-                                            <DataTrigger TargetType="CheckBox" Binding="{Binding OutStandingprice}" Value="0">
-                                                <Setter Property="IsEnabled" Value="False"></Setter>
-                                            </DataTrigger>
-                                        </CheckBox.Triggers>
                                     </CheckBox>
                                     <Label Text="{Static res:AppResources.FullPayment_payment}" TextColor="Black" VerticalTextAlignment="Center" FontSize="14" FontAttributes="Bold"
                                            ></Label>
@@ -929,7 +949,7 @@
                                     <Button Text="{Static res:AppResources.BtnCashConfirm_DisPayment}" BackgroundColor="#1c874b" FontSize="16" TextColor="White" FontAttributes="Bold"
                                             Command="{Binding AddPaymentCommand}" VerticalOptions="End">
                                         <Button.Triggers>
-                                            <DataTrigger TargetType="Button" Binding="{Binding OutStandingprice}" Value="0">
+                                            <DataTrigger TargetType="Button" Binding="{Binding IsPayAndAmounTrue}" Value="False">
                                                 <Setter Property="IsEnabled" Value="False"></Setter>
                                             </DataTrigger>
                                         </Button.Triggers>

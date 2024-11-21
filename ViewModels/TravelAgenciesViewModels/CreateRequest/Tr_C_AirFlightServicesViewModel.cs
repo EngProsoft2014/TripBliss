@@ -104,7 +104,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             UserDialogs.Instance.ShowLoading();
             //Test
-            await GetAirLinesInfo();
+            //await GetAirLinesInfo();
             await Task.WhenAll(GetAirFlights(), GetClasses());
             UserDialogs.Instance.HideHud();
         }

@@ -39,11 +39,11 @@
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                             <!--<Picker TextColor="Black" FontSize="14" ItemsSource="{Binding AirFlights}" ItemDisplayBinding="{Binding AirLineLang}" SelectedItem="{Binding AirFlightSelected}"></Picker>-->
                             <editors:SfComboBox x:Name="comboBox" 
-                                                  ItemsSource="{Binding LstAirLines}"
+                                                  ItemsSource="{Binding AirFlights}"
 
                                                   FontSize="14" HeightRequest="40"
                                                   NoResultsFoundText="No Result found"
-                                                  Placeholder="AirLines"
+                                                  Placeholder="{Static res:AppResources.AirLines}"
                                                   SelectionTextHighlightColor="White"
                                                   PlaceholderColor="Gray"
                                                   DropDownItemHeight="30" 
@@ -53,7 +53,7 @@
                                                   TextHighlightMode="MultipleOccurrence"
                                                   HighlightedTextColor="Green"
                                                   HighlightedTextFontAttributes="Bold"
-                                                  DisplayMemberPath="nameVM">
+                                                  DisplayMemberPath="AirLine">
                             </editors:SfComboBox>
                         </Border>
                         <StackLayout Orientation="Horizontal" Spacing="35">

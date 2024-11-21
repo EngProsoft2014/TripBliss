@@ -21,6 +21,8 @@
         public int CountVisa { get; set; }
         public int CountPayment { get; set; }
         public int TotalPayment { get; set; }
+        public int CountPaymentNotActive { get; set; }
+        public int TotalPaymentNotActive { get; set; }
 
         public int ReviewToDistributor { get; set; }
         public string? ReviewTravelAgentNote { set; get; }
