@@ -46,7 +46,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [ObservableProperty]
         string cvv = "";
         [ObservableProperty]
-        int payMethod;
+        int payMethod = 3;
         [ObservableProperty]
         string photo = "";
         [ObservableProperty]
@@ -140,7 +140,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     }
                     ResponseWithDistributorPaymentRequest paymentRequest = new ResponseWithDistributorPaymentRequest
                     {
-                        AmountPayment = IsAllPyment == true ? OutStandingprice : (Totalprice - Totalpayment - OutStandingprice),
+                        AmountPayment = IsAllPyment == true ? OutStandingprice : (Totalprice - Totalpayment - OutStandingprice - PaymentNotActive),
                         PaymentMethod = PayMethod,
                         dbcr = 1,
                         Notes = "",

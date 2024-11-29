@@ -89,7 +89,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                 string UserToken = await _service.UserToken();
                 ResponseWithDistributorPaymentRequest paymentRequest = new ResponseWithDistributorPaymentRequest
                 {
-                    AmountPayment = IsAllPyment == true ? OutStandingprice : (Totalprice - Totalpayment - OutStandingprice),
+                    AmountPayment = IsAllPyment == true ? OutStandingprice : (Totalprice - Totalpayment - OutStandingprice - PaymentNotActive),
                     PaymentMethod = 1,
                     dbcr = 1,
                     Notes = "",

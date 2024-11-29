@@ -58,12 +58,12 @@ public partial class BankOrCreditPaymentPage : ContentPage
 
     private void TapGestureRecognizer_TappedCredit(object sender, TappedEventArgs e)
     {
-        Model.PayMethod = 2;//Credit Strip
+        Model.PayMethod = 2; //Credit Strip
     }
 
     private void TapGestureRecognizer_TappedBank(object sender, TappedEventArgs e)
     {
-        Model.PayMethod = 3;//Bank Transfer
+        Model.PayMethod = 3; //Bank Transfer
     }
 
 

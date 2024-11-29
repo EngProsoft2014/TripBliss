@@ -169,6 +169,7 @@
                             <Entry x:Name="entryNewAmount"
                                    Placeholder="{Binding OneInvoice.Net}"
                                    FontSize="12"
+                                   TextColor="Black"
                                    Keyboard="Numeric"
                                    VerticalTextAlignment="Center"
                                    ></Entry>
