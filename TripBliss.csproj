@@ -45,9 +45,13 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
-	  <MtouchLink>SdkOnly</MtouchLink>
+	    <MtouchLink>SdkOnly</MtouchLink>
+		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+		<CodesignKey>iPhone Distribution: ENG PRO SOFT, LLC</CodesignKey>
+		<CodesignProvision>TripBliss Provisioning</CodesignProvision>
 	</PropertyGroup>
 
+	
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\logo.svg" Color="#FFFFFF" ForegroundScale="0.65" />
