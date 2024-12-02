@@ -53,7 +53,6 @@
 		<CreatePackage>false</CreatePackage>
 		<MtouchDebug>true</MtouchDebug>
 		<MtouchExtraArgs>--verbose</MtouchExtraArgs>
-		<CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
 	</PropertyGroup>
 
 
