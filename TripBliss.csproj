@@ -46,13 +46,13 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
 		<MtouchLink>SdkOnly</MtouchLink>
-		<PublishTrimmed>false</PublishTrimmed>
 		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
 		<CodesignKey>Apple Distribution: ENG PRO SOFT, LLC (YZWTVALFLW)</CodesignKey>
 		<CodesignProvision>TripBliss Provisioning</CodesignProvision>
 		<CreatePackage>false</CreatePackage>
 		<MtouchDebug>true</MtouchDebug>
 		<MtouchExtraArgs>--verbose</MtouchExtraArgs>
+		<MtouchEntitlements>Entitlements.plist</MtouchEntitlements>
 	</PropertyGroup>
 
 
