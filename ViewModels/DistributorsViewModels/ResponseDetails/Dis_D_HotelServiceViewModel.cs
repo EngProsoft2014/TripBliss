@@ -24,6 +24,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         bool isRequestHistory;
         [ObservableProperty]
         int totalPayment = 0;
+        [ObservableProperty]
+        int totalPaymentNotActive = 0;
         int Oldprice;
 
         public delegate void HotelDelegte(ResponseWithDistributorHotelResponse HotelResponse);
@@ -39,12 +41,13 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             Rep = generic;
             
         }
-        public Dis_D_HotelServiceViewModel(bool _IsRequestHistory,int payment, ResponseWithDistributorHotelResponse model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Dis_D_HotelServiceViewModel(bool _IsRequestHistory,int payment, int paymentNotActive, ResponseWithDistributorHotelResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
             IsRequestHistory = _IsRequestHistory;
             TotalPayment = payment;
+            TotalPaymentNotActive = paymentNotActive;
             Lang = Preferences.Default.Get("Lan", "en");
             HotelService = model;
             Oldprice = model.Price;

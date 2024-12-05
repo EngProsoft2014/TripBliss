@@ -25,6 +25,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [ObservableProperty]
         int totalPayment = 0;
         [ObservableProperty]
+        int totalPaymentNotActive = 0;
+        [ObservableProperty]
         bool isRequestHistory;
 
 
@@ -39,13 +41,14 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             Rep = generic;
 
         }
-        public Dis_D_AirFlightServicesViewModel(bool _IsRequestHistory, int payment,ResponseWithDistributorAirFlightResponse model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Dis_D_AirFlightServicesViewModel(bool _IsRequestHistory, int payment, int paymentNotActive, ResponseWithDistributorAirFlightResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             Moddel = model;
             _service = service;
             IsRequestHistory = _IsRequestHistory;
             TotalPayment = payment;
+            TotalPaymentNotActive = paymentNotActive;
         }
 
         #region RelayCommand

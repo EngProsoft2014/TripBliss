@@ -40,10 +40,9 @@
                             <!--<Picker TextColor="Black" FontSize="14" ItemsSource="{Binding AirFlights}" ItemDisplayBinding="{Binding AirLineLang}" SelectedItem="{Binding AirFlightSelected}"></Picker>-->
                             <editors:SfComboBox x:Name="comboBox" 
                                                   ItemsSource="{Binding AirFlights}"
-
+                                                  SelectedItem="{Binding AirFlightSelected}"
                                                   FontSize="14" HeightRequest="40"
                                                   NoResultsFoundText="No Result found"
-                                                  Placeholder="{Static res:AppResources.AirLines}"
                                                   SelectionTextHighlightColor="White"
                                                   PlaceholderColor="Gray"
                                                   DropDownItemHeight="30" 

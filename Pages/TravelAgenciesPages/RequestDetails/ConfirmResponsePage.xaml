@@ -75,6 +75,11 @@
                 <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android='0,15,0,5', iOS='0,5,0,0'}">
                     <Label Text="{Static res:AppResources.lblHotelServices}" FontAutoScalingEnabled="False" FontSize="14" TextColor="DarkOrange" FontAttributes="None" 
                            VerticalTextAlignment="Center"></Label>
+                    <StackLayout.Triggers>
+                        <DataTrigger TargetType="StackLayout" Binding="{Binding Response.ResponseWithDistributorHotel.Count}" Value="0">
+                            <Setter Property="IsVisible" Value="False"></Setter>
+                        </DataTrigger>
+                    </StackLayout.Triggers>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="{OnPlatform Android='0,0,0,5', iOS='0,0,0,10'}">
                     <CollectionView ItemsSource="{Binding Response.ResponseWithDistributorHotel}" VerticalOptions="FillAndExpand" BackgroundColor="White">
@@ -154,12 +159,22 @@
                             </DataTrigger>
                         </CollectionView.Triggers>
                     </CollectionView>
+                    <Border.Triggers>
+                        <DataTrigger TargetType="Border" Binding="{Binding Response.ResponseWithDistributorHotel.Count}" Value="0">
+                            <Setter Property="IsVisible" Value="False"></Setter>
+                        </DataTrigger>
+                    </Border.Triggers>
                 </Border>
                 
                 <!--Transportaion-->
                 <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android='0,15,0,5', iOS='0,5,0,0'}">
                     <Label Text="{Static res:AppResources.lblTransportationServices}" FontAutoScalingEnabled="False" FontSize="14" TextColor="DarkOrange" FontAttributes="None" 
                            VerticalTextAlignment="Center"></Label>
+                    <StackLayout.Triggers>
+                        <DataTrigger TargetType="StackLayout" Binding="{Binding Response.ResponseWithDistributorTransport.Count}" Value="0">
+                            <Setter Property="IsVisible" Value="False"></Setter>
+                        </DataTrigger>
+                    </StackLayout.Triggers>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="{OnPlatform Android='0,0,0,5', iOS='0,0,0,10'}">
                     <CollectionView ItemsSource="{Binding Response.ResponseWithDistributorTransport}" VerticalOptions="FillAndExpand" BackgroundColor="White">
@@ -244,12 +259,22 @@
                             </DataTrigger>
                         </CollectionView.Triggers>
                     </CollectionView>
+                    <Border.Triggers>
+                        <DataTrigger TargetType="Border" Binding="{Binding Response.ResponseWithDistributorTransport.Count}" Value="0">
+                            <Setter Property="IsVisible" Value="False"></Setter>
+                        </DataTrigger>
+                    </Border.Triggers>
                 </Border>
                 
                 <!--Air Flight-->
                 <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android='0,15,0,5', iOS='0,5,0,0'}">
                     <Label Text="{Static res:AppResources.lblAirFlightServices}" FontAutoScalingEnabled="False" FontSize="14" TextColor="DarkOrange" FontAttributes="None"
                            VerticalTextAlignment="Center"></Label>
+                    <StackLayout.Triggers>
+                        <DataTrigger TargetType="StackLayout" Binding="{Binding Response.ResponseWithDistributorAirFlight.Count}" Value="0">
+                            <Setter Property="IsVisible" Value="False"></Setter>
+                        </DataTrigger>
+                    </StackLayout.Triggers>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="{OnPlatform Android='0,0,0,5', iOS='0,0,0,10'}">
                     <CollectionView ItemsSource="{Binding Response.ResponseWithDistributorAirFlight}" VerticalOptions="FillAndExpand" BackgroundColor="White">
@@ -346,12 +371,22 @@
                             </DataTrigger>
                         </CollectionView.Triggers>
                     </CollectionView>
+                    <Border.Triggers>
+                        <DataTrigger TargetType="Border" Binding="{Binding Response.ResponseWithDistributorAirFlight.Count}" Value="0">
+                            <Setter Property="IsVisible" Value="False"></Setter>
+                        </DataTrigger>
+                    </Border.Triggers>
                 </Border>
                 
                 <!--Visa-->
                 <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android='0,15,0,5', iOS='0,5,0,0'}">
                     <Label Text="{Static res:AppResources.lblVisaServices}" FontAutoScalingEnabled="False" FontSize="14" TextColor="DarkOrange" FontAttributes="None"
                            VerticalTextAlignment="Center"></Label>
+                    <StackLayout.Triggers>
+                        <DataTrigger TargetType="StackLayout" Binding="{Binding Response.ResponseWithDistributorVisa.Count}" Value="0">
+                            <Setter Property="IsVisible" Value="False"></Setter>
+                        </DataTrigger>
+                    </StackLayout.Triggers>
                 </StackLayout>
                 <Border StrokeShape="RoundRectangle 5" HorizontalOptions="FillAndExpand" Margin="{OnPlatform Android='0,0,0,5', iOS='0,0,0,10'}">
                     <CollectionView ItemsSource="{Binding Response.ResponseWithDistributorVisa}" VerticalOptions="FillAndExpand" BackgroundColor="White">
@@ -441,7 +476,11 @@
                             </DataTrigger>
                         </CollectionView.Triggers>
                     </CollectionView>
-
+                    <Border.Triggers>
+                        <DataTrigger TargetType="Border" Binding="{Binding Response.ResponseWithDistributorVisa.Count}" Value="0">
+                            <Setter Property="IsVisible" Value="False"></Setter>
+                        </DataTrigger>
+                    </Border.Triggers>
                 </Border>
             </StackLayout>
         </ScrollView>

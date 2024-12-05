@@ -45,14 +45,24 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
+		<BundleIdentifier>com.companyname.tripbliss</BundleIdentifier>
 		<MtouchLink>SdkOnly</MtouchLink>
-		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
-		<CodesignKey>Apple Distribution: ENG PRO SOFT, LLC (YZWTVALFLW)</CodesignKey>
-		<CodesignProvision>TripBliss Provisioning</CodesignProvision>
 		<CreatePackage>false</CreatePackage>
-		<MtouchDebug>true</MtouchDebug>
-		<MtouchExtraArgs>--verbose</MtouchExtraArgs>
-		<MtouchEntitlements>Entitlements.plist</MtouchEntitlements>
+		<CodesignProvision>TripBliss Provisioning</CodesignProvision>
+		<CodesignKey>Apple Distribution: ENG PRO SOFT, LLC (YZWTVALFLW)</CodesignKey>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
+		<MtouchLink>None</MtouchLink>
+		<CreatePackage>false</CreatePackage>
+		<CodesignProvision>Automatic</CodesignProvision>
+		<CodesignKey>Apple Development: TAREK GABER (9RKU8MRSBH)</CodesignKey>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">
+	  <ProvisioningType>manual</ProvisioningType>
+	  <CodesignKey>Apple Distribution: ENG PRO SOFT, LLC (YZWTVALFLW)</CodesignKey>
+	  <CodesignProvision>TripBliss Provisioning</CodesignProvision>
 	</PropertyGroup>
 
 

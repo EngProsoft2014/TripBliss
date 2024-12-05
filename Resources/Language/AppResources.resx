@@ -1092,4 +1092,10 @@
   <data name="Attach_the_receipt" xml:space="preserve">
     <value>Attach the receipt</value>
   </data>
+  <data name="btnApplyAll" xml:space="preserve">
+    <value>Apply all</value>
+  </data>
+  <data name="Send_All_Prices_Btn_Msg" xml:space="preserve">
+    <value>When you need to send all your prices to the travel agency</value>
+  </data>
 </root>

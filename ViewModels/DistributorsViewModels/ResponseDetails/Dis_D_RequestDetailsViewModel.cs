@@ -69,7 +69,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task SelectHotel(ResponseWithDistributorHotelResponse model)
         {
-            var vm = new Dis_D_HotelServiceViewModel(IsRequestHistory, Response.TotalPayment, model, Rep, _service);
+            var vm = new Dis_D_HotelServiceViewModel(IsRequestHistory, Response.TotalPayment,Response.TotalPaymentNotActive, model, Rep, _service);
             var page = new HotelServicePage(vm);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -85,7 +85,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task SelectTransportaion(ResponseWithDistributorTransportResponse model)
         {
-            var vm = new Dis_D_TransportaionServiceViewModel(IsRequestHistory, Response.TotalPayment, model, Rep, _service);
+            var vm = new Dis_D_TransportaionServiceViewModel(IsRequestHistory, Response.TotalPayment, Response.TotalPaymentNotActive, model, Rep, _service);
             var page = new TransportaionServicePage(vm);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -101,7 +101,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task SelectAirFlight(ResponseWithDistributorAirFlightResponse model)
         {
-            var vm = new Dis_D_AirFlightServicesViewModel(IsRequestHistory, Response.TotalPayment, model, Rep, _service);
+            var vm = new Dis_D_AirFlightServicesViewModel(IsRequestHistory, Response.TotalPayment, Response.TotalPaymentNotActive, model, Rep, _service);
             var page = new AirFlightServicePage(vm);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -117,7 +117,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [RelayCommand]
         async Task SelectVisa(ResponseWithDistributorVisaResponse model)
         {
-            var vm = new Dis_D_VisaServiceViewModel(IsRequestHistory, Response.TotalPayment, model, Rep, _service);
+            var vm = new Dis_D_VisaServiceViewModel(IsRequestHistory, Response.TotalPayment, Response.TotalPaymentNotActive, model, Rep, _service);
             var page = new VisaServicePage(vm);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);

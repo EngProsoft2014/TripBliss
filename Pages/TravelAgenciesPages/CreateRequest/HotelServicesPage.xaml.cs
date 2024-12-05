@@ -17,7 +17,7 @@ public partial class HotelServicePage : Controls.CustomControl
     private void LocationPicker(object sender, EventArgs e)
     {
         var cc = LocPick.SelectedItem as LocationResponse;
-        HotelPick.ItemsSource = Model.Hoteles.Where(a=>a.LocationId == cc!.Id).ToList();
+        comboBoxHoteles.ItemsSource = Model.Hoteles.Where(a=>a.LocationId == cc!.Id).ToList();
 
         //var selectedOption = (sender as Picker).SelectedItem;
         //if (selectedOption != null)

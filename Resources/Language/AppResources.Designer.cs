@@ -268,6 +268,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Apply all.
+        /// </summary>
+        internal static string btnApplyAll {
+            get {
+                return ResourceManager.GetString("btnApplyAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attachments.
         /// </summary>
         internal static string btnattachment_VisaDetails {
@@ -2757,6 +2766,15 @@ namespace TripBliss.Resources.Language {
         internal static string select_the_bank_transfer_image_first {
             get {
                 return ResourceManager.GetString("select_the_bank_transfer_image_first", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When you need to send all your prices to the travel agency.
+        /// </summary>
+        internal static string Send_All_Prices_Btn_Msg {
+            get {
+                return ResourceManager.GetString("Send_All_Prices_Btn_Msg", resourceCulture);
             }
         }
         

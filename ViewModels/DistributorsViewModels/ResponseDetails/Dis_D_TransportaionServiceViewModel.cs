@@ -23,6 +23,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         [ObservableProperty]
         int totalPayment = 0;
         [ObservableProperty]
+        int totalPaymentNotActive = 0;
+        [ObservableProperty]
         bool isRequestHistory;
         #endregion
 
@@ -36,12 +38,13 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         {
             Rep = generic;
         }
-        public Dis_D_TransportaionServiceViewModel(bool _IsRequestHistory, int payment, ResponseWithDistributorTransportResponse model, IGenericRepository generic, Services.Data.ServicesService service)
+        public Dis_D_TransportaionServiceViewModel(bool _IsRequestHistory, int payment, int paymentNotActive, ResponseWithDistributorTransportResponse model, IGenericRepository generic, Services.Data.ServicesService service)
         {
             Rep = generic;
             _service = service;
             ServiceModdel = model;
             TotalPayment = payment;
+            TotalPaymentNotActive = paymentNotActive;
             IsRequestHistory = _IsRequestHistory;
             Lang = Preferences.Default.Get("Lan", "en");
         } 

@@ -17,13 +17,13 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
     public partial class Tr_C_AirFlightServicesViewModel : BaseViewModel
     {
         //Test
-        public class AirLines
-        {
-            public string? iata_code { get; set; }
-            public string? name { get; set; }
-            public string? icao_code { get; set; }
-            public string? nameVM { get{ return name + $" ({iata_code})"; } }
-        }
+        //public class AirLines
+        //{
+        //    public string? iata_code { get; set; }
+        //    public string? name { get; set; }
+        //    public string? icao_code { get; set; }
+        //    public string? nameVM { get{ return name + $" ({iata_code})"; } }
+        //}
 
         #region prop
         [ObservableProperty]
@@ -39,8 +39,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [ObservableProperty]
         ClassAirFlightResponse classSelected;
         //Test
-        [ObservableProperty]
-        ObservableCollection<AirLines> lstAirLines = new ObservableCollection<AirLines>();
+        //[ObservableProperty]
+        //ObservableCollection<AirLines> lstAirLines = new ObservableCollection<AirLines>();
 
         #endregion
 
@@ -80,14 +80,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             UserDialogs.Instance.ShowLoading();
             //Test
-            await GetAirLinesInfo();
+            //await GetAirLinesInfo();
             await Task.WhenAll(GetAirFlights(),GetClasses());
             UserDialogs.Instance.HideHud();
             AirFlightRequestModel = new RequestTravelAgencyAirFlightRequest
             {
                 Date = model.Date,
-                AirportFrom = model.AirportFrom,
-                AirportTo = model.AirportTo,
+                AirportFrom = model.AirportFrom!,
+                AirportTo = model.AirportTo!,
                 ETA = model.ETA,
                 ETD = model.ETD,
                 InfoAdultCount = model.InfoAdultCount,
@@ -103,38 +103,36 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         async void Init()
         {
             UserDialogs.Instance.ShowLoading();
-            //Test
-            //await GetAirLinesInfo();
             await Task.WhenAll(GetAirFlights(), GetClasses());
             UserDialogs.Instance.HideHud();
         }
 
         //Test
-        public async Task GetAirLinesInfo()
-        {
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            {
-                var client = new HttpClient();
-                var request = new HttpRequestMessage
-                {
-                    Method = HttpMethod.Get,
-                    RequestUri = new Uri("https://iata-and-icao-codes.p.rapidapi.com/airlines"),
-                    Headers =
-                        {
-                            { "x-rapidapi-key", "6fccfd7c71msh7934183b73f2229p11ce70jsn0061fc86c83f" },
-                            { "x-rapidapi-host", "iata-and-icao-codes.p.rapidapi.com" },
-                        },
-                };
-                using (var response = await client.SendAsync(request))
-                {
-                    response.EnsureSuccessStatusCode();
-                    var json = await response.Content.ReadAsStringAsync();
-                    var body = JsonConvert.DeserializeObject<ObservableCollection<AirLines>>(json);
-                    LstAirLines = body!;
-                }
-            }
+        //public async Task GetAirLinesInfo()
+        //{
+        //    if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+        //    {
+        //        var client = new HttpClient();
+        //        var request = new HttpRequestMessage
+        //        {
+        //            Method = HttpMethod.Get,
+        //            RequestUri = new Uri("https://iata-and-icao-codes.p.rapidapi.com/airlines"),
+        //            Headers =
+        //                {
+        //                    { "x-rapidapi-key", "6fccfd7c71msh7934183b73f2229p11ce70jsn0061fc86c83f" },
+        //                    { "x-rapidapi-host", "iata-and-icao-codes.p.rapidapi.com" },
+        //                },
+        //        };
+        //        using (var response = await client.SendAsync(request))
+        //        {
+        //            response.EnsureSuccessStatusCode();
+        //            var json = await response.Content.ReadAsStringAsync();
+        //            var body = JsonConvert.DeserializeObject<ObservableCollection<AirLines>>(json);
+        //            LstAirLines = body!;
+        //        }
+        //    }
 
-        }
+        //}
 
         async Task GetAirFlights()
         {
@@ -232,7 +230,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
 
             //Test
-            AirFlightSelected = AirFlights.FirstOrDefault()!;
+            //AirFlightSelected = AirFlights.FirstOrDefault()!;
 
             if (AirFlightSelected == null || AirFlightSelected?.Id == 0)
             {
