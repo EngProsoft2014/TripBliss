@@ -52,21 +52,21 @@
             <Button Text="{Static res:AppResources.btnPayNow_NewRequest}" IsVisible="{Binding IsShowPaymentBtn}" FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" FontSize="{OnPlatform Android=12,iOS=14}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=PaymentClickedCommand}"
                     BackgroundColor="#1c874b" CornerRadius="5" TextColor="White" WidthRequest="70" Margin="0,0,0,0" FontAttributes="Bold">
-                <Button.Triggers>
+                <!--<Button.Triggers>
                     <DataTrigger TargetType="Button" Binding="{Binding IsRequestHistory}" Value="True">
                         <Setter Property="IsVisible" Value="False"></Setter>
                     </DataTrigger>
-                </Button.Triggers>
+                </Button.Triggers>-->
             </Button>
 
             <Button Text="{Static res:AppResources.lblReviews}" IsVisible="{Binding IsShowReviewBtn}" FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" FontSize="{OnPlatform Android=12,iOS=14}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=ReviewClickedCommand}"
                     BackgroundColor="#ff7700" CornerRadius="5" TextColor="White" WidthRequest="70" Margin="0,0,0,0" FontAttributes="Bold">
-                <Button.Triggers>
+                <!--<Button.Triggers>
                     <DataTrigger TargetType="Button" Binding="{Binding IsRequestHistory}" Value="True">
                         <Setter Property="IsVisible" Value="False"></Setter>
                     </DataTrigger>
-                </Button.Triggers>
+                </Button.Triggers>-->
             </Button>
         </StackLayout>
         <ScrollView VerticalOptions="FillAndExpand">
@@ -487,9 +487,9 @@
         <Button VerticalOptions="End" Text="{Static res:AppResources.btnConfirm_NewRequest}" FontAutoScalingEnabled="False" FontSize="16" BackgroundColor="#2fa562"
                 TextColor="White" Margin="20,0" FontAttributes="Bold" Command="{Binding ApplyCommand}">
             <Button.Triggers>
-                <DataTrigger TargetType="Button" Binding="{Binding IsRequestHistory}" Value="True">
+                <!--<DataTrigger TargetType="Button" Binding="{Binding IsRequestHistory}" Value="True">
                     <Setter Property="IsVisible" Value="False"></Setter>
-                </DataTrigger>
+                </DataTrigger>-->
                 <DataTrigger TargetType="Button" Binding="{Binding IsPayment}" Value="True">
                     <Setter Property="IsVisible" Value="False"></Setter>
                 </DataTrigger>

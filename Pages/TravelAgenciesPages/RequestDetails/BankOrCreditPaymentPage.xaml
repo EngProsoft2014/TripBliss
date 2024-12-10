@@ -86,6 +86,16 @@
             <ScrollView VerticalOptions="FillAndExpand">
                 <StackLayout VerticalOptions="FillAndExpand" TranslationY="0" Spacing="15">
 
+                    <Border StrokeShape="RoundRectangle 20" HeightRequest="100" BackgroundColor="#1c874b" StrokeThickness="0">
+                        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                            <HorizontalStackLayout VerticalOptions="CenterAndExpand" Spacing="5" HorizontalOptions="CenterAndExpand">
+                                <Label Text="{Binding OutStandingprice}" FontSize="32" TextColor="White"></Label>
+                                <Label Text="{Static res:AppResources.SAR}" FontSize="16" TextColor="White" VerticalTextAlignment="Center" TranslationY="-7"></Label>
+                            </HorizontalStackLayout>
+                            <Label Text="{Static res:AppResources.OSBlance_payment}" TextColor="White" FontSize="18" HorizontalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
+                    </Border>
+                    
                     <Border BackgroundColor="White" Padding="3,0,0,0" HorizontalOptions="FillAndExpand">
                         <Entry Text="{Binding HolderName}"          
                                  TextColor="Gray"
@@ -108,6 +118,7 @@
                                  TextColor="Gray"
                                  Placeholder="{Static res:AppResources.Card_Number}"
                                  FontSize="12"
+                               Keyboard="Numeric"
                                  HorizontalOptions="FillAndExpand"
                                  VerticalTextAlignment="Center">
                         </Entry>
@@ -125,6 +136,9 @@
                                      TextColor="Gray"
                                      Placeholder="{Static res:AppResources.Expired_Date}"
                                      FontSize="12"
+                                   Keyboard="Numeric"
+                                   MaxLength="5"
+                                   TextChanged="Entry_TextChanged"
                                      HorizontalOptions="FillAndExpand"
                                      VerticalTextAlignment="Center">
                             </Entry>
@@ -146,6 +160,8 @@
                             <Entry Text="{Binding Cvv}"
                                      TextColor="Gray"
                                      Placeholder="Cvv"
+                                   Keyboard="Numeric"
+                                   MaxLength="3"
                                      FontSize="12"
                                      HorizontalOptions="FillAndExpand"
                                      VerticalTextAlignment="Center">
@@ -165,13 +181,14 @@
                             <Label Text="{Static res:AppResources.FullPayment_payment}" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
                         </StackLayout>
 
-                        <Border x:Name="yumPayCredit" BackgroundColor="White" HorizontalOptions="FillAndExpand">
+                        <Border x:Name="yumPayCredit" BackgroundColor="White" Margin="0,0,0,5" HorizontalOptions="FillAndExpand">
                             <Entry x:Name="entryNewAmount"
                                    Placeholder="{Binding OneInvoice.Net}"
                                    FontSize="12"
                                    TextColor="Black"
                                    Keyboard="Numeric"
                                    VerticalTextAlignment="Center"
+                                   TextChanged="entryCashNewAmount_TextChanged"
                                    ></Entry>
 
                             <Border.StrokeShape>
@@ -183,6 +200,11 @@
                                 </DataTrigger>
                             </Border.Triggers>
                         </Border>
+                        <StackLayout.Triggers>
+                            <DataTrigger TargetType="StackLayout" Binding="{Binding OutStandingprice}" Value="0">
+                                <Setter Property="IsVisible" Value="False"></Setter>
+                            </DataTrigger>
+                        </StackLayout.Triggers>
                     </StackLayout>
 
                 </StackLayout>
@@ -210,15 +232,46 @@
                         </StackLayout>
 
                         <HorizontalStackLayout Spacing="7" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                            <Image IsVisible="False">
+                                <Image.Source>
+                                    <FontImageSource FontFamily="FontIconSolid" Color="Green" Glyph="" Size="25"></FontImageSource>
+                                </Image.Source>
+                                <Image.Triggers>
+                                    <DataTrigger TargetType="Image" Binding="{Binding IsPhotoTrue}" Value="True">
+                                        <Setter Property="IsVisible" Value="True"></Setter>
+                                    </DataTrigger>
+                                </Image.Triggers>
+                            </Image>
                             <Image>
                                 <Image.Source>
                                     <FontImageSource FontFamily="FontIconSolid" Color="Gray" Glyph="" Size="25"></FontImageSource>
                                 </Image.Source>
+                                <Image.Triggers>
+                                    <DataTrigger TargetType="Image" Binding="{Binding IsPhotoTrue}" Value="True">
+                                        <Setter Property="Source">
+                                            <Setter.Value>
+                                                <FontImageSource FontFamily="FontIconSolid" Color="LightGreen" Glyph="" Size="25"></FontImageSource>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </DataTrigger>
+                                </Image.Triggers>
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding AttachreceiptCommand}"></TapGestureRecognizer>
                                 </Image.GestureRecognizers>
                             </Image>
+                            
                             <Label Text="{Static res:AppResources.Attach_the_receipt}" FontSize="14" TextColor="Black" VerticalTextAlignment="End"></Label>
+                            <HorizontalStackLayout.Triggers>
+                                <DataTrigger TargetType="HorizontalStackLayout" Binding="{Binding IsPayAndAmounTrue}" Value="False">
+                                    <Setter Property="IsEnabled" Value="False"></Setter>
+                                </DataTrigger>
+                                <DataTrigger TargetType="HorizontalStackLayout" Binding="{Binding OutStandingprice}" Value="0">
+                                    <Setter Property="IsEnabled" Value="False"></Setter>
+                                </DataTrigger>
+                                <DataTrigger TargetType="HorizontalStackLayout" Binding="{Binding IsConfirmBtn}" Value="False">
+                                    <Setter Property="IsEnabled" Value="False"></Setter>
+                                </DataTrigger>
+                            </HorizontalStackLayout.Triggers>
                         </HorizontalStackLayout>
                     </StackLayout>
                     <!--<Border StrokeShape="RoundRectangle 20" HeightRequest="150" BackgroundColor="#1c874b" StrokeThickness="0">
@@ -230,7 +283,7 @@
                             <Label Text="{Static res:AppResources.OSBlance_payment}" TextColor="White" FontSize="18" HorizontalOptions="CenterAndExpand"></Label>
                         </StackLayout>
                     </Border>-->
-                    <Border StrokeShape="RoundRectangle 20" HeightRequest="150" BackgroundColor="#1c874b" StrokeThickness="0">
+                    <Border StrokeShape="RoundRectangle 20" HeightRequest="120" BackgroundColor="#1c874b" StrokeThickness="0">
                         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
 
                             <StackLayout HorizontalOptions="StartAndExpand" Padding="20,20,20,0" Spacing="0">
@@ -270,9 +323,8 @@
                             <Label Text="{Static res:AppResources.FullPayment_payment}" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
                         </StackLayout>
 
-                        <Border x:Name="yumPayCash" BackgroundColor="Transparent" TranslationX="18" Padding="5,0,0,0" Margin="0,0,20,0" WidthRequest="150" HorizontalOptions="EndAndExpand">
+                        <Border x:Name="yumPayCash" BackgroundColor="Transparent" Padding="5,0,0,0" Margin="0,0,20,5" WidthRequest="150" HorizontalOptions="EndAndExpand">
                             <Entry x:Name="entryCashNewAmount"
-                                   Placeholder="{Binding OneInvoice.Net}"
                                    FontSize="12"
                                    Keyboard="Numeric"
                                    TextColor="Black"
@@ -287,7 +339,13 @@
                                 </DataTrigger>
                             </Border.Triggers>
                         </Border>
+                        <StackLayout.Triggers>
+                            <DataTrigger TargetType="StackLayout" Binding="{Binding OutStandingprice}" Value="0">
+                                <Setter Property="IsVisible" Value="False"></Setter>
+                            </DataTrigger>
+                        </StackLayout.Triggers>
                     </StackLayout>
+                                 
                 </StackLayout>
             </ScrollView>
 
@@ -327,6 +385,12 @@
                         HorizontalOptions="FillAndExpand" BackgroundColor="#1c874b" Command="{Binding AddPaymentCommand}" CommandParameter="{Binding PayMethod}">
                     <Button.Triggers>
                         <DataTrigger TargetType="Button" Binding="{Binding IsPayAndAmounTrue}" Value="False">
+                            <Setter Property="IsEnabled" Value="False"></Setter>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding OutStandingprice}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"></Setter>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsConfirmBtn}" Value="False">
                             <Setter Property="IsEnabled" Value="False"></Setter>
                         </DataTrigger>
                     </Button.Triggers>

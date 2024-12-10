@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
+using GoogleApi.Entities.Translate.Common.Enums;
 using Microsoft.AspNet.SignalR.Client.Http;
 using Mopups.Services;
 using Syncfusion.Maui.Data;
@@ -28,7 +29,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [ObservableProperty]
         int outStandingprice;
         [ObservableProperty]
-        bool isAllPyment;
+        bool isAllPyment;      
+        [ObservableProperty]
+        bool isExpirationDateValid;
         [ObservableProperty]
         ObservableCollection<ResponseWithDistributorPaymentResponse> payments;
 
@@ -67,6 +70,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [ObservableProperty]
         bool isPayAndAmounTrue = true;
 
+        [ObservableProperty]
+        bool isPhotoTrue;
+
+        [ObservableProperty]
+        bool isConfirmBtn = true;
+
         #endregion
 
         #region Services
@@ -98,27 +107,27 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         async Task AddPayment()
         {
 
-            if (IsBank == true && IsStrip == false && string.IsNullOrEmpty(Photo))
+            if (PayMethod == 3 && string.IsNullOrEmpty(Photo))
             {
                 var toast = Toast.Make(TripBliss.Resources.Language.AppResources.select_the_bank_transfer_image_first, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
-            else if (IsBank == false && IsStrip == true && string.IsNullOrEmpty(HolderName))
+            else if (PayMethod == 2 && string.IsNullOrEmpty(HolderName))
             {
                 var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_Holder_Name, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
-            else if (IsBank == false && IsStrip == true && string.IsNullOrEmpty(CardNumber))
+            else if (PayMethod == 2 && string.IsNullOrEmpty(CardNumber))
             {
                 var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_Card_Number, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
-            else if (IsBank == false && IsStrip == true && string.IsNullOrEmpty(ExpirationDate))
+            else if (PayMethod == 2 && (string.IsNullOrEmpty(ExpirationDate) || IsExpirationDateValid == false))
             {
                 var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_Expired_Date, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
             }
-            else if (IsBank == false && IsStrip == true && string.IsNullOrEmpty(Cvv))
+            else if (PayMethod == 2 && string.IsNullOrEmpty(Cvv))
             {
                 var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_cvv, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
@@ -134,7 +143,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
                     string UserToken = await _service.UserToken();
                     string[] parts = [];
-                    if (!string.IsNullOrEmpty(ExpirationDate))
+                    if (!string.IsNullOrEmpty(ExpirationDate) && PayMethod == 2)
                     {
                         parts = ExpirationDate.Split('/');
                     }
@@ -145,11 +154,11 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                         dbcr = 1,
                         Notes = "",
                         Refnumber = "stetrrcc",
-                        CardholderName = HolderName,
-                        CardNumber = CardNumber,
-                        Cvc = Cvv,
-                        ImgFile = Convert.FromBase64String(Photo),
-                        Extension = PhotoPath
+                        CardholderName = PayMethod == 2 ? HolderName : null, //PayMethod == 2 = Strip Credit
+                        CardNumber = PayMethod == 2 ? CardNumber : null,
+                        Cvc = PayMethod == 2 ? Cvv : null,
+                        ImgFile = PayMethod == 3 ? Convert.FromBase64String(Photo) : null, //PayMethod == 3 = Bank
+                        Extension = PayMethod == 3 ? PhotoPath : null 
 
                     };
                     if (!string.IsNullOrEmpty(ExpirationDate))
@@ -167,11 +176,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                         await toast.Show();
                         Totalpayment = (int)(Totalpayment + paymentRequest.AmountPayment);
                         //OutStandingprice = IsAllPyment == true ? 0 : OutStandingprice - paymentRequest.AmountPayment.Value;
+                        IsConfirmBtn = false;
                         await GetPayDetailes();
                     }
                     else
                     {
-                        var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value.ToString()!.Replace("[","").Replace("]", "").Replace("\"","")}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                     }
                 }
@@ -206,6 +216,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
                         Photo = img;
                         PhotoPath = Path.GetExtension(imgPath);
+
+                        IsPhotoTrue = true;
 
                         await MopupService.Instance.PopAsync();
                     }

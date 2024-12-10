@@ -1087,7 +1087,7 @@
     <value>رقم البطاقة</value>
   </data>
   <data name="Expired_Date" xml:space="preserve">
-    <value>تاريخ انتهاء الصلاحية</value>
+    <value>تاريخ الإنتهاء MM/YY</value>
   </data>
   <data name="Attach_the_receipt" xml:space="preserve">
     <value>إرفاق الإيصال</value>

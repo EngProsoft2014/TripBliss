@@ -1087,7 +1087,7 @@
     <value>Card Number</value>
   </data>
   <data name="Expired_Date" xml:space="preserve">
-    <value>Expired Date</value>
+    <value>Expired Date MM/YY</value>
   </data>
   <data name="Attach_the_receipt" xml:space="preserve">
     <value>Attach the receipt</value>

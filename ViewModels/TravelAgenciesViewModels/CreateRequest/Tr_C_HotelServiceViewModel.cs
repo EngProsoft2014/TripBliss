@@ -145,7 +145,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
                 if (json != null)
                 {
-                    Hoteles = json;
+                    Hoteles = new ObservableCollection<HotelResponse>(json.OrderBy(d => d.HotelNameLang).ToList());
                 }
             }
 

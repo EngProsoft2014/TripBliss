@@ -23,7 +23,7 @@
             </StackLayout>
 
             <StackLayout Padding="20,0,20,0">
-                <Entry x:Name="searchBar" Placeholder="{Static res:AppResources.Enter_Address}" FontFamily="AlmaraiRegular" Keyboard="Text" ClearButtonVisibility="WhileEditing" TextChanged="SearchBar_OnTextChanged"></Entry>
+                <Entry x:Name="searchBar" Placeholder="{Static res:AppResources.Enter_Address}" FontFamily="AlmaraiRegular" Keyboard="Text" TextColor="#333" ClearButtonVisibility="WhileEditing" TextChanged="SearchBar_OnTextChanged"></Entry>
                 <ListView x:Name="countryListView" HorizontalOptions="FillAndExpand" BackgroundColor="White" SeparatorColor="White" IsVisible="False" CachingStrategy="RecycleElement" ItemTapped="ListView_OnItemTapped">
                     <ListView.RowHeight>
                         70

@@ -929,23 +929,35 @@
                                         </DataTrigger>
                                     </Border.Triggers>
                                 </Border>
-                                <HorizontalStackLayout>
+                                <StackLayout Orientation="Horizontal">
                                     <CheckBox x:Name="FBCheck" Color="#1c874b" CheckedChanged="FBCheck_CheckedChanged_1" IsChecked="{Binding IsAllPyment}">
                                     </CheckBox>
                                     <Label Text="{Static res:AppResources.FullPayment_payment}" TextColor="Black" VerticalTextAlignment="Center" FontSize="14" FontAttributes="Bold"
                                            ></Label>
-                                    <Entry x:Name="AmmountEntry" Text="{Binding CustomPrice}" Keyboard="Numeric" FontSize="14" TextColor="Black" HorizontalOptions="FillAndExpand"
-                                           Placeholder="{Static res:AppResources.Please_Enter_ammount}" Margin="15,0,0,0" TextChanged="AmmountEntry_TextChanged">
-                                        <Entry.Triggers>
-                                            <DataTrigger TargetType="Entry" Binding="{Binding Source={x:Reference FBCheck},Path=IsChecked}" Value="True">
+                                    <Border StrokeShape="RoundRectangle 10" StrokeThickness="2" Stroke="LightGray" HeightRequest="40" Margin="20,0,0,5">
+                                        <Entry x:Name="AmmountEntry" Text="{Binding CustomPrice}" Keyboard="Numeric" VerticalOptions="CenterAndExpand" FontSize="14" TextColor="Black" HorizontalOptions="FillAndExpand"
+                                                Placeholder="{Static res:AppResources.Please_Enter_ammount}" Margin="5,0,0,0" TextChanged="AmmountEntry_TextChanged">
+                                            <Entry.Triggers>
+                                                <DataTrigger TargetType="Entry" Binding="{Binding Source={x:Reference FBCheck},Path=IsChecked}" Value="True">
+                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Entry" Binding="{Binding Lang}" Value="ar">
+                                                    <Setter Property="Placeholder" Value="{Static res:AppResources.Please_Enter_ammount}"></Setter>
+                                                </DataTrigger>
+                                            </Entry.Triggers>
+                                        </Entry>
+                                        <Border.Triggers>
+                                            <DataTrigger TargetType="Border" Binding="{Binding Source={x:Reference FBCheck},Path=IsChecked}" Value="True">
                                                 <Setter Property="IsVisible" Value="False"></Setter>
                                             </DataTrigger>
-                                            <DataTrigger TargetType="Entry" Binding="{Binding Lang}" Value="ar">
-                                                <Setter Property="Placeholder" Value="{Static res:AppResources.Please_Enter_ammount}"></Setter>
-                                            </DataTrigger>
-                                        </Entry.Triggers>
-                                    </Entry>
-                                </HorizontalStackLayout>
+                                        </Border.Triggers>
+                                    </Border>
+                                    <StackLayout.Triggers>
+                                        <DataTrigger TargetType="StackLayout" Binding="{Binding OutStandingprice}" Value="0">
+                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                        </DataTrigger>
+                                    </StackLayout.Triggers>
+                                </StackLayout>
                                 <Grid VerticalOptions="FillAndExpand">
                                     <CollectionView ItemsSource="{Binding Payments}" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Margin="0,0,0,60">
                                         <CollectionView.ItemTemplate>
@@ -963,7 +975,7 @@
                                                         
                                                         <Image Source="{Binding UrlImgNameVM}" WidthRequest="50" Aspect="AspectFit" >
                                                             <Image.GestureRecognizers>
-                                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_PaymentViewModel}}, Path=OpenFullScreenImageCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_PaymentViewModel}}, Path=OpenFullScreenImageCommand}" CommandParameter="{Binding UrlImgNameVM}"></TapGestureRecognizer>
                                                             </Image.GestureRecognizers>
                                                             <Image.Triggers>
                                                                 <DataTrigger TargetType="Image" Binding="{Binding UrlImgNameVM}" Value="https://api.tripsbliss.com/">
@@ -1010,6 +1022,9 @@
                                             Command="{Binding AddPaymentCommand}" VerticalOptions="End">
                                         <Button.Triggers>
                                             <DataTrigger TargetType="Button" Binding="{Binding IsPayAndAmounTrue}" Value="False">
+                                                <Setter Property="IsEnabled" Value="False"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="Button" Binding="{Binding OutStandingprice}" Value="0">
                                                 <Setter Property="IsEnabled" Value="False"></Setter>
                                             </DataTrigger>
                                         </Button.Triggers>

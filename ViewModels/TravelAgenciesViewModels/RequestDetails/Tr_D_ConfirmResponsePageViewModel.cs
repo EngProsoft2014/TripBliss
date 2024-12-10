@@ -264,28 +264,39 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
                     IsPayment = Response.TotalPayment == 0 ? false : true;
 
-
-                    //if (!string.IsNullOrEmpty(Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "")) && !string.IsNullOrEmpty(Response.ReviewUserTravelAgentName))
-                    if (Response.IsHistory == true)
+                    bool result = CheckChooseServices();
+                    if (result)
                     {
-                        IsRequestHistory = true;
+                        IsShowPaymentBtn = true;
                     }
                     else
                     {
-                        IsRequestHistory = false;
-
-                        bool result = CheckChooseServices();
-                        if (result)
-                        {
-                            IsShowPaymentBtn = true;
-                        }
-                        else
-                        {
-                            IsShowPaymentBtn = false;
-                            CheckShowReview();
-                        }
-
+                        IsShowPaymentBtn = false;
+                        CheckShowReview();
                     }
+
+                    //if (!string.IsNullOrEmpty(Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "")) && !string.IsNullOrEmpty(Response.ReviewUserTravelAgentName))
+                    //if (Response.IsHistory == true)
+                    //{
+                    //    IsRequestHistory = true;
+                    //    CheckShowReview();
+                    //}
+                    //else
+                    //{
+                    //    IsRequestHistory = false;
+
+                    //    bool result = CheckChooseServices();
+                    //    if (result)
+                    //    {
+                    //        IsShowPaymentBtn = true;
+                    //    }
+                    //    else
+                    //    {
+                    //        IsShowPaymentBtn = false;
+                    //        CheckShowReview();
+                    //    }
+
+                    //}
 
                 }
             }
@@ -296,7 +307,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
         bool CheckChooseServices()
         {
-            if (Response.TotalPriceAgentAccept > 0 || (Response.TotalPriceAgentAccept > 0 && Response.TotalPriceAgentAccept != Response.TotalPayment))
+            if (Response.TotalPriceAgentAccept > 0 && Response.TotalPriceAgentAccept != Response.TotalPayment)
             {
                 return true;
             }

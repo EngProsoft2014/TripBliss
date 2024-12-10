@@ -47,7 +47,7 @@
 
                 <Button Text="{Static res:AppResources.btnApply_Forgot}" FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" FontSize="13"
                          BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
-                         Command="{Binding ApplyReviewCommand}">
+                         Command="{Binding ApplyReviewCommand}" CommandParameter="{Binding ModelReview}">
                     </Button>
 
                 <Button Text="{Static res:AppResources.Cancel}" FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" FontSize="13" HorizontalOptions="FillAndExpand"

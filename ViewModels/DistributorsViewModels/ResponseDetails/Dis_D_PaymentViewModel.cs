@@ -119,22 +119,22 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         }
 
         [RelayCommand]
-        async Task OpenFullScreenImage(ResponseWithDistributorPaymentResponse model)
+        async Task OpenFullScreenImage(string imgURL)
         {
-            if (model!.UrlImgNameVM!.Contains(".pdf"))
+            if (imgURL.Contains(".pdf"))
             {
-                await App.Current!.MainPage!.Navigation.PushAsync(new PdfViewerPage(model.UrlImgNameVM));
+                await App.Current!.MainPage!.Navigation.PushAsync(new PdfViewerPage(imgURL));
             }
             else
             {
-                if (string.IsNullOrEmpty(model.UrlImgNameVM))
+                if (string.IsNullOrEmpty(imgURL))
                 {
                     var toast = Toast.Make(TripBliss.Resources.Language.AppResources.No_image_here, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
                 else
                 {
-                    ImageSource sou = ImageSource.FromUri(new Uri(model.UrlImgNameVM!));
+                    ImageSource sou = ImageSource.FromUri(new Uri(imgURL));
                     IsBusy = false;
                     UserDialogs.Instance.ShowLoading();
                     await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(sou));

@@ -9,7 +9,7 @@ public partial class FullScreenImagePopup : Mopups.Pages.PopupPage
 		InitializeComponent();
 	}
 
-    public FullScreenImagePopup( ImageSource sourceImage)
+    public FullScreenImagePopup(ImageSource sourceImage)
     {
         InitializeComponent();
         imgFullScreen.Source = sourceImage;

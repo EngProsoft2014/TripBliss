@@ -66,6 +66,38 @@ public partial class BankOrCreditPaymentPage : ContentPage
         Model.PayMethod = 3; //Bank Transfer
     }
 
+    private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        var entry = sender as Entry;
+        if (entry == null) return;
+
+        // Auto-format to MM/YY after 4 characters
+        if (entry.Text.Length == 4 && !entry.Text.Contains("/"))
+        {
+            entry.Text = entry.Text.Insert(2, "/");
+        }
+
+        // Validate input (e.g., valid month and future date)
+        if (entry.Text.Length == 5)
+        {
+            string[] parts = entry.Text.Split('/');
+            if (int.TryParse(parts[0], out int month) && int.TryParse(parts[1], out int year))
+            {
+                if (month < 1 || month > 12 || year < DateTime.Now.Year % 100)
+                {
+                    entry.TextColor = Colors.Red; // Invalid date
+                    Model.IsExpirationDateValid = false;
+                }
+                else
+                {
+                    entry.TextColor = Colors.Black; // Valid date
+                    Model.ExpirationDate = entry.Text;
+                    Model.IsExpirationDateValid = true;
+                }
+            }
+        }
+    }
+
 
 
     //private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)

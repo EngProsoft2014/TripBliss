@@ -145,7 +145,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
                 if (json != null)
                 {
-                    AirFlights = json;
+                    AirFlights = new ObservableCollection<AirFlightResponse>(json.OrderBy(d=> d.AirLineLang).ToList());      
                 }
             }
 

@@ -205,7 +205,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                     }
                     else
                     {
-                        var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value.ToString()!.Replace("[", "").Replace("]", "").Replace("\"", "")}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                     }
                 }

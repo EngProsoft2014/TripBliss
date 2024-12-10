@@ -799,7 +799,7 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Expired Date.
+        ///   Looks up a localized string similar to Expired Date MM/YY.
         /// </summary>
         internal static string Expired_Date {
             get {
