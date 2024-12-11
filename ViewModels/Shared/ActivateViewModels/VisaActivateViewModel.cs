@@ -189,9 +189,9 @@ namespace TripBliss.ViewModels.ActivateViewModels
             else
             {
                 IsBusy = false;
-                UserDialogs.Instance.ShowLoading();
+                //UserDialogs.Instance.ShowLoading();
                 await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(model.ImageFile!));
-                UserDialogs.Instance.HideHud();
+                //UserDialogs.Instance.HideHud();
                 IsBusy = true;
             }
             

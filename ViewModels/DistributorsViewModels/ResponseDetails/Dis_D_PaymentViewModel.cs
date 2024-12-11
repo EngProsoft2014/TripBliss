@@ -136,9 +136,9 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                 {
                     ImageSource sou = ImageSource.FromUri(new Uri(imgURL));
                     IsBusy = false;
-                    UserDialogs.Instance.ShowLoading();
+                    //UserDialogs.Instance.ShowLoading();
                     await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(sou));
-                    UserDialogs.Instance.HideHud();
+                    //UserDialogs.Instance.HideHud();
                     IsBusy = true;
                 }
 

@@ -120,27 +120,27 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="akavache" Version="10.0.1" />
+		<PackageReference Include="akavache" Version="10.1.6" />
 		<PackageReference Include="Camera.MAUI" Version="1.5.1" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.3" />
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.0" />
-		<PackageReference Include="Controls.UserDialogs.Maui" Version="1.5.4" />
-		<PackageReference Include="GoogleApi" Version="5.5.5" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="8.0.1" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+		<PackageReference Include="Controls.UserDialogs.Maui" Version="1.7.0" />
+		<PackageReference Include="GoogleApi" Version="5.6.0" />
 		<PackageReference Include="Microsoft.AspNet.SignalR.Client" Version="2.4.3" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-		<PackageReference Include="Mopups" Version="1.3.1" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.100" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.100" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
+		<PackageReference Include="Mopups" Version="1.3.2" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="Polly" Version="8.4.1" />
-		<PackageReference Include="SkiaSharp" Version="2.88.8" />
+		<PackageReference Include="Polly" Version="8.5.0" />
+		<PackageReference Include="SkiaSharp" Version="3.116.1" />
 		<PackageReference Include="Syncfusion.Maui.DataGrid" Version="26.2.8" />
 		<PackageReference Include="Syncfusion.Maui.Inputs" Version="26.2.8" />
 		<PackageReference Include="Syncfusion.Maui.PdfViewer" Version="24.2.9" />
 		<PackageReference Include="Syncfusion.Maui.TabView" Version="24.2.9" />
 		<PackageReference Include="Syncfusion.Pdf.NET" Version="27.1.48" />
-		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.1.2" />
-		<PackageReference Include="Vitvov.Maui.PDFView" Version="1.0.5" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.3.0" />
+		<PackageReference Include="Vitvov.Maui.PDFView" Version="1.0.6" />
 	</ItemGroup>
 
 	<ItemGroup>

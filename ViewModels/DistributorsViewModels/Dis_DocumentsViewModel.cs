@@ -69,9 +69,9 @@ namespace TripBliss.ViewModels.DistributorsViewModels
                 {
                     ImageSource sou = ImageSource.FromUri(new Uri(model.UrlUploadFile!)); 
                     IsBusy = false;
-                    UserDialogs.Instance.ShowLoading();
+                    //UserDialogs.Instance.ShowLoading();
                     await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(sou));
-                    UserDialogs.Instance.HideHud();
+                    //UserDialogs.Instance.HideHud();
                     IsBusy = true;
                 }
                 
