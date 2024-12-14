@@ -47,7 +47,9 @@ public partial class RequestDetailsPage : Controls.CustomControl
         }
         else
         {
-            await PaymmentModel.CalcOutPrice(Convert.ToInt32(e.NewTextValue));
+            decimal cc = Convert.ToDecimal(e.NewTextValue);
+            int num = (int)Math.Round(cc);
+            await PaymmentModel.CalcOutPrice(num);
         }
     }
 

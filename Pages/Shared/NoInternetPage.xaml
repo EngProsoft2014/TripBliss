@@ -11,7 +11,7 @@
     <Controls:CustomControl.Content>
         <Grid VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,100,0,0">
             <StackLayout Spacing="30">
-                <Image Source="NoInternet.jpg" Aspect="Fill" HeightRequest="250" WidthRequest="250"/>
+                <Image Source="nointernet.jpg" Aspect="Fill" HeightRequest="250" WidthRequest="250"/>
 
                 <Label Text="{Static res:AppResources.No_Internet_connection}" FontSize="22" TextColor="#333" HorizontalOptions="CenterAndExpand"></Label>
 

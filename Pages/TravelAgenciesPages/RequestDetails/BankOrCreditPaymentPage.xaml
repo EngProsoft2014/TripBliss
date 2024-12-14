@@ -175,7 +175,7 @@
                         </Border>
                     </StackLayout>
 
-                    <StackLayout Orientation="Horizontal" Spacing="20">
+                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="0,5,0,5">
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center" Spacing="10">
                             <CheckBox x:Name="FBCheckCredit" Color="#1c874b" IsChecked="{Binding IsAllPyment}"></CheckBox>
                             <Label Text="{Static res:AppResources.FullPayment_payment}" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
@@ -183,6 +183,7 @@
 
                         <Border x:Name="yumPayCredit" BackgroundColor="White" Margin="0,0,0,5" HorizontalOptions="FillAndExpand">
                             <Entry x:Name="entryNewAmount"
+                                   ReturnType="Done"
                                    Placeholder="{Binding OneInvoice.Net}"
                                    FontSize="12"
                                    TextColor="Black"
@@ -317,7 +318,7 @@
                             </DataTrigger>
                         </Border.Triggers>
                     </Border>
-                    <StackLayout Orientation="Horizontal" Spacing="20">
+                    <StackLayout Orientation="Horizontal" Spacing="20" Padding="0,5,0,5">
                         <StackLayout Orientation="Horizontal" Spacing="5">
                             <CheckBox x:Name="FBCheckBank" Color="#1c874b" IsChecked="{Binding IsAllPyment}" CheckedChanged="FBCheckBank_CheckedChanged"></CheckBox>
                             <Label Text="{Static res:AppResources.FullPayment_payment}" TextColor="#333" FontSize="14" VerticalTextAlignment="Center"></Label>
@@ -325,6 +326,7 @@
 
                         <Border x:Name="yumPayCash" BackgroundColor="Transparent" Padding="5,0,0,0" Margin="0,0,20,5" WidthRequest="150" HorizontalOptions="EndAndExpand">
                             <Entry x:Name="entryCashNewAmount"
+                                   ReturnType="Done"
                                    FontSize="12"
                                    Keyboard="Numeric"
                                    TextColor="Black"

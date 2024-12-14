@@ -30,7 +30,9 @@ public partial class BankOrCreditPaymentPage : ContentPage
         }
         else
         {
-            await Model.CalcOutPrice(Convert.ToInt32(e.NewTextValue!));
+            decimal cc = Convert.ToDecimal(e.NewTextValue);
+            int num = (int)Math.Round(cc);
+            await Model.CalcOutPrice(num);
         }
         
     }
