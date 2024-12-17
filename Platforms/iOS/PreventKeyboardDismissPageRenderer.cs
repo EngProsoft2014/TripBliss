@@ -1,5 +1,5 @@
-﻿using Microsoft.Maui.Controls.Compatibility;
-using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
+﻿using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
+using Microsoft.Maui.Controls.Compatibility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
