@@ -20,9 +20,9 @@ namespace TripBliss.Platforms.iOS
             base.ViewWillAppear(animated);
 
             // Create a gesture recognizer that does nothing
-            _tapGesture = new UITapGestureRecognizer(() => { /* Do nothing */ })
-            {
-                CancelsTouchesInView = true, // Allows other gestures to work
+            _tapGesture = new UITapGestureRecognizer(() => { View.EndEditing(true); })
+            {    
+                CancelsTouchesInView = false, // Allows other gestures to work
                 DelaysTouchesBegan = false,
                 DelaysTouchesEnded = false
             };
