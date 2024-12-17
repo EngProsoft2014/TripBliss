@@ -11,25 +11,25 @@ using UIKit;
 [assembly: ExportRenderer(typeof(ContentPage), typeof(PreventKeyboardDismissPageRenderer))]
 namespace TripBliss.Platforms.iOS
 {
-    public class PreventKeyboardDismissPageRenderer : PageRenderer
+    class PreventKeyboardDismissPageRenderer : PageRenderer
     {
         UITapGestureRecognizer _tapGesture;
 
-        public override void ViewDidLoad()
+        public override void ViewWillAppear(bool animated)
         {
-            base.ViewDidLoad();
+            base.ViewWillAppear(animated);
 
-            // Add a tap gesture recognizer to the main view
-            _tapGesture = new UITapGestureRecognizer()
+            // Create a gesture recognizer that does nothing
+            _tapGesture = new UITapGestureRecognizer(() => { /* Do nothing */ })
             {
-                CancelsTouchesInView = false, // Allow other gestures like button taps to pass through
+                CancelsTouchesInView = true, // Allows other gestures to work
                 DelaysTouchesBegan = false,
                 DelaysTouchesEnded = false
             };
 
+            // Add the gesture recognizer to the root view
             View.AddGestureRecognizer(_tapGesture);
         }
-
 
         public override void ViewWillDisappear(bool animated)
         {

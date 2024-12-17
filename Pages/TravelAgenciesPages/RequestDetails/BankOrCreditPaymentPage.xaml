@@ -342,6 +342,7 @@
                             <Entry x:Name="entryCashNewAmount"
                                    FontSize="12"
                                    Keyboard="Numeric"
+                                   MaxLength="10"
                                    TextColor="Black"
                                    VerticalTextAlignment="Center"
                                    TextChanged="entryCashNewAmount_TextChanged"></Entry>

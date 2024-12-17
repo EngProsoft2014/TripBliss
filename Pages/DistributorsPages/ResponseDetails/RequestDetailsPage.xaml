@@ -941,7 +941,7 @@
                                     <Label Text="{Static res:AppResources.FullPayment_payment}" TextColor="Black" VerticalTextAlignment="Center" FontSize="14" FontAttributes="Bold"
                                            ></Label>
                                     <Border StrokeShape="RoundRectangle 10" StrokeThickness="2" Stroke="LightGray" Margin="20,0,0,5">
-                                        <Entry x:Name="AmmountEntry" Keyboard="Numeric" VerticalOptions="CenterAndExpand" FontSize="14" TextColor="Black" HorizontalOptions="FillAndExpand"
+                                        <Entry x:Name="AmmountEntry" Keyboard="Numeric" MaxLength="10" VerticalOptions="CenterAndExpand" FontSize="14" TextColor="Black" HorizontalOptions="FillAndExpand"
                                                 Placeholder="{Static res:AppResources.Please_Enter_ammount}" Margin="5,0,0,0" TextChanged="AmmountEntry_TextChanged">
                                             <Entry.Triggers>
                                                 <DataTrigger TargetType="Entry" Binding="{Binding Source={x:Reference FBCheck},Path=IsChecked}" Value="True">
