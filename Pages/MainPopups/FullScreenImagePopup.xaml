@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<mopups:PopupPage
+<ContentPage
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
@@ -10,17 +10,17 @@
              NavigationPage.HasNavigationBar="False" 
              Title="FullScreenImagePopup"
              BackgroundColor="#ffffff">
-    <!--You can set an animation in the xaml file or in the csharp code behind-->
-    <mopups:PopupPage.Animation>
+
+    <!--<mopups:PopupPage.Animation>
         <mopupsanim:MoveAnimation
        DurationIn="700"
        EasingIn="BounceOut"
        PositionIn="Bottom"
        PositionOut="Center" />
-    </mopups:PopupPage.Animation>
+    </mopups:PopupPage.Animation>-->
 
     <StackLayout VerticalOptions="FillAndExpand"  BackgroundColor="#FFFFFF" >
-        <StackLayout VerticalOptions="Start" Padding="20,0,20,0" HeightRequest="50">
+        <StackLayout VerticalOptions="Start" Padding="20,0,20,0" HeightRequest="60">
 
             <Image HorizontalOptions="End" VerticalOptions="FillAndExpand" Aspect="AspectFit">
                 <Image.Source>
@@ -46,4 +46,4 @@
     </StackLayout>
 
 
-</mopups:PopupPage>
+</ContentPage>

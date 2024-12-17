@@ -2,7 +2,7 @@ using Mopups.Services;
 
 namespace TripBliss.Pages.MainPopups;
 
-public partial class FullScreenImagePopup : Mopups.Pages.PopupPage
+public partial class FullScreenImagePopup : ContentPage
 {
 	public FullScreenImagePopup()
 	{
@@ -17,6 +17,6 @@ public partial class FullScreenImagePopup : Mopups.Pages.PopupPage
 
     private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
     {
-        await MopupService.Instance.PopAsync();
+        await Navigation.PopAsync();
     }
 }

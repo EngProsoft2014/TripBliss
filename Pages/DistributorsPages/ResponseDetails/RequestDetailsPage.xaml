@@ -509,22 +509,25 @@
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
-                                                                        <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" 
-                                                                                VerticalOptions="EndAndExpand" FontSize="11">
-                                                                            <Label.Triggers>
-                                                                                <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
-                                                                                    <Setter Property="IsVisible" Value="False"></Setter>
-                                                                                </DataTrigger>
-                                                                                <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=Lang}" Value="ar">
-                                                                                    <Setter Property="Text" Value="{Binding Total,StringFormat='{0} رس'}"></Setter>
-                                                                                </DataTrigger>
-                                                                            </Label.Triggers>
-                                                                        </Label>
+                                                                       
                                                                         <StackLayout.GestureRecognizers>
                                                                             <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=SelectHotelCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                                         </StackLayout.GestureRecognizers>
                                                                     </StackLayout>
                                                                 </ScrollView>
+                                                                <StackLayout BackgroundColor="White" HorizontalOptions="End" Padding="5,0" VerticalOptions="Center">
+                                                                    <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" 
+                                                                           VerticalOptions="EndAndExpand" FontSize="11" VerticalTextAlignment="Center">
+                                                                        <Label.Triggers>
+                                                                            <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
+                                                                                <Setter Property="IsVisible" Value="False"></Setter>
+                                                                            </DataTrigger>
+                                                                            <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=Lang}" Value="ar">
+                                                                                <Setter Property="Text" Value="{Binding Total,StringFormat='{0} رس'}"></Setter>
+                                                                            </DataTrigger>
+                                                                        </Label.Triggers>
+                                                                    </Label>
+                                                                </StackLayout>
                                                             </Grid>
                                                             <Border.Triggers>
                                                                 <DataTrigger TargetType="Border" Binding="{Binding AcceptPriceDis}" Value="True">
@@ -596,25 +599,25 @@
                                                                             </Label.Triggers>
                                                                         </Label>
 
-
-
-                                                                        <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue"
-                                                                           VerticalOptions="EndAndExpand" FontSize="11">
-                                                                            <Label.Triggers>
-                                                                                <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
-                                                                                    <Setter Property="IsVisible" Value="False"></Setter>
-                                                                                </DataTrigger>
-                                                                                <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=Lang}" Value="ar">
-                                                                                    <Setter Property="Text" Value="{Binding Total,StringFormat='{0} رس'}"></Setter>
-                                                                                </DataTrigger>
-                                                                            </Label.Triggers>
-                                                                        </Label>
                                                                         <StackLayout.GestureRecognizers>
                                                                             <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=SelectTransportaionCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                                         </StackLayout.GestureRecognizers>
 
                                                                     </StackLayout>
                                                                 </ScrollView>
+                                                                <StackLayout BackgroundColor="White" HorizontalOptions="End" Padding="5,0" VerticalOptions="Center">
+                                                                    <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" 
+                                                                           VerticalOptions="EndAndExpand" FontSize="11" VerticalTextAlignment="Center">
+                                                                        <Label.Triggers>
+                                                                            <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
+                                                                                <Setter Property="IsVisible" Value="False"></Setter>
+                                                                            </DataTrigger>
+                                                                            <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=Lang}" Value="ar">
+                                                                                <Setter Property="Text" Value="{Binding Total,StringFormat='{0} رس'}"></Setter>
+                                                                            </DataTrigger>
+                                                                        </Label.Triggers>
+                                                                    </Label>
+                                                                </StackLayout>
                                                             </Grid>
 
                                                             <Border.Triggers>
@@ -692,24 +695,25 @@
                                                                             </Label.Triggers>
                                                                         </Label>
 
-
-                                                                        <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue"
-                                                                                 VerticalOptions="EndAndExpand" FontSize="11">
-                                                                            <Label.Triggers>
-                                                                                <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
-                                                                                    <Setter Property="IsVisible" Value="False"></Setter>
-                                                                                </DataTrigger>
-                                                                                <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=Lang}" Value="ar">
-                                                                                    <Setter Property="Text" Value="{Binding Total,StringFormat='{0} رس'}"></Setter>
-                                                                                </DataTrigger>
-                                                                            </Label.Triggers>
-                                                                        </Label>
                                                                         <StackLayout.GestureRecognizers>
                                                                             <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=SelectAirFlightCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                                         </StackLayout.GestureRecognizers>
                                                                     </StackLayout>
 
                                                                 </ScrollView>
+                                                                <StackLayout BackgroundColor="White" HorizontalOptions="End" Padding="5,0" VerticalOptions="Center">
+                                                                    <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" 
+                                                                           VerticalOptions="EndAndExpand" FontSize="11" VerticalTextAlignment="Center">
+                                                                        <Label.Triggers>
+                                                                            <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
+                                                                                <Setter Property="IsVisible" Value="False"></Setter>
+                                                                            </DataTrigger>
+                                                                            <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=Lang}" Value="ar">
+                                                                                <Setter Property="Text" Value="{Binding Total,StringFormat='{0} رس'}"></Setter>
+                                                                            </DataTrigger>
+                                                                        </Label.Triggers>
+                                                                    </Label>
+                                                                </StackLayout>
                                                             </Grid>
                                                             <Border.Triggers>
                                                                 <DataTrigger TargetType="Border" Binding="{Binding AcceptPriceDis}" Value="True">
@@ -780,23 +784,25 @@
                                                                                 </DataTrigger>
                                                                             </Label.Triggers>
                                                                         </Label>
-
-                                                                        <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue"
-                                                                           VerticalOptions="EndAndExpand" FontSize="11">
-                                                                            <Label.Triggers>
-                                                                                <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
-                                                                                    <Setter Property="IsVisible" Value="False"></Setter>
-                                                                                </DataTrigger>
-                                                                                <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=Lang}" Value="ar">
-                                                                                    <Setter Property="Text" Value="{Binding Total,StringFormat='{0} رس'}"></Setter>
-                                                                                </DataTrigger>
-                                                                            </Label.Triggers>
-                                                                        </Label>
+    
                                                                         <StackLayout.GestureRecognizers>
                                                                             <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=SelectVisaCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                                         </StackLayout.GestureRecognizers>
                                                                     </StackLayout>
                                                                 </ScrollView>
+                                                                <StackLayout BackgroundColor="White" HorizontalOptions="End" Padding="5,0" VerticalOptions="Center">
+                                                                    <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" 
+                                                                           VerticalOptions="EndAndExpand" FontSize="11" VerticalTextAlignment="Center">
+                                                                        <Label.Triggers>
+                                                                            <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
+                                                                                <Setter Property="IsVisible" Value="False"></Setter>
+                                                                            </DataTrigger>
+                                                                            <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_RequestDetailsViewModel}}, Path=Lang}" Value="ar">
+                                                                                <Setter Property="Text" Value="{Binding Total,StringFormat='{0} رس'}"></Setter>
+                                                                            </DataTrigger>
+                                                                        </Label.Triggers>
+                                                                    </Label>
+                                                                </StackLayout>
                                                             </Grid>
                                                             <Border.Triggers>
                                                                 <DataTrigger TargetType="Border" Binding="{Binding AcceptPriceDis}" Value="True">
@@ -904,7 +910,7 @@
                                                 <Label Text="{Binding PaymentNotActive}" FontSize="12" TextColor="Yellow"></Label>
                                                 <Label Text="{Static res:AppResources.SAR}" FontSize="11" FontAttributes="Bold" TextColor="Yellow" VerticalTextAlignment="End" TranslationY="0"></Label>
                                             </StackLayout>
-                                       
+
                                             <StackLayout.Triggers>
                                                 <DataTrigger TargetType="StackLayout" Binding="{Binding PaymentNotActive}" Value="0">
                                                     <Setter Property="IsVisible" Value="False"></Setter>
@@ -934,8 +940,8 @@
                                     </CheckBox>
                                     <Label Text="{Static res:AppResources.FullPayment_payment}" TextColor="Black" VerticalTextAlignment="Center" FontSize="14" FontAttributes="Bold"
                                            ></Label>
-                                    <Border StrokeShape="RoundRectangle 10" StrokeThickness="2" Stroke="LightGray" HeightRequest="40" Margin="20,0,0,5">
-                                        <Entry x:Name="AmmountEntry" Keyboard="Numeric" ReturnType="Done" VerticalOptions="CenterAndExpand" FontSize="14" TextColor="Black" HorizontalOptions="FillAndExpand"
+                                    <Border StrokeShape="RoundRectangle 10" StrokeThickness="2" Stroke="LightGray" Margin="20,0,0,5">
+                                        <Entry x:Name="AmmountEntry" Keyboard="Numeric" VerticalOptions="CenterAndExpand" FontSize="14" TextColor="Black" HorizontalOptions="FillAndExpand"
                                                 Placeholder="{Static res:AppResources.Please_Enter_ammount}" Margin="5,0,0,0" TextChanged="AmmountEntry_TextChanged">
                                             <Entry.Triggers>
                                                 <DataTrigger TargetType="Entry" Binding="{Binding Source={x:Reference FBCheck},Path=IsChecked}" Value="True">
@@ -969,10 +975,10 @@
                                                                 <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Black" Size="25"></FontImageSource>
                                                             </Image.Source>
                                                         </Image>
-                                                        
+
                                                         <Label Text="{Binding CreatedDate, StringFormat='{0:MM-dd-yyyy}'}" TextColor="Black" VerticalTextAlignment="Center" FontSize="14"></Label>
 
-                                                        
+
                                                         <Image Source="{Binding UrlImgNameVM}" WidthRequest="50" Aspect="AspectFit" >
                                                             <Image.GestureRecognizers>
                                                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_PaymentViewModel}}, Path=OpenFullScreenImageCommand}" CommandParameter="{Binding UrlImgNameVM}"></TapGestureRecognizer>
@@ -983,9 +989,9 @@
                                                                 </DataTrigger>
                                                             </Image.Triggers>
                                                         </Image>
-                                                        
-                                                        <Label Text="{Binding AmountPayment}" TextColor="Green" VerticalTextAlignment="Center" FontSize="14" HorizontalOptions="EndAndExpand"></Label>
-                                                        
+
+                                                        <Label Text="{Binding AmountPayment}" TextColor="Green" VerticalTextAlignment="Center" FontSize="15" HorizontalOptions="EndAndExpand"></Label>
+
                                                         <CheckBox x:Name="chekActive" Color="Green" IsChecked="{Binding Active}">
                                                             <CheckBox.Triggers>
                                                                 <MultiTrigger TargetType="CheckBox">

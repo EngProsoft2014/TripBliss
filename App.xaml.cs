@@ -5,7 +5,6 @@ using TripBliss.Helpers;
 using TripBliss.Pages.TravelAgenciesPages;
 using Akavache;
 using TripBliss.Pages.Shared;
-using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
 
 namespace TripBliss
 {
@@ -25,6 +24,9 @@ namespace TripBliss
 
             BlobCache.ApplicationName = "TripBlissDB";
             BlobCache.EnsureInitialized();
+
+            // Subscribe to page appearing
+            Application.Current.PageAppearing += OnPageAppearing;
 
             LoadSetting();
             InitializeComponent();
@@ -99,5 +101,54 @@ namespace TripBliss
             }
         }
 
+        //===================================================================
+
+        private void OnPageAppearing(object sender, Page e)
+        {
+            if (e is ContentPage page && page.Content != null)
+            {
+                // Wrap ContentPage.Content in a Grid if needed
+                if (page.Content is not Layout layout || layout.GestureRecognizers.Count == 0)
+                {
+                    var grid = new Grid();
+                    grid.Children.Add(page.Content);
+                    page.Content = grid;
+
+                    // Add tap gesture to the Grid
+                    var tapGesture = new TapGestureRecognizer();
+                    tapGesture.Tapped += (s, args) => CloseKeyboard(page);
+                    grid.GestureRecognizers.Add(tapGesture);
+                }
+            }
+        }
+
+        private void CloseKeyboard(ContentPage page)
+        {
+            // Find all focusable controls and unfocus them
+            foreach (var control in FindByType<VisualElement>(page.Content))
+            {
+                if (control is Entry || control is Editor || control is SearchBar)
+                {
+                    control.Unfocus();
+                }
+            }
+        }
+
+        private IEnumerable<T> FindByType<T>(Element root) where T : Element
+        {
+            if (root is T match)
+            {
+                yield return match;
+            }
+
+            // Traverse through logical children
+            foreach (var child in root.LogicalChildren)
+            {
+                foreach (var descendant in FindByType<T>(child))
+                {
+                    yield return descendant;
+                }
+            }
+        }
     }
 }

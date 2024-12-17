@@ -111,6 +111,11 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="10" Stroke="LightGray" StrokeThickness="2"></RoundRectangle>
                         </Border.StrokeShape>
+                        <Border.Triggers>
+                            <DataTrigger TargetType="Border" Binding="{Binding OutStandingprice}" Value="0">
+                                <Setter Property="IsVisible" Value="False"></Setter>
+                            </DataTrigger>
+                        </Border.Triggers>
                     </Border>
 
                     <Border BackgroundColor="White" Padding="3,0,0,0" HorizontalOptions="FillAndExpand">
@@ -128,6 +133,11 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="10" Stroke="LightGray" StrokeThickness="2"></RoundRectangle>
                         </Border.StrokeShape>
+                        <Border.Triggers>
+                            <DataTrigger TargetType="Border" Binding="{Binding OutStandingprice}" Value="0">
+                                <Setter Property="IsVisible" Value="False"></Setter>
+                            </DataTrigger>
+                        </Border.Triggers>
                     </Border>
 
                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
@@ -173,6 +183,11 @@
                                 <RoundRectangle CornerRadius="10" Stroke="LightGray" StrokeThickness="2"></RoundRectangle>
                             </Border.StrokeShape>
                         </Border>
+                        <StackLayout.Triggers>
+                            <DataTrigger TargetType="StackLayout" Binding="{Binding OutStandingprice}" Value="0">
+                                <Setter Property="IsVisible" Value="False"></Setter>
+                            </DataTrigger>
+                        </StackLayout.Triggers>
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal" Spacing="20" Padding="0,5,0,5">
@@ -183,8 +198,7 @@
 
                         <Border x:Name="yumPayCredit" BackgroundColor="White" Margin="0,0,0,5" HorizontalOptions="FillAndExpand">
                             <Entry x:Name="entryNewAmount"
-                                   ReturnType="Done"
-                                   Placeholder="{Binding OneInvoice.Net}"
+                                   Placeholder="{Static res:AppResources.Please_Enter_ammount}"
                                    FontSize="12"
                                    TextColor="Black"
                                    Keyboard="Numeric"
@@ -326,7 +340,6 @@
 
                         <Border x:Name="yumPayCash" BackgroundColor="Transparent" Padding="5,0,0,0" Margin="0,0,20,5" WidthRequest="150" HorizontalOptions="EndAndExpand">
                             <Entry x:Name="entryCashNewAmount"
-                                   ReturnType="Done"
                                    FontSize="12"
                                    Keyboard="Numeric"
                                    TextColor="Black"
@@ -372,7 +385,7 @@
                                     </Image.Source>
                                 </Image>
                                 <Label Text="{Binding CreatedDate, StringFormat='{0:MM-dd-yyyy}'}" TextColor="Black" VerticalTextAlignment="End" FontSize="14"></Label>
-                                <Label Text="{Binding AmountPayment}" TextColor="Green" VerticalTextAlignment="End" FontSize="14" HorizontalOptions="EndAndExpand"></Label>
+                                <Label Text="{Binding AmountPayment}" TextColor="Green" VerticalTextAlignment="End" FontSize="15" HorizontalOptions="EndAndExpand"></Label>
                             </StackLayout>
                         </Border>
                     </DataTemplate>

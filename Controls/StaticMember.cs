@@ -73,5 +73,6 @@ namespace TripBliss.Controls
 
             return self;
         }
+
     }
 }

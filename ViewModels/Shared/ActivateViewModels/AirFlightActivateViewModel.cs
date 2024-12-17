@@ -200,7 +200,7 @@ namespace TripBliss.ViewModels.ActivateViewModels
             {
                 IsBusy = false;
                 //UserDialogs.Instance.ShowLoading();
-                await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(model.ImageFile!));
+                await App.Current!.MainPage!.Navigation.PushAsync(new Pages.MainPopups.FullScreenImagePopup(model.ImageFile!));
                 //UserDialogs.Instance.HideHud();
                 IsBusy = true;
             }

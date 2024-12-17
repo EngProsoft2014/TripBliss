@@ -206,6 +206,9 @@
                         <DataTrigger TargetType="Button" Binding="{Binding IsRequestHistory}" Value="True">
                             <Setter Property="IsVisible" Value="False"></Setter>
                         </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding HotelService.AcceptAgen}" Value="True">
+                            <Setter Property="IsVisible" Value="False"></Setter>
+                        </DataTrigger>
                     </Button.Triggers>
                 </Button>
             </StackLayout>

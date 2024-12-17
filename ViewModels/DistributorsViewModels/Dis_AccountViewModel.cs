@@ -84,7 +84,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         {
             IsBusy = false;
             //UserDialogs.Instance.ShowLoading();
-            await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(CompanyResponse.ImageFile!));
+            await App.Current!.MainPage!.Navigation.PushAsync(new Pages.MainPopups.FullScreenImagePopup(CompanyResponse.ImageFile!));
             //UserDialogs.Instance.HideHud();
             IsBusy = true;
         }

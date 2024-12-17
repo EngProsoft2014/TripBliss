@@ -74,13 +74,13 @@ public partial class BankOrCreditPaymentPage : ContentPage
         if (entry == null) return;
 
         // Auto-format to MM/YY after 4 characters
-        if (entry.Text.Length == 4 && !entry.Text.Contains("/"))
+        if (entry.Text?.Length == 4 && !entry.Text.Contains("/"))
         {
             entry.Text = entry.Text.Insert(2, "/");
         }
 
         // Validate input (e.g., valid month and future date)
-        if (entry.Text.Length == 5)
+        if (entry.Text?.Length == 5)
         {
             string[] parts = entry.Text.Split('/');
             if (int.TryParse(parts[0], out int month) && int.TryParse(parts[1], out int year))

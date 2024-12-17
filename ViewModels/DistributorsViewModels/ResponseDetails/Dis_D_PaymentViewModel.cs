@@ -69,7 +69,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             OutStandingprice = model.TotalPriceAgentAccept - (model.TotalPayment! + model.TotalPaymentNotActive);
             Totalprice = model.TotalPriceAgentAccept;
             PaymentNotActive = model.TotalPaymentNotActive;
-            IsPaymentNotActive = model.CountPaymentNotActive > 0 ? true : false;
+            //IsPaymentNotActive = model.CountPaymentNotActive > 0 ? true : false;
             IsAllPyment = true;
 
             Init();
@@ -137,7 +137,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                     ImageSource sou = ImageSource.FromUri(new Uri(imgURL));
                     IsBusy = false;
                     //UserDialogs.Instance.ShowLoading();
-                    await MopupService.Instance.PushAsync(new Pages.MainPopups.FullScreenImagePopup(sou));
+                    await App.Current!.MainPage!.Navigation.PushAsync(new Pages.MainPopups.FullScreenImagePopup(sou));
                     //UserDialogs.Instance.HideHud();
                     IsBusy = true;
                 }
@@ -175,12 +175,28 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                 if (json1 != null)
                 {
                     Payments = json1;
+                    await ShowPandingTransactions();
                 }
             }
 
             IsBusy = true;
         }
 
+        async Task ShowPandingTransactions()
+        {
+            if(Payments.Count > 0)
+            {
+                var obj = Payments.Where(x => x.Active == false).FirstOrDefault();
+                if (obj != null)
+                {
+                    IsPaymentNotActive = true;
+                }
+                else
+                {
+                    IsPaymentNotActive = false;
+                }
+            }
+        }
 
         public async Task CalcOutPrice(int CustomPrice)
         {
@@ -228,6 +244,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 
                     if (string.IsNullOrEmpty(json1))
                     {
+                        model.Active = true;
+                        await ShowPandingTransactions();
                         var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Active_For_Pay_Bank, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                     }
