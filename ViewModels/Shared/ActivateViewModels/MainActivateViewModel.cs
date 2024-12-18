@@ -10,6 +10,7 @@ using TripBliss.Models.ResponseWithDistributorVisaDetails;
 using TripBliss.Pages.ActivateDetailsPages;
 using TripBliss.Pages.Shared;
 using Syncfusion.Maui.DataSource.Extensions;
+using GoogleApi.Entities.Translate.Common.Enums;
 
 namespace TripBliss.ViewModels.ActivateViewModels
 {
@@ -33,6 +34,9 @@ namespace TripBliss.ViewModels.ActivateViewModels
 
         [ObservableProperty]
         bool isRequestHistory;
+
+        [ObservableProperty]
+        bool isShowApplyBtn;
 
         #region Services
         IGenericRepository Rep;
@@ -116,9 +120,11 @@ namespace TripBliss.ViewModels.ActivateViewModels
                         if (f != null && ((f.CountRow != null && item.CountRow != null && f.CountRow == item.CountRow) || (!string.IsNullOrEmpty(f!.Id) && !string.IsNullOrEmpty(item.Id) && f!.Id == item.Id)))
                         {
                             f.GuestName = item.GuestName;
-                            f.RoomRef = item.RoomRef;
+                            f.RoomRef = item.RoomRef;     
                         }
                     });
+
+                    IsShowApplyBtn = ((TOD == "T" && ActiveHotels.Any(item => !string.IsNullOrEmpty(item.GuestName))) || (TOD == "D" && ActiveHotels.Any(item => !string.IsNullOrEmpty(item.RoomRef)))) ? true : false;
                 }
                 catch (Exception ex)
                 {
@@ -151,6 +157,8 @@ namespace TripBliss.ViewModels.ActivateViewModels
                             f.PlateNumber = item.PlateNumber;
                         }
                     });
+
+                    IsShowApplyBtn = ((TOD == "T" && ActiveTransport.Any(item => !string.IsNullOrEmpty(item.LeaderName))) || (TOD == "D" && ActiveTransport.Any(item => !string.IsNullOrEmpty(item.PlateNumber) && !string.IsNullOrEmpty(item.DriverPhone)))) ? true : false;
                 }
                 catch (Exception ex)
                 {
@@ -227,11 +235,12 @@ namespace TripBliss.ViewModels.ActivateViewModels
                             }
                         }
                         ActiveHotels = json;
+
+                        IsShowApplyBtn = ((TOD == "T" && ActiveHotels.Any(item => !string.IsNullOrEmpty(item.GuestName))) || (TOD == "D" && ActiveHotels.Any(item => !string.IsNullOrEmpty(item.RoomRef)))) ? true : false;
                     }
                 }
 
             }
-
 
             IsBusy = true;
         }
@@ -263,7 +272,8 @@ namespace TripBliss.ViewModels.ActivateViewModels
                             }
                         }
                         ActiveTransport = json;
-                        
+
+                        IsShowApplyBtn = ((TOD == "T" && ActiveTransport.Any(item => !string.IsNullOrEmpty(item.LeaderName))) || (TOD == "D" && ActiveTransport.Any(item => !string.IsNullOrEmpty(item.PlateNumber) && !string.IsNullOrEmpty(item.DriverPhone)))) ? true : false;
                     }
                 }
 

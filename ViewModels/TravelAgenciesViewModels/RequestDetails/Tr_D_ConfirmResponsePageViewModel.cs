@@ -169,9 +169,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             vieModel.ReviewClose += async (model) =>
             {
                 if (model != null)
-                {
-                    UserDialogs.Instance.ShowLoading();
+                {        
                     string UserToken = await _service.UserToken();
+
+                    UserDialogs.Instance.ShowLoading();
                     var json = await Rep.PostTRAsync<ResponseWithDistributorReviewTravelAgentRequest, string>(string.Format($"Distributor/{Response.DistributorCompanyId}/ResponseWithDistributor/{Response.Id}/ReviewToDistributor"), model, UserToken);
                     UserDialogs.Instance.HideHud();
                     if (json.Item1 == null && json.Item2 == null)

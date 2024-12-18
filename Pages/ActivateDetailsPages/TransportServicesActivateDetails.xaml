@@ -78,7 +78,7 @@
                         <Shadow Brush="LightGray" Offset="8,8" Opacity="0.8"></Shadow>
                     </Border.Shadow>
                 </Border>
-                <Button VerticalOptions="EndAndExpand" Text="{Static res:AppResources.btnApply_Forgot}"  BackgroundColor="#2fa562" TextColor="White" Margin="20,0,20,20"
+                <Button VerticalOptions="EndAndExpand" Text="{Static res:AppResources.btnApply_Forgot}" BackgroundColor="#2fa562" TextColor="White" Margin="20,0,20,20"
                         Command="{Binding ApplyCommand}" FontSize="16" FontAttributes="Bold" >
                     <Button.Triggers>
                         <DataTrigger TargetType="Button" Binding="{Binding IsRequestHistory}" Value="True">
