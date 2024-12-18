@@ -22,10 +22,10 @@
                 </DataTrigger>
             </Label.Triggers>
         </Label>
-        <tabView:SfTabView x:Name="tabMain" TabBarHeight="60" TabBarPlacement="Bottom" IndicatorPlacement="Top" IndicatorBackground="#1c874b"
+        <!--<tabView:SfTabView x:Name="tabMain" TabBarHeight="60" TabBarPlacement="Bottom" IndicatorPlacement="Top" IndicatorBackground="#1c874b"
                        VerticalOptions="FillAndExpand" FlowDirection="LeftToRight" SelectionChanged="SfTabView_SelectionChanged">
             <tabView:SfTabView.Items>
-                <!--Home-->
+                --><!--Home--><!--
                 <tabView:SfTabItem Header="{Static res:AppResources.btnHome}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2"
                                    FontFamily="Almarai-Regular">
                     <tabView:SfTabItem.ImageSource>
@@ -177,7 +177,7 @@
                                     </CollectionView.Triggers>
                                 </CollectionView>
 
-                                <!--No Data-->
+                                --><!--No Data--><!--
                                 <StackLayout x:Name="stkNoData" IsVisible="False" Margin="{OnPlatform iOS='0,100,0,0'}" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                     <Image Source="noresult.png">
                                         <Image.Triggers>
@@ -202,7 +202,7 @@
                         </ContentView>
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
-                <!--Agency-->
+                --><!--Agency--><!--
                 <tabView:SfTabItem Header="{Static res:AppResources.hdrAgency}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2"
                                    FontFamily="Almarai-Regular">
                     <tabView:SfTabItem.ImageSource>
@@ -271,7 +271,7 @@
                                     </CollectionView.Triggers>
                                 </CollectionView>
 
-                                <!--No Data-->
+                                --><!--No Data--><!--
                                 <StackLayout x:Name="stkNoData2" IsVisible="False" Margin="{OnPlatform iOS='0,100,0,0'}" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                     <Image Source="noresult.png">
                                         <Image.Triggers>
@@ -296,7 +296,7 @@
                         </ContentView>
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
-                <!--Offers-->
+                --><!--Offers--><!--
                 <tabView:SfTabItem Header="{Static res:AppResources.hdrOffers}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
@@ -325,9 +325,9 @@
                                     </Setter>
                                 </Style>
                             </ContentView.Resources>
-                            <!--<ContentView.BindingContext>
+                            --><!--<ContentView.BindingContext>
                                 <Tvm:ChooseOfferViewModel></Tvm:ChooseOfferViewModel>
-                            </ContentView.BindingContext>-->
+                            </ContentView.BindingContext>--><!--
                             <StackLayout Orientation="Vertical" Margin="{OnPlatform Android=20, iOS='20,0,20,0'}">
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{Static res:AppResources.hdrOffers}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
@@ -350,13 +350,13 @@
                                     <Grid>
                                         <SearchBar BackgroundColor="White" Placeholder="{Static res:AppResources.plcSearch}" HeightRequest="40" FontSize="15"
                                                    TextColor="Black"></SearchBar>
-                                        <!--<Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
+                                        --><!--<Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
                                             <Image WidthRequest="20" HeightRequest="20">
                                                 <Image.Source>
                                                     <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="White"></FontImageSource>
                                                 </Image.Source>
                                             </Image>
-                                        </Border>-->
+                                        </Border>--><!--
                                     </Grid>
                                     <Border.Shadow>
                                         <Shadow  Brush="{OnPlatform Android=Gray, iOS=LightGray}" Opacity="1" Radius="{OnPlatform Android=5 , iOS=3}"></Shadow>
@@ -422,7 +422,7 @@
                                     </CollectionView.Triggers>
                                 </CollectionView>
 
-                                <!--No Data-->
+                                --><!--No Data--><!--
                                 <StackLayout x:Name="stkNoData3" IsVisible="False" Margin="{OnPlatform iOS='0,100,0,0'}" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                     <Image Source="noresult.png">
                                         <Image.Triggers>
@@ -446,7 +446,7 @@
                         </ContentView>
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
-                <!--History-->
+                --><!--History--><!--
                 <tabView:SfTabItem Header="{Static res:AppResources.hdrHistory}" TextColor="Black" FontSize="14" ImagePosition="Top"
                                    BackgroundColor="#f6fcf2" FontFamily="Almarai-Regular">
                     <tabView:SfTabItem.ImageSource>
@@ -476,9 +476,9 @@
                                     </Setter>
                                 </Style>
                             </ContentView.Resources>
-                            <!--<ContentView.BindingContext>
+                            --><!--<ContentView.BindingContext>
                                 <vm:HistoryViewModel></vm:HistoryViewModel>
-                            </ContentView.BindingContext>-->
+                            </ContentView.BindingContext>--><!--
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="10">
                                 <Label Text="{Static res:AppResources.hdrHistory}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                        TextColor="Black" Margin="{OnPlatform Android='0,20,0,10',iOS='0,0,0,10'}"></Label>
@@ -486,13 +486,13 @@
                                     <Grid>
                                         <SearchBar BackgroundColor="White" Placeholder="{Static res:AppResources.plcSearch}" HeightRequest="40" FontSize="15" 
                                                    TextColor="Black"></SearchBar>
-                                        <!--<Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
+                                        --><!--<Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
                                             <Image WidthRequest="20" HeightRequest="20">
                                                 <Image.Source>
                                                     <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="White"></FontImageSource>
                                                 </Image.Source>
                                             </Image>
-                                        </Border>-->
+                                        </Border>--><!--
                                     </Grid>
                                     <Border.Shadow>
                                         <Shadow  Brush="{OnPlatform Android=Gray, iOS=LightGray}" Opacity="1" Radius="{OnPlatform Android=5 , iOS=3}"></Shadow>
@@ -564,7 +564,7 @@
                                         </DataTrigger>
                                     </CollectionView.Triggers>
                                 </CollectionView>
-                                <!--No Data-->
+                                --><!--No Data--><!--
                                 <StackLayout x:Name="stkNoData4" IsVisible="False" Margin="{OnPlatform iOS='0,100,0,0'}" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                     <Image Source="noresult.png">
                                         <Image.Triggers>
@@ -589,19 +589,19 @@
                         </ContentView>
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
-                <!--More-->
+                --><!--More--><!--
                 <tabView:SfTabItem Header="{Static res:AppResources.hdrMore}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
                     <ContentView x:Name="MoreView">
-                        <!--<ContentView.BindingContext>
+                        --><!--<ContentView.BindingContext>
                             <vm:MoreViewModel></vm:MoreViewModel>
-                        </ContentView.BindingContext>-->
+                        </ContentView.BindingContext>--><!--
                         <StackLayout Orientation="Vertical" Spacing="50">
                             <Label Text="{Static res:AppResources.hdrMore}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                                    TextColor="Black" Margin="0,20,0,10"></Label>
-                            <!--User-->
+                            --><!--User--><!--
                             <VerticalStackLayout Margin="20,0" Spacing="20">
                                 <HorizontalStackLayout Spacing="8">
                                     <Image WidthRequest="20" HeightRequest="20">
@@ -648,7 +648,7 @@
                                     </HorizontalStackLayout.GestureRecognizers>
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
-                            <!--Settings-->
+                            --><!--Settings--><!--
                             <VerticalStackLayout Margin="20,0" Spacing="20">
                                 <HorizontalStackLayout Spacing="8">
                                     <Image WidthRequest="20" HeightRequest="20">
@@ -709,7 +709,7 @@
                     </ContentView>
                 </tabView:SfTabItem>
             </tabView:SfTabView.Items>
-        </tabView:SfTabView>
+        </tabView:SfTabView>-->
     </StackLayout>
 </Controls:CustomControl>
     
