@@ -348,7 +348,7 @@
         </Button>
 
         <!--NoData-->
-        <StackLayout x:Name="stkNoData" IsVisible="False" HeightRequest="250" TranslationY="-150" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+        <StackLayout x:Name="stkNoData" IsVisible="False" TranslationY="-200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
             <Image Source="noresult.png" Aspect="AspectFill" VerticalOptions="CenterAndExpand">
                 <Image.Triggers>
                     <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">

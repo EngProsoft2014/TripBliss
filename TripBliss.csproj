@@ -239,16 +239,10 @@
 	  <MauiXaml Update="Controls\CustomControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\ActivateDetailsPages\AirFlightServicesActivateDetails.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Pages\ActivateDetailsPages\HotelServicesActivateDetails.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ActivateDetailsPages\TansportServicesActivateDetails.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\ActivateDetailsPages\VisaServicesActivateDetails.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\DistributorsPages\Dis_ProviderDetailsPage.xaml">
