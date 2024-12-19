@@ -799,7 +799,7 @@
     <value>Warning</value>
   </data>
   <data name="Found_Problem_Internal_Server" xml:space="preserve">
-    <value>Found Problem Internal Server.</value>
+    <value>Service is currently down. Please try again later.</value>
   </data>
   <data name="Are_You_Accept_This_Price" xml:space="preserve">
     <value>Are You Accept This Price?</value>

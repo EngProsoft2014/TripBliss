@@ -173,17 +173,20 @@ namespace TripBliss.ViewModels
                     }
                     else
                     {
-                        if (json!.Item2!.errors!.Keys.Contains("Invalid Confirm Email - بريد إلكتروني مؤكد غير صالح"))
+                        if(json.Item2 != null)
                         {
-                            IsNotVerfy = true;
-                            string Result = json.Item2.errors.FirstOrDefault().Value.ToString()!;
-                            List<string> LstResult = Result.Split('_').ToList();
-                            List<string> LstResult2 = LstResult[1].Split('-').ToList();
-                            ResendEmail = LstResult2[0].Trim();
-                        }
+                            if (json!.Item2!.errors!.Keys.Contains("Invalid Confirm Email - بريد إلكتروني مؤكد غير صالح"))
+                            {
+                                IsNotVerfy = true;
+                                string Result = json.Item2.errors.FirstOrDefault().Value.ToString()!;
+                                List<string> LstResult = Result.Split('_').ToList();
+                                List<string> LstResult2 = LstResult[1].Split('-').ToList();
+                                ResendEmail = LstResult2[0].Trim();
+                            }
 
-                        var toast = Toast.Make($"{json.Item2.errors.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                        await toast.Show();
+                            var toast = Toast.Make($"{json.Item2.errors.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            await toast.Show();
+                        }
                     }
 
                     UserDialogs.Instance.HideHud();

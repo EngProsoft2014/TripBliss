@@ -1,8 +1,10 @@
+using System.Reactive;
 using TripBliss.Controls;
 using TripBliss.Helpers;
 using TripBliss.ViewModels.DistributorsViewModels.ResponseDetails;
 
 namespace TripBliss.Pages.DistributorsPages.ResponseDetailes;
+
 
 public partial class RequestDetailsPage : Controls.CustomControl
 {
@@ -55,6 +57,7 @@ public partial class RequestDetailsPage : Controls.CustomControl
     }
 
 
+
     //[Obsolete]
     //protected override bool OnBackButtonPressed()
     //{
@@ -74,3 +77,4 @@ public partial class RequestDetailsPage : Controls.CustomControl
     //    return true;
     //}
 }
+

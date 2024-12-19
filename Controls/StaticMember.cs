@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Maui.Core;
+﻿using Akavache;
+using CommunityToolkit.Maui.Core;
 using Controls.UserDialogs.Maui;
 using Microsoft.AspNet.SignalR.Client.Http;
 using Newtonsoft.Json;
@@ -6,11 +7,15 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Pages.Shared;
+using TripBliss.Services.Data;
+using TripBliss.ViewModels;
 
 namespace TripBliss.Controls
 {
@@ -28,6 +33,7 @@ namespace TripBliss.Controls
         #region Lists
         public static ObservableCollection<OfferModel> LstOffers { get; set; } = new ObservableCollection<OfferModel>();
         #endregion
+
 
         #region SnackBar Setting
         [Obsolete]
@@ -74,5 +80,19 @@ namespace TripBliss.Controls
             return self;
         }
 
+        public async static Task ClearAllData(IGenericRepository generic)
+        {
+            ServicesService _service = new ServicesService(generic);
+
+            await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Warning, TripBliss.Resources.Language.AppResources.Found_Problem_Internal_Server, TripBliss.Resources.Language.AppResources.OK);
+
+            string LangValueToKeep = Preferences.Default.Get("Lan", "en");
+            Preferences.Default.Clear();
+            await BlobCache.LocalMachine.InvalidateAll();
+            await BlobCache.LocalMachine.Vacuum();
+            Constants.Permissions.LstPermissions.Clear();
+            Preferences.Default.Set("Lan", LangValueToKeep);
+            await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(generic, _service)));
+        }
     }
 }

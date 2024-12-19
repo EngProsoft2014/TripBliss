@@ -853,7 +853,7 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Found Problem Internal Server..
+        ///   Looks up a localized string similar to Service is currently down. Please try again later..
         /// </summary>
         internal static string Found_Problem_Internal_Server {
             get {

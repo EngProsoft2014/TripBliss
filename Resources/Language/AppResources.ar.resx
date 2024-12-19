@@ -799,7 +799,7 @@
     <value>تحذير</value>
   </data>
   <data name="Found_Problem_Internal_Server" xml:space="preserve">
-    <value>تم العثور على مشكلة بالخادم الداخلي.</value>
+    <value>الخدمة متوقفة حاليًا. يرجى المحاولة مرة أخرى لاحقًا.</value>
   </data>
   <data name="Are_You_Accept_This_Price" xml:space="preserve">
     <value>هل تقبل هذا السعر؟</value>
