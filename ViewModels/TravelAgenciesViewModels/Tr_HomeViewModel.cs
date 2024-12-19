@@ -91,9 +91,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                     string UserToken = await _service.UserToken();
                     if (!string.IsNullOrEmpty(UserToken))
                     {
-                        UserDialogs.Instance.ShowLoading();
                         var json = await Rep.GetAsync<PagenationList<RequestTravelAgencyResponse>>(ApiConstants.AllRequestApi + $"{id}/RequestTravelAgency/pagenumber/{PageNumber}", UserToken);
-                        UserDialogs.Instance.HideHud();
+
                         if (json != null)
                         {
                             PagenationList<RequestTravelAgencyResponse> RequestsPage = json;

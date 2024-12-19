@@ -78,9 +78,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels
                     string UserToken = await _service.UserToken();
                     if (!string.IsNullOrEmpty(UserToken))
                     {
-                        UserDialogs.Instance.ShowLoading();
                         var json = await Rep.GetAsync<PagenationList<ResponseWithDistributorResponse>>(ApiConstants.AllResponseDistApi + $"{id}/ResponseWithDistributor/PageNumber/{PageNumber}", UserToken);
-                        UserDialogs.Instance.HideHud();
+
                         if (json != null)
                         {
                             PagenationList<ResponseWithDistributorResponse> ResponesPage = json;
