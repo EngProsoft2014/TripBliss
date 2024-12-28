@@ -49,10 +49,11 @@
 	
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
 		<BundleIdentifier>com.companyname.tripbliss</BundleIdentifier>
+		<RunAOTCompilation>true</RunAOTCompilation>
 		<MtouchLink>SdkOnly</MtouchLink>
 		<CreatePackage>false</CreatePackage>
-		<CodesignProvision>TripBliss Provisioning</CodesignProvision>
-		<CodesignKey>Apple Distribution: ENG PRO SOFT, LLC (YZWTVALFLW)</CodesignKey>
+		<CodesignProvision>VS: com.companyname.tripbliss Development</CodesignProvision>
+		<CodesignKey>Apple Development: TAREK GABER (9RKU8MRSBH)</CodesignKey>
 		<RunAOTCompilation>false</RunAOTCompilation>
 	</PropertyGroup>
 
