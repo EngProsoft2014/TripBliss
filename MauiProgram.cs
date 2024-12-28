@@ -12,6 +12,8 @@ using TripBliss.Services.Data;
 using Maui.PDFView;
 using TripBliss.Pages.Shared;
 using Microsoft.Maui.Handlers;
+using Serilog.Events;
+using Serilog;
 
 namespace TripBliss
 {
@@ -20,6 +22,9 @@ namespace TripBliss
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+
+            SetupSerilog();
+
             builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
@@ -63,5 +68,20 @@ namespace TripBliss
 
             return builder.Build();
         }
+
+
+        private static void SetupSerilog()
+        {
+            var flushInterval = new TimeSpan(0, 0, 1);
+            var file = Path.Combine(FileSystem.AppDataDirectory, "TripBliss.log");
+
+            Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Verbose()
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+            .Enrich.FromLogContext()
+            .WriteTo.File(file, flushToDiskInterval: flushInterval, encoding: System.Text.Encoding.UTF8, rollingInterval: RollingInterval.Day, retainedFileCountLimit: 22)
+            .CreateLogger();
+        }
+
     }
 }
