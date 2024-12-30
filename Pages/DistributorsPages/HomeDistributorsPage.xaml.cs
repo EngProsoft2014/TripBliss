@@ -39,7 +39,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
         }
     }
 
-    [Obsolete]
+
     protected override bool OnBackButtonPressed()
     {
         // Run the async code on the UI thread
@@ -53,7 +53,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
         return true;
     }
 
-    [Obsolete]
+
     private void chkAll_CheckedChanged(object sender, CheckedChangedEventArgs e)
     {
         if(chkAll.IsChecked == true && chkActive.IsChecked == false && chkNotActive.IsChecked == false)
@@ -99,7 +99,6 @@ public partial class HomeDistributorsPage : Controls.CustomControl
 
 
 
-    [Obsolete]
     private void TapGestureRecognizer_Tapped_chkActive(object sender, TappedEventArgs e)
     {
         if (chkActive.IsChecked == false)
@@ -125,7 +124,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
         }
     }
 
-    [Obsolete]
+
     private void TapGestureRecognizer_Tapped_chkNotActive(object sender, TappedEventArgs e)
     {
         if (chkNotActive.IsChecked == false)
@@ -151,7 +150,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
         }
     }
 
-    [Obsolete]
+
     private void TapGestureRecognizer_Tapped_chkAll(object sender, TappedEventArgs e)
     {
         if (chkAll.IsChecked == false)

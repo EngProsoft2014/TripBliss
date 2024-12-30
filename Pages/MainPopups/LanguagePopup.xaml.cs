@@ -31,7 +31,6 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
 
 
     //Arabic
-    [Obsolete]
     private async void ArabicTap(object sender, TappedEventArgs e)
     {
         UserDialogs.Instance.ShowLoading();
@@ -53,7 +52,6 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
     }
 
     //English
-    [Obsolete]
     private async void EnglishTap(object sender, TappedEventArgs e)
     {
         UserDialogs.Instance.ShowLoading();
@@ -74,7 +72,7 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
         UserDialogs.Instance.HideHud();
     }
 
-    [Obsolete]
+
     void LoadSetting()
     {
         string Lan = Preferences.Default.Get("Lan", "en");
@@ -103,7 +101,7 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
         }
     }
 
-    [Obsolete]
+
     async void CurrentUser()
     {
         var TrId = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId,"");

@@ -37,7 +37,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         }
 
         [RelayCommand]
-        [Obsolete]
         Task SelectExit()
         {
             Action action = async () =>

@@ -86,7 +86,6 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         }
 
         [RelayCommand]
-        [Obsolete]
         Task SelectExit()
         {
             Action action = async () =>

@@ -29,7 +29,7 @@ public partial class LoginPage : Controls.CustomControl
         base.OnAppearing();
     }
 
-    [Obsolete]
+
     protected override bool OnBackButtonPressed()
     {
         // Run the async code on the UI thread

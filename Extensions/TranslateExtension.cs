@@ -13,13 +13,12 @@ namespace TripBliss.Extensions
     public class TranslateExtension : IMarkupExtension , INotifyPropertyChanged
     {
 
-        [Obsolete]
+
         public TranslateExtension()
         {
             AppResources.Culture = CultureInfo.CurrentCulture;
         }
 
-        [Obsolete]
         public static TranslateExtension Instance { get; } = new();
 
         public object this[string resourceKey]
@@ -27,7 +26,6 @@ namespace TripBliss.Extensions
 
         public string Name { get; set; }
 
-        [Obsolete]
         public BindingBase ProvideValue(IServiceProvider serviceProvider)
         {
             return new Binding
@@ -38,7 +36,6 @@ namespace TripBliss.Extensions
             };
         }
 
-        [Obsolete]
         object IMarkupExtension.ProvideValue(IServiceProvider serviceProvider)
         {
             return ProvideValue(serviceProvider);

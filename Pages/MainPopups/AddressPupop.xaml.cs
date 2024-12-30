@@ -23,7 +23,7 @@ public partial class AddressPupop : Mopups.Pages.PopupPage
         await MopupService.Instance.PopAsync();
     }
 
-    [Obsolete]
+
     private void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
     {
         countryListView.IsVisible = true;

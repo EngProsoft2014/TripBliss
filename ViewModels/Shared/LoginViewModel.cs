@@ -85,7 +85,6 @@ namespace TripBliss.ViewModels
         }
 
         [RelayCommand]
-        [Obsolete]
         public async Task ClickLogin(ApplicationUserLoginRequest model)
         {
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)

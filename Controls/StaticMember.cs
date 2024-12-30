@@ -36,7 +36,6 @@ namespace TripBliss.Controls
 
 
         #region SnackBar Setting
-        [Obsolete]
         public static async void ShowSnackBar(string Message, string BKColor, string TextColor, Action action1)
         {
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();

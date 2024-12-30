@@ -38,7 +38,6 @@ public partial class HomeAgencyPage : Controls.CustomControl
     }
 
 
-    [Obsolete]
     protected override bool OnBackButtonPressed()
     {
         // Run the async code on the UI thread

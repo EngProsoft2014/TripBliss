@@ -165,7 +165,6 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 
         #region RelayCommand
         [RelayCommand]
-        [Obsolete]
         async Task AddToRequest()
         {
             IsBusy = false;
@@ -221,7 +220,6 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 
 
         [RelayCommand]
-        [Obsolete]
         async Task ReviewClicked()
         {
             IsBusy = false;
@@ -261,7 +259,6 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         }
 
         [RelayCommand]
-        [Obsolete]
         async Task DeleteRequest()
         {
             IsBusy = false;

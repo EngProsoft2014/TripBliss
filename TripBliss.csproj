@@ -52,8 +52,8 @@
 		<RunAOTCompilation>true</RunAOTCompilation>
 		<MtouchLink>SdkOnly</MtouchLink>
 		<CreatePackage>false</CreatePackage>
-		<CodesignProvision>VS: com.companyname.tripbliss Development</CodesignProvision>
-		<CodesignKey>Apple Development: TAREK GABER (9RKU8MRSBH)</CodesignKey>
+		<CodesignProvision>TripBliss Provisioning</CodesignProvision>
+		<CodesignKey>Apple Distribution: ENG PRO SOFT, LLC (YZWTVALFLW)</CodesignKey>
 	</PropertyGroup>
 
 
