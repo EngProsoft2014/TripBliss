@@ -48,9 +48,6 @@
 	</PropertyGroup>
 	
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
-		<BundleIdentifier>com.companyname.tripbliss</BundleIdentifier>
-		<RunAOTCompilation>true</RunAOTCompilation>
-		<MtouchLink>SdkOnly</MtouchLink>
 		<CreatePackage>false</CreatePackage>
 		<CodesignProvision>TripBliss Provisioning</CodesignProvision>
 		<CodesignKey>Apple Distribution: ENG PRO SOFT, LLC (YZWTVALFLW)</CodesignKey>
@@ -67,7 +64,6 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
 	  <AndroidUseAapt2>True</AndroidUseAapt2>
 	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
-	  <AndroidPackageFormat>aab</AndroidPackageFormat>
 	</PropertyGroup>
 
 
