@@ -17,36 +17,75 @@ namespace TripBliss
 
         public App(IGenericRepository generic, Services.Data.ServicesService service)
         {
-            _service = service;
-            Rep = generic;
-
-            BlobCache.ApplicationName = "TripBlissDB";
-            BlobCache.EnsureInitialized();
-
-            LoadSetting();
-            InitializeComponent();
-
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(ApiConstants.syncFusionLicence);
-
-            if (!string.IsNullOrEmpty(Preferences.Default.Get(ApiConstants.username, "")))
+            try
             {
-                int CatUser = Preferences.Default.Get(ApiConstants.userCategory, 0);
-                if (CatUser != 0)
+                _service = service;
+                Rep = generic;
+
+                BlobCache.ApplicationName = "TripBlissDB";
+                BlobCache.EnsureInitialized();
+
+                LoadSetting();
+                InitializeComponent();
+
+                Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(ApiConstants.syncFusionLicence);
+
+                if (!string.IsNullOrEmpty(Preferences.Default.Get(ApiConstants.username, "")))
                 {
-                    MainPage = CatUser switch
+                    int CatUser = Preferences.Default.Get(ApiConstants.userCategory, 0);
+                    if (CatUser != 0)
                     {
-                        2 => new NavigationPage(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep, _service), Rep, _service)),
-                        3 => new NavigationPage(new HomeDistributorsPage(new ViewModels.DistributorsViewModels.Dis_HomeViewModel(Rep, _service), Rep, _service)),
-                        _ => new NavigationPage(new LoginPage(new ViewModels.LoginViewModel(Rep, _service)))
-                    };
-                }
-            }
-            else
-            {
-                MainPage = new NavigationPage(new LoginPage(new ViewModels.LoginViewModel(Rep, _service)));
-            }
+                        //MainPage = CatUser switch
+                        //{
+                        //    2 => new NavigationPage(new HomeAgencyPage(new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep, _service), Rep, _service)),
+                        //    3 => new NavigationPage(new HomeDistributorsPage(new ViewModels.DistributorsViewModels.Dis_HomeViewModel(Rep, _service), Rep, _service)),
+                        //    _ => new NavigationPage(new LoginPage(new ViewModels.LoginViewModel(Rep, _service)))
+                        //};
+                        switch (CatUser)
+                        {
+                            case 2:
+                                MainPage = new NavigationPage(
+                                    new HomeAgencyPage(
+                                        new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep, _service),
+                                        Rep,
+                                        _service
+                                    )
+                                );
+                                break;
 
-            Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
+                            case 3:
+                                MainPage = new NavigationPage(
+                                    new HomeDistributorsPage(
+                                        new ViewModels.DistributorsViewModels.Dis_HomeViewModel(Rep, _service),
+                                        Rep,
+                                        _service
+                                    )
+                                );
+                                break;
+
+                            default:
+                                MainPage = new NavigationPage(
+                                    new LoginPage(
+                                        new ViewModels.LoginViewModel(Rep, _service)
+                                    )
+                                );
+                                break;
+                        }
+
+                    }
+                }
+                else
+                {
+                    MainPage = new NavigationPage(new LoginPage(new ViewModels.LoginViewModel(Rep, _service)));
+                }
+
+                Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
+            }
+            catch (Exception)
+            {
+
+            }
+           
         }
 
         private async void Connectivity_ConnectivityChanged(object? sender, ConnectivityChangedEventArgs e)
@@ -64,8 +103,15 @@ namespace TripBliss
             base.OnStart();
             if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             {
-                // Connection to internet is Not available
-                await App.Current!.MainPage!.Navigation.PushAsync(new NoInternetPage(Rep, _service));
+                try
+                {
+                    // Connection to internet is Not available
+                    await App.Current!.MainPage!.Navigation.PushAsync(new NoInternetPage(Rep, _service));
+                }
+                catch (Exception)
+                {
+
+                }
                 return;
             }
         }
@@ -83,17 +129,25 @@ namespace TripBliss
 
         void LoadSetting()
         {
-            string Lan = Preferences.Default.Get("Lan", "en");
-            if (Lan == "ar")
+            try
             {
-                CultureInfo.CurrentCulture = new CultureInfo("ar");
-                CultureInfo.CurrentUICulture = new CultureInfo("ar");
+                string Lan = Preferences.Default.Get("Lan", "en");
+                if (Lan == "ar")
+                {
+                    CultureInfo.CurrentCulture = new CultureInfo("ar");
+                    CultureInfo.CurrentUICulture = new CultureInfo("ar");
+                }
+                else
+                {
+                    CultureInfo.CurrentCulture = new CultureInfo("en");
+                    CultureInfo.CurrentUICulture = new CultureInfo("en");
+                }
             }
-            else
+            catch (Exception)
             {
-                CultureInfo.CurrentCulture = new CultureInfo("en");
-                CultureInfo.CurrentUICulture = new CultureInfo("en");
+
             }
+
         }
 
       
