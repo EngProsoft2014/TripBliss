@@ -15,7 +15,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
     Dis_HomeViewModel ViewModel;
     Dis_DistributorsViewModel distributorsViewModel;
 
-    [Obsolete]
+
     public HomeDistributorsPage(Dis_HomeViewModel viewModel,IGenericRepository generic, Services.Data.ServicesService service)
 	{
 		InitializeComponent();

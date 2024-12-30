@@ -15,8 +15,6 @@ namespace TripBliss
         readonly Services.Data.ServicesService _service;
         #endregion
 
-
-        [Obsolete]
         public App(IGenericRepository generic, Services.Data.ServicesService service)
         {
             _service = service;
