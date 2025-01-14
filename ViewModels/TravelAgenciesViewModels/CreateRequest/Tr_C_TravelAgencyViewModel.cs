@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using Microsoft.AspNet.SignalR.Client;
-using Syncfusion.Maui.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -101,7 +100,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     {
                         if (DistributorCompanys != DistributorCompanysInPage)
                         {
-                            DistributorCompanysInPage.ForEach(f=> DistributorCompanys.Add(f));         
+                            DistributorCompanysInPage.ToList().ForEach(f=> DistributorCompanys.Add(f));         
                         }      
                     }
                     PageNumber += 1;
@@ -203,7 +202,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 else
                 {
                     ObservableCollection<DistributorCompanyResponse> LstDisModel = new ObservableCollection<DistributorCompanyResponse>();
-                    FavouriteDistributorCompanys.ForEach(f =>
+                    FavouriteDistributorCompanys.ToList().ForEach(f =>
                     {
                         if (f.DistributorCompany != null)
                         {

@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Syncfusion.Maui.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -35,7 +34,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             Rep = GenericRep;
             _service = service;
             DistributorCompanys = List;     
-            DistributorCompanys.ForEach(f => f.IsSelected = false);
+            DistributorCompanys.ToList().ForEach(f => f.IsSelected = false);
         }
         #endregion
 
@@ -90,14 +89,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 if (IsSelected)
                 {
                     SelectedDistributorCompanys = new ObservableCollection<DistributorCompanyResponse>(DistributorCompanys!);
-                    DistributorCompanys.ForEach(f => f.IsSelected = true);
+                    DistributorCompanys.ToList().ForEach(f => f.IsSelected = true);
                 }
                 else
                 {
                     if(model != null)
                     {
                         SelectedDistributorCompanys!.Clear();
-                        DistributorCompanys.ForEach(f => f.IsSelected = false);
+                        DistributorCompanys.ToList().ForEach(f => f.IsSelected = false);
 
                         model.IsSelected = true;
                         SelectedDistributorCompanys.Add(model);
@@ -110,7 +109,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                             if(Way == "all")
                             {
                                 SelectedDistributorCompanys!.Clear();
-                                DistributorCompanys.ForEach(f => f.IsSelected = false);
+                                DistributorCompanys.ToList().ForEach(f => f.IsSelected = false);
                             }
                         }
                         else

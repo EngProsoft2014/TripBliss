@@ -196,7 +196,7 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are You Accept This Finall Price?.
+        ///   Looks up a localized string similar to Are You Accept This Final Price?.
         /// </summary>
         internal static string AreYouAcceptThisFinallPrice {
             get {
@@ -475,6 +475,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change Payment Method.
+        /// </summary>
+        internal static string ChangePaymentMethod {
+            get {
+                return ResourceManager.GetString("ChangePaymentMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please Check to one service or more.
         /// </summary>
         internal static string Check_to_one_service_or_more {
@@ -520,11 +529,38 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Complaint.
+        /// </summary>
+        internal static string Complaint {
+            get {
+                return ResourceManager.GetString("Complaint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Complaint added successfully.
+        /// </summary>
+        internal static string Complaint_added_successfully {
+            get {
+                return ResourceManager.GetString("Complaint_added_successfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Complete info.
         /// </summary>
         internal static string Complete_info {
             get {
                 return ResourceManager.GetString("Complete_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm refund and change payment method.
+        /// </summary>
+        internal static string Confirm_refund_and_change_payment_method {
+            get {
+                return ResourceManager.GetString("Confirm_refund_and_change_payment_method", resourceCulture);
             }
         }
         
@@ -2464,6 +2500,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Complaint..
+        /// </summary>
+        internal static string Required_Complaint {
+            get {
+                return ResourceManager.GetString("Required_Complaint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please Complete This Field Required : Cvv..
         /// </summary>
         internal static string Required_cvv {
@@ -2874,6 +2919,15 @@ namespace TripBliss.Resources.Language {
         internal static string SuccessfullyLogin {
             get {
                 return ResourceManager.GetString("SuccessfullyLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The amount has been returned and the payment method has been changed successfully..
+        /// </summary>
+        internal static string The_amount_returned_successfully {
+            get {
+                return ResourceManager.GetString("The_amount_returned_successfully", resourceCulture);
             }
         }
         

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:res="clr-namespace:TripBliss.Resources.Language"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
+             xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails"
              x:Class="TripBliss.Pages.TravelAgenciesPages.RequestDetails.BankOrCreditPaymentPage"
              Title="BankOrCreditPaymentPage"
              BackgroundColor="White"
@@ -387,6 +388,21 @@
                                 </Image>
                                 <Label Text="{Binding CreatedDate, StringFormat='{0:MM-dd-yyyy}'}" TextColor="Black" VerticalTextAlignment="End" FontSize="14"></Label>
                                 <Label Text="{Binding AmountPayment}" TextColor="Green" VerticalTextAlignment="End" FontSize="15" HorizontalOptions="EndAndExpand"></Label>
+
+                                <Button Text="{Static res:AppResources.Complaint}"
+                                        BackgroundColor="Red" 
+                                        TextColor="White" FontSize="12" 
+                                        FontAttributes="Bold" 
+                                        Padding="2" 
+                                        HeightRequest="30" 
+                                        WidthRequest="60"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_PaymentViewModel}}, Path=OpenComplaintCommand}" CommandParameter="{Binding}">
+                                    <Button.Triggers>
+                                        <DataTrigger TargetType="Button" Binding="{Binding IsComplaintTR}" Value="False">
+                                            <Setter Property="IsVisible" Value="False" />
+                                        </DataTrigger>
+                                    </Button.Triggers>
+                                </Button>
                             </StackLayout>
                         </Border>
                     </DataTemplate>

@@ -11,5 +11,10 @@
         public string? LocationNameAr { get; set; }
         public string? LocationNameLang { get { return Preferences.Default.Get("Lan", "en") == "ar" ? LocationNameAr : LocationName; } }
         public bool Active { get; set; }
+  
+        public string Address { get; set; }
+        public string Lat { get; set; }
+        public string Lng { get; set; }
+        public Location MPosition { get { return (!string.IsNullOrEmpty(Lat) && !string.IsNullOrEmpty(Lng)) ? new Location(double.Parse(Lat), double.Parse(Lng)) : new Location(22.651246, 39.811955); } set { } }
     }
 }

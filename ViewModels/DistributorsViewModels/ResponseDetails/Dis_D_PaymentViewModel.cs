@@ -29,7 +29,12 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         bool isAllPyment;
         [ObservableProperty]
         ObservableCollection<ResponseWithDistributorPaymentResponse> payments;
-
+        [ObservableProperty]
+        ResponseWithDistributorPaymentResponse onePayment;
+        [ObservableProperty]
+        ResponseWithDistributorResponse response;
+        [ObservableProperty]
+        string complaintVm;
 
         [ObservableProperty]
         string cardNumber;
@@ -64,16 +69,21 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         {
             Rep = generic;
             _service = service;
-            ReqId = model?.Id!;
-            Totalpayment = model!.TotalPayment!;
-            OutStandingprice = model.TotalPriceAgentAccept - (model.TotalPayment! + model.TotalPaymentNotActive);
-            Totalprice = model.TotalPriceAgentAccept;
-            PaymentNotActive = model.TotalPaymentNotActive;
+            Response = model;
+
             //IsPaymentNotActive = model.CountPaymentNotActive > 0 ? true : false;
             IsAllPyment = true;
 
-            Init();
+            Init(model);
         }
+
+        //public Dis_D_PaymentViewModel(ResponseWithDistributorPaymentResponse model, IGenericRepository generic, Services.Data.ServicesService service)
+        //{
+        //    Rep = generic;
+        //    _service = service;
+
+        //    OnePayment = model;
+        //}
         #endregion
 
         [RelayCommand]
@@ -93,7 +103,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                     PaymentMethod = 1,
                     dbcr = 1,
                     Notes = "",
-                    Refnumber = "stetrrcc",
+                    Refnumber = new Guid().ToString(),
                 };
 
                 UserDialogs.Instance.ShowLoading();
@@ -113,6 +123,58 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                     var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
+            }
+
+            IsBusy = true;
+        }
+
+        [RelayCommand]
+        async Task ApplyComplaint(ResponseWithDistributorPaymentResponse response)
+        {
+            IsBusy = false;
+
+            if (!string.IsNullOrEmpty(ComplaintVm))
+            {
+                string UserToken = await _service.UserToken();
+
+                ResponseWithDistributorPaymentRequest paymentRequest = new ResponseWithDistributorPaymentRequest
+                {
+                    AmountPayment = response.AmountPayment,
+                    PaymentMethod = response.PaymentMethod,
+                    dbcr = response.dbcr,
+                    Notes = response.Notes,
+                    Refnumber = response.Refnumber,
+                    Complaint = ComplaintVm
+                };
+
+                UserDialogs.Instance.ShowLoading();
+                var json = await Rep.PostTRAsync<ResponseWithDistributorPaymentRequest, ResponseWithDistributorPaymentResponse>(ApiConstants.AllPaymentApi + $"{response.ResponseWithDistributorId}/ResponseWithDistributorPayment/{response.Id}/Update", paymentRequest, UserToken);
+                UserDialogs.Instance.HideHud();
+
+                if(json.Item1 == null && json.Item2 ==null)
+                {
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.ErrorTryAgain, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
+                else if (json.Item1 != null)
+                {
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Complaint_added_successfully, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+
+                    await MopupService.Instance.PopAsync();
+
+                    await App.Current!.MainPage!.Navigation.PopAsync();
+                }
+                else
+                {
+                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
+            }
+            else
+            {
+                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_Complaint, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                await toast.Show();
             }
 
             IsBusy = true;
@@ -146,6 +208,16 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 
         }
 
+        [RelayCommand]
+        async Task OpenComplaint(ResponseWithDistributorPaymentResponse payment)
+        {
+            IsBusy = false;
+            OnePayment = payment;
+            var page = new Pages.DistributorsPages.ResponseDetailes.Dis_ComplaintPopup(this);
+            await MopupService.Instance.PushAsync(page);
+            IsBusy = true;
+        }
+
 
         [RelayCommand]
         async Task BackButtonClicked()
@@ -157,9 +229,15 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         }
 
         #region Methods
-        async void Init()
+        async void Init(ResponseWithDistributorResponse model)
         {
             UserDialogs.Instance.ShowLoading();
+            ReqId = model?.Id!;
+            Totalpayment = model!.TotalPayment!;
+            OutStandingprice = model.TotalPriceAgentAccept - (model.TotalPayment! + model.TotalPaymentNotActive);
+            Totalprice = model.TotalPriceAgentAccept;
+            PaymentNotActive = model.TotalPaymentNotActive;
+
             await GetPayDetailes();
             UserDialogs.Instance.HideHud();
         }

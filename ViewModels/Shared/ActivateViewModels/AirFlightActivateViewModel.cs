@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using Mopups.Services;
-using Syncfusion.Maui.Data;
 using System.Collections.ObjectModel;
 using System.IO;
 using TripBliss.Constants;
@@ -410,12 +409,12 @@ namespace TripBliss.ViewModels.ActivateViewModels
                                     {
                                         if (TOD == "T")
                                         {
-                                            LstTRAirFlightDetails.ForEach(f => LstAirFlightDetails.Remove(f));
+                                            LstTRAirFlightDetails.ToList().ForEach(f => LstAirFlightDetails.Remove(f));
                                             LstTRAirFlightDetails.Clear();
                                         }
                                         else
                                         {
-                                            LstDSAirFlightDetails.ForEach(f => LstAirFlightDetails.Remove(f));
+                                            LstDSAirFlightDetails.ToList().ForEach(f => LstAirFlightDetails.Remove(f));
                                             LstDSAirFlightDetails.Clear();
                                         }
                                     }
@@ -424,12 +423,12 @@ namespace TripBliss.ViewModels.ActivateViewModels
                                 {
                                     if (TOD == "T")
                                     {
-                                        LstTRAirFlightDetails.ForEach(f => LstAirFlightDetails.Remove(f));
+                                        LstTRAirFlightDetails.ToList().ForEach(f => LstAirFlightDetails.Remove(f));
                                         LstTRAirFlightDetails.Clear();
                                     }
                                     else
                                     {
-                                        LstDSAirFlightDetails.ForEach(f => LstAirFlightDetails.Remove(f));
+                                        LstDSAirFlightDetails.ToList().ForEach(f => LstAirFlightDetails.Remove(f));
                                         LstDSAirFlightDetails.Clear();
                                     }
                                 }

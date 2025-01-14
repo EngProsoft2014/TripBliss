@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TripBliss.Pages.DistributorsPages.ResponseDetailes.RequestDetailsPage"
              xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
-             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
              xmlns:vm="clr-namespace:TripBliss.ViewModels.DistributorsViewModels.ResponseDetails"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              xmlns:res="clr-namespace:TripBliss.Resources.Language"
@@ -11,11 +10,7 @@
              IsEnabled="{Binding IsBusy}"
              NavigationPage.HasNavigationBar="False"
              Title="RequestDetailsPage">
-    <Controls:CustomControl.Resources>
-        <Style TargetType="syncfusion:DataGridCell">
-            <Setter Property="FontSize" Value="14"/>
-        </Style>
-    </Controls:CustomControl.Resources>
+
     <StackLayout Orientation="Vertical">
         <tabView:SfTabView TabBarPlacement="Bottom" VerticalOptions="FillAndExpand" IndicatorBackground="#1c874b"
                                IndicatorPlacement="Top" TabBarHeight="55" FlowDirection="LeftToRight" SelectionChanged="SfTabView_SelectionChanged">
@@ -968,15 +963,15 @@
                                     <CollectionView ItemsSource="{Binding Payments}" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Margin="0,0,0,60">
                                         <CollectionView.ItemTemplate>
                                             <DataTemplate>
-                                                <Border StrokeShape="RoundRectangle 20" Padding="15,0,15,0" HeightRequest="50">
-                                                    <StackLayout Orientation="Horizontal" Spacing="15">
+                                                <Border StrokeShape="RoundRectangle 20" Padding="15,0,10,0" HeightRequest="50">
+                                                    <StackLayout Orientation="Horizontal" Spacing="10">
                                                         <Image VerticalOptions="CenterAndExpand">
                                                             <Image.Source>
-                                                                <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Black" Size="25"></FontImageSource>
+                                                                <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Black" Size="20"></FontImageSource>
                                                             </Image.Source>
                                                         </Image>
 
-                                                        <Label Text="{Binding CreatedDate, StringFormat='{0:MM-dd-yyyy}'}" TextColor="Black" VerticalTextAlignment="Center" FontSize="14"></Label>
+                                                        <Label Text="{Binding CreatedDate, StringFormat='{0:MM-dd-yyyy}'}" TextColor="Black" VerticalTextAlignment="Center" FontSize="13"></Label>
 
 
                                                         <Image Source="{Binding UrlImgNameVM}" WidthRequest="50" Aspect="AspectFit" >
@@ -990,7 +985,7 @@
                                                             </Image.Triggers>
                                                         </Image>
 
-                                                        <Label Text="{Binding AmountPayment}" TextColor="Green" VerticalTextAlignment="Center" FontSize="15" HorizontalOptions="EndAndExpand"></Label>
+                                                        <Label Text="{Binding AmountPayment}" TextColor="Green" VerticalTextAlignment="Center" FontSize="13" HorizontalOptions="EndAndExpand"></Label>
 
                                                         <CheckBox x:Name="chekActive" Color="Green" IsChecked="{Binding Active}">
                                                             <CheckBox.Triggers>
@@ -1015,6 +1010,22 @@
                                                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_PaymentViewModel}}, Path=IsActivePayBankCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
                                                             </CheckBox.GestureRecognizers>
                                                         </CheckBox>
+
+                                                        <Button Text="{Static res:AppResources.Complaint}"
+                                                                IsVisible="False"
+                                                                BackgroundColor="Red" 
+                                                                TextColor="White" FontSize="12" 
+                                                                FontAttributes="Bold" 
+                                                                Padding="2" 
+                                                                HeightRequest="30" 
+                                                                WidthRequest="60"
+                                                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Dis_D_PaymentViewModel}}, Path=OpenComplaintCommand}" CommandParameter="{Binding}">
+                                                            <Button.Triggers>
+                                                                <DataTrigger TargetType="Button" Binding="{Binding Active}" Value="False">
+                                                                    <Setter Property="IsVisible" Value="True" />
+                                                                </DataTrigger>
+                                                            </Button.Triggers>
+                                                        </Button>
                                                     </StackLayout>
 
                                                 </Border>

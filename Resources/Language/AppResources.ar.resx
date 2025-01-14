@@ -1098,4 +1098,22 @@
   <data name="Send_All_Prices_Btn_Msg" xml:space="preserve">
     <value>عندما تحتاج إرسال جميع الاسعار لديك الى وكالة السفر</value>
   </data>
+  <data name="Complaint_added_successfully" xml:space="preserve">
+    <value>تم إضافة الشكوى بنجاح</value>
+  </data>
+  <data name="Required_Complaint" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: الشكوى.</value>
+  </data>
+  <data name="Complaint" xml:space="preserve">
+    <value>شكوى</value>
+  </data>
+  <data name="ChangePaymentMethod" xml:space="preserve">
+    <value>تغيير طريقة الدفع</value>
+  </data>
+  <data name="Confirm_refund_and_change_payment_method" xml:space="preserve">
+    <value>تأكيد ارجاع المبلغ و تغيير طريقة الدفع</value>
+  </data>
+  <data name="The_amount_returned_successfully" xml:space="preserve">
+    <value>تم ارجاع المبلغ و تغيير طريقة الدفع بنجاح</value>
+  </data>
 </root>

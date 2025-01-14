@@ -34,6 +34,7 @@ namespace TripBliss.Helpers
         public static readonly string PathServerProfileImages = "https://projectservices.engprosoft.com/EmployeePic/";
 
         public static readonly string ServerUrl = "https://api.tripsbliss.com/";
+        //public static readonly string ServerUrl = "https://192.168.1.12:7024/";
 
         //public static readonly string ServerUrl = "https://dhm.engprosoft.net/";
 

@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using Newtonsoft.Json;
-using Syncfusion.Maui.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -109,7 +108,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                             {
                                 if (Requests != RequestsInPage)
                                 {
-                                    RequestsInPage.ForEach(f => Requests.Add(f));
+                                    RequestsInPage.ToList().ForEach(f => Requests.Add(f));
                                 }
                             }
                             PageNumber += 1;      

@@ -1,7 +1,6 @@
 using CommunityToolkit.Maui.Alerts;
 using Maui.PDFView;
 using Microsoft.Maui.Storage;
-using Syncfusion.Maui.PdfViewer;
 using System;
 
 namespace TripBliss.Pages.Shared;

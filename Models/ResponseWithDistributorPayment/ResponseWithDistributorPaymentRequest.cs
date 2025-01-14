@@ -14,6 +14,7 @@
         public int? ExpirationYear { get; set; }
         public string? CardNumber { get; set; }
         public string? Notes { get; set; }
+        public string? Complaint { get; set; }
 
     }
 }

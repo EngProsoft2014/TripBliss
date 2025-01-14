@@ -13,6 +13,11 @@ using CommunityToolkit.Maui.Alerts;
 using Controls.UserDialogs.Maui;
 using Microsoft.AspNet.SignalR.Client.Http;
 using TripBliss.Pages.Shared;
+using GoogleApi.Entities.Interfaces;
+using GoogleApi.Entities.Translate.Common.Enums;
+using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
+using Mopups.Services;
+using TripBliss.Pages.MainPopups;
 
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
@@ -202,10 +207,32 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
 
-        } 
+        }
         #endregion
 
         #region RelayCommand
+        [RelayCommand]
+        void OpenMap(LocationResponse location)
+        {
+            ObservableCollection<HotelResponse> hotels = new ObservableCollection<HotelResponse>(Hoteles.Where(x=> x.LocationId == location.Id).ToList());
+
+            var page = new MapHotelsPage(hotels);
+            page.MapHotelClose += (Hotel) =>
+            {
+                try
+                {
+                    SelectedHotel = Hotel;
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            };
+
+            App.Current!.MainPage!.Navigation.PushAsync(page);
+        }
+
         [RelayCommand]
         void AddRoom()
         {

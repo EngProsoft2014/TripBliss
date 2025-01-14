@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mopups:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+                  xmlns:res="clr-namespace:TripBliss.Resources.Language"
+                  xmlns:mopupsanim="clr-namespace:Mopups.Animations;assembly=Mopups"
+                  xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails"
+                  x:Class="TripBliss.Pages.TravelAgenciesPages.RequestDetails.Tr_ComplaintPopup"
+                  CloseWhenBackgroundIsClicked="True"
+                  NavigationPage.HasNavigationBar="False" 
+                  BackgroundColor="#90000000"
+                  IsEnabled="{Binding IsBusy}"
+                  x:DataType="vm:Tr_D_PaymentViewModel"
+                  Title="Tr_ComplaintPopup">
+
+    <mopups:PopupPage.Animation>
+        <mopupsanim:MoveAnimation
+               DurationIn="700"
+               EasingIn="BounceOut"
+               PositionIn="Bottom"
+               PositionOut="Center" />
+    </mopups:PopupPage.Animation>
+
+    <Border StrokeShape="RoundRectangle 20" Padding="20" VerticalOptions="CenterAndExpand" HeightRequest="400" HorizontalOptions="FillAndExpand" Margin="30" BackgroundColor="White">
+
+        <StackLayout Spacing="10">
+
+            <Label Text="{Static res:AppResources.Complaint}" 
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="18"
+                   FontAttributes="Bold" 
+                   TextColor="Black">
+            </Label>
+
+            <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10" HeightRequest="250">
+                <Editor 
+                    x:Name="edComplaint"
+                    Text="{Binding ComplaintVm}"
+                    Keyboard="Text" 
+                    TextColor="Black"
+                    FontSize="13"
+                    FontAutoScalingEnabled="False"
+                    FontFamily="OpenSansRegular">
+                </Editor>
+            </Border>
+
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" Spacing="10">
+
+                <Button Text="{Static res:AppResources.ChangePaymentMethod}" FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" FontSize="13"
+                  BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
+                  Command="{Binding ChangePaymentMethodCommand}" CommandParameter="{Binding OnePayment}">
+                </Button>
+
+                <Button Text="{Static res:AppResources.Cancel}" FontAutoScalingEnabled="False" Padding="0,5,0,5" HeightRequest="35" WidthRequest="70" FontSize="13" HorizontalOptions="End"
+                      BackgroundColor="White" CornerRadius="5" TextColor="#2fa562" BorderColor="#2fa562" BorderWidth="1" FontAttributes="Bold"
+                      Clicked="Button_Clicked">
+                </Button>
+
+            </StackLayout>
+        </StackLayout>
+
+
+    </Border>
+
+</mopups:PopupPage>

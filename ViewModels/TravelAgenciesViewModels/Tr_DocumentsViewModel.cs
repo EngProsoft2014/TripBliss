@@ -4,7 +4,6 @@ using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using Mopups.Services;
 using SkiaSharp;
-using Syncfusion.Pdf;
 using System.Collections.ObjectModel;
 using System.Text;
 using TripBliss.Constants;

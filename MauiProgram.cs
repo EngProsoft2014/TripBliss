@@ -14,6 +14,7 @@ using TripBliss.Pages.Shared;
 using Microsoft.Maui.Handlers;
 
 
+
 namespace TripBliss
 {
     public static class MauiProgram
@@ -27,6 +28,7 @@ namespace TripBliss
                 .UseMauiCommunityToolkit()
                 .UseMauiCameraView()
                 .UseUserDialogs()
+                .UseMauiMaps()
                 .ConfigureMopups()
                 .ConfigureSyncfusionCore()
                 .UseMauiPdfView()
@@ -44,24 +46,19 @@ namespace TripBliss
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(Entry), (handler, view) =>
+
+            builder.Services.AddDependencies();
+
+            DependencyInjection.ControlsBackground();
+
+            builder.ConfigureMauiHandlers(handlers =>
             {
-#if ANDROID
-            handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
+#if ANDROID 
+                handlers.AddHandler<Microsoft.Maui.Controls.Maps.Map, Platforms.Android.CustomMapHandler>();
+#else
+                handlers.AddHandler<Microsoft.Maui.Controls.Maps.Map, Platforms.iOS.CustomMapHandler>();
 #endif
             });
-            builder.Services.AddSingleton<ServicesService>();
-            builder.Services.AddScoped<IGenericRepository, GenericRepository>();
-            //builder.Services.AddScoped<IServicesService,ServicesService>();
-
-            builder.Services.AddTransient<SignUpViewModel>();
-            builder.Services.AddTransient<ViewModels.LoginViewModel>();
-            builder.Services.AddTransient<ViewModels.TravelAgenciesViewModels.CreateRequest.Tr_C_AirFlightServicesViewModel>();
-
-
-            builder.Services.AddTransient<LoginPage>();
-            builder.Services.AddTransient<SignUpPage>();
-            builder.Services.AddTransient<Pages.TravelAgenciesPages.CreateRequest.AirFlightServicePage>();
 
             return builder.Build();
         }

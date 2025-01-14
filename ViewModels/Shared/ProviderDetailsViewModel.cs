@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TripBliss.Models;
 
-namespace TripBliss.ViewModels.Shared
+namespace TripBliss.ViewModels
 {
     public partial class ProviderDetailsViewModel : BaseViewModel
     {

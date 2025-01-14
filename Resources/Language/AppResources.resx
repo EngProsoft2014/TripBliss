@@ -586,7 +586,7 @@
     <value>Question?</value>
   </data>
   <data name="AreYouAcceptThisFinallPrice" xml:space="preserve">
-    <value>Are You Accept This Finall Price?</value>
+    <value>Are You Accept This Final Price?</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
@@ -1097,5 +1097,23 @@
   </data>
   <data name="Send_All_Prices_Btn_Msg" xml:space="preserve">
     <value>When you need to send all your prices to the travel agency</value>
+  </data>
+  <data name="Complaint_added_successfully" xml:space="preserve">
+    <value>Complaint added successfully</value>
+  </data>
+  <data name="Required_Complaint" xml:space="preserve">
+    <value>Please Complete This Field Required : Complaint.</value>
+  </data>
+  <data name="Complaint" xml:space="preserve">
+    <value>Complaint</value>
+  </data>
+  <data name="ChangePaymentMethod" xml:space="preserve">
+    <value>Change Payment Method</value>
+  </data>
+  <data name="Confirm_refund_and_change_payment_method" xml:space="preserve">
+    <value>Confirm refund and change payment method</value>
+  </data>
+  <data name="The_amount_returned_successfully" xml:space="preserve">
+    <value>The amount has been returned and the payment method has been changed successfully.</value>
   </data>
 </root>

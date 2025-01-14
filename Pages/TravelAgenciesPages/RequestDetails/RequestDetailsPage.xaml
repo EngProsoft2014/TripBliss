@@ -3,18 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TripBliss.Pages.TravelAgenciesPages.RequestDetails.RequestDetailsPage"
              xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
-             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails"
              xmlns:res="clr-namespace:TripBliss.Resources.Language"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Title="RequestDeatielsPage">
-    <Controls:CustomControl.Resources>
-        <Style TargetType="syncfusion:DataGridCell">
-            <Setter Property="FontSize" Value="14"/>
-        </Style>
-    </Controls:CustomControl.Resources>
+
 
     <tabView:SfTabView TabBarPlacement="Bottom" VerticalOptions="FillAndExpand" IndicatorBackground="#1c874b" FlowDirection="LeftToRight"
                                IndicatorPlacement="Top" TabBarHeight="55" SelectionChanged="SfTabView_SelectionChanged">

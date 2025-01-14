@@ -33,7 +33,7 @@
 
         <Border StrokeShape="RoundRectangle 25" Stroke="Gray" Margin="0,20,0,0" BackgroundColor="White">
             <Grid>
-                <SearchBar BackgroundColor="White" Placeholder="{Static res:AppResources.plcSearch}" HeightRequest="40" FontSize="15"
+                <SearchBar BackgroundColor="White" Placeholder="{Static res:AppResources.plcSearch}" FontSize="15"
                    TextColor="Black"></SearchBar>
                 <!--<Border StrokeShape="RoundRectangle 3,25,25,25" Stroke="Transparent" BackgroundColor="#63bd60" WidthRequest="40" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
             <Image WidthRequest="20" HeightRequest="20">
@@ -44,13 +44,16 @@
         </Border>-->
             </Grid>
             <Border.Shadow>
-                <Shadow  Brush="DarkGray" Opacity="1"></Shadow>
+                <Shadow  Brush="{OnPlatform Android=Gray, iOS=LightGray}" Opacity="1" Radius="{OnPlatform Android=5 , iOS=3}"></Shadow>
             </Border.Shadow>
         </Border>
         <CollectionView ItemsSource="{Binding TravelAgencies}" VerticalOptions="FillAndExpand" SelectionMode="None">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="20" Orientation="Vertical"></LinearItemsLayout>
+            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Border StrokeShape="RoundRectangle 20" Margin="0,10">
+                    <Border StrokeShape="RoundRectangle 20">
                         <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
                             <VerticalStackLayout Padding="10" Spacing="5">
                                 <Label Text="{Binding Name}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>

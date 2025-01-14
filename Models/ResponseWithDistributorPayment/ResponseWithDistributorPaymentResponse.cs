@@ -34,6 +34,9 @@ namespace TripBliss.Models
         }
         public string? Notes { get; set; }
         public DateTime? CreatedDate { get; set; }
+        public string? Complaint { get; set; }
+
+        public bool? IsComplaintTR { get{ return !string.IsNullOrEmpty(Complaint) && Active == false ? true : false; }}
 
         public event PropertyChangedEventHandler? PropertyChanged;
     }

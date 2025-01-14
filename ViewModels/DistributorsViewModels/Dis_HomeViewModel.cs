@@ -4,7 +4,6 @@ using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using Microsoft.AspNet.SignalR.Client.Http;
 using Newtonsoft.Json;
-using Syncfusion.Maui.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -96,7 +95,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels
                             {
                                 if (Responses != ResponsesInPage)
                                 {
-                                    ResponsesInPage.ForEach(f => Responses.Add(f));
+                                    ResponsesInPage.ToList().ForEach(f => Responses.Add(f));
                                 }
                             }
 

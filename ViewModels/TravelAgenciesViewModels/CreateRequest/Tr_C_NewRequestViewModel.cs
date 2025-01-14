@@ -15,7 +15,6 @@ using TripBliss.Constants;
 using CommunityToolkit.Maui.Alerts;
 using TripBliss.Pages.TravelAgenciesPages;
 using Controls.UserDialogs.Maui;
-using Syncfusion.Maui.Data;
 using TripBliss.Pages.Shared;
 
 

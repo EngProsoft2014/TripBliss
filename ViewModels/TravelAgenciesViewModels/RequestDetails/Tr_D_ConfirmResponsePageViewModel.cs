@@ -263,7 +263,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 {
                     Response = json;
 
-                    IsPayment = Response.TotalPayment == 0 ? false : true;
+                    IsPayment = (Response.TotalPayment == 0 && Response.TotalPaymentNotActive == 0) ? false : true;
 
                     bool result = CheckChooseServices();
                     if (result)
@@ -371,7 +371,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     PaymentMethod = 1,
                     dbcr = 1,
                     Notes = "",
-                    Refnumber = "stetrrcc",
+                    Refnumber = new Guid().ToString(),
                 };
                 UserDialogs.Instance.ShowLoading();
                 var json = await Rep.PostTRAsync<ResponseWithDistributorPaymentRequest, ResponseWithDistributorPaymentResponse>(ApiConstants.AllPaymentApi + $"{Response.Id}/ResponseWithDistributorPayment", paymentRequest, UserToken);

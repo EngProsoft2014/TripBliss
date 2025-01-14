@@ -34,10 +34,18 @@
 	<string>We require access to your gallery to allow you to use photos for your profile or share them with customers within the app. For example, you can use a picture to upload as your profile image or use pictures of the documents required for your order to be processed.</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/logo.appiconset</string>
+
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We need your location to provide better services.</string>
+	<string>This app needs access to location when open.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We need your location even when the app is not active.</string>
+	<string>This app needs access to location when in the background.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app needs access to location when open and in the background.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
+	
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleLocalizations</key>
