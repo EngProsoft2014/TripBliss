@@ -192,6 +192,7 @@ namespace TripBliss
             Services.AddTransient<Pages.TravelAgenciesPages.RequestDetails.ConfirmResponsePage>();
             Services.AddTransient<Pages.TravelAgenciesPages.RequestDetails.HotelServicePage>();
             Services.AddTransient<Pages.TravelAgenciesPages.RequestDetails.RequestDetailsPage>();
+            Services.AddTransient<Pages.TravelAgenciesPages.RequestDetails.Tr_ComplaintPopup>();
             Services.AddTransient<Pages.TravelAgenciesPages.RequestDetails.Tr_ReviewPopup>();
             Services.AddTransient<Pages.TravelAgenciesPages.RequestDetails.TransportaionServicePage>();
             Services.AddTransient<Pages.TravelAgenciesPages.RequestDetails.VisaServicePage>();

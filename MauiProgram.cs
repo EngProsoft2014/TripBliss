@@ -14,7 +14,6 @@ using TripBliss.Pages.Shared;
 using Microsoft.Maui.Handlers;
 
 
-
 namespace TripBliss
 {
     public static class MauiProgram

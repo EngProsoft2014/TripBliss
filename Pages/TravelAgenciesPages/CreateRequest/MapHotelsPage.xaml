@@ -71,13 +71,12 @@
                        MapType="Hybrid">
                 <!--<maps:Map.ItemTemplate>
                     <DataTemplate>
-                        <maps:Pin x:Name="mapsPin" Location="{Binding MPosition}" Label="{Binding Id}" MarkerId="{Binding Id}">
+                        <maps:Pin x:Name="mapsPin" MarkerClicked="mapsPin_MarkerClicked" Location="{Binding MPosition}" Label="{Binding HotelNameLang}" MarkerId="{Binding Id}">
 
                         </maps:Pin>
                     </DataTemplate>
                 </maps:Map.ItemTemplate>-->
             </maps:Map>
-
 
 
             <Border x:Name="bdHotel" VerticalOptions="End" IsVisible="False" StrokeShape="RoundRectangle 15" BackgroundColor="White" Opacity="1" Margin="20,0,60,20" Padding="20,10,20,10">

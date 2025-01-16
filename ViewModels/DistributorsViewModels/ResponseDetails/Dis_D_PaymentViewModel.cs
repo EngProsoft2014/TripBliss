@@ -76,14 +76,6 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
 
             Init(model);
         }
-
-        //public Dis_D_PaymentViewModel(ResponseWithDistributorPaymentResponse model, IGenericRepository generic, Services.Data.ServicesService service)
-        //{
-        //    Rep = generic;
-        //    _service = service;
-
-        //    OnePayment = model;
-        //}
         #endregion
 
         [RelayCommand]
@@ -137,18 +129,9 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
             {
                 string UserToken = await _service.UserToken();
 
-                ResponseWithDistributorPaymentRequest paymentRequest = new ResponseWithDistributorPaymentRequest
-                {
-                    AmountPayment = response.AmountPayment,
-                    PaymentMethod = response.PaymentMethod,
-                    dbcr = response.dbcr,
-                    Notes = response.Notes,
-                    Refnumber = response.Refnumber,
-                    Complaint = ComplaintVm
-                };
-
+                response.Complaint = ComplaintVm;
                 UserDialogs.Instance.ShowLoading();
-                var json = await Rep.PostTRAsync<ResponseWithDistributorPaymentRequest, ResponseWithDistributorPaymentResponse>(ApiConstants.AllPaymentApi + $"{response.ResponseWithDistributorId}/ResponseWithDistributorPayment/{response.Id}/Update", paymentRequest, UserToken);
+                var json = await Rep.PostTRAsync<ResponseWithDistributorPaymentResponse,ResponseWithDistributorPaymentResponse>(ApiConstants.AllPaymentApi + $"{response.ResponseWithDistributorId}/ResponseWithDistributorPayment/{response.Id}/Update", response, UserToken);
                 UserDialogs.Instance.HideHud();
 
                 if(json.Item1 == null && json.Item2 ==null)
@@ -162,8 +145,6 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                     await toast.Show();
 
                     await MopupService.Instance.PopAsync();
-
-                    await App.Current!.MainPage!.Navigation.PopAsync();
                 }
                 else
                 {
@@ -213,6 +194,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         {
             IsBusy = false;
             OnePayment = payment;
+            ComplaintVm = !string.IsNullOrEmpty(payment.Complaint) ? payment.Complaint : "";
             var page = new Pages.DistributorsPages.ResponseDetailes.Dis_ComplaintPopup(this);
             await MopupService.Instance.PushAsync(page);
             IsBusy = true;
@@ -231,7 +213,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         #region Methods
         async void Init(ResponseWithDistributorResponse model)
         {
-            UserDialogs.Instance.ShowLoading();
+            UserDialogs.Instance.ShowLoading();  
             ReqId = model?.Id!;
             Totalpayment = model!.TotalPayment!;
             OutStandingprice = model.TotalPriceAgentAccept - (model.TotalPayment! + model.TotalPaymentNotActive);

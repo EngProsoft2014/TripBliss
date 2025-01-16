@@ -41,10 +41,9 @@ public partial class MapHotelsPage : ContentPage
         };
         myMap.Pins.Add(pinDefualt);
 
-        
         foreach (var hotel in hotels)
         {
-            if(!string.IsNullOrEmpty(hotel.Lat))
+            if (!string.IsNullOrEmpty(hotel.Lat))
             {
                 var pin = new CustomPin();
                 pin = new CustomPin
@@ -56,9 +55,13 @@ public partial class MapHotelsPage : ContentPage
                     Location = new Location(new Location(double.Parse(hotel.Lat), double.Parse(hotel.Lng))),
                     ImageSource = "hotel.png"
                 };
-                myMap.Pins.Add(pin);
-
                 pin.MarkerClicked += Pin_MarkerClicked;
+
+                //myMap.Pins.Add(pin);
+                if (!myMap.Pins.Any(p => p.Location == new Location(double.Parse(hotel.Lat), double.Parse(hotel.Lng))))
+                {
+                    myMap.Pins.Add(pin);
+                }
             }
         }
 
@@ -89,23 +92,24 @@ public partial class MapHotelsPage : ContentPage
 
             if (obj != null)
             {
-                myMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Location(!string.IsNullOrEmpty(obj.Lat) ? double.Parse(obj.Lat) : 21.422832377351494, !string.IsNullOrEmpty(obj.Lng) ? double.Parse(obj.Lng) : 39.82615615606046), Distance.FromMeters(200)));
+                response = LstHotels?.FirstOrDefault(f => f.HotelName == obj.HotelName)!;
+                bdHotel.IsVisible = true;
+                lblName.Text = obj.HotelNameLang;
+                lblAddress.Text = obj.Address;
+                myMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Location(!string.IsNullOrEmpty(obj.Lat) ? double.Parse(obj.Lat) : 21.422832377351494, !string.IsNullOrEmpty(obj.Lng) ? double.Parse(obj.Lng) : 39.82615615606046), Distance.FromMeters(400)));
             }
         }
     }
 
     private void Pin_MarkerClicked(object? sender, PinClickedEventArgs e)
     {
-        var hotel = sender as CustomPin;
-        if(hotel != null)
-        {      
-            //int id = 0;
-            //int.TryParse(hotel.MarkerId?.ToString()!.Substring(1), out id);
-            response = LstHotels?.FirstOrDefault(f => f.HotelName == hotel.Label)!;
+        if (sender is CustomPin clickedPin)
+        {
+            response = LstHotels?.FirstOrDefault(f => f.HotelName == clickedPin.Label)!;
             bdHotel.IsVisible = true;
-            lblName.Text = hotel.Label;
-            lblAddress.Text = hotel.Address;
-        }   
+            lblName.Text = clickedPin.Label;
+            lblAddress.Text = clickedPin.Address;
+        }
     }
 
     private async void Button_Clicked(object sender, EventArgs e)

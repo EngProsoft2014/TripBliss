@@ -34,7 +34,7 @@
 
             <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10" HeightRequest="250">
                 <Editor 
-                    x:Name="edComplaint"
+                    x:Name="edComplaint" IsReadOnly="True"
                     Text="{Binding ComplaintVm}"
                     Keyboard="Text" 
                     TextColor="Black"

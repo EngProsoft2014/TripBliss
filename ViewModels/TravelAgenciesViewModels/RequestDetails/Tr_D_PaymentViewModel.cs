@@ -97,14 +97,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
             _service = service;
             Init(model, distributorResponse);
         }
-
-        //public Tr_D_PaymentViewModel(ResponseWithDistributorPaymentResponse model, IGenericRepository generic, Services.Data.ServicesService service)
-        //{
-        //    Rep = generic;
-        //    _service = service;
-
-        //    OnePayment = model;
-        //}
         #endregion
 
 
@@ -236,6 +228,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         {
             IsBusy = false;
             OnePayment = model;
+            ComplaintVm = !string.IsNullOrEmpty(model.Complaint) ? model.Complaint : "";
             var page = new Pages.TravelAgenciesPages.RequestDetails.Tr_ComplaintPopup(this);
             await MopupService.Instance.PushAsync(page);
             IsBusy = true;
