@@ -10,7 +10,8 @@ namespace TripBliss.Constants
         public static string BaseApiUrl;
 
         //public const string syncFusionLicence = "Ngo9BigBOggjHTQxAR8/V1NCaF1cWWhIfkxwWmFZfVpgfF9GZ1ZUTGYuP1ZhSXxXdkxhWn5Xc3BQRmVbUUE="; //Version= 24.x.x
-        public const string syncFusionLicence = "Ngo9BigBOggjHTQxAR8/V1NDaF5cWWtCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWXZcc3VcRWldUkN0V0Y="; //Version= 27.x.x
+        //public const string syncFusionLicence = "Ngo9BigBOggjHTQxAR8/V1NDaF5cWWtCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWXZcc3VcRWldUkN0V0Y="; //Version= 27.x.x
+        public const string syncFusionLicence = "Ngo9BigBOggjHTQxAR8/V1NMaF5cXmBCf0x0TXxbf1x1ZFFMZFpbQXZPIiBoS35Rc0ViWHlfdnZRR2daU0xx"; //Version= 28.x.x
 
 
         #region Preferences Keys
