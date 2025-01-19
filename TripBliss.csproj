@@ -48,6 +48,9 @@
 	</PropertyGroup>
 	
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
+		<MtouchLink>None</MtouchLink>
+		<UseInterpreter>True</UseInterpreter>
+		<MtouchExtraArgs>--verbose</MtouchExtraArgs>
 		<CreatePackage>false</CreatePackage>
 		<CodesignProvision>TripBliss Provisioning</CodesignProvision>
 		<CodesignKey>Apple Distribution: ENG PRO SOFT, LLC (YZWTVALFLW)</CodesignKey>
