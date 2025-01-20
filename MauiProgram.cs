@@ -54,7 +54,7 @@ namespace TripBliss
             {
 #if ANDROID 
                 handlers.AddHandler<Microsoft.Maui.Controls.Maps.Map, Platforms.Android.CustomMapHandler>();
-#else
+#elif IOS
                 handlers.AddHandler<Microsoft.Maui.Controls.Maps.Map, Platforms.iOS.CustomMapHandler>();
 #endif
             });

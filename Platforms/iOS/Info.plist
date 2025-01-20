@@ -54,7 +54,7 @@
 		<string>ar</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.0.0.5</string>
+	<string>1.0.0.8</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.2</string>
 	<key>NSAppTransportSecurity</key>
