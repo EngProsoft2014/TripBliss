@@ -34,7 +34,8 @@
 	<string>We require access to your gallery to allow you to use photos for your profile or share them with customers within the app. For example, you can use a picture to upload as your profile image or use pictures of the documents required for your order to be processed.</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/logo.appiconset</string>
-
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>This app does not use Bluetooth directly. This is required by third-party libraries.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app needs access to location when open.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -45,7 +46,6 @@
 	<array>
 		<string>location</string>
 	</array>
-	
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleLocalizations</key>
@@ -54,9 +54,9 @@
 		<string>ar</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.0.0.13</string>
+	<string>1.0.0.5</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
+	<string>1.2</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
