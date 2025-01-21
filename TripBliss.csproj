@@ -48,7 +48,7 @@
 	</PropertyGroup>
 	
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
-		<MtouchLink>None</MtouchLink>
+		<MtouchLink>SdkOnly</MtouchLink>
 		<UseInterpreter>True</UseInterpreter>
 		<MtouchExtraArgs>--verbose</MtouchExtraArgs>
 		<CreatePackage>false</CreatePackage>
