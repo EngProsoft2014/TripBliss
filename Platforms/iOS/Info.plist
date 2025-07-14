@@ -26,30 +26,22 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	
 	<key>NSCameraUsageDescription</key>
 	<string>We require access to your camera to allow you to capture photos for your profile or share them with customers within the app. For example, you can take a picture to upload as your profile image or take photos of the documents required for your order to be processed.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>We require access to your gallery to allow you to use photos for your profile or share them with customers within the app. For example, you can use a picture to upload as your profile image or use pictures of the documents required for your order to be processed.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We require access to your gallery to allow you to use photos for your profile or share them with customers within the app. For example, you can use a picture to upload as your profile image or use pictures of the documents required for your order to be processed.</string>
-	
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/logo.appiconset</string>
-	
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>This app does not use Bluetooth directly. This is required by third-party libraries.</string>
-	
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app needs access to location when open.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This app needs access to location when in the background.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>This app needs access to location when open and in the background.</string>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>location</string>
-	</array>
 	<key>CFBundleName</key>
 	<string>com.companyname.tripbliss</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -60,14 +52,13 @@
 		<string>ar</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.0.0.8</string>
+	<string>1.0.0.3</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2</string>
+	<string>1.3</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-
 </dict>
 </plist>
