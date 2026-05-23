@@ -59,10 +59,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             {
                 PageNumber = 1;
                 IsHasNext = true;
-                UserDialogs.Instance.ShowLoading();
                 await GetDistributors();
-                await GetFavouiterDistributors();
-                UserDialogs.Instance.HideHud();
             }
             else
             {
@@ -115,16 +112,18 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         }
 
         
-        async Task GetFavouiterDistributors()
+        public async Task GetFavouiterDistributors()
         {
-            IsBusy = true;
+            IsBusy = false;
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
                 string UserToken = await _service.UserToken();
 
+                UserDialogs.Instance.ShowLoading();
                 var json = await Rep.GetAsync<ObservableCollection<TravelAgencywithDistributorsResponse>>(ApiConstants.GetfavouritesApi + $"{id}/TravelAgencywithDistributors", UserToken);
+                UserDialogs.Instance.HideHud();
 
                 if (json != null)
                 {
@@ -133,12 +132,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
 
-            IsBusy = false;
+            IsBusy = true;
         }
 
         async Task AddToFavouiter(TravelAgencywithDistributorsRequest DistributorModel)
         {
-            IsBusy = true;
+            IsBusy = false;
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -154,13 +153,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 }
             }
 
-
-            IsBusy = false;
+            IsBusy = true;
         }
 
         async Task<string?> DeletFavouiterDistributors(string RecordId)
         {
-            IsBusy = true;
+            IsBusy = false;
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
@@ -181,7 +179,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             }
 
 
-            IsBusy = false;
+            IsBusy = true;
             return null;
         }
         #endregion
@@ -190,6 +188,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         async Task AddRequest()
         {
+            if (!IsBusy)
+                return;
+
             IsBusy = false;
 
             if (Constants.Permissions.CheckPermission(Constants.Permissions.TR_Add_Request))

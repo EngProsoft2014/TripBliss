@@ -100,13 +100,21 @@
                         </Button>
                     </StackLayout>
                 </Border>
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox Color="#e36322" IsChecked="{Binding IsRememberMe}">
+                    </CheckBox>
+
+                    <Label Text="{x:Static res:AppResources.lblRememberme}" TextColor="#333" FontSize="14" VerticalTextAlignment="Center" FontAttributes="Bold">
+                    </Label>
+                </StackLayout>
+                
                 <Label x:Name="lblForgetPass" Text="{Static res:AppResources.lblForgotPassword_Login}" TextColor="#0471DF" FontSize="13" BackgroundColor="Transparent"
-                       HorizontalOptions="StartAndExpand" Margin="0,20,0,0" FontAttributes="Bold">
+                       HorizontalOptions="EndAndExpand" Margin="10,20,0,0" FontAttributes="Bold">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoRestPageCommand}"></TapGestureRecognizer>
                     </Label.GestureRecognizers>
                 </Label>
-                <Label x:Name="lblSignup" Margin="0,15,0,0">
+                <!--<Label x:Name="lblSignup" Margin="0,15,0,0">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="{Static res:AppResources.lblDHAccount_Login}" FontSize="13" TextColor="Gray" FontFamily="Almarai-Regular"></Span>
@@ -119,7 +127,7 @@
                             </Span>
                         </FormattedString>
                     </Label.FormattedText>
-                </Label>
+                </Label>-->
             </StackLayout>
         </ScrollView>
     </Grid>

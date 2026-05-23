@@ -210,7 +210,7 @@
                     </tabView:SfTabItem.ImageSource>
                     <tabView:SfTabItem.Content>
                         <ContentView x:Name="AgencyView">
-                            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="{OnPlatform Android=20, iOS='20,0,20,0'}" Spacing="10">
+                            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="{OnPlatform Android='20,20,20,0', iOS='20,0,20,0'}">
                                 <Label Text="{Static res:AppResources.hdrAgency}" FontSize="18" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
                                 <Border StrokeShape="RoundRectangle 25" HeightRequest="40" Stroke="Gray" Margin="{OnPlatform Android='0,20,0,10',iOS='0,10,0,10'}" BackgroundColor="White">
                                     <Grid>
@@ -389,9 +389,9 @@
                                                                     <Label Text="{Binding PriceBeforeOffer}" FontSize="10" TextDecorations="Strikethrough" TextColor="White"></Label>
                                                                     <Label Text="SAR" FontSize="8" HorizontalOptions="EndAndExpand" TranslationX="-5" TextColor="White"></Label>
                                                                 </StackLayout>
-                                                                <Border.Shadow>
+                                                                <!--<Border.Shadow>
                                                                     <Shadow  Brush="{OnPlatform Android=DarkGray,iOS=LightGray}" Opacity="1"></Shadow>
-                                                                </Border.Shadow>
+                                                                </Border.Shadow>-->
                                                             </Border>
                                                             <Border StrokeShape="RoundRectangle 7" BackgroundColor="#2aa55e" Padding="5" TranslationX="-10" WidthRequest="55" HeightRequest="45"
                                                                 VerticalOptions="CenterAndExpand">
@@ -399,9 +399,9 @@
                                                                 <Label Text="{Binding PriceAfterOffer}" FontSize="14" TextColor="White" FontAttributes="Bold"></Label>
                                                                 <Label Text="SAR" FontSize="8" HorizontalOptions="EndAndExpand" TextColor="White"></Label>
                                                             </StackLayout>
-                                                            <Border.Shadow>
+                                                            <!--<Border.Shadow>
                                                                     <Shadow  Brush="{OnPlatform Android=DarkGray,iOS=LightGray}" Opacity="1"></Shadow>
-                                                                </Border.Shadow>
+                                                                </Border.Shadow>-->
                                                         </Border>
                                                         </StackLayout>
                                                         

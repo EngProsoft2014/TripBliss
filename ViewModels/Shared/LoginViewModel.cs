@@ -51,6 +51,8 @@ namespace TripBliss.ViewModels
         int timeRemaining = 0;
         [ObservableProperty]
         string resendEmail;
+        [ObservableProperty]
+        bool isRememberMe = false;
 
         #endregion
 
@@ -64,6 +66,13 @@ namespace TripBliss.ViewModels
         {
             Rep = GenericRep;
             _service = service;
+
+            if (Preferences.Default.Get<bool>(ApiConstants.rememberMe, false))
+            {
+                IsRememberMe = true;
+                LoginRequest.UserName = Preferences.Default.Get<string>(ApiConstants.rememberMeUserName, string.Empty);
+                LoginRequest.Password = Preferences.Default.Get<string>(ApiConstants.rememberMePassword, string.Empty);
+            }
         }
         #endregion
 
@@ -104,6 +113,18 @@ namespace TripBliss.ViewModels
                     IsBusy = true;
                     UserDialogs.Instance.ShowLoading();
 
+                    if (IsRememberMe)
+                    {
+                        Preferences.Default.Set(ApiConstants.rememberMe, true);
+                        Preferences.Default.Set(ApiConstants.rememberMeUserName, model.UserName);
+                        Preferences.Default.Set(ApiConstants.rememberMePassword, model.Password);
+                    }
+                    else
+                    {
+                        Preferences.Default.Set(ApiConstants.rememberMe, false);
+                        Preferences.Default.Remove(ApiConstants.rememberMeUserName);
+                        Preferences.Default.Remove(ApiConstants.rememberMePassword);
+                    }
                     //model.UserName = model.UserName.ToLower();
                     //model.Password = model.Password.ToLower();
 

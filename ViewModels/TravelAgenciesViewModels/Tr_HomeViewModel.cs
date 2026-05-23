@@ -78,20 +78,19 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         #region Methods
         public async Task GetRequestes()
         {
-
             IsBusy = false;
 
             if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_Home_Requests))
             {
-
                 if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
                     string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
                     string UserToken = await _service.UserToken();
                     if (!string.IsNullOrEmpty(UserToken))
                     {
+                        UserDialogs.Instance.ShowLoading();
                         var json = await Rep.GetAsync<PagenationList<RequestTravelAgencyResponse>>(ApiConstants.AllRequestApi + $"{id}/RequestTravelAgency/pagenumber/{PageNumber}", UserToken);
-
+                        UserDialogs.Instance.HideHud();
                         if (json != null)
                         {
                             PagenationList<RequestTravelAgencyResponse> RequestsPage = json;

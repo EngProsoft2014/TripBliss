@@ -176,7 +176,7 @@
                                         </Button.Triggers>
                                     </Button>
                                 </StackLayout>
-                                <tabView:SfTabView IndicatorBackground="#1c874b" VerticalOptions="FillAndExpand" FlowDirection="LeftToRight" SelectedIndex="{Binding IndexTap}">
+                                <tabView:SfTabView x:Name="DisAndFevotiresTab" IndicatorBackground="#1c874b" VerticalOptions="FillAndExpand" FlowDirection="LeftToRight" SelectedIndex="{Binding IndexTap}" SelectionChanged="DisAndFevotiresTab_SelectionChanged">
                                     <tabView:SfTabView.Items>
                                         <!--Distributors-->
                                         <tabView:SfTabItem Header='{Static res:AppResources.btnDistributors}' TextColor="Black" FontSize="14" 
@@ -490,16 +490,16 @@
                                                             <Label Text="{Binding OfferTitel}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black"></Label>
                                                             <Label Text="02 DAY LEFT" FontSize="10" FontAutoScalingEnabled="False" TextColor="Gray"></Label>
                                                         </VerticalStackLayout>
-                                                        <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" HorizontalOptions="EndAndExpand" WidthRequest="100">
+                                                        <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
                                                             <Border StrokeShape="RoundRectangle 7" BackgroundColor="#fd9702" Padding="5" WidthRequest="45"
                                                                 VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
                                                                 <StackLayout Orientation="Vertical">
                                                                     <Label Text="{Binding PriceBeforeOffer}" FontAutoScalingEnabled="False" FontSize="10" TextDecorations="Strikethrough" TextColor="White"></Label>
                                                                     <Label Text="SAR" FontSize="8" FontAutoScalingEnabled="False" HorizontalOptions="EndAndExpand" TranslationX="-5" TextColor="White"></Label>
                                                                 </StackLayout>
-                                                                <Border.Shadow>
-                                                                    <Shadow Brush="{OnPlatform Android=#333, iOS=LightGray}" Opacity="1"></Shadow>
-                                                                </Border.Shadow>
+                                                                <!--<Border.Shadow>
+                                                                    <Shadow Brush="{OnPlatform Android=LightGray, iOS=LightGray}" Opacity="10" Radius="50"></Shadow>
+                                                                </Border.Shadow>-->
                                                             </Border>
                                                             <Border StrokeShape="RoundRectangle 7" BackgroundColor="#2aa55e" Padding="5" TranslationX="-10" WidthRequest="55" HeightRequest="45"
                                                                 VerticalOptions="CenterAndExpand">
@@ -507,9 +507,9 @@
                                                                     <Label Text="{Binding PriceAfterOffer}" FontAutoScalingEnabled="False" FontSize="14" TextColor="White" FontAttributes="Bold"></Label>
                                                                     <Label Text="SAR" FontSize="8" FontAutoScalingEnabled="False" HorizontalOptions="EndAndExpand" TextColor="White"></Label>
                                                                 </StackLayout>
-                                                                <Border.Shadow>
-                                                                    <Shadow Brush="{OnPlatform Android=#333, iOS=LightGray}" Opacity="1"></Shadow>
-                                                                </Border.Shadow>
+                                                                <!--<Border.Shadow>
+                                                                    <Shadow Brush="{OnPlatform Android=LightGray, iOS=LightGray}" Opacity="10" Radius="50"></Shadow>
+                                                                </Border.Shadow>-->
                                                                 <!--<Border.Triggers>
                                                                     <DataTrigger TargetType="Border" Binding="{Binding Source={RelativeSource AncestorType={x:Type Tvm:ChooseOfferViewModel}}, Path=Lang}" Value="ar">
                                                                         <Setter Property="TranslationX" Value="10"></Setter>

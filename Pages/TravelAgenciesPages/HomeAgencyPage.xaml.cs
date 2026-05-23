@@ -4,10 +4,12 @@ using Controls.UserDialogs.Maui;
 using Microsoft.AspNet.SignalR.Client.Http;
 using Syncfusion.Maui.Core.Carousel;
 using System.Globalization;
+using System.Threading.Tasks;
 using TripBliss.Helpers;
 using TripBliss.ViewModels.TravelAgenciesViewModels;
 using TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest;
 using TripBliss.ViewModels.TravelAgenciesViewModels.Offer;
+using Toast = CommunityToolkit.Maui.Alerts.Toast;
 
 namespace TripBliss.Pages.TravelAgenciesPages;
 
@@ -15,6 +17,7 @@ public partial class HomeAgencyPage : Controls.CustomControl
 {
     IGenericRepository Rep;
     readonly Services.Data.ServicesService _service;
+    private bool isTabHandling = false;
     Tr_HomeViewModel ViewModel;
     Tr_C_TravelAgencyViewModel ViewModelTap2;
     public HomeAgencyPage(Tr_HomeViewModel viewModel, IGenericRepository generic, Services.Data.ServicesService service)
@@ -51,10 +54,50 @@ public partial class HomeAgencyPage : Controls.CustomControl
         return true;
     }
 
+    //private async void tabMain_SelectionChanged(object sender, Syncfusion.Maui.TabView.TabSelectionChangedEventArgs e)
+    //{
+    //    Controls.StaticMember.WayOfTab = (int)e.NewIndex;
+    //    if ((int)e.NewIndex == 0)
+    //    {
+    //        conviewHome.BindingContext = ViewModel = new Tr_HomeViewModel(Rep, _service);
+
+    //        if (!Constants.Permissions.CheckPermission(Constants.Permissions.Show_Home_Requests))
+    //        {
+    //            var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+    //            await toast.Show();
+    //        }
+    //    }
+    //    if ((int)e.NewIndex == 1)
+    //    {
+    //        DisConView.BindingContext = ViewModelTap2 = new Tr_C_TravelAgencyViewModel(Rep, _service);
+
+    //        //conviewDist.BindingContext = new Tr_C_TravelAgencyViewModel(Rep);
+    //        //conviewFevourites.BindingContext = new Tr_C_TravelAgencyViewModel(Rep);
+    //    }
+    //    if ((int)e.NewIndex == 2)
+    //    {
+    //        conviewOffers.BindingContext = new Tr_O_ChooseOfferViewModel(Rep);
+    //    }
+    //    if ((int)e.NewIndex == 3)
+    //    {
+    //        conviewHistory.BindingContext = new Tr_HistoryViewModel(Rep, _service);
+    //    }
+    //    if ((int)e.NewIndex == 4)
+    //    {
+    //        conviewMore.BindingContext = new Tr_MoreViewModel(Rep, _service);
+    //    }
+    //}
+
     private async void tabMain_SelectionChanged(object sender, Syncfusion.Maui.TabView.TabSelectionChangedEventArgs e)
     {
         Controls.StaticMember.WayOfTab = (int)e.NewIndex;
-        if ((int)e.NewIndex == 0)
+
+        if (isTabHandling)
+            return;
+
+        isTabHandling = true;
+
+        if (e.NewIndex == 0)
         {
             conviewHome.BindingContext = ViewModel = new Tr_HomeViewModel(Rep, _service);
 
@@ -64,26 +107,38 @@ public partial class HomeAgencyPage : Controls.CustomControl
                 await toast.Show();
             }
         }
-        if ((int)e.NewIndex == 1)
+        else if (ViewModel.IsBusy == false)
+        {
+            tabMain.SelectedIndex = 0;
+        }
+        else if (e.NewIndex == 1)
         {
             DisConView.BindingContext = ViewModelTap2 = new Tr_C_TravelAgencyViewModel(Rep, _service);
-
-            //conviewDist.BindingContext = new Tr_C_TravelAgencyViewModel(Rep);
-            //conviewFevourites.BindingContext = new Tr_C_TravelAgencyViewModel(Rep);
         }
-        if ((int)e.NewIndex == 2)
+        else if (e.NewIndex == 2)
         {
             conviewOffers.BindingContext = new Tr_O_ChooseOfferViewModel(Rep);
         }
-        if ((int)e.NewIndex == 3)
+        else if (e.NewIndex == 3)
         {
             conviewHistory.BindingContext = new Tr_HistoryViewModel(Rep, _service);
         }
-        if ((int)e.NewIndex == 4)
+        else if (e.NewIndex == 4)
         {
             conviewMore.BindingContext = new Tr_MoreViewModel(Rep, _service);
         }
+
+        isTabHandling = false;
     }
 
-
+    private async void DisAndFevotiresTab_SelectionChanged(object sender, Syncfusion.Maui.TabView.TabSelectionChangedEventArgs e)
+    {
+        if (e.NewIndex == 1)
+        {
+            if(ViewModelTap2.FavouriteDistributorCompanys == null || ViewModelTap2.FavouriteDistributorCompanys.Count == 0)
+            {
+                await ViewModelTap2.GetFavouiterDistributors();
+            }     
+        }
+    }
 }

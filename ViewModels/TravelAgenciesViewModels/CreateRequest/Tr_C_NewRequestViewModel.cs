@@ -91,19 +91,25 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         void AddHotel()
         {
             var vm = new Tr_C_HotelServiceViewModel(Rep, _service);
-            vm.HotelClose += (HoteltRequest, HotelResponse) =>
+            void handler(RequestTravelAgencyHotelRequest request, RequestTravelAgencyHotelResponse response)
             {
                 try
                 {
-                    LstTravelAgencyHotelRequest.Add(HoteltRequest);
-                    LstTravelAgencyHotelResponse.Add(HotelResponse);
+                    LstTravelAgencyHotelRequest.Add(request);
+                    LstTravelAgencyHotelResponse.Add(response);
                 }
                 catch (Exception ex)
                 {
-
+                    // Log exception
                 }
-
+                finally
+                {
+                    vm.HotelClose -= handler; // Unsubscribe after handling
+                }
             };
+
+            vm.HotelClose += handler;
+
             var page = new HotelServicePage(vm, Rep);
 
             App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -113,18 +119,23 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             var index = LstTravelAgencyHotelResponse.IndexOf(model);
             var vm = new Tr_C_HotelServiceViewModel(model, Rep, _service);
-            vm.HotelClose += (HoteltRequest, HotelResponse) =>
+            void handler(RequestTravelAgencyHotelRequest request, RequestTravelAgencyHotelResponse response)
             {
-                if (HotelResponse != model)
+                try
                 {
-                    LstTravelAgencyHotelResponse.Remove(model);
-                    LstTravelAgencyHotelRequest.Remove(LstTravelAgencyHotelRequest[index]);
-
-                    LstTravelAgencyHotelRequest.Add(HoteltRequest);
-                    LstTravelAgencyHotelResponse.Add(HotelResponse);
+                    LstTravelAgencyHotelRequest.Add(request);
+                    LstTravelAgencyHotelResponse.Add(response);
                 }
-
+                catch (Exception ex)
+                {
+                    // Log exception
+                }
+                finally
+                {
+                    vm.HotelClose -= handler; // Unsubscribe after handling
+                }
             };
+            vm.HotelClose += handler;
             var page = new HotelServicePage(vm, Rep);
             page.BindingContext = vm;
             App.Current!.MainPage!.Navigation.PushAsync(page);

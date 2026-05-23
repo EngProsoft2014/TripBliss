@@ -727,6 +727,24 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter Hotel.
+        /// </summary>
+        internal static string Enter_Hotel {
+            get {
+                return ResourceManager.GetString("Enter_Hotel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Hotel Name.
+        /// </summary>
+        internal static string enter_Hotel_Name {
+            get {
+                return ResourceManager.GetString("enter_Hotel_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please Enter a Required : New Password..
         /// </summary>
         internal static string Enter_New_Password {
@@ -1146,6 +1164,15 @@ namespace TripBliss.Resources.Language {
         internal static string here {
             get {
                 return ResourceManager.GetString("here", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hotel name.
+        /// </summary>
+        internal static string hotelName {
+            get {
+                return ResourceManager.GetString("hotelName", resourceCulture);
             }
         }
         
@@ -1825,6 +1852,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remember me.
+        /// </summary>
+        internal static string lblRememberme {
+            get {
+                return ResourceManager.GetString("lblRememberme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show Distributors.
         /// </summary>
         internal static string lblRequest_Travel_Agency_Permission {
@@ -2073,6 +2109,15 @@ namespace TripBliss.Resources.Language {
         internal static string Manually_enter_address {
             get {
                 return ResourceManager.GetString("Manually_enter_address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manually enter hotel.
+        /// </summary>
+        internal static string Manually_enter_hotel {
+            get {
+                return ResourceManager.GetString("Manually_enter_hotel", resourceCulture);
             }
         }
         

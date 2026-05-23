@@ -233,7 +233,11 @@ namespace TripBliss.ViewModels.DistributorsViewModels
                 if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
                     var popupView = new Pages.MainPopups.AddressPupop();
-                    popupView.DidClose += async (str) =>
+
+                    // Create WeakReference to prevent memory leak
+                    var weakPopup = new WeakReference<Pages.MainPopups.AddressPupop>(popupView);
+
+                    void handler(SuggestionAddressModel str)
                     {
                         CompanyResponse.Address = str.FullAddress;
                         CompanyResponse.locationlatitude = str.Latitude.ToString();
@@ -242,8 +246,15 @@ namespace TripBliss.ViewModels.DistributorsViewModels
                         CompanyResponse.City = str.City;
                         CompanyResponse.PostalcodeZIP = str.Zip;
                         CompanyResponse.Country = str.Country;
-                    };
 
+                        // Unsubscribe using WeakReference
+                        if (weakPopup.TryGetTarget(out var target))
+                        {
+                            target.DidClose -= handler;
+                        }
+                    }
+
+                    popupView.DidClose += handler;
                     await MopupService.Instance.PushAsync(popupView);
                 }
             }

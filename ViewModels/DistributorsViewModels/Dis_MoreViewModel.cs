@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Pages;
 using TripBliss.Pages.DistributorsPages;
@@ -91,12 +92,20 @@ namespace TripBliss.ViewModels.DistributorsViewModels
             Action action = async () =>
             {
                 string LangValueToKeep = Preferences.Default.Get("Lan", "en");
+                bool RememberMe = Preferences.Default.Get<bool>(ApiConstants.rememberMe, false);
+                string RememberMeUserName = Preferences.Default.Get<string>(ApiConstants.rememberMeUserName, string.Empty);
+                string RememberPassword = Preferences.Default.Get<string>(ApiConstants.rememberMePassword, string.Empty);
+
                 Preferences.Default.Clear();
                 await BlobCache.LocalMachine.InvalidateAll();
                 await BlobCache.LocalMachine.Vacuum();
                 Constants.Permissions.LstPermissions.Clear();
 
                 Preferences.Default.Set("Lan", LangValueToKeep);
+                Preferences.Default.Set(ApiConstants.rememberMe, RememberMe);
+                Preferences.Default.Set(ApiConstants.rememberMeUserName, RememberMeUserName);
+                Preferences.Default.Set(ApiConstants.rememberMePassword, RememberPassword);
+
                 await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service)));
             };
             Controls.StaticMember.ShowSnackBar(TripBliss.Resources.Language.AppResources.Do_you_want_to_Logout, Controls.StaticMember.SnackBarColor, Controls.StaticMember.SnackBarTextColor, action);

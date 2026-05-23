@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <mopups:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                 x:Class="TripBliss.Pages.MainPopups.AddressPupop"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
                   xmlns:mopupsanim="clr-namespace:Mopups.Animations;assembly=Mopups"
-                  xmlns:vm="clr-namespace:TripBliss.ViewModels"
+                  x:Class="TripBliss.Pages.MainPopups.HotelsPopup"
                   NavigationPage.HasNavigationBar="False"
                   xmlns:res="clr-namespace:TripBliss.Resources.Language"
-                  BackgroundColor="#FFFFFF">
-
+                  BackgroundColor="#FFFFFF" 
+                  Title="HotelsPopup">
 
     <Border BackgroundColor="#FFFFFF" VerticalOptions="FillAndExpand">
         <StackLayout>
@@ -24,7 +23,7 @@
             </StackLayout>
 
             <StackLayout Padding="20,0,20,0">
-                <Entry x:Name="searchBar" Placeholder="{Static res:AppResources.Enter_Address}" FontFamily="AlmaraiRegular" Keyboard="Text" TextColor="#333" ClearButtonVisibility="WhileEditing" TextChanged="SearchBar_OnTextChanged"></Entry>
+                <Entry x:Name="searchBar" Placeholder="{Static res:AppResources.Enter_Hotel}" FontFamily="AlmaraiRegular" Keyboard="Text" TextColor="#333" ClearButtonVisibility="WhileEditing" TextChanged="SearchBar_OnTextChanged"></Entry>
                 <ListView x:Name="countryListView" HorizontalOptions="FillAndExpand" BackgroundColor="White" SeparatorColor="White" IsVisible="False" CachingStrategy="RecycleElement" ItemTapped="ListView_OnItemTapped">
                     <ListView.RowHeight>
                         70
@@ -63,7 +62,7 @@
 
                 <StackLayout Margin="0,0,0,40">
                     <StackLayout Padding="0,10,0,0" Orientation="Horizontal" Spacing="20">
-                        <Label Text="{Static res:AppResources.Manually_enter_address}" FontSize="15" TextColor="#387955">
+                        <Label Text="{Static res:AppResources.Manually_enter_hotel}" FontSize="15" TextColor="#387955">
                             <Label.Triggers>
                                 <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference stkManuallyAddress},Path=IsVisible}" Value="True">
                                     <Setter Property="TextColor" Value="#3680f7"></Setter>
@@ -100,11 +99,11 @@
                             <StackLayout Spacing="20">
 
                                 <StackLayout Spacing="0">
-                                    <Label Text="{Static res:AppResources.Street}" TextTransform="Uppercase" TextColor="#387955" FontSize="13"></Label>
+                                    <Label Text="{Static res:AppResources.hotelName}" TextTransform="Uppercase" TextColor="#387955" FontSize="13"></Label>
                                     <Border>
-                                        <Entry x:Name="entryStreet"
+                                        <Entry x:Name="entryHotelName"
                                         FontSize="14"
-                                        Placeholder="{Static res:AppResources.Enter_Street}"
+                                        Placeholder="{Static res:AppResources.enter_Hotel_Name}"
                                         TextColor="Black"
                                         Keyboard="Text">
                                         </Entry>
@@ -134,19 +133,6 @@
                                        Placeholder="{Static res:AppResources.Enter_State}"
                                        TextColor="Black"
                                        Keyboard="Text"
-                                       >
-                                        </Entry>
-                                    </Border>
-
-                                </StackLayout>
-
-                                <StackLayout Spacing="0">
-                                    <Label Text="{Static res:AppResources.Postal_Code}" TextTransform="Uppercase" TextColor="#387955" FontSize="13"></Label>
-                                    <Border>
-                                        <Entry x:Name="entryPostalCode" 
-                                       Placeholder="{Static res:AppResources.Enter_Postal_Code}"
-                                       FontSize="14"
-                                       Keyboard="Numeric"
                                        >
                                         </Entry>
                                     </Border>

@@ -26,6 +26,9 @@ namespace TripBliss.Constants
         public static string distributorCompanyId = "distributorCompanyId";
         public static string permissions = "permissions";
         public static string review = "review";
+        public static string rememberMe = "rememberMe";
+        public static string rememberMeUserName = "rememberMeUserName";
+        public static string rememberMePassword = "rememberMePassword";
         //End Preferences Key 
         #endregion
 

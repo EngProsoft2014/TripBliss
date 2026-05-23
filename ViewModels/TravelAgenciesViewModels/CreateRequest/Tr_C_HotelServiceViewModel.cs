@@ -53,6 +53,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [ObservableProperty]
         RoomViewResponse? selectedRoomView;
 
+        [ObservableProperty]
+        string? hotelAddress;
         #endregion
 
         public delegate void HotelDelegte(RequestTravelAgencyHotelRequest HotelRequest, RequestTravelAgencyHotelResponse HotelResponse);
@@ -111,8 +113,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             UserDialogs.Instance.ShowLoading();
             await Task.WhenAll(
-                GetLocation(),
-                GetHotels(), 
+                //GetLocation(),
+                //GetHotels(),
                 GetMeals(),
                 GetRoomViews(),
                 GetRoomTypes()
@@ -120,45 +122,45 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             UserDialogs.Instance.HideHud();
         }
 
-        async Task GetLocation()
-        {
+        //async Task GetLocation()
+        //{
             
 
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            {
-                string UserToken = await _service.UserToken();
+        //    if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+        //    {
+        //        string UserToken = await _service.UserToken();
 
-                var json = await Rep.GetAsync<ObservableCollection<LocationResponse>>(ApiConstants.GetAllLocationsApi, UserToken);
+        //        var json = await Rep.GetAsync<ObservableCollection<LocationResponse>>(ApiConstants.GetAllLocationsApi, UserToken);
 
-                if (json != null)
-                {
-                    Locations = json;
-                }
-            }
+        //        if (json != null)
+        //        {
+        //            Locations = json;
+        //        }
+        //    }
 
-        }
+        //}
 
-        async Task GetHotels()
-        {
+        //async Task GetHotels()
+        //{
             
 
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            {
-                string UserToken = await _service.UserToken();
+        //    if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+        //    {
+        //        string UserToken = await _service.UserToken();
 
-                var json = await Rep.GetAsync<ObservableCollection<HotelResponse>>(ApiConstants.GetAllHotelsApi, UserToken);
+        //        var json = await Rep.GetAsync<ObservableCollection<HotelResponse>>(ApiConstants.GetAllHotelsApi, UserToken);
 
-                if (json != null)
-                {
-                    Hoteles = new ObservableCollection<HotelResponse>(json.OrderBy(d => d.HotelNameLang).ToList());
-                }
-            }
+        //        if (json != null)
+        //        {
+        //            Hoteles = new ObservableCollection<HotelResponse>(json.OrderBy(d => d.HotelNameLang).ToList());
+        //        }
+        //    }
 
-        }
+        //}
+
 
         async Task GetMeals()
-        {
-            
+        {            
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 string UserToken = await _service.UserToken();
@@ -170,13 +172,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     Meals = json;
                 }
             }
-
         }
 
         async Task GetRoomTypes()
         {
-            
-
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 string UserToken = await _service.UserToken();
@@ -188,13 +187,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     RoomTypes = json;
                 }
             }
-
         }
 
         async Task GetRoomViews()
-        {
-            
-
+        {       
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 string UserToken = await _service.UserToken();
@@ -206,32 +202,66 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     RoomViews = json;
                 }
             }
-
         }
         #endregion
 
         #region RelayCommand
+        //[RelayCommand]
+        //void OpenMap(LocationResponse location)
+        //{
+        //    ObservableCollection<HotelResponse> hotels = new ObservableCollection<HotelResponse>(Hoteles.Where(x=> x.LocationId == location.Id).ToList());
+
+        //    var page = new MapHotelsPage(hotels);
+        //    page.MapHotelClose += (Hotel) =>
+        //    {
+        //        try
+        //        {
+        //            SelectedHotel = Hotel;
+        //        }
+        //        catch (Exception ex)
+        //        {
+
+        //        }
+
+        //    };
+
+        //    App.Current!.MainPage!.Navigation.PushAsync(page);
+        //}
+
         [RelayCommand]
-        void OpenMap(LocationResponse location)
+        async Task SelecteAddressHotel()
         {
-            ObservableCollection<HotelResponse> hotels = new ObservableCollection<HotelResponse>(Hoteles.Where(x=> x.LocationId == location.Id).ToList());
-
-            var page = new MapHotelsPage(hotels);
-            page.MapHotelClose += (Hotel) =>
+            IsBusy = false;
+            try
             {
-                try
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
-                    SelectedHotel = Hotel;
+                    var popupView = new HotelsPopup();
+
+                    // Use a local variable to track for unsubscription
+                    var weakPopup = new WeakReference<HotelsPopup>(popupView);
+
+                    void handler(SuggestionAddressModel str)
+                    {
+                        HotelAddress = str.MainAddress;
+                        if (weakPopup.TryGetTarget(out var target))
+                        {
+                            target.DidClose -= handler;
+                        }
+                    }
+
+                    popupView.DidClose += handler;
+                    await MopupService.Instance.PushAsync(popupView);
                 }
-                catch (Exception ex)
-                {
+            }
+            catch (Exception ex)
+            {
+                await App.Current!.MainPage!.DisplayAlert("Error", ex.Message, "OK");
+            }
 
-                }
-
-            };
-
-            App.Current!.MainPage!.Navigation.PushAsync(page);
+            IsBusy = true;
         }
+
 
         [RelayCommand]
         void AddRoom()
@@ -300,8 +330,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 await toast.Show();
             }
             else
-            {
-                
+            {         
                 IsBusy = false;
                 UserDialogs.Instance.ShowLoading();
 
@@ -328,7 +357,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 UserDialogs.Instance.HideHud();
                 IsBusy = true;
             }
-
         }
         #endregion
     }

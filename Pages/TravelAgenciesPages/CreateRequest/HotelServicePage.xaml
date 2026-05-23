@@ -8,7 +8,7 @@
              xmlns:res="clr-namespace:TripBliss.Resources.Language"
              BackgroundColor="White"
              IsEnabled="{Binding IsBusy}"
-             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasNavigationBar="False"          
              Title="HotelServicesPage">
     <!--<Controls:CustomControl.BindingContext>
         <vm:HotelServiceViewModel></vm:HotelServiceViewModel>
@@ -35,7 +35,7 @@
             <StackLayout >
                 <Border StrokeShape="RoundRectangle 15" Margin="0,25,0,40" BackgroundColor="White">
                     <StackLayout Orientation="Vertical" Padding="15,15,15,25">
-                        <Label Text="{Static res:AppResources.lblLocation_HotelSevice}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                        <!--<Label Text="{Static res:AppResources.lblLocation_HotelSevice}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
 
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20">
                             <Border StrokeShape="RoundRectangle 10" HorizontalOptions="FillAndExpand" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
@@ -51,14 +51,14 @@
                                     <TapGestureRecognizer Command="{Binding OpenMapCommand}" CommandParameter="{Binding SelectedLocation}"></TapGestureRecognizer>
                                 </Image.GestureRecognizers>
                             </Image>
-                        </StackLayout>
+                        </StackLayout>-->
                         
                         <Label Text="{Static res:AppResources.lblHotelName_HotelService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
                         <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
                             <!--<Picker x:Name="HotelPick" TextColor="Black" FontSize="14" FontAutoScalingEnabled="False" ItemsSource="{Binding Hoteles}" ItemDisplayBinding="{Binding HotelNameLang}"
                                     SelectedItem="{Binding SelectedHotel}">
                             </Picker>-->
-                            <editors:SfComboBox x:Name="comboBoxHoteles" 
+                            <!--<editors:SfComboBox x:Name="comboBoxHoteles" 
                                                   ItemsSource="{Binding Hoteles}"
                                                 SelectedItem="{Binding SelectedHotel}"
                                                   FontSize="14" HeightRequest="40"
@@ -73,7 +73,14 @@
                                                   HighlightedTextColor="Green"
                                                   HighlightedTextFontAttributes="Bold"
                                                   DisplayMemberPath="HotelNameLang">
-                            </editors:SfComboBox>
+                            </editors:SfComboBox>-->
+
+                            <Entry x:Name="HotelEntry" Text="{Binding HotelAddress}" FontAutoScalingEnabled="False" Keyboard="Text" TextColor="Black" FontSize="14" FontAttributes="Bold" 
+                                    HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand">
+                                <Entry.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="HotelEntry_TapGestureRecognizer_Tapped"/>
+                                </Entry.GestureRecognizers>
+                            </Entry>
                         </Border>
                         <StackLayout Orientation="Horizontal" Spacing="35">
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">

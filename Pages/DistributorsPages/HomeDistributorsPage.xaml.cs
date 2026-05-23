@@ -14,7 +14,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
     readonly Services.Data.ServicesService _service;
     Dis_HomeViewModel ViewModel;
     Dis_DistributorsViewModel distributorsViewModel;
-
+    private bool isTabHandling = false;
 
     public HomeDistributorsPage(Dis_HomeViewModel viewModel,IGenericRepository generic, Services.Data.ServicesService service)
 	{
@@ -176,10 +176,49 @@ public partial class HomeDistributorsPage : Controls.CustomControl
         }
     }
 
+    //private async void SfTabView_SelectionChanged(object sender, Syncfusion.Maui.TabView.TabSelectionChangedEventArgs e)
+    //{
+    //    Controls.StaticMember.WayOfTab = (int)e.NewIndex;
+    //    if ((int)e.NewIndex == 0)
+    //    {
+    //        HomeView.BindingContext = ViewModel = new Dis_HomeViewModel(Rep, _service);
+
+    //        if (!Constants.Permissions.CheckPermission(Constants.Permissions.Show_Home_Requests))
+    //        {
+    //            var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+    //            await toast.Show();
+    //        }
+    //    }
+    //    if ((int)e.NewIndex == 1)
+    //    {
+    //        AgencyView.BindingContext = distributorsViewModel = new Dis_DistributorsViewModel(Rep, _service);
+
+    //        Controls.StaticMember.ShowSendOfferBtn = true;
+    //    }
+    //    if ((int)e.NewIndex == 2)
+    //    {
+    //        OffersView.BindingContext = new Dis_O_ChooseOfferViewModel(Rep);
+    //    }
+    //    if ((int)e.NewIndex == 3)
+    //    {
+    //        HistoryView.BindingContext = new Dis_HistoryViewModel(Rep, _service);
+    //    }
+    //    if ((int)e.NewIndex == 4)
+    //    {
+    //        MoreView.BindingContext = new Dis_MoreViewModel(Rep, _service);
+    //    }
+    //}
+
     private async void SfTabView_SelectionChanged(object sender, Syncfusion.Maui.TabView.TabSelectionChangedEventArgs e)
     {
         Controls.StaticMember.WayOfTab = (int)e.NewIndex;
-        if ((int)e.NewIndex == 0)
+
+        if (isTabHandling)
+            return;
+
+        isTabHandling = true;
+
+        if (e.NewIndex == 0)
         {
             HomeView.BindingContext = ViewModel = new Dis_HomeViewModel(Rep, _service);
 
@@ -189,24 +228,30 @@ public partial class HomeDistributorsPage : Controls.CustomControl
                 await toast.Show();
             }
         }
-        if ((int)e.NewIndex == 1)
+        else if (ViewModel.IsBusy == false)
+        {
+            tabMain.SelectedIndex = 0;
+        }
+        else if (e.NewIndex == 1)
         {
             AgencyView.BindingContext = distributorsViewModel = new Dis_DistributorsViewModel(Rep, _service);
 
             Controls.StaticMember.ShowSendOfferBtn = true;
         }
-        if ((int)e.NewIndex == 2)
+        else if (e.NewIndex == 2)
         {
             OffersView.BindingContext = new Dis_O_ChooseOfferViewModel(Rep);
         }
-        if ((int)e.NewIndex == 3)
+        else if (e.NewIndex == 3)
         {
             HistoryView.BindingContext = new Dis_HistoryViewModel(Rep, _service);
         }
-        if ((int)e.NewIndex == 4)
+        else if (e.NewIndex == 4)
         {
             MoreView.BindingContext = new Dis_MoreViewModel(Rep, _service);
         }
+
+        isTabHandling = false;
     }
 
     private void SearchBar_Tr(object sender, TextChangedEventArgs e)

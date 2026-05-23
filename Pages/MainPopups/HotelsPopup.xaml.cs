@@ -1,19 +1,20 @@
-using TripBliss.Models;
+﻿using GoogleApi.Entities.Common.Enums;
+using GoogleApi.Entities.Places.Details.Request;
 using Mopups.Services;
-using TripBliss.ViewModels;
-using System.Reactive.Joins;
+using TripBliss.Models;
 
 namespace TripBliss.Pages.MainPopups;
 
-public partial class AddressPupop : Mopups.Pages.PopupPage
+public partial class HotelsPopup : Mopups.Pages.PopupPage
 {
     public delegate void CustomDelegte(SuggestionAddressModel str);
     public event CustomDelegte DidClose;
 
-    public static string Lan {  get; set; }
-    public AddressPupop()
+    public static string Lan { get; set; }
+
+    public HotelsPopup()
 	{
-        InitializeComponent();
+		InitializeComponent();
 
         Lan = Preferences.Default.Get("Lan", "");
     }
@@ -53,75 +54,27 @@ public partial class AddressPupop : Mopups.Pages.PopupPage
         countryListView.EndRefresh();
     }
 
-    private async void ListView_OnItemTapped(Object sender, ItemTappedEventArgs e)
+    private async void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
     {
-        //EmployeeListView.IsVisible = false;  
-        SuggestionAddressModel Listed = e.Item as SuggestionAddressModel;
+        if (e.Item is not SuggestionAddressModel listed) return;
 
-        var _request2 = new GoogleApi.Entities.Places.Details.Request.PlacesDetailsRequest
+        try
         {
-            Key = "AIzaSyA6nc23HAg2fa8pGaolThKga40bUtZYpxE",
-            //Key = Device.iOS == "iOS" ? "AIzaSyDY-9LWg_lY41hlxBA2-ngBydMGYaXxKA4" : "AIzaSyAW5B8h96IXYo_0ZL_bSGlDBVExVOAHa6w",//AutoCompleteKey(ios-Android)
-            PlaceId = Listed.PalceId,
-            Language = Lan == "ar" ? GoogleApi.Entities.Common.Enums.Language.Arabic : GoogleApi.Entities.Common.Enums.Language.English
-        };
+            // ✅ Use hotel name directly
+            searchBar.Text = listed.MainAddress;
 
-        var _response2 = await GoogleApi.GooglePlaces.Details.QueryAsync(_request2);
+            countryListView.IsVisible = false;
+            ((ListView)sender).SelectedItem = null;
 
-        string[] ArrAdd = new string[7];
-
-        foreach (var itemAdd in _response2.Result.AddressComponents)
-        {
-            switch (itemAdd.Types.FirstOrDefault())
-            {
-                case GoogleApi.Entities.Common.Enums.AddressComponentType.Street_Number:
-                    {
-                        ArrAdd[0] = itemAdd.LongName;
-                    }
-                    break;
-                case GoogleApi.Entities.Common.Enums.AddressComponentType.Route:
-                    {
-                        ArrAdd[1] = itemAdd.LongName;
-                    }
-                    break;
-                case GoogleApi.Entities.Common.Enums.AddressComponentType.Administrative_Area_Level_3:
-                    {
-                        ArrAdd[2] = itemAdd.LongName;
-                    }
-                    break;
-                case GoogleApi.Entities.Common.Enums.AddressComponentType.Administrative_Area_Level_2:
-                    {
-                        ArrAdd[3] = itemAdd.LongName;
-                    }
-                    break;
-                case GoogleApi.Entities.Common.Enums.AddressComponentType.Administrative_Area_Level_1:
-                    {
-                        ArrAdd[4] = itemAdd.LongName;
-                    }
-                    break;
-                case GoogleApi.Entities.Common.Enums.AddressComponentType.Country:
-                    {
-                        ArrAdd[5] = itemAdd.LongName;
-                    }
-                    break;
-                case GoogleApi.Entities.Common.Enums.AddressComponentType.Postal_Code:
-                    {
-                        ArrAdd[6] = itemAdd.LongName;
-                    }
-                    break;
-            }
+            DidClose?.Invoke(listed);
+            await MopupService.Instance.PopAsync();
         }
-
-        searchBar.Text = Listed.FullAddress;
-        countryListView.IsVisible = false;
-
-        ((ListView)sender).SelectedItem = null;
-
-        //DidClose?.Invoke(searchBar.Text);
-        DidClose?.Invoke(Listed);
-
-        await MopupService.Instance.PopAsync();
+        catch (Exception ex)
+        {
+            await App.Current!.MainPage!.DisplayAlert("Error", ex.Message, "OK");
+        }
     }
+
 
     private async void OnImageNameTapped_CloseIcon(object sender, EventArgs e)
     {
@@ -131,27 +84,35 @@ public partial class AddressPupop : Mopups.Pages.PopupPage
 
     public static async Task<List<SuggestionAddressModel>> GetPlacesAutocompleteAsync(string search)
     {
-        GoogleApi.Entities.Places.AutoComplete.Request.PlacesAutoCompleteRequest request = new GoogleApi.Entities.Places.AutoComplete.Request.PlacesAutoCompleteRequest();
-        request.Input = search;
-        //request.Key = Device.iOS == "iOS" ? "AIzaSyDY-9LWg_lY41hlxBA2-ngBydMGYaXxKA4" : "AIzaSyAW5B8h96IXYo_0ZL_bSGlDBVExVOAHa6w";
-        request.Key = "AIzaSyA6nc23HAg2fa8pGaolThKga40bUtZYpxE";
-        request.Language = Lan == "ar" ? GoogleApi.Entities.Common.Enums.Language.Arabic : GoogleApi.Entities.Common.Enums.Language.English;
+        var request = new GoogleApi.Entities.Places.AutoComplete.Request.PlacesAutoCompleteRequest
+        {
+            Input = search,
+            Key = "AIzaSyA6nc23HAg2fa8pGaolThKga40bUtZYpxE",
+            Language = Lan == "ar" ? GoogleApi.Entities.Common.Enums.Language.Arabic
+                       : GoogleApi.Entities.Common.Enums.Language.English,
+            RestrictType = GoogleApi.Entities.Places.AutoComplete.Request.Enums.RestrictPlaceType.Establishment
+        };
 
         var response = await GoogleApi.GooglePlaces.AutoComplete.QueryAsync(request, null);
 
-        List<Task<GoogleApi.Entities.Places.Details.Response.PlacesDetailsResponse>> detailsTasks = new List<Task<GoogleApi.Entities.Places.Details.Response.PlacesDetailsResponse>>();
+        // Filter only hotels (lodging)
+        var hotelPredictions = response.Predictions
+            .Where(p => p.Types.Contains(PlaceLocationType.Lodging))
+            .ToList();
 
-        foreach (var prediction in response.Predictions)
+        // Fetch details for each hotel prediction
+        var detailsTasks = hotelPredictions.Select(prediction =>
         {
-            var detailsRequest = new GoogleApi.Entities.Places.Details.Request.PlacesDetailsRequest
+            var detailsRequest = new PlacesDetailsRequest
             {
                 Key = request.Key,
                 PlaceId = prediction.PlaceId.ToString(),
-                Language = Lan == "ar" ? GoogleApi.Entities.Common.Enums.Language.Arabic : GoogleApi.Entities.Common.Enums.Language.English
+                Language = Lan == "ar" ? GoogleApi.Entities.Common.Enums.Language.Arabic
+                                       : GoogleApi.Entities.Common.Enums.Language.English
             };
 
-            detailsTasks.Add(GoogleApi.GooglePlaces.Details.QueryAsync(detailsRequest));
-        }
+            return GoogleApi.GooglePlaces.Details.QueryAsync(detailsRequest);
+        }).ToList();
 
         var detailsResponses = await Task.WhenAll(detailsTasks);
 
@@ -210,7 +171,10 @@ public partial class AddressPupop : Mopups.Pages.PopupPage
                 Longitude = detailsResponse.Result.Geometry.Location.Longitude,
                 FullAddress = ArrAdd[0] + " " + ArrAdd[1] + " " + ArrAdd[2] + " " + ArrAdd[3] + " " + ArrAdd[4] + " " + ArrAdd[5],
                 FullAddressAr = ArrAdd[0] + " " + ArrAdd[1] + " " + ArrAdd[2] + " " + ArrAdd[3] + " " + ArrAdd[4] + " " + ArrAdd[5],
-                MainAddress = ArrAdd[0] + " " + ArrAdd[1] + " " + ArrAdd[2],
+
+                MainAddress = detailsResponse.Result.Name, // hotel name 
+                //MainAddress = ArrAdd[0] + " " + ArrAdd[1] + " " + ArrAdd[2],
+
                 SubAddress = ArrAdd[3] + " " + ArrAdd[4],
                 Street = ArrAdd[1],
                 StreetAr = ArrAdd[1],
@@ -247,16 +211,14 @@ public partial class AddressPupop : Mopups.Pages.PopupPage
     private async void Button_Clicked(object sender, EventArgs e)
     {
         SuggestionAddressModel Listed = new SuggestionAddressModel();
-        Listed.Street = entryStreet.Text;
+        Listed.MainAddress = entryHotelName.Text;// hotel name
         Listed.City = entryCity.Text;
         Listed.State = entryState.Text;
-        Listed.Zip = entryPostalCode.Text;
         Listed.Country = entryCountry.Text;
-        Listed.FullAddress = entryStreet.Text + " " + entryState.Text + " " + entryCity.Text + " " + entryCountry.Text + " " + entryPostalCode.Text;
+        Listed.FullAddress = entryHotelName.Text + " " + entryState.Text + " " + entryCity.Text + " " + entryCountry.Text;
 
         DidClose?.Invoke(Listed);
 
         await MopupService.Instance.PopAsync();
     }
-
 }

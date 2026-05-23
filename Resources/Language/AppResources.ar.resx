@@ -138,9 +138,6 @@
   <data name="btnLogIn-Login" xml:space="preserve">
     <value>تسجيل الدخول</value>
   </data>
-  <data name="btnRequestDetails-RequestDetails" xml:space="preserve">
-    <value>تفاصيل الطلب</value>
-  </data>
   <data name="hdrAgency" xml:space="preserve">
     <value>وكالة سفر</value>
   </data>
@@ -1115,5 +1112,23 @@
   </data>
   <data name="The_amount_returned_successfully" xml:space="preserve">
     <value>تم ارجاع المبلغ و تغيير طريقة الدفع بنجاح</value>
+  </data>
+  <data name="hotelName" xml:space="preserve">
+    <value>اسم الفندق</value>
+  </data>
+  <data name="enter_Hotel_Name" xml:space="preserve">
+    <value>أدخل اسم الفندق</value>
+  </data>
+  <data name="Enter_Hotel" xml:space="preserve">
+    <value>إدخال الفندق</value>
+  </data>
+  <data name="btnRequestDetails-RequestDetails" xml:space="preserve">
+    <value>تفاصيل الطلب</value>
+  </data>
+  <data name="Manually_enter_hotel" xml:space="preserve">
+    <value>أدخل الفندق يدويا</value>
+  </data>
+  <data name="lblRememberme" xml:space="preserve">
+    <value>تذكرنى</value>
   </data>
 </root>

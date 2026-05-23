@@ -138,9 +138,6 @@
   <data name="btnLogIn-Login" xml:space="preserve">
     <value>LOG IN</value>
   </data>
-  <data name="btnRequestDetails-RequestDetails" xml:space="preserve">
-    <value>Request Details</value>
-  </data>
   <data name="hdrAgency" xml:space="preserve">
     <value>Agency</value>
   </data>
@@ -1115,5 +1112,23 @@
   </data>
   <data name="The_amount_returned_successfully" xml:space="preserve">
     <value>The amount has been returned and the payment method has been changed successfully.</value>
+  </data>
+  <data name="hotelName" xml:space="preserve">
+    <value>Hotel name</value>
+  </data>
+  <data name="enter_Hotel_Name" xml:space="preserve">
+    <value>Enter Hotel Name</value>
+  </data>
+  <data name="Enter_Hotel" xml:space="preserve">
+    <value>Enter Hotel</value>
+  </data>
+  <data name="btnRequestDetails-RequestDetails" xml:space="preserve">
+    <value>Request Details</value>
+  </data>
+  <data name="Manually_enter_hotel" xml:space="preserve">
+    <value>Manually enter hotel</value>
+  </data>
+  <data name="lblRememberme" xml:space="preserve">
+    <value>Remember me</value>
   </data>
 </root>
