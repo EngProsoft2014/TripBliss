@@ -165,6 +165,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
 
         #region RelayCommand
         [RelayCommand]
+        [Obsolete]
         async Task Selection(RequestTravelAgencyResponse model)
         {
             //UserDialogs.Instance.ShowLoading();
