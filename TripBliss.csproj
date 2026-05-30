@@ -20,6 +20,10 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
+		<UseMauiEssentials>true</UseMauiEssentials>
+    	<EnableDefaultiOSAssets>true</EnableDefaultiOSAssets>
+		<EnableSwiftSupport>true</EnableSwiftSupport>
+
 		<!-- Display name -->
 		<ApplicationTitle>TripBliss</ApplicationTitle>
 
@@ -49,17 +53,24 @@
 	  <AndroidUseAapt2>True</AndroidUseAapt2>
 	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
 	</PropertyGroup>
-	
+
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-ios|AnyCPU'">
-		<MtouchLink>None</MtouchLink>
-		<CreatePackage>false</CreatePackage>
+		<MtouchLink>SdkOnly</MtouchLink>
+		<EnableCodeSigning>true</EnableCodeSigning>
+		<Optimize>true</Optimize>
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
 		<CodesignProvision>TripBliss Provisioning</CodesignProvision>
 		<CodesignKey>Apple Distribution: ENG PRO SOFT, LLC (YZWTVALFLW)</CodesignKey>
 	</PropertyGroup>
 
+	<!-- <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-ios|AnyCPU'">
+		<MtouchLink>SdkOnly</MtouchLink>	
+		<CodesignProvision>Automatic</CodesignProvision>
+		<CodesignKey>Apple Development: TAREK GABER (9RKU8MRSBH)</CodesignKey>
+	</PropertyGroup> -->
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-ios|AnyCPU'">
-		<MtouchLink>None</MtouchLink>
 		<CreatePackage>false</CreatePackage>
 		<CodesignProvision>Automatic</CodesignProvision>
 		<CodesignKey>Apple Development: TAREK GABER (9RKU8MRSBH)</CodesignKey>
@@ -71,6 +82,23 @@
 	</PropertyGroup>
 
 
+	<ItemGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-ios|AnyCPU'">
+		<TrimmerRootAssembly Include="Akavache" />
+		<TrimmerRootAssembly Include="Akavache.Core" />
+		<TrimmerRootAssembly Include="Akavache.Sqlite3" />
+		<TrimmerRootAssembly Include="Controls.UserDialogs.Maui" />
+		<TrimmerRootAssembly Include="Mopups" />
+		<TrimmerRootAssembly Include="Syncfusion.Maui.Inputs" />
+		<TrimmerRootAssembly Include="Syncfusion.Maui.PdfViewer" />
+		<TrimmerRootAssembly Include="Syncfusion.Maui.TabView" />
+		<TrimmerRootAssembly Include="GoogleApi" />
+		<TrimmerRootAssembly Include="Polly" />
+		<TrimmerRootAssembly Include="Newtonsoft.Json" />
+		<TrimmerRootAssembly Include="SkiaSharp" />
+		<TrimmerRootAssembly Include="TripBliss" />
+    	<TrimmerRootAssembly Include="Microsoft.Maui.Controls" />
+	</ItemGroup>
+	
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\logo.svg" Color="#FFFFFF" ForegroundScale="0.65" />
@@ -133,7 +161,7 @@
 		<PackageReference Include="Camera.MAUI" Version="1.5.1" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="12.3.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
-		<PackageReference Include="Controls.UserDialogs.Maui" Version="1.7.0" />
+		<PackageReference Include="Controls.UserDialogs.Maui" Version="1.12.0" />
 		<PackageReference Include="GoogleApi" Version="5.8.11" />
 		<PackageReference Include="Microsoft.AspNet.SignalR.Client" Version="2.4.3" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.120" />
