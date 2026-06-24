@@ -138,7 +138,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Platforms\Android\google-services.json" />
+	  <None Remove="Platforms\Android\GoogleService-Info.plist" />
 	  <None Remove="Platforms\Android\Resources\xml\provider_paths.xml" />
+	  <None Remove="Platforms\iOS\GoogleService-Info.plist" />
 	  <None Remove="Resources\AppIcon\logo.svg" />
 	  <None Remove="Resources\Fonts\Almarai-Light.ttf" />
 	  <None Remove="Resources\Fonts\Almarai-Regular.ttf" />
@@ -157,19 +160,24 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <GoogleServicesJson Include="Platforms\Android\google-services.json" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="akavache" Version="10.2.41" />
 		<PackageReference Include="Camera.MAUI" Version="1.5.1" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="12.3.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
 		<PackageReference Include="Controls.UserDialogs.Maui" Version="1.12.0" />
 		<PackageReference Include="GoogleApi" Version="5.8.11" />
-		<PackageReference Include="Microsoft.AspNet.SignalR.Client" Version="2.4.3" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="9.0.15" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.120" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.120" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.15" />
 		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="9.0.120" />
 		<PackageReference Include="Mopups" Version="1.3.4" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+		<PackageReference Include="Plugin.FirebasePushNotifications" Version="3.2.11" />
 		<PackageReference Include="Polly" Version="8.6.6" />
 		<PackageReference Include="SkiaSharp" Version="3.119.2" />
 		<PackageReference Include="Syncfusion.Maui.Inputs" Version="27.2.5" />
@@ -181,6 +189,21 @@
 
 	<ItemGroup>
 	  <MauiSplashScreen Include="Resources\Splash\logosmall.svg" />
+	</ItemGroup>
+
+	<PropertyGroup>
+		<AndroidEnableGoogleServices>true</AndroidEnableGoogleServices>
+	</PropertyGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-ios'">
+		<BundleResource Include="Platforms/iOS/GoogleService-Info.plist">
+			<Link>GoogleService-Info.plist</Link>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</BundleResource>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
+		<GoogleServicesJson Include="Platforms\Android\google-services.json" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -448,6 +471,12 @@
 	  <MauiXaml Update="Pages\Users\UsersPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
+	  <PackageReference Include="GoogleGson">
+	    <Version>2.13.2.2</Version>
+	  </PackageReference>
 	</ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionTripBlissHideInfoBar="True" /></VisualStudio></ProjectExtensions>

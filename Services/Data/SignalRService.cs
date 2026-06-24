@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNet.SignalR.Client;
+﻿using CommunityToolkit.Maui.Alerts;
+using Microsoft.AspNetCore.SignalR.Client;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,36 +12,70 @@ namespace TripBliss.Services.Data
 {
     public class SignalRService
     {
-        private readonly HubConnection _hubConnection;
-        private readonly IHubProxy _hubProxy;
-        public event Action<string, string,string ,string> OnMessageReceived;
+        private HubConnection _hubConnection;
+        private bool _isReconnecting = false;
 
-        public SignalRService()
+        public event Action<string> OnMessageReceived;
+
+        public async Task InitSignalR(string userId, string role)
         {
+            _hubConnection = new HubConnectionBuilder()
+                .WithUrl($"{Helpers.Utility.ServerUrl}HubSignal/NotificationHub?userId={userId}&role={role}")
+                .WithAutomaticReconnect()
+                .Build();
 
-            _hubConnection = new HubConnection("https://fixproapi.engprosoft.net/");
-            _hubProxy = _hubConnection.CreateHubProxy("ChatHub");
+            _hubConnection.Closed += async (error) =>
+            {
+                Console.WriteLine("SignalR Disconnected. Retrying in 2 seconds...");
+                await Task.Delay(2000);
+                await StartAsync();
+            };
 
-            _hubProxy.On<string, string,string,string>("ReceiveMessage", (user, message, userFrom, userTo) =>
+            _hubConnection.On<string>("ReceiveNotification", (message) =>
+            {
+                MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    // Handle received message
-                    OnMessageReceived?.Invoke(user, message, userFrom, userTo);
+                    var toast = Toast.Make(message, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    toast.Show();
                 });
+
+                OnMessageReceived?.Invoke(message);
+            });
+
+            await StartAsync();
         }
 
         public async Task StartAsync()
         {
-            await _hubConnection.Start();
+            if (_hubConnection.State == HubConnectionState.Connected || _isReconnecting)
+                return;
+
+            _isReconnecting = true;
+
+            try
+            {
+                await _hubConnection.StartAsync();
+                Console.WriteLine("✅ SignalR Connected.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ SignalR Connection Failed: {ex.Message}");
+            }
+            finally
+            {
+                _isReconnecting = false;
+            }
         }
 
         public async Task Disconnect()
         {
-             _hubConnection.Stop();
-        }
-
-        public async Task SendMessage(string user, string message)
-        {
-            await _hubProxy.Invoke("SendMessage", user, message);
+            if (_hubConnection != null)
+            {
+                await _hubConnection.StopAsync();
+                await _hubConnection.DisposeAsync();
+                Console.WriteLine("🔴 SignalR Disconnected.");
+            }
         }
     }
+
 }

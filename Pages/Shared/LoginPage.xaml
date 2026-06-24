@@ -114,7 +114,7 @@
                         <TapGestureRecognizer Command="{Binding GoRestPageCommand}"></TapGestureRecognizer>
                     </Label.GestureRecognizers>
                 </Label>
-                <!--<Label x:Name="lblSignup" Margin="0,15,0,0">
+                <Label x:Name="lblSignup" Margin="0,15,0,0">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="{Static res:AppResources.lblDHAccount_Login}" FontSize="13" TextColor="Gray" FontFamily="Almarai-Regular"></Span>
@@ -127,7 +127,7 @@
                             </Span>
                         </FormattedString>
                     </Label.FormattedText>
-                </Label>-->
+                </Label>
             </StackLayout>
         </ScrollView>
     </Grid>

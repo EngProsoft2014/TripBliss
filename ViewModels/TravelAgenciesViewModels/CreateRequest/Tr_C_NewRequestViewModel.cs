@@ -1,21 +1,23 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Controls.UserDialogs.Maui;
+using Microsoft.VisualBasic;
+using Plugin.FirebasePushNotifications;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TripBliss.Models;
-using System.Collections.ObjectModel;
-using CommunityToolkit.Mvvm.ComponentModel;
-using System.ComponentModel;
-using Microsoft.VisualBasic;
-using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
-using TripBliss.Helpers;
 using TripBliss.Constants;
-using CommunityToolkit.Maui.Alerts;
-using TripBliss.Pages.TravelAgenciesPages;
-using Controls.UserDialogs.Maui;
+using TripBliss.Helpers;
+using TripBliss.Models;
 using TripBliss.Pages.Shared;
+using TripBliss.Pages.TravelAgenciesPages;
+using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
+using TripBliss.Services.Data;
 
 
 
@@ -56,10 +58,16 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
         readonly Services.Data.ServicesService _service;
         readonly IGenericRepository Rep;
-        public Tr_C_NewRequestViewModel(IGenericRepository GenericRep, Services.Data.ServicesService service)
+        readonly Services.Data.SignalRService _signalRService;
+        readonly INotificationService _notificationService;
+        readonly IFirebasePushNotification _firebasePushNotification;
+        public Tr_C_NewRequestViewModel(IGenericRepository GenericRep, Services.Data.ServicesService service, Services.Data.SignalRService signalRService, INotificationService notificationService, IFirebasePushNotification firebasePushNotification)
         {
             Rep = GenericRep;
             _service = service;
+            _signalRService = signalRService;
+            _notificationService = notificationService;
+            _firebasePushNotification = firebasePushNotification; 
             Lang = Preferences.Default.Get("Lan", "en");
             //LoadData();
             //LoadTransportaionData();
@@ -355,8 +363,19 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                             var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Successfully_AddRequest, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
 
+                            // إظهار إشعار للمستخدم الحالي (تأكيد إرسال الطلب)
+                            var confirmationNotification = new NotificationDto
+                            {
+                                Type = "RequestSent",
+                                Title = "تم إرسال الطلب",
+                                Message = $"تم إرسال طلب {RequestName} إلى {DistributorCompanies.Count} موزع",
+                                RequestId = json.Item1.Id,
+                                SenderId = id,
+                                SenderName = "نظام الإشعارات"
+                            };
+
                             Controls.StaticMember.WayOfTab = 0;
-                            await App.Current!.MainPage!.Navigation.PushAsync(new HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service));
+                            await App.Current!.MainPage!.Navigation.PushAsync(new HomeAgencyPage(new Tr_HomeViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification), Rep, _service, _signalRService, _notificationService, _firebasePushNotification));
                         }
                         else
                         {

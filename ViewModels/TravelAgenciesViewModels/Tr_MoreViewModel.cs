@@ -2,6 +2,7 @@
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
+using Plugin.FirebasePushNotifications;
 using System.Reactive.Linq;
 using TripBliss.Constants;
 using TripBliss.Helpers;
@@ -19,13 +20,19 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         #region Servises
         IGenericRepository Rep;
         readonly Services.Data.ServicesService _service;
+        readonly Services.Data.SignalRService _signalRService;
+        readonly Services.Data.INotificationService _notificationService;
+        readonly IFirebasePushNotification _firebasePushNotification;
         #endregion
 
         #region Cons
-        public Tr_MoreViewModel(IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_MoreViewModel(IGenericRepository generic, Services.Data.ServicesService service, Services.Data.SignalRService signalRService, Services.Data.INotificationService notificationService, IFirebasePushNotification firebasePushNotification)
         {
             Rep = generic;
             _service = service;
+            _signalRService = signalRService;
+            _notificationService = notificationService;
+            _firebasePushNotification = firebasePushNotification;
         }
         #endregion
 
@@ -34,7 +41,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         [RelayCommand]
         async Task SelectLanguage()
         {
-            await MopupService.Instance.PushAsync(new LanguagePopup(Rep, _service));
+            await MopupService.Instance.PushAsync(new LanguagePopup(Rep, _service, _signalRService, _notificationService, _firebasePushNotification));
         }
 
         [RelayCommand]
@@ -57,7 +64,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                 Preferences.Default.Set(ApiConstants.rememberMe, RememberMe);
                 Preferences.Default.Set(ApiConstants.rememberMeUserName, RememberMeUserName);
                 Preferences.Default.Set(ApiConstants.rememberMePassword, RememberPassword);
-                await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service)));
+                await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification)));
             };
             Controls.StaticMember.ShowSnackBar(TripBliss.Resources.Language.AppResources.Do_you_want_to_Logout, Controls.StaticMember.SnackBarColor, Controls.StaticMember.SnackBarTextColor, action);
             return Task.CompletedTask;
@@ -94,7 +101,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
 
             if (Constants.Permissions.CheckPermission(Result))
             {
-                var vm = new Tr_AccountViewModel(Rep, _service);
+                var vm = new Tr_AccountViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification);
                 var page = new Tr_AccountPage();
                 page.BindingContext = vm;
                 await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -127,7 +134,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         [RelayCommand]
         async Task MyProfileClick()
         {
-            var vm = new ProfileViewModel(Rep, _service);
+            var vm = new ProfileViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification);
             var page = new ProfilePage();
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);

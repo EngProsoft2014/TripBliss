@@ -94,9 +94,9 @@
                                         </StackLayout>
                                     </ScrollView>
 
-                                    <ImageButton Grid.Column="1" BackgroundColor="White" Padding="{OnPlatform iOS=10}" WidthRequest="30"  HeightRequest="20" HorizontalOptions="EndAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path= DeletHotelCommand}" CommandParameter="{Binding}">
+                                    <ImageButton Grid.Column="1" BackgroundColor="White" Padding="{OnPlatform iOS=10,Android=10}" WidthRequest="30"  HeightRequest="20" HorizontalOptions="EndAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path= DeletHotelCommand}" CommandParameter="{Binding}">
                                         <ImageButton.Source>
-                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
+                                            <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray" ></FontImageSource>
                                         </ImageButton.Source>
                                     </ImageButton>
                                 </Grid>
@@ -160,7 +160,7 @@
                                         </StackLayout>
                                     </ScrollView>
 
-                                    <ImageButton Grid.Column="1" BackgroundColor="White" Padding="{OnPlatform iOS=10}" WidthRequest="30" HeightRequest="20" HorizontalOptions="EndAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path= DeletTransPortationCommand}" CommandParameter="{Binding}">
+                                    <ImageButton Grid.Column="1" BackgroundColor="White" Padding="{OnPlatform iOS=10,Android=10}" WidthRequest="30" HeightRequest="20" HorizontalOptions="EndAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path= DeletTransPortationCommand}" CommandParameter="{Binding}">
                                         <ImageButton.Source>
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                         </ImageButton.Source>
@@ -235,7 +235,7 @@
                                         </StackLayout>
                                     </ScrollView>
 
-                                    <ImageButton Grid.Column="1" BackgroundColor="White" Padding="{OnPlatform iOS=10}" WidthRequest="30" HeightRequest="20" HorizontalOptions="EndAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path= DeletAirFlightCommand}" CommandParameter="{Binding}">
+                                    <ImageButton Grid.Column="1" BackgroundColor="White" Padding="{OnPlatform iOS=10,Android=10}" WidthRequest="30" HeightRequest="20" HorizontalOptions="EndAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path= DeletAirFlightCommand}" CommandParameter="{Binding}">
                                         <ImageButton.Source>
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                         </ImageButton.Source>
@@ -304,7 +304,7 @@
                                         </StackLayout>
                                     </ScrollView>
 
-                                    <ImageButton Grid.Column="1" BackgroundColor="White" Padding="{OnPlatform iOS=10}" WidthRequest="30" HeightRequest="20" HorizontalOptions="EndAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path= DeletVisaCommand}" CommandParameter="{Binding}">
+                                    <ImageButton Grid.Column="1" BackgroundColor="White" Padding="{OnPlatform iOS=10,Android=10}" WidthRequest="30" HeightRequest="20" HorizontalOptions="EndAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_C_NewRequestViewModel}}, Path= DeletVisaCommand}" CommandParameter="{Binding}">
                                         <ImageButton.Source>
                                             <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                                         </ImageButton.Source>

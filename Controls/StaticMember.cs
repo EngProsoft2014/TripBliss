@@ -1,8 +1,9 @@
 ﻿using Akavache;
 using CommunityToolkit.Maui.Core;
 using Controls.UserDialogs.Maui;
-using Microsoft.AspNet.SignalR.Client.Http;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Plugin.FirebasePushNotifications;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -81,7 +82,11 @@ namespace TripBliss.Controls
 
         public async static Task ClearAllData(IGenericRepository generic)
         {
+
             ServicesService _service = new ServicesService(generic);
+            SignalRService _signalRService = new SignalRService();
+            NotificationService _notificationService = new NotificationService();
+            IFirebasePushNotification _firebasePushNotification ;
 
             await App.Current!.MainPage!.DisplayAlert(TripBliss.Resources.Language.AppResources.Warning, TripBliss.Resources.Language.AppResources.Found_Problem_Internal_Server, TripBliss.Resources.Language.AppResources.OK);
 
@@ -100,7 +105,7 @@ namespace TripBliss.Controls
             Preferences.Default.Set(ApiConstants.rememberMeUserName, RememberMeUserName);
             Preferences.Default.Set(ApiConstants.rememberMePassword, RememberPassword);
 
-            await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(generic, _service)));
+            await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(generic, _service, _signalRService, _notificationService, null)));
         }
     }
 }

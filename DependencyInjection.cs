@@ -29,6 +29,8 @@ namespace TripBliss
         {
             #region ServiceServices
             Services.AddSingleton<ServicesService>();
+            Services.AddSingleton<SignalRService>();
+            Services.AddSingleton<INotificationService, NotificationService>();
             #endregion
 
             #region GenericRepository

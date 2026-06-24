@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
-using Microsoft.AspNet.SignalR.Client;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

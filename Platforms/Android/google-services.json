@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "347659802495",
+    "project_id": "fcm-push-notifications-ecb9c",
+    "storage_bucket": "fcm-push-notifications-ecb9c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:347659802495:android:c4753b33d2ed28a8dc2c4a",
+        "android_client_info": {
+          "package_name": "com.companyname.tripbliss"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBok5VVg_3j6ZivHP_0O9E5tnMlsKDcWeE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

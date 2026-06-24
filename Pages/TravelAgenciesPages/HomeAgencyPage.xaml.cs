@@ -1,7 +1,7 @@
 
 using CommunityToolkit.Maui.Alerts;
 using Controls.UserDialogs.Maui;
-using Microsoft.AspNet.SignalR.Client.Http;
+using Plugin.FirebasePushNotifications;
 using Syncfusion.Maui.Core.Carousel;
 using System.Globalization;
 using System.Threading.Tasks;
@@ -20,12 +20,18 @@ public partial class HomeAgencyPage : Controls.CustomControl
     private bool isTabHandling = false;
     Tr_HomeViewModel ViewModel;
     Tr_C_TravelAgencyViewModel ViewModelTap2;
-    public HomeAgencyPage(Tr_HomeViewModel viewModel, IGenericRepository generic, Services.Data.ServicesService service)
+    readonly Services.Data.SignalRService _signalRService;
+    readonly Services.Data.INotificationService _notificationService;
+    readonly IFirebasePushNotification _firebasePushNotification;
+    public HomeAgencyPage(Tr_HomeViewModel viewModel, IGenericRepository generic, Services.Data.ServicesService service, Services.Data.SignalRService signalRService, Services.Data.INotificationService notificationService, IFirebasePushNotification firebasePushNotification)
     {
         InitializeComponent();
         this.BindingContext = ViewModel = viewModel;
         Rep = generic;
         _service = service;
+        _signalRService = signalRService;
+        _notificationService = notificationService;
+        _firebasePushNotification = firebasePushNotification;
     }
 
     protected override async void OnAppearing()
@@ -39,7 +45,16 @@ public partial class HomeAgencyPage : Controls.CustomControl
             await toast.Show();
         }
     }
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
 
+        // ✅ التخلص من الـ ViewModel
+        if (ViewModel is IDisposable disposable)
+        {
+            disposable.Dispose();
+        }
+    }
 
     protected override bool OnBackButtonPressed()
     {
@@ -99,7 +114,7 @@ public partial class HomeAgencyPage : Controls.CustomControl
 
         if (e.NewIndex == 0)
         {
-            conviewHome.BindingContext = ViewModel = new Tr_HomeViewModel(Rep, _service);
+            conviewHome.BindingContext = ViewModel = new Tr_HomeViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification);
 
             if (!Constants.Permissions.CheckPermission(Constants.Permissions.Show_Home_Requests))
             {
@@ -121,11 +136,11 @@ public partial class HomeAgencyPage : Controls.CustomControl
         }
         else if (e.NewIndex == 3)
         {
-            conviewHistory.BindingContext = new Tr_HistoryViewModel(Rep, _service);
+            conviewHistory.BindingContext = new Tr_HistoryViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification);
         }
         else if (e.NewIndex == 4)
         {
-            conviewMore.BindingContext = new Tr_MoreViewModel(Rep, _service);
+            conviewMore.BindingContext = new Tr_MoreViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification);
         }
 
         isTabHandling = false;

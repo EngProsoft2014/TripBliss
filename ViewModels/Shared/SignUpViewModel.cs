@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
+using Plugin.FirebasePushNotifications;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,10 +25,15 @@ namespace TripBliss.ViewModels
     {
         readonly IGenericRepository Rep;
         readonly Services.Data.ServicesService _service;
-        public SignUpViewModel(IGenericRepository GenericRep, Services.Data.ServicesService service)
+        readonly Services.Data.SignalRService _signalRService;
+        readonly Services.Data.INotificationService _notificationService;
+        readonly IFirebasePushNotification _firebasePushNotification;
+        public SignUpViewModel(IGenericRepository GenericRep, Services.Data.ServicesService service, Services.Data.SignalRService signalRService, Services.Data.INotificationService notificationService, IFirebasePushNotification firebasePushNotification)
         {
             Rep = GenericRep;
             _service = service;
+            _signalRService = signalRService;
+            _notificationService = notificationService; 
         }
 
         [ObservableProperty]
@@ -120,7 +126,7 @@ namespace TripBliss.ViewModels
                             var toast = Toast.Make(TripBliss.Resources.Language.AppResources.RegisterSuccessfully, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
 
-                            await App.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep,_service)));
+                            await App.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep,_service,_signalRService, _notificationService, _firebasePushNotification)));
                             App.Current.MainPage.Navigation.RemovePage(App.Current.MainPage.Navigation.NavigationStack[App.Current.MainPage.Navigation.NavigationStack.Count - 2]);
                         }
                         else

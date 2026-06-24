@@ -1,6 +1,7 @@
 
 using Controls.UserDialogs.Maui;
 using Mopups.Services;
+using Plugin.FirebasePushNotifications;
 using System.Globalization;
 using TripBliss.Constants;
 using TripBliss.Extensions;
@@ -16,11 +17,17 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
 {
     IGenericRepository Rep;
     readonly Services.Data.ServicesService _service;
-    public LanguagePopup(IGenericRepository generic, Services.Data.ServicesService service)
+    readonly Services.Data.SignalRService _signalRService;
+    readonly Services.Data.INotificationService _notificationService;
+    readonly IFirebasePushNotification _firebasePushNotification;
+    public LanguagePopup(IGenericRepository generic, Services.Data.ServicesService service, Services.Data.SignalRService signalRService, Services.Data.INotificationService notificationService, IFirebasePushNotification firebasePushNotification)
 	{
         InitializeComponent();
         Rep = generic;
         _service = service;
+        _signalRService = signalRService;
+        _notificationService = notificationService;
+        _firebasePushNotification = firebasePushNotification;
         LoadSetting();
     }
 
@@ -108,15 +115,15 @@ public partial class LanguagePopup : Mopups.Pages.PopupPage
         var DisId = Preferences.Default.Get(ApiConstants.distributorCompanyId,"");
         if (!string.IsNullOrEmpty(TrId) && string.IsNullOrEmpty(DisId))
         {
-            var vm = new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep, _service);
-            var page = new Pages.TravelAgenciesPages.HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service);
+            var vm = new ViewModels.TravelAgenciesViewModels.Tr_HomeViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification);
+            var page = new Pages.TravelAgenciesPages.HomeAgencyPage(new Tr_HomeViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification), Rep, _service, _signalRService, _notificationService, _firebasePushNotification);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
         }
         if (string.IsNullOrEmpty(TrId) && !string.IsNullOrEmpty(DisId))
         {
-            var vm = new ViewModels.DistributorsViewModels.Dis_HomeViewModel(Rep, _service);
-            var page = new Pages.DistributorsPages.HomeDistributorsPage(vm, Rep, _service);
+            var vm = new ViewModels.DistributorsViewModels.Dis_HomeViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification);
+            var page = new Pages.DistributorsPages.HomeDistributorsPage(vm, Rep, _service, _signalRService, _notificationService, _firebasePushNotification);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
         }

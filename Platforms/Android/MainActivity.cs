@@ -1,13 +1,19 @@
-﻿using Android.App;
+﻿using Android;
+using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.Content.Res;
 using Android.OS;
 using Android.Views;
+using AndroidX.Core.App;
+using AndroidX.Core.Content;
+using Firebase;
+using Plugin.FirebasePushNotifications.Platforms;
+using TripBliss.Models;
 
 namespace TripBliss
 {
-    [Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, LaunchMode = LaunchMode.SingleTop, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density)]
+    [Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, LaunchMode = LaunchMode.SingleTask, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density)]
     public class MainActivity : MauiAppCompatActivity
     {
         protected override void OnCreate(Bundle? savedInstanceState)
@@ -18,36 +24,16 @@ namespace TripBliss
 
             this.Window?.AddFlags(WindowManagerFlags.Fullscreen);
 
-            //Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("NoUnderline", (h, v) =>
-            //{
-            //    h.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
-            //});
+            HandleNotificationIntent(Intent);
 
-            //Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("NoUnderline", (h, v) =>
-            //{
-            //    h.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
-            //});
-
-            //Microsoft.Maui.Handlers.PickerHandler.Mapper.AppendToMapping("NoUnderline", (h, v) =>
-            //{
-            //    h.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
-            //});
-
-            //Microsoft.Maui.Handlers.EditorHandler.Mapper.AppendToMapping("NoUnderline", (h, v) =>
-            //{
-            //    h.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
-            //});
-
-            //Microsoft.Maui.Handlers.DatePickerHandler.Mapper.AppendToMapping("NoUnderline", (h, v) =>
-            //{
-            //    h.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
-            //});
-
-            //Microsoft.Maui.Handlers.TimePickerHandler.Mapper.AppendToMapping("NoUnderline", (h, v) =>
-            //{
-            //    h.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
-            //});
-            
+            //Request Notification Permission
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu)
+            {
+                if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.PostNotifications) != Permission.Granted)
+                {
+                    ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.PostNotifications }, 0);
+                }
+            }
         }
 
         protected override void AttachBaseContext(Context? @base)
@@ -60,6 +46,26 @@ namespace TripBliss
             base.AttachBaseContext(@base);
         }
 
+
+        private void HandleNotificationIntent(Intent intent)
+        {
+            if (intent?.Extras != null)
+            {
+                var notification = new NotificationDto
+                {
+                    RequestId = intent.Extras.GetString("requestId"),
+                    OfferId = intent.Extras.GetString("offerId"),
+                    Type = intent.Extras.GetString("type"),
+                    Title = intent.Extras.GetString("title"),
+                    Message = intent.Extras.GetString("body")
+                };
+
+                var json = System.Text.Json.JsonSerializer.Serialize(notification);
+
+                // ✅ تخزين الإشعار
+                Preferences.Default.Set("PendingNotificationData", json);
+            }
+        }
     }
 
 }

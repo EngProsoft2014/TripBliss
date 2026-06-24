@@ -3,8 +3,8 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
-using Microsoft.AspNet.SignalR.Client.Http;
 using Mopups.Services;
+using Plugin.FirebasePushNotifications;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,13 +33,19 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         #region Services
         readonly Services.Data.ServicesService _service;
         IGenericRepository Rep;
+        readonly Services.Data.SignalRService _signalRService;
+        readonly Services.Data.INotificationService _notificationService;
+        readonly IFirebasePushNotification _firebasePushNotification;
         #endregion
 
         #region Cons
-        public Dis_AccountViewModel(IGenericRepository generic, Services.Data.ServicesService service)
+        public Dis_AccountViewModel(IGenericRepository generic, Services.Data.ServicesService service, Services.Data.SignalRService signalRService, Services.Data.INotificationService notificationService, IFirebasePushNotification firebasePushNotification)
         {
             Rep = generic;
             _service = service;
+            _signalRService = signalRService;
+            _notificationService = notificationService;
+            _firebasePushNotification = firebasePushNotification;
             Init();
         }
         #endregion
@@ -202,7 +208,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels
                     await BlobCache.LocalMachine.Vacuum();
                     Constants.Permissions.LstPermissions.Clear();                    
                     Preferences.Default.Set("Lan", LangValueToKeep);
-                    await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service)));
+                    await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification)));
                 }
                 else
                 {

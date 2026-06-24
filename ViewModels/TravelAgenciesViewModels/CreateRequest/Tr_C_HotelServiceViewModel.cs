@@ -11,7 +11,6 @@ using TripBliss.Helpers;
 using TripBliss.Constants;
 using CommunityToolkit.Maui.Alerts;
 using Controls.UserDialogs.Maui;
-using Microsoft.AspNet.SignalR.Client.Http;
 using TripBliss.Pages.Shared;
 using GoogleApi.Entities.Interfaces;
 using GoogleApi.Entities.Translate.Common.Enums;
@@ -78,6 +77,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             Rep = generic;
             _service = service;
+            HotelAddress = model.HotelName;
             //HotelResponseModel = model;
             HotelRequestModel!.CheckIn = DateTime.Now;
             HotelRequestModel!.CheckOut = DateTime.Now.AddDays(7);
@@ -289,12 +289,17 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [RelayCommand]
         async Task ApplyHotelClicked(RequestTravelAgencyHotelRequest request)
         {
-            if (SelectedLocation == null || SelectedLocation?.Id == 0)
-            {
-                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_SelectLocation, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                await toast.Show();
-            }
-            else if (SelectedHotel == null || SelectedHotel?.Id == 0)
+            //if (SelectedLocation == null || SelectedLocation?.Id == 0)
+            //{
+            //    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_SelectLocation, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+            //    await toast.Show();
+            //}
+            //else if (SelectedHotel == null || SelectedHotel?.Id == 0)
+            //{
+            //    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_SelectHotel, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+            //    await toast.Show();
+            //}
+            if (string.IsNullOrEmpty(HotelAddress))
             {
                 var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_SelectHotel, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();
@@ -334,21 +339,30 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 IsBusy = false;
                 UserDialogs.Instance.ShowLoading();
 
-                request.HotelId = HotelResponseModel!.HotelId = SelectedHotel!.Id;
+                //request.HotelId = HotelResponseModel!.HotelId = SelectedHotel!.Id;
+                //request.LocationId = HotelResponseModel!.LocationId = SelectedLocation!.Id;
+
+                //start test
+                request.HotelId = HotelResponseModel!.HotelId = 8;
+                request.LocationId = HotelResponseModel!.LocationId = 1;
+                //end test
+
                 request.RoomViewId = HotelResponseModel!.RoomViewId = SelectedRoomView!.Id;
-                request.MealId = HotelResponseModel!.MealId = SelectedMeal!.Id;
-                request.LocationId = HotelResponseModel!.LocationId = SelectedLocation!.Id;
+                request.MealId = HotelResponseModel!.MealId = SelectedMeal!.Id;   
                 request.RoomTypeId = HotelResponseModel!.RoomTypeId = SelectedRoomType!.Id;
 
-                HotelResponseModel!.HotelName = SelectedHotel!.HotelName;
-                HotelResponseModel!.HotelNameAr = SelectedHotel!.HotelNameAr;
+                //HotelResponseModel!.HotelName = SelectedHotel!.HotelName;
+                //HotelResponseModel!.HotelNameAr = SelectedHotel!.HotelNameAr;
+                HotelResponseModel!.HotelName = HotelAddress;              
+                HotelResponseModel!.HotelNameAr = HotelAddress;
+
                 HotelResponseModel!.CheckIn = request.CheckIn;
                 HotelResponseModel!.CheckOut = request.CheckOut;
                 HotelResponseModel!.Notes = request.Notes;
                 HotelResponseModel!.RoomViewName = SelectedRoomView!.RoomViewName;
                 HotelResponseModel!.RoomViewNameAr = SelectedRoomView!.RoomViewNameAr;
-                HotelResponseModel!.LocationName = SelectedLocation!.LocationName;
-                HotelResponseModel!.LocationNameAr = SelectedLocation!.LocationNameAr;
+                //HotelResponseModel!.LocationName = SelectedLocation!.LocationName;
+                //HotelResponseModel!.LocationNameAr = SelectedLocation!.LocationNameAr;
                 HotelResponseModel!.RoomCount = request.RoomCount;
                 Controls.StaticMember.EndRequestStatic = (request.CheckOut > Controls.StaticMember.EndRequestStatic) ? request.CheckOut : Controls.StaticMember.EndRequestStatic;
                 HotelClose.Invoke(request, HotelResponseModel);

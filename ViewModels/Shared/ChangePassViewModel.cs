@@ -3,6 +3,7 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
+using Plugin.FirebasePushNotifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,13 +33,19 @@ namespace TripBliss.ViewModels
         #region Services
         readonly Services.Data.ServicesService _service;
         IGenericRepository Rep;
+        readonly Services.Data.SignalRService _signalRService;
+        readonly Services.Data.INotificationService _notificationService;
+        IFirebasePushNotification _firebasePushNotification;
         #endregion
 
         #region Cons
-        public ChangePassViewModel(IGenericRepository generic, Services.Data.ServicesService service)
+        public ChangePassViewModel(IGenericRepository generic, Services.Data.ServicesService service, Services.Data.SignalRService signalRService, Services.Data.INotificationService notificationService, IFirebasePushNotification firebasePushNotification)
         {
             Rep = generic;
             _service = service;
+            _signalRService = signalRService;
+            _notificationService = notificationService;
+            _firebasePushNotification = firebasePushNotification;
         } 
         #endregion
 
@@ -82,7 +89,7 @@ namespace TripBliss.ViewModels
                         Preferences.Default.Set(ApiConstants.rememberMe, RememberMe);
                         Preferences.Default.Set(ApiConstants.rememberMeUserName, RememberMeUserName);
 
-                        await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service)));
+                        await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification)));
                     }
                     else
                     {

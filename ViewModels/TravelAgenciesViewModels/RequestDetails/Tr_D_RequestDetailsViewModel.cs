@@ -1,19 +1,20 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Controls.UserDialogs.Maui;
+using Plugin.FirebasePushNotifications;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TripBliss.Models;
-using TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest;
-using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
-using TripBliss.Helpers;
 using TripBliss.Constants;
-using Controls.UserDialogs.Maui;
-using CommunityToolkit.Maui.Alerts;
+using TripBliss.Helpers;
+using TripBliss.Models;
 using TripBliss.Pages.Shared;
+using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
+using TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 {
@@ -28,14 +29,20 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         #region Services
         IGenericRepository Rep;
         readonly Services.Data.ServicesService _service;
+        readonly Services.Data.SignalRService _signalRService;
+        readonly Services.Data.INotificationService _notificationService;
+        readonly IFirebasePushNotification _firebasePushNotification;
         #endregion
 
         #region Cons
-        public Tr_D_RequestDetailsViewModel(string ReqId,IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_D_RequestDetailsViewModel(string ReqId,IGenericRepository generic, Services.Data.ServicesService service, Services.Data.SignalRService signalRService, Services.Data.INotificationService notificationService, IFirebasePushNotification firebasePushNotification)
         {
             Rep = generic;
             RequestId = ReqId;
             _service = service;
+            _signalRService = signalRService;
+            _notificationService = notificationService;
+            _firebasePushNotification = firebasePushNotification;
             Init(ReqId);
         }
         #endregion
@@ -313,7 +320,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         async Task Selection(ResponseWithDistributorResponse model)
         {
-            await App.Current!.MainPage!.Navigation.PushAsync(new ConfirmResponsePage(new Tr_D_ConfirmResponsePageViewModel(model,Rep,_service),Rep));
+            await App.Current!.MainPage!.Navigation.PushAsync(new ConfirmResponsePage(new Tr_D_ConfirmResponsePageViewModel(model,Rep,_service,_signalRService,_notificationService,_firebasePushNotification),Rep));
         }
         [RelayCommand]
         async Task BackButton()
@@ -345,7 +352,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                             var toast = Toast.Make(TripBliss.Resources.Language.AppResources.RequestDeleteSuccess, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
 
-                            await App.Current!.MainPage!.Navigation.PushAsync(new Pages.TravelAgenciesPages.HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service));
+                            await App.Current!.MainPage!.Navigation.PushAsync(new Pages.TravelAgenciesPages.HomeAgencyPage(new Tr_HomeViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification), Rep, _service, _signalRService, _notificationService, _firebasePushNotification));
                         }
                         else
                         {

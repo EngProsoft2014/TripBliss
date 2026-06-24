@@ -2,6 +2,7 @@
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
+using Plugin.FirebasePushNotifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,16 +24,22 @@ namespace TripBliss.ViewModels.DistributorsViewModels
     {
         IGenericRepository Rep;
         readonly Services.Data.ServicesService _service;
-        public Dis_MoreViewModel(IGenericRepository generic, Services.Data.ServicesService service)
+        readonly Services.Data.SignalRService _signalRService;
+        readonly Services.Data.INotificationService _notificationService;
+        readonly IFirebasePushNotification _firebasePushNotification;
+        public Dis_MoreViewModel(IGenericRepository generic, Services.Data.ServicesService service, Services.Data.SignalRService signalRService, Services.Data.INotificationService notificationService, IFirebasePushNotification firebasePushNotification)
         {
             Rep = generic;
             _service = service;
+            _signalRService = signalRService;
+            _notificationService = notificationService;
+            _firebasePushNotification = firebasePushNotification;
         }
 
         [RelayCommand]
         async Task SelectLanguage()
         {
-            await MopupService.Instance.PushAsync(new LanguagePopup(Rep, _service));
+            await MopupService.Instance.PushAsync(new LanguagePopup(Rep, _service, _signalRService, _notificationService, _firebasePushNotification));
         }
         [RelayCommand]
         async Task DocumentClick()
@@ -73,7 +80,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         {
             if (Constants.Permissions.CheckPermission(Constants.Permissions.ShowDistributorCompanyAccount))
             {
-                var vm = new Dis_AccountViewModel(Rep, _service);
+                var vm = new Dis_AccountViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification);
                 var page = new Dis_AccountPage();
                 page.BindingContext = vm;
                 await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -106,7 +113,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels
                 Preferences.Default.Set(ApiConstants.rememberMeUserName, RememberMeUserName);
                 Preferences.Default.Set(ApiConstants.rememberMePassword, RememberPassword);
 
-                await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service)));
+                await Application.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification)));
             };
             Controls.StaticMember.ShowSnackBar(TripBliss.Resources.Language.AppResources.Do_you_want_to_Logout, Controls.StaticMember.SnackBarColor, Controls.StaticMember.SnackBarTextColor, action);
             return Task.CompletedTask;
@@ -115,7 +122,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         [RelayCommand]
         async Task MyProfileClick()
         {
-            var vm = new ProfileViewModel(Rep, _service);
+            var vm = new ProfileViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification);
             var page = new ProfilePage();
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);

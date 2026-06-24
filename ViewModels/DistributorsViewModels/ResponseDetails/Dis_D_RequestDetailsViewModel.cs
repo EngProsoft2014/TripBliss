@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using Mopups.Services;
+using Plugin.FirebasePushNotifications;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
@@ -39,14 +40,20 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
         #region Services
         IGenericRepository Rep;
         readonly Services.Data.ServicesService _service;
+        readonly Services.Data.SignalRService _signalRService;
+        readonly Services.Data.INotificationService _notificationService;
+        readonly IFirebasePushNotification _firebasePushNotification;
         #endregion
 
         #region Cons
-        public Dis_D_RequestDetailsViewModel(string ReqId, IGenericRepository generic, Services.Data.ServicesService service)
+        public Dis_D_RequestDetailsViewModel(string ReqId, IGenericRepository generic, Services.Data.ServicesService service, Services.Data.SignalRService signalRService, Services.Data.INotificationService notificationService, IFirebasePushNotification firebasePushNotification)
         {
             Rep = generic;
             Lang = Preferences.Default.Get("Lan", "en");
             _service = service;
+            _signalRService = signalRService;
+            _notificationService = notificationService;
+            _firebasePushNotification = firebasePushNotification;
             RequestId = ReqId;
             Init(ReqId);
         }
@@ -198,7 +205,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                         Response = new ResponseWithDistributorDetailsResponse();
                         Response = json.Item1;
 
-                        new Dis_D_RequestDetailsViewModel(Response?.Id!, Rep, _service);
+                        new Dis_D_RequestDetailsViewModel(Response?.Id!, Rep, _service, _signalRService, _notificationService, _firebasePushNotification);
                         //Controls.StaticMember.WayOfTab = 0;
                         //await App.Current!.MainPage!.Navigation.PushAsync(new HomeDistributorsPage(new Dis_HomeViewModel(Rep, _service), Rep, _service));
                     }
@@ -239,7 +246,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                         UserDialogs.Instance.HideHud();
                         if (json.Item1 == null && json.Item2 == null)
                         {
-                            await App.Current!.MainPage!.Navigation.PushAsync(new HomeDistributorsPage(new Dis_HomeViewModel(Rep, _service), Rep, _service));
+                            await App.Current!.MainPage!.Navigation.PushAsync(new HomeDistributorsPage(new Dis_HomeViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification), Rep, _service, _signalRService, _notificationService, _firebasePushNotification));
                             var toast = Toast.Make(TripBliss.Resources.Language.AppResources.ReviewSuccess, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
                         }
@@ -279,7 +286,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels.ResponseDetails
                             var toast = Toast.Make(TripBliss.Resources.Language.AppResources.ResponseDeleteSuccess, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
 
-                            await App.Current!.MainPage!.Navigation.PushAsync(new HomeDistributorsPage(new Dis_HomeViewModel(Rep, _service), Rep, _service));
+                            await App.Current!.MainPage!.Navigation.PushAsync(new HomeDistributorsPage(new Dis_HomeViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification), Rep, _service, _signalRService, _notificationService, _firebasePushNotification));
                         }
                         else
                         {

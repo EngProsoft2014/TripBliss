@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
+using Plugin.FirebasePushNotifications;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -26,12 +27,18 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         #region Services
         readonly Services.Data.ServicesService _service;
         IGenericRepository Rep;
+        readonly Services.Data.SignalRService _signalRService;
+        readonly Services.Data.INotificationService _notificationService;
+        readonly IFirebasePushNotification _firebasePushNotification;
         #endregion
 
-        public Tr_HistoryViewModel(IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_HistoryViewModel(IGenericRepository generic, Services.Data.ServicesService service, Services.Data.SignalRService signalRService, Services.Data.INotificationService notificationService, IFirebasePushNotification firebasePushNotification)
         {
             Rep = generic;
             _service = service;
+            _signalRService = signalRService;
+            _notificationService = notificationService;
+            _firebasePushNotification = firebasePushNotification;
             Requests = new ObservableCollection<RequestTravelAgencyResponse>();
 
             if (Controls.StaticMember.WayOfTab == 3)
@@ -81,7 +88,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         {
             if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_Request_Details_History))
             {
-                await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new RequestDetails.Tr_D_RequestDetailsViewModel(model.Id!, Rep, _service)));
+                await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new RequestDetails.Tr_D_RequestDetailsViewModel(model.Id!, Rep, _service, _signalRService, _notificationService, _firebasePushNotification)));
             }
             else
             {

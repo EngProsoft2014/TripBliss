@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using Newtonsoft.Json;
+using Plugin.FirebasePushNotifications;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,6 +17,7 @@ using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages.Shared;
 using TripBliss.Pages.TravelAgenciesPages.RequestDetails;
+using TripBliss.Services.Data;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels
 {
@@ -28,27 +30,42 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         public ObservableCollection<RequestTravelAgencyResponse> requestsInPage = new ObservableCollection<RequestTravelAgencyResponse>();
         public int PageNumber { get; set; }
         public bool IsHasNext { get; set; }
+
+        private INotificationService _notificationService;
+
+
+        [ObservableProperty]
+        private ObservableCollection<NotificationDto> notifications = new();
+
+        [ObservableProperty]
+        private int unreadNotificationsCount;
         #endregion
 
         #region Services
         readonly Services.Data.ServicesService _service;
         IGenericRepository Rep;
+        readonly Services.Data.SignalRService _signalRService;
+        readonly IFirebasePushNotification _firebasePushNotification;
         #endregion
 
         #region Cons
-        public Tr_HomeViewModel(IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_HomeViewModel(IGenericRepository generic, Services.Data.ServicesService service, Services.Data.SignalRService signalRService, INotificationService notificationService, IFirebasePushNotification firebasePushNotification)
         {
             Rep = generic;
             _service = service;
-            Init(); 
-        } 
+            _signalRService = signalRService;
+            _notificationService = notificationService;
+            _firebasePushNotification = firebasePushNotification;
+
+            Init();
+        }
         #endregion
 
 
         public async void Init()
         {
             if (Constants.Permissions.LstPermissions.Count == 0)
-            {       
+            {
                 await LoadPermissions();
             }
             PageNumber = 1;
@@ -110,7 +127,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                                     RequestsInPage.ToList().ForEach(f => Requests.Add(f));
                                 }
                             }
-                            PageNumber += 1;      
+                            PageNumber += 1;
                         }
 
                         //var toast = Toast.Make(Requests.Count().ToString(), CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
@@ -160,7 +177,6 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
             //IsBusy = false;
         }
 
-
         #endregion
 
         #region RelayCommand
@@ -169,7 +185,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
         async Task Selection(RequestTravelAgencyResponse model)
         {
             //UserDialogs.Instance.ShowLoading();
-            await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new RequestDetails.Tr_D_RequestDetailsViewModel(model.Id,Rep,_service)));
+            await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new RequestDetails.Tr_D_RequestDetailsViewModel(model.Id, Rep, _service, _signalRService, _notificationService, _firebasePushNotification)));
             //UserDialogs.Instance.HideHud();
         }
 
@@ -182,6 +198,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels
                 await GetRequestes();
             }
         }
+
         #endregion
 
     }

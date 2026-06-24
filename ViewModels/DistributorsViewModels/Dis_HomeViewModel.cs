@@ -2,8 +2,8 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
-using Microsoft.AspNet.SignalR.Client.Http;
 using Newtonsoft.Json;
+using Plugin.FirebasePushNotifications;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,18 +27,26 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         public ObservableCollection<ResponseWithDistributorResponse> responsesInPage = new ObservableCollection<ResponseWithDistributorResponse>();
         public int PageNumber { get; set; }
         public bool IsHasNext { get; set; }
+
         #endregion
 
         #region Services
         readonly Services.Data.ServicesService _service;
         IGenericRepository Rep;
+        readonly Services.Data.SignalRService _signalRService;
+        readonly Services.Data.INotificationService _notificationService;
+        readonly IFirebasePushNotification _firebasePushNotification;
         #endregion
 
         #region Cons
-        public Dis_HomeViewModel(IGenericRepository generic, Services.Data.ServicesService service)
+        public Dis_HomeViewModel(IGenericRepository generic, Services.Data.ServicesService service, Services.Data.SignalRService signalRService, Services.Data.INotificationService notificationService, IFirebasePushNotification firebasePushNotification)
         {
             Rep = generic;
             _service = service;
+            _signalRService = signalRService;
+            _notificationService = notificationService;
+            _firebasePushNotification = firebasePushNotification;
+
             Init();
         } 
         #endregion
@@ -55,6 +63,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels
             IsHasNext = true;
             await GetResponses();     
         }
+
 
         async Task LoadPermissions()
         {
@@ -156,7 +165,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         {
             if (Constants.Permissions.CheckPermission(Constants.Permissions.Show_Response))
             {
-                await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new Dis_D_RequestDetailsViewModel(model.Id, Rep, _service), new Dis_D_PaymentViewModel(model, Rep, _service), Rep, _service));
+                await App.Current!.MainPage!.Navigation.PushAsync(new RequestDetailsPage(new Dis_D_RequestDetailsViewModel(model.Id, Rep, _service, _signalRService, _notificationService, _firebasePushNotification), new Dis_D_PaymentViewModel(model, Rep, _service), Rep, _service));
             }
             else
             {

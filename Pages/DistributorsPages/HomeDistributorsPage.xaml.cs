@@ -5,6 +5,7 @@ using TripBliss.ViewModels.DistributorsViewModels.Offer;
 using TripBliss.ViewModels.TravelAgenciesViewModels.Offer;
 using TripBliss.ViewModels.TravelAgenciesViewModels;
 using CommunityToolkit.Maui.Alerts;
+using Plugin.FirebasePushNotifications;
 
 namespace TripBliss.Pages.DistributorsPages;
 
@@ -12,15 +13,21 @@ public partial class HomeDistributorsPage : Controls.CustomControl
 {
     IGenericRepository Rep;
     readonly Services.Data.ServicesService _service;
+    readonly Services.Data.SignalRService _signalRService;
+    readonly Services.Data.INotificationService _notificationService;
+    readonly IFirebasePushNotification _firebasePushNotification;
     Dis_HomeViewModel ViewModel;
     Dis_DistributorsViewModel distributorsViewModel;
     private bool isTabHandling = false;
 
-    public HomeDistributorsPage(Dis_HomeViewModel viewModel,IGenericRepository generic, Services.Data.ServicesService service)
+    public HomeDistributorsPage(Dis_HomeViewModel viewModel,IGenericRepository generic, Services.Data.ServicesService service, Services.Data.SignalRService signalRService, Services.Data.INotificationService notificationService, IFirebasePushNotification firebasePushNotification)
 	{
 		InitializeComponent();
         Rep = generic;
-        _service = service; 
+        _service = service;
+        _signalRService = signalRService;
+        _notificationService = notificationService;
+        _firebasePushNotification = firebasePushNotification;
         BindingContext = ViewModel = viewModel;
 
         chkAll.IsChecked = true;
@@ -220,7 +227,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
 
         if (e.NewIndex == 0)
         {
-            HomeView.BindingContext = ViewModel = new Dis_HomeViewModel(Rep, _service);
+            HomeView.BindingContext = ViewModel = new Dis_HomeViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification);
 
             if (!Constants.Permissions.CheckPermission(Constants.Permissions.Show_Home_Requests))
             {
@@ -244,11 +251,11 @@ public partial class HomeDistributorsPage : Controls.CustomControl
         }
         else if (e.NewIndex == 3)
         {
-            HistoryView.BindingContext = new Dis_HistoryViewModel(Rep, _service);
+            HistoryView.BindingContext = new Dis_HistoryViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification);
         }
         else if (e.NewIndex == 4)
         {
-            MoreView.BindingContext = new Dis_MoreViewModel(Rep, _service);
+            MoreView.BindingContext = new Dis_MoreViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification);
         }
 
         isTabHandling = false;

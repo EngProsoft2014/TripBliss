@@ -4,8 +4,8 @@ using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
 using GoogleApi.Entities.Interfaces;
 using GoogleApi.Entities.Translate.Common.Enums;
-using Microsoft.AspNet.SignalR.Client.Http;
 using Mopups.Services;
+using Plugin.FirebasePushNotifications;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 using System.Security.AccessControl;
@@ -88,13 +88,19 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         IGenericRepository Rep;
         readonly Services.Data.ServicesService _service;
         ResponseWithDistributorResponse _distributorResponse;
+        readonly Services.Data.SignalRService _signalRService;
+        readonly Services.Data.INotificationService _notificationService;
+        readonly IFirebasePushNotification _firebasePushNotification;
         #endregion
 
         #region Cons
-        public Tr_D_PaymentViewModel(ResponseWithDistributorDetailsResponse model, ResponseWithDistributorResponse distributorResponse, IGenericRepository generic, Services.Data.ServicesService service)
+        public Tr_D_PaymentViewModel(ResponseWithDistributorDetailsResponse model, ResponseWithDistributorResponse distributorResponse, IGenericRepository generic, Services.Data.ServicesService service, Services.Data.SignalRService signalRService, Services.Data.INotificationService notificationService, IFirebasePushNotification firebasePushNotification)
         {
             Rep = generic;
             _service = service;
+            _signalRService = signalRService;
+            _notificationService = notificationService;
+            _firebasePushNotification = firebasePushNotification;
             Init(model, distributorResponse);
         }
         #endregion
@@ -237,7 +243,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         async Task BackButtonClicked()
         {
-            new Tr_D_ConfirmResponsePageViewModel(_distributorResponse, Rep, _service);
+            new Tr_D_ConfirmResponsePageViewModel(_distributorResponse, Rep, _service, _signalRService, _notificationService, _firebasePushNotification);
             await App.Current!.MainPage!.Navigation.PopAsync();
             //await App.Current!.MainPage!.Navigation.PushAsync(new ConfirmResponsePage(new Tr_D_ConfirmResponsePageViewModel(_distributorResponse, Rep, _service), Rep));
             //App.Current.MainPage.Navigation.RemovePage(App.Current.MainPage.Navigation.NavigationStack[App.Current.MainPage.Navigation.NavigationStack.Count - 2]);

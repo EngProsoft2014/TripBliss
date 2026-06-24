@@ -1,17 +1,18 @@
 ﻿using Camera.MAUI;
 using CommunityToolkit.Maui;
 using Controls.UserDialogs.Maui;
-using Mopups.Hosting;
+using Maui.PDFView;
 using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Handlers;
+using Mopups.Hosting;
+using Mopups.PreBaked.PopupPages.Login;
+using Plugin.FirebasePushNotifications;
 using Syncfusion.Maui.Core.Hosting;
 using TripBliss.Helpers;
-using Mopups.PreBaked.PopupPages.Login;
 using TripBliss.Pages;
-using TripBliss.ViewModels;
-using TripBliss.Services.Data;
-using Maui.PDFView;
 using TripBliss.Pages.Shared;
-using Microsoft.Maui.Handlers;
+using TripBliss.Services.Data;
+using TripBliss.ViewModels;
 
 
 namespace TripBliss
@@ -30,6 +31,7 @@ namespace TripBliss
                 .UseMauiMaps()
                 .ConfigureMopups()
                 .ConfigureSyncfusionCore()
+                .UseFirebasePushNotifications()
                 .UseMauiPdfView()
                 .ConfigureFonts(fonts =>
                 {

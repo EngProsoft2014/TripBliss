@@ -1,31 +1,32 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Akavache;
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Controls.UserDialogs.Maui;
+using Microsoft.Maui.ApplicationModel.Communication;
 using Microsoft.Maui.Controls;
+using Mopups.PreBaked.Interfaces;
+using Newtonsoft.Json;
+using Plugin.FirebasePushNotifications;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TripBliss.Pages.TravelAgenciesPages;
-using TripBliss.Pages.DistributorsPages;
-using TripBliss.Models;
-using TripBliss.Helpers;
-using Akavache;
-using Controls.UserDialogs.Maui;
-using CommunityToolkit.Maui.Alerts;
-using Newtonsoft.Json;
-using TripBliss.Controls;
-using TripBliss.ViewModels.TravelAgenciesViewModels;
-using TripBliss.Services;
-using TripBliss.Pages;
 using TripBliss.Constants;
-using Mopups.PreBaked.Interfaces;
-using TripBliss.Services.Data;
-using System.Reactive.Linq;
-using System.ComponentModel.DataAnnotations;
-using static TripBliss.Helpers.ErrorsResult;
+using TripBliss.Controls;
+using TripBliss.Helpers;
+using TripBliss.Models;
+using TripBliss.Pages;
+using TripBliss.Pages.DistributorsPages;
 using TripBliss.Pages.Shared;
-using Microsoft.Maui.ApplicationModel.Communication;
+using TripBliss.Pages.TravelAgenciesPages;
+using TripBliss.Services;
+using TripBliss.Services.Data;
+using TripBliss.ViewModels.TravelAgenciesViewModels;
+using static TripBliss.Helpers.ErrorsResult;
 
 
 
@@ -59,13 +60,24 @@ namespace TripBliss.ViewModels
         #region Service
         readonly IGenericRepository Rep;
         readonly Services.Data.ServicesService _service;
+        readonly SignalRService _signalRService;
+        readonly INotificationService _notificationService;
+        readonly IFirebasePushNotification _firebasePushNotification;
         #endregion
 
         #region Cons
-        public LoginViewModel(IGenericRepository GenericRep, Services.Data.ServicesService service)
+        public LoginViewModel(IGenericRepository GenericRep, Services.Data.ServicesService service, SignalRService signalRService, INotificationService notificationService, IFirebasePushNotification firebasePushNotification)
         {
             Rep = GenericRep;
             _service = service;
+            _signalRService = signalRService;
+            _notificationService = notificationService;
+            _firebasePushNotification = firebasePushNotification;
+
+            if(_firebasePushNotification == null)
+            {
+                _firebasePushNotification = CrossFirebasePushNotification.Current;
+            }
 
             if (Preferences.Default.Get<bool>(ApiConstants.rememberMe, false))
             {
@@ -81,7 +93,7 @@ namespace TripBliss.ViewModels
         [RelayCommand]
         public async Task GoSignUpPage()
         {
-            await App.Current!.MainPage!.Navigation.PushAsync(new SignUpPage(new SignUpViewModel(Rep, _service)));
+            await App.Current!.MainPage!.Navigation.PushAsync(new SignUpPage(new SignUpViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification)));
         }
 
         [RelayCommand]
@@ -128,6 +140,9 @@ namespace TripBliss.ViewModels
                     //model.UserName = model.UserName.ToLower();
                     //model.Password = model.Password.ToLower();
 
+                    await _firebasePushNotification.RegisterForPushNotificationsAsync();
+                    model.FCM_Token = _firebasePushNotification.Token;
+
                     var json = await Rep.PostTRAsync<ApplicationUserLoginRequest, ApplicationUserResponse>(Constants.ApiConstants.LoginApi, model);
 
                     if (json.Item1 != null)
@@ -151,6 +166,7 @@ namespace TripBliss.ViewModels
 
                             Constants.Permissions.LstPermissions = UserModel?.Permissions!;
                             //Constants.Permissions.DecodeJwtToClass(UserModel?.Token!);
+  
 
                             if (!string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
                             {
@@ -159,8 +175,8 @@ namespace TripBliss.ViewModels
 
                                 Preferences.Default.Set(ApiConstants.review, UserModel!.TravelAgencyCompany!.Review!.Value);
 
-                                var vm = new TravelAgenciesViewModels.Tr_HomeViewModel(Rep, _service);
-                                var page = new Pages.TravelAgenciesPages.HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service);
+                                var vm = new TravelAgenciesViewModels.Tr_HomeViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification);
+                                var page = new Pages.TravelAgenciesPages.HomeAgencyPage(new Tr_HomeViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification), Rep, _service, _signalRService, _notificationService, _firebasePushNotification);
                                 page.BindingContext = vm;
                                 await App.Current!.MainPage!.Navigation.PushAsync(page);
                             }
@@ -171,8 +187,8 @@ namespace TripBliss.ViewModels
 
                                 Preferences.Default.Set(ApiConstants.review, UserModel!.DistributorCompany!.Review!.Value);
 
-                                var vm = new DistributorsViewModels.Dis_HomeViewModel(Rep, _service);
-                                var page = new Pages.DistributorsPages.HomeDistributorsPage(vm, Rep, _service);
+                                var vm = new DistributorsViewModels.Dis_HomeViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification);
+                                var page = new Pages.DistributorsPages.HomeDistributorsPage(vm, Rep, _service, _signalRService, _notificationService, _firebasePushNotification);
                                 page.BindingContext = vm;
                                 await App.Current!.MainPage!.Navigation.PushAsync(page);
                             }
@@ -187,7 +203,7 @@ namespace TripBliss.ViewModels
 
                             var toast = Toast.Make(TripBliss.Resources.Language.AppResources.user_name_is_not_registered, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
-                            await App.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service)));
+                            await App.Current!.MainPage!.Navigation.PushAsync(new LoginPage(new LoginViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification)));
                             App.Current.MainPage.Navigation.RemovePage(App.Current.MainPage.Navigation.NavigationStack[App.Current.MainPage.Navigation.NavigationStack.Count - 2]);
                         }
                     }
