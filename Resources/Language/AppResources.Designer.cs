@@ -19,7 +19,7 @@ namespace TripBliss.Resources.Language {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class AppResources {
@@ -2095,6 +2095,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Year.
+        /// </summary>
+        internal static string lblyear {
+            get {
+                return ResourceManager.GetString("lblyear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you want to make a review, finish the request and move it to the History?.
         /// </summary>
         internal static string MakeReviewAndFinishRequest {
@@ -2293,6 +2302,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search by brand ....
+        /// </summary>
+        internal static string plcBrand {
+            get {
+                return ResourceManager.GetString("plcBrand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Company Email.
         /// </summary>
         internal static string plcCompanyEmail_SignUpPage {
@@ -2325,6 +2343,15 @@ namespace TripBliss.Resources.Language {
         internal static string plcEmail_SignUpPage {
             get {
                 return ResourceManager.GetString("plcEmail-SignUpPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search by model ....
+        /// </summary>
+        internal static string plcModel {
+            get {
+                return ResourceManager.GetString("plcModel", resourceCulture);
             }
         }
         

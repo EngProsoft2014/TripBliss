@@ -135,8 +135,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
 
                         string UserToken = await _service.UserToken();
 
+                        int userCategory = Preferences.Default.Get(ApiConstants.userCategory, 0);
+
                         UserDialogs.Instance.ShowLoading();
-                        var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorResponse>(ApiConstants.ResponseDetailsDistApi + $"{Response.DistributorCompanyId}/ResponseWithDistributor/{Response.Id}", Response, UserToken);
+                        var json = await Rep.PostTRAsync<ResponseWithDistributorDetailsResponse, ResponseWithDistributorResponse>(ApiConstants.ResponseDetailsDistApi + $"{Response.DistributorCompanyId}/ResponseWithDistributor/{Response.Id}/{userCategory}", Response, UserToken);
                         UserDialogs.Instance.HideHud();
 
                         if (json.Item1 != null)

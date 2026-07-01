@@ -1131,4 +1131,13 @@
   <data name="lblRememberme" xml:space="preserve">
     <value>تذكرنى</value>
   </data>
+  <data name="plcBrand" xml:space="preserve">
+    <value>ابحث عن ماركة...</value>
+  </data>
+  <data name="plcModel" xml:space="preserve">
+    <value>ابحث عن موديل...</value>
+  </data>
+  <data name="lblyear" xml:space="preserve">
+    <value>العام</value>
+  </data>
 </root>

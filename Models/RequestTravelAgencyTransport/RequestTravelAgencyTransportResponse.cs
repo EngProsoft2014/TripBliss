@@ -16,6 +16,7 @@
         public string? ModelName { get; set; }
         public string? ModelNameAr { get; set; }
         public string? ModelNameLang { get { return Preferences.Default.Get("Lan", "en") == "ar" ? ModelNameAr : ModelName; } }
+        //public int Year { get; set; }
         public DateOnly Date { get; set; }
         public DateTime DateVM { get; set; }
         public TimeSpan Time { get; set; }

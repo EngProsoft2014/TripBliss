@@ -16,28 +16,28 @@ public partial class TransportaionServicePage : Controls.CustomControl
 
     private void TypePic_SelectedIndexChanged(object sender, EventArgs e)
     {
-        var cc = TypePic.SelectedItem as CarTypeResponse; 
+        var cc = TypePic.SelectedItem as CarTypeResponse;
         var cc2 = BrandPick.SelectedItem as CarBrandResponse;
 
         if (cc != null && cc2 != null)
         {
-            if(cc.Id != cc2.CarTypeId) 
+            if (cc.Id != cc2.CarTypeId)
             {
                 Model.SelectrdBrand = Model.CarBrands.FirstOrDefault(a => a.CarTypeId == cc.Id)!;
                 Model.SelectrdModel = Model.CarModel.FirstOrDefault(a => a.CarBrandId == Model.SelectrdBrand.Id)!;
             }
         }
-        
+
     }
 
     private void BrandPick_SelectedIndexChanged(object sender, EventArgs e)
     {
         var cc = BrandPick.SelectedItem as CarBrandResponse;
-        if (cc!=null)
+        if (cc != null)
         {
-            ModelPick.ItemsSource = Model.CarModel.Where(a=>a.CarBrandId == cc!.Id).ToList();
+            ModelPick.ItemsSource = Model.CarModel.Where(a => a.CarBrandId == cc!.Id).ToList();
         }
-        
+
     }
 
 }

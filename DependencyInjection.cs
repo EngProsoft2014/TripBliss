@@ -8,6 +8,7 @@ using TripBliss.Pages.Shared;
 using TripBliss.Pages.TravelAgenciesPages;
 using TripBliss.Pages.TravelAgenciesPages.ActivateDetailsPages;
 using TripBliss.Pages.Users;
+using TripBliss.Services;
 using TripBliss.Services.Data;
 using TripBliss.ViewModels;
 using TripBliss.ViewModels.ActivateViewModels;
@@ -27,6 +28,14 @@ namespace TripBliss
     {
         public static IServiceCollection AddDependencies(this IServiceCollection Services)
         {
+
+            //Services.AddHttpClient<NHTSAService>(client =>
+            //{
+            //    client.BaseAddress = new Uri("https://vpic.nhtsa.dot.gov/api/vehicles");
+            //    client.DefaultRequestHeaders.Add("Accept", "application/json");
+            //    client.DefaultRequestHeaders.Add("User-Agent", "TripBliss-App"); // (اختياري) مفيد لبعض الـ APIs
+            //});
+
             #region ServiceServices
             Services.AddSingleton<ServicesService>();
             Services.AddSingleton<SignalRService>();

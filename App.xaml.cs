@@ -1,4 +1,5 @@
 ﻿using Akavache;
+using Android.Media.TV;
 using Newtonsoft.Json;
 using Plugin.FirebasePushNotifications;
 using System.Globalization;
@@ -43,6 +44,11 @@ namespace TripBliss
             LoadSetting();
             InitializeComponent();
 
+            RegisterFcmEvents();
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await _firebasePushNotification.RegisterForPushNotificationsAsync();
+            });
 
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(ApiConstants.syncFusionLicence);
 
@@ -216,7 +222,7 @@ namespace TripBliss
 
                 // ✅ الحصول على نوع المستخدم الحالي
                 int userCategory = Preferences.Default.Get(ApiConstants.userCategory, 0);
-                bool isTravelAgency = userCategory == 1;
+                bool isTravelAgency = userCategory == 2;
                 bool isDistributor = userCategory == 3;
 
                 if (isTravelAgency)
@@ -236,9 +242,9 @@ namespace TripBliss
                 else if (isDistributor)
                 {
                     // ✅ موزع
-                    if (notification.Type == "NewRequest")
+                    if (notification.Type == "NewRequest" || notification.Type == "ConfirmResponse")
                     {
-                        // طلب جديد من وكيل
+                        // طلب جديد من وكيل او تاكيد عرض الموزع
                         await NavigateToDistributorRequestDetails(notification);
                     }
                     else if (notification.Type == "NewOffer" && !string.IsNullOrEmpty(notification.OfferId))
@@ -388,6 +394,96 @@ namespace TripBliss
             }
         }
 
+
+        #region FCMRegister
+        void RegisterFcmEvents()
+        {
+            _firebasePushNotification.TokenRefreshed -= OnTokenRefreshed;
+            _firebasePushNotification.TokenRefreshed += OnTokenRefreshed;
+
+            //_firebasePushNotification.NotificationOpened -= OnNotificationOpened;
+            //_firebasePushNotification.NotificationOpened += OnNotificationOpened;
+        }
+
+        async void OnTokenRefreshed(object sender, FirebasePushNotificationTokenEventArgs p)
+        {
+            _firebasePushNotification.TokenRefreshed += async (s, p) =>
+            {
+                if (string.IsNullOrWhiteSpace(p.Token))
+                    return;
+
+                var username = Preferences.Default.Get(ApiConstants.username, string.Empty);
+                if (string.IsNullOrEmpty(username))
+                    return;
+
+                ApplicationUserLoginRequest model = new ApplicationUserLoginRequest
+                {
+                    UserName = Preferences.Default.Get(ApiConstants.username, string.Empty),
+                    FCM_Token = p.Token
+                };
+
+                try
+                {
+                    await Rep.PostAsync(ApiConstants.RefrshFCMToken, model);
+                }
+                catch
+                {
+                    // optional logging
+                }
+            };
+        }
+
+        //async void OnNotificationOpened(object sender, FirebasePushNotificationResponseEventArgs e)
+        //{
+        //    await Task.Delay(500); // iOS / Android safety
+
+        //    if (e.Data == null || !e.Data.Any())
+        //        return;
+
+        //    if (!e.Data.TryGetValue("route", out var route))
+        //        return;
+
+        //    switch (route)
+        //    {
+        //        case "lead-details":
+        //            await OpenLeadDetails(e.Data);
+        //            break;
+        //    }
+        //}
+
+        //string GetValue(IDictionary<string, object> data, string key)
+        //{
+        //    return data.TryGetValue(key, out var value)
+        //        ? value?.ToString() ?? string.Empty
+        //        : string.Empty;
+        //}
+
+        //async Task OpenLeadDetails(IDictionary<string, object> data)
+        //{
+        //    if (App.Current?.MainPage is not NavigationPage nav)
+        //        return;
+
+        //    var lead = new LeadResponse
+        //    {
+        //        Id = GetValue(data, "LeadId"),
+        //        CardName = GetValue(data, "CardName"),
+        //        LeadCategoryId = GetValue(data, "LeadCategoryId"),
+        //        LeadCategoryName = GetValue(data, "LeadCategoryName"),
+        //        FullName = GetValue(data, "FullName"),
+        //        Email = GetValue(data, "Email"),
+        //        Address = GetValue(data, "Address"),
+        //        Phone = GetValue(data, "Phone"),
+        //        Company = GetValue(data, "Company"),
+        //        Website = GetValue(data, "Website"),
+        //        JobTitle = GetValue(data, "JobTitle"),
+        //        ImgProfile = GetValue(data, "ImgProfile"),
+        //        UrlImgProfile = GetValue(data, "UrlImgProfile"),
+        //        IsNotification = true
+        //    };
+
+        //    await nav.Navigation.PushAsync(new AddLeadsPage(new AddLeadViewModel(lead, Rep, _service)));
+        //}
+        #endregion
 
     }
 }

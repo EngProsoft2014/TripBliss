@@ -19,6 +19,6 @@ public partial class Dis_ProviderDetailsPage : Controls.CustomControl
     protected override void OnDisappearing()
     {
         base.OnDisappearing();
-        Controls.StaticMember.ShowSendOfferBtn = false;
+        //Controls.StaticMember.ShowSendOfferBtn = false;
     }
 }

@@ -7,6 +7,9 @@ namespace TripBliss.Models
 
         public int LocationId { get; set; }
         public int HotelId { get; set; }
+        //test
+        public string? HotelName { get; set; }
+        //
         public int RoomTypeId { get; set; }
         public int RoomViewId { get; set; }
         public int MealId { get; set; }

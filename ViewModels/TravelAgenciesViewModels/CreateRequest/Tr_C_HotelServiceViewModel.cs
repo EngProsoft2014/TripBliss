@@ -343,8 +343,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 //request.LocationId = HotelResponseModel!.LocationId = SelectedLocation!.Id;
 
                 //start test
-                request.HotelId = HotelResponseModel!.HotelId = 8;
-                request.LocationId = HotelResponseModel!.LocationId = 1;
+                //request.HotelId = HotelResponseModel!.HotelId = 8;
+                //request.LocationId = HotelResponseModel!.LocationId = 1;
                 //end test
 
                 request.RoomViewId = HotelResponseModel!.RoomViewId = SelectedRoomView!.Id;
@@ -353,6 +353,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
                 //HotelResponseModel!.HotelName = SelectedHotel!.HotelName;
                 //HotelResponseModel!.HotelNameAr = SelectedHotel!.HotelNameAr;
+                request.HotelName = HotelAddress;
                 HotelResponseModel!.HotelName = HotelAddress;              
                 HotelResponseModel!.HotelNameAr = HotelAddress;
 

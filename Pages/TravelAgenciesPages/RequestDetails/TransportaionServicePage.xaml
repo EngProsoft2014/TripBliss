@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest"
-             xmlns:Dvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails"
-             x:Class="TripBliss.Pages.TravelAgenciesPages.RequestDetails.TransportaionServicePage"
-             xmlns:Controls="clr-namespace:TripBliss.Controls"
-             xmlns:res="clr-namespace:TripBliss.Resources.Language"
-             BackgroundColor="White"
-             NavigationPage.HasNavigationBar="False"
-             Title="TransportaionServicePage">
+                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                         xmlns:vm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest"
+                        xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+                         xmlns:Dvm="clr-namespace:TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails"
+                         x:Class="TripBliss.Pages.TravelAgenciesPages.RequestDetails.TransportaionServicePage"
+                         xmlns:Controls="clr-namespace:TripBliss.Controls"
+                         xmlns:res="clr-namespace:TripBliss.Resources.Language"
+                         BackgroundColor="White"
+                         NavigationPage.HasNavigationBar="False"
+                         Title="TransportaionServicePage">
     <!--<Controls:CustomControl.BindingContext>
         <vm:TransportaionServiceViewModel></vm:TransportaionServiceViewModel>
     </Controls:CustomControl.BindingContext>-->
@@ -68,8 +69,63 @@
                                             </Label.Triggers>
                                         </Label>
                                     </VerticalStackLayout>
-                                    
+
                                 </Border>
+
+                                <!--<Label Text="{Static res:AppResources.lblBrand_TranServices}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
+                                    <VerticalStackLayout>
+                                        <syncfusion:SfComboBox x:Name="BrandComboBox"
+                                                            ItemsSource="{Binding CarMakes}"
+                                                            DisplayMemberPath="Name"
+                                                            SelectedItem="{Binding SelectedMake}"
+                                                            Placeholder="{Static res:AppResources.plcBrand}"
+                                                            IsEditable="True"
+                                                            IsFilteringEnabled="True"
+                                                            TextHighlightMode="MultipleOccurrence"
+                                                            TextSearchMode="StartsWith"
+                                                            MinimumPrefixCharacters="1"
+                                                            MaxDropDownHeight="200"                                                  
+                                                            NoResultsFoundText="No Result found"
+                                                            SelectionTextHighlightColor="White"
+                                                            PlaceholderColor="Gray"
+                                                            DropDownItemHeight="40" 
+                                                            IsClearButtonVisible="True"
+                                                            HighlightedTextColor="Green"
+                                                            HighlightedTextFontAttributes="Bold"
+                                                            BackgroundColor="Transparent"
+                                                            VerticalOptions="Center"
+                                                            HorizontalOptions="FillAndExpand">
+
+                                            --><!-- ✅ تنسيق عناصر القائمة --><!--
+                                            <syncfusion:SfComboBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid Padding="10">
+                                                        <Label Text="{Binding Name}" 
+                                                           FontSize="14" 
+                                                           TextColor="Black"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </syncfusion:SfComboBox.ItemTemplate>
+
+                                            <syncfusion:SfComboBox.Triggers>
+                                                <DataTrigger TargetType="syncfusion:SfComboBox" Binding="{Binding ServiceModdel.AcceptAgen}" Value="True">
+                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                </DataTrigger>
+                                            </syncfusion:SfComboBox.Triggers>
+                                        </syncfusion:SfComboBox>
+
+                                        <Label Text="{Binding ServiceModdel.RequestTravelAgencyTransport.BrandName}" TextColor="Black" FontSize="14"
+                                           IsVisible="False" Margin="10">
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label" Binding="{Binding ServiceModdel.AcceptAgen}" Value="True">
+                                                    <Setter Property="IsVisible" Value="True"></Setter>
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+
+                                    </VerticalStackLayout>
+                                </Border>-->
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{Static res:AppResources.lblBrand_TranServices}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
@@ -92,8 +148,61 @@
                                             </Label.Triggers>
                                         </Label>
                                     </VerticalStackLayout>
-                                    
+
                                 </Border>
+
+                                <!--<Label Text="{Static res:AppResources.lblModel_TranService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>
+                                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" HeightRequest="40">
+                                    <VerticalStackLayout>
+                                        <syncfusion:SfComboBox x:Name="ModelComboBox"
+                                                            ItemsSource="{Binding CarModels}"
+                                                            DisplayMemberPath="Name"
+                                                            SelectedItem="{Binding SelectedModel}"
+                                                            Placeholder="{Static res:AppResources.plcModel}"
+                                                            IsEditable="True"
+                                                            TextSearchMode="StartsWith"
+                                                            MinimumPrefixCharacters="1"
+                                                            MaxDropDownHeight="200"
+                                                            NoResultsFoundText="No Result found"
+                                                            SelectionTextHighlightColor="White"
+                                                            PlaceholderColor="Gray"
+                                                           FontSize="13"
+                                                            DropDownItemHeight="40" 
+                                                            IsFilteringEnabled="True"
+                                                            IsClearButtonVisible="True"
+                                                            TextHighlightMode="MultipleOccurrence"
+                                                            HighlightedTextColor="Green"
+                                                            HighlightedTextFontAttributes="Bold"
+                                                            BackgroundColor="Transparent"
+                                                            VerticalOptions="Center"
+                                                            HorizontalOptions="FillAndExpand">
+
+                                            <syncfusion:SfComboBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid Padding="10">
+                                                        <Label Text="{Binding Name}" 
+                                                           FontSize="14" 
+                                                           TextColor="Black"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </syncfusion:SfComboBox.ItemTemplate>
+                                            <syncfusion:SfComboBox.Triggers>
+                                                <DataTrigger TargetType="syncfusion:SfComboBox" Binding="{Binding ServiceModdel.AcceptAgen}" Value="True">
+                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                </DataTrigger>
+                                            </syncfusion:SfComboBox.Triggers>
+                                        </syncfusion:SfComboBox>
+
+                                        <Label Text="{Binding ServiceModdel.RequestTravelAgencyTransport.ModelName}" TextColor="Black" FontSize="14"
+                                               IsVisible="False" Margin="10">
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label" Binding="{Binding ServiceModdel.AcceptAgen}" Value="True">
+                                                    <Setter Property="IsVisible" Value="True"></Setter>
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+                                    </VerticalStackLayout>
+                                </Border>-->
                             </VerticalStackLayout>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" Spacing="35">
@@ -109,8 +218,16 @@
                                                 </DataTrigger>
                                             </Picker.Triggers>
                                         </Picker>
-                                        <Label Text="{Binding ServiceModdel.RequestTravelAgencyTransport.ModelNameLang}" TextColor="Black" FontSize="14"
-        IsVisible="False" Margin="10">
+
+                                        <Entry Text="{Binding SelectedYear}" Keyboard="Numeric" TextColor="Black" FontAutoScalingEnabled="False" FontSize="13" FontFamily="OpenSansRegular">
+                                            <Entry.Triggers>
+                                                <DataTrigger TargetType="Entry" Binding="{Binding ServiceModdel.AcceptAgen}" Value="True">
+                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                </DataTrigger>
+                                            </Entry.Triggers>
+                                        </Entry>
+
+                                        <Label Text="{Binding SelectedYear}" TextColor="Black" FontSize="14" IsVisible="False" Margin="10">
                                             <Label.Triggers>
                                                 <DataTrigger TargetType="Label" Binding="{Binding ServiceModdel.AcceptAgen}" Value="True">
                                                     <Setter Property="IsVisible" Value="True"></Setter>
@@ -118,8 +235,9 @@
                                             </Label.Triggers>
                                         </Label>
                                     </VerticalStackLayout>
-                                    
+
                                 </Border>
+
                             </VerticalStackLayout>
                             <VerticalStackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{Static res:AppResources.lblNos_TranService}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="14" Margin="0,15,0,5"></Label>

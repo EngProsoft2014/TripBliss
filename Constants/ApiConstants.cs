@@ -42,6 +42,10 @@ namespace TripBliss.Constants
         // End Register Api 
         #endregion
 
+        #region FCM_Notifications
+        public static string RefrshFCMToken = "api/ApplicationUser/RefreshToken";
+        #endregion
+
         #region Hotel Service Apis
         // AllLocations Api
         public static string GetAllLocationsApi = "api/Location/current";
