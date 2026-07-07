@@ -1,5 +1,4 @@
 ﻿using Akavache;
-using Android.Media.TV;
 using Newtonsoft.Json;
 using Plugin.FirebasePushNotifications;
 using System.Globalization;

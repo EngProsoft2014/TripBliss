@@ -72,8 +72,8 @@
                                                                         <Label VerticalTextAlignment="Center" Padding="5" FontAutoScalingEnabled="False">
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding LocationNameLang}" TextColor="Black" FontSize="12" FontAttributes="Bold"></Span>
-                                                                                    <Span Text=" - " TextColor="Black" FontSize="12" FontAttributes="Bold"></Span>
+                                                                                    <!--<Span Text="{Binding LocationNameLang}" TextColor="Black" FontSize="12" FontAttributes="Bold"></Span>
+                                                                                    <Span Text=" - " TextColor="Black" FontSize="12" FontAttributes="Bold"></Span>-->
                                                                                     <Span Text="{Binding HotelNameLang}" TextColor="Black" FontSize="12" FontAttributes="Bold"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>

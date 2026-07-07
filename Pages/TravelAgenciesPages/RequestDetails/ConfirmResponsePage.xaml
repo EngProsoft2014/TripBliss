@@ -72,7 +72,7 @@
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout>
                 <!--Hotel-->
-                <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android='0,15,0,5', iOS='0,5,0,0'}">
+                <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android='0,5,0,5', iOS='0,5,0,0'}">
                     <Label Text="{Static res:AppResources.lblHotelServices}" FontAutoScalingEnabled="False" FontSize="14" TextColor="DarkOrange" FontAttributes="None" 
                            VerticalTextAlignment="Center"></Label>
                     <StackLayout.Triggers>
@@ -86,37 +86,65 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Border>
-                                    <Grid HorizontalOptions="FillAndExpand">
-                                        <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand" HorizontalScrollBarVisibility="Never" Padding="3,0,100,0">
-                                            <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
-                                                <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="{Binding RequestTravelAgencyHotel.LocationNameLang}" TextColor="Gray" FontSize="12"></Span>
-                                                            <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                            <Span Text="{Binding RequestTravelAgencyHotel.HotelNameLang}" TextColor="Gray" FontSize="12"></Span>
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-                                                <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="{Binding RequestTravelAgencyHotel.CheckIn, StringFormat='{0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12"></Span>
-                                                            <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                            <Span Text="{Binding RequestTravelAgencyHotel.CheckOut , StringFormat='{0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12"></Span>
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-                                               
-                                                <StackLayout.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=SelectHotelCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
-                                                </StackLayout.GestureRecognizers>
-                                            </StackLayout>
-                                        </ScrollView>
+                                    <StackLayout>
+                                        <Grid HorizontalOptions="FillAndExpand">
+                                            <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand" HorizontalScrollBarVisibility="Never" Padding="3,0,100,0">
+                                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="5" Margin="0,5" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                                                    <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <!--<Span Text="{Binding RequestTravelAgencyHotel.LocationNameLang}" TextColor="#333" FontAttributes="Bold" FontSize="12"></Span>
+                                                                <Span Text=" - " TextColor="#333" FontAttributes="Bold" FontSize="14"></Span>-->
+                                                                <Span Text="{Binding RequestTravelAgencyHotel.HotelNameLang}" TextColor="#2fa562" FontAttributes="Bold" FontSize="12"></Span>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <Label Text="{Binding RequestTravelAgencyHotel.RoomCount,StringFormat='{0} Room'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                                        <Label.Triggers>
+                                                            <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=Lang}" Value="ar">
+                                                                <Setter Property="Text" Value="{Binding RequestTravelAgencyHotel.RoomCount,StringFormat='{0} غرفة'}"></Setter>
+                                                            </DataTrigger>
+                                                        </Label.Triggers>
+                                                    </Label>
 
-                                        <StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="EndAndExpand">
-                                            <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" VerticalOptions="CenterAndExpand"
-                                                   FontSize="11">
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=SelectHotelCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                    </StackLayout.GestureRecognizers>
+                                                </StackLayout>
+                                            </ScrollView>
+
+                                            <StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="EndAndExpand">
+
+                                                <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="2,0" IsEnabled="False"
+                                              IsChecked="{Binding AcceptAgen}">
+                                                    <CheckBox.Triggers>
+                                                        <!--<DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="True">
+                                                        <Setter Property="IsEnabled" Value="False"></Setter>
+                                                    </DataTrigger>-->
+                                                        <MultiTrigger TargetType="CheckBox">
+                                                            <MultiTrigger.Conditions>
+                                                                <BindingCondition Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=Response.TotalPayment}" Value="0" />
+                                                                <BindingCondition Binding="{Binding AcceptPriceDis}" Value="True" />
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter Property="IsEnabled" Value="True" />
+                                                        </MultiTrigger>
+                                                    </CheckBox.Triggers>
+                                                </CheckBox>
+                                            </StackLayout>
+                                        </Grid>
+                                        <StackLayout Orientation="Horizontal" Margin="10,0,5,5">
+
+                                            <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False" HorizontalOptions="FillAndExpand">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding RequestTravelAgencyHotel.CheckIn, StringFormat='{0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12"></Span>
+                                                        <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
+                                                        <Span Text="{Binding RequestTravelAgencyHotel.CheckOut , StringFormat='{0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12"></Span>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+
+                                            <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="White" FontAttributes="Bold" VerticalOptions="End" FontSize="11" BackgroundColor="#009dff" Padding="3,5">
                                                 <Label.Triggers>
                                                     <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
                                                         <Setter Property="IsVisible" Value="False"></Setter>
@@ -126,30 +154,23 @@
                                                     </DataTrigger>
                                                 </Label.Triggers>
                                             </Label>
-                                            <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0" IsEnabled="False"
-                                              IsChecked="{Binding AcceptAgen}">
-                                                <CheckBox.Triggers>
-                                                    <!--<DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="True">
-                                                        <Setter Property="IsEnabled" Value="False"></Setter>
-                                                    </DataTrigger>-->
-                                                    <MultiTrigger TargetType="CheckBox">
-                                                        <MultiTrigger.Conditions>
-                                                            <BindingCondition Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=Response.TotalPayment}" Value="0" />
-                                                            <BindingCondition Binding="{Binding AcceptPriceDis}" Value="True" />
-                                                        </MultiTrigger.Conditions>
-                                                        <Setter Property="IsEnabled" Value="True" />
-                                                    </MultiTrigger>
-                                                </CheckBox.Triggers>
-                                            </CheckBox>
+
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=SelectHotelCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                            </StackLayout.GestureRecognizers>
                                         </StackLayout>
 
-                                    </Grid>
+                                    </StackLayout>
                                     <Border.Triggers>
                                         <DataTrigger TargetType="Border" Binding="{Binding AcceptPriceDis}" Value="True">
                                             <Setter Property="Stroke" Value="Green"></Setter>
                                             <Setter Property="StrokeThickness" Value="2"></Setter>
                                         </DataTrigger>
                                     </Border.Triggers>
+
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=SelectHotelCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                    </Border.GestureRecognizers>
                                 </Border>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
@@ -165,7 +186,7 @@
                         </DataTrigger>
                     </Border.Triggers>
                 </Border>
-                
+
                 <!--Transportaion-->
                 <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android='0,15,0,5', iOS='0,5,0,0'}">
                     <Label Text="{Static res:AppResources.lblTransportationServices}" FontAutoScalingEnabled="False" FontSize="14" TextColor="DarkOrange" FontAttributes="None" 
@@ -181,19 +202,63 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Border>
-                                    <Grid HorizontalOptions="FillAndExpand">
-                                        <ScrollView Orientation="Horizontal" Padding="3,0,35,0" HorizontalScrollBarVisibility="Never">
-                                            <StackLayout Orientation="Horizontal" Spacing="10" VerticalOptions="Center" Padding="3" Margin="0,5">
-                                                <Label Text="{Binding RequestTravelAgencyTransport.TypeNameLang}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="12" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                                                <Label TextColor="Gray" FontAutoScalingEnabled="False" FontSize="12" VerticalTextAlignment="Center">
-                                                    <Label.Text>
-                                                        <MultiBinding StringFormat="{}{0} - {1}">
-                                                            <Binding Path="RequestTravelAgencyTransport.FromLocation" />
-                                                            <Binding Path="RequestTravelAgencyTransport.ToLocation" />
-                                                        </MultiBinding>
-                                                    </Label.Text>
+                                    <StackLayout>
+
+                                        <Grid HorizontalOptions="FillAndExpand">
+                                            <ScrollView Orientation="Horizontal" Padding="3,0,35,0" HorizontalScrollBarVisibility="Never">
+                                                <StackLayout Orientation="Horizontal" Spacing="10" Padding="3" Margin="0,5" VerticalOptions="Center">
+                                                    <Label Text="{Binding RequestTravelAgencyTransport.TypeNameLang}" FontAutoScalingEnabled="False" TextColor="#2fa562" FontSize="12" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+
+
+                                                    <Label Text="{Binding RequestTravelAgencyTransport.BrandNameLang}" TextColor="#2fa562" FontAttributes="Bold" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+
+                                                    </Label>
+
+                                                    <Label Text="{Binding RequestTravelAgencyTransport.ModelNameLang}" TextColor="#2fa562" FontAttributes="Bold" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+
+                                                    </Label>
+
+                                                    <Label TextColor="Gray" FontAutoScalingEnabled="False" FontSize="12" VerticalTextAlignment="Center">
+                                                        <Label.Text>
+                                                            <MultiBinding StringFormat="{}{0} - {1}">
+                                                                <Binding Path="RequestTravelAgencyTransport.FromLocation" />
+                                                                <Binding Path="RequestTravelAgencyTransport.ToLocation" />
+                                                            </MultiBinding>
+                                                        </Label.Text>
+
+                                                    </Label>
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=SelectTransportaionCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                    </StackLayout.GestureRecognizers>
+                                                </StackLayout>
+                                            </ScrollView>
+
+
+                                            <StackLayout HorizontalOptions="End">
+                                                <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0" IsEnabled="False"
+                                                                IsChecked="{Binding AcceptAgen}">
+                                                    <CheckBox.Triggers>
+                                                        <!--<DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="True">
+                                                                              <Setter Property="IsEnabled" Value="False"></Setter>
+                                                                          </DataTrigger>-->
+                                                        <MultiTrigger TargetType="CheckBox">
+                                                            <MultiTrigger.Conditions>
+                                                                <BindingCondition Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=Response.TotalPayment}" Value="0" />
+                                                                <BindingCondition Binding="{Binding AcceptPriceDis}" Value="True" />
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter Property="IsEnabled" Value="True" />
+                                                        </MultiTrigger>
+                                                    </CheckBox.Triggers>
+                                                </CheckBox>
+                                            </StackLayout>
+                                        </Grid>
+
+                                        <StackLayout Orientation="Horizontal" Margin="2,0,5,5">
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20">
+                                                <Label Text="{Binding RequestTravelAgencyTransport.Date, StringFormat='  {0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
 
                                                 </Label>
+
                                                 <Label Text="{Binding RequestTravelAgencyTransport.TransportCount,StringFormat='{0} car'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                     <Label.Triggers>
                                                         <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=Lang}" Value="ar">
@@ -202,19 +267,9 @@
                                                     </Label.Triggers>
                                                 </Label>
 
-                                                <Label Text="{Binding RequestTravelAgencyTransport.Date, StringFormat='  {0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
-
-                                                </Label>
-
-
-                                                <StackLayout.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=SelectTransportaionCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
-                                                </StackLayout.GestureRecognizers>
                                             </StackLayout>
-                                        </ScrollView>
-                                        <StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="EndAndExpand">
-                                            <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" VerticalOptions="CenterAndExpand"
-                                                   FontSize="11">
+
+                                            <Label Text="{Binding Total,StringFormat='SAR {0}'}" HorizontalOptions="End" TextColor="White" BackgroundColor="#009dff" Padding="3,5" FontAttributes="Bold" VerticalOptions="CenterAndExpand" FontSize="11">
                                                 <Label.Triggers>
                                                     <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
                                                         <Setter Property="IsVisible" Value="False"></Setter>
@@ -224,31 +279,24 @@
                                                     </DataTrigger>
                                                 </Label.Triggers>
                                             </Label>
-                                            <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0" IsEnabled="False"
-                                                      IsChecked="{Binding AcceptAgen}">
-                                                <CheckBox.Triggers>
-                                                    <!--<DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="True">
-                                                        <Setter Property="IsEnabled" Value="False"></Setter>
-                                                    </DataTrigger>-->
-                                                    <MultiTrigger TargetType="CheckBox">
-                                                        <MultiTrigger.Conditions>
-                                                            <BindingCondition Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=Response.TotalPayment}" Value="0" />
-                                                            <BindingCondition Binding="{Binding AcceptPriceDis}" Value="True" />
-                                                        </MultiTrigger.Conditions>
-                                                        <Setter Property="IsEnabled" Value="True" />
-                                                    </MultiTrigger>
-                                                </CheckBox.Triggers>
-                                            </CheckBox>
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=SelectTransportaionCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                            </StackLayout.GestureRecognizers>
                                         </StackLayout>
-                                    </Grid>
+          
+                                    </StackLayout>
                                     <Border.Triggers>
                                         <DataTrigger TargetType="Border" Binding="{Binding AcceptPriceDis}" Value="True">
                                             <Setter Property="Stroke" Value="Green"></Setter>
                                             <Setter Property="StrokeThickness" Value="2"></Setter>
                                         </DataTrigger>
                                     </Border.Triggers>
+
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=SelectTransportaionCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                    </Border.GestureRecognizers>
                                 </Border>
-                                
+
 
 
                             </DataTemplate>
@@ -265,7 +313,7 @@
                         </DataTrigger>
                     </Border.Triggers>
                 </Border>
-                
+
                 <!--Air Flight-->
                 <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android='0,15,0,5', iOS='0,5,0,0'}">
                     <Label Text="{Static res:AppResources.lblAirFlightServices}" FontAutoScalingEnabled="False" FontSize="14" TextColor="DarkOrange" FontAttributes="None"
@@ -281,34 +329,55 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Border>
-                                    <Grid HorizontalOptions="FillAndExpand">
-                                        <ScrollView Orientation="Horizontal" Padding="3,0,35,0" HorizontalScrollBarVisibility="Never">
-                                            <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
-                                                <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="{Binding RequestTravelAgencyAirFlight.AirLineLang}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-                                                <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="{Binding RequestTravelAgencyAirFlight.AirportFrom}" TextColor="Gray" FontSize="12" ></Span>
-                                                            <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                            <Span Text="{Binding RequestTravelAgencyAirFlight.AirportTo}" TextColor="Gray" FontSize="12"></Span>
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-                                                <!--<Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="{Binding RequestTravelAgencyAirFlight.TotalPerson,StringFormat='{0} pax'}" TextColor="Gray" FontSize="12"></Span>
-                                                            <Span Text="{Binding RequestTravelAgencyAirFlight.Date , StringFormat='   {0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12"></Span>
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>-->
+                                    <StackLayout>
 
+                                        <Grid HorizontalOptions="FillAndExpand">
+                                            <ScrollView Orientation="Horizontal" Padding="3,0,35,0" HorizontalScrollBarVisibility="Never">
+                                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                                                    <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="{Binding RequestTravelAgencyAirFlight.AirLineLang}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="{Binding RequestTravelAgencyAirFlight.AirportFrom}" TextColor="Gray" FontSize="12" ></Span>
+                                                                <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
+                                                                <Span Text="{Binding RequestTravelAgencyAirFlight.AirportTo}" TextColor="Gray" FontSize="12"></Span>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=SelectAirFlightCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                    </StackLayout.GestureRecognizers>
+                                                </StackLayout>
+                                            </ScrollView>
+                                            <StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="EndAndExpand">
+
+                                                <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0" IsEnabled="False"
+                                                        IsChecked="{Binding AcceptAgen}">
+                                                    <CheckBox.Triggers>
+                                                        <!--<DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="True">
+                                                        <Setter Property="IsEnabled" Value="False"></Setter>
+                                                    </DataTrigger>-->
+                                                        <MultiTrigger TargetType="CheckBox">
+                                                            <MultiTrigger.Conditions>
+                                                                <BindingCondition Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=Response.TotalPayment}" Value="0" />
+                                                                <BindingCondition Binding="{Binding AcceptPriceDis}" Value="True" />
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter Property="IsEnabled" Value="True" />
+                                                        </MultiTrigger>
+                                                    </CheckBox.Triggers>
+                                                </CheckBox>
+                                            </StackLayout>
+                                        </Grid>
+
+                                        <StackLayout Orientation="Horizontal" Margin="2,0,5,5">
+
+                                            <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="FillAndExpand">
                                                 <Label Text="{Binding RequestTravelAgencyAirFlight.Date, StringFormat='  {0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
 
                                                 </Label>
@@ -320,48 +389,39 @@
                                                         </DataTrigger>
                                                     </Label.Triggers>
                                                 </Label>
-
-                                                
-                                                <StackLayout.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=SelectAirFlightCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
-                                                </StackLayout.GestureRecognizers>
                                             </StackLayout>
-                                        </ScrollView>
-                                        <StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="EndAndExpand">
-                                            <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" VerticalOptions="CenterAndExpand"
-                                                   FontSize="11">
-                                                <Label.Triggers>
-                                                    <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
-                                                        <Setter Property="IsVisible" Value="False"></Setter>
-                                                    </DataTrigger>
-                                                    <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=Lang}" Value="ar">
-                                                        <Setter Property="Text" Value="{Binding Total,StringFormat='{0} رس'}"></Setter>
-                                                    </DataTrigger>
-                                                </Label.Triggers>
-                                            </Label>
-                                            <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0" IsEnabled="False"
-                                                        IsChecked="{Binding AcceptAgen}">
-                                                <CheckBox.Triggers>
-                                                    <!--<DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="True">
-                                                        <Setter Property="IsEnabled" Value="False"></Setter>
-                                                    </DataTrigger>-->
-                                                    <MultiTrigger TargetType="CheckBox">
-                                                        <MultiTrigger.Conditions>
-                                                            <BindingCondition Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=Response.TotalPayment}" Value="0" />
-                                                            <BindingCondition Binding="{Binding AcceptPriceDis}" Value="True" />
-                                                        </MultiTrigger.Conditions>
-                                                        <Setter Property="IsEnabled" Value="True" />
-                                                    </MultiTrigger>
-                                                </CheckBox.Triggers>
-                                            </CheckBox>
+
+
+                                            <StackLayout BackgroundColor="White" HorizontalOptions="End" VerticalOptions="Center">
+                                                <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="White" BackgroundColor="#009dff" VerticalOptions="EndAndExpand" FontAttributes="Bold" Padding="3,5" FontSize="11" VerticalTextAlignment="Center">
+                                                    <Label.Triggers>
+                                                        <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
+                                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                                        </DataTrigger>
+                                                        <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=Lang}" Value="ar">
+                                                            <Setter Property="Text" Value="{Binding Total,StringFormat='{0} رس'}"></Setter>
+                                                        </DataTrigger>
+                                                    </Label.Triggers>
+                                                </Label>
+                                            </StackLayout>
+
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=SelectAirFlightCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                            </StackLayout.GestureRecognizers>
                                         </StackLayout>
-                                    </Grid>
+
+                                    </StackLayout>
+
                                     <Border.Triggers>
                                         <DataTrigger TargetType="Border" Binding="{Binding AcceptPriceDis}" Value="True">
                                             <Setter Property="Stroke" Value="Green"></Setter>
                                             <Setter Property="StrokeThickness" Value="2"></Setter>
                                         </DataTrigger>
                                     </Border.Triggers>
+
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=SelectAirFlightCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                    </Border.GestureRecognizers>
                                 </Border>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
@@ -377,7 +437,7 @@
                         </DataTrigger>
                     </Border.Triggers>
                 </Border>
-                
+
                 <!--Visa-->
                 <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android='0,15,0,5', iOS='0,5,0,0'}">
                     <Label Text="{Static res:AppResources.lblVisaServices}" FontAutoScalingEnabled="False" FontSize="14" TextColor="DarkOrange" FontAttributes="None"
@@ -393,80 +453,97 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Border>
-                                    <Grid HorizontalOptions="FillAndExpand">
-                                        <ScrollView  Orientation="Horizontal" Padding="3,0,35,0" HorizontalScrollBarVisibility="Never">
-                                            <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
-                                                <Label FontAutoScalingEnabled="False">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="#" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
-                                                            <Span Text="{Binding RequestTravelAgencyVisa.VisaId}" TextColor="#2fa562" FontSize="12"></Span>
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-                                                <Label FontAutoScalingEnabled="False">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="{Binding RequestTravelAgencyVisa.VisaNameLang}" TextColor="Gray" FontSize="12"></Span>
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-                                                <!--<Label FontAutoScalingEnabled="False">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="{Binding RequestTravelAgencyVisa.PersonCount,StringFormat='{0} pax'}" TextColor="Gray" FontSize="12"></Span>
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>-->
+                                    <StackLayout>
+                                        <Grid HorizontalOptions="FillAndExpand">
+                                            <ScrollView  Orientation="Horizontal" Padding="3,0,35,0" HorizontalScrollBarVisibility="Never">
+                                                <StackLayout Orientation="Horizontal" Spacing="20" Padding="3" Margin="0,5" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                                                    <Label FontAutoScalingEnabled="False">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="#" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
+                                                                <Span Text="{Binding RequestTravelAgencyVisa.VisaId}" TextColor="#2fa562" FontSize="12"></Span>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <Label FontAutoScalingEnabled="False" TextColor="#2fa562" FontAttributes="Bold">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="{Binding RequestTravelAgencyVisa.VisaNameLang}" TextColor="#2fa562" FontAttributes="Bold" FontSize="12"></Span>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=SelectVisaCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                    </StackLayout.GestureRecognizers>
+                                                </StackLayout>
+                                            </ScrollView>
+                                            <StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="EndAndExpand">
+                                                
+                                                <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0" IsEnabled="False"
+                                                      IsChecked="{Binding AcceptAgen}">
+                                                    <CheckBox.Triggers>
+                                                        <!--<DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="True">
+                                                        <Setter Property="IsEnabled" Value="False"></Setter>
+                                                    </DataTrigger>-->
+                                                        <MultiTrigger TargetType="CheckBox">
+                                                            <MultiTrigger.Conditions>
+                                                                <BindingCondition Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=Response.TotalPayment}" Value="0" />
+                                                                <BindingCondition Binding="{Binding AcceptPriceDis}" Value="True" />
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter Property="IsEnabled" Value="True" />
+                                                        </MultiTrigger>
+                                                    </CheckBox.Triggers>
+                                                </CheckBox>
+                                            </StackLayout>
+                                            
+                                        </Grid>
 
-                                                <Label Text="{Binding RequestTravelAgencyVisa.TotalPerson,StringFormat='{0} pax'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+                                        <StackLayout Orientation="Horizontal" Margin="2,0,5,5">
+
+                                            <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="FillAndExpand">
+                                                <Label Text="{Binding RequestTravelAgencyVisa.DateVisa, StringFormat='  {0:MM-dd-yyyy}'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
+
+                                                </Label>
+
+                                                <Label Text="{Binding RequestTravelAgencyVisa.PersonCount,StringFormat='{0} pax'}" TextColor="Gray" FontSize="12" VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                     <Label.Triggers>
                                                         <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=Lang}" Value="ar">
-                                                            <Setter Property="Text" Value="{Binding RequestTravelAgencyVisa.TotalPerson,StringFormat='{0} شخص'}"></Setter>
+                                                            <Setter Property="Text" Value="{Binding RequestTravelAgencyVisa.PersonCount,StringFormat='{0} شخص'}"></Setter>
                                                         </DataTrigger>
                                                     </Label.Triggers>
                                                 </Label>
 
-                                                <StackLayout.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=SelectVisaCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
-                                                </StackLayout.GestureRecognizers>
                                             </StackLayout>
-                                        </ScrollView>
-                                        <StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="EndAndExpand">
-                                            <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="DeepSkyBlue" VerticalOptions="CenterAndExpand"
-                                                   FontSize="11">
-                                                <Label.Triggers>
-                                                    <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
-                                                        <Setter Property="IsVisible" Value="False"></Setter>
-                                                    </DataTrigger>
-                                                    <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=Lang}" Value="ar">
-                                                        <Setter Property="Text" Value="{Binding Total,StringFormat='{0} رس'}"></Setter>
-                                                    </DataTrigger>
-                                                </Label.Triggers>
-                                            </Label>
-                                            <CheckBox Color="Green" WidthRequest="20" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5,0" IsEnabled="False"
-                                                      IsChecked="{Binding AcceptAgen}">
-                                                <CheckBox.Triggers>
-                                                    <!--<DataTrigger TargetType="CheckBox" Binding="{Binding AcceptAgen}" Value="True">
-                                                        <Setter Property="IsEnabled" Value="False"></Setter>
-                                                    </DataTrigger>-->
-                                                    <MultiTrigger TargetType="CheckBox">
-                                                        <MultiTrigger.Conditions>
-                                                            <BindingCondition Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=Response.TotalPayment}" Value="0" />
-                                                            <BindingCondition Binding="{Binding AcceptPriceDis}" Value="True" />
-                                                        </MultiTrigger.Conditions>
-                                                        <Setter Property="IsEnabled" Value="True" />
-                                                    </MultiTrigger>
-                                                </CheckBox.Triggers>
-                                            </CheckBox>
+
+                                            <StackLayout BackgroundColor="White" HorizontalOptions="End" VerticalOptions="Center">
+                                                <Label Text="{Binding Total,StringFormat='SAR {0}'}" TextColor="White" BackgroundColor="#009dff" VerticalOptions="EndAndExpand" FontAttributes="Bold" Padding="3,5" FontSize="11" VerticalTextAlignment="Center">
+                                                    <Label.Triggers>
+                                                        <DataTrigger TargetType="Label" Binding="{Binding Total}" Value="0">
+                                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                                        </DataTrigger>
+                                                        <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=Lang}" Value="ar">
+                                                            <Setter Property="Text" Value="{Binding Total,StringFormat='{0} رس'}"></Setter>
+                                                        </DataTrigger>
+                                                    </Label.Triggers>
+                                                </Label>
+                                            </StackLayout>
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=SelectVisaCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                            </StackLayout.GestureRecognizers>
+
                                         </StackLayout>
-                                    </Grid>
+
+                                    </StackLayout>
                                     <Border.Triggers>
                                         <DataTrigger TargetType="Border" Binding="{Binding AcceptPriceDis}" Value="True">
                                             <Setter Property="Stroke" Value="Green"></Setter>
                                             <Setter Property="StrokeThickness" Value="2"></Setter>
                                         </DataTrigger>
                                     </Border.Triggers>
+
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:Tr_D_ConfirmResponsePageViewModel}}, Path=SelectVisaCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                    </Border.GestureRecognizers>
                                 </Border>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>

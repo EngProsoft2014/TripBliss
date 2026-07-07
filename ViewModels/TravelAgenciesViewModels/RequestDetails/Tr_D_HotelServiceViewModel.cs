@@ -2,11 +2,13 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Controls.UserDialogs.Maui;
+using Mopups.Services;
 using System.Collections.ObjectModel;
 using TripBliss.Constants;
 using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages.ActivateDetailsPages;
+using TripBliss.Pages.MainPopups;
 using TripBliss.Pages.Shared;
 using TripBliss.ViewModels.ActivateViewModels;
 
@@ -48,6 +50,9 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         public bool isPayment;
         [ObservableProperty]
         bool isRequestHistory;
+
+        [ObservableProperty]
+        string? hotelAddress;
 
         public delegate void HotelDelegte(ResponseWithDistributorHotelResponse HotelResponse);
         public event HotelDelegte HotelClose;
@@ -93,8 +98,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 RoomCount = model.RequestTravelAgencyHotel.RoomCount,
                 // just  a seconde
             };
-            SelectedHotel = Hoteles.FirstOrDefault(a => a.Id == model.RequestTravelAgencyHotel.HotelId)!;
-            SelectedLocation = Locations.FirstOrDefault(a => a.Id == model.RequestTravelAgencyHotel.LocationId)!;
+            //SelectedHotel = Hoteles.FirstOrDefault(a => a.Id == model.RequestTravelAgencyHotel.HotelId)!;
+            SelectedHotel = new HotelResponse
+            {
+                HotelName = model.RequestTravelAgencyHotel.HotelName,    
+            };
+            HotelAddress = model.RequestTravelAgencyHotel.HotelName;
+
+            //SelectedLocation = Locations.FirstOrDefault(a => a.Id == model.RequestTravelAgencyHotel.LocationId)!;
             SelectedRoomType = RoomTypes.FirstOrDefault(a => a.Id == model.RequestTravelAgencyHotel.RoomTypeId)!;
             SelectedRoomView = RoomViews.FirstOrDefault(a => a.Id == model.RequestTravelAgencyHotel.RoomViewId)!;
             SelectedMeal = Meals.FirstOrDefault(a => a.Id == model.RequestTravelAgencyHotel.MealId)!;
@@ -115,8 +126,8 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         {
             UserDialogs.Instance.ShowLoading();
             await Task.WhenAll(
-                GetLocation(),
-                GetHotels(),
+                //GetLocation(),
+                //GetHotels(),
                 GetMeals(),
                 GetRoomViews(),
                 GetRoomTypes()
@@ -238,14 +249,50 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         }
 
         [RelayCommand]
+        async Task SelecteAddressHotel()
+        {
+            IsBusy = false;
+            try
+            {
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                {
+                    var popupView = new HotelsPopup();
+
+                    // Use a local variable to track for unsubscription
+                    var weakPopup = new WeakReference<HotelsPopup>(popupView);
+
+                    void handler(SuggestionAddressModel str)
+                    {
+                        HotelAddress = str.MainAddress;
+                        if (weakPopup.TryGetTarget(out var target))
+                        {
+                            target.DidClose -= handler;
+                        }
+                    }
+
+                    popupView.DidClose += handler;
+                    await MopupService.Instance.PushAsync(popupView);
+                }
+            }
+            catch (Exception ex)
+            {
+                await App.Current!.MainPage!.DisplayAlert("Error", ex.Message, "OK");
+            }
+
+            IsBusy = true;
+        }
+
+
+        [RelayCommand]
         async Task ApplyHotelClicked(RequestTravelAgencyHotelRequest request)
         {
-            if (SelectedLocation == null || SelectedLocation?.Id == 0)
-            {
-                var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_SelectLocation, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                await toast.Show();
-            }
-            else if (SelectedHotel == null || SelectedHotel?.Id == 0)
+            //if (SelectedLocation == null || SelectedLocation?.Id == 0)
+            //{
+            //    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_SelectLocation, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+            //    await toast.Show();
+            //}
+            //string.IsNullOrEmpty(HotelAddress)
+            if (SelectedHotel == null)
             {
                 var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Required_SelectHotel, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 await toast.Show();

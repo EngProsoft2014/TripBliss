@@ -209,11 +209,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
         [RelayCommand]
         void SelectHotel(ResponseWithDistributorHotelResponse model)
         {
-
+            IsBusy = false;
+            UserDialogs.Instance.ShowLoading();
             var vm = new Tr_D_HotelServiceViewModel(IsRequestHistory, Response.TotalPayment, model, Rep, _service);
             var page = new HotelServicePage(vm, Rep);
             page.BindingContext = vm;
             App.Current!.MainPage!.Navigation.PushAsync(page);
+            UserDialogs.Instance.HideHud();
+            IsBusy = true;
 
         }
         #endregion

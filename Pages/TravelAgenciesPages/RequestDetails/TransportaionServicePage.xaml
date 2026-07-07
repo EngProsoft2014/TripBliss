@@ -219,7 +219,7 @@
                                             </Picker.Triggers>
                                         </Picker>
 
-                                        <Entry Text="{Binding SelectedYear}" Keyboard="Numeric" TextColor="Black" FontAutoScalingEnabled="False" FontSize="13" FontFamily="OpenSansRegular">
+                                        <Entry Text="{Binding ServiceModdel.RequestTravelAgencyTransport.ModelNameLang}" Keyboard="Numeric" TextColor="Black" FontAutoScalingEnabled="False" FontSize="13" FontFamily="OpenSansRegular">
                                             <Entry.Triggers>
                                                 <DataTrigger TargetType="Entry" Binding="{Binding ServiceModdel.AcceptAgen}" Value="True">
                                                     <Setter Property="IsVisible" Value="False"></Setter>
@@ -227,7 +227,7 @@
                                             </Entry.Triggers>
                                         </Entry>
 
-                                        <Label Text="{Binding SelectedYear}" TextColor="Black" FontSize="14" IsVisible="False" Margin="10">
+                                        <Label Text="{Binding ServiceModdel.RequestTravelAgencyTransport.ModelNameLang}" TextColor="Black" FontSize="14" IsVisible="False" Margin="10">
                                             <Label.Triggers>
                                                 <DataTrigger TargetType="Label" Binding="{Binding ServiceModdel.AcceptAgen}" Value="True">
                                                     <Setter Property="IsVisible" Value="True"></Setter>

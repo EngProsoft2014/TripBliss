@@ -12,9 +12,16 @@ public partial class HotelServicePage : Controls.CustomControl
         Model = model;
     }
 
-    private void LocationPicker(object sender, EventArgs e)
+    private void HotelEntry_TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     {
-        var cc = LocPick.SelectedItem as LocationResponse;
-        HotelPick.ItemsSource = Model.Hoteles.Where(a => a.LocationId == cc!.Id).ToList();
+        var entry = sender as Entry;
+        var selectedOption = entry?.Text;
+        Model?.SelecteAddressHotelCommand.Execute(selectedOption);
     }
+
+    //private void LocationPicker(object sender, EventArgs e)
+    //{
+    //    var cc = LocPick.SelectedItem as LocationResponse;
+    //    HotelPick.ItemsSource = Model.Hoteles.Where(a => a.LocationId == cc!.Id).ToList();
+    //}
 }
