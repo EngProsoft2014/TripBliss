@@ -7,6 +7,7 @@ using TripBliss.Pages.MainPopups;
 using TripBliss.Pages.Shared;
 using TripBliss.Pages.TravelAgenciesPages;
 using TripBliss.Pages.TravelAgenciesPages.ActivateDetailsPages;
+using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
 using TripBliss.Pages.Users;
 using TripBliss.Services;
 using TripBliss.Services.Data;
@@ -162,6 +163,7 @@ namespace TripBliss
             Services.AddTransient<AddressPupop>();
             Services.AddTransient<FullScreenImagePopup>();
             Services.AddTransient<LanguagePopup>();
+            Services.AddTransient<ChooseServicesPopup>();
             #endregion
 
             #region Shared Pages

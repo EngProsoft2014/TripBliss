@@ -2,6 +2,7 @@
 <Controls:CustomControl xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:res="clr-namespace:TripBliss.Resources.Language"
+                        xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
              xmlns:Controls="clr-namespace:TripBliss.Controls"
              x:Class="TripBliss.Pages.TravelAgenciesPages.Tr_AccountPage"
              Title="Tr_AccountPage"

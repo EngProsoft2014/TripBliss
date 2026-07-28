@@ -48,6 +48,9 @@ namespace TripBliss.Models
         public string? Extension { get; set; } = string.Empty;
         public int CountReviewToDistributor { get; set; }
         public double ReviewToDistributor { get; set; }
+        public string? ServiceType { get; set; }
+        public string? ServiceTypeAr { get; set; }
+
         public IList<ResponseWithDistributorReviewTravelAgentResponse> responseWithDistributorReviewTravelAgentResponses { get; set; } = [];
 
         ImageSource? _ImageFile;
@@ -100,7 +103,6 @@ namespace TripBliss.Models
                 }
             }
         }
-        
 
         public event PropertyChangedEventHandler? PropertyChanged;
     };

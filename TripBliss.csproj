@@ -119,6 +119,7 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
+
 	<!--Support Android 16K pages-->
 	<PropertyGroup Condition="'$(TargetFramework)'=='net9.0-android'">
 		<AndroidEnable16kPageSupport>true</AndroidEnable16kPageSupport>
@@ -393,6 +394,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\TravelAgenciesPages\CreateRequest\AirFlightServicePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\TravelAgenciesPages\CreateRequest\ChooseServicesPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\TravelAgenciesPages\CreateRequest\HotelServiceModelsPage.xaml">

@@ -1,3 +1,6 @@
+
+using Microsoft.Maui.Maps;
+using TripBliss.Models;
 using TripBliss.ViewModels;
 
 namespace TripBliss.Pages.Shared;
@@ -19,4 +22,5 @@ public partial class SignUpPage : Controls.CustomControl
     {
         entryPassword.IsPassword = (entryPassword.IsPassword == true) ? false : true;
     }
+
 }

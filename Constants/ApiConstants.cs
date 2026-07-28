@@ -101,6 +101,7 @@ namespace TripBliss.Constants
         #region Distributor Api
         // AllDistributorCompanys Api
         public static string GetDistributorCompaniesApi = "api/DistributorCompany/current/";
+        public static string GetDistributorCompaniesByDistributorApi = "api/DistributorCompany/currentByDistributor/";
         // End AllDistributorCompanys Api 
         #endregion
 

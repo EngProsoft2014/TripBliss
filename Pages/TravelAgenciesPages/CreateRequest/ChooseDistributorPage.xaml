@@ -50,6 +50,14 @@
             </Image>
             <Label Text="{Static res:AppResources.hdrChooseDistributor}" FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"
                    TextColor="Black" VerticalOptions="CenterAndExpand" ></Label>
+            <Image VerticalOptions="End">
+                <Image.Source>
+                    <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="#333" Size="25"></FontImageSource>
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenMenuFilterCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
         </StackLayout>
         <Border StrokeShape="RoundRectangle 25" Stroke="Gray" HeightRequest="40" Margin="0,20,0,0" BackgroundColor="White">
             <Grid>
@@ -71,7 +79,7 @@
             <CheckBox x:Name="chkBoxSelectAll" Color="#2fa562" VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged"></CheckBox>
             <Label Text="{Static res:AppResources.lblSelectAll_ActiveDistributors}" FontAutoScalingEnabled="False" FontSize="14" TextColor="Black" VerticalTextAlignment="Center"></Label>
         </HorizontalStackLayout>
-        <CollectionView x:Name="ItemsCollectionView" ItemsSource="{Binding DistributorCompanys}" VerticalOptions="FillAndExpand" SelectionMode="Multiple">
+        <CollectionView x:Name="ItemsCollectionView" ItemsSource="{Binding DistributorCompanys}" VerticalOptions="FillAndExpand" SelectionMode="Multiple" VerticalScrollBarVisibility="Never">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
             </CollectionView.ItemsLayout>
@@ -82,7 +90,7 @@
                             <VerticalStackLayout Padding="10" Spacing="5">
                                 <Label Text="{Binding CompanyName}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
                                 <Label Text="{Binding Phone}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Gray"></Label>
-                                <Label Text="{Binding Services}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                <Label Text="{Binding ServiceType}" FontAutoScalingEnabled="False" FontSize="12" TextColor="#2fa562" Margin="0,3,0,0"></Label>
                                 <Label Margin="0,3,0,0" FontAutoScalingEnabled="False">
                                     <Label.FormattedText>
                                         <FormattedString>

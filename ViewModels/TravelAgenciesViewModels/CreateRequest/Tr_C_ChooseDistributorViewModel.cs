@@ -1,14 +1,22 @@
-﻿using CommunityToolkit.Maui.Alerts;
+﻿
+using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Controls.UserDialogs.Maui;
+using Microsoft.Maui;
+using Mopups.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripBliss.Constants;
+using TripBliss.DataPaginated;
 using TripBliss.Helpers;
 using TripBliss.Models;
+using TripBliss.Models.DistributorCompany;
+using TripBliss.Pages.TravelAgenciesPages;
 using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
 
 namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
@@ -19,8 +27,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         [ObservableProperty]
         public ObservableCollection<DistributorCompanyResponse>? distributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
         [ObservableProperty]
+        public ObservableCollection<DistributorCompanyResponse> distributorCompanysInPage = new ObservableCollection<DistributorCompanyResponse>();
+        [ObservableProperty]
         public ObservableCollection<DistributorCompanyResponse>? selectedDistributorCompanys = new ObservableCollection<DistributorCompanyResponse>();
-
+        [ObservableProperty]
+        DistributorCompanyFilterRequest filterModel;
+        public int PageNumber { get; set; }
+        public bool IsHasNext { get; set; }
+        public bool IsfirstList { get; set; } = true;
         #endregion
 
         #region Services
@@ -29,11 +43,12 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         #endregion
 
         #region Cons
-        public Tr_C_ChooseDistributorViewModel(IGenericRepository GenericRep, Services.Data.ServicesService service, ObservableCollection<DistributorCompanyResponse>? List)
+        public Tr_C_ChooseDistributorViewModel(IGenericRepository GenericRep, Services.Data.ServicesService service, ObservableCollection<DistributorCompanyResponse>? List, DistributorCompanyFilterRequest modelFilter)
         {
             Rep = GenericRep;
             _service = service;
-            DistributorCompanys = List;     
+            DistributorCompanys = List;
+            FilterModel = modelFilter;
             DistributorCompanys.ToList().ForEach(f => f.IsSelected = false);
         }
         #endregion
@@ -78,9 +93,86 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             }   
         }
 
-        
-        
+
+        [RelayCommand]
+        async Task OpenMenuFilter()
+        {
+            IsBusy = true;
+            try
+            {
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                {
+                    await MopupService.Instance.PushAsync(new ChooseServicesPopup(this));
+                }
+            }
+            catch (Exception ex)
+            {
+                await App.Current!.MainPage!.DisplayAlert("Error", ex.Message, "OK");
+            }
+            IsBusy = false;
+        }
+
+
+        [RelayCommand]
+        public async Task GetDistributors()
+        {
+            IsBusy = false;
+
+            await MopupService.Instance.PopAsync();
+
+            IsHasNext = true;
+            PageNumber = 1;
+
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                string UserToken = await _service.UserToken();
+
+                UserDialogs.Instance.ShowLoading();
+                var json = await Rep.PostTRAsync<DistributorCompanyFilterRequest, PagenationList<DistributorCompanyResponse>>(ApiConstants.GetDistributorCompaniesApi + $"{PageNumber}", FilterModel, UserToken);
+                UserDialogs.Instance.HideHud();
+
+                if (json.Item1 != null)
+                {
+                    PagenationList<DistributorCompanyResponse> Distributors = json.Item1;
+
+                    IsHasNext = Distributors.HasNextPage;
+                    if (!IsHasNext && DistributorCompanys?.Count <= 10)
+                    {
+                        DistributorCompanys.Clear();
+                    }
+
+                    DistributorCompanysInPage = new ObservableCollection<DistributorCompanyResponse>(Distributors?.DataModel!);
+
+                    if (DistributorCompanys.Count == 0)
+                    {
+                        DistributorCompanys = new ObservableCollection<DistributorCompanyResponse>(DistributorCompanysInPage.OrderBy(x => x.CompanyName).ToList());
+                    }
+                    else
+                    {
+                        if (DistributorCompanys != DistributorCompanysInPage && !IsfirstList)
+                        {
+                            DistributorCompanysInPage.ToList().ForEach(f => DistributorCompanys.Add(f));
+                        }
+                        else if (DistributorCompanys != DistributorCompanysInPage && IsfirstList)
+                        {
+                            DistributorCompanys = new ObservableCollection<DistributorCompanyResponse>(DistributorCompanysInPage.OrderBy(x => x.CompanyName).ToList());
+                            IsfirstList = false;
+                        }
+                    }
+                    PageNumber += 1;
+                }
+                else
+                {
+                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
+            }
+
+            IsBusy = true;
+        }
         #endregion
+
+
 
         public async void SelectAll(bool IsSelected,string Way, DistributorCompanyResponse? model)
         {

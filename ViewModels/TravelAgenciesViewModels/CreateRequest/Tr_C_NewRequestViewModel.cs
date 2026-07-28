@@ -354,9 +354,10 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
 
                         string UserToken = await _service.UserToken();
 
-                        string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
+                        string Tr_Id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
+                        //string Dis_Id = Preferences.Default.Get(ApiConstants.distributorCompanyId, "");
                         UserDialogs.Instance.ShowLoading();
-                        var json = await Rep.PostTRAsync<RequestTravelAgencyRequest, RequestTravelAgencyResponse>(ApiConstants.AddRequestApi + $"{id}/RequestTravelAgency", RequestTravelAgency, UserToken);
+                        var json = await Rep.PostTRAsync<RequestTravelAgencyRequest, RequestTravelAgencyResponse>(ApiConstants.AddRequestApi + $"{Tr_Id}/RequestTravelAgency", RequestTravelAgency, UserToken);
                         UserDialogs.Instance.HideHud();
                         if (json.Item1 != null)
                         {
@@ -370,7 +371,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                                 Title = "تم إرسال الطلب",
                                 Message = $"تم إرسال طلب {RequestName} إلى {DistributorCompanies.Count} موزع",
                                 RequestId = json.Item1.Id,
-                                SenderId = id,
+                                SenderId = Tr_Id != "" ? Tr_Id : "",
                                 SenderName = "نظام الإشعارات"
                             };
 

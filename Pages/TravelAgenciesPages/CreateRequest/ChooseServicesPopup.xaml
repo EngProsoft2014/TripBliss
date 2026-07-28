@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mopups:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+                    xmlns:mopupsanim="clr-namespace:Mopups.Animations;assembly=Mopups"
+                    xmlns:res="clr-namespace:TripBliss.Resources.Language"
+                    x:Class="TripBliss.Pages.TravelAgenciesPages.CreateRequest.ChooseServicesPopup"
+                    NavigationPage.HasNavigationBar="False"
+                    CloseWhenBackgroundIsClicked="False"
+                    BackgroundColor="#90000000"
+                    Title="ChooseServicesPopup">
+
+    <mopups:PopupPage.Animation>
+        <mopupsanim:MoveAnimation
+           DurationIn="700"
+           EasingIn="BounceOut"
+           PositionIn="Bottom"
+           PositionOut="Center" />
+    </mopups:PopupPage.Animation>
+
+    <Border StrokeShape="RoundRectangle 25,25,0,0" Padding="20" VerticalOptions="EndAndExpand" BackgroundColor="White">
+        <StackLayout x:Name="stackMain">
+
+            <!--Header-->
+            <Label Text="{Static res:AppResources.hdrChooseServices}" TextDecorations="Underline" Margin="0,10,0,30" FontSize="16" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
+
+            <StackLayout Orientation="Horizontal">
+
+                <Label Text="{Static res:AppResources.lblHotelServices}" FontSize="15" FontAttributes="Bold" TextColor="#333" HorizontalOptions="FillAndExpand"></Label>
+
+                <CheckBox x:Name="chBxHotelService" 
+                              HorizontalOptions="EndAndExpand" 
+                              Color="#2fa562"
+                          IsChecked="{Binding FilterModel.IsHotel}"
+                              Scale="{OnPlatform Android=.9,iOS=1}">
+                </CheckBox>
+            </StackLayout>
+
+
+            <StackLayout Orientation="Horizontal">
+
+                <Label Text="{Static res:AppResources.lblTransportationServices}" FontSize="15" FontAttributes="Bold" TextColor="#333" HorizontalOptions="FillAndExpand"></Label>
+
+                <CheckBox x:Name="chBxTransportationService" 
+                              HorizontalOptions="EndAndExpand" 
+                              Color="#2fa562"
+                          IsChecked="{Binding FilterModel.IsTransportation}"
+                              Scale="{OnPlatform Android=.9,iOS=1}">
+                </CheckBox>
+            </StackLayout>
+
+
+            <StackLayout Orientation="Horizontal">
+
+                <Label Text="{Static res:AppResources.lblAirFlightServices}" FontSize="15" FontAttributes="Bold" TextColor="#333" HorizontalOptions="FillAndExpand"></Label>
+
+                <CheckBox x:Name="chBxAirFlightService" 
+                              HorizontalOptions="EndAndExpand" 
+                              Color="#2fa562"
+                            IsChecked="{Binding FilterModel.IsAirFlight}"
+                              Scale="{OnPlatform Android=.9,iOS=1}">
+                </CheckBox>
+            </StackLayout>
+
+
+            <StackLayout Orientation="Horizontal">
+
+                <Label Text="{Static res:AppResources.lblVisaServices}" FontSize="15" FontAttributes="Bold" TextColor="#333" HorizontalOptions="FillAndExpand"></Label>
+
+                <CheckBox x:Name="chBxVisaService" 
+                      HorizontalOptions="EndAndExpand" 
+                      Color="#2fa562"
+                      IsChecked="{Binding FilterModel.IsVisa}"
+                      Scale="{OnPlatform Android=.9,iOS=1}">
+                </CheckBox>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+
+                <Label Text="{Static res:AppResources.lblGuideServices}" FontSize="15" FontAttributes="Bold" TextColor="#333" HorizontalOptions="FillAndExpand"></Label>
+
+                <CheckBox x:Name="chBxGuideService" 
+                              HorizontalOptions="EndAndExpand" 
+                              Color="#2fa562"
+                          IsChecked="{Binding FilterModel.IsGuide}"
+                              Scale="{OnPlatform Android=.9,iOS=1}">
+                </CheckBox>
+            </StackLayout>
+
+            <Button Text="Send" Margin="{OnPlatform iOS='20,10,20,50', Android='20,10,20,20'}" FontAttributes="Bold" FontSize="16"
+                    HorizontalOptions="FillAndExpand" 
+                    HeightRequest="40" VerticalOptions="End"
+                    TextColor="White"
+                    BackgroundColor="#2fa562"
+                    CornerRadius="10"
+                    Command="{Binding GetDistributorsCommand}">
+            </Button>
+        </StackLayout>
+    </Border>
+
+</mopups:PopupPage>

@@ -14,7 +14,11 @@ using TripBliss.Helpers;
 using TripBliss.Models;
 using TripBliss.Pages.DistributorsPages.ResponseDetailes;
 using TripBliss.Pages.Shared;
+using TripBliss.Pages.TravelAgenciesPages;
+using TripBliss.Pages.TravelAgenciesPages.CreateRequest;
 using TripBliss.ViewModels.DistributorsViewModels.ResponseDetails;
+using TripBliss.ViewModels.TravelAgenciesViewModels;
+using TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest;
 
 namespace TripBliss.ViewModels.DistributorsViewModels
 {
@@ -25,9 +29,10 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         public ObservableCollection<ResponseWithDistributorResponse> responses = new ObservableCollection<ResponseWithDistributorResponse>();
         [ObservableProperty]
         public ObservableCollection<ResponseWithDistributorResponse> responsesInPage = new ObservableCollection<ResponseWithDistributorResponse>();
+
+
         public int PageNumber { get; set; }
         public bool IsHasNext { get; set; }
-
         #endregion
 
         #region Services
@@ -48,7 +53,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels
             _firebasePushNotification = firebasePushNotification;
 
             Init();
-        } 
+        }
         #endregion
 
         #region Methods
@@ -61,7 +66,8 @@ namespace TripBliss.ViewModels.DistributorsViewModels
 
             PageNumber = 1;
             IsHasNext = true;
-            await GetResponses();     
+            await GetResponses();
+            
         }
 
 
@@ -91,7 +97,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels
                         if (json != null)
                         {
                             PagenationList<ResponseWithDistributorResponse> ResponesPage = json;
-                            
+
                             IsHasNext = ResponesPage.HasNextPage;
 
                             ResponsesInPage = new ObservableCollection<ResponseWithDistributorResponse>(ResponesPage?.DataModel!);
@@ -157,6 +163,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels
         }
 
 
+       
         #endregion
 
         #region RelayCommand
@@ -174,6 +181,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels
             }
         }
 
+
         [RelayCommand]
         async Task GetLoadMore()
         {
@@ -182,6 +190,7 @@ namespace TripBliss.ViewModels.DistributorsViewModels
                 await GetResponses();
             }
         }
+
         #endregion
     }
 }

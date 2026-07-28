@@ -72,9 +72,9 @@
                                             <Label VerticalTextAlignment="Center" FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{Binding LocationNameLang}" TextColor="Gray" FontSize="12"></Span>
-                                                        <Span Text=" - " TextColor="Gray" FontSize="14"></Span>
-                                                        <Span Text="{Binding HotelNameLang}" TextColor="Gray" FontSize="12"></Span>
+                                                        <!--<Span Text="{Binding LocationNameLang}" TextColor="Gray" FontSize="12"></Span>
+                                                        <Span Text=" - " TextColor="Gray" FontSize="14"></Span>-->
+                                                        <Span Text="{Binding HotelNameLang}" TextColor="#2fa562" FontAttributes="Bold" FontSize="12"></Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -270,14 +270,14 @@
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="#" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
-                                                        <Span Text="{Binding VisaId}" TextColor="#2fa562" FontSize="12"></Span>
+                                                        <Span Text="{Binding VisaId}" TextColor="#2fa562" FontSize="12" FontAttributes="Bold"></Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
                                             <Label FontAutoScalingEnabled="False">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{Binding VisaNameLang}" TextColor="Gray" FontSize="12">
+                                                        <Span Text="{Binding VisaNameLang}" TextColor="#2fa562" FontAttributes="Bold" FontSize="12">
                                                         </Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>

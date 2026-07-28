@@ -1140,4 +1140,22 @@
   <data name="lblyear" xml:space="preserve">
     <value>Year</value>
   </data>
+  <data name="plcCountry_SignUp" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="Required_Country" xml:space="preserve">
+    <value>Please Complete This Field Required : Country</value>
+  </data>
+  <data name="btnAgencies" xml:space="preserve">
+    <value>Agencies</value>
+  </data>
+  <data name="hdrClients" xml:space="preserve">
+    <value>Clients</value>
+  </data>
+  <data name="lblGuideServices" xml:space="preserve">
+    <value>Guide Services</value>
+  </data>
+  <data name="hdrChooseServices" xml:space="preserve">
+    <value>Choose Services</value>
+  </data>
 </root>

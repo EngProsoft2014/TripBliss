@@ -203,14 +203,14 @@
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
                 <!--Agency-->
-                <tabView:SfTabItem Header="{Static res:AppResources.hdrAgency}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2"
+                <tabView:SfTabItem Header="{Static res:AppResources.hdrClients}" TextColor="Black" FontSize="14" ImagePosition="Top" BackgroundColor="#f6fcf2"
                                    FontFamily="Almarai-Regular">
                     <tabView:SfTabItem.ImageSource>
                         <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gray"></FontImageSource>
                     </tabView:SfTabItem.ImageSource>
                     <tabView:SfTabItem.Content>
-                        <ContentView x:Name="AgencyView">
-                            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="{OnPlatform Android='20,20,20,0', iOS='20,0,20,0'}">
+                        <ContentView x:Name="ClientsView">
+                            <!--<StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="{OnPlatform Android='20,20,20,0', iOS='20,0,20,0'}">
                                 <Label Text="{Static res:AppResources.hdrAgency}" FontSize="18" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
                                 <Border StrokeShape="RoundRectangle 25" HeightRequest="40" Stroke="Gray" Margin="{OnPlatform Android='0,20,0,10',iOS='0,10,0,10'}" BackgroundColor="White">
                                     <Grid>
@@ -271,7 +271,7 @@
                                     </CollectionView.Triggers>
                                 </CollectionView>
 
-                                <!--No Data-->
+                                --><!--No Data--><!--
                                 <StackLayout x:Name="stkNoData2" IsVisible="False" Margin="{OnPlatform iOS='0,100,0,0'}" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                     <Image Source="noresult.png">
                                         <Image.Triggers>
@@ -287,6 +287,288 @@
                                     </StackLayout.Triggers>
                                 </StackLayout>
 
+                            </StackLayout>-->
+                            <StackLayout Orientation="Vertical">
+                                <tabView:SfTabView x:Name="DisAndFevotiresTab" TabBarHeight="55" IndicatorBackground="#1c874b" VerticalOptions="FillAndExpand" FlowDirection="LeftToRight">
+                                    <tabView:SfTabView.Items>
+                                        <!--Agencies-->
+                                        <tabView:SfTabItem Header='{Static res:AppResources.btnAgencies}' TextColor="Black" FontSize="16" FontAttributes="Bold" 
+                                                            FontFamily="Almarai-Regular" BackgroundColor="#f6fcf2">
+                                            <tabView:SfTabItem.Content>
+                                                <ContentView x:Name="conviewAgencies">
+                                                    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20">
+                                                        <CollectionView ItemsSource="{Binding CompanyResponses}" VerticalOptions="FillAndExpand" SelectionMode="None" VerticalScrollBarVisibility="Never">
+                                                            <CollectionView.ItemsLayout>
+                                                                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
+                                                            </CollectionView.ItemsLayout>
+                                                            <CollectionView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <Border StrokeShape="RoundRectangle 20" Margin="0,10">
+                                                                        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                                                                            <VerticalStackLayout Padding="10" Spacing="5">
+                                                                                <Label Text="{Binding CompanyName}" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+                                                                                <Label Text="{Binding Phone}" FontSize="12" TextColor="Gray"></Label>
+                                                                                <Label Text="{Binding Email}" FontSize="12" TextColor="Orange" Margin="0,3,0,0"></Label>
+                                                                                <HorizontalStackLayout>
+                                                                                    <Label Text="{Static res:AppResources.plcAddress_AccountPage}" FontSize="12" TextColor="DeepSkyBlue" ></Label>
+                                                                                    <Label Text=" :" FontSize="12" TextColor="DeepSkyBlue" ></Label>
+                                                                                    <Label Text="{Binding Address}" FontSize="12" TextColor="DeepSkyBlue" ></Label>
+                                                                                </HorizontalStackLayout>
+                                                                            </VerticalStackLayout>
+                                                                            <HorizontalStackLayout Margin="0,15,20,0" HorizontalOptions="EndAndExpand" Spacing="5">
+                                                                                <Label Text="{Binding ReviewToTravelAgency}" FontSize="14" TextColor="Black" FontAttributes="Bold" VerticalOptions="StartAndExpand"></Label>
+                                                                                <Image WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand">
+                                                                                    <Image.Source>
+                                                                                        <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gold"></FontImageSource>
+                                                                                    </Image.Source>
+                                                                                </Image>
+                                                                            </HorizontalStackLayout>
+                                                                        </StackLayout>
+                                                                        <Border.GestureRecognizers>
+                                                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Dis_DistributorsViewModel}}, Path=SelectionCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                                        </Border.GestureRecognizers>
+                                                                    </Border>
+                                                                </DataTemplate>
+                                                            </CollectionView.ItemTemplate>
+                                                            <CollectionView.Triggers>
+                                                                <DataTrigger TargetType="CollectionView" Binding="{Binding CompanyResponses.Count}" Value="0">
+                                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                                    <Setter Property="HeightRequest" Value="0"></Setter>
+                                                                </DataTrigger>
+                                                            </CollectionView.Triggers>
+                                                        </CollectionView>
+                                                        <!--No Data-->
+                                                        <StackLayout x:Name="stkNoDataAg" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                                            <Image Source="noresult.png">
+                                                                <Image.Triggers>
+                                                                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                                                                        <Setter Property="Source" Value="noresultar.png"></Setter>
+                                                                    </DataTrigger>
+                                                                </Image.Triggers>
+                                                            </Image>
+                                                            <StackLayout.Triggers>
+                                                                <DataTrigger TargetType="StackLayout" Binding="{Binding CompanyResponses.Count}" Value="0">
+                                                                    <Setter Property="IsVisible" Value="True"></Setter>
+                                                                </DataTrigger>
+                                                            </StackLayout.Triggers>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                    <!--<ContentView.BindingContext>
+                                                            <dvm:TravelAgencyViewModel></dvm:TravelAgencyViewModel>
+                                                        </ContentView.BindingContext>-->
+                                                    <ContentView.Triggers>
+                                                        <DataTrigger TargetType="ContentView" Binding="{Binding Lang}" Value="ar">
+                                                            <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
+                                                        </DataTrigger>
+                                                    </ContentView.Triggers>
+                                                </ContentView>
+                                            </tabView:SfTabItem.Content>
+                                        </tabView:SfTabItem>
+                                        <!--Distributors-->
+                                        <tabView:SfTabItem Header='{Static res:AppResources.btnDistributors}' TextColor="Black" FontSize="16" FontAttributes="Bold"
+                                                            FontFamily="Almarai-Regular" BackgroundColor="#f6fcf2">
+                                            <tabView:SfTabItem.Content>
+                                                <ContentView x:Name="conviewDist">
+                                                    <Grid VerticalOptions="FillAndExpand" Margin="20">
+                                                        
+                                                        <CollectionView ItemsSource="{Binding DistributorCompanys}" VerticalOptions="FillAndExpand" SelectionMode="None" VerticalScrollBarVisibility="Never" 
+                                                                         RemainingItemsThreshold="1" RemainingItemsThresholdReachedCommand="{Binding GetLoadMoreDistributorCommand}">
+                                                            <CollectionView.ItemsLayout>
+                                                                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
+                                                            </CollectionView.ItemsLayout>
+                                                            <CollectionView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <Border StrokeShape="RoundRectangle 20" Margin="0,10">
+                                                                        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                                                                            <VerticalStackLayout Padding="10" Spacing="5">
+                                                                                <HorizontalStackLayout Spacing="15">
+                                                                                    <Label Text="{Binding CompanyName}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+                                                                                    <HorizontalStackLayout Spacing="5">
+                                                                                        <Image VerticalOptions="Center" TranslationY="-2">
+                                                                                            <Image.Source>
+                                                                                                <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gold" Size="13"></FontImageSource>
+                                                                                            </Image.Source>
+                                                                                        </Image>
+                                                                                        <Label Text="{Binding ReviewToDistributor}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"
+                                                                                                VerticalOptions="CenterAndExpand" VerticalTextAlignment="End"></Label>
+                                                                                    </HorizontalStackLayout>
+                                                                                </HorizontalStackLayout>
+                                                                                <Label Text="{Binding Phone}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Gray"></Label>
+                                                                                <Label Text="{Binding Services}" FontAutoScalingEnabled="False" FontSize="12" TextColor="#ff7700" Margin="0,3,0,0"></Label>
+                                                                                <Label Margin="0,3,0,0" FontAutoScalingEnabled="False">
+                                                                                    <Label.FormattedText>
+                                                                                        <FormattedString>
+                                                                                            <Span Text="Address : " FontSize="12" TextColor="#059ce3" ></Span>
+                                                                                            <Span Text="{Binding Address}" FontSize="12" TextColor="#059ce3" ></Span>
+                                                                                        </FormattedString>
+                                                                                    </Label.FormattedText>
+                                                                                </Label>
+                                                                            </VerticalStackLayout>
+                                                                        </StackLayout>
+                                                                        <Border.GestureRecognizers>
+                                                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Dis_DistributorsViewModel}}, Path=SelectionDistributorCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                                        </Border.GestureRecognizers>
+                                                                    </Border>
+                                                                </DataTemplate>
+                                                            </CollectionView.ItemTemplate>
+
+                                                            <CollectionView.Triggers>
+                                                                <DataTrigger TargetType="CollectionView" Binding="{Binding DistributorCompanys.Count}" Value="0">
+                                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                                    <Setter Property="HeightRequest" Value="0"></Setter>
+                                                                </DataTrigger>
+                                                            </CollectionView.Triggers>
+                                                        </CollectionView>
+
+                                                        <Button Text="{Static res:AppResources.btnAddRequest}" VerticalOptions="End" HorizontalOptions="End" FontAutoScalingEnabled="False" WidthRequest="95" Padding="0,0,0,0" HeightRequest="30" FontSize="14"
+                                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Dis_DistributorsViewModel}}, Path=AddRequestDistributorCommand}" IsEnabled="False" Opacity=".6"
+                                                                   BackgroundColor="#2fa562" CornerRadius="5" TextColor="White" Margin="0,0,0,0" FontAttributes="Bold">
+                                                            <Button.Triggers>
+                                                                <DataTrigger TargetType="Button" Binding="{Binding Review}" Value="1">
+                                                                    <Setter Property="IsEnabled" Value="True"></Setter>
+                                                                    <Setter Property="Opacity" Value="1"></Setter>
+                                                                </DataTrigger>
+                                                            </Button.Triggers>
+                                                        </Button>
+                                                        <!--No Data-->
+                                                        <StackLayout x:Name="stkNoDataDis" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                                            <Image Source="noresult.png">
+                                                                <Image.Triggers>
+                                                                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                                                                        <Setter Property="Source" Value="noresultar.png"></Setter>
+                                                                    </DataTrigger>
+                                                                </Image.Triggers>
+                                                            </Image>
+                                                            <StackLayout.Triggers>
+                                                                <DataTrigger TargetType="StackLayout" Binding="{Binding DistributorCompanys.Count}" Value="0">
+                                                                    <Setter Property="IsVisible" Value="True"></Setter>
+                                                                </DataTrigger>
+                                                            </StackLayout.Triggers>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                    <ContentView.Triggers>
+                                                        <DataTrigger TargetType="ContentView" Binding="{Binding Lang}" Value="ar">
+                                                            <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
+                                                        </DataTrigger>
+                                                    </ContentView.Triggers>
+                                                </ContentView>
+                                            </tabView:SfTabItem.Content>
+                                        </tabView:SfTabItem>
+                                        <!--Favourites-->
+                                        <!--<tabView:SfTabItem Header='{Static res:AppResources.btnFavourites}' TextColor="Black" FontSize="14" 
+                                                                FontFamily="Almarai-Regular" BackgroundColor="#f6fcf2">
+                                            <tabView:SfTabItem.Content>
+                                                <ContentView x:Name="conviewFevourites">
+                                                    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="20">
+                                                        <CollectionView ItemsSource="{Binding FavouriteDistributorCompanys}" VerticalOptions="FillAndExpand" SelectionMode="None">
+                                                            <CollectionView.ItemsLayout>
+                                                                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="{OnPlatform iOS=10}"/>
+                                                            </CollectionView.ItemsLayout>
+                                                            <CollectionView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <Border StrokeShape="RoundRectangle 20" Margin="0,10">
+                                                                        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                                                                            <VerticalStackLayout Padding="10" Spacing="5">
+
+                                                                                <HorizontalStackLayout Spacing="15">
+                                                                                    <Label Text="{Binding DistributorCompany.CompanyName}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"></Label>
+                                                                                    <HorizontalStackLayout Spacing="5">
+                                                                                        <Image VerticalOptions="Center" TranslationY="-2">
+                                                                                            <Image.Source>
+                                                                                                <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Gold" Size="13"></FontImageSource>
+                                                                                            </Image.Source>
+                                                                                        </Image>
+                                                                                        <Label Text="{Binding DistributorCompany.ReviewToDistributor}" FontAutoScalingEnabled="False" FontSize="16" TextColor="Black" FontAttributes="Bold"
+                                                                                                VerticalOptions="CenterAndExpand" VerticalTextAlignment="End"></Label>
+                                                                                    </HorizontalStackLayout>
+                                                                                </HorizontalStackLayout>
+                                                                                <Label Text="{Binding DistributorCompany.Phone}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Gray"></Label>
+                                                                                <Label Text="{Binding Services}" FontSize="12" FontAutoScalingEnabled="False" TextColor="#ff7700" Margin="0,3,0,0"></Label>
+                                                                                <Label Margin="0,3,0,0" FontAutoScalingEnabled="False">
+                                                                                    <Label.FormattedText>
+                                                                                        <FormattedString>
+                                                                                            <Span Text="Address : " FontSize="12" TextColor="#059ce3" ></Span>
+                                                                                            <Span Text="{Binding DistributorCompany.Address}" FontSize="12" TextColor="#059ce3" ></Span>
+                                                                                        </FormattedString>
+                                                                                    </Label.FormattedText>
+                                                                                </Label>
+                                                                            </VerticalStackLayout>
+                                                                            <VerticalStackLayout Margin="20,10,20,0" HorizontalOptions="EndAndExpand" Spacing="15">
+
+                                                                                --><!--<ImageButton WidthRequest="20" HeightRequest="20" VerticalOptions="StartAndExpand" 
+                                                                                             Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=HeartClickedCommand}" CommandParameter="{Binding}">
+                                                                                    <ImageButton.Source>
+                                                                                        <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Red"></FontImageSource>
+                                                                                    </ImageButton.Source>
+                                                                                </ImageButton>--><!--
+                                                                                <Image VerticalOptions="StartAndExpand">
+                                                                                    <Image.Source>
+                                                                                        <FontImageSource Glyph="" FontFamily="FontIconSolid" Color="Red" Size="20"></FontImageSource>
+                                                                                    </Image.Source>
+                                                                                    <Image.GestureRecognizers>
+                                                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=HeartClickedFavouriteCommand}" CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                                                    </Image.GestureRecognizers>
+                                                                                    <Image.Triggers>
+                                                                                        <DataTrigger TargetType="Image" Binding="{Binding Favourite}" Value="True">
+                                                                                            <Setter Property="Source">
+                                                                                                <Setter.Value>
+                                                                                                    <FontImageSource Glyph="" FontFamily="FontIcon" Color="Gray" Size="20"></FontImageSource>
+                                                                                                </Setter.Value>
+                                                                                            </Setter>
+                                                                                        </DataTrigger>
+                                                                                        <DataTrigger TargetType="Image" Binding="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=Review}" Value="0">
+                                                                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                                                                        </DataTrigger>
+                                                                                        <DataTrigger TargetType="Image" Binding="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=Review}" Value="2">
+                                                                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                                                                        </DataTrigger>
+                                                                                    </Image.Triggers>
+                                                                                </Image>
+                                                                            </VerticalStackLayout>
+                                                                        </StackLayout>
+                                                                        <Border.GestureRecognizers>
+                                                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=SelectionFevouriteCommand}"
+                                                                      CommandParameter="{Binding}"></TapGestureRecognizer>
+                                                                        </Border.GestureRecognizers>
+                                                                    </Border>
+                                                                </DataTemplate>
+                                                            </CollectionView.ItemTemplate>
+                                                            <CollectionView.Triggers>
+                                                                <DataTrigger TargetType="CollectionView" Binding="{Binding FavouriteDistributorCompanys.Count}" Value="0">
+                                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                                    <Setter Property="HeightRequest" Value="0"></Setter>
+                                                                </DataTrigger>
+                                                            </CollectionView.Triggers>
+                                                        </CollectionView>
+                                                        --><!--No Data--><!--
+                                                        <StackLayout x:Name="stkNoDataFV2" IsVisible="False" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                                            <Image Source="noresult.png">
+                                                                <Image.Triggers>
+                                                                    <DataTrigger TargetType="Image" Binding="{Binding Lang}" Value="ar">
+                                                                        <Setter Property="Source" Value="noresultar.png"></Setter>
+                                                                    </DataTrigger>
+                                                                </Image.Triggers>
+                                                            </Image>
+                                                            <StackLayout.Triggers>
+                                                                <DataTrigger TargetType="StackLayout" Binding="{Binding FavouriteDistributorCompanys.Count}" Value="0">
+                                                                    <Setter Property="IsVisible" Value="True"></Setter>
+                                                                </DataTrigger>
+                                                            </StackLayout.Triggers>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                    --><!--<ContentView.BindingContext>
+                                                            <dvm:TravelAgencyViewModel></dvm:TravelAgencyViewModel>
+                                                        </ContentView.BindingContext>--><!--
+                                                    <ContentView.Triggers>
+                                                        <DataTrigger TargetType="ContentView" Binding="{Binding Lang}" Value="ar">
+                                                            <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
+                                                        </DataTrigger>
+                                                    </ContentView.Triggers>
+                                                </ContentView>
+                                            </tabView:SfTabItem.Content>
+                                        </tabView:SfTabItem>-->
+                                    </tabView:SfTabView.Items>
+                                </tabView:SfTabView>
                             </StackLayout>
                             <ContentView.Triggers>
                                 <DataTrigger TargetType="ContentView" Binding="{Binding Lang}" Value="ar">

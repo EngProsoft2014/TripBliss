@@ -207,7 +207,7 @@
                                                                                     </HorizontalStackLayout>
                                                                                 </HorizontalStackLayout>
                                                                                 <Label Text="{Binding Phone}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Gray"></Label>
-                                                                                <Label Text="{Binding Services}" FontAutoScalingEnabled="False" FontSize="12" TextColor="#ff7700" Margin="0,3,0,0"></Label>
+                                                                                <Label Text="{Binding ServiceType}" FontAutoScalingEnabled="False" FontSize="12" TextColor="#2fa562" Margin="0,3,0,0"></Label>
                                                                                 <Label Margin="0,3,0,0" FontAutoScalingEnabled="False">
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
@@ -321,7 +321,13 @@
                                                                                     </HorizontalStackLayout>
                                                                                 </HorizontalStackLayout>
                                                                                 <Label Text="{Binding DistributorCompany.Phone}" FontAutoScalingEnabled="False" FontSize="12" TextColor="Gray"></Label>
-                                                                                <Label Text="{Binding Services}" FontSize="12" FontAutoScalingEnabled="False" TextColor="#ff7700" Margin="0,3,0,0"></Label>
+                                                                                <Label Text="{Binding DistributorCompany.ServiceType}" FontSize="12" FontAutoScalingEnabled="False" TextColor="#ff7700" Margin="0,3,0,0">
+                                                                                    <Label.Triggers>
+                                                                                        <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type dvm:Tr_C_TravelAgencyViewModel}}, Path=Lang}" Value="ar">
+                                                                                            <Setter Property="Text" Value="{Binding DistributorCompany.ServiceTypeAr}"></Setter>
+                                                                                        </DataTrigger>
+                                                                                    </Label.Triggers>
+                                                                                </Label>
                                                                                 <Label Margin="0,3,0,0" FontAutoScalingEnabled="False">
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>

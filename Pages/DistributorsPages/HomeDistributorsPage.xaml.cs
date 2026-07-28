@@ -241,7 +241,7 @@ public partial class HomeDistributorsPage : Controls.CustomControl
         }
         else if (e.NewIndex == 1)
         {
-            AgencyView.BindingContext = distributorsViewModel = new Dis_DistributorsViewModel(Rep, _service);
+            ClientsView.BindingContext = distributorsViewModel = new Dis_DistributorsViewModel(Rep, _service);
 
             Controls.StaticMember.ShowSendOfferBtn = true;
         }
@@ -261,10 +261,10 @@ public partial class HomeDistributorsPage : Controls.CustomControl
         isTabHandling = false;
     }
 
-    private void SearchBar_Tr(object sender, TextChangedEventArgs e)
-    {
-        TrColc.ItemsSource = distributorsViewModel.CompanyResponses!.Where(x => (x.CompanyName!).ToLower().Contains(e.NewTextValue.ToLower()));
-    }
+    //private void SearchBar_Tr(object sender, TextChangedEventArgs e)
+    //{
+    //    TrColc.ItemsSource = distributorsViewModel.CompanyResponses!.Where(x => (x.CompanyName!).ToLower().Contains(e.NewTextValue.ToLower()));
+    //}
 
 
 }

@@ -58,7 +58,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             {
                 PageNumber = 1;
                 IsHasNext = true;
-                await GetDistributors();
+                await GetDistributors(await GetFilterservices());
             }
             else
             {
@@ -67,22 +67,36 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
             }
         }
 
-        public async Task GetDistributors()
+        async Task<DistributorCompanyFilterRequest> GetFilterservices()
+        {
+            DistributorCompanyFilterRequest FilterModel = new DistributorCompanyFilterRequest()
+            {
+                TravelAgencyCompanyId = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, ""),
+                IsHotel = true,
+                IsTransportation = true,
+                IsAirFlight = true,
+                IsVisa = true,
+                IsGuide = true
+            };
+
+            return FilterModel;
+        }
+
+        public async Task GetDistributors(DistributorCompanyFilterRequest FilterModel)
         {
             IsBusy = false;
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                string id = Preferences.Default.Get(ApiConstants.travelAgencyCompanyId, "");
                 string UserToken = await _service.UserToken();
 
                 UserDialogs.Instance.ShowLoading();
-                var json = await Rep.GetAsync<PagenationList<DistributorCompanyResponse>>(ApiConstants.GetDistributorCompaniesApi + $"{id}/{PageNumber}", UserToken);
+                var json = await Rep.PostTRAsync<DistributorCompanyFilterRequest, PagenationList<DistributorCompanyResponse>>(ApiConstants.GetDistributorCompaniesApi + $"{PageNumber}", FilterModel, UserToken);
                 UserDialogs.Instance.HideHud();
 
-                if (json != null)
+                if (json.Item1 != null)
                 {
-                    PagenationList<DistributorCompanyResponse> Distributors = json;
+                    PagenationList<DistributorCompanyResponse> Distributors = json.Item1;
                   
                     IsHasNext = Distributors.HasNextPage;
 
@@ -101,7 +115,11 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     }
                     PageNumber += 1;
                 }
-
+                else
+                {
+                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
                 //var toast = Toast.Make(DistributorCompanys.Count().ToString(), CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                 //await toast.Show();
             }
@@ -197,7 +215,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 UserDialogs.Instance.ShowLoading();
                 if (IndexTap == 0)
                 {
-                    await App.Current!.MainPage!.Navigation.PushAsync(new ChooseDistributorPage(new Tr_C_ChooseDistributorViewModel(Rep, _service, DistributorCompanys), Rep));
+                    await App.Current!.MainPage!.Navigation.PushAsync(new ChooseDistributorPage(new Tr_C_ChooseDistributorViewModel(Rep, _service, DistributorCompanys, await GetFilterservices()), Rep));
                 }
                 else
                 {
@@ -209,7 +227,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                             LstDisModel.Add(f.DistributorCompany!);
                         }
                     });
-                    await App.Current!.MainPage!.Navigation.PushAsync(new ChooseDistributorPage(new Tr_C_ChooseDistributorViewModel(Rep, _service, LstDisModel), Rep));
+                    await App.Current!.MainPage!.Navigation.PushAsync(new ChooseDistributorPage(new Tr_C_ChooseDistributorViewModel(Rep, _service, LstDisModel, await GetFilterservices()), Rep));
                 }
 
                 UserDialogs.Instance.HideHud();
@@ -297,7 +315,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
         {
             if (IsHasNext)
             {
-                await GetDistributors();
+                await GetDistributors(await GetFilterservices());
             }
         }
         #endregion

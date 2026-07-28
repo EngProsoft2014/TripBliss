@@ -1140,4 +1140,22 @@
   <data name="lblyear" xml:space="preserve">
     <value>العام</value>
   </data>
+  <data name="plcCountry_SignUp" xml:space="preserve">
+    <value>الدولة</value>
+  </data>
+  <data name="Required_Country" xml:space="preserve">
+    <value>يرجى إكمال هذا الحقل المطلوب: الدولة.</value>
+  </data>
+  <data name="btnAgencies" xml:space="preserve">
+    <value>وكلاء السياحة</value>
+  </data>
+  <data name="hdrClients" xml:space="preserve">
+    <value>العملاء</value>
+  </data>
+  <data name="lblGuideServices" xml:space="preserve">
+    <value>خدمات الإرشاد</value>
+  </data>
+  <data name="hdrChooseServices" xml:space="preserve">
+    <value>أختر الخدمات</value>
+  </data>
 </root>

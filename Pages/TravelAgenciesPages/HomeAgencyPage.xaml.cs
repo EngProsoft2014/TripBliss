@@ -44,6 +44,10 @@ public partial class HomeAgencyPage : Controls.CustomControl
             var toast = Toast.Make(TripBliss.Resources.Language.AppResources.PermissionAlert, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
             await toast.Show();
         }
+        else if(tabMain.SelectedIndex == 1)
+        {
+            DisConView.BindingContext = ViewModelTap2 = new Tr_C_TravelAgencyViewModel(Rep, _service);
+        }
     }
     protected override void OnDisappearing()
     {

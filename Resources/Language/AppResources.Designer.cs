@@ -259,6 +259,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Agencies.
+        /// </summary>
+        internal static string btnAgencies {
+            get {
+                return ResourceManager.GetString("btnAgencies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply.
         /// </summary>
         internal static string btnApply_Forgot {
@@ -1015,6 +1024,24 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose Services.
+        /// </summary>
+        internal static string hdrChooseServices {
+            get {
+                return ResourceManager.GetString("hdrChooseServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clients.
+        /// </summary>
+        internal static string hdrClients {
+            get {
+                return ResourceManager.GetString("hdrClients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create New Offer.
         /// </summary>
         internal static string hdrCreateOffer_CreateOffer {
@@ -1524,6 +1551,15 @@ namespace TripBliss.Resources.Language {
         internal static string lblFrom_TranService {
             get {
                 return ResourceManager.GetString("lblFrom-TranService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Guide Services.
+        /// </summary>
+        internal static string lblGuideServices {
+            get {
+                return ResourceManager.GetString("lblGuideServices", resourceCulture);
             }
         }
         
@@ -2338,6 +2374,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Country.
+        /// </summary>
+        internal static string plcCountry_SignUp {
+            get {
+                return ResourceManager.GetString("plcCountry_SignUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         internal static string plcEmail_SignUpPage {
@@ -2577,6 +2622,15 @@ namespace TripBliss.Resources.Language {
         internal static string Required_Complaint {
             get {
                 return ResourceManager.GetString("Required_Complaint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Complete This Field Required : Country.
+        /// </summary>
+        internal static string Required_Country {
+            get {
+                return ResourceManager.GetString("Required_Country", resourceCulture);
             }
         }
         
