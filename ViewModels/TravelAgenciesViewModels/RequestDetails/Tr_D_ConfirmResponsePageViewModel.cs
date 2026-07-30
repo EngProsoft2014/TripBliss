@@ -151,9 +151,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                             //Controls.StaticMember.WayOfTab = 0;
                             //await App.Current!.MainPage!.Navigation.PushAsync(new HomeAgencyPage(new Tr_HomeViewModel(Rep, _service), Rep, _service));
                         }
+                        else if (json.Item2 != null && json.Item2.errors != null)
+                        {
+                            var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value.ToString()!.Replace("[", "").Replace("]", "").Replace("\"", "")}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            await toast.Show();
+                        }
                         else
                         {
-                            var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            var toast = Toast.Make(TripBliss.Resources.Language.AppResources.msgThere_was_a_problem_with_this_procedure, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
                         }
                     }
@@ -383,7 +388,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     PaymentMethod = 1,
                     dbcr = 1,
                     Notes = "",
-                    Refnumber = new Guid().ToString(),
+                    Refnumber = Guid.NewGuid().ToString(),
                 };
                 UserDialogs.Instance.ShowLoading();
                 var json = await Rep.PostTRAsync<ResponseWithDistributorPaymentRequest, ResponseWithDistributorPaymentResponse>(ApiConstants.AllPaymentApi + $"{Response.Id}/ResponseWithDistributorPayment", paymentRequest, UserToken);
@@ -392,9 +397,15 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 {
 
                 }
+                else if (json.Item2 != null && json.Item2.errors != null)
+                {
+                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value.ToString()!.Replace("[", "").Replace("]", "").Replace("\"", "")}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
                 else
                 {
-
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.msgThere_was_a_problem_with_this_procedure, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
                 }
             }
 

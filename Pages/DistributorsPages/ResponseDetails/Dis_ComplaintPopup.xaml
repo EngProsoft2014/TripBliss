@@ -32,7 +32,7 @@
                    TextColor="Black">
             </Label>
             
-            <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10" HeightRequest="250">
+            <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="Gray" Margin="0,10" HeightRequest="240">
                 <Editor 
                     x:Name="edComplaint"
                     Text="{Binding ComplaintVm}"

@@ -115,13 +115,16 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                     }
                     PageNumber += 1;
                 }
-                else
+                else if (json.Item2 != null && json.Item2.errors != null)
                 {
-                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value.ToString()!.Replace("[", "").Replace("]", "").Replace("\"", "")}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
-                //var toast = Toast.Make(DistributorCompanys.Count().ToString(), CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                //await toast.Show();
+                else
+                {
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.msgThere_was_a_problem_with_this_procedure, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
             }
 
 
@@ -167,6 +170,16 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                 {
                     FavouriteDistributorCompanys!.Add(json.Item1!);
                     DistributorCompanys.Where(x => x.Id == json.Item1!.DistributorCompanyId).FirstOrDefault()!.Favourite = true;
+                }
+                else if (json.Item2 != null && json.Item2.errors != null)
+                {
+                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value.ToString()!.Replace("[", "").Replace("]", "").Replace("\"", "")}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
+                else
+                {
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.msgThere_was_a_problem_with_this_procedure, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
                 }
             }
 

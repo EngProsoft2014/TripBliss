@@ -1158,4 +1158,7 @@
   <data name="hdrChooseServices" xml:space="preserve">
     <value>أختر الخدمات</value>
   </data>
+  <data name="msgThere_was_a_problem_with_this_procedure" xml:space="preserve">
+    <value>حدثت مشكلة ما فى هذا الإجراء</value>
+  </data>
 </root>

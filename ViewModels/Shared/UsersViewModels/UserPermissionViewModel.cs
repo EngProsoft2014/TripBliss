@@ -81,9 +81,14 @@ namespace TripBliss.ViewModels.Shared.UsersViewModels
                     var toast = Toast.Make(TripBliss.Resources.Language.AppResources.Successfully_permissions_updated, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
+                else if (json.Item2 != null && json.Item2.errors != null)
+                {
+                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value.ToString()!.Replace("[", "").Replace("]", "").Replace("\"", "")}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
                 else
                 {
-                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.msgThere_was_a_problem_with_this_procedure, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
             }

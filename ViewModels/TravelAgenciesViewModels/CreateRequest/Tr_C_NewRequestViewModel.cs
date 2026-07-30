@@ -378,9 +378,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.CreateRequest
                             Controls.StaticMember.WayOfTab = 0;
                             await App.Current!.MainPage!.Navigation.PushAsync(new HomeAgencyPage(new Tr_HomeViewModel(Rep, _service, _signalRService, _notificationService, _firebasePushNotification), Rep, _service, _signalRService, _notificationService, _firebasePushNotification));
                         }
+                        else if (json.Item2 != null && json.Item2.errors != null)
+                        {
+                            var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value.ToString()!.Replace("[", "").Replace("]", "").Replace("\"", "")}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            await toast.Show();
+                        }
                         else
                         {
-                            var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                            var toast = Toast.Make(TripBliss.Resources.Language.AppResources.msgThere_was_a_problem_with_this_procedure, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                             await toast.Show();
                         }
                     }

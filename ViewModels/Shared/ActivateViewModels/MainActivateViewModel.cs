@@ -353,9 +353,14 @@ namespace TripBliss.ViewModels.ActivateViewModels
                     await toast.Show();
                     await GetAllRooms(DisId,Id);
                 }
+                else if (json.Item2 != null && json.Item2.errors != null)
+                {
+                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value.ToString()!.Replace("[", "").Replace("]", "").Replace("\"", "")}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
                 else
                 {
-                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.msgThere_was_a_problem_with_this_procedure, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
             }
@@ -382,9 +387,14 @@ namespace TripBliss.ViewModels.ActivateViewModels
                     await toast.Show();
                     await GetAllTransport(DisId, Id);
                 }
+                else if (json.Item2 != null && json.Item2.errors != null)
+                {
+                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value.ToString()!.Replace("[", "").Replace("]", "").Replace("\"", "")}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
                 else
                 {
-                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.msgThere_was_a_problem_with_this_procedure, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
             }
@@ -411,9 +421,14 @@ namespace TripBliss.ViewModels.ActivateViewModels
                     await toast.Show();
                     await GetAllAirFlight(DisId, Id);
                 }
+                else if (json.Item2 != null && json.Item2.errors != null)
+                {
+                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value.ToString()!.Replace("[", "").Replace("]", "").Replace("\"", "")}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
                 else
                 {
-                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.msgThere_was_a_problem_with_this_procedure, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
             }
@@ -440,9 +455,14 @@ namespace TripBliss.ViewModels.ActivateViewModels
                     await toast.Show();
                     await GetAllVisa(DisId, Id);
                 }
+                else if (json.Item2 != null && json.Item2.errors != null)
+                {
+                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value.ToString()!.Replace("[", "").Replace("]", "").Replace("\"", "")}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    await toast.Show();
+                }
                 else
                 {
-                    var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                    var toast = Toast.Make(TripBliss.Resources.Language.AppResources.msgThere_was_a_problem_with_this_procedure, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
             }

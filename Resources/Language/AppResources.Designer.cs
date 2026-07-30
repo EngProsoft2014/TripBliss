@@ -2176,6 +2176,15 @@ namespace TripBliss.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was a problem with this procedure..
+        /// </summary>
+        internal static string msgThere_was_a_problem_with_this_procedure {
+            get {
+                return ResourceManager.GetString("msgThere_was_a_problem_with_this_procedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         internal static string No {

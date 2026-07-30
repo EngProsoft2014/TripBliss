@@ -74,7 +74,7 @@ namespace TripBliss.ViewModels
             _notificationService = notificationService;
             _firebasePushNotification = firebasePushNotification;
 
-            if(_firebasePushNotification == null)
+            if (_firebasePushNotification == null)
             {
                 _firebasePushNotification = CrossFirebasePushNotification.Current;
             }
@@ -99,7 +99,7 @@ namespace TripBliss.ViewModels
         [RelayCommand]
         public async Task GoRestPage()
         {
-            var vm = new ResetViewModel(Rep,_service);
+            var vm = new ResetViewModel(Rep, _service);
             var page = new ResetPage(vm);
             page.BindingContext = vm;
             await App.Current!.MainPage!.Navigation.PushAsync(page);
@@ -166,7 +166,7 @@ namespace TripBliss.ViewModels
 
                             Constants.Permissions.LstPermissions = UserModel?.Permissions!;
                             //Constants.Permissions.DecodeJwtToClass(UserModel?.Token!);
-  
+
 
                             if (!string.IsNullOrEmpty(UserModel?.TravelAgencyCompanyId) && string.IsNullOrEmpty(UserModel?.DistributorCompanyId))
                             {
@@ -196,7 +196,7 @@ namespace TripBliss.ViewModels
                             {
                                 var toast1 = Toast.Make(TripBliss.Resources.Language.AppResources.This_account_is_an_admin, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                                 await toast1.Show();
-                            }    
+                            }
                         }
                         else
                         {
@@ -207,22 +207,24 @@ namespace TripBliss.ViewModels
                             App.Current.MainPage.Navigation.RemovePage(App.Current.MainPage.Navigation.NavigationStack[App.Current.MainPage.Navigation.NavigationStack.Count - 2]);
                         }
                     }
+                    else if (json.Item2 != null && json.Item2.errors != null)
+                    {
+                        if (json!.Item2!.errors!.Keys.Contains("Invalid Confirm Email - بريد إلكتروني مؤكد غير صالح"))
+                        {
+                            IsNotVerfy = true;
+                            string Result = json.Item2.errors.FirstOrDefault().Value.ToString()!;
+                            List<string> LstResult = Result.Split('_').ToList();
+                            List<string> LstResult2 = LstResult[1].Split('-').ToList();
+                            ResendEmail = LstResult2[0].Trim();
+                        }
+
+                        var toast = Toast.Make($"{json.Item2.errors.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
+                    }
                     else
                     {
-                        if(json.Item2 != null)
-                        {
-                            if (json!.Item2!.errors!.Keys.Contains("Invalid Confirm Email - بريد إلكتروني مؤكد غير صالح"))
-                            {
-                                IsNotVerfy = true;
-                                string Result = json.Item2.errors.FirstOrDefault().Value.ToString()!;
-                                List<string> LstResult = Result.Split('_').ToList();
-                                List<string> LstResult2 = LstResult[1].Split('-').ToList();
-                                ResendEmail = LstResult2[0].Trim();
-                            }
-
-                            var toast = Toast.Make($"{json.Item2.errors.FirstOrDefault().Value}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
-                            await toast.Show();
-                        }
+                        var toast = Toast.Make(TripBliss.Resources.Language.AppResources.msgThere_was_a_problem_with_this_procedure, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
                     }
 
                     UserDialogs.Instance.HideHud();

@@ -150,13 +150,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                     {
                         parts = ExpirationDate.Split('/');
                     }
+
                     ResponseWithDistributorPaymentRequest paymentRequest = new ResponseWithDistributorPaymentRequest
                     {
                         AmountPayment = IsAllPyment == true ? OutStandingprice : (Totalprice - Totalpayment - OutStandingprice - PaymentNotActive),
                         PaymentMethod = PayMethod,
                         dbcr = 1,
                         Notes = "",
-                        Refnumber = new Guid().ToString(),
+                        Refnumber = Guid.NewGuid().ToString(),
                         CardholderName = PayMethod == 2 ? HolderName : null, //PayMethod == 2 = Strip Credit
                         CardNumber = PayMethod == 2 ? CardNumber : null,
                         Cvc = PayMethod == 2 ? Cvv : null,
@@ -182,9 +183,14 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                         IsConfirmBtn = false;
                         Init(DetailsResponse, _distributorResponse);
                     }
-                    else
+                    else if (json.Item2 != null && json.Item2.errors != null) 
                     {
                         var toast = Toast.Make($"{json.Item2!.errors!.FirstOrDefault().Value.ToString()!.Replace("[", "").Replace("]", "").Replace("\"", "")}", CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
+                        await toast.Show();
+                    }
+                    else
+                    {
+                        var toast = Toast.Make(TripBliss.Resources.Language.AppResources.msgThere_was_a_problem_with_this_procedure, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                         await toast.Show();
                     }
                 }
