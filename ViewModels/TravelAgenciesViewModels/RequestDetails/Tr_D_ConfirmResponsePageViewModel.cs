@@ -404,6 +404,7 @@ namespace TripBliss.ViewModels.TravelAgenciesViewModels.RequestDetails
                 }
                 else
                 {
+                    await App.Current!.MainPage!.Navigation.PopAsync();
                     var toast = Toast.Make(TripBliss.Resources.Language.AppResources.msgThere_was_a_problem_with_this_procedure, CommunityToolkit.Maui.Core.ToastDuration.Long, 15);
                     await toast.Show();
                 }
